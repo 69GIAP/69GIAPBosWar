@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS Document */
+
+#content {
+	position: absolute;
+	top: 190px;
+	left: 260px;
+	width: auto;
+	height: auto;
+	}
+div#content p {
+	padding: 5px;
+	margin: 0;
+	}	
+div.user {
+	position:absolute;
+	top: 130px;
+	left: 20px;
+	width: auto;
+	height: auto;
+	font-size: 12px;
+	color: #E6E6E6;
+	z-index: 10;
+}

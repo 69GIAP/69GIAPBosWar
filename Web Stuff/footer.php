@@ -1,6 +1,4 @@
-        <div id="content">
-            <p>Welcome to the BOSWAR project!</p>
-        </div>
+
         
         <div id="bottom">
             <div id="credits">

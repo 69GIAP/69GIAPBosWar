@@ -13,8 +13,3 @@
 
 </head>
 
-    <body>
-    
-        <div id="top">
-            <div id="title"></div>
-        

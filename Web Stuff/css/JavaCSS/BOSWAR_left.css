@@ -1,0 +1,84 @@
+@charset "utf-8";
+/* CSS Document */
+
+#left {
+	position: absolute;
+	top: 165px;
+	left: 0px;
+	width: 245px;
+	bottom: 0;
+	background-color: #293442;
+	z-index: 1;
+	}
+#left p {
+	color: #E6E6E6;	
+}	
+ul#sidebar {
+	list-style-type:none;
+	margin: 0;
+	padding: 0;	
+}
+
+ul#sidebar {
+	margin-left: 20px;
+	margin-top:	30px;
+	display: block;
+	width: 192;
+}
+
+ul#sidebar li a.redAirbanner {
+	background:url(../../images/JavaNavigation/redAirForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.redGroundbanner {
+	background:url(../../images/JavaNavigation/redGroundForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.blueAirbanner {
+	background:url(../../images/JavaNavigation/blueAirForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.blueGroundbanner {
+	background:url(../../images/JavaNavigation/blueGroundForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.adminbanner {
+	background:url(../../images/JavaNavigation/adminForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.viewerbanner {
+	background:url(../../images/JavaNavigation/viewerForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.sovietbanner {
+	background:url(../../images/JavaNavigation/sovietForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.centerbanner {
+	background:url(../../images/JavaNavigation/centerForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
