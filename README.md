@@ -1,3 +1,3 @@
 69GIAPBosWar
 ============
-The Rise of Flight version of BOSWAR
+The Battle of Stalingrad version of BOSWAR
