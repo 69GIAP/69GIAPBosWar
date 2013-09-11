@@ -1,0 +1,77 @@
+OK, I first wrote these instructions for Stenka, but they should work for 
+anyone who wants to use our parser. It is available for anyone who wants 
+to us it, or to improve it. 
+
+It is a bit fussy, but simple enough. 
+
+First you will need to set some things up. 
+
+The parser itself is written in PHP, so it needs a PHP-enabled web server. 
+
+If you have access to one, you are good to go. In my case I use my home 
+UNIX box, but it doesn't matter where it is just so you have full access to it. 
+
+You will be able to grab the files you need from 
+http://phprofparser.cvs.sourceforge.net/viewvc/phprofparser/phprofparser/ 
+
+The important ones are readme (with simple instructions), copy.bat 
+(which will be placed on the game server), parse.php (the parser itself) 
+and whichever location.csv files you need for your campaign which will be 
+placed on the php-enabled web server. 
+
+You will also need to configure your game server to save text log files. 
+Instructions can be found in the startup.cfg.settings file. 
+
+Once you have startup.cfg configured and have placed copy.bat in the 
+server's data directory you are ready to run a mission and analyze the logs. 
+
+Phase one is to create the mission report from the log text files. 
+
+This consists of a few steps. 
+
+Go to Rise of Flight/data and delete all the log text files that are from 
+old missions and the warm-up, etc leaving just the ones from the mission. 
+Each mission is time-stamped by the time it was started, then numbered 
+from zero to the final log file, generally in the area of 200 or so. Remove 
+any files of the format missionReport(.....).txt that are *not* from the 
+mission you want to analyze. 
+
+Next click on "copy.bat" in the same directory. This will put all the 
+single-digit files into MissionReport1.txt, the two-digit files into 
+MissionReport2.txt, and three-digit files into MissionReport3.txt and then 
+combine all of these, in order into MissionReport.txt. 
+
+Delete the numbered files (so they won't be included accidentally into the 
+next report) and rename MissionReport.txt appropriately... i.e. to something 
+like MissionReportYankeeDoodle14.txt. 
+
+Phase two is to analyze the log file. 
+
+Transfer the renamed logfile to the machine where you have installed 
+parse.php (I email it to myself). 
+
+parse.php is the parser. It needs to be installed on a machine that has 
+a php-enabled web server because it presents the report as a simple web 
+page. i.e. you go to http://your.server.com/rof/parse.php to see the report. 
+An appropriate locations.csv file also needs to be in that same directory. '
+It can be edited as needed to match your campaign (e.g. different borders 
+or front-lines). 
+
+You will need to edit the top of parse.php to indicate that this is a 
+Yankee Doodle mission by setting the appropriate Campaign variable 
+($YANKEEDOODLE) to 1 (and the others to 0), then set $LOGFILE to the name 
+of the logfile which you have now placed in the same directory as 
+parse.php. Obviously you can configure it for other campaigns also or roll 
+your own. See the code for examples. 
+
+Save these changes. 
+
+Then you go to the page and copy-paste the result into a posting in our 
+Rise of Flight forum. 
+
+I'll update parse.php from time-to-time with improved internal instructions 
+and provisions for new content to make this as fool-proof as possible. 
+
+Best wishes, 
+Tushka
+March 30, 2013
