@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* CSS Document */
+
+fieldset ul, fieldset li{
+	border:0;
+	margin:0; 
+	width: 350px;
+	padding:5px; 
+	list-style:none;
+}
+fieldset li{
+	clear:both;
+	list-style:none;
+	padding-bottom:10px;
+	padding-top: 5px;
+}
+
+fieldset input{
+	float:left;
+}
+
+fieldset label{
+	width:140px;
+	float:left;
+}
+
+fieldset button{
+	width: 150px;
+	margin-left: 100px;
+}
