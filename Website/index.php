@@ -14,7 +14,7 @@
     
     <div id="indexRofWar">
         <a href="indexRofWar.php">
-        <img  src="img/RofWar_Title.png" alt="" width="391" height="57" border="0"></a>
+        <img  src="img/RofWar_Title.png" alt="" width="293" height="57" border="0"></a>
     </div>
     
     <div id="indexBosWar">
