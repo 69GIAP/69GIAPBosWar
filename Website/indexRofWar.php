@@ -9,10 +9,10 @@
 	require ( '../connect_db.php' );
 	
 # Include the webside header
-	include ( 'includes/header.php' );
+	include ( 'includes/RofWar_header.php' );
 	
 # Include the navigation on top
-	include ( 'includes/navigation.php' );
+	include ( 'includes/RofWar_navigation.php' );
 
 ?>
 
@@ -33,7 +33,7 @@
 
 <?php
 	# Include the general sidebar
-	include ( 'includes/sidebar.php' );
+	include ( 'includes/RofWar_sidebar.php' );
 ?>	
 
 		<div id="clearing"></div>
@@ -41,5 +41,5 @@
 
 <?php
 	# Include the footer
-	include ( 'includes/footer.php' );
+	include ( 'includes/RofWar_footer.php' );
 ?>
