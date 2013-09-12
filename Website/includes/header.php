@@ -5,6 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <title>BosWar</title>
+</head>
 
 <!--  Link external CSS Master file containing all other CSS files -->
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
@@ -24,5 +25,5 @@
 		include 'includes/loggedOnInfo.php'
     ?>
             
-	<div id="title"></div>
+	<div id="titleBosWar"></div>
         
