@@ -7,35 +7,51 @@
 
 # Incorporate the MySQL connection script.
 	require ( '../connect_db.php' );
+	
+# Include the webside header
+	include ( 'includes/header.php' );
+	
+# Include the navigation on top
+	include ( 'includes/navigation.php' );
 
-# header information
-	include 'includes/header.php';
 ?>
-        
-            <ul id="navigation">
-              <li><a href="#" class="menu1"><span></span></a></li>
-              <li><a href="#" class="menu2"><span></span></a></li>
-            </ul>
-            <ul id="register">
-              <li><a href="registerForm.php" class="register"><span></span></a></li>
-              <li><a href="loginForm.php" class="login"><span></span></a></li>
-            </ul>
-        </div>
-        
-        <div id="left"></div>
-        
-        <div id="content">
-            <p><b>Login:</b></p>
-            <form action="login.php" method="post">
-                Your Username:<br>
-                <input type="text" size="24" maxlength="50"
-                name="username"><br>    
-                Your Password:<br>
-                <input type="password" size="24" maxlength="50"
-                name="password"><br><br>
+
+	<div id="wrapper">
+
+        <div id="container">
+    
+            <div id="content">
+            
+                <p><b>Login:</b></p>
                 
-                <input type="submit" value="Login">
-            </form>
+                <fieldset class="boswar">
+                    <form  name="login"  action="login.php" method="post">
+                        <li> <label for="username">Your Username:<br></label>
+                        <input type="text" name="username" id="username" size="24" maxlength="50" />
+                        </li>
+                         <li> <label for="password">Your Password:<br></label>
+                        <input type="password" name="password" id="password" size="24" maxlength="50" />
+                        </li>
+
+                        <li><label for="submit"></label>
+                        <button type="submit" id="submit">Login</button>
+                        </li>
+                    </form>
+				</fieldset>
+                
+            </div>
+    
         </div>
-        
-<?php include 'includes/footer.php'; ?>
+
+<?php
+	# Include the general sidebar
+	include ( 'includes/sidebar.php' );
+?>	
+
+		<div id="clearing"></div>
+	</div>
+
+<?php
+	# Include the footer
+	include ( 'includes/footer.php' );
+?>
