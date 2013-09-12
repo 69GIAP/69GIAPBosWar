@@ -7,39 +7,50 @@
 
 # Incorporate the MySQL connection script.
 	require ( '../connect_db.php' );
+	
+# Include the webside header
+	include ( 'includes/header.php' );
+	
+# Include the navigation on top
+	include ( 'includes/navigation.php' );
 
-# header information
-	include 'includes/header.php';
 ?>
+
+	<div id="wrapper">
+
+        <div id="container">
+    
+            <div id="content">
+                 <?php 
         
-            <ul id="navigation">
-              <li><a href="#" class="menu1"><span></span></a></li>
-              <li><a href="#" class="menu2"><span></span></a></li>
-            </ul>
-            <ul id="register">
-              <li><a href="registerForm.php" class="register"><span></span></a></li>
-              <li><a href="loginForm.php" class="login"><span></span></a></li>
-            </ul>
+				# check to make sure the session variable is registered 
+				if(isset($_SESSION["username"])){ 
+				
+				# session variable is registered, the user is ready to logout 
+				session_unset(); 
+				session_destroy(); 
+				header("Location: index.php");
+				} 
+				else
+				{ 
+				# the session variable isn't registered, the user shouldn't even be on this page 
+				header("Location: index.php" ); 
+				}
+				
+				?>
+            </div>
+    
         </div>
-         
-        <div id="left"></div>
-        
-        <?php 
-        
-        # check to make sure the session variable is registered 
-        if(isset($_SESSION["username"])){ 
-        
-        # session variable is registered, the user is ready to logout 
-        session_unset(); 
-        session_destroy(); 
-		header("Location: index.php");
-        } 
-        else
-        { 
-        # the session variable isn't registered, the user shouldn't even be on this page 
-        header("Location: index.php" ); 
-        }
-		
-        ?>
-         
-<?php include 'includes/footer.php'; ?>
+
+<?php
+	# Include the general sidebar
+	include ( 'includes/sidebar.php' );
+?>	
+
+		<div id="clearing"></div>
+	</div>
+
+<?php
+	# Include the footer
+	include ( 'includes/footer.php' );
+?>
