@@ -58,13 +58,13 @@ div.userLoggedOnInfo {
 /************************************************************************
 /* Content Styles */
 #wrapper {
-	background: url(../Sandbox/img/side_bg.gif);
+	background: url(../img/side_bg.gif);
 	background-position: left;
 	background-repeat: repeat-y;
 	}
 
 #container {
-	background: url(../Sandbox/img/side_bg.gif);
+	background: url(../img/side_bg.gif);
 	background-position: left;
 	background-repeat: repeat-y;
 	float: right;
@@ -77,7 +77,7 @@ div.userLoggedOnInfo {
 	padding: 15px;
 	background-color: #fff;
 	color: #293442;
-	min-height: 700px;
+	min-height: 650px; /* applied min height for base setup of layout */
 	}
 
 #clearing {
