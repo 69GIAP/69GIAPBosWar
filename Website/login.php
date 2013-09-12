@@ -72,7 +72,7 @@
 					}
 					else if($row->role == "blueAirAdmin")
 					{
-						header("Location: Air.php");
+						header("Location: LoggedOn_blueAirAdmin.php");
 					}
 					else if($row->role == "blueGroundAdmin")
 					{
