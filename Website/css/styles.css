@@ -73,13 +73,13 @@ div.userLoggedOnInfo {
 /************************************************************************
 /* Content Styles */
 #wrapper {
-	background: url(../img/side_bg.gif);
+	background: url(../img/BosWar_Side_bg.gif);
 	background-position: left;
 	background-repeat: repeat-y;
 	}
 
 #container {
-	background: url(../img/side_bg.gif);
+	background: url(../img/BosWar_Side_bg.gif);
 	background-position: left;
 	background-repeat: repeat-y;
 	float: right;
