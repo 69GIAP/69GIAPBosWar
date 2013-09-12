@@ -27,10 +27,14 @@
                 <fieldset class="boswar">
                     <form name="delete" action="UserAdministrationModify.php" method="post">
                         <ul>
-                            <li> <label for="id">User ID</label>
-                                <input type="text" name="id" id="id" size="3" /></li>
+                            <li><label for="id">User ID</label> </li>
+                            <li><label for="id">Select User</label>
+                                <select name="id">
+                                    <?php include 'includes/getUserNames.php' ?>
+                                </select>
+                            </li>
                                 
-                            <li> <label for="password">New Password</label>
+                            <li><label for="password">New Password</label>
                                 <input type="text" name="password" id="password" size="30" /></li>  
         
                                 <li><label for="role">Select Role</label>

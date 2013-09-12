@@ -27,11 +27,11 @@
                 <fieldset class="boswar">
                     <form name="delete" action="RofWar_UserAdministrationModify.php" method="post">
                         <ul>
-                            <li> <label for="id">User ID</label>
-                            <li> <label for="id">Select User</label>
-                                    <select name="id">
-                                    <?php include 'includes/getUserNames.php' ?>
-                                    </select>
+                            <li><label for="id">User ID</label></li>
+                            <li><label for="id">Select User</label>
+                                <select name="id">
+                                <?php include 'includes/getUserNames.php' ?>
+                                </select>
                             </li>
                                
                             <li> <label for="password">New Password</label>
