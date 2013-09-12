@@ -162,28 +162,28 @@ ul#sidebar li a.blueGroundBanner {
 	position:relative;
 }
 ul#sidebar li a.adminBanner {
-	background:url(../img/BosWar_adminForces.png) no-repeat scroll top left;
+	background:url(../img/RofWar_adminForces.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.viewerBanner {
-	background:url(../img/BosWar_viewerForces.png) no-repeat scroll top left;
+	background:url(../img/RofWar_viewerForces.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.sovietBanner {
-	background:url(../img/BosWar_sovietForces.png) no-repeat scroll top left;
+	background:url(../img/RofWar_EntenteBanner.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.centerBanner {
-	background:url(../img/BosWar_centerForces.png) no-repeat scroll top left;
+	background:url(../img/RofWar_CenterBanner.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
