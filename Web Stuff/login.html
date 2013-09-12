@@ -1,16 +1,8 @@
-<?php
-# creates a new session for tracking the user is logged on
-session_start(); 
-# Incorporate the MySQL debug script.
-require ( 'debug.php' );
-# Incorporate the MySQL connection script.
-require ( '../connect_db.php' );
-?>
-!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>BOSWAR ::SECRET::</title>
+<title>BOSWAR ::LOGIN::</title>
 <!--  Link external CSS Master file containing all other CSS files -->
 <link href="css/JavaCSS/BOSWAR_AllStyles.css" rel="stylesheet" type="text/css" />
 <!-- Include jQuery Library -->
@@ -24,6 +16,7 @@ require ( '../connect_db.php' );
     <body>
     
         <div id="top">
+        
             <div id="title"></div>
         
             <ul id="navigation">
@@ -35,27 +28,23 @@ require ( '../connect_db.php' );
               <li><a href="login.html" class="login"><span></span></a></li>
             </ul>
         </div>
-         
+        
         <div id="left"></div>
         
-        <?php 
+        <div id="content">
+            <p><b>Login:</b></p>
+            <form action="login.php" method="post">
+                Your Username:<br>
+                <input type="text" size="24" maxlength="50"
+                name="username"><br>    
+                Your Password:<br>
+                <input type="password" size="24" maxlength="50"
+                name="password"><br><br>
+                
+                <input type="submit" value="Login">
+            </form>
+        </div>
         
-        # check to make sure the session variable is registered 
-        if(isset($_SESSION["username"])){ 
-        
-        # session variable is registered, the user is ready to logout 
-        session_unset(); 
-        session_destroy(); 
-		header("Location: index.html");
-        } 
-        else
-        { 
-        # the session variable isn't registered, the user shouldn't even be on this page 
-        header("Location: index.html" ); 
-        }
-		
-        ?>
-         
         <div id="bottom">
             <div id="credits">
                 <p>Powered by IL2 STURMOVIK - Battle of Stalingrad</p>
