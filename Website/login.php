@@ -7,115 +7,116 @@
 
 # Incorporate the MySQL connection script.
 	require ( '../connect_db.php' );
+	
+# Include the webside header
+	include ( 'includes/header.php' );
+	
+# Include the navigation on top
+	include ( 'includes/navigation.php' );
 
-# header information
-	include 'includes/header.php';
-?>	
-        
-            <ul id="navigation">
-              <li><a href="#" class="menu1"><span></span></a></li>
-              <li><a href="#" class="menu2"><span></span></a></li>
-            </ul>
-            <ul id="register">
-              <li><a href="registerForm.php" class="register"><span></span></a></li>
-              <li><a href="loginForm.php" class="login"><span></span></a></li>
-            </ul>
-        </div>
-        
-        <div id="left"></div>
-        
-        <?php
-		
-        # open container
-        echo "<div id=\"content\">\n";
+?>
 
-        $username = $_POST["username"]; 
-        $password = md5($_POST["password"]); 
-      
-        # create SQL query
-        $query = "SELECT username, password FROM users WHERE username LIKE '$username' LIMIT 1"; 
-        
-        # execute SQL query
-        $result = mysqli_query($dbc, $query);
-		
-		# fetch results
-		$row = mysqli_fetch_object($result);
-        
-        if(empty($row->username))
-            {
-				echo "<p>Username <b>$username</b> is wrong or not registered!</p>\n";
-			}
-		else
-		if($row->password != $password)
-            {
-				echo "<p>The provided password was wrong!</p>\n";
-			}
-		else
-		if($row->password == $password)
-           {
+	<div id="wrapper">
 
-		# selector due to users role the redirection is dynamically set to the right page
-			# gather the users role
-	        $query = "SELECT role FROM users WHERE username LIKE '$username' LIMIT 1";
-        	$result = mysqli_query($dbc, $query);
-			$row = mysqli_fetch_object($result);
-			$_SESSION["username"] = $username;
-			
-			if($row->role == "administrator")
-			{
-				header("Location: secretAdmin.php");
-			}
-			else
-			if($row->role == "redAirAdmin")
-			{
-				header("Location: secretRed.php");
-			}
-			else
-			if($row->role == "redGroundAdmin")
-			{
-				header("Location: secretRed.php");
-			}
-			else
-			if($row->role == "blueAirAdmin")
-			{
-				header("Location: secretBlue.php");
-			}
-			else
-			if($row->role == "blueGroundAdmin")
-			{
-				header("Location: secretBlue.php");
-			}
-			else
-			if($row->role == "viewer")
-			{
-				header("Location: secretviewer.php");
-			}			
-            exit;
-            } 
-        else 
-            { 
-            echo "<p>Logon failed.</p>\n";
-			echo "<p>Please retry!</p>\n"; 
-            } 
-                
-            if(!isset($_SESSION["username"])) 
-                {
-                echo "<form action=\"loginForm.php\" >\n";
-                echo "<input type=\"submit\" value=\"Retry\">\n";
-                echo "</form>\n";		
-        # close html document properly before exit
-                echo "</div>\n";
-				
-				include 'includes/footer.php';
-				
-                exit;  
-            } 
-        echo "</div>\n";
-		
-		mysqli_free_result($result);
+        <div id="container">
+    
+            <div id="content">
             
-		mysqli_close($dbc);
+                <?php
+				
+				# bind POST variables into variables for easier coding
+				$username 	= 	$_POST["username"]; 
+				$password 	= 	md5($_POST["password"]); 
+			  
+				# create SQL query
+				$query = "SELECT username, password FROM users WHERE username LIKE '$username' LIMIT 1"; 
+				
+				# execute SQL query
+				$result = mysqli_query($dbc, $query);
+				
+				# fetch results
+				$row 	= mysqli_fetch_object($result);
+				
+				# perform some sanity checks on the data
+				if(empty($row->username))
+					{
+						echo "<p>Username <b>$username</b> is wrong or not registered!</p>\n";
+					}
+				else if($row->password != $password)
+					{
+						echo "<p>The provided password was wrong!</p>\n";
+					}
+				else if($row->password == $password)
+				   {
 		
-        ?> 
+				# due to users role the redirection is dynamically set to the right page
+					# gather the users role
+					$query 	= "SELECT role FROM users WHERE username LIKE '$username' LIMIT 1";
+					$result	= mysqli_query($dbc, $query);
+					$row 	= mysqli_fetch_object($result);
+					
+					# bind session variable to variable
+					$_SESSION["username"] = $username;
+					
+					if($row->role == "administrator")
+					{
+						header("Location: LoggedOn_Admin.php");
+					}
+					else if($row->role == "redAirAdmin")
+					{
+						header("Location: LoggedOn_RedAirAdmin.php");
+					}
+					else if($row->role == "redGroundAdmin")
+					{
+						header("Location: LoggedOn_redGroundAdmin.php");
+					}
+					else if($row->role == "blueAirAdmin")
+					{
+						header("Location: Air.php");
+					}
+					else if($row->role == "blueGroundAdmin")
+					{
+						header("Location: LoggedOn_blueGroundAdmin.php");
+					}
+					else if($row->role == "viewer")
+					{
+						header("Location: LoggedOn_Viewer.php");
+					}			
+					exit;
+					} 
+				else 
+					{ 
+					echo "<p>Logon failed.</p>\n";
+					echo "<p>Please retry!</p>\n"; 
+					} 
+						
+				if(!isset($_SESSION["username"])) 
+					{
+						echo "<form action=\"loginForm.php\" >\n";
+						echo "<input type=\"submit\" value=\"Retry\">\n";
+						echo "</form>\n";		  
+					} 
+				echo "\n";
+				
+				mysqli_free_result($result);
+					
+				mysqli_close($dbc);
+				
+				?> 
         
-<?php include 'includes/footer.php'; ?>
+            </div>
+    
+        </div>
+
+<?php
+	# Include the general sidebar
+	include ( 'includes/sidebar.php' );
+?>	
+
+		<div id="clearing"></div>
+	</div>
+
+<?php
+	# Include the footer
+	include ( 'includes/footer.php' );
+?>
