@@ -1,0 +1,355 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	background-color: #293442;	
+	}
+
+html {
+	line-height: 1.5em;	
+	}
+
+h1 {
+	padding: 0;
+	margin: 0;
+	line-height: 2em;
+	text-align: center;
+	font-family: Candara, sans-serif;
+	}
+
+p {
+	padding: 20px;
+	margin: 0;
+	}
+	
+/************************************************************************
+/* Header Styles */
+#header {
+	background-color: #293442;
+	color: #E6E6E6;
+	height:165px;
+	background: url(../img/BosWar_Header_bg.png) repeat-x;
+	z-index: 10;		
+	}
+
+
+div.userLoggedOnInfo {
+	position:absolute;
+	top: 130px;
+	left: 20px;
+	width: auto;
+	height: auto;
+	font-size: 12px;
+	color: #E6E6E6;
+	z-index: 10;
+	}
+
+#title {
+	position: absolute;
+	top: 27px;
+	left: 50%;
+	right:50%;
+	margin-left: -146px;
+	width: 293px;
+	height: 57px;
+	background-image: url(../img/BosWar_Title.png);
+	z-index: 999;
+	}
+
+/************************************************************************
+/* Content Styles */
+#wrapper {
+	background: url(../Sandbox/img/side_bg.gif);
+	background-position: left;
+	background-repeat: repeat-y;
+	}
+
+#container {
+	background: url(../Sandbox/img/side_bg.gif);
+	background-position: left;
+	background-repeat: repeat-y;
+	float: right;
+	margin: 0 0 0 -260px ;
+	width: 100%;
+	}
+
+#content {
+	margin: 0 0 0 245px;
+	padding: 15px;
+	background-color: #fff;
+	color: #293442;
+	min-height: 700px;
+	}
+
+#clearing {
+	clear: both;
+	height: 0px;
+	}
+
+/************************************************************************
+/*Sidebar Styles */
+#side {
+	float: left;
+	width: 245px;
+	color: #E6E6E6;		
+	}
+
+ul#sidebar {
+	list-style-type:none;
+	margin: 0;
+	padding: 0;	
+}
+
+ul#sidebar {
+	margin-left: 20px;
+	margin-top:	30px;
+	display: block;
+	width: 192;
+}
+
+ul#sidebar li a.redAirBanner {
+	background:url(../img/BosWar_redAirForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.redGroundBanner {
+	background:url(../img/BosWar_redGroundForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.blueAirBanner {
+	background:url(../img/BosWar_blueAirForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.blueGroundBanner {
+	background:url(../img/BosWar_blueGroundForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.adminBanner {
+	background:url(../img/BosWar_adminForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.viewerBanner {
+	background:url(../img/BosWar_viewerForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.sovietBanner {
+	background:url(../img/BosWar_sovietForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.centerBanner {
+	background:url(../img/BosWar_centerForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}	
+	
+/************************************************************************
+/*  Footer Styles */
+#footer {
+	background-color: #293442;
+	border:none;
+	color: #E6E6E6;	
+	height: 48px;	
+	}
+
+#credits {
+	position: relative;
+	right: 10px;
+	top: 10px;
+	height: auto;
+	width: auto;
+	text-align: right;
+	font-size:	11px;
+	}
+	
+div#credits p {
+	padding: 0;
+	margin: 0;
+	color: #E6E6E6;
+}	
+
+/************************************************************************
+/*  NAVIGATION */
+
+ul#navigation {
+	right: 0;
+	height:54px;
+	list-style:none;
+	margin:0;
+	padding:0;
+	padding-top:111px;
+	padding-left:245px;
+	z-index: 999;
+	}
+
+ul#navigation li {
+	float:left;
+	}
+
+ul#navigation li a {
+	background:url(../img/BosWar_NavMenuLeftSprite.png) no-repeat scroll top left;
+	display:block;
+	height:54px;
+	position:relative;
+	}
+
+ul#navigation li a.menu1 {
+	width:96px;
+	}
+
+ul#navigation li a.menu2 {
+	width:96px;
+	background-position:-96px 0px;
+	}
+
+ul#navigation li a span {
+	background:url(../img/BosWar_NavMenuLeftSprite.png) no-repeat scroll bottom left;
+	display:block;
+	position:absolute;
+	top:0;
+	left:0;
+	height:100%;
+	width:100%;
+	z-index:100;
+	}
+
+ul#navigation li a.menu1 span {
+	background-position:0px -54px;
+	}
+ul#navigation li a.menu2 span {
+	width:95px;
+	background-position:-96px -54px;
+	}
+
+ul#navigation li a span:hover {
+	cursor:pointer;
+	}
+
+ul#register {
+	position: absolute;
+	right: 10%;
+	top: 111px;
+	height:54px;
+	width: auto;
+	list-style:none;
+	margin:0;
+	padding:0;
+	z-index: 1000;
+	}
+
+ul#register li {
+	float:left;
+	}
+
+ul#register li a {
+	background:url(../img/BosWar_NavMenuRightSprite.png) no-repeat scroll top left;
+	display:block;
+	height:54px;
+	position:relative;
+	}
+
+ul#register li a.register {
+	width: 84px;
+	}
+
+ul#register li a.login {
+	width: 84px;
+	background-position:-84px 0px;
+	}
+
+ul#register li a.logout {
+	width: 84px;
+	background-position:-168px 0px;
+	}
+
+ul#register li a span {
+	background:url(../img/BosWar_NavMenuRightSprite.png) no-repeat scroll bottom left;
+	display:block;
+	position:absolute;
+	top:0;
+	left:0;
+	height:100%;
+	width:100%;
+	z-index:100;
+	}
+
+ul#register li a.register span {
+	background-position:0px -54px;
+	}
+
+ul#register li a.login span {
+	width: 83px;
+	background-position:-84px -54px;
+	}
+
+ul#register li a.logout span {
+	width: 83px;
+	background-position:-168px -54px;
+	}
+
+ul#register li a span:hover {
+	cursor:pointer;
+	}
+
+/**************************************************************************
+/* Form styles */
+	
+fieldset.boswar {
+	width: 380px;
+	border: none;	
+	}
+	
+fieldset.boswar ul, fieldset li{
+	border:0;
+	margin:0; 
+	width: 360px;
+	padding:5px; 
+	list-style:none;
+	}
+
+fieldset.boswar li{
+	clear:both;
+	list-style:none;
+	padding-bottom:10px;
+	padding-top: 5px;
+	}
+
+fieldset.boswar input{
+	float:left;
+	width: 210px;
+	}
+
+fieldset.boswar select{
+	float:left;
+	width: 215px;
+	}
+
+fieldset.boswar label{
+	width:140px;
+	float:left;
+	}
+
+fieldset.boswar button{
+	width: 150px;
+	margin-left: 160px;
+}
