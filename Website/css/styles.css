@@ -4,6 +4,10 @@ html, body {
 	background-color: #293442;	
 	}
 
+body.index {
+	background-color: #CCC;
+	}
+
 html {
 	line-height: 1.5em;	
 	}
@@ -43,7 +47,7 @@ div.userLoggedOnInfo {
 	z-index: 10;
 	}
 
-#title {
+#titleBosWar {
 	position: absolute;
 	top: 27px;
 	left: 50%;
@@ -55,6 +59,17 @@ div.userLoggedOnInfo {
 	z-index: 999;
 	}
 
+#indexRofWar {
+	display:block;
+	text-align:center;
+	margin-top:150px;
+	padding: 15px;
+	}
+#indexBosWar {
+	display:block;
+	text-align:center;
+	padding: 15px;
+}
 /************************************************************************
 /* Content Styles */
 #wrapper {
