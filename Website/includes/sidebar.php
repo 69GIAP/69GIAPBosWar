@@ -34,7 +34,7 @@
 								echo "	</ul>\n";
 							}
 						# define what a blueAirAdmin or redGroundAdmin sees in the sidebar
-						else if ($role == "blueAirAdmin" OR $role == "redGroundAdmin")
+						else if ($role == "blueAirAdmin" OR $role == "blueGroundAdmin")
 							{
 								echo "<h1>Blue Admin:</h1>\n";
 								echo "	<ul id=\"sidebar\">\n";
