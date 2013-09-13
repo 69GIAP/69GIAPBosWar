@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2013 at 07:49 AM
+-- Generation Time: Sep 13, 2013 at 10:01 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `channel_locations`
+-- Table structure for table `rof_channel_locations`
 --
 
-CREATE TABLE IF NOT EXISTS `channel_locations` (
+CREATE TABLE IF NOT EXISTS `rof_channel_locations` (
   `LID` int(2) NOT NULL,
   `LX` decimal(15,0) NOT NULL,
   `LZ` decimal(15,0) NOT NULL,
@@ -34,10 +34,10 @@ CREATE TABLE IF NOT EXISTS `channel_locations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `channel_locations`
+-- Dumping data for table `rof_channel_locations`
 --
 
-INSERT INTO `channel_locations` (`LID`, `LX`, `LZ`, `LName`) VALUES
+INSERT INTO `rof_channel_locations` (`LID`, `LX`, `LZ`, `LName`) VALUES
 (10, '170630', '74930', 'Blackheath Common'),
 (50, '174250', '75300', 'Colchester'),
 (50, '174690', '74230', 'Colchester'),
