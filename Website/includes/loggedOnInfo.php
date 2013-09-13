@@ -7,6 +7,6 @@
         }
         else
         {
-            echo "<div class=\"userLoggedOnInfo\">You are not logged on!</div>\n";
+            echo "<div class=\"userLoggedOnInfo\">Commanders should log in.</div>\n";
         }
 ?>        

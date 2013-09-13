@@ -28,18 +28,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `campaigns` (
   `campaign` varchar(50) NOT NULL,
-  `database` varchar(30) NOT NULL,
+  `db_name` varchar(30) NOT NULL,
   `map` varchar(30) NOT NULL,
   `simulation` varchar(6) NOT NULL,
   PRIMARY KEY (`campaign`),
-  UNIQUE KEY `database` (`database`)
+  UNIQUE KEY `db_name` (`db_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `campaigns`
 --
 
-INSERT INTO `campaigns` (`campaign`, `database`, `map`, `simulation`) VALUES
+INSERT INTO `campaigns` (`campaign`, `db_name`, `map`, `simulation`) VALUES
 ('Bloody April', 'bloody_april', 'Western Front', 'RoF'),
 ('Flanders Eagles', 'flanders_eagles', 'Channel', 'RoF'),
 ('Lake', 'lake', 'Lake', 'RoF'),
