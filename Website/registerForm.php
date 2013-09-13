@@ -24,7 +24,7 @@
             
                 <p><b>Register:</b></p>
                  
-                <fieldset class="boswar">      
+                <fieldset class="boswar"> 
                     <form name="register" action="register.php" method="post">
                         <ul>
                             <li> <label for="username">User Name:</label>

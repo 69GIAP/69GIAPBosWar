@@ -46,13 +46,13 @@
                                 </li>
         
                             <li><label for="modify"></label>
-                                <button type="modify" name="modify" value ="1" id="modify">Update Password</button>
+                                <button type="modify" name="modify" value ="1" >Update Password</button>
                                 
                             <label for="modify"></label>
-                                <button type="modify" name="modify" value ="2" id="modify">Update Role</button>
+                                <button type="modify" name="modify" value ="2" >Update Role</button>
                                                                                
                             <label for="modify"></label>
-                                <button type="modify" name="modify" value ="0" id="modify">Delete</button></li>
+                                <button type="modify" name="modify" value ="0" >Delete</button></li>
                                                       
                         <ul>
                     </form>

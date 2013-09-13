@@ -6,9 +6,44 @@
 
 <title>BosWar</title>
 </head>
+<?php
 
-<!--  Link external CSS Master file containing all other CSS files -->
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
+	# check if game variable is already set
+	if (empty($_SESSION["game"]))
+		{
+			# check if the variable was already set
+			# get the variable from the first pages button
+			$game = $_POST['selection'];
+			
+			if(!isset($game))
+			{	
+				# redirect to index if user made no choice
+				header("Location: index.php");
+			}
+				# register value of $_POST["selection"] - chosen game - to Session "game"
+				# syntax: $_SESSION['name'] = "value";
+				$_SESSION['game'] = $game;
+		}
+	else
+		{
+			#get the variable stored into $game
+				$game = $_SESSION['game'];
+		}
+	
+	# header("Location: test.php");
+
+	if ($game == "RofWar")
+		{
+			echo "<!--  Link external CSS Master file containing all other CSS files -->\n";
+			echo "<link href=\"css/RofWar_styles.css\" rel=\"stylesheet\" type=\"text/css\" />\n";
+		}
+	if ($game == "BosWar")
+		{
+			echo "<!--  Link external CSS Master file containing all other CSS files -->\n";
+			echo "<link href=\"css/styles.css\" rel=\"stylesheet\" type=\"text/css\" />\n";
+		}
+?>
+
 
 <!-- Include jQuery Library -->
 <script src="js/jquery-1.2.2.pack.js" type="text/javascript"></script>
@@ -22,8 +57,16 @@
     
 	<?php 
 		# reference the username next to the navigation bar              
-		include 'includes/loggedOnInfo.php'
-    ?>
-            
-	<div id="titleBosWar"></div>
+		include 'includes/loggedOnInfo.php';
+    
+     	# create dynamic title based on variable $gameselector
+		if ($game == "RofWar")
+			{
+				echo "<div id=\"titleRofWar\"></div>\n";
+			}
+		if ($game == "BosWar")
+			{
+				echo "<div id=\"titleBosWar\"></div>\n";
+			}	
+	?>
         

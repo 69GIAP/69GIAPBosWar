@@ -23,6 +23,7 @@ h1 {
 p {
 	padding: 20px;
 	margin: 0;
+	font-family: Candara, sans-serif;
 	}
 	
 /************************************************************************
@@ -59,16 +60,47 @@ div.userLoggedOnInfo {
 	z-index: 999;
 	}
 
-#indexRofWar {
+/********************************
+Style for Index screenform elements */
+#indexRofBosWar {
 	display:block;
 	text-align:center;
 	margin-top:150px;
 	padding: 15px;
-	}
-#indexBosWar {
-	display:block;
-	text-align:center;
-	padding: 15px;
+}
+
+.RofWarBosWarSelection form {
+	display: inline-block;
+	text-align: center;
+}
+	
+.RofWarBosWarSelection * { /* target all elements contained by the form */
+	border: 0;
+	width: 293px;
+	height: 57px;
+	cursor: pointer;
+	color:transparent; /* this hides the submitted text */
+}
+
+.RofWarBosWarSelection .BosWar {
+	background: url(../img/RofWarBosWarSelectorTitle.png) no-repeat;
+	margin: 15px;
+}
+
+.RofWarBosWarSelection .RofWar {
+	background: url(../img/RofWarBosWarSelectorTitle.png) no-repeat;
+	margin: 15px;
+}
+
+.RofWarBosWarSelection *:hover {
+	background-position: 0 -57px;
+}
+.RofWarBosWarSelection .BosWar {
+	width: 293px; /* different settings for this element */
+	background-position: -293px 0;
+}
+.RofWarBosWarSelection .BosWar:hover {
+	background-position: -293px -57px;
 }
 /************************************************************************
 /* Content Styles */
