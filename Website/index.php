@@ -1,9 +1,13 @@
 <?php
 	session_start();
-	# cleans session variable in case user simply reloades index screen and tries to access a differnet layout
+	# cleans session variables in case user simply reloades index screen and tries to access a differnet layout
 	if (!empty($_SESSION['game']))
 	{
 		unset($_SESSION['game']); 
+	}
+	if (!empty($_SESSION['username']))
+	{
+		unset($_SESSION['username']); 
 	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
