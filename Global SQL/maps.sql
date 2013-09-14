@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2013 at 03:00 AM
+-- Generation Time: Sep 14, 2013 at 06:21 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `maps` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `map` varchar(30) NOT NULL,
   `simulation` varchar(6) NOT NULL,
+  `map_locations` varchar(40) CHARACTER SET ascii NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
@@ -37,12 +38,12 @@ CREATE TABLE IF NOT EXISTS `maps` (
 -- Dumping data for table `maps`
 --
 
-INSERT INTO `maps` (`id`, `map`, `simulation`) VALUES
-(1, 'Channel', 'RoF'),
-(2, 'Lake', 'RoF'),
-(3, 'Stalingrad', 'BoS'),
-(4, 'Verdun', 'RoF'),
-(5, 'Western Front', 'RoF');
+INSERT INTO `maps` (`id`, `map`, `simulation`, `map_locations`) VALUES
+(1, 'Channel', 'RoF', 'rof_channel_locations'),
+(2, 'Lake', 'RoF', 'rof_lake_locations'),
+(3, 'Stalingrad', 'BoS', 'bos_stalingrad_locations'),
+(4, 'Verdun', 'RoF', 'rof_verdun_locations'),
+(5, 'Western Front', 'RoF', 'rof_westernfront_locations');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
