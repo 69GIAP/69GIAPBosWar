@@ -22,7 +22,6 @@
     
             <div id="content">
 
-                <h1>Statistics</h1>
                 <?php
 					include ( 'includes/getCampaigns.php' );				  
 				?>
