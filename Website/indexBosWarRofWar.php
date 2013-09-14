@@ -21,10 +21,21 @@
         <div id="container">
     
             <div id="content">
-            <div id="content">
+
                 <h1>Statistics</h1>
-		<?php include ( 'includes/getCampaigns.php' ); ?>
-            </div>
+                <?php
+					# should be bound dynamically to chosen $_SESSION["game"] to distinguish between Rof and Bos,
+					# variable is already stored to $game = $_SESSION['game'] in the document header for each page
+					# so it can be used to verify version in an if statement easily
+					if ($game == "RofWar")
+						{
+							include ( 'includes/getRofCampaigns.php' );
+						}
+					else
+						{
+							include ( 'includes/getBosCampaigns.php' );
+						}					  
+				 ?>
 
             </div>
     
