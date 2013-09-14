@@ -32,12 +32,12 @@
 	
 	# header("Location: test.php");
 
-	if ($game == "RoF")
+	if ($game == "RofWar")
 		{
 			echo "<!--  Link external CSS Master file containing all other CSS files -->\n";
 			echo "<link href=\"css/RofWar_styles.css\" rel=\"stylesheet\" type=\"text/css\" />\n";
 		}
-	if ($game == "BoS")
+	if ($game == "BosWar")
 		{
 			echo "<!--  Link external CSS Master file containing all other CSS files -->\n";
 			echo "<link href=\"css/styles.css\" rel=\"stylesheet\" type=\"text/css\" />\n";
@@ -60,11 +60,11 @@
 		include 'includes/loggedOnInfo.php';
     
      	# create dynamic title based on variable $gameselector
-		if ($game == "RoF")
+		if ($game == "RofWar")
 			{
 				echo "<div id=\"titleRofWar\"></div>\n";
 			}
-		if ($game == "BoS")
+		if ($game == "BosWar")
 			{
 				echo "<div id=\"titleBosWar\"></div>\n";
 			}	
