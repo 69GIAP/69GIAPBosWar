@@ -54,10 +54,7 @@
 					else
 						{
 							# there is no user logged on so this is the default view
-							echo "<h1>Visitor:</h1>\n";
-							echo "	<ul id=\"sidebar\">\n";
-							echo "	    <li><a href=\"#\" class=\"viewerBanner\"><span></span></a></li>\n";
-							echo "  </ul>\n";
+							echo "<h1>Statistics:</h1>\n";
 						}
             ?>
             
