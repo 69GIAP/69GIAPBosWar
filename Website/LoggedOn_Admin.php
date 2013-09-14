@@ -21,7 +21,7 @@
         <div id="container">
     
             <div id="content">
-	    <?php include ( 'includes/getAdminCampaigns.php' ); ?>
+	    <?php include ( 'includes/getCampaignsAdmin.php' ); ?>
             </div>
     
         </div>
