@@ -7,7 +7,7 @@
 //
 echo "<h2>Proposed Campaigns</h2>\n";
 # get active campaigns
-$query = "SELECT * FROM campaigns where state = 4 and simulation = '$game' ";
+$query = "SELECT * FROM campaigns where status = 4 and simulation = '$game' ";
 	
 if(!$result = $dbc->query($query))
    { die('There was an error running the query [' . $dbc->error . ']'); }
@@ -27,7 +27,7 @@ if ($result = mysqli_query($dbc, $query))
 
 echo "<h2>Active Campaigns</h2>\n";
 # get active campaigns
-$query = "SELECT * FROM campaigns where state = 3 and simulation = '$game' ";
+$query = "SELECT * FROM campaigns where status = 3 and simulation = '$game' ";
 	
 if(!$result = $dbc->query($query))
    { die('There was an error running the query [' . $dbc->error . ']'); }
@@ -47,7 +47,7 @@ if ($result = mysqli_query($dbc, $query))
 
 echo "<h2>Completed Campaigns</h2>\n";
 # get completed campaigns
-$query = "SELECT * FROM campaigns where state = 2 and simulation = '$game' ";
+$query = "SELECT * FROM campaigns where status = 2 and simulation = '$game' ";
 	
 if(!$result = $dbc->query($query))
    { die('There was an error running the query [' . $dbc->error . ']'); }
@@ -66,7 +66,7 @@ if ($result = mysqli_query($dbc, $query))
 }
 echo "<h2>Hidden Campaigns</h2>\n";
 # get active campaigns
-$query = "SELECT * FROM campaigns where state = 1 and simulation = '$game' ";
+$query = "SELECT * FROM campaigns where status = 1 and simulation = '$game' ";
 	
 if(!$result = $dbc->query($query))
    { die('There was an error running the query [' . $dbc->error . ']'); }

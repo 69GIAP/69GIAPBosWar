@@ -48,13 +48,7 @@ CREATE TABLE IF NOT EXISTS `campaigns` (
 --
 
 INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `db_name`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `redAirAdmin`, `redGroundAdmin`, `blueAirAdmin`, `blueGroundAdmin`) VALUES
-(1, 'RoF', 'Bloody April', 'bloody_april', 'Western Front', 'rof_westernfront_locations', 2, 1, 1, 0, 0, 0, 0),
-(2, 'RoF', 'Flanders Eagles', 'flanders_eagles', 'Channel', 'rof_channel_locations', 3, 1, 1, 0, 0, 0, 0),
-(3, 'RoF', 'Lake', 'lake', 'Lake', 'rof_lake_locations', 1, 0, 1, 0, 0, 0, 0),
-(4, 'RoF', 'Skies of the Empires II', 'skies_of_the_empires_ii', 'Verdun', 'rof_verdun_locations', 2, 0, 1, 0, 0, 0, 0),
-(5, 'BoS', 'Stalingrad', 'stalingrad', 'Stalingrad', 'bos_stalingrad_locations', 4, 0, 1, 0, 0, 0, 0),
-(6, 'RoF', 'Yankee Doodle', 'yankee_doodle', 'Verdun', 'rof_verdun_locations', 2, 1, 1, 0, 0, 0, 0),
-(7, 'RoF', 'Skies of the Empires', 'skies_of_the_empires', 'Verdun', 'rof_verdun_locations', 2, 0, 1, 0, 0, 0, 0);
+(1, 'RoF', 'Flanders Eagles', 'flanders_eagles', 'Channel', 'rof_channel_locations', 3, 1, 1, 0, 0, 0, 0),
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

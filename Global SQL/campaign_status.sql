@@ -23,20 +23,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `campaign_states`
+-- Table structure for table `campaign_status`
 --
 
-CREATE TABLE IF NOT EXISTS `campaign_states` (
+CREATE TABLE IF NOT EXISTS `campaign_status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `campaign_state` varchar(15) NOT NULL,
+  `campaign_staus` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `campaign_states`
+-- Dumping data for table `campaign_status`
 --
 
-INSERT INTO `campaign_states` (`id`, `campaign_state`) VALUES
+INSERT INTO `campaign_status` (`id`, `campaign_status`) VALUES
 (1, 'Hidden'),
 (2, 'Completed'),
 (3, 'Active'),
