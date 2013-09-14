@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2013 at 05:42 AM
+-- Generation Time: Sep 14, 2013 at 03:00 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -27,23 +27,23 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `maps` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `map` varchar(30) NOT NULL,
   `simulation` varchar(6) NOT NULL,
-  PRIMARY KEY (`map`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `maps`
 --
 
-INSERT INTO `maps` (`map`, `simulation`) VALUES
-('Channel', 'RoF'),
-('Lake', 'RoF'),
-('Stalingrad', 'BoS'),
-('Verdun', 'RoF'),
-('Western Front', 'RoF');
+INSERT INTO `maps` (`id`, `map`, `simulation`) VALUES
+(1, 'Channel', 'RoF'),
+(2, 'Lake', 'RoF'),
+(3, 'Stalingrad', 'BoS'),
+(4, 'Verdun', 'RoF'),
+(5, 'Western Front', 'RoF');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2013 at 05:20 AM
+-- Generation Time: Sep 14, 2013 at 03:00 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -27,28 +27,27 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `campaigns` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `campaign` varchar(50) NOT NULL,
   `db_name` varchar(30) NOT NULL,
   `map` varchar(30) NOT NULL,
   `simulation` varchar(6) NOT NULL,
-  PRIMARY KEY (`campaign`),
-  UNIQUE KEY `db_name` (`db_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `campaigns`
 --
 
-INSERT INTO `campaigns` (`campaign`, `db_name`, `map`, `simulation`) VALUES
-('Bloody April', 'bloody_april', 'Western Front', 'RoF'),
-('Flanders Eagles', 'flanders_eagles', 'Channel', 'RoF'),
-('Lake', 'lake', 'Lake', 'RoF'),
-('Skies of the Empires', 'skies_of_the_empires', 'Verdun', 'RoF'),
-('Skies of the Empires II', 'skies_of_the_empires_ii', 'Verdun', 'RoF'),
-('Stalingrad', 'stalingrad', 'Stalingrad', 'BoS'),
-('Yankee Doodle', 'yankee_doodle', 'Western Front', 'RoF');
+INSERT INTO `campaigns` (`id`, `campaign`, `db_name`, `map`, `simulation`) VALUES
+(1, 'Bloody April', 'bloody_april', 'Western Front', 'RoF'),
+(2, 'Flanders Eagles', 'flanders_eagles', 'Channel', 'RoF'),
+(3, 'Lake', 'lake', 'Lake', 'RoF'),
+(4, 'Skies of the Empires', 'skies_of_the_empires', 'Verdun', 'RoF'),
+(5, 'Skies of the Empires II', 'skies_of_the_empires_ii', 'Verdun', 'RoF'),
+(6, 'Stalingrad', 'stalingrad', 'Stalingrad', 'BoS'),
+(7, 'Yankee Doodle', 'yankee_doodle', 'Western Front', 'RoF');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
