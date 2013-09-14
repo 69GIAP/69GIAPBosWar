@@ -40,7 +40,7 @@
 	if ($game == "BoS")
 		{
 			echo "<!--  Link external CSS Master file containing all other CSS files -->\n";
-			echo "<link href=\"css/styles.css\" rel=\"stylesheet\" type=\"text/css\" />\n";
+			echo "<link href=\"css/BosWar_styles.css\" rel=\"stylesheet\" type=\"text/css\" />\n";
 		}
 ?>
 
