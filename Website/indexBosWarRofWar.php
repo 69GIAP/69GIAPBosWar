@@ -23,7 +23,9 @@
             <div id="content">
 
                 <?php
-					include ( 'includes/getCampaigns.php' );				  
+					include ( 'includes/getCampaigns.php' );
+					echo "<br> \n";
+					include ( 'includes/test_stat_load.php' );			  
 				?>
 
             </div>
