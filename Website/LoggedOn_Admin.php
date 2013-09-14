@@ -21,7 +21,7 @@
         <div id="container">
     
             <div id="content">
-                <p>Logged on as Admin.</p>
+	    <?php include ( 'includes/getAdminCampaigns.php' ); ?>
             </div>
     
         </div>
