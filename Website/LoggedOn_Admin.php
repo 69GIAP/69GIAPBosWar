@@ -22,6 +22,7 @@
     
             <div id="content">
 	    <?php include ( 'includes/getCampaignsAdmin.php' ); ?>
+	    <?php include ( 'includes/test_change_db.php' ); ?>
             </div>
     
         </div>
