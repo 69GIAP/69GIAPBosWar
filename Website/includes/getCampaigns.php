@@ -1,10 +1,11 @@
 <?php
 // getCampaigns.php
 // Get Campaign list for viewing stats
+// 69giaptushka
 // 69giapmyata
-// ver 1.2
-// Sept 14, 2013
-//
+// ver 1.3
+// Sept 16, 2013
+// latest change - link to unintegrated parser
 echo "<h2>Active $game Campaigns</h2>\n";
 
 # get active campaigns dependent on the chosen application
@@ -21,7 +22,7 @@ if ($result = mysqli_query($dbc, $query))
 			$campaign	=($obj->campaign);
 			$map		=($obj->map);
 			$simulation	=($obj->simulation);
-			echo "<b>".$campaign."</b> -  ".$map." map (".$simulation.")<br>\n";
+			echo "<b><a href=\"rof_parse_log.php\">".$campaign."</b> -  ".$map." map (".$simulation.")</a><br>\n";
 		}
 	}
 

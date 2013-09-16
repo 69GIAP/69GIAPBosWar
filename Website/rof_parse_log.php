@@ -1,11 +1,11 @@
 <?PHP
-// PARSE 
+// rof_parse_log.php 
 // a simple-minded parser/stats/events reporter for combined RoF
 // mission report textfiles
 // written by =69.GIAP=TUSHKA
 // 2011-2013
-// Version 1.65
-// Mon Sep  9 18:14:46 EDT 2013
+// Version boswar1.0
+// Mon Sep 16 2013
 
 // the main program 
 
