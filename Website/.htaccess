@@ -1,7 +1,0 @@
-# If you just need ROFWAR, uncomment the IndexRofWar.php line
-# Similarly for BOSWAR only, uncomment the IndexBosWar.php line
-# For access to both, leave all lines commented, or uncomment the index.php line
-# 'uncomment' means remove the leading '#' character from the line.
-#DirectoryIndex IndexRofWar.php
-#DirectoryIndex IndexBosWar.php
-#DirectoryIndex index.php
