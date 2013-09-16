@@ -21,17 +21,19 @@
         <div id="container">
     
             <div id="content">
-	    <?php include ( 'includes/getCampaignsAdmin.php' ); ?>
+               <h2>Campaign Admin2</h2>
+	       <?php include ( 'includes/getCampaignsAdmin.php' ); ?>
+	       <?php include ( 'includes/test_change_db.php' ); ?>
             </div>
     
         </div>
-
 <?php
 	# Include the general sidebar
-	include ( 'includes/sidebar.php' );
+	include ( 'includes/campaignsidebar.php' );
 ?>	
 
 		<div id="clearing"></div>
+
 	</div>
 
 <?php

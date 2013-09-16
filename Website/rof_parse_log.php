@@ -4,8 +4,15 @@
 // mission report textfiles
 // written by =69.GIAP=TUSHKA
 // 2011-2013
-// Version boswar1.0
+// Version 69GIAPBoSWar 0.1
 // Mon Sep 16 2013
+//
+
+# Incorporate the MySQL debug script.
+require ( 'includes/debug.php' );
+
+# Incorporate the MySQL connection script.
+require ( '../connect_db.php' );
 
 // the main program 
 
