@@ -12,7 +12,7 @@
 	include ( 'includes/navigation.php' );
 
 #  include connect2_db.php (defines connect_campaign())
-         include ( '../connect2_db.php' );
+         include ( 'includes/connect2campaign.php' );
 
 
 
@@ -25,7 +25,7 @@
             <div id="content">
                <h2>Campaign Admin2</h2>
 <?php
-	       $link = connect_campaign('127.0.0.1:3306',"rofwar","rofwar","rofwar");
+	       $link = connect_campaign('localhost',"rofwar","rofwar","flanders_eagles");
 	        include ( "includes/test_change_db.php" ); ?>
             </div>
     
