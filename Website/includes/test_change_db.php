@@ -1,15 +1,20 @@
 <?php 
-# creates a new session for tracking the user is logged on 
-	session_start(); 
+# test_change_db.php
+# Ver 0.2
+# test new connect_campaign() connection $link
+# using a second connection to campaign database so
+# original $cdb is undisturbed
+# =69.GIAP=TUSHKA
+# Sept 16, 2013
 
 # Incorporate the MySQL debug script.
 	require ( 'includes/debug.php' );
 
 # Incorporate the MySQL connection script.
-	require ( '../connect_db.php' );
+#	require ( '../connect_db.php' );
 
 # return name of current default database
-if ($result = mysqli_query($dbc, "SELECT DATABASE()")) 
+if ($result = mysqli_query($link, "SELECT DATABASE()")) 
 	{
 		$row 	= mysqli_fetch_row($result);
 		printf("Default database is %s.<br>\n", $row[0]);
@@ -18,7 +23,7 @@ if ($result = mysqli_query($dbc, "SELECT DATABASE()"))
 
 # change db to flanders_eagles db 
 print("Attempting to change to flanders_eagles database.<br>\n");
-$change = mysqli_select_db($dbc, "flanders_eagles");
+$change = mysqli_select_db($link, "flanders_eagles");
 print("change = ".$change."<br>\n");
 if ( !$change ) 
 	{
@@ -27,7 +32,7 @@ if ( !$change )
 	}
 
 # return name of current default database 
-if ($result = mysqli_query($dbc, "SELECT DATABASE()")) 
+if ($result = mysqli_query($link, "SELECT DATABASE()")) 
 	{
 		$row 	= mysqli_fetch_row($result);
 		printf("Now default database is %s.<br>\n", $row[0]);
@@ -35,6 +40,6 @@ if ($result = mysqli_query($dbc, "SELECT DATABASE()"))
 	}
 
 # Close connection
- mysqli_close($dbc);
+ mysqli_close($link);
  
 ?>
