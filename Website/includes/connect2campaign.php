@@ -9,12 +9,12 @@ function connect_campaign ($host,$user,$password,$db) {
 # debugging
 print "host = $host, user = $user, password = $password, db = $db<br>\n";
 
-# make connection with variables
-$link = mysqli_connect ( "$host", "$user" , "$password" , "$db" )
+# make connection to campaign with input variables
+$camp_link = mysqli_connect ( "$host", "$user" , "$password" , "$db" )
 OR die ('Connect Error (' . mysqli_connect_errno() . ') ' . mysqli_connect_error());
 
-mysqli_set_charset( $link , 'utf8' ) ;
+mysqli_set_charset( $camp_link , 'utf8' ) ;
 
-return $link;
+return $camp_link;
 }
 ?>
