@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2013 at 07:12 PM
+-- Generation Time: Sep 17, 2013 at 05:48 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `campaigns`
+-- Table structure for table `campaign_settings`
 --
 
-CREATE TABLE IF NOT EXISTS `campaigns` (
+CREATE TABLE IF NOT EXISTS `campaign_settings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `simulation` varchar(6) NOT NULL,
   `campaign` varchar(30) NOT NULL,
@@ -48,7 +48,13 @@ CREATE TABLE IF NOT EXISTS `campaigns` (
 --
 
 INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `db_name`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `redAirAdmin`, `redGroundAdmin`, `blueAirAdmin`, `blueGroundAdmin`) VALUES
-(1, 'RoF', 'Flanders Eagles', 'flanders_eagles', 'Channel', 'rof_channel_locations', 3, 1, 1, 0, 0, 0, 0),
+(1, 'RoF', 'Bloody April', 'bloody_april', 'Western Front', 'rof_westernfront_locations', 2, 1, 1, 0, 0, 0, 0),
+(2, 'RoF', 'Flanders Eagles', 'flanders_eagles', 'Channel', 'rof_channel_locations', 3, 1, 1, 0, 0, 0, 0),
+(3, 'RoF', 'Lake', 'lake', 'Lake', 'rof_lake_locations', 1, 0, 1, 0, 0, 0, 0),
+(4, 'RoF', 'Skies of the Empires II', 'skies_of_the_empires_ii', 'Verdun', 'rof_verdun_locations', 2, 0, 1, 0, 0, 0, 0),
+(5, 'BoS', 'Stalingrad', 'stalingrad', 'Stalingrad', 'bos_stalingrad_locations', 4, 0, 1, 0, 0, 0, 0),
+(6, 'RoF', 'Yankee Doodle', 'yankee_doodle', 'Verdun', 'rof_verdun_locations', 2, 1, 1, 0, 0, 0, 0),
+(7, 'RoF', 'Skies of the Empires', 'skies_of_the_empires', 'Verdun', 'rof_verdun_locations', 2, 0, 1, NULL, NULL, NULL, NULL);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
