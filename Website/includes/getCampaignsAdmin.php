@@ -1,4 +1,4 @@
-<form name="input" action="Campaign_Admin2.php" method="get">>
+<form name="input" action="Campaign_Admin2.php" method="get">
 <?php
 # getAdminCampaigns.php
 # Get Campaign list for administrator
@@ -10,7 +10,7 @@
 # try it as a radio button list
 echo "<h2>Proposed Campaigns</h2>\n";
 # get active campaigns
-$query = "SELECT * FROM campaigns where status = 4 and simulation = '$game' ";
+$query = "SELECT * FROM campaign_settings where status = 4 and simulation = '$game' ";
 	
 if(!$result = $dbc->query($query))
    { die('There was an error running the query [' . $dbc->error . ']'); }
@@ -21,17 +21,17 @@ if ($result = mysqli_query($dbc, $query))
 	 while ($obj = mysqli_fetch_object($result)) 
 	 	{
 			$campaign	=($obj->campaign);
-			$db_name	=($obj->db_name);
+			$camp_db	=($obj->camp_db);
 			$map		=($obj->map);
 			$simulation	=($obj->simulation);
-			echo "<input type=\"radio\" name=\"db\" value=$db_name>";
-			echo "<b>".$campaign."</b> -  ".$db_name." db - ".$map." map (".$simulation.")<br>\n";
+			echo "<input type=\"radio\" name=\"db\" value=$camp_db>";
+			echo "<b>".$campaign."</b> -  ".$camp_db." db - ".$map." map (".$simulation.")<br>\n";
 		}
 	}
 
 echo "<h2>Active Campaigns</h2>\n";
 # get active campaigns
-$query = "SELECT * FROM campaigns where status = 3 and simulation = '$game' ";
+$query = "SELECT * FROM campaign_settings where status = 3 and simulation = '$game' ";
 	
 if(!$result = $dbc->query($query))
    { die('There was an error running the query [' . $dbc->error . ']'); }
@@ -42,17 +42,17 @@ if ($result = mysqli_query($dbc, $query))
 	while ($obj = mysqli_fetch_object($result)) 
 		{
 			$campaign	=($obj->campaign);
-			$db_name	=($obj->db_name);
+			$camp_db	=($obj->camp_db);
 			$map		=($obj->map);
 			$simulation	=($obj->simulation);
-			echo "<input type=\"radio\" name=\"db\" value=$db_name>";
-			echo "<b>".$campaign."</b> -  ".$db_name." db - ".$map." map (".$simulation.")<br>\n";
+			echo "<input type=\"radio\" name=\"db\" value=$camp_db>";
+			echo "<b>".$campaign."</b> -  ".$camp_db." db - ".$map." map (".$simulation.")<br>\n";
 		}
 	}
 
 echo "<h2>Completed Campaigns</h2>\n";
 # get completed campaigns
-$query = "SELECT * FROM campaigns where status = 2 and simulation = '$game' ";
+$query = "SELECT * FROM campaign_settings where status = 2 and simulation = '$game' ";
 	
 if(!$result = $dbc->query($query))
    { die('There was an error running the query [' . $dbc->error . ']'); }
@@ -63,16 +63,16 @@ if ($result = mysqli_query($dbc, $query))
 		while ($obj = mysqli_fetch_object($result)) 
 		{
 			$campaign	=($obj->campaign);
-			$db_name	=($obj->db_name);
+			$camp_db	=($obj->camp_db);
 			$map		=($obj->map);
 			$simulation	=($obj->simulation);
-			echo "<input type=\"radio\" name=\"db\" value=$db_name>";
-			echo "<b>".$campaign."</b> -  ".$db_name." db - ".$map." map (".$simulation.")<br>\n";
+			echo "<input type=\"radio\" name=\"db\" value=$camp_db>";
+			echo "<b>".$campaign."</b> -  ".$camp_db." db - ".$map." map (".$simulation.")<br>\n";
 	}
 }
 echo "<h2>Hidden Campaigns</h2>\n";
 # get active campaigns
-$query = "SELECT * FROM campaigns where status = 1 and simulation = '$game' ";
+$query = "SELECT * FROM campaign_settings where status = 1 and simulation = '$game' ";
 	
 if(!$result = $dbc->query($query))
    { die('There was an error running the query [' . $dbc->error . ']'); }
@@ -83,11 +83,11 @@ if ($result = mysqli_query($dbc, $query))
 		while ($obj = mysqli_fetch_object($result)) 
 		{
 			$campaign	=($obj->campaign);
-			$db_name	=($obj->db_name);
+			$camp_db	=($obj->camp_db);
 			$map		=($obj->map);
 			$simulation	=($obj->simulation);
-			echo "<input type=\"radio\" name=\"db\" value=$db_name>";
-			echo "<b>".$campaign."</b> -  ".$db_name." db - ".$map." map (".$simulation.")<br>\n";
+			echo "<input type=\"radio\" name=\"db\" value=$camp_db>";
+			echo "<b>".$campaign."</b> -  ".$camp_db." db - ".$map." map (".$simulation.")<br>\n";
 		}
 	}
 ?>

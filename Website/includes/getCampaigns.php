@@ -9,7 +9,7 @@
 echo "<h2>Active $game Campaigns</h2>\n";
 
 # get active campaigns dependent on the chosen application
-$query = "SELECT * FROM campaigns where status = 3 and simulation = '$game' ";
+$query = "SELECT * FROM campaign_settings where status = 3 and simulation = '$game' ";
 	
 if(!$result = $dbc->query($query))
    { die('There was an error running the query [' . $dbc->error . ']'); }
@@ -29,7 +29,7 @@ if ($result = mysqli_query($dbc, $query))
 echo "<h2>Completed $game Campaigns</h2>\n";
 
 # get completed campaigns dependent on the chosen application
-$query = "SELECT * FROM campaigns where status = 2  and simulation = '$game' ";
+$query = "SELECT * FROM campaign_settings where status = 2  and simulation = '$game' ";
 	
 if(!$result = $dbc->query($query))
    { die('There was an error running the query [' . $dbc->error . ']'); }
