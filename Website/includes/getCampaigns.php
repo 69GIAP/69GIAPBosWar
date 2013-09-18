@@ -24,8 +24,6 @@ if ($result = mysqli_query($dbc, $query))
 			$camp_db	=($obj->camp_db);
 			$map		=($obj->map);
 			$simulation	=($obj->simulation);
-# debugging
-echo "camp_db = $camp_db<br>\n";
 			echo "<input type=\"radio\" name=\"db\" value=$camp_db>";
 			echo "<b>".$campaign."</b> -  ".$map." map (".$simulation.")</a><br>\n";
 		}
