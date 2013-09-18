@@ -16,10 +16,10 @@
 			$game = $_POST['selection'];
 			
 			if(!isset($game))
-			{	
-				# redirect to index if user made no choice
-				header("Location: index.php");
-			}
+				{	
+					# redirect to index if user made no choice
+					header("Location: index.php");
+				}
 				# register value of $_POST["selection"] - chosen game - to Session "game"
 				# syntax: $_SESSION['name'] = "value";
 				$_SESSION['game'] = $game;
@@ -29,9 +29,27 @@
 			#get the variable stored into $game
 				$game = $_SESSION['game'];
 		}
+	# check if a navigation button was pressed and introduce SESSION variable for naviagtion button presses
+	if (empty($_GET["btn"]))
+		{
+			$btn = "";
+		}
+	else
+		{
+			$_SESSION['btn']	= $_GET["btn"];
+			$btn 				= $_SESSION['btn'];
+		}
+	# check if a there is alredy a userrole defined
+	if (empty($_SESSION['userrole']))
+		{
+			$role = "viewer";
+		}
+	else
+		{
+			$role = $_SESSION['userrole'];
+		}
 	
-	# header("Location: test.php");
-
+	# Style management
 	if ($game == "RoF")
 		{
 			echo "<!--  Link external CSS Master file containing all other CSS files -->\n";
