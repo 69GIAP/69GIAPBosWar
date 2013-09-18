@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2013 at 06:44 AM
+-- Generation Time: Sep 18, 2013 at 05:28 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -28,11 +28,15 @@ USE `flanders_eagles`;
 -- Table structure for table `campaign_settings`
 --
 
+DROP TABLE IF EXISTS `campaign_settings`;
 CREATE TABLE IF NOT EXISTS `campaign_settings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `simulation` varchar(6) NOT NULL,
   `campaign` varchar(30) NOT NULL,
-  `db_name` varchar(30) NOT NULL,
+  `camp_db` varchar(30) NOT NULL,
+  `camp_host` varchar(30) NOT NULL,
+  `camp_user` varchar(30) NOT NULL,
+  `camp_passwd` varchar(30) NOT NULL,
   `map` varchar(30) NOT NULL,
   `map_locations` varchar(40) NOT NULL,
   `status` int(1) NOT NULL DEFAULT '4',
@@ -49,8 +53,8 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
 -- Dumping data for table `campaign_settings`
 --
 
-INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `db_name`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `redAirAdmin`, `redGroundAdmin`, `blueAirAdmin`, `blueGroundAdmin`) VALUES
-(2, 'RoF', 'Flanders Eagles', 'flanders_eagles', 'Channel', 'rof_channel_locations', 3, 1, 1, 0, 0, 0, 0);
+INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `redAirAdmin`, `redGroundAdmin`, `blueAirAdmin`, `blueGroundAdmin`) VALUES
+(2, 'RoF', 'Flanders Eagles', 'flanders_eagles', 'localhost', 'rofwar', 'rofwar', 'Channel', 'rof_channel_locations', 3, 1, 1, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -58,6 +62,7 @@ INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `db_name`, `map
 -- Table structure for table `rof_channel_locations`
 --
 
+DROP TABLE IF EXISTS `rof_channel_locations`;
 CREATE TABLE IF NOT EXISTS `rof_channel_locations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `LID` int(2) NOT NULL,
@@ -642,6 +647,7 @@ INSERT INTO `rof_channel_locations` (`id`, `LID`, `LX`, `LZ`, `LName`) VALUES
 -- Table structure for table `rof_coalitions`
 --
 
+DROP TABLE IF EXISTS `rof_coalitions`;
 CREATE TABLE IF NOT EXISTS `rof_coalitions` (
   `CoalID` int(11) NOT NULL,
   `Coalitionname` varchar(30) NOT NULL
@@ -667,6 +673,7 @@ INSERT INTO `rof_coalitions` (`CoalID`, `Coalitionname`) VALUES
 -- Table structure for table `rof_object_properties`
 --
 
+DROP TABLE IF EXISTS `rof_object_properties`;
 CREATE TABLE IF NOT EXISTS `rof_object_properties` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `object_type` varchar(128) NOT NULL,
@@ -909,6 +916,7 @@ INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `objec
 -- Table structure for table `rof_object_roles`
 --
 
+DROP TABLE IF EXISTS `rof_object_roles`;
 CREATE TABLE IF NOT EXISTS `rof_object_roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `unit_class` varchar(10) DEFAULT NULL,
