@@ -1,14 +1,28 @@
 <?php
-session_start();
-# cleans session variable in case user simply reloades index screen and tries to access a differnet layout
-if (!empty($_SESSION['game']))
-	{
-		unset($_SESSION['game']); 
-	}
-if (!empty($_SESSION['username']))
-	{
-		unset($_SESSION['username']); 
-	}
+	# cleans out the session if the user visited already a subsection and loaded the index.php
+	if (!empty ($session['game']))
+			{
+				session_destroy();
+			}
+	
+	session_start();
+	# cleans session variable in case user simply reloades index screen and tries to access a differnet layout
+	if (!empty($_SESSION['game']))
+		{
+			unset($_SESSION['game']); 
+		}
+	if (!empty($_SESSION['username']))
+		{
+			unset($_SESSION['username']); 
+		}
+	if (!empty($_SESSION['btn']))
+		{
+			unset($_SESSION['btn']); 
+		}
+	if (!empty($_SESSION['userrole']))
+		{
+			unset($_SESSION['userrole']); 
+		}			
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

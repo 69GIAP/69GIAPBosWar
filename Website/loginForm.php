@@ -22,7 +22,7 @@
     
             <div id="content">
             
-                <p><b>Login:</b></p>
+                <p><b>Please Login:</b></p>
                 
                 <fieldset class="boswar">
                     <form  name="login"  action="login.php" method="post">

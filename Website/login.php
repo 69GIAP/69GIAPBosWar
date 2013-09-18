@@ -55,30 +55,34 @@
 					$result	= mysqli_query($dbc, $query);
 					$row 	= mysqli_fetch_object($result);
 					
+					# bind role to SESSION
+					$_SESSION['userrole'] = ($row->role);
+					$role = $_SESSION['userrole'];
+					
 					# bind session variable to variable
 					$_SESSION["username"] = $username;
 					
-					if($row->role == "administrator")
+					if($role == "administrator")
 					{
 						header("Location: LoggedOn_Admin.php");
 					}
-					else if($row->role == "redAirAdmin")
+					else if($role == "redAirAdmin")
 					{
 						header("Location: LoggedOn_RedAirAdmin.php");
 					}
-					else if($row->role == "redGroundAdmin")
+					else if($roel == "redGroundAdmin")
 					{
 						header("Location: LoggedOn_redGroundAdmin.php");
 					}
-					else if($row->role == "blueAirAdmin")
+					else if($role == "blueAirAdmin")
 					{
 						header("Location: LoggedOn_blueAirAdmin.php");
 					}
-					else if($row->role == "blueGroundAdmin")
+					else if($role == "blueGroundAdmin")
 					{
 						header("Location: LoggedOn_blueGroundAdmin.php");
 					}
-					else if($row->role == "viewer")
+					else if($role == "viewer")
 					{
 						header("Location: LoggedOn_Viewer.php");
 					}			
