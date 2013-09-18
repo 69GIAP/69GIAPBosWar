@@ -30,9 +30,8 @@
                 <fieldset class="boswar">
                     <form name="delete" action="UserManagementModify.php" method="post">
                         <ul>
-                            <li><label for="id">User ID</label> </li>
-                            <li><label for="id">Select User</label>
-                                <select name="id">
+                            <li><label for="userid">Select User</label>
+                                <select name="userid">
                                     <?php include 'includes/getUserNames.php' ?>
                                 </select>
                             </li>
@@ -40,19 +39,39 @@
                             <li><label for="password">New Password</label>
                                 <input type="text" name="password" id="password" size="30" /></li>  
         
-                                <li><label for="role">Select Role</label>
-                                	 <!-- this name element defines the variable name -->
-                                    <select name="role">
-                                    <!-- Load the roles stored in the table roles to fill selector -->
-                                    <?php	include 'includes/getUserRoles.php' ?>
-                                    </select>
-                                </li>
+                            <li><label for="role">Select Role</label>
+                                 <!-- this name element defines the variable name -->
+                                <select name="role">
+                                <!-- Load the roles stored in the table roles to fill selector -->
+                                <?php	include 'includes/getUserRoles.php' ?>
+                                </select>
+                            </li>
+                            
+                            <li><label for="campdb">Assign Campaign</label>
+                                 <!-- this name element defines the variable name -->
+                                <select name="campdb">
+                                <!-- Load all active campaigns out of the campaign_settings table -->
+                                <?php	include 'includes/getActiveCampaigns.php' ?>
+                                </select>
+                            </li>
+							<li><label for="remCampdb">Remove From Campaign</label>
+                                 <!-- this name element defines the variable name -->
+                                <select name="remCampdb">
+                                <!-- Load all active campaigns out of the campaign_settings table -->
+                                <?php	include 'includes/getActiveCampaigns.php' ?>
+                                </select>
+                            </li>
         
                             <li><label for="modify"></label>
                                 <button type="modify" name="modify" value ="1" >Update Password</button>
                                 
                             <label for="modify"></label>
                                 <button type="modify" name="modify" value ="2" >Update Role</button>
+                                
+                            <label for="modify"></label>
+                                <button type="modify" name="modify" value ="3" >Assign to Campaign</button> 
+                            <label for="modify"></label>
+                                <button type="modify" name="modify" value ="4" >Remove from Campaign</button>                                                                
                                                                                
                             <label for="modify"></label>
                                 <button type="modify" name="modify" value ="0" >Delete</button></li>
@@ -69,7 +88,7 @@
                     if ($role == "administrator")
                     {
                         echo "Registered Administrators:";
-                        $sql = "SELECT * FROM users ORDER BY role, username";
+                        $sql = "SELECT * FROM users u  LEFT JOIN campaign_users c ON u.user_id = c.user_id ORDER BY role, username";
                     }
                     else
                     if ($role == "redGroundAdmin" or $role == "redAirAdmin")
@@ -98,11 +117,12 @@
                     while($row = $result->fetch_assoc()) 
                      {
                         echo "<p>\n";
-                        print "<b>User ID:</b> ".$row['id'] . " <br>\n";
+                        print "<b>User ID:</b> ".$row['user_id'] . " <br>\n";
                         print "<b>Username:</b> ".$row['username'] . " <br>\n";	
                         print "<b>Email Adress:</b> ".$row['email'] . " <br>\n";
                         print "<b>Telephone:</b> ".$row['phone'] . " <br>\n";				
                         print "<b>Role:</b> ".$row['role'] . " <br>\n";
+						print "<b>Campaign DB:</b> ".$row['camp_db'] . " <br>\n";
                      }
                      
                      echo '<br>Total results: ' . $result->num_rows . " <br>\n";

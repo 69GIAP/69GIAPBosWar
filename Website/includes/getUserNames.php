@@ -14,7 +14,7 @@
 			/* fetch associative array */
 			while ($obj = mysqli_fetch_object($result)) 
 				{
-					$id=($obj->id);
+					$id=($obj->user_id);
 					$username=($obj->username);
 					$role=($obj->role);
 					echo "<option value=\"". $id. "\">". $id." - ".$username. " - ".$role."</option>\n";
