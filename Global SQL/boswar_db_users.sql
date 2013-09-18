@@ -18,27 +18,31 @@ USE `boswar_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `roles`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `roles`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `roles` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `role` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+CREATE TABLE `users` (
+  `user_id` int(8) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(15) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `role` varchar(30) NOT NULL,
+  `phone` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`user_id`,`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='User authentication table.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `roles`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES `roles` WRITE;
-/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES (1,'administrator'),(2,'redAirAdmin'),(3,'redGroundAdmin'),(4,'blueAirAdmin'),(5,'blueGroundAdmin'),(6,'viewer');
-/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (14,'admin','1d0258c2440a8d19e716292b231e3190','','administrator',''),(15,'redAdmin','1d0258c2440a8d19e716292b231e3190','','redAirAdmin','');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-10 19:04:28
+-- Dump completed on 2013-09-18 18:04:59

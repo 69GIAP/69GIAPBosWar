@@ -1,6 +1,5 @@
 CREATE DATABASE  IF NOT EXISTS `boswar_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `boswar_db`;
-
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: 10.0.0.57    Database: boswar_db
@@ -19,36 +18,28 @@ USE `boswar_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `statistics_test`
+-- Table structure for table `rof_object_roles`
 --
 
-DROP TABLE IF EXISTS `statistics_test`;
+DROP TABLE IF EXISTS `rof_object_roles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `statistics_test` (
+CREATE TABLE `rof_object_roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `pilot` varchar(45) NOT NULL,
-  `pilotrating` varchar(45) NOT NULL,
-  `sorties` int(3) NOT NULL,
-  `deaths` int(3) NOT NULL,
-  `captured` int(3) NOT NULL,
-  `airkills` int(3) NOT NULL,
-  `groundkills` int(3) NOT NULL,
-  `seakills` int(3) NOT NULL,
-  `infantrykills` int(3) NOT NULL,
-  `grossscore` int(10) NOT NULL,
+  `unit_class` varchar(10) DEFAULT NULL,
+  `role_description` varchar(23) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `statistics_test`
+-- Dumping data for table `rof_object_roles`
 --
 
-LOCK TABLES `statistics_test` WRITE;
-/*!40000 ALTER TABLE `statistics_test` DISABLE KEYS */;
-INSERT INTO `statistics_test` VALUES (1,'357th_Codfodder','Average',7,3,0,4,2,0,0,1104),(2,'357th_Yip','Recruit',5,6,8,2,5,6,2,4568),(3,'=69.GIAP=KAZAK','Average',45,8,5,6,9,8,0,45687),(4,'=69.GIAP=KOSHKA','Veteran',4,5,8,5,1,5,6,4568),(5,'=69.GIAP=OZABO','Recruit',4,5,8,7,8,6,2,12345),(6,'=69.GIAP=SHVAK','Recruit',4,6,8,5,2,9,4,1),(7,'=69.GIAP=STENKA','Recruit',5,2,3,0,0,0,1,12),(8,'=69.GIAP=TARAS','Average',7,5,21,6,5,2,5,123458),(9,'=69.GIAP=PAVEL','Average',5,6,8,9,0,9,0,1200),(10,'=69.GIAP=VLADI','Recruit',1,2,54,6,8,9,6,99);
-/*!40000 ALTER TABLE `statistics_test` ENABLE KEYS */;
+LOCK TABLES `rof_object_roles` WRITE;
+/*!40000 ALTER TABLE `rof_object_roles` DISABLE KEYS */;
+INSERT INTO `rof_object_roles` VALUES (1,'ART','Artillery'),(2,'AAA','Artillery:Anti-Aircraft'),(3,'BOT','Bot'),(4,'IMA','Infantry: MG AA'),(5,'IMG','Infantry:Machine Gun'),(6,'INF','Infrastructure'),(7,'NAA','Naval:Anti-Aircraft'),(8,'NAR','Naval:Artillery'),(9,'PBO','Plane:Bomber'),(10,'PFI','Plane:Fighter'),(11,'PFB','Plane:Fighter-Bomber'),(12,'PRE','Plane:Reconnaissance'),(13,'PSE','Plane:Seaplane'),(14,'PTR','Plane:Transport'),(15,'RAA','Rail:Anti-Aircraft'),(16,'RCV','Rail:Civil Train'),(17,'RLO','Rail:Locomotive'),(18,'RWA','Rail:Wagon'),(19,'VRI','Regular Infantry'),(20,'SAA','Ship:Anti-Aircraft'),(21,'SBA','Ship:Battleship'),(22,'SCR','Ship:Cruiser'),(23,'SDE','Ship:Destroyer'),(24,'SPB','Ship:Patrol Boat'),(25,'SSU','Ship:Submarine'),(26,'TAA','Tank:Anti-Aircraft'),(27,'TSP','Tank:Self-Propelled Gun'),(28,'T','Tank:Standard'),(29,'TTD','Tank:Tank Destroyer'),(30,'TUR','Turret'),(31,'VAA','Vehicle:Anti-Aircraft'),(32,'VMI','Vehicle:Mech. Infantry'),(33,'VTR','Vehicle:Transport');
+/*!40000 ALTER TABLE `rof_object_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -60,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-14 20:33:56
+-- Dump completed on 2013-09-18 18:04:59

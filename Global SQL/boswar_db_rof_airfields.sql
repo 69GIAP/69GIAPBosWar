@@ -18,13 +18,13 @@ USE `boswar_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `airfields`
+-- Table structure for table `rof_airfields`
 --
 
-DROP TABLE IF EXISTS `airfields`;
+DROP TABLE IF EXISTS `rof_airfields`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `airfields` (
+CREATE TABLE `rof_airfields` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `l1` char(8) DEFAULT 'Airfield',
   `l2` char(1) DEFAULT '{',
@@ -87,12 +87,12 @@ CREATE TABLE `airfields` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `airfields`
+-- Dumping data for table `rof_airfields`
 --
 
-LOCK TABLES `airfields` WRITE;
-/*!40000 ALTER TABLE `airfields` DISABLE KEYS */;
-/*!40000 ALTER TABLE `airfields` ENABLE KEYS */;
+LOCK TABLES `rof_airfields` WRITE;
+/*!40000 ALTER TABLE `rof_airfields` DISABLE KEYS */;
+/*!40000 ALTER TABLE `rof_airfields` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -104,4 +104,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-10 19:04:28
+-- Dump completed on 2013-09-18 18:04:59

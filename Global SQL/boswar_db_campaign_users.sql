@@ -18,31 +18,26 @@ USE `boswar_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users`
+-- Table structure for table `campaign_users`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `campaign_users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
-  `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(15) NOT NULL,
-  `password` varchar(32) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `role` varchar(30) NOT NULL,
-  `phone` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`id`,`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='User authentication table.';
+CREATE TABLE `campaign_users` (
+  `user_id` int(11) NOT NULL,
+  `camp_db` varchar(30) NOT NULL,
+  PRIMARY KEY (`camp_db`,`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table binds the entries of the user table to the campaigns.\nThis makes it possible to filter what campaign and what coalition the user is in.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `campaign_users`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (3,'redAir','1d0258c2440a8d19e716292b231e3190','rowbajt@gmail.com','redAirAdmin',NULL),(4,'blueAir','1d0258c2440a8d19e716292b231e3190','rowbajt@gmail.com','blueAirAdmin',NULL),(5,'admin','1d0258c2440a8d19e716292b231e3190','rowbajt@gmail.com','administrator',NULL),(7,'redGround','1d0258c2440a8d19e716292b231e3190','rowbajt@gmail.com','redGroundAdmin',NULL),(8,'blueGround','1d0258c2440a8d19e716292b231e3190','rowbajt@gmail.com','blueGroundAdmin',NULL),(10,'myata','1d0258c2440a8d19e716292b231e3190','myata@gmail.com','viewer','+43 699 1 777 0273');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+LOCK TABLES `campaign_users` WRITE;
+/*!40000 ALTER TABLE `campaign_users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `campaign_users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-10 19:04:28
+-- Dump completed on 2013-09-18 18:04:59
