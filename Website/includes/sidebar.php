@@ -79,7 +79,7 @@
 														echo "  </ul>\n";
 													}
 											}
-										# was the pressed button Campaign Management?
+										# was the pressed button Home?
 										if ($btn == "home")
 											{	
 												if ($role == "administrator")
@@ -92,6 +92,15 @@
 														echo "  </ul>\n";
 													}
 												if ($role == "redAirAdmin" OR $role == "redGroundAdmin" OR $role == "blueAirAdmin" OR $role == "blueGroundAdmin")
+													{
+														echo "<h1>Home:</h1>\n";
+														echo "	<ul id=\"sidebar\">\n";
+														echo "	    <li> ... </li>\n";
+														echo "	    <li> ... </li>\n";
+														echo "	    <li> ... </li>\n";																						
+														echo "  </ul>\n";
+													}
+												if ($role == "viewer")
 													{
 														echo "<h1>Home:</h1>\n";
 														echo "	<ul id=\"sidebar\">\n";

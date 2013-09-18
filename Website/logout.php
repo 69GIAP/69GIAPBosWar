@@ -29,8 +29,7 @@
 						# session variables get cleaned out; SESSION['game'] stays intact 
 						unset ($_SESSION['btn']);
 						unset ($_SESSION['username']); 
-						unset ($_SESSION['role']); 						
-						return
+						unset ($_SESSION['userrole']);
 						header("Location: IndexBosWarRofWar.php");
 					} 
 				else
