@@ -26,7 +26,7 @@
 					include ( 'includes/errorNotLoggedOn.php' );
 				?>
                 <!-- form for changing information in the users table -->
-                <p>Please insert the ID of the user you want to modify:</p>
+                <p>Please select the user you want to modify:</p>
                 <fieldset class="boswar">
                     <form name="delete" action="UserManagementModify.php" method="post">
                         <ul>
