@@ -21,11 +21,14 @@
         <div id="container">
     
             <div id="content">
-                
+                <?php
+                	# This redirects the user to the Login screen if he tries to press a button and is not logged on
+					include ( 'includes/errorNotLoggedOn.php' );
+				?>
                 <!-- form for changing information in the users table -->
                 <p>Please insert the ID of the user you want to modify:</p>
                 <fieldset class="boswar">
-                    <form name="delete" action="UserAdministrationModify.php" method="post">
+                    <form name="delete" action="UserManagementModify.php" method="post">
                         <ul>
                             <li><label for="id">User ID</label> </li>
                             <li><label for="id">Select User</label>
@@ -59,30 +62,29 @@
                 </fieldset>
                 
                 <?php
-                    # find out which list to load
-                    $link = $_GET["link"];
-                    
-                    # load the query according to the $_GET variable
-        
-                    if ($link == "A")
+					# get the SESISON variable for the user role
+					$role = $_SESSION['userrole'];
+					
+                    # load the query according to the user role
+                    if ($role == "administrator")
                     {
                         echo "Registered Administrators:";
                         $sql = "SELECT * FROM users WHERE role like \"administrator\" ORDER BY role, username";
                     }
                     else
-                    if ($link == "R")
+                    if ($role == "redGroundAdmin" or $role == "redAirAdmin")
                     {
                         echo "Registered Red Admins:";
                         $sql = "SELECT * FROM users WHERE role like \"redAirAdmin\" OR role like \"redGroundAdmin\" ORDER BY role, username";
                     }
                     else
-                    if ($link == "B")
+                    if ($role == "blueGroundAdmin" or $role == "blueAirAdmin")
                     {
                         echo "Registered Blue Admins:";
                         $sql = "SELECT * FROM users WHERE role like \"blueAirAdmin\" OR role like \"blueGroundAdmin\" ORDER BY role, username";
                     }
                     else
-                    if ($link == "V")
+                    if ($role == "viewer")
                     {
                         echo "Registered Viewers:";
                         $sql = "SELECT * FROM users WHERE role like \"viewer\" ORDER BY role, username";
@@ -107,7 +109,7 @@
         
                      echo "</p>\n";
                     
-                ?>
+               ?>
                 
             </div>
     
