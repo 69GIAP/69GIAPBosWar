@@ -7,7 +7,8 @@
 function connect_campaign ($host,$user,$password,$db) {
 
 # debugging
-print "host = $host, user = $user, password = $password, db = $db<br>\n";
+print "<p>debugging connect2campaign.php</p>\n";
+print "<p>host = $host, user = $user, password = $password, db = $db</p><br>\n";
 
 # make connection to campaign with input variables
 $camp_link = mysqli_connect ( "$host", "$user" , "$password" , "$db" )
