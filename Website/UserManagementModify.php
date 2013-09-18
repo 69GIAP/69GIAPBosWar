@@ -69,7 +69,7 @@
 				# if a user is assigned to a campaign
 				if (($_POST["modify"] == 3))
 					{	
-						$sql = "INSERT into campaign_users (user_id, camp_db, CoalID) VALUES ('$id', '$campdb', 0)";
+						$sql = "INSERT into campaign_users (user_id, camp_db) VALUES ('$id', '$campdb')";
 					}
 				# remove a user from a campaign
 				if (($_POST["modify"] == 4))
