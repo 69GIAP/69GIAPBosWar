@@ -24,7 +24,24 @@
 	    		<?php
                 	# This redirects the user to the Login screen if he tries to press a button and is not logged on
 					include ( 'includes/errorNotLoggedOn.php' );
-					include ( 'includes/getCampaignsAdmin.php' );
+					
+					# show campaigns due to User role
+					if ($role == "administrator")
+						{
+							include ( 'includes/getCampaignsAdmin.php' );
+						}
+					if ($role == "redAirAdmin" or $role == "redGroundAdmin")
+						{
+							include ( 'includes/getCampaignsRed.php' );
+						}
+					if ($role == "blueAirAdmin" or $role == "blueGroundAdmin")
+						{
+							include ( 'includes/getCampaignsBlue.php' );
+						}
+					if ($role == "viewer")
+						{
+							echo "<p>You don't have the necessary rights to view this content.</p>\n";
+						}
 				?>
             </div>
     
