@@ -14,8 +14,8 @@
 # Include the navigation on top
 	include ( 'includes/navigation.php' );
 
-#  include connect2_db.php (defines connect_campaign())
-	include ( 'includes/connect2campaign.php' );
+#  include connect2CampaignFunction.php (defines connect2campaign())
+	include ( 'includes/connect2CampaignFunction.php' );
 
 ?>
 
@@ -30,8 +30,8 @@
                     include ( 'includes/errorNotLoggedOn.php' );
 					
                     # get campaign database name from previous POST.
-                       $_SESSION['loadedCampaign'] = $_POST["db"];
-					   $camp_db = $_SESSION['loadedCampaign'];
+                       $_SESSION['campaign'] = $_POST["db"];
+					   $camp_db = $_SESSION['campaign'];
 					   echo "<p>The chosen campaign is stored to the SESSION variable \$_SESSION['campain'] and can be reused from now on to work with it.</p>\n";
 					   echo "<p>Currectly the variable is filled with <b>$camp_db</b>.</p>\n";
                 
@@ -54,7 +54,7 @@
 						} 
                 
                     # use this information to connect to campaign 
-                    $camp_link = connect_campaign("$camp_host","$camp_user","$camp_passwd","$camp_db");
+                    $camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$camp_db");
                 
                     # do whatever is needed from the campaign database
                     
