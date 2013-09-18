@@ -39,7 +39,7 @@ p {
 
 div.userLoggedOnInfo {
 	position:absolute;
-	top: 130px;
+	top: 115px;
 	left: 20px;
 	width: auto;
 	height: auto;
@@ -260,14 +260,17 @@ ul#navigation li a {
 	position:relative;
 	}
 
-ul#navigation li a.menu1 {
+ul#navigation li a.home {
 	width:96px;
 	}
-
-ul#navigation li a.menu2 {
+ul#navigation li a.userMgmt {
 	width:96px;
 	background-position:-96px 0px;
 	}
+ul#navigation li a.campMgmt {
+	width:96px;
+	background-position:-192px 0px;
+	}	
 
 ul#navigation li a span {
 	background:url(../img/BosWar_NavMenuLeftSprite.png) no-repeat scroll bottom left;
@@ -280,13 +283,18 @@ ul#navigation li a span {
 	z-index:100;
 	}
 
-ul#navigation li a.menu1 span {
+ul#navigation li a.home span {
 	background-position:0px -54px;
 	}
-ul#navigation li a.menu2 span {
+ul#navigation li a.userMgmt span {
 	width:95px;
 	background-position:-96px -54px;
 	}
+ul#navigation li a.campMgmt span {
+	width:95px;
+	background-position:-192px -54px;
+	}	
+
 
 ul#navigation li a span:hover {
 	cursor:pointer;
