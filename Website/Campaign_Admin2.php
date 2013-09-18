@@ -30,7 +30,10 @@
                     include ( 'includes/errorNotLoggedOn.php' );
 					
                     # get campaign database name from previous POST.
-                       $camp_db = $_POST["db"];
+                       $_SESSION['campaign'] = $_POST["db"];
+					   $camp_db = $_SESSION['campaign'];
+					   echo "<p>The chosen campaign is stored to the SESSION variable \$_SESSION['campain'] and can be reused from now on to work with it.</p>\n";
+					   echo "<p>Currectly the variable is filled with <b>$camp_db</b>.</p>\n";
                 
                     # use it to get remaining variables
                     $query = "SELECT * from campaign_settings where camp_db = '$camp_db'";   
