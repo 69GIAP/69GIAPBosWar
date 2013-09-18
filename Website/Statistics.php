@@ -14,8 +14,8 @@
 # Include the navigation on top
 	include ( 'includes/navigation.php' );
 
-#  include connect2_db.php (defines connect_campaign())
-         include ( 'includes/connect2campaign.php' );
+#  include connect2CampaignFunction.php (defines connect2campaign())
+	include ( 'includes/connect2CampaignFunction.php' );
 
 ?>
 
@@ -45,7 +45,7 @@
 	} 
 
 	# use this information to connect to campaign 
-	$camp_link = connect_campaign("$camp_host","$camp_user","$camp_passwd","$camp_db");
+	$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$camp_db");
 	# print header
         print "<h1>$campaign Statistics</h1><br>";
 	# do whatever is needed from the campaign database
