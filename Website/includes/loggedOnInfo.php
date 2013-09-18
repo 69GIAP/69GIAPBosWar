@@ -3,11 +3,12 @@
     if(isset($_SESSION["username"])) 
         {
             $username 	= $_SESSION["username"];
-            echo "<div class=\"userLoggedOnInfo\">You are logged on as <b>$username</b>.<br> \n";
-			echo "You have the <b>$role</b> role.<br>";
+            echo "<div class=\"userLoggedOnInfo\">";
+			echo "<b>User: </b> $username<br> \n";
+			echo "<b>Role: </b>$role</b><br>";
 			if (!empty($loadedCampaign))
 				{
-					echo "You are working on the <b>$loadedCampaign</b> DB.</div>\n";
+					echo "<b>Database: </b> $loadedCampaign</div>\n";
 				}
 			else
 				{
