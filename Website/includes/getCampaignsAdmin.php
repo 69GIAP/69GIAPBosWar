@@ -1,4 +1,4 @@
-<form name="input" action="Campaign_Admin2.php" method="get">
+<form name="input" action="Campaign_Admin2.php" method="post">
 <?php
 # getAdminCampaigns.php
 # Get Campaign list for administrator
