@@ -45,7 +45,7 @@
 					$password = md5($password); 
 					
 					# check datasets stored in the table to varify uniquness of new user
-					$query = "SELECT id FROM users WHERE username LIKE '$username' ";        
+					$query = "SELECT user_id FROM users WHERE username LIKE '$username' ";        
 					$result = mysqli_query($dbc, $query); 
 					
 					$values = mysqli_num_rows($result); 
