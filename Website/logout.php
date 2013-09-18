@@ -24,18 +24,20 @@
                  <?php 
         
 				# check to make sure the session variable is registered 
-				if(isset($_SESSION["username"])){ 
-				
-				# session variable is registered, the user is ready to logout 
-				session_unset(); 
-				session_destroy(); 
-				header("Location: IndexBosWarRofWar.php");
-				} 
+				if(isset($_SESSION["username"]))
+					{ 
+						# session variables get cleaned out; SESSION['game'] stays intact 
+						unset ($_SESSION['btn']);
+						unset ($_SESSION['username']); 
+						unset ($_SESSION['role']); 						
+						return
+						header("Location: IndexBosWarRofWar.php");
+					} 
 				else
-				{ 
-				# the session variable isn't registered, the user shouldn't even be on this page 
-				header("Location: IndexBosWarRofWar.php" ); 
-				}
+					{ 
+						# the session variable isn't registered, the user shouldn't even be on this page 
+						header("Location: IndexBosWarRofWar.php" ); 
+					}
 				
 				?>
             </div>
