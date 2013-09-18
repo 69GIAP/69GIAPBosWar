@@ -61,13 +61,29 @@
 										if ($btn == "campmgmt")
 											{	
 												if ($role == "administrator")
-													{
-														echo "<h1>Camp. Mgmt:</h1>\n";
-														echo "	<ul id=\"sidebar\">\n";
-														echo "	    <li>New Campaign</li>\n";
-														echo "	    <li>Modify Campaign Status</li>\n";
-														echo "	    <li> ... </li>\n";																						
-														echo "  </ul>\n";
+													{	
+														# turn this menu on if user has loaded a campaign into the SESSION variable campaign
+														if (!empty($loadedCampaign))
+															{
+																#echo $loadedCampaign;
+																echo "<h1>Camp. Mgmt:</h1>\n";
+																echo "	<ul id=\"sidebar\">\n";
+																echo "	    <li>Modify Campaign Settings</li>\n";
+																echo "	    <li>Modify Airfields</li>\n";
+																echo "	    <li> ... </li>\n";																						
+																echo "  </ul>\n";
+															}
+														else
+															{
+																#echo $loadedCampaign;
+																echo "<h1>Camp. Mgmt:</h1>\n";
+																echo "	<ul id=\"sidebar\">\n";
+																echo "	    <li>Create New Campaign</li>\n";
+																echo "	    <li>Change Campaign Status</li>\n";
+																echo "	    <li> ... </li>\n";																						
+																echo "  </ul>\n";
+															}
+														
 													}
 												if ($role == "redAirAdmin" OR $role == "redGroundAdmin" OR $role == "blueAirAdmin" OR $role == "blueGroundAdmin")
 													{

@@ -48,7 +48,15 @@
 		{
 			$role = $_SESSION['userrole'];
 		}
-	
+	# check if a there is alredy a campaign defined
+	if (empty($_SESSION['loadedCampaign']))
+		{
+			$loadedCampaign = "";
+		}
+	else
+		{
+			$loadedCampaign = $_SESSION['loadedCampaign'];
+		}	
 	# Style management
 	if ($game == "RoF")
 		{

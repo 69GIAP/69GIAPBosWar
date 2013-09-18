@@ -3,9 +3,16 @@
     if(isset($_SESSION["username"])) 
         {
             $username 	= $_SESSION["username"];
-			$role 		= $_SESSION["userrole"];
             echo "<div class=\"userLoggedOnInfo\">You are logged on as <b>$username</b>.<br> \n";
-			echo "You have the <b>$role</b> role.</div>\n";
+			echo "You have the <b>$role</b> role.<br>";
+			if (!empty($loadedCampaign))
+				{
+					echo "You are working on the <b>$loadedCampaign</b> DB.</div>\n";
+				}
+			else
+				{
+					echo "</div>\n";
+				}
         }
        else
         {

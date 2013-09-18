@@ -30,6 +30,7 @@
 						unset ($_SESSION['btn']);
 						unset ($_SESSION['username']); 
 						unset ($_SESSION['userrole']);
+						unset ($_SESSION['loadedCampaign']);	
 						header("Location: IndexBosWarRofWar.php");
 					} 
 				else
