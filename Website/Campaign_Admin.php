@@ -21,15 +21,16 @@
         <div id="container">
     
             <div id="content">
-	    <?php include ( 'includes/getCampaignsAdmin.php' ); ?>
-	    <?php include ( 'includes/test_change_db.php' ); ?>
+			<?php include ( 'includes/getCampaignsAdmin.php' ); ?>
+            <?php include ( 'includes/test_change_db.php' ); ?>
             </div>
     
         </div>
+        
 <?php
 	# Include the general sidebar
-	include ( 'includes/campaignsidebar.php' );
-?>	
+	include ( 'includes/sidebar.php' );
+?>		
 
 		<div id="clearing"></div>
 
