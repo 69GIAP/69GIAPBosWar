@@ -6,12 +6,7 @@
 				if (!empty($_SESSION["username"]))
 					{		
 							# get user role
-							# Using a differnet  username variable due to conflicts with the below query
-							$ActualUser = $_SESSION["username"];
-							$query = "SELECT role FROM users WHERE username LIKE '$ActualUser' LIMIT 1";
-							$result = mysqli_query($dbc, $query);
-							$row 	= mysqli_fetch_object($result);
-							$role	= $row->role;
+							$role	= $_SESSION["userrole"];
 							
 							# check if a navigation button was pressed
 							if (!empty($_SESSION['btn']))
@@ -64,13 +59,25 @@
 										
 										# was the pressed button Campaign Management?
 										if ($btn == "campmgmt")
-											{
-												echo "<h1>Camp. Mgmt:</h1>\n";
-												echo "	<ul id=\"sidebar\">\n";
-												echo "	    <li>option 1</li>\n";
-												echo "	    <li>option 2</li>\n";
-												echo "	    <li>option 3</li>\n";																						
-												echo "  </ul>\n";
+											{	
+												if ($role == "administrator")
+													{
+														echo "<h1>Camp. Mgmt:</h1>\n";
+														echo "	<ul id=\"sidebar\">\n";
+														echo "	    <li>New Campaign</li>\n";
+														echo "	    <li>Modify Campaign Status</li>\n";
+														echo "	    <li> ... </li>\n";																						
+														echo "  </ul>\n";
+													}
+												if ($role == "redAirAdmin" OR $role == "redGroundAdmin" OR $role == "blueAirAdmin" OR $role == "blueGroundAdmin")
+													{
+														echo "<h1>Camp. Mgmt:</h1>\n";
+														echo "	<ul id=\"sidebar\">\n";
+														echo "	    <li>Modify Campaign</li>\n";
+														echo "	    <li> ... </li>\n";
+														echo "	    <li> ... </li>\n";																						
+														echo "  </ul>\n";
+													}
 											}
 									}
 								else
