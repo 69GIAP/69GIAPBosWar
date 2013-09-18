@@ -69,7 +69,7 @@
                     if ($role == "administrator")
                     {
                         echo "Registered Administrators:";
-                        $sql = "SELECT * FROM users WHERE role like \"administrator\" ORDER BY role, username";
+                        $sql = "SELECT * FROM users ORDER BY role, username";
                     }
                     else
                     if ($role == "redGroundAdmin" or $role == "redAirAdmin")
