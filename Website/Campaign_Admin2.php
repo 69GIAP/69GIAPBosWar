@@ -15,7 +15,7 @@
 	include ( 'includes/navigation.php' );
 
 #  include connect2_db.php (defines connect_campaign())
-         include ( 'includes/connect2campaign.php' );
+	include ( 'includes/connect2campaign.php' );
 
 ?>
 
@@ -47,7 +47,7 @@
 	$camp_link = connect_campaign("$camp_host","$camp_user","$camp_passwd","$camp_db");
 
 	# do whatever is needed from the campaign database
-
+	
 	# Close the camp_link connection
 	mysqli_close($camp_link);
 ?>
@@ -56,7 +56,8 @@
         </div>
 <?php
 	# Include the general sidebar
-	include ( "includes/campaignsidebar.php" );
+	#	include ( "includes/campaignsidebar.php" );
+	include ( "includes/sidebar.php" );
 ?>	
 
 		<div id="clearing"></div>
