@@ -408,6 +408,46 @@ fieldset.boswar button{
 	width: 150px;
 	margin-left: 160px;
 }
+/**************/
+fieldset.UserMgmt {
+	width: 400px;
+	border: 0;	
+	}
+	
+fieldset.UserMgmt ul, fieldset li {
+	border: 0;
+	margin: 0; 
+	width: 380px;
+	padding: 5px; 
+	list-style: none;
+	}
+
+fieldset.UserMgmt li{
+	clear: both;
+	list-style: none;
+	padding-bottom: 10px;
+	padding-top: 5px;
+	}
+
+fieldset.UserMgmt input{
+	float: left;
+	width: 210px;
+	}
+
+fieldset.UserMgmt select{
+	float: left;
+	width: 210px;
+	}
+
+fieldset.UserMgmt label{
+	width:140px;
+	float:left;
+	}
+
+fieldset.UserMgmt button{
+	width: 210px;
+	margin-left: 140px;
+}
 
 /*************************************************************************************
 /* statistic table styles */

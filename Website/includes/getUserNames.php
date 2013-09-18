@@ -17,7 +17,7 @@
 					$id=($obj->user_id);
 					$username=($obj->username);
 					$role=($obj->role);
-					echo "<option value=\"". $id. "\">". $id." - ".$username. " - ".$role."</option>\n";
+					echo "<option value=\"". $id. "\">".$username. " - ".$role."</option>\n";
 				}
 		}
 ?>
