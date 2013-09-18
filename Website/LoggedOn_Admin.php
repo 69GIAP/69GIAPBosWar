@@ -21,7 +21,14 @@
         <div id="container">
     
             <div id="content">
-	    <?php include ( 'includes/getCampaignsAdmin.php' ); ?>
+            
+			<?php 
+				# This redirects the user to the Login screen if he tries to press a button and is not logged on
+				include ( 'includes/errorNotLoggedOn.php' );
+			?>
+            <p>This page is visible when the [Home] button is used and when the user loggs into the website.</p>
+            <p>To administer Users use the [User Management] button.</p>
+            <p>To navigate to the Campaign Management use the [Campaign Management] button.</p>
             </div>
     
         </div>
