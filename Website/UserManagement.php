@@ -27,7 +27,7 @@
 					include ( 'includes/errorNotLoggedOn.php' );
 				?>
                 <!-- form for changing information in the users table -->
-                <p>Please select the user you want to modify:</p>
+                <h3>Please select the user you want to modify:</h3>
                 <fieldset class="UserMgmt">
                     <form name="delete" action="UserManagementModify.php" method="post">
                         <ul>
@@ -77,31 +77,31 @@
                 </fieldset>
                 
                 <?php
-					# get the SESISON variable for the user role
+					# get the SESSION variable for the users role
 					$userRole = $_SESSION['userRole'];
 					
                     # load the query according to the user role
                     if ($userRole == "administrator")
                     {
-                        echo "Registered Administrators:";
+                        echo "<h3>Registered Administrators:</h3>\n";
                         $sql = "SELECT * FROM users u  LEFT JOIN campaign_users c ON u.user_id = c.user_id ORDER BY role, username";
                     }
                     else
                     if ($userRole == "redGroundAdmin" or $userRole == "redAirAdmin")
                     {
-                        echo "Registered Red Admins:";
+                        echo "<h3>Registered Red Admins:</h3>\n";
                         $sql = "SELECT * FROM users WHERE role like \"redAirAdmin\" OR role like \"redGroundAdmin\" ORDER BY role, username";
                     }
                     else
                     if ($userRole == "blueGroundAdmin" or $userRole == "blueAirAdmin")
                     {
-                        echo "Registered Blue Admins:";
+                        echo "<h3>Registered Blue Admins:</h3>\n";
                         $sql = "SELECT * FROM users WHERE role like \"blueAirAdmin\" OR role like \"blueGroundAdmin\" ORDER BY role, username";
                     }
                     else
                     if ($userRole == "viewer")
                     {
-                        echo "Registered Viewers:";
+                        echo "<h3>Registered Viewers:</h3>\n";
                         $sql = "SELECT * FROM users WHERE role like \"viewer\" ORDER BY role, username";
                     }
                     
@@ -112,12 +112,12 @@
                     # Print out the contents of the entry 
                     while($row = $result->fetch_assoc()) 
                      {
-                        echo "<p>\n";
+                        echo "<div class=\"userRecordFrame\"><p>\n";
                         print "<b>Username:</b> ".$row['username'] . " <br>\n";	
                         print "<b>Email Adress:</b> ".$row['email'] . " <br>\n";
                         print "<b>Telephone:</b> ".$row['phone'] . " <br>\n";				
                         print "<b>Role:</b> ".$row['role'] . " <br>\n";
-						print "<b>Campaign DB:</b> ".$row['camp_db'] . " <br>\n";
+						print "<b>Campaign DB:</b> ".$row['camp_db'] . " <br>\n</div>\n";
                      }
                      
                      echo '<br>Total results: ' . $result->num_rows . " <br>\n";

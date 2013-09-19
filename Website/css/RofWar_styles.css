@@ -14,15 +14,33 @@ html {
 
 h1 {
 	padding: 0;
-	margin: 0;
+	margin: 15;
 	line-height: 1.5em;
 	text-align: center;
-	font-family: Arial, sans-serif;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 	}
 
+h2 {
+	padding: 0;
+	margin: 10;
+	line-height: 1 em;
+	text-align: left;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	}
+h3 {
+	padding: 0;
+	margin: 10;
+	line-height: 1 em;
+	text-align: left;
+	font-size: 15px;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	}	
+
 p {
-	padding-top: 15px;
-	margin: 0;
+	padding: 5px 0px;
+	margin: 5px;
+	font-size: 13px;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 	}
 	
 /************************************************************************
@@ -112,6 +130,12 @@ div.userLoggedOnInfo {
 	height: 0px;
 	}
 
+.userRecordFrame {
+	border: solid 1px #8BAAC9;;
+	width: 250px;
+	margin: 10px 15px;
+	padding: 5px 15px 10px 5px;
+	}
 /************************************************************************
 /*Sidebar Styles */
 #side {
@@ -403,6 +427,8 @@ fieldset.UserMgmt ul, fieldset li {
 	}
 
 fieldset.UserMgmt li{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 14px;	
 	clear: both;
 	list-style: none;
 	padding-bottom: 10px;
@@ -415,6 +441,8 @@ fieldset.UserMgmt input{
 	}
 
 fieldset.UserMgmt select{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 14px;
 	float: left;
 	width: 210px;
 	}

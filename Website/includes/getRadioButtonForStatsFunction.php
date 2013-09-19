@@ -18,8 +18,8 @@ if ($result = mysqli_query($db_link, $query))
 			$camp_db	=($obj->camp_db);
 			$map		=($obj->map);
 			$simulation	=($obj->simulation);
-			echo "<input type=\"radio\" name=\"camp_db\" value=$camp_db>";
-			echo "<b>".$campaign."</b> -  ".$map." map (".$simulation.")<br>\n";
+			echo "<p><input type=\"radio\" name=\"camp_db\" value=$camp_db>";
+			echo "<b>".$campaign."</b> -  ".$map." map (".$simulation.")<br></p>\n";
 		}
 	}
 }

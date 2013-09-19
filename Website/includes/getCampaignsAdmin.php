@@ -8,7 +8,7 @@
 #
 # this whole thing is a single form to pass a database name, etc
 # try it as a radio button list
-echo "<h2>Proposed Campaigns</h2>\n";
+echo "<h3>Proposed Campaigns</h3>\n";
 # get active campaigns
 $query = "SELECT * FROM campaign_settings where status = 4 and simulation = '$game' ";
 	
@@ -24,12 +24,12 @@ if ($result = mysqli_query($dbc, $query))
 			$camp_db	=($obj->camp_db);
 			$map		=($obj->map);
 			$simulation	=($obj->simulation);
-			echo "<input type=\"radio\" name=\"db\" value=$camp_db>";
-			echo "<b>".$campaign."</b> -  ".$camp_db." db - ".$map." map (".$simulation.")<br>\n";
+			echo "<p><input type=\"radio\" name=\"db\" value=$camp_db>";
+			echo "<b>".$campaign."</b> -  ".$camp_db." db - ".$map." map (".$simulation.")<br></p>\n";
 		}
 	}
 
-echo "<h2>Active Campaigns</h2>\n";
+echo "<h3>Active Campaigns</h3>\n";
 # get active campaigns
 $query = "SELECT * FROM campaign_settings where status = 3 and simulation = '$game' ";
 	
@@ -45,12 +45,12 @@ if ($result = mysqli_query($dbc, $query))
 			$camp_db	=($obj->camp_db);
 			$map		=($obj->map);
 			$simulation	=($obj->simulation);
-			echo "<input type=\"radio\" name=\"db\" value=$camp_db>";
-			echo "<b>".$campaign."</b> -  ".$camp_db." db - ".$map." map (".$simulation.")<br>\n";
+			echo "<p><input type=\"radio\" name=\"db\" value=$camp_db>";
+			echo "<b>".$campaign."</b> -  ".$camp_db." db - ".$map." map (".$simulation.")<br></p>\n";
 		}
 	}
 
-echo "<h2>Completed Campaigns</h2>\n";
+echo "<h3>Completed Campaigns</h3>\n";
 # get completed campaigns
 $query = "SELECT * FROM campaign_settings where status = 2 and simulation = '$game' ";
 	
@@ -66,11 +66,11 @@ if ($result = mysqli_query($dbc, $query))
 			$camp_db	=($obj->camp_db);
 			$map		=($obj->map);
 			$simulation	=($obj->simulation);
-			echo "<input type=\"radio\" name=\"db\" value=$camp_db>";
-			echo "<b>".$campaign."</b> -  ".$camp_db." db - ".$map." map (".$simulation.")<br>\n";
+			echo "<p><input type=\"radio\" name=\"db\" value=$camp_db>";
+			echo "<b>".$campaign."</b> -  ".$camp_db." db - ".$map." map (".$simulation.")<br></p>\n";
 	}
 }
-echo "<h2>Hidden Campaigns</h2>\n";
+echo "<h3>Hidden Campaigns</h3>\n";
 # get active campaigns
 $query = "SELECT * FROM campaign_settings where status = 1 and simulation = '$game' ";
 	
@@ -86,8 +86,8 @@ if ($result = mysqli_query($dbc, $query))
 			$camp_db	=($obj->camp_db);
 			$map		=($obj->map);
 			$simulation	=($obj->simulation);
-			echo "<input type=\"radio\" name=\"db\" value=$camp_db>";
-			echo "<b>".$campaign."</b> -  ".$camp_db." db - ".$map." map (".$simulation.")<br>\n";
+			echo "<p><input type=\"radio\" name=\"db\" value=$camp_db>";
+			echo "<b>".$campaign."</b> -  ".$camp_db." db - ".$map." map (".$simulation.")<br></p>\n";
 		}
 	}
 ?>

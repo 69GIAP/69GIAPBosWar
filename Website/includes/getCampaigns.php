@@ -11,7 +11,7 @@
 # include the fuction that makes a radio button
 include 'includes/getRadiobuttonForStatsFunction.php';
 
-echo "<h2>Active $game Campaigns</h2>\n";
+echo "<h3>Active $game Campaigns</h3>\n";
 
 # get active campaigns dependent on the chosen application
 $query = "SELECT * FROM campaign_settings where status = 3 and simulation = '$game' ";
@@ -19,7 +19,7 @@ $query = "SELECT * FROM campaign_settings where status = 3 and simulation = '$ga
 # Use the function.  Arguments are an open link and a query.
 get_radiobutton_for_stats($dbc,$query);
 
-echo "<h2>Completed $game Campaigns</h2>\n";
+echo "<h3>Completed $game Campaigns</h3>\n";
 
 # get completed campaigns dependent on the chosen application
 $query = "SELECT * FROM campaign_settings where status = 2  and simulation = '$game' ";
