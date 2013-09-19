@@ -19,10 +19,30 @@
         <div id="container">
     
             <div id="content">
-            	<?php 
-				   # User management code
+            	<?php
+				
+					#  include connect2CampaignFunction.php (defines connect2campaign($host,$user,$password,$db))
+					include ( 'includes/connect2CampaignFunction.php' );
 					
-					# bind post variable into variables
+					# use it to get remaining variables
+					$query = "SELECT * from campaign_settings where camp_db = '$camp_db'";   
+					if(!$result = $dbc->query($query)) {
+						die('There was an error running the query [' . $dbc->error . ']');
+					}
+										
+					if ($result = mysqli_query($dbc, $query)) {
+						/* fetch associative array */
+						while ($obj = mysqli_fetch_object($result)) {
+							$campaign	=($obj->campaign);
+							$camp_host	=($obj->camp_host);
+							$camp_user	=($obj->camp_user);
+							$camp_passwd	=($obj->camp_passwd);
+						}
+					} 
+									
+					# use this information to connect to campaign 
+					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$camp_db");
+
 					#  airield name from selection form
 						$airfieldName = $_POST["airfieldName"];			
 
