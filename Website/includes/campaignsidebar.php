@@ -8,10 +8,10 @@ if (!empty($_SESSION["username"])) {
 #   $query = "SELECT role FROM users WHERE username LIKE '$ActualUser' LIMIT 1";
 #   $result = mysqli_query($dbc, $query);
 #   $row 	= mysqli_fetch_object($result);
-#   $role	= $row->role;
-   #echo "$role <br>\n";
+#   $userRole	= $row->role;
+   #echo "$userRole <br>\n";
    # define what administrator sees in the sidebar
-#   if ($role == "administrator") {
+#   if ($userRole == "administrator") {
       echo "<h1>Campaign Admin:</h1>\n";
       echo "	<ul id=\"sidebar\">\n";
       echo "		<li>Option 1</li>\n";

@@ -22,6 +22,7 @@
     
             <div id="content">
                 <?php
+					include ('includes/debuggingSessionVariables.php');	
                 	# This redirects the user to the Login screen if he tries to press a button and is not logged on
 					include ( 'includes/errorNotLoggedOn.php' );
 				?>
@@ -77,28 +78,28 @@
                 
                 <?php
 					# get the SESISON variable for the user role
-					$role = $_SESSION['userrole'];
+					$userRole = $_SESSION['userRole'];
 					
                     # load the query according to the user role
-                    if ($role == "administrator")
+                    if ($userRole == "administrator")
                     {
                         echo "Registered Administrators:";
                         $sql = "SELECT * FROM users u  LEFT JOIN campaign_users c ON u.user_id = c.user_id ORDER BY role, username";
                     }
                     else
-                    if ($role == "redGroundAdmin" or $role == "redAirAdmin")
+                    if ($userRole == "redGroundAdmin" or $userRole == "redAirAdmin")
                     {
                         echo "Registered Red Admins:";
                         $sql = "SELECT * FROM users WHERE role like \"redAirAdmin\" OR role like \"redGroundAdmin\" ORDER BY role, username";
                     }
                     else
-                    if ($role == "blueGroundAdmin" or $role == "blueAirAdmin")
+                    if ($userRole == "blueGroundAdmin" or $userRole == "blueAirAdmin")
                     {
                         echo "Registered Blue Admins:";
                         $sql = "SELECT * FROM users WHERE role like \"blueAirAdmin\" OR role like \"blueGroundAdmin\" ORDER BY role, username";
                     }
                     else
-                    if ($role == "viewer")
+                    if ($userRole == "viewer")
                     {
                         echo "Registered Viewers:";
                         $sql = "SELECT * FROM users WHERE role like \"viewer\" ORDER BY role, username";

@@ -9,54 +9,41 @@
 <?php
 
 	# check if game variable is already set
-	if (empty($_SESSION["game"]))
-		{
+	if (empty($_SESSION['game'])){
 			# check if the variable was already set
 			# get the variable from the first pages button
 			$game = $_POST['selection'];
 			
-			if(!isset($game))
-				{	
-					# redirect to index if user made no choice
-					header("Location: index.php");
-				}
-				# register value of $_POST["selection"] - chosen game - to Session "game"
-				# syntax: $_SESSION['name'] = "value";
-				$_SESSION['game'] = $game;
-		}
-	else
-		{
-			#get the variable stored into $game
-				$game = $_SESSION['game'];
-		}
+			if(!isset($game)) {
+				# redirect to index if user made no choice
+				header("Location: index.php");}
+				
+			# register value of $_POST["selection"] - chosen game - to Session "game"
+			# syntax: $_SESSION['name'] = "value";
+			$_SESSION['game'] = $game;}
+	else {
+		#get the variable stored into $game
+		$game = $_SESSION['game'];}
+		
 	# check if a navigation button was pressed and introduce SESSION variable for naviagtion button presses
-	if (empty($_GET["btn"]))
-		{
-			$btn = "";
-		}
-	else
-		{
-			$_SESSION['btn']	= $_GET["btn"];
-			$btn 				= $_SESSION['btn'];
-		}
-	# check if a there is alredy a userrole defined
-	if (empty($_SESSION['userrole']))
-		{
-			$role = "viewer";
-		}
-	else
-		{
-			$role = $_SESSION['userrole'];
-		}
+	if (empty($_GET["btn"])) {
+		$btn = "";}
+	else {
+		$_SESSION['btn']	= $_GET["btn"];
+		$btn 				= $_SESSION['btn'];}
+		  
+	# check if a there is already a userRole defined
+	if (empty($_SESSION['userRole'])) {
+		$userRole = "";}
+	else {
+		$userRole = $_SESSION['userRole'];}
+	
 	# check if a there is alredy a campaign defined
-	if (empty($_SESSION['loadedCampaign']))
-		{
-			$loadedCampaign = "";
-		}
-	else
-		{
-			$loadedCampaign = $_SESSION['loadedCampaign'];
-		}	
+	if (empty($_SESSION['camp_db'])) {
+		$loadedCampaign = "";}
+	else {
+		$loadedCampaign = $_SESSION['camp_db'];}	
+
 	# Style management
 	if ($game == "RoF")
 		{
@@ -82,8 +69,7 @@
 <div id="header">
     
 	<?php 
-		# reference the username next to the navigation bar              
-		include 'includes/loggedOnInfo.php';
+
     
      	# create dynamic title based on variable $gameselector
 		if ($game == "RoF")

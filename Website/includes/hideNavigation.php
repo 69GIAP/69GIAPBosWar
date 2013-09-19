@@ -1,8 +1,8 @@
 <?php 
 
 # show the login button if the user is not logged on         
-   
-	if($role != "viewer" OR $role !="") 
+
+	if(!empty($userRole)) 
 		{
 			# show the navigation button
 			echo "<li><a href=\"LoggedOn_Admin.php?btn=home\" class=\"home\"><span></span></a></li>\n";

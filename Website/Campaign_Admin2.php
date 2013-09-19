@@ -23,15 +23,22 @@ include ( 'includes/connect2CampaignFunction.php' );
 
         <div id="container">
 	    <div id="content">
-        	
+        		
                <h2>Campaign Admin2</h2>
 <?php
+
 # This redirects the user to the Login screen if he gets here and is not logged on
 include ( 'includes/errorNotLoggedOn.php' );
 					
 # get campaign database name from previous POST.
 $_SESSION['camp_db'] = $_POST["db"];
 $camp_db = $_SESSION['camp_db'];
+# load display variable $loadedCampaign with new value to avoid display delay by one extra page change
+# the additional variable for teh visual feedback is required as $camp-db is also used to fill dropdows and this conflicts
+# on page change - display would be reset to lates loaded information in the dropdown!
+$loadedCampaign = $camp_db;
+
+include ('includes/debuggingSessionVariables.php');	
 
 echo "<p>The chosen campaign is stored to the SESSION variable \$_SESSION['camp_db'] and can be reused from now on to work with it.</p>\n";
 

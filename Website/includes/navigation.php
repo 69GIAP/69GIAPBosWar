@@ -1,7 +1,7 @@
 
 <!-- The variable I hand over with the link is stored to the SESSION["btn"] variable and defines the look of the sidebar -->
 <ul id="navigation">
-    <!-- determine if the user sees a menu depending on SSSION userrole -->
+    <!-- determine if the user sees a menu depending on SESSION userRole -->
     <?php include 'includes/hideNavigation.php'; ?> 
 </ul>
 <ul id="register">

@@ -32,7 +32,7 @@
 				# encrypt pasword
 					$password = md5($_POST["password"]);
 				# User role
-					$role = $_POST["role"];	
+					$userRole = $_POST["role"];	
 				# campaign database
 					$campdb = $_POST["campdb"];
 				# campaign database for removal
@@ -64,7 +64,7 @@
 				# if a user wants to have another role
 				if (($_POST["modify"] == 2))
 					{
-						$sql = "UPDATE users set role = \"$role\" WHERE user_id = '$id'";
+						$sql = "UPDATE users set role = \"$userRole\" WHERE user_id = '$id'";
 					}
 				# if a user is assigned to a campaign
 				if (($_POST["modify"] == 3))
@@ -93,7 +93,7 @@
 					}
 				if (($_POST["modify"] == 2))
 					{
-						echo "<br>Role for user <b>$id</b> owned by user <b>$modifieduser</b> updated successfully to <b>$role</b>!\n";
+						echo "<br>Role for user <b>$id</b> owned by user <b>$modifieduser</b> updated successfully to <b>$userRole</b>!\n";
 					}
 				if (($_POST["modify"] == 3))
 					{

@@ -20,13 +20,13 @@
 		{
 			unset($_SESSION['btn']); 
 		}
-	if (!empty($_SESSION['userrole']))
+	if (!empty($_SESSION['userRole']))
 		{
-			unset($_SESSION['userrole']); 
+			unset($_SESSION['userRole']); 
 		}
-	if (!empty($_SESSION['loadedCampaign']))
+	if (!empty($_SESSION['camp_db']))
 		{
-			unset($_SESSION['loadedCampaign']); 
+			unset($_SESSION['camp_db']); 
 		}					
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

@@ -5,7 +5,7 @@
             $username 	= $_SESSION["username"];
             echo "<div class=\"userLoggedOnInfo\">";
 			echo "<b>User: </b> $username<br> \n";
-			echo "<b>Role: </b>$role</b><br>";
+			echo "<b>Role: </b>$userRole</b><br>";
 			if (!empty($loadedCampaign))
 				{
 					echo "<b>Database: </b> $loadedCampaign</div>\n";

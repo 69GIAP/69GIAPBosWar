@@ -56,17 +56,17 @@
 					$row 	= mysqli_fetch_object($result);
 					
 					# bind role to SESSION
-					$_SESSION['userrole'] = ($row->role);
-					$role = $_SESSION['userrole'];
+					$_SESSION['userRole'] = ($row->role);
+					$userRole = $_SESSION['userRole'];
 					
 					# bind session variable to variable
 					$_SESSION["username"] = $username;
 					
-					if($role == "administrator")
+					if($userRole == "administrator")
 					{
 						header("Location: LoggedOn_Admin.php");
 					}
-					else if($role == "redAirAdmin")
+					else if($userRole == "redAirAdmin")
 					{
 						header("Location: LoggedOn_RedAirAdmin.php");
 					}
@@ -74,15 +74,15 @@
 					{
 						header("Location: LoggedOn_redGroundAdmin.php");
 					}
-					else if($role == "blueAirAdmin")
+					else if($userRole == "blueAirAdmin")
 					{
 						header("Location: LoggedOn_blueAirAdmin.php");
 					}
-					else if($role == "blueGroundAdmin")
+					else if($userRole == "blueGroundAdmin")
 					{
 						header("Location: LoggedOn_blueGroundAdmin.php");
 					}
-					else if($role == "viewer")
+					else if($userRole == "viewer")
 					{
 						header("Location: LoggedOn_Viewer.php");
 					}			

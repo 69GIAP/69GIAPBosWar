@@ -1,6 +1,9 @@
 	<div id="footer">
     
 		<?php
+		# reference the username next to the navigation bar              
+		include 'includes/loggedOnInfo.php';
+
 		#dynamic footer information
 		if ($game == "RoF")
 			{

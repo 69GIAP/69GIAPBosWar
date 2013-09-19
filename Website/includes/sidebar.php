@@ -6,7 +6,7 @@
 				if (!empty($_SESSION["username"]))
 					{		
 							# get user role
-							$role	= $_SESSION["userrole"];
+							$userRole	= $_SESSION["userRole"];
 							
 							# check if a navigation button was pressed
 							if (!empty($_SESSION['btn']))
@@ -18,7 +18,7 @@
 									if ($btn == "usermgmt")
 										{
 											# define what a administrator sees in the sidebar
-											if ($role == "administrator")
+											if ($userRole == "administrator")
 												{
 													echo "<h1>Admin:</h1>\n";
 													echo "	<ul id=\"sidebar\">\n";
@@ -29,7 +29,7 @@
 													echo "	</ul>\n";
 												}
 											# define what a redAirAdmin or redGroundAdmin sees in the sidebar
-											else if ($role == "redAirAdmin" OR $role == "redGroundAdmin")
+											else if ($userRole == "redAirAdmin" OR $userRole == "redGroundAdmin")
 												{
 													echo "<h1>Red Admin:</h1>\n";
 													echo "	<ul id=\"sidebar\">\n";
@@ -38,7 +38,7 @@
 													echo "	</ul>\n";
 												}
 											# define what a blueAirAdmin or redGroundAdmin sees in the sidebar
-											else if ($role == "blueAirAdmin" OR $role == "blueGroundAdmin")
+											else if ($userRole == "blueAirAdmin" OR $userRole == "blueGroundAdmin")
 												{
 													echo "<h1>Blue Admin:</h1>\n";
 													echo "	<ul id=\"sidebar\">\n";
@@ -47,7 +47,7 @@
 													echo "	</ul>\n";
 												}
 											# define what a viewer sees in the sidebar
-											else if ($role == "viewer")
+											else if ($userRole == "viewer")
 												{
 													echo "<h1>Viewer:</h1>\n";
 													echo "	<ul id=\"sidebar\">\n";
@@ -60,12 +60,12 @@
 										# was the pressed button Campaign Management?
 										if ($btn == "campmgmt")
 											{	
-												if ($role == "administrator")
+												if ($userRole == "administrator")
 													{	
 														# turn this menu on if user has loaded a campaign into the SESSION variable campaign
-														if (!empty($loadedCampaign))
+														if (!empty($camp_db))
 															{
-																#echo $loadedCampaign;
+																#echo $camp_db;
 																echo "<h1>Camp. Mgmt:</h1>\n";
 																echo "	<ul id=\"sidebar\">\n";
 																echo "	    <li>Modify Campaign Settings</li>\n";
@@ -75,7 +75,7 @@
 															}
 														else
 															{
-																#echo $loadedCampaign;
+																#echo $camp_db;
 																echo "<h1>Camp. Mgmt:</h1>\n";
 																echo "	<ul id=\"sidebar\">\n";
 																echo "	    <li>Create New Campaign</li>\n";
@@ -85,7 +85,7 @@
 															}
 														
 													}
-												if ($role == "redAirAdmin" OR $role == "redGroundAdmin" OR $role == "blueAirAdmin" OR $role == "blueGroundAdmin")
+												if ($userRole == "redAirAdmin" OR $userRole == "redGroundAdmin" OR $userRole == "blueAirAdmin" OR $userRole == "blueGroundAdmin")
 													{
 														echo "<h1>Camp. Mgmt:</h1>\n";
 														echo "	<ul id=\"sidebar\">\n";
@@ -98,7 +98,7 @@
 										# was the pressed button Home?
 										if ($btn == "home")
 											{	
-												if ($role == "administrator")
+												if ($userRole == "administrator")
 													{
 														echo "<h1>Home:</h1>\n";
 														echo "	<ul id=\"sidebar\">\n";
@@ -107,7 +107,7 @@
 														echo "	    <li> ... </li>\n";																						
 														echo "  </ul>\n";
 													}
-												if ($role == "redAirAdmin" OR $role == "redGroundAdmin" OR $role == "blueAirAdmin" OR $role == "blueGroundAdmin")
+												if ($userRole == "redAirAdmin" OR $userRole == "redGroundAdmin" OR $userRole == "blueAirAdmin" OR $userRole == "blueGroundAdmin")
 													{
 														echo "<h1>Home:</h1>\n";
 														echo "	<ul id=\"sidebar\">\n";
@@ -116,7 +116,7 @@
 														echo "	    <li> ... </li>\n";																						
 														echo "  </ul>\n";
 													}
-												if ($role == "viewer")
+												if ($userRole == "viewer")
 													{
 														echo "<h1>Home:</h1>\n";
 														echo "	<ul id=\"sidebar\">\n";
