@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 18, 2013 at 05:28 AM
+-- Generation Time: Sep 19, 2013 at 05:09 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -46,15 +46,17 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
   `redGroundAdmin` int(11) DEFAULT NULL,
   `blueAirAdmin` int(11) DEFAULT NULL,
   `blueGroundAdmin` int(11) DEFAULT NULL,
+  `logpath` varchar(60) NOT NULL,
+  `logfile` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `campaign_settings`
 --
 
-INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `redAirAdmin`, `redGroundAdmin`, `blueAirAdmin`, `blueGroundAdmin`) VALUES
-(2, 'RoF', 'Flanders Eagles', 'flanders_eagles', 'localhost', 'rofwar', 'rofwar', 'Channel', 'rof_channel_locations', 3, 1, 1, 0, 0, 0, 0);
+INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `redAirAdmin`, `redGroundAdmin`, `blueAirAdmin`, `blueGroundAdmin`, `logpath`, `logfile`) VALUES
+(2, 'RoF', 'Flanders Eagles', 'flanders_eagles', 'localhost', 'rofwar', 'rofwar', 'Channel', 'rof_channel_locations', 3, 1, 1, 0, 0, 0, 0, 'logs', 'missionReportFlandersEagles1.txt');
 
 -- --------------------------------------------------------
 

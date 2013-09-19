@@ -1,0 +1,13 @@
+Note that the flanders_eagles database is set up to expect a user "rofwar" 
+with a password of "rofwar".  This user should have full permissions on this 
+(and perhaps all other rof campaign databases) but no access to boswar_db.
+
+I will use this same user and password for some future campaign db examples, 
+though I reserve the right to try yet another user just to make sure that
+that works also.  If I do that, I'll warn you.  :)
+
+If you prefer to use a different user just edit the username and password in
+the campaign_settings tables of boswar_db and flanders_eagles to match what 
+you have set up.
+
+Tushka
