@@ -20,7 +20,7 @@
 											# define what a administrator sees in the sidebar
 											if ($userRole == "administrator")
 												{
-													echo "<h1>Admin:</h1>\n";
+													echo "<h2>Admin:</h2>\n";
 													echo "	<ul id=\"sidebar\">\n";
 													echo "		<li><a href=\"#\" class=\"adminBanner\"><span></span></a></li>\n";
 													echo "		<li><a href=\"#\" class=\"sovietBanner\"><span></span></a></li>\n";
@@ -31,7 +31,7 @@
 											# define what a redAirAdmin or redGroundAdmin sees in the sidebar
 											else if ($userRole == "redAirAdmin" OR $userRole == "redGroundAdmin")
 												{
-													echo "<h1>Red Admin:</h1>\n";
+													echo "<h2>Red Admin:</h2>\n";
 													echo "	<ul id=\"sidebar\">\n";
 													echo "		<li><a href=\"#\" class=\"redAirBanner\"><span></span></a></li>\n";
 													echo "		<li><a href=\"#\" class=\"redGroundBanner\"><span></span></a></li>\n";
@@ -40,7 +40,7 @@
 											# define what a blueAirAdmin or redGroundAdmin sees in the sidebar
 											else if ($userRole == "blueAirAdmin" OR $userRole == "blueGroundAdmin")
 												{
-													echo "<h1>Blue Admin:</h1>\n";
+													echo "<h2>Blue Admin:</h2>\n";
 													echo "	<ul id=\"sidebar\">\n";
 													echo "		<li><a href=\"#\" class=\"blueAirBanner\"><span></span></a></li>\n";
 													echo "		<li><a href=\"#\" class=\"blueGroundBanner\"><span></span></a></li>\n";
@@ -49,7 +49,7 @@
 											# define what a viewer sees in the sidebar
 											else if ($userRole == "viewer")
 												{
-													echo "<h1>Viewer:</h1>\n";
+													echo "<h2>Viewer:</h2>\n";
 													echo "	<ul id=\"sidebar\">\n";
 													echo "	    <li><a href=\"#\" class=\"viewerBanner\"><span></span></a></li>\n";
 													echo "  </ul>\n";
@@ -63,10 +63,10 @@
 												if ($userRole == "administrator")
 													{	
 														# turn this menu on if user has loaded a campaign into the SESSION variable campaign
-														if (!empty($camp_db))
+														if (!empty($loadedCampaign))
 															{
-																#echo $camp_db;
-																echo "<h1>Camp. Mgmt:</h1>\n";
+																#echo $loadedCampaign;
+																echo "<h2>Camp. Mgmt:</h2>\n";
 																echo "	<ul id=\"sidebar\">\n";
 																echo "	    <li>Modify Campaign Settings</li>\n";
 																echo "	    <li>Modify Airfields</li>\n";
@@ -75,8 +75,8 @@
 															}
 														else
 															{
-																#echo $camp_db;
-																echo "<h1>Camp. Mgmt:</h1>\n";
+																#echo $loadedCampaign;
+																echo "<h2>Camp. Mgmt:</h2>\n";
 																echo "	<ul id=\"sidebar\">\n";
 																echo "	    <li>Create New Campaign</li>\n";
 																echo "	    <li>Change Campaign Status</li>\n";
@@ -87,12 +87,15 @@
 													}
 												if ($userRole == "redAirAdmin" OR $userRole == "redGroundAdmin" OR $userRole == "blueAirAdmin" OR $userRole == "blueGroundAdmin")
 													{
-														echo "<h1>Camp. Mgmt:</h1>\n";
-														echo "	<ul id=\"sidebar\">\n";
-														echo "	    <li>Modify Campaign</li>\n";
-														echo "	    <li> ... </li>\n";
-														echo "	    <li> ... </li>\n";																						
-														echo "  </ul>\n";
+														if (!empty($loadedCampaign))
+															{
+																echo "<h2>$loadedCampaign</h2>\n";
+																echo "	<ul id=\"sidebar\">\n";
+																echo "	    <li><a href=\"airfieldRedAdministration.php\" class=\"airfieldBanner\"><span></span></a></li>\n";
+																echo "	    <li> ... </li>\n";
+																echo "	    <li> ... </li>\n";																						
+																echo "  </ul>\n";
+															}
 													}
 											}
 										# was the pressed button Home?
@@ -100,7 +103,7 @@
 											{	
 												if ($userRole == "administrator")
 													{
-														echo "<h1>Home:</h1>\n";
+														echo "<h2>Home:</h2>\n";
 														echo "	<ul id=\"sidebar\">\n";
 														echo "	    <li> ... </li>\n";
 														echo "	    <li> ... </li>\n";
@@ -109,7 +112,7 @@
 													}
 												if ($userRole == "redAirAdmin" OR $userRole == "redGroundAdmin" OR $userRole == "blueAirAdmin" OR $userRole == "blueGroundAdmin")
 													{
-														echo "<h1>Home:</h1>\n";
+														echo "<h2>Home:</h2>\n";
 														echo "	<ul id=\"sidebar\">\n";
 														echo "	    <li> ... </li>\n";
 														echo "	    <li> ... </li>\n";
@@ -118,7 +121,7 @@
 													}
 												if ($userRole == "viewer")
 													{
-														echo "<h1>Home:</h1>\n";
+														echo "<h2>Home:</h2>\n";
 														echo "	<ul id=\"sidebar\">\n";
 														echo "	    <li> ... </li>\n";
 														echo "	    <li> ... </li>\n";

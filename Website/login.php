@@ -68,7 +68,7 @@
 					{
 						header("Location: LoggedOn_RedAirAdmin.php");
 					}
-					else if($roel == "redGroundAdmin")
+					else if($userRole == "redGroundAdmin")
 					{
 						header("Location: LoggedOn_redGroundAdmin.php");
 					}

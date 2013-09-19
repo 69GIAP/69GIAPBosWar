@@ -22,20 +22,20 @@ h1 {
 
 h2 {
 	padding: 0;
-	margin: 10;
+	margin: 10px;
 	line-height: 1 em;
 	text-align: left;
 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 	}
 h3 {
 	padding: 0;
-	margin: 10;
+	margin: 10px;
 	line-height: 1 em;
 	text-align: left;
 	font-size: 15px;
 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
-	}	
-
+	}
+	
 p {
 	padding: 5px 0px;
 	margin: 5px;
@@ -209,6 +209,13 @@ ul#sidebar li a.sovietBanner {
 }
 ul#sidebar li a.centerBanner {
 	background:url(../img/RofWar_CenterBanner.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.airfieldBanner {
+	background:url(../img/RofWar_EntenteAirfields.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
