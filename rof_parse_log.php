@@ -4,16 +4,9 @@
 // mission report textfiles
 // written by =69.GIAP=TUSHKA
 // 2011-2013
-// Version 69GIAPBoSWar 0.2
+// Version 69GIAPBoSWar 0.3
 // Wed Sep 18 2013
 //
-
-# Incorporate the MySQL debug script.
-require ( 'includes/debug.php' );
-
-# This will work in the campaign database so
-# Incorporate the MySQL connection script.
-require ( '../connect_db.php' );
 
 // the main program 
 
@@ -23,50 +16,7 @@ $start=explode(" ",$start);
 $start=$start[1]+$start[0];
 
 // Begin Configuration - Edit these as needed.
-// Generally setting the Campaign variable and then the LOGFILE variable
-// is all that is needed.
-
-// set variables
-
-// Campaign variables (set multiple variables at one go)
-// Set to 1 for a particular campaign, otherwise set it to 0
-// Current campaigns
-$FLANDERSEAGLES = 1; //	FLANDERS EAGLES mission log
-// Past campaigns - these need to be set to avoid errors in php5.5.3
-// (otherwise need to remove references to them later)
-$SKIESOFTHEEMPIRES = 0; // SKIES OF THE EMPIRES mission log
-$YANKEEDOODLE = 0; // YANKEE DOODLE mission log
-$BLOODYAPRIL = 0; // BLOODY APRIL mission log
-// End Campaign variables
-
-// Logfile variables
-// $LOGFILE points to the mission log to be analyzed
-//$LOGFILE = "missionReport.txt";
-//$LOGFILE = "missionReport2.txt";
-//$LOGFILE = "missionReport10.txt";
-//$LOGFILE = "missionReportSSII-0.txt";
-//$LOGFILE = "missionReportApocalypseThen1.txt";
-//$LOGFILE = "missionReportApocalypseThen20.txt";
-//$LOGFILE = "missionReportSoE1.txt";
-//$LOGFILE = "missionReportSoE8.txt";
-//$LOGFILE = "missionReportBloodyAprilMission1.txt";
-//$LOGFILE = "missionReportBloodyAprilMission20.txt";
-//$LOGFILE = "missionReportDogTest1.txt";
-//$LOGFILE = "missionReportYankeeDoodle1.txt";
-//$LOGFILE = "missionReportSOEII1.txt";
-//$LOGFILE = "missionReportSOEII13.txt";
-//$LOGFILE = "missionReportYankeeDoodle20.txt";
-//$LOGFILE = "missionReportChannelRace.txt";
-//$LOGFILE = "missionReportFlandersEagles1.txt";
-//$LOGFILE = "missionReportSOEII20.txt";
-$LOGFILE = "missionReportFlandersEagles1.txt";
-//$LOGFILE = "missionReportFlandersEagles20.txt";
-
-// Logpath shows where the logfiles are found relative to the parser.
-// Do NOT add a trailing slash
-$LOGPATH = "logs";
-
-$LOGFILE = $LOGPATH."/".$LOGFILE;
+// set variables (these will be obsoleted by campaign_settings)
 
 // Debugging variables
 $DEBUG = 0;  // set to 1 for a complete debugging report, 0 for off.
@@ -89,12 +39,43 @@ $VERDUN = 0;
 $LAKE = 0;
 // Or Set $CHANNEL to 1 to use the Channel map, otherwise 0.
 $CHANNEL = 0;
-// Set $SHOWAF to 1 to show the identies of airfields, to 0 to mask them.
-$SHOWAF = 1;
-// Unreported settings variables
-// Set $FinishFlightonlylanded to 1 if it is checked on the server, otherwise 0.
-// This setting is not reported in the "settings" section of the log
-$FinishFlightonlylanded = 0;
+
+/* Select queries return a resultset */
+$query = "SELECT * FROM campaign_settings";
+if(!$result = $camp_link->query($query))
+   { die('There was an error running the query [' . $db_link->error . ']'); }
+	
+if ($result = mysqli_query($camp_link, $query)) {
+	 /* fetch associative array */
+	 while ($obj = mysqli_fetch_object($result)) {
+		$SHOWAF	=($obj->show_airfield);
+		$FinishFlightOnlyLanded = ($obj->finish_flight_only_landed);
+		$map_locations	=($obj->map_locations);
+		$LOGPATH	=($obj->logpath);
+		$LOGFILE	=($obj->logfile);
+	}
+}
+# debugging
+print "DEBUGGING: rof_parse_log.php parser configuration:<br>\n";
+print "SHOWAF = $SHOWAF<br>\n";
+print "FinishFlightOnlyLanded = $FinishFlightOnlyLanded<br>\n";
+print "map_locations = $map_locations<br>\n";
+print "LOGPATH = $LOGPATH<br>\n";
+print "LOGFILE = $LOGFILE<br>\n";
+
+// free result set
+mysqli_free_result($result);
+
+$LOGFILE = $LOGPATH."/".$LOGFILE;
+
+// temporarily set LOCATIONSFILE until can read location data from the db table
+if ( $map_locations == "rof_westernfront_locations" ) {
+	$LOCATIONSFILE = "RoF_locations.csv";
+} elseif ( $map_locations == "rof_channel_locations") {
+	$LOCATIONSFILE = "Channel_all_locations.csv";
+}
+
+print "temporary LOCATIONSFILE = $LOCATIONSFILE<br>\n";
 
 // End individual variables
 
@@ -149,58 +130,12 @@ $Coalitions = array (
 "6"=>"Corsairs",
 "7"=>"Future");
 
-// campaign settings
-if ($YANKEEDOODLE) {
-   $FinishFlightonlylanded = 1;
-   $SHOWAF = 1;
-   $VERDUN = 0;
-   $LAKE = 0;
-   $CHANNEL = 0;
-}
-
-if ($BLOODYAPRIL) {
-   $FinishFlightonlylanded = 1;
-   $SHOWAF = 1;
-   $VERDUN = 0;
-   $LAKE = 0;
-   $CHANNEL = 0;
-}
-
-if ($SKIESOFTHEEMPIRES) {
-   $FinishFlightonlylanded = 1;
-   $SHOWAF = 0;
-   $VERDUN = 1;
-   $LAKE = 0;
-   $CHANNEL = 0;
-   $Coalitions = array (
-   "0"=>"Neutral",
-   "1"=>"British Commonwealth & Allied Forces",
-   "2"=>"U.S.A and Central Alliance",
-   "3"=>"War Dogs",
-   "4"=>"Mercenaries",
-   "5"=>"Knights",
-   "6"=>"Corsairs",
-   "7"=>"Future");
-}
-
-if ($FLANDERSEAGLES) {
-   $FinishFlightonlylanded = 1;
-   $SHOWAF = 1;
-   $VERDUN = 0;
-   $LAKE = 0;
-   $CHANNEL = 1;
-}
-
 // select appropriate locations file
 // Chose map: Verdun, Lake, Channel or default to main Western Front map
 if ($VERDUN) {
    $LOCATIONSFILE = "Verdun_locations.csv";
    } elseif ($LAKE) {
    $LOCATIONSFILE = "Lake_locations.csv";
-   } elseif ($CHANNEL) {
-   $LOCATIONSFILE = "Channel_all_locations.csv";
-   } else { // default
-   $LOCATIONSFILE = "RoF_locations.csv";
 }
 
 // now that we know which to use, read in the locations file
