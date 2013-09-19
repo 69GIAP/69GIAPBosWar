@@ -22,9 +22,7 @@
     
             <div id="content">
 				<p>As this is the main screen the user sees we will put navigation description and general information on the tool in here.</p>
-            	<?php 
-					# include ( 'includes/getCampaigns.php' ); 
-				?>
+            	<?php include ( 'includes/getCampaigns.php' ); ?>
 
             </div>
     
