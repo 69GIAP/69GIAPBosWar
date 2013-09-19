@@ -1,10 +1,8 @@
 <?php
 	# cleans out the session if the user visited already a subsection and loaded the index.php
-	if (!empty ($session['game']))
-			{
-				session_destroy();
-			}
-	
+	if (!empty ($session['game'])) {
+		session_destroy();
+		}
 	session_start();
 	
 	# clean session variables in case user simply reloades index screen and tries to access a differnet layout

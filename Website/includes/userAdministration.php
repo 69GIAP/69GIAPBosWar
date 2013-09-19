@@ -11,23 +11,32 @@
         echo "<h3>Registered Administrators:</h3>\n";
         $sql = "SELECT * FROM users u  LEFT JOIN campaign_users c ON u.user_id = c.user_id ORDER BY role, username";
     }
-    else
-    if ($userRole == "redGroundAdmin" or $userRole == "redAirAdmin")
+    else if ($userRole == "redGroundAdmin" or $userRole == "redAirAdmin")
     {
         echo "<h3>Registered Red Admins:</h3>\n";
-        $sql = "SELECT * FROM users WHERE role like \"redAirAdmin\" OR role like \"redGroundAdmin\" ORDER BY role, username";
+        $sql = "SELECT u.*, c.camp_db 
+				FROM users u
+				LEFT JOIN campaign_users c
+				ON u.user_id = c.user_id
+				WHERE  u.role like \"%red%\"";
     }
-    else
-    if ($userRole == "blueGroundAdmin" or $userRole == "blueAirAdmin")
+    else if ($userRole == "blueGroundAdmin" or $userRole == "blueAirAdmin")
     {
         echo "<h3>Registered Blue Admins:</h3>\n";
-        $sql = "SELECT * FROM users WHERE role like \"blueAirAdmin\" OR role like \"blueGroundAdmin\" ORDER BY role, username";
+        $sql = "SELECT u.*, c.camp_db 
+				FROM users u
+				LEFT JOIN campaign_users c
+				ON u.user_id = c.user_id
+				WHERE  u.role like \"%blue%\"";
     }
-    else
-    if ($userRole == "viewer")
+    else if ($userRole == "viewer")
     {
         echo "<h3>Registered Viewers:</h3>\n";
-        $sql = "SELECT * FROM users WHERE role like \"viewer\" ORDER BY role, username";
+        $sql =  "SELECT u.*, c.camp_db 
+				FROM users u
+				LEFT JOIN campaign_users c
+				ON u.user_id = c.user_id
+				WHERE  u.role like \"%viewer%\"";
     }
     
     if(!$result = $dbc->query($sql)){

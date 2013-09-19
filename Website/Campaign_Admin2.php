@@ -1,6 +1,4 @@
 <?php 
-# creates a new session for tracking the user is logged on 
-session_start(); 
 
 # Incorporate the MySQL connection script.
 require ( '../connect_db.php' );

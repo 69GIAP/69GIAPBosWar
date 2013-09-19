@@ -1,6 +1,4 @@
 <?php 
-# creates a new session for tracking the user is logged on 
-	session_start(); 
 
 # Incorporate the MySQL debug script.
 	require ( 'includes/debug.php' );
@@ -35,8 +33,6 @@
 					$userRole = $_POST["role"];	
 				# campaign database
 					$campdb = $_POST["campdb"];
-				# campaign database for removal
-					$remCampdb = $_POST["remCampdb"];					
 
 				# get user name
 					$sql = "SELECT username FROM users WHERE user_id = $id";
@@ -74,7 +70,7 @@
 				# remove a user from a campaign
 				if (($_POST["modify"] == 4))
 					{	
-						$sql = "DELETE FROM campaign_users where user_id = '$id' and camp_db = '$remCampdb'";
+						$sql = "DELETE FROM campaign_users where user_id = '$id' and camp_db = '$campdb'";
 					}										
 				
 				# Feedback success or failure

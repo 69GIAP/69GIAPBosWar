@@ -23,23 +23,16 @@
 								<label for="modify"></label>
                                 <button type="modify" name="modify" value ="2" >Update Role</button></li>
                             
-                            <li><label for="campdb">Assign Campaign</label>
+                            <li><label for="campdb">Assign/Remove Campaign</label>
                                  <!-- this name element defines the variable name -->
                                 <select name="campdb">
                                 <!-- Load all active campaigns out of the campaign_settings table -->
-                                <?php	include 'includes/getActiveCampaigns.php' ?></select>
+                                <?php	include 'includes/getActiveCampaigns.php' ?></select></li>
                                 
-                                <label for="modify"></label>
-                                <button type="modify" name="modify" value ="3" >Assign to Campaign</button></li>
-                                
-							<li><label for="remCampdb">Remove User From Campaign</label>
-                                 <!-- this name element defines the variable name -->
-                                <select name="remCampdb">
-                                <!-- Load all active campaigns out of the campaign_settings table -->
-                                <?php	include 'includes/getActiveCampaigns.php' ?></select>
-                                
-                                <label for="modify"></label>
-                                <button type="modify" name="modify" value ="4" >Remove from Campaign</button></li> 
+							<li><label for="modify"></label>
+                                <button class="UserMgmtHalfButton1" type="modify" name="modify" value ="3" >Assign</button>
+                            	<label for="modify"></label>
+                                <button class="UserMgmtHalfButton2" type="modify" name="modify" value ="4" >Remove</button></li> 
                                                                                
                             <li><label for="modify"></label>
                                 <button type="modify" name="modify" value ="0" >!! Delete User !!</button></li>

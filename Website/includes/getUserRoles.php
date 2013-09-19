@@ -1,6 +1,18 @@
 <?php          
-	# load the query into a varibale
-	$query = "SELECT * FROM roles";
+	# load the query into a variable dependent on the role the user owns
+
+	if ($userRole == "administrator") 
+		{
+			$query = "SELECT * FROM roles";
+		}
+	if ($userRole == "redGroundAdmin" or $userRole == "redAirAdmin")
+		{
+			$query = "SELECT * FROM roles where role like \"%red%\"";
+		}
+	if ($userRole == "blueGroundAdmin" or $userRole == "blueAirAdmin")
+		{
+			$query = "SELECT * FROM roles where role like \"%blue%\"";
+		}
 	
 	if(!$result = $dbc->query($query))
 		{

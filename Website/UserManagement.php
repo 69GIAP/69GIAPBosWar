@@ -1,6 +1,4 @@
 <?php 
-# creates a new session for tracking the user is logged on 
-	session_start(); 
 
 # Incorporate the MySQL debug script.
 	require ( 'includes/debug.php' );
@@ -27,8 +25,8 @@
 					include ( 'includes/errorNotLoggedOn.php' );
 					# show user administration due to User role
 					if ($userRole == "administrator" 
-						OR $userRole == "redAirAdmin" or $userRole == "redGroundAdmin" 
-						OR $userRole == "blueAirAdmin" or $userRole == "blueGroundAdmin")
+						OR $userRole == "redAirAdmin" OR $userRole == "redGroundAdmin" 
+						OR $userRole == "blueAirAdmin" OR $userRole == "blueGroundAdmin")
 						{
 							include ( 'includes/userAdministration.php' );
 						}

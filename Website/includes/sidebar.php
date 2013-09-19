@@ -6,7 +6,7 @@
 				if (!empty($_SESSION["username"]))
 					{		
 							# get user role
-							$userRole	= $_SESSION["userRole"];
+							$userRole = $_SESSION["userRole"];
 							
 							# check if a navigation button was pressed
 							if (!empty($_SESSION['btn']))

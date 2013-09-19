@@ -1,3 +1,10 @@
+<?php
+
+# creates a new session for tracking the user is logged on 
+# This is the one and only seesion start on each page
+session_start(); 
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -29,8 +36,8 @@
 	if (empty($_GET["btn"])) {
 		$btn = "";}
 	else {
-		$_SESSION['btn']	= $_GET["btn"];
-		$btn 				= $_SESSION['btn'];}
+		$_SESSION['btn'] = $_GET["btn"];
+		$btn 			 = $_SESSION['btn'];}
 		  
 	# check if a there is already a userRole defined
 	if (empty($_SESSION['userRole'])) {
