@@ -1,0 +1,483 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	background-color: #293442;	
+	}
+
+body.index {
+	background-color: #CCC;
+	}
+
+html {
+	line-height: 1.5em;	
+	}
+
+h1 {
+	padding: 0;
+	margin: 0;
+	line-height: 1.5em;
+	text-align: center;
+	font-family: Candara, sans-serif;
+	}
+
+p {
+	padding: 20px;
+	margin: 0;
+	font-family: Candara, sans-serif;
+	}
+	
+/************************************************************************
+/* Header Styles */
+#header {
+	background-color: #293442;
+	color: #E6E6E6;
+	height:165px;
+	background: url(../img/BosWar_Header_bg.png) repeat-x;
+	z-index: 10;		
+	}
+
+
+div.userLoggedOnInfo {
+	position:absolute;
+	top: 111px;
+	left: 20px;
+	width: auto;
+	height: auto;
+	font-size: 12px;
+	color: #E6E6E6;
+	z-index: 10;
+	}
+
+#titleBosWar {
+	position: absolute;
+	top: 27px;
+	left: 50%;
+	right:50%;
+	margin-left: -146px;
+	width: 293px;
+	height: 57px;
+	background-image: url(../img/BosWar_Title.png);
+	z-index: 999;
+	}
+
+/********************************
+Style for Index screenform elements */
+#indexRofBosWar {
+	display:block;
+	text-align:center;
+	margin-top:150px;
+	padding: 15px;
+}
+
+.RofWarBosWarSelection form {
+	display: inline-block;
+	text-align: center;
+}
+	
+.RofWarBosWarSelection * { /* target all elements contained by the form */
+	border: 0;
+	width: 293px;
+	height: 57px;
+	cursor: pointer;
+	color:transparent; /* this hides the submitted text */
+}
+
+.RofWarBosWarSelection .BosWar {
+	background: url(../img/RofWarBosWarSelectorTitle.png) no-repeat;
+	margin: 15px;
+}
+
+.RofWarBosWarSelection .RofWar {
+	background: url(../img/RofWarBosWarSelectorTitle.png) no-repeat;
+	margin: 15px;
+}
+
+.RofWarBosWarSelection *:hover {
+	background-position: 0 -57px;
+}
+.RofWarBosWarSelection .BosWar {
+	width: 293px; /* different settings for this element */
+	background-position: -293px 0;
+}
+.RofWarBosWarSelection .BosWar:hover {
+	background-position: -293px -57px;
+}
+/************************************************************************
+/* Content Styles */
+#wrapper {
+	background: url(../img/BosWar_Side_bg.gif);
+	background-position: left;
+	background-repeat: repeat-y;
+	}
+
+#container {
+	background: url(../img/BosWar_Side_bg.gif);
+	background-position: left;
+	background-repeat: repeat-y;
+	float: right;
+	margin: 0 0 0 -260px ;
+	width: 100%;
+	}
+
+#content {
+	margin: 0 0 0 245px;
+	padding: 15px;
+	background-color: #fff;
+	color: #293442;
+	min-height: 650px; /* applied min height for base setup of layout */
+	}
+
+#clearing {
+	clear: both;
+	height: 0px;
+	}
+
+/************************************************************************
+/*Sidebar Styles */
+#side {
+	float: left;
+	width: 245px;
+	color: #E6E6E6;		
+	}
+
+ul#sidebar {
+	list-style-type:none;
+	margin: 0;
+	padding: 0;	
+}
+
+ul#sidebar {
+	margin-left: 20px;
+	margin-top:	30px;
+	display: block;
+	width: 192;
+}
+
+ul#sidebar li a.redAirBanner {
+	background:url(../img/BosWar_redAirForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.redGroundBanner {
+	background:url(../img/BosWar_redGroundForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.blueAirBanner {
+	background:url(../img/BosWar_blueAirForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.blueGroundBanner {
+	background:url(../img/BosWar_blueGroundForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.adminBanner {
+	background:url(../img/BosWar_adminForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.viewerBanner {
+	background:url(../img/BosWar_viewerForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.sovietBanner {
+	background:url(../img/BosWar_sovietForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.centerBanner {
+	background:url(../img/BosWar_centerForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}	
+	
+/************************************************************************
+/*  Footer Styles */
+#footer {
+	background-color: #293442;
+	border:none;
+	color: #E6E6E6;	
+	height: 48px;	
+	}
+
+#credits {
+	position: relative;
+	right: 10px;
+	top: 10px;
+	height: auto;
+	width: auto;
+	text-align: right;
+	font-size:	11px;
+	}
+	
+div#credits p {
+	padding: 0;
+	margin: 0;
+	color: #E6E6E6;
+}	
+
+/************************************************************************
+/*  NAVIGATION */
+
+ul#navigation {
+	right: 0;
+	height:54px;
+	list-style:none;
+	margin:0;
+	padding:0;
+	padding-top:111px;
+	padding-left:245px;
+	z-index: 999;
+	}
+
+ul#navigation li {
+	float:left;
+	}
+
+ul#navigation li a {
+	background:url(../img/BosWar_NavMenuLeftSprite.png) no-repeat scroll top left;
+	display:block;
+	height:54px;
+	position:relative;
+	}
+
+ul#navigation li a.home {
+	width:96px;
+	}
+ul#navigation li a.userMgmt {
+	width:96px;
+	background-position:-96px 0px;
+	}
+ul#navigation li a.campMgmt {
+	width:96px;
+	background-position:-192px 0px;
+	}	
+
+ul#navigation li a span {
+	background:url(../img/BosWar_NavMenuLeftSprite.png) no-repeat scroll bottom left;
+	display:block;
+	position:absolute;
+	top:0;
+	left:0;
+	height:100%;
+	width:100%;
+	z-index:100;
+	}
+
+ul#navigation li a.home span {
+	background-position:0px -54px;
+	}
+ul#navigation li a.userMgmt span {
+	width:95px;
+	background-position:-96px -54px;
+	}
+ul#navigation li a.campMgmt span {
+	width:95px;
+	background-position:-192px -54px;
+	}	
+
+
+ul#navigation li a span:hover {
+	cursor:pointer;
+	}
+
+ul#register {
+	position: absolute;
+	right: 10%;
+	top: 111px;
+	height:54px;
+	width: auto;
+	list-style:none;
+	margin:0;
+	padding:0;
+	z-index: 1000;
+	}
+
+ul#register li {
+	float:left;
+	}
+
+ul#register li a {
+	background:url(../img/BosWar_NavMenuRightSprite.png) no-repeat scroll top left;
+	display:block;
+	height:54px;
+	position:relative;
+	}
+
+ul#register li a.register {
+	width: 84px;
+	}
+
+ul#register li a.login {
+	width: 84px;
+	background-position:-84px 0px;
+	}
+
+ul#register li a.logout {
+	width: 84px;
+	background-position:-168px 0px;
+	}
+
+ul#register li a span {
+	background:url(../img/BosWar_NavMenuRightSprite.png) no-repeat scroll bottom left;
+	display:block;
+	position:absolute;
+	top:0;
+	left:0;
+	height:100%;
+	width:100%;
+	z-index:100;
+	}
+
+ul#register li a.register span {
+	background-position:0px -54px;
+	}
+
+ul#register li a.login span {
+	width: 83px;
+	background-position:-84px -54px;
+	}
+
+ul#register li a.logout span {
+	width: 83px;
+	background-position:-168px -54px;
+	}
+
+ul#register li a span:hover {
+	cursor:pointer;
+	}
+
+/**************************************************************************
+/* Form styles */
+	
+fieldset.boswar {
+	width: 380px;
+	border: none;	
+	}
+	
+fieldset.boswar ul, fieldset li{
+	border:0;
+	margin:0; 
+	width: 360px;
+	padding:5px; 
+	list-style:none;
+	}
+
+fieldset.boswar li{
+	clear:both;
+	list-style:none;
+	padding-bottom:10px;
+	padding-top: 5px;
+	}
+
+fieldset.boswar input{
+	float:left;
+	width: 210px;
+	}
+
+fieldset.boswar select{
+	float:left;
+	width: 215px;
+	}
+
+fieldset.boswar label{
+	width:140px;
+	float:left;
+	}
+
+fieldset.boswar button{
+	width: 150px;
+	margin-left: 160px;
+}
+/**************/
+fieldset.UserMgmt {
+	width: 400px;
+	border: 0;	
+	}
+	
+fieldset.UserMgmt ul, fieldset li {
+	border: 0;
+	margin: 0; 
+	width: 380px;
+	padding: 5px; 
+	list-style: none;
+	}
+
+fieldset.UserMgmt li{
+	clear: both;
+	list-style: none;
+	padding-bottom: 10px;
+	padding-top: 5px;
+	}
+
+fieldset.UserMgmt input{
+	float: left;
+	width: 210px;
+	}
+
+fieldset.UserMgmt select{
+	float: left;
+	width: 210px;
+	}
+
+fieldset.UserMgmt label{
+	width:140px;
+	float:left;
+	}
+
+fieldset.UserMgmt button{
+	width: 210px;
+	margin-left: 140px;
+}
+
+/*************************************************************************************
+/* statistic table styles */
+
+#statistics {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	width:100%;
+	border-collapse:collapse;
+}
+
+#statistics td, #statistics th {
+	font-size:1em;
+	border:1px solid #771D1D;
+	padding:3px 7px 2px 7px;
+}
+	
+#statistics th {
+	font-size:1.1em;
+	text-align:left;
+	padding-top:5px;
+	padding-bottom:4px;
+	background-color: #A62020;
+	color:#ffffff;
+}
+	
+#statistics tr.odd td {
+	color:#000000;
+	background-color:#FEFBFB;
+}
+#statistics tr.even td {
+	color:#000000;
+	background-color:#F9E6E6;
+}
