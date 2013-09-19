@@ -16,7 +16,6 @@ $start=explode(" ",$start);
 $start=$start[1]+$start[0];
 
 // Begin Configuration - Edit these as needed.
-// set variables (these will be obsoleted by campaign_settings)
 
 // Debugging variables
 $DEBUG = 0;  // set to 1 for a complete debugging report, 0 for off.
@@ -27,26 +26,16 @@ $DEBUG = 0;  // set to 1 for a complete debugging report, 0 for off.
 // 113 for INFLUENCEAREA_HEADER, 114 for INFLUENCEAREA_BOUNDARY,
 // 115 for VERSION (nothing yet for BOTID... haven't found its use)
 
-// Individual variables
-// Usually you will skip these.
-// If already set as campaign variables, they don't need to be set here
-// and the campaign settings will override any set here.
+// Declare camp_link a global variable.
+global $camp_link;  // link to campaign db
 
-// Map variables (default is the main "Western Front" map)
-// Set $VERDUN to 1 to use the Verdun map, otherwise 0.
-$VERDUN = 0;
-// Or Set $LAKE to 1 to use the Lake map, otherwise 0.
-$LAKE = 0;
-// Or Set $CHANNEL to 1 to use the Channel map, otherwise 0.
-$CHANNEL = 0;
-
-/* Select queries return a resultset */
+// Get Individual variables from the campaign's campaign_settings table
 $query = "SELECT * FROM campaign_settings";
 if(!$result = $camp_link->query($query))
-   { die('There was an error running the query [' . $db_link->error . ']'); }
+   { die('There was an error running the query [' . $camp_link->error . ']'); }
 	
 if ($result = mysqli_query($camp_link, $query)) {
-	 /* fetch associative array */
+	 // get results
 	 while ($obj = mysqli_fetch_object($result)) {
 		$SHOWAF	=($obj->show_airfield);
 		$FinishFlightOnlyLanded = ($obj->finish_flight_only_landed);
@@ -54,8 +43,10 @@ if ($result = mysqli_query($camp_link, $query)) {
 		$LOGPATH	=($obj->logpath);
 		$LOGFILE	=($obj->logfile);
 	}
+        // free result set
+	mysqli_free_result($result);
 }
-# debugging
+// debugging
 print "DEBUGGING: rof_parse_log.php parser configuration:<br>\n";
 print "SHOWAF = $SHOWAF<br>\n";
 print "FinishFlightOnlyLanded = $FinishFlightOnlyLanded<br>\n";
@@ -63,9 +54,7 @@ print "map_locations = $map_locations<br>\n";
 print "LOGPATH = $LOGPATH<br>\n";
 print "LOGFILE = $LOGFILE<br>\n";
 
-// free result set
-mysqli_free_result($result);
-
+// Set path to logfile relative to parser
 $LOGFILE = $LOGPATH."/".$LOGFILE;
 
 // temporarily set LOCATIONSFILE until can read location data from the db table
@@ -73,8 +62,13 @@ if ( $map_locations == "rof_westernfront_locations" ) {
 	$LOCATIONSFILE = "RoF_locations.csv";
 } elseif ( $map_locations == "rof_channel_locations") {
 	$LOCATIONSFILE = "Channel_all_locations.csv";
+} elseif ( $map_locations == "rof_lake_locations") {
+	$LOCATIONSFILE = "Lake_locations.csv";
+} elseif ( $map_locations == "rof_verdun_locations") {
+	$LOCATIONSFILE = "Verdun_locations.csv";
 }
 
+// debugging
 print "temporary LOCATIONSFILE = $LOCATIONSFILE<br>\n";
 
 // End individual variables
@@ -96,47 +90,6 @@ $numevents = 0; // total number of events
 $numgroups = 0; // total number of groups
 $numB = 0; // number of boundary definitions
 $numiaheaders = 0; // number of influence area headers
-
-// set fixed data arrays
-// these might need to be updated as new things are added 
-// perhaps put these in a separate initialization file? 
-// At the momoment only need the $Countries and $Coalitions arrays,
-// so I moved the others to a "spare parts" file.
-
-$Countries = array (
-"000"=>"Neutral",
-"101"=>"France",
-"102"=>"Great Britain",
-"103"=>"USA",
-"104"=>"Italy",
-"105"=>"Russia",
-"501"=>"Germany ",
-"502"=>"Austro-Hungary",
-"610"=>"War Dogs Country",
-"620"=>"Mercenaries Country",
-"630"=>"Knights Country",
-"640"=>"Corsairs Country",
-"600"=>"Future Country");
-
-// default coalitions... can be overridden by campaign settings
-// see the example below for SKIESOFTHEEMPIIRES
-$Coalitions = array (
-"0"=>"Neutral",
-"1"=>"Entente",
-"2"=>"Central Powers",
-"3"=>"War Dogs",
-"4"=>"Mercenaries",
-"5"=>"Knights",
-"6"=>"Corsairs",
-"7"=>"Future");
-
-// select appropriate locations file
-// Chose map: Verdun, Lake, Channel or default to main Western Front map
-if ($VERDUN) {
-   $LOCATIONSFILE = "Verdun_locations.csv";
-   } elseif ($LAKE) {
-   $LOCATIONSFILE = "Lake_locations.csv";
-}
 
 // now that we know which to use, read in the locations file
 GETLOCATIONS($LOCATIONSFILE);
@@ -1332,53 +1285,47 @@ function COALITION($ckey) {
    }
 }
 
-function COALITIONNAME($ckey) {
-// look up coalition name from country ID#
+function COALITIONNAME($CoalID) {
+// look up coalition name from Coalition ID#
+   global $camp_link;  // link to campaign db
    global $Coalitions; // array of coalition names
    global $Coalitionname; // this coalition name 
 
-   $coalitionname = "";
-   asort ($Coalitions);
-   while (list ($key, $val) = each ($Coalitions)) {
-      if ($ckey == $key) {
-         $Coalitionname = $val;
+   $query = "SELECT * FROM rof_coalitions WHERE CoalID = '$CoalID'";
+   // if no result report error  (could do this as an 'else' clause also)
+   if(!$result = $camp_link->query($query)) {
+      die('There was an error running the query [' . $camp_link->error . ']'); }
+   if ($result = mysqli_query($camp_link, $query)) {
+      while ($obj = mysqli_fetch_object($result)) {
+         $Coalitionname	=($obj->Coalitionname);
       }
+      // free result set
+      mysqli_free_result($result);
    }
 }
 
 function COUNTRYNAME($ckey) {
 // look up country name from ID#
 // and also report the adjective form
-   global $Countries;  // countries
+   global $camp_link;  // link to campaign db
    global $countryname; // country name
    global $countryadj;  // adjective form of country name  
    
    $countryname = "";
-   $found = 0;
-
-   asort ($Countries);
-   while (list ($key, $val) = each ($Countries)) {
-      if ($ckey == $key) {
-         $countryname = $val;
-         $found = 1;
+   $countrynadj = "";
+   $query = "SELECT * FROM rof_countries WHERE ckey = '$ckey'";
+   // if no result report error  (could do this as an 'else' clause also)
+   if(!$result = $camp_link->query($query)) {
+      die('There was an error running the query [' . $camp_link->error . ']'); }
+   if ($result = mysqli_query($camp_link, $query)) {
+      while ($obj = mysqli_fetch_object($result)) {
+         $countryname	=($obj->countryname);
+         $countryadj	=($obj->countryadj);
       }
+      // free result set
+      mysqli_free_result($result);
    }
-   if ($ckey == "000") { $countryadj = "neutral";}
-   if ($ckey == "101") { $countryadj = "French";}
-   if ($ckey == "102") { $countryadj = "British";}
-   if ($ckey == "103") { $countryadj = "American";}
-   if ($ckey == "104") { $countryadj = "Italian";}
-   if ($ckey == "105") { $countryadj = "Russian";}
-   if ($ckey == "501") { $countryadj = "German"; }
-   if ($ckey == "502") { $countryadj = "Austro-Hungarian";}
-   if ($ckey == "600") { $countryadj = "Future";}
-   if ($ckey == "610") { $countryadj = "War Dogs";}
-   if ($ckey == "620") { $countryadj = "Mercenaries";}
-   if ($ckey == "630") { $countryadj = "Knights";}
-   if ($ckey == "640") { $countryadj = "Corsairs";}
-   if (!$found) {
-      $countryname = "Unknown Country";
-   }
+
 //   echo "ckey = $ckey, countryname = $countryname, countryadj = $countryadj<br>\n";
 }
 
