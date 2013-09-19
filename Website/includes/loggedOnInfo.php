@@ -16,7 +16,7 @@
 				}
         }
        else
-        {
-            echo "<div class=\"userLoggedOnInfo\">Commanders should log in.</div>\n";
+        {	
+            echo "<div class=\"userLoggedOnInfo\">Commanders should log in.<br></div>\n";
         }
 ?>        

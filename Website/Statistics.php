@@ -26,7 +26,7 @@
             <div id="content">
 <?php
     # get campaign database name from previous POST.
-       $camp_db = $_POST["db"];
+     $camp_db = $_POST["camp_db"];
 
     # use it to get remaining variables
 	$query = "SELECT * from campaign_settings where camp_db = '$camp_db'";   
