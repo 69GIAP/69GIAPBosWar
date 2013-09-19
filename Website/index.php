@@ -47,7 +47,7 @@
                  
             <div id="indexRofBosWar">
             
-            <p>Please click to select</p>
+            <p>Please select the version of the mission planner</p>
             
             <!-- the variable "selection" is used to define the loaded stylesheet in the header -->
             <form name="selectApplication" action="indexBosWarRofWar.php" method="post" class="RofWarBosWarSelection">                
