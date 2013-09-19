@@ -4,8 +4,8 @@
 // mission report textfiles
 // written by =69.GIAP=TUSHKA
 // 2011-2013
-// Version 69GIAPBoSWar 0.3
-// Wed Sep 18 2013
+// Version 69GIAPBoSWar 0.4
+// Thu Sep 19 2013
 //
 
 // the main program 
@@ -26,8 +26,6 @@ $DEBUG = 0;  // set to 1 for a complete debugging report, 0 for off.
 // 113 for INFLUENCEAREA_HEADER, 114 for INFLUENCEAREA_BOUNDARY,
 // 115 for VERSION (nothing yet for BOTID... haven't found its use)
 
-// Declare camp_link a global variable.
-global $camp_link;  // link to campaign db
 
 // Get Individual variables from the campaign's campaign_settings table
 $query = "SELECT * FROM campaign_settings";
@@ -54,22 +52,14 @@ print "map_locations = $map_locations<br>\n";
 print "LOGPATH = $LOGPATH<br>\n";
 print "LOGFILE = $LOGFILE<br>\n";
 
+// Declare global variables.
+// This permits us to see these in functions without using them as
+// arguments to the functions.  Lazy but effective!
+global $camp_link;  // link to campaign db
+global $map_locations;  // name of campaign locations file
+
 // Set path to logfile relative to parser
 $LOGFILE = $LOGPATH."/".$LOGFILE;
-
-// temporarily set LOCATIONSFILE until can read location data from the db table
-if ( $map_locations == "rof_westernfront_locations" ) {
-	$LOCATIONSFILE = "RoF_locations.csv";
-} elseif ( $map_locations == "rof_channel_locations") {
-	$LOCATIONSFILE = "Channel_all_locations.csv";
-} elseif ( $map_locations == "rof_lake_locations") {
-	$LOCATIONSFILE = "Lake_locations.csv";
-} elseif ( $map_locations == "rof_verdun_locations") {
-	$LOCATIONSFILE = "Verdun_locations.csv";
-}
-
-// debugging
-print "temporary LOCATIONSFILE = $LOCATIONSFILE<br>\n";
 
 // End individual variables
 
@@ -90,9 +80,6 @@ $numevents = 0; // total number of events
 $numgroups = 0; // total number of groups
 $numB = 0; // number of boundary definitions
 $numiaheaders = 0; // number of influence area headers
-
-// now that we know which to use, read in the locations file
-GETLOCATIONS($LOCATIONSFILE);
 
 // now get to work on the log itself
 if (file_exists("$LOGFILE")) {
@@ -202,36 +189,11 @@ class pointLocation {
 
 
 // FUNCTIONS (in roughly the order they are used)
-// First GETLOCATIONS, READLOG and PARSE
+// First READLOG and PARSE
 // Then the functions that PARSE calls for each AType record
 // Then PROCESS and the functions that it calls
 // Then the functions that OUTPUT calls
 // and finally OUTPUT itself
-
-function GETLOCATIONS($LOCATIONSFILE) {
-// Create a line-by-line array from a tab-separated locations file
-   global $Locs; // locations
-   global $numlocs; // number of locations
-   global $LID; // location ID
-   global $LX; // location X coordinate
-   global $LZ; // location Z coordinate
-   global $LName; // location name
-
-// example
-// LID  LX      LZ      LName
-// 51   171499  60879.05        "Acheler"
-
-   $Locs = file("$LOCATIONSFILE");
-   $numlocs = count($Locs);
-   for ($i=0; $i<$numlocs; $i++) {
-      $Part = explode("\t",$Locs[$i],4);
-      $LID[$i] = $Part[0];
-      $LX[$i] = $Part[1];
-      $LZ[$i] = $Part[2];
-      $LName[$i] = preg_replace("/\"/","",$Part[3]); // strip off quotes
-//      echo "LID = $LID[$i], LX = $LX[$i], LZ = $LZ[$i], LName = $LName[$i]<br>\n";
-   }
-}
 
 function READLOG($LOGFILE) {
 // Create a line-by-line array from the log file
@@ -1973,6 +1935,8 @@ function TOFROM($where) {
 function WHERE($x,$z,$fieldonly) {
 // find closest location and vaguely describe distance from it
 // if $fieldonly is 1 check airfields only
+   global $camp_link;  // link to campaign db
+   global $map_locations;  // name of campaign locations file
    global $Locs; // locations
    global $playername; // player name from PLID
    global $numlocs; // number of locations
@@ -1983,39 +1947,65 @@ function WHERE($x,$z,$fieldonly) {
    global $where; // position in english
    global $SHOWAF; // Show airfield names (binary)
 
-   $mindist = 100000;
+   // set starting conditions
+   $mindist = 20001; // 20 km plus a meter
    $minname = "";
    $mintype = 0;
    $minfield = "";
 
-//   echo "X = $x, Z = $z<br>\n";
-   // echo "numlocs = $numlocs<br>\n";
-   // find closest location using brute force... only 660/743 locations to check.  :)
-   // Tried to see if restricting calculations to a certain square helped any.  It didn't :)
-   for ($i=0; $i<$numlocs; $i++) {
-      if ($fieldonly) {
-         if (( $LID[$i] == "10" ) || ( $LID[$i] == "20" )) {
-            $distance[$i] = sqrt(pow($x -$LX[$i],2) + pow($z - $LZ[$i],2));
-            if ( $mindist > $distance[$i]) {
-               $mintype = $LID[$i];
-               $mindist = $distance[$i];
-               $minname = $LName[$i];
-//               echo "$mindist from $LName[$i]<br>\n";
-            }
+//   $query = "SELECT * FROM '$map_locations'";
+   $query = "SELECT * FROM $map_locations";
+   // if no result report error  (could do this as an 'else' clause also)
+   if(!$result = $camp_link->query($query)) {
+      die('There was an error running the query [' . $camp_link->error . ']');
+   }
+
+// find closest location using brute force... only 660/743 locations to check.  :)
+ // Tried to see if restricting calculations to a certain square helped any.
+ // It didn't :)
+   if ($fieldonly) {
+      if ($result = mysqli_query($camp_link, $query)) {
+         while ($obj = mysqli_fetch_object($result)) {
+            $LID=($obj->LID);
+            $LX	=($obj->LX);
+            $LZ	=($obj->LZ);
+            $LName =($obj->LName);
+
+	    // check airfields only
+            if (( $LID == "10" ) || ( $LID == "20" )) {
+	       // check if this location is closer
+               $distance = sqrt(pow($x -$LX,2) + pow($z - $LZ,2));
+               if ( $mindist > $distance) {
+                  $mintype = $LID;
+                  $mindist = $distance;
+                  $minname = $LName;
+//                 echo "$mindist from $LName<br>\n";
+	       }
+	    }
          }
-// try to speed things up a bit here --- but it is no help at all!
-//      } elseif ( abs ($x -$LX[$i]) > 20000 ) { ; // skip calculation
-//      } elseif ( abs ($z -$LZ[$i]) > 20000 ) { ; // skip calculation
-      } else {
-         $distance[$i] = sqrt(pow($x -$LX[$i],2) + pow($z - $LZ[$i],2));
-         if ( $mindist > $distance[$i]) {
-            $mintype = $LID[$i];
-            $mindist = $distance[$i];
-            $minname = $LName[$i];
-//            echo "$mindist from $LName[$i]<br>\n";
+      }
+   } else {
+      if ($result = mysqli_query($camp_link, $query)) {
+         while ($obj = mysqli_fetch_object($result)) {
+            $LID=($obj->LID);
+            $LX	=($obj->LX);
+            $LZ	=($obj->LZ);
+            $LName =($obj->LName);
+
+	    // check if this location is closer
+            $distance = sqrt(pow($x -$LX,2) + pow($z - $LZ,2));
+            if ( $mindist > $distance) {
+               $mintype = $LID;
+               $mindist = $distance;
+               $minname = $LName;
+//               echo "$mindist from $LName<br>\n";
+	    }
          }
       }
    }
+   // free result set
+   mysqli_free_result($result);
+
    //echo "$mindist from $minname<br>\n";
    // translate distances into appropriate but vague modifiers
    if ($mindist < 750) { $desc = "at"; }
