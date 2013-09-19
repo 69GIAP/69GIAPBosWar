@@ -53,48 +53,40 @@
 										$airfieldCoalitionName		=($obj->Coalitionname);
 									}
 								
-								# print results to form
+								# print results to form with drop menus and prefilled data
 								echo "<fieldset class=\"boswar\">\n";
 								echo "	<form  name=\"airfieldModify\"  action=\"airfieldManagementModify.php\" method=\"post\">\n";
+								# POST value READONLY
+								
 								echo "		<li> <label for=\"airfieldName\">Airfield Name:<br></label>\n";
-								echo "		<input type=\"text\" name=\"airfieldName\" id=\"airfieldName\" placeholder='$airfieldName' size=\"24\" maxlength=\"50\" />\n";
+								echo "		<input readonly=\"readonly\" type=\"text\" name=\"airfieldName\" id=\"airfieldName\" placeholder='$airfieldName' size=\"24\" maxlength=\"50\" />\n";
 								echo "		</li>\n";
 								
+								# POST value READONLY
 								echo "		<li> <label for=\"airfieldCoalition\">Coalition:<br></label>\n";
-								echo "		<input type=\"text\" name=\"airfieldCoalition\" id=\"airfieldCoalition\" placeholder='$airfieldCoalitionName' size=\"24\" maxlength=\"50\" />\n";
+								echo "		<input readonly=\"readonly\" type=\"text\" name=\"airfieldCoalition\" id=\"airfieldCoalition\" placeholder='$airfieldCoalitionName' size=\"24\" maxlength=\"50\" />\n";
 								echo "		</li>\n";
 								
+								# POST value READONLY
 								echo "		<li> <label for=\"airfieldModel\">Aircraft:<br></label>\n";
-								echo "		<input type=\"text\" name=\"airfieldModel\" id=\"airfieldModel\" placeholder='$airfieldModel' size=\"24\" maxlength=\"50\" />\n";
+								echo "		<input readonly=\"readonly\" type=\"text\" name=\"airfieldModel\" id=\"airfieldModel\" placeholder='$airfieldModel' size=\"24\" maxlength=\"50\" />\n";
 								echo "		</li>\n";
 								
-								echo "		<li> <label for=\"airfieldNumber\">Quantity:<br></label>\n";
-								echo "		<input type=\"text\" name=\"airfieldNumber\" id=\"airfieldNumber\" placeholder='$airfieldNumber' size=\"24\" maxlength=\"50\" />\n";
+								# USER INPUT value
+								echo "		<li> <label for=\"airfieldModel\">Select Aircraft</label>\n";
+								echo "		<select name=\"airfieldModel\">\n";
+											# include the drop down list
+											include 'includes/getAirfieldModels.php'; 
+								echo "		</select></li>\n"; 
+								
+								# POST value
+								echo "		<li> <label for=\"airfieldNumber\">Current Quantity:<br></label>\n";
+								echo "		<input readonly=\"readonly\"  type=\"text\" name=\"airfieldNumber\" id=\"airfieldNumber\" placeholder='$airfieldNumber' size=\"24\" maxlength=\"50\" />\n";
 								echo "		</li>\n";
 								
-								echo "		<li><label for=\"submit\"></label>\n";
-								echo "		<button type=\"submit\" id=\"submit\">Update</button>\n";
-								echo "		</li>\n";
-								echo "	</form>\n";
-								echo "</fieldset>\n";
-								
-								# print results to form with drop menus
-								echo "<fieldset class=\"boswar\">\n";
-								echo "	<form  name=\"airfieldModify\"  action=\"airfieldManagementModify.php\" method=\"post\">\n";
-								echo "		<li> <label for=\"airfieldName\">Airfield Name:<br></label>\n";
-								echo "		<input type=\"text\" name=\"airfieldName\" id=\"airfieldName\" placeholder='$airfieldName' size=\"24\" maxlength=\"50\" />\n";
-								echo "		</li>\n";
-								
-								echo "		<li> <label for=\"airfieldCoalition\">Coalition:<br></label>\n";
-								echo "		<input type=\"text\" name=\"airfieldCoalition\" id=\"airfieldCoalition\" placeholder='$airfieldCoalitionName' size=\"24\" maxlength=\"50\" />\n";
-								echo "		</li>\n";
-								
-								echo "		<li> <label for=\"airfieldModel\">Aircraft:<br></label>\n";
-								echo "		<input type=\"text\" name=\"airfieldModel\" id=\"airfieldModel\" placeholder='$airfieldModel' size=\"24\" maxlength=\"50\" />\n";
-								echo "		</li>\n";
-								
-								echo "		<li> <label for=\"airfieldNumber\">Quantity:<br></label>\n";
-								echo "		<input type=\"text\" name=\"airfieldNumber\" id=\"airfieldNumber\" placeholder='$airfieldNumber' size=\"24\" maxlength=\"50\" />\n";
+								# USER INPUT value
+								echo "		<li> <label for=\"airfieldNumber\">New Quantity:<br></label>\n";
+								echo "		<input type=\"text\" name=\"airfieldNumber\" id=\"airfieldNumber\" placeholder='set a number from -1 to 999' size=\"24\" maxlength=\"50\" />\n";
 								echo "		</li>\n";
 								
 								echo "		<li><label for=\"submit\"></label>\n";
@@ -105,7 +97,7 @@
 								
 							}		
 				?> 
-                
+
             </div>
     
         </div>
