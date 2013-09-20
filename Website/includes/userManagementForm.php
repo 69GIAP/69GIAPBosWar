@@ -1,7 +1,7 @@
 <!-- form for changing information in the users table -->
                 <h2>Please select the user you want to modify:</h2>
                 <fieldset class="UserMgmt">
-                    <form name="delete" action="UserManagementChange.php" method="post">
+                    <form name="delete" action="UserManagementModify.php" method="post">
                         <ul>
                             <li><label for="userid">Select User</label>
                                 <select name="userid">
