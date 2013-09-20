@@ -9,7 +9,7 @@
 // latest change - use external function for radio buttons
 
 # include the fuction that makes a radio button
-include 'includes/getRadiobuttonForStatsFunction.php';
+include 'functions/getRadiobuttonForStats.php';
 
 echo "<h3>Active $game Campaigns</h3>\n";
 
