@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2013 at 04:30 AM
+-- Generation Time: Sep 20, 2013 at 05:13 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -67,7 +67,8 @@ INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `cam
 DROP TABLE IF EXISTS `rof_coalitions`;
 CREATE TABLE IF NOT EXISTS `rof_coalitions` (
   `CoalID` int(11) NOT NULL,
-  `Coalitionname` varchar(30) NOT NULL
+  `Coalitionname` varchar(40) NOT NULL,
+  PRIMARY KEY (`CoalID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -76,8 +77,8 @@ CREATE TABLE IF NOT EXISTS `rof_coalitions` (
 
 INSERT INTO `rof_coalitions` (`CoalID`, `Coalitionname`) VALUES
 (0, 'Neutral'),
-(1, 'Entente'),
-(2, 'Central Powers'),
+(1, 'British Commonwealth & Allied Forces'),
+(2, 'U.S.A. and Central Alliance'),
 (3, 'War Dogs'),
 (4, 'Mercenaries'),
 (5, 'Knights'),
