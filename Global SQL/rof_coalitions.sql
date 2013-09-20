@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2013 at 04:59 PM
+-- Generation Time: Sep 20, 2013 at 05:07 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `rof_coalitions`;
 CREATE TABLE IF NOT EXISTS `rof_coalitions` (
   `CoalID` int(11) NOT NULL,
-  `Coalitionname` varchar(30) NOT NULL,
+  `Coalitionname` varchar(40) NOT NULL,
   PRIMARY KEY (`CoalID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
