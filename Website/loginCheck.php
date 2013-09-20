@@ -21,6 +21,7 @@
             <div id="content">
             
                 <?php
+				include ('includes/debuggingSessionVariables.php');				
 				
 				# bind POST variables into variables for easier coding
 				$username 	= 	$_POST["username"]; 
@@ -60,30 +61,10 @@
 					# bind session variable to variable
 					$_SESSION["username"] = $username;
 					
-					if($userRole == "administrator")
+					if($userRole == "administrator" or $userRole == "commander" or $userRole == "viewer")
 					{
-						header("Location: LoggedOn_Admin.php");
+						header("Location: LoggedOn.php");
 					}
-					else if($userRole == "redAirAdmin")
-					{
-						header("Location: LoggedOn_RedAirAdmin.php");
-					}
-					else if($userRole == "redGroundAdmin")
-					{
-						header("Location: LoggedOn_redGroundAdmin.php");
-					}
-					else if($userRole == "blueAirAdmin")
-					{
-						header("Location: LoggedOn_blueAirAdmin.php");
-					}
-					else if($userRole == "blueGroundAdmin")
-					{
-						header("Location: LoggedOn_blueGroundAdmin.php");
-					}
-					else if($userRole == "viewer")
-					{
-						header("Location: LoggedOn_Viewer.php");
-					}			
 					exit;
 					} 
 				else 

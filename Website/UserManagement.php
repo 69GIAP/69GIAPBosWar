@@ -21,12 +21,12 @@
             <div id="content">
                 <?php
 					include ('includes/debuggingSessionVariables.php');	
-                	# This redirects the user to the Login screen if he tries to press a button and is not logged on
+                	
+					# This redirects the user to the Login screen if he tries to press a button and is not logged on
 					include ( 'includes/errorNotLoggedOn.php' );
+					
 					# show user administration due to User role
-					if ($userRole == "administrator" 
-						OR $userRole == "redAirAdmin" OR $userRole == "redGroundAdmin" 
-						OR $userRole == "blueAirAdmin" OR $userRole == "blueGroundAdmin")
+					if ($userRole == "administrator" OR $userRole == "commander")
 						{
 							include ( 'includes/userAdministration.php' );
 						}
@@ -35,9 +35,7 @@
 							echo "<p>You don't have the necessary rights to view this content.</p>\n";
 						}					
 				?>
-                
-                
-                
+
             </div>
     
         </div>

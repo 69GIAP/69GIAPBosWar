@@ -19,7 +19,7 @@
         <div id="container">
     
             <div id="content">
-                 <?php 
+				<?php 
         
 				# check to make sure the session variable is registered 
 				if(isset($_SESSION["username"]))

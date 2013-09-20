@@ -28,22 +28,13 @@
 													echo "		<li><a href=\"#\" class=\"viewerBanner\"><span></span></a></li>\n";                               
 													echo "	</ul>\n";
 												}
-											# define what a redAirAdmin or redGroundAdmin sees in the sidebar
-											else if ($userRole == "redAirAdmin" OR $userRole == "redGroundAdmin")
+											# define what a commander sees in the sidebar
+											else if ($userRole == "commander")
 												{
-													echo "<h2>Red Admin:</h2>\n";
+													echo "<h2>Commander:</h2>\n";
 													echo "	<ul id=\"sidebar\">\n";
 													echo "		<li><a href=\"#\" class=\"redAirBanner\"><span></span></a></li>\n";
 													echo "		<li><a href=\"#\" class=\"redGroundBanner\"><span></span></a></li>\n";
-													echo "	</ul>\n";
-												}
-											# define what a blueAirAdmin or redGroundAdmin sees in the sidebar
-											else if ($userRole == "blueAirAdmin" OR $userRole == "blueGroundAdmin")
-												{
-													echo "<h2>Blue Admin:</h2>\n";
-													echo "	<ul id=\"sidebar\">\n";
-													echo "		<li><a href=\"#\" class=\"blueAirBanner\"><span></span></a></li>\n";
-													echo "		<li><a href=\"#\" class=\"blueGroundBanner\"><span></span></a></li>\n";
 													echo "	</ul>\n";
 												}
 											# define what a viewer sees in the sidebar
@@ -85,7 +76,7 @@
 															}
 														
 													}
-												if ($userRole == "redAirAdmin" OR $userRole == "redGroundAdmin" OR $userRole == "blueAirAdmin" OR $userRole == "blueGroundAdmin")
+												if ($userRole == "commander")
 													{
 														if (!empty($loadedCampaign))
 															{
@@ -110,7 +101,7 @@
 														echo "	    <li> ... </li>\n";																						
 														echo "  </ul>\n";
 													}
-												if ($userRole == "redAirAdmin" OR $userRole == "redGroundAdmin" OR $userRole == "blueAirAdmin" OR $userRole == "blueGroundAdmin")
+												if ($userRole == "commander")
 													{
 														echo "<h2>Home:</h2>\n";
 														echo "	<ul id=\"sidebar\">\n";

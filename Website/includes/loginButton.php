@@ -10,6 +10,6 @@
 	else
 		{
 			# show the logout button
-			echo "		<li><a href=\"logout.php\" class=\"logout\"><span></span></a></li>\n";
+			echo "		<li><a href=\"logoutCheck.php\" class=\"logout\"><span></span></a></li>\n";
 		}
 ?>

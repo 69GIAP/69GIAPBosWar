@@ -29,13 +29,9 @@
 						{
 							include ( 'includes/getCampaignsAdmin.php' );
 						}
-					if ($userRole == "redAirAdmin" or $userRole == "redGroundAdmin")
+					if ($userRole == "commander")
 						{
-							include ( 'includes/getCampaignsRed.php' );
-						}
-					if ($userRole == "blueAirAdmin" or $userRole == "blueGroundAdmin")
-						{
-							include ( 'includes/getCampaignsBlue.php' );
+							include ( 'includes/getCampaignsCommander.php' );
 						}
 					if ($userRole == "viewer")
 						{

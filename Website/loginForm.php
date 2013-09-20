@@ -23,7 +23,7 @@
                 <p><b>Please Login:</b></p>
                 
                 <fieldset class="boswar">
-                    <form  name="login"  action="login.php" method="post">
+                    <form  name="login"  action="loginCheck.php" method="post">
                         <li> <label for="username">Your Username:<br></label>
                         <input type="text" name="username" id="username" size="24" maxlength="50" />
                         </li>

@@ -9,25 +9,20 @@
     if ($userRole == "administrator")
     {
         echo "<h3>Registered Administrators:</h3>\n";
-        $sql = "SELECT * FROM users u  LEFT JOIN campaign_users c ON u.user_id = c.user_id ORDER BY role, username";
+        $sql = "SELECT * 
+				FROM users u  
+				LEFT JOIN campaign_users c 
+				ON u.user_id = c.user_id 
+				ORDER BY role, username";
     }
-    else if ($userRole == "redGroundAdmin" or $userRole == "redAirAdmin")
+    else if ($userRole == "commander")
     {
-        echo "<h3>Registered Red Admins:</h3>\n";
+        echo "<h3>Registered Commanders:</h3>\n";
         $sql = "SELECT u.*, c.camp_db 
 				FROM users u
 				LEFT JOIN campaign_users c
 				ON u.user_id = c.user_id
-				WHERE  u.role like \"%red%\"";
-    }
-    else if ($userRole == "blueGroundAdmin" or $userRole == "blueAirAdmin")
-    {
-        echo "<h3>Registered Blue Admins:</h3>\n";
-        $sql = "SELECT u.*, c.camp_db 
-				FROM users u
-				LEFT JOIN campaign_users c
-				ON u.user_id = c.user_id
-				WHERE  u.role like \"%blue%\"";
+				WHERE  u.role like \"%commander%\"";
     }
     else if ($userRole == "viewer")
     {
