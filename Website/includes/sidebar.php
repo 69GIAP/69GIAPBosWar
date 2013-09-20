@@ -80,7 +80,7 @@
 															{
 																echo "<h2>$loadedCampaign</h2>\n";
 																echo "	<ul id=\"sidebar\">\n";
-																echo "	    <li><a href=\"airfieldRedAdministration.php\" class=\"airfieldBanner\"><span></span></a></li>\n";
+																echo "	    <li><a href=\"airfieldModify.php\" class=\"airfieldBanner\"><span></span></a></li>\n";
 																echo "  </ul>\n";
 															}
 													}
