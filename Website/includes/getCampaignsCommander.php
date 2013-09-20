@@ -14,22 +14,6 @@
 	# get active campaigns
 	echo "<h3>Active Campaigns</h3>\n";
 	
-	# get user_id from current user
-	$username 	= $_SESSION['username'];
-	$query 		= "SELECT user_id FROM users where username = '$username' ";
-	
-	if(!$result = $dbc->query($query))
-		{ die('There was an error running the query [' . $dbc->error . ']'); }
-		
-		if ($result = mysqli_query($dbc, $query)) 
-		{
-			/* fetch associative array */
-			while ($obj = mysqli_fetch_object($result)) 
-			{
-				$user_id =($obj->user_id);
-			}
-		}
-
 	# check if commander is assigned to any active campaign
 	$query = "SELECT * FROM campaign_settings c
 				JOIN campaign_users u

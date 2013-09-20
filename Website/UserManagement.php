@@ -26,11 +26,11 @@
 					include ( 'includes/errorNotLoggedOn.php' );
 					
 					# show user administration due to User role
-					if ($userRole == "administrator" OR $userRole == "commander")
+					if ($userRole != "viewer")
 						{
 							include ( 'includes/userAdministration.php' );
 						}
-					if ($userRole == "viewer")
+					else
 						{
 							echo "<p>You don't have the necessary rights to view this content.</p>\n";
 						}					

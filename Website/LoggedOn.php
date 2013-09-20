@@ -39,7 +39,7 @@
                             {
                                 echo "<p>Logged on as <b>$userRole</b>.</p></>\n";
                                 # get the full campaign list							
-                                include ( 'includes/getCampaignsCommander.php' );
+                                include ( 'includes/getCampaignsAdmin.php' );
                             }
                         if ($userRole == "commander")
                             {

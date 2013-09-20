@@ -5,15 +5,10 @@
 		{
 			$query = "SELECT * FROM campaign_users_roles";
 		}
-	if ($userRole == "redGroundAdmin" or $userRole == "redAirAdmin")
+	if ($userRole == "commander")
 		{
-			$query = "SELECT * FROM campaign_users_roles where role like \"%red%\"";
+			$query = "SELECT * FROM campaign_users_roles where role like \"%commander%\"";
 		}
-	if ($userRole == "blueGroundAdmin" or $userRole == "blueAirAdmin")
-		{
-			$query = "SELECT * FROM campaign_users_roles where role like \"%blue%\"";
-		}
-	
 	if(!$result = $dbc->query($query))
 		{
 			die('There was an error running the query [' . $dbc->error . ']');

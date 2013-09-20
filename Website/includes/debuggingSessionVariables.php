@@ -7,5 +7,6 @@
 	echo "Loaded Game: <b>"			.$game.				"</b><br>\n";
 	echo "Loaded Button Press: <b>"	.$btn.				"</b><br>\n";
 	echo "Loaded Role: <b>"			.$userRole.			"</b><br>\n";
+	echo "Loaded User_Id: <b>"		.$user_id.			"</b><br>\n";
 	echo "</p>\n";
 ?>	

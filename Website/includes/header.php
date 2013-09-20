@@ -50,7 +50,13 @@ session_start();
 		$loadedCampaign = "";}
 	else {
 		$loadedCampaign = $_SESSION['camp_db'];}	
-
+	
+	# check if there is already a user_id assigned
+	if (empty($_SESSION['user_id'])) {
+		$user_id = "";}
+	else {
+		$user_id = $_SESSION['user_id'];}	
+	
 	# Style management
 	if ($game == "RoF")
 		{

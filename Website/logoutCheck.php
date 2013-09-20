@@ -29,6 +29,7 @@
 						unset ($_SESSION['username']); 
 						unset ($_SESSION['userRole']);
 						unset ($_SESSION['camp_db']);	
+						unset ($_SESSION['user_id']);
 						header("Location: IndexBosWarRofWar.php");
 					} 
 				else

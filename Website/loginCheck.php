@@ -50,13 +50,16 @@
 		
 				# due to users role the redirection is dynamically set to the right page
 					# gather the users role
-					$query 	= "SELECT role FROM users WHERE username LIKE '$username' LIMIT 1";
+					$query 	= "SELECT user_id,role FROM users WHERE username LIKE '$username' LIMIT 1";
 					$result	= mysqli_query($dbc, $query);
 					$row 	= mysqli_fetch_object($result);
 					
 					# bind role to SESSION
 					$_SESSION['userRole'] = ($row->role);
 					$userRole = $_SESSION['userRole'];
+					# bind user_id to SESSION
+					$_SESSION['user_id'] = ($row->user_id);
+					$user_id = $_SESSION['user_id'];					
 					
 					# bind session variable to variable
 					$_SESSION["username"] = $username;

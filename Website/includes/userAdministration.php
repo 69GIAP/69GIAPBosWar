@@ -2,8 +2,9 @@
 	# include the form to manage users
 	include ( 'includes/userManagementForm.php' );
 
-    # get the SESSION variable for the users role
-    $userRole = $_SESSION['userRole'];
+    # get the SESSION variables for the users
+    $userRole	= $_SESSION['userRole'];
+	$user_id	= $_SESSION['user_id'];	
     
     # load the query according to the user role
     if ($userRole == "administrator")
@@ -18,20 +19,10 @@
     else if ($userRole == "commander")
     {
         echo "<h3>Registered Commanders:</h3>\n";
-        $sql = "SELECT u.*, c.camp_db 
-				FROM users u
-				LEFT JOIN campaign_users c
-				ON u.user_id = c.user_id
-				WHERE  u.role like \"%commander%\"";
-    }
-    else if ($userRole == "viewer")
-    {
-        echo "<h3>Registered Viewers:</h3>\n";
-        $sql =  "SELECT u.*, c.camp_db 
-				FROM users u
-				LEFT JOIN campaign_users c
-				ON u.user_id = c.user_id
-				WHERE  u.role like \"%viewer%\"";
+        $sql = "SELECT u.*, c.camp_db from users u
+					JOIN campaign_users c
+					ON u.user_id = c.user_id 
+					AND c.camp_db in (SELECT camp_db from campaign_users WHERE user_id = '$user_id')";
     }
     
     if(!$result = $dbc->query($sql)){

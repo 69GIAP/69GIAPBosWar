@@ -1,9 +1,5 @@
-// Get Username (and ID) for a pulldown list
-// 69giapmyata
-// ver 1.2
-<?php
 
-	# load the query into a variable dependent on the role the user owns
+<?php
 
 	if ($userRole == "administrator") 
 		{
@@ -11,12 +7,19 @@
 		}
 	if ($userRole == "commander")
 		{
-			$query = "SELECT * FROM users where role like \"%commander%\"";
+			# show users who are assigned to my active campaigns are visible only
+			$query = "SELECT * from users u
+					JOIN campaign_users c
+					ON u.user_id = c.user_id 
+					AND c.camp_db in (SELECT camp_db from campaign_users WHERE user_id = '$user_id')
+					and u.user_id != '$user_id'";
 		}	
+	
 	if(!$result = $dbc->query($query))
 		{
 			die('There was an error running the query [' . $dbc->error . ']');
 		}	
+	
 	if ($result = mysqli_query($dbc, $query)) 
 		{				
 			/* fetch associative array */
