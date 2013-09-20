@@ -61,7 +61,8 @@
 					# bind session variable to variable
 					$_SESSION["username"] = $username;
 					
-					if($userRole == "administrator" or $userRole == "commander" or $userRole == "viewer")
+					# if userRole variable is asigned forward to next section
+					if(!empty($userRole))
 					{
 						header("Location: LoggedOn.php");
 					}
