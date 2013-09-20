@@ -17,7 +17,7 @@
                             <li><label for="role">Select Role</label>
                                  <!-- this name element defines the variable name -->
                                 <select name="role">
-                                <!-- Load the roles stored in the table roles to fill selector -->
+                                <!-- Load the roles stored in the table campaign_users_roles to fill selector -->
                                 <?php	include 'includes/getUserRoles.php' ?></select>
                                 
 								<label for="modify"></label>

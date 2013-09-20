@@ -3,15 +3,15 @@
 
 	if ($userRole == "administrator") 
 		{
-			$query = "SELECT * FROM roles";
+			$query = "SELECT * FROM campaign_users_roles";
 		}
 	if ($userRole == "redGroundAdmin" or $userRole == "redAirAdmin")
 		{
-			$query = "SELECT * FROM roles where role like \"%red%\"";
+			$query = "SELECT * FROM campaign_users_roles where role like \"%red%\"";
 		}
 	if ($userRole == "blueGroundAdmin" or $userRole == "blueAirAdmin")
 		{
-			$query = "SELECT * FROM roles where role like \"%blue%\"";
+			$query = "SELECT * FROM campaign_users_roles where role like \"%blue%\"";
 		}
 	
 	if(!$result = $dbc->query($query))
