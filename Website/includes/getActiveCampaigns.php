@@ -1,11 +1,10 @@
 <?php          
 	
 	# distinguish query due to user role
-	if ($userRole = "commander")
+	if ($userRole == "commander")
 		{	
 			# load all campaigns the user is assigned to
-			$query ="SELECT camp_db FROM campaign_users 
-					WHERE user_id = $user_id";
+			$query ="SELECT camp_db FROM campaign_users WHERE user_id = $user_id";
 		}
 	else
 		{
@@ -27,4 +26,5 @@
 				}
 		}
 		
+	mysqli_free_result($result);		
 ?>

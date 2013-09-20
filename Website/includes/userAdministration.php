@@ -3,26 +3,26 @@
 	include ( 'includes/userManagementForm.php' );
 
     # get the SESSION variables for the users
-    $userRole	= $_SESSION['userRole'];
-	$user_id	= $_SESSION['user_id'];	
+    # $userRole	= $_SESSION['userRole'];
+	# $user_id	= $_SESSION['user_id'];	
     
     # load the query according to the user role
     if ($userRole == "administrator")
     {
-        echo "<h3>Registered Administrators:</h3>\n";
+        echo "<h3>Registered Users:</h3>\n";
         $sql = "SELECT * 
 				FROM users u  
 				LEFT JOIN campaign_users c 
 				ON u.user_id = c.user_id 
-				ORDER BY role, username";
+				ORDER BY  username, role, camp_db";
     }
     else if ($userRole == "commander")
     {
         echo "<h3>Registered Commanders:</h3>\n";
-        $sql = "SELECT u.*, c.camp_db from users u
-					JOIN campaign_users c
-					ON u.user_id = c.user_id 
-					AND c.camp_db in (SELECT camp_db from campaign_users WHERE user_id = '$user_id')";
+        $sql = "SELECT * from users u, campaign_users c
+				WHERE u.role = 'commander'
+				AND u.user_id = c.user_id
+				GROUP BY u.user_id";
     }
     
     if(!$result = $dbc->query($sql)){

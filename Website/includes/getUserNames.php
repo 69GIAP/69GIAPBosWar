@@ -7,12 +7,12 @@
 		}
 	if ($userRole == "commander")
 		{
-			# show users who are assigned to my active campaigns are visible only
-			$query = "SELECT * from users u
-					JOIN campaign_users c
-					ON u.user_id = c.user_id 
-					AND c.camp_db in (SELECT camp_db from campaign_users WHERE user_id = '$user_id')
-					and u.user_id != '$user_id'";
+			# show users, who are assigned to my active campaigns, are the only ones visible
+			$query = "SELECT * from users u, campaign_users c
+						WHERE u.role = 'commander'
+						AND u.user_id = c.user_id
+						AND u.user_id != '$user_id'
+						GROUP BY u.user_id";
 		}	
 	
 	if(!$result = $dbc->query($query))
@@ -27,8 +27,9 @@
 				{
 					$id			=($obj->user_id);
 					$username	=($obj->username);
-					$userRole	=($obj->role);
-					echo "<option value=\"". $id. "\">".$username. " - ".$userRole."</option>\n";
+					$Role		=($obj->role);
+					echo "<option value=\"". $id. "\">".$username. " - ".$Role."</option>\n";
 				}
 		}
+	mysqli_free_result($result);		
 ?>
