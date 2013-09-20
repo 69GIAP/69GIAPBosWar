@@ -27,7 +27,8 @@ DROP TABLE IF EXISTS `campaign_users`;
 CREATE TABLE `campaign_users` (
   `user_id` int(11) NOT NULL,
   `camp_db` varchar(30) NOT NULL,
-  PRIMARY KEY (`camp_db`,`user_id`)
+  `coal_id` int(2) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`camp_db`,`user_id`,`coal_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table binds the entries of the user table to the campaigns.\nThis makes it possible to filter what campaign and what coalition the user is in.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -37,6 +38,7 @@ CREATE TABLE `campaign_users` (
 
 LOCK TABLES `campaign_users` WRITE;
 /*!40000 ALTER TABLE `campaign_users` DISABLE KEYS */;
+INSERT INTO `campaign_users` VALUES (1,'1916',0),(1,'flanders_eagles',0),(2,'flanders_eagles',0),(1,'skies_of_the_empires',0);
 /*!40000 ALTER TABLE `campaign_users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-18 18:04:59
+-- Dump completed on 2013-09-20 22:14:29

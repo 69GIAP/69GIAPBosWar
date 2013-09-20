@@ -32,7 +32,7 @@ CREATE TABLE `users` (
   `role` varchar(30) NOT NULL,
   `phone` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`user_id`,`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='User authentication table.';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='User authentication table.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (14,'admin','1d0258c2440a8d19e716292b231e3190','','administrator',''),(15,'redAdmin','1d0258c2440a8d19e716292b231e3190','','redAirAdmin','');
+INSERT INTO `users` VALUES (1,'admin','1d0258c2440a8d19e716292b231e3190','admin@boswar.com','administrator','001 22 456 897'),(2,'commander','1d0258c2440a8d19e716292b231e3190','commander@boswar.com','commander','00 1 245 63 87'),(3,'viewer','1d0258c2440a8d19e716292b231e3190','viewer@boswar.com','viewer','001 245 897 6');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-18 18:04:59
+-- Dump completed on 2013-09-20 22:14:29

@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `boswar_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `boswar_db`;
+CREATE DATABASE  IF NOT EXISTS `flanders_eagles` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `flanders_eagles`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
--- Host: 10.0.0.57    Database: boswar_db
+-- Host: 10.0.0.57    Database: flanders_eagles
 -- ------------------------------------------------------
 -- Server version	5.6.13
 
@@ -18,28 +18,26 @@ USE `boswar_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `campaign_users`
+-- Table structure for table `test_models`
 --
 
-DROP TABLE IF EXISTS `campaign_users`;
+DROP TABLE IF EXISTS `test_models`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `campaign_users` (
-  `user_id` int(11) NOT NULL,
-  `camp_db` varchar(30) NOT NULL,
-  `coal_id` int(2) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`camp_db`,`user_id`,`coal_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table binds the entries of the user table to the campaigns.\nThis makes it possible to filter what campaign and what coalition the user is in.';
+CREATE TABLE `test_models` (
+  `model` varchar(45) NOT NULL,
+  PRIMARY KEY (`model`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `campaign_users`
+-- Dumping data for table `test_models`
 --
 
-LOCK TABLES `campaign_users` WRITE;
-/*!40000 ALTER TABLE `campaign_users` DISABLE KEYS */;
-INSERT INTO `campaign_users` VALUES (1,'1916',0),(1,'flanders_eagles',0),(2,'flanders_eagles',0),(1,'skies_of_the_empires',0);
-/*!40000 ALTER TABLE `campaign_users` ENABLE KEYS */;
+LOCK TABLES `test_models` WRITE;
+/*!40000 ALTER TABLE `test_models` DISABLE KEYS */;
+INSERT INTO `test_models` VALUES ('albatrosd5.mgm'),('brequet14'),('dfc5'),('felixf2a.mgm'),('fokkerd7'),('gothag5');
+/*!40000 ALTER TABLE `test_models` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-20 22:14:29
+-- Dump completed
