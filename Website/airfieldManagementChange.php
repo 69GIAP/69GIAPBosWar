@@ -24,7 +24,8 @@
 					include ( 'functions/connect2Campaign.php' );
 					
 					# use it to get remaining variables
-					$query = "SELECT * from campaign_settings where camp_db = '$loadedCampaign'";   
+					$query = "SELECT * from campaign_settings where camp_db = '$loadedCampaign'";  
+					 
 					if(!$result = $dbc->query($query)) {
 						die('There was an error running the query [' . $dbc->error . ']');
 					}
