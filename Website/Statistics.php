@@ -12,8 +12,8 @@
 # Include the navigation on top
 	include ( 'includes/navigation.php' );
 
-#  include connect2CampaignFunction.php (defines connect2campaign())
-	include ( 'includes/connect2CampaignFunction.php' );
+#  include connect2Campaign.php (defines connect2campaign())
+	include ( 'functions/connect2Campaign.php' );
 
 ?>
 
