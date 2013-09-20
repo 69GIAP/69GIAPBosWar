@@ -6,8 +6,7 @@
 	# load the query into a variable dependent on the role the user owns
 
 	if ($userRole == "administrator"
-		or $userRole == "redGroundAdmin" or $userRole == "redAirAdmin"
-		or $userRole == "blueGroundAdmin" or $userRole == "blueAirAdmin") # everybody can see all coalitions
+		or $userRole == "commander") # everybody can see all coalitions
 		{
 			$query = "SELECT * FROM rof_coalitions";
 		}
