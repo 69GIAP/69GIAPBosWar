@@ -21,7 +21,13 @@
             <div id="content">
 				<?php
 				
-                echo "$loadedCampaign \n";
+                echo "$loadedCampaign<br />\n";
+
+	        # TUSHKA - dump all POST variables
+		foreach ($_POST as $param_name => $param_val) {
+		    echo "Param: $param_name; Value: $param_val<br />\n";
+		}
+	
                 # airfield name from selection form
                 $airfieldName = $_POST["airfieldName"];	
 				echo $airfieldName;
