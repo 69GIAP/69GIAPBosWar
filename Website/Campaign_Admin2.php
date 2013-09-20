@@ -36,8 +36,6 @@ include ( 'functions/connect2Campaign.php' );
                     # on page change - display would be reset to lates loaded information in the dropdown!
                     $loadedCampaign = $camp_db;
                     
-                    include ('includes/debuggingSessionVariables.php');	
-                    
                     echo "<p>The chosen campaign is stored to the SESSION variable \$_SESSION['camp_db'] and can be reused from now on to work with it.</p>\n";
                     
                     echo "<p>Currectly the variable is filled with <b>$camp_db</b>.</p>\n";

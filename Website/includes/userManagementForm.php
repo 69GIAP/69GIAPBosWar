@@ -1,5 +1,5 @@
 <!-- form for changing information in the users table -->
-                <h3>Please select the user you want to modify:</h3>
+                <h2>Please select the user you want to modify:</h2>
                 <fieldset class="UserMgmt">
                     <form name="delete" action="UserManagementModify.php" method="post">
                         <ul>
@@ -16,7 +16,7 @@
 							</li>
         
                             <li><label for="role">Select Role</label>
-                                <select name="role">
+                                <select name="newRole">
                                 <!-- Load the roles stored in the table campaign_users_roles to fill selector -->
                                 <?php	include 'includes/getUserRoles.php' ?></select>
                                 

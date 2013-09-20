@@ -22,10 +22,10 @@
 												{
 													echo "<h2>Admin:</h2>\n";
 													echo "	<ul id=\"sidebar\">\n";
-													echo "		<li><a href=\"#\" class=\"adminBanner\"><span></span></a></li>\n";
-													echo "		<li><a href=\"#\" class=\"sovietBanner\"><span></span></a></li>\n";
-													echo "		<li><a href=\"#\" class=\"centerBanner\"><span></span></a></li>\n";
-													echo "		<li><a href=\"#\" class=\"viewerBanner\"><span></span></a></li>\n";                               
+													#echo "		<li><a href=\"#\" class=\"adminBanner\"><span></span></a></li>\n";
+													#echo "		<li><a href=\"#\" class=\"sovietBanner\"><span></span></a></li>\n";
+													#echo "		<li><a href=\"#\" class=\"centerBanner\"><span></span></a></li>\n";
+													#echo "		<li><a href=\"#\" class=\"viewerBanner\"><span></span></a></li>\n";                               
 													echo "	</ul>\n";
 												}
 											# define what a commander sees in the sidebar
@@ -61,7 +61,6 @@
 																echo "	<ul id=\"sidebar\">\n";
 																echo "	    <li>Modify Campaign Settings</li>\n";
 																echo "	    <li>Modify Airfields</li>\n";
-																echo "	    <li> ... </li>\n";																						
 																echo "  </ul>\n";
 															}
 														else
@@ -71,7 +70,6 @@
 																echo "	<ul id=\"sidebar\">\n";
 																echo "	    <li>Create New Campaign</li>\n";
 																echo "	    <li>Change Campaign Status</li>\n";
-																echo "	    <li> ... </li>\n";																						
 																echo "  </ul>\n";
 															}
 														
@@ -83,8 +81,6 @@
 																echo "<h2>$loadedCampaign</h2>\n";
 																echo "	<ul id=\"sidebar\">\n";
 																echo "	    <li><a href=\"airfieldRedAdministration.php\" class=\"airfieldBanner\"><span></span></a></li>\n";
-																echo "	    <li> ... </li>\n";
-																echo "	    <li> ... </li>\n";																						
 																echo "  </ul>\n";
 															}
 													}
@@ -96,28 +92,22 @@
 													{
 														echo "<h2>Home:</h2>\n";
 														echo "	<ul id=\"sidebar\">\n";
-														echo "	    <li> ... </li>\n";
-														echo "	    <li> ... </li>\n";
-														echo "	    <li> ... </li>\n";																						
+														echo "	    <li></li>\n";														
 														echo "  </ul>\n";
 													}
 												if ($userRole == "commander")
 													{
 														echo "<h2>Home:</h2>\n";
 														echo "	<ul id=\"sidebar\">\n";
-														echo "	    <li> ... </li>\n";
-														echo "	    <li> ... </li>\n";
-														echo "	    <li> ... </li>\n";																						
+														echo "	    <li></li>\n";														
 														echo "  </ul>\n";
 													}
 												if ($userRole == "viewer")
 													{
 														echo "<h2>Home:</h2>\n";
 														echo "	<ul id=\"sidebar\">\n";
-														echo "	    <li> ... </li>\n";
-														echo "	    <li> ... </li>\n";
-														echo "	    <li> ... </li>\n";																						
-														echo "  </ul>\n";
+														echo "	    <li></li>\n";
+													echo "  </ul>\n";
 													}
 											}											
 									}

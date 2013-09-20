@@ -24,24 +24,33 @@
 	
 	if(!$result = $dbc->query($query))
 	   { die('There was an error running the query [' . $dbc->error . ']'); }
-		
-	if ($result = mysqli_query($dbc, $query)) 
+	
+	if(mysqli_num_rows($result)!=0)
 		{
-			/* fetch associative array */
-			while ($obj = mysqli_fetch_object($result)) 
+			if ($result = mysqli_query($dbc, $query)) 
 				{
-					$campaign	=($obj->campaign);
-					$camp_db	=($obj->camp_db);
-					$map		=($obj->map);
-					$simulation	=($obj->simulation);
-					# created radio boxes
-					echo "<p><input type=\"radio\" name=\"db\" value=$camp_db>";
-					echo "<b>".$campaign."</b> -  ".$camp_db." db - ".$map." map (".$simulation.")<br></p>\n";
+					/* fetch associative array */
+					while ($obj = mysqli_fetch_object($result)) 
+						{
+							$campaign	=($obj->campaign);
+							$camp_db	=($obj->camp_db);
+							$map		=($obj->map);
+							$simulation	=($obj->simulation);
+							# created radio boxes
+							echo "<p><input type=\"radio\" name=\"db\" value=$camp_db>";
+							echo "<b>".$campaign."</b> -  ".$camp_db." db - ".$map." map (".$simulation.")<br></p>\n";
+						}
+					echo "	<input type=\"submit\" value=\"Connect\"><br>\n";
+					echo "</form><br>\n";
 				}
-			echo "<p>If you miss your campaing please contact the administrator to assign you to it as commander!</p>\n";			
+		}
+	else
+		{
+			echo "<p>If you miss your campaign in the list or you not even see a list, then please contact your administrator to assign you as commander!</p>\n";
 		}
 
 ?>
 
-<input type="submit" value="Connect">
-</form>
+	</form>
+
+

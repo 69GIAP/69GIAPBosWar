@@ -2,7 +2,7 @@
 
 # show the login button if the user is not logged on         
 
-	if(!empty($userRole)) 
+	if($userRole == "administrator" or $userRole == "commander") 
 		{
 			# show the navigation button
 			echo "<li><a href=\"LoggedOn.php?btn=home\" class=\"home\"><span></span></a></li>\n";

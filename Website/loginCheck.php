@@ -21,7 +21,6 @@
             <div id="content">
             
                 <?php
-				include ('includes/debuggingSessionVariables.php');				
 				
 				# bind POST variables into variables for easier coding
 				$username 	= 	$_POST["username"]; 

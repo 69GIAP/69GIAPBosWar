@@ -30,7 +30,7 @@
 				# encrypt pasword
 					$password = md5($_POST["password"]);
 				# User role
-					$userRole = $_POST["role"];	
+					$newRole = $_POST["newRole"];	
 				# campaign database
 					$campdb = $_POST["campdb"];
 
@@ -43,7 +43,7 @@
 					# load the name into a variable 
 					while($row = $result->fetch_assoc()) 
 					 {
-					$modifieduser = $row['username'];
+						$modifieduser = $row['username'];
 					 }
 				# If a users should be deleted
 				if (($_POST["modify"] == 0))
@@ -60,7 +60,7 @@
 				# if a user wants to have another role
 				if (($_POST["modify"] == 2))
 					{
-						$sql = "UPDATE users set role = \"$userRole\" WHERE user_id = '$id'";
+						$sql = "UPDATE users set role = \"$newRole\" WHERE user_id = '$id'";
 					}
 				# if a user is assigned to a campaign
 				if (($_POST["modify"] == 3))
@@ -89,15 +89,15 @@
 					}
 				if (($_POST["modify"] == 2))
 					{
-						echo "<br>Role for user <b>$id</b> owned by user <b>$modifieduser</b> updated successfully to <b>$userRole</b>!\n";
+						echo "<br>Role for user <b>$id</b> owned by user <b>$modifieduser</b> updated successfully to <b>$newRole</b>!\n";
 					}
 				if (($_POST["modify"] == 3))
 					{
-						echo "<br>The user <b>$id</b> has been assigned to the <b>$campdb</b> campaign successfully!\n";
+						echo "<br>The user <b>$modifieduser</b> has been assigned to the <b>$campdb</b> campaign successfully!\n";
 					}
 				if (($_POST["modify"] == 4))
 					{
-						echo "<br>The user <b>$id</b> has been removed from the <b>$campdb</b> campaign successfully!\n";
+						echo "<br>The user <b>$modifieduser</b> has been removed from the <b>$campdb</b> campaign successfully!\n";
 					}										
 			
 				?>

@@ -1,11 +1,13 @@
 <?php
 	# cleans out the session if the user visited already a subsection and loaded the index.php
-	if (!empty ($session['game'])) {
-		session_destroy();
+	if (!empty ($session['game']))
+		{
+			session_destroy();
 		}
+		
 	session_start();
 	
-	# clean session variables in case user simply reloades index screen and tries to access a differnet layout
+	# clean session variables in case user simply reloades index screen and tries to access a different layout
 	if (!empty($_SESSION['game']))
 		{
 			unset($_SESSION['game']); 
@@ -25,7 +27,11 @@
 	if (!empty($_SESSION['camp_db']))
 		{
 			unset($_SESSION['camp_db']); 
-		}					
+		}
+	if (!empty($_SESSION['user_id']))
+		{
+			unset($_SESSION['user_id']); 
+		}							
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

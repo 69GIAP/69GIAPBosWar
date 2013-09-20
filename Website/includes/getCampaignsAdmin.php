@@ -10,7 +10,7 @@
 	#
 	# this whole thing is a single form to pass a database name, etc
 	# try it as a radio button list
-	echo "<h3>Proposed Campaigns</h3>\n";
+
 	# get active campaigns
 	$query = "SELECT * FROM campaign_settings where status = 4 and simulation = '$game' ";
 		
@@ -93,5 +93,5 @@
 			}
 		}
 ?>
-<input type="submit" value="Submit">
+<input type="submit" value="Connect">
 </form>

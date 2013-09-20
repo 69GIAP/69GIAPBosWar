@@ -22,8 +22,6 @@
             
 				<?php 
     
-                    include ('includes/debuggingSessionVariables.php');	
-					
 					# Feedback to the user wich campaign he is connected to right now
 					if (!empty($loadedCampaign))
 						{
@@ -31,26 +29,24 @@
 						}
 					else
 						{
-							echo "<p>Please connect to a database</p>\n";		
+							echo "<h2>Please connect to a database</h2>\n";		
 						}
 						
                     # show campaigns due to User role
                         if ($userRole == "administrator")
                             {
-                                echo "<p>Logged on as <b>$userRole</b>.</p></>\n";
                                 # get the full campaign list							
                                 include ( 'includes/getCampaignsAdmin.php' );
                             }
                         if ($userRole == "commander")
                             {
-                                echo "<p>Logged on as <b>$userRole</b>.</p></>\n";
                                 # get the filtered campaign list due to user camapaign_users table							
                                 include ( 'includes/getCampaignsCommander.php' );
                             }
                         if ($userRole == "viewer")
                             {
-                                echo "<p>Logged on as <b>$userRole</b>.</p></>\n";							
-                                echo "<p>You don't have the necessary rights to view this content.</p>\n";
+                                echo "<p>As <b>$userRole</b> you don't have the necessary rights to connect to a database.<br>\n";
+								echo "Please contact your administrator.</p>\n";
                             }
                         else
 							{

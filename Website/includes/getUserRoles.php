@@ -21,8 +21,8 @@
 			/* fetch associative array */
 			while ($obj = mysqli_fetch_object($result)) 
 				{
-					$Role=($obj->role);
-					echo "<option value=\"". $cRole. "\">". $Role. "</option>\n";
+					$newRole=($obj->role);
+					echo "<option value=\"". $newRole. "\">". $newRole. "</option>\n";
 				}
 		}
 		
