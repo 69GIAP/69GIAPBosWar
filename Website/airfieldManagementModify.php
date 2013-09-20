@@ -22,7 +22,7 @@
             	<?php
 				
 					# include connect2CampaignFunction.php (defines connect2campaign($host,$user,$password,$db))
-					include ( 'includes/connect2CampaignFunction.php' );
+					include ( 'functions/connect2Campaign.php' );
 					
 					# use it to get remaining variables
 					$query = "SELECT * from campaign_settings where camp_db = '$loadedCampaign'";   

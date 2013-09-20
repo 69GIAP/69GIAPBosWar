@@ -13,7 +13,7 @@ include ( 'includes/header.php' );
 include ( 'includes/navigation.php' );
 
 #  include connect2CampaignFunction.php (defines connect2campaign())
-include ( 'includes/connect2CampaignFunction.php' );
+include ( 'functions/connect2Campaign.php' );
 
 ?>
 
