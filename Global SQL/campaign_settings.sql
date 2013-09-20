@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2013 at 05:25 AM
+-- Generation Time: Sep 20, 2013 at 04:25 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -60,7 +60,7 @@ INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `cam
 (4, 'RoF', 'Skies of the Empires II', 'skies_of_the_empires_ii', '', '', '', 'Verdun', 'rof_verdun_locations', 2, 0, 1, 0, 0, 0, 0, '', ''),
 (5, 'BoS', 'Stalingrad', 'stalingrad', '', '', '', 'Stalingrad', 'bos_stalingrad_locations', 3, 0, 1, 0, 0, 0, 0, '', ''),
 (6, 'RoF', 'Yankee Doodle', 'yankee_doodle', '', '', '', 'Verdun', 'rof_verdun_locations', 2, 1, 1, 0, 0, 0, 0, '', ''),
-(7, 'RoF', 'Skies of the Empires', 'skies_of_the_empires', '', '', '', 'Verdun', 'rof_verdun_locations', 3, 0, 1, NULL, NULL, NULL, NULL, '', '');
+(7, 'RoF', 'Skies of the Empires', 'skies_of_the_empires', 'localhost', 'rofwar', 'rofwar', 'Verdun', 'rof_verdun_locations', 3, 0, 1, NULL, NULL, NULL, NULL, '', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
