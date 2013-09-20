@@ -27,7 +27,7 @@
 					# show campaigns due to User role
 					if ($userRole == "administrator")
 						{
-							include ( 'includes/getCampaignsAdmin.php' );
+							include ( 'includes/processCampaignLogs.php' );
 						}
 					if ($userRole == "commander")
 						{
