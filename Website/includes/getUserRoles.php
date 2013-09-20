@@ -25,6 +25,7 @@
 					echo "<option value=\"". $newRole. "\">". $newRole. "</option>\n";
 				}
 		}
-		
+
 	mysqli_free_result($result);
+
 ?>

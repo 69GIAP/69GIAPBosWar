@@ -31,5 +31,6 @@
 					echo "<option value=\"". $id. "\">".$username. " - ".$Role."</option>\n";
 				}
 		}
+		
 	mysqli_free_result($result);		
 ?>
