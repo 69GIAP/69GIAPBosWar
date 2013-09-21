@@ -1,4 +1,4 @@
-// Get airfields for a pulldown list
+// Get airfields information and create pulldown
 // 69giapmyata
 // ver 1.1
 <?php

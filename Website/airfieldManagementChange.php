@@ -83,6 +83,14 @@
 			echo "		<input readonly=\"readonly\" type=\"text\" name=\"airfieldCoalition\" id=\"airfieldCoalition\" value='$airfieldCoalitionName' size=\"24\" maxlength=\"50\" />\n";
 			echo "		</li>\n";
 
+			# USER INPUT value
+			echo "		<li> <label for=\"airfieldCoalitionNew\">Change Coalition:</label>\n";
+			echo "		<select name=\"airfieldCoalitionNew\">\n";
+			
+			# include the drop down list
+			include 'includes/getCampaignCoalitions.php'; 
+			
+			echo "		</select></li>\n";
 			# POST value READONLY
 			echo "		<li> <label for=\"airfieldModel\">Aircraft:<br></label>\n";
 			echo "		<input readonly=\"readonly\" type=\"text\" name=\"airfieldModelexample\" id=\"airfieldModelexample\" placeholder='$airfieldModel' size=\"24\" maxlength=\"50\" />\n";
@@ -91,9 +99,10 @@
 			# USER INPUT value
 			echo "		<li> <label for=\"airfieldModel\">Select Aircraft</label>\n";
 			echo "		<select name=\"airfieldModel\">\n";
-
-				# include the drop down list
-				include 'includes/getAirfieldModels.php'; 
+			
+			# include the drop down list
+			include 'includes/getAirfieldCampaignModels.php'; 
+			
 			echo "		</select></li>\n"; 
 
 			# POST value

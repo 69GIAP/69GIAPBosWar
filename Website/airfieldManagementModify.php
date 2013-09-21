@@ -18,17 +18,13 @@
             <div id="content">
 				<?php
 				
-				# airfield name from selection form
+				# POST from airfield form
 				$airfieldName = $_POST["airfieldName"];
 				$airfieldCoalition = $_POST["airfieldCoalition"];
 				$airfieldModel = $_POST["airfieldModel"];
 				$airfieldNumber = $_POST["airfieldNumber"];	
 				
-				echo "airfieldName: $airfieldName <br>\n";
-				echo "airfieldCoalition: $airfieldCoalition <br>\n";
-				echo "airfieldModel: $airfieldModel <br>\n";
-				echo "airfieldNumber: $airfieldNumber <br>\n";
-                     
+                  
                 ?>					
             </div>
     
