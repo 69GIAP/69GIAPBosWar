@@ -1,6 +1,6 @@
 <?php
 	# include connect2CampaignFunction.php (defines connect2campaign($host,$user,$password,$db))
-	include ( 'functions/connect2Campaign.php' );
+	 include ( 'functions/connect2Campaign.php' );
 	
 	# get camp db connection information
 	# use it to get remaining variables

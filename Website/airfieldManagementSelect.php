@@ -1,6 +1,6 @@
 <?php 
 
-# Incorporate the MySQL connection script.
+# Incorporate the MySQL connection script
 	require ( '../connect_db.php' );
 	
 # Include the webside header

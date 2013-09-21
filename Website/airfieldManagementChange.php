@@ -44,7 +44,7 @@
 			$airfieldName = $_POST["airfieldName"];	
 
 			# get data from test_airfield table dependent on selection
-			$sql = "SELECT * FROM test_airfields WHERE name =\"" . $airfieldName."\"";
+			$sql = "SELECT * FROM test_airfields WHERE name = '$airfieldName'";
 			#echo $sql;
 
 			if(!$result = $camp_link->query($sql)){
@@ -89,16 +89,16 @@
 			
 			# include the drop down list
 			include 'includes/getCampaignCoalitions.php'; 
-			
 			echo "		</select></li>\n";
+
 			# POST value READONLY
 			echo "		<li> <label for=\"airfieldModel\">Aircraft:<br></label>\n";
-			echo "		<input readonly=\"readonly\" type=\"text\" name=\"airfieldModelexample\" id=\"airfieldModelexample\" placeholder='$airfieldModel' size=\"24\" maxlength=\"50\" />\n";
+			echo "		<input readonly=\"readonly\" type=\"text\" name=\"airfieldModelExample\" id=\"airfieldModelExample\" value='$airfieldModel' size=\"24\" maxlength=\"50\" />\n";
 			echo "		</li>\n";
 
 			# USER INPUT value
 			echo "		<li> <label for=\"airfieldModel\">Select Aircraft</label>\n";
-			echo "		<select name=\"airfieldModel\">\n";
+			echo "		<select name=\"airfieldModelNew\">\n";
 			
 			# include the drop down list
 			include 'includes/getAirfieldCampaignModels.php'; 
@@ -107,12 +107,12 @@
 
 			# POST value
 			echo "		<li> <label for=\"airfieldNumber\">Current Quantity:<br></label>\n";
-			echo "		<input readonly=\"readonly\"  type=\"text\" name=\"airfieldNumber\" id=\"airfieldNumber\" placeholder='$airfieldNumber' size=\"24\" maxlength=\"50\" />\n";
+			echo "		<input readonly=\"readonly\"  type=\"text\" name=\"airfieldNumber\" id=\"airfieldNumber\" value='$airfieldNumber' size=\"24\" maxlength=\"50\" />\n";
 			echo "		</li>\n";
 
 			# USER INPUT value
 			echo "		<li> <label for=\"airfieldNumber\">New Quantity:<br></label>\n";
-			echo "		<input type=\"text\" name=\"airfieldNumber\" id=\"airfieldNumber\" value='set a number from -1 to 999' size=\"24\" maxlength=\"50\" />\n";
+			echo "		<input type=\"text\" name=\"airfieldNumberNew\" id=\"airfieldNumber\" value='$airfieldNumber' size=\"24\" maxlength=\"50\" />\n";
 			echo "		</li>\n";
 							
 			echo "		<li><label for=\"submit\"></label>\n";
