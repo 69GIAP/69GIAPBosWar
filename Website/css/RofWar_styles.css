@@ -58,7 +58,7 @@ div.debugging {
 	padding: 5px;
 	top: 5px;
 	left: 0px;
-	width: auto;
+	width: 180px;
 	height: 90px;
 	font-size: 11px;
 	color: #333;
@@ -73,7 +73,7 @@ div.debuggingPost {
 	padding: 5px;
 	top: 5px;
 	left: 200px;
-	width: auto;
+	width: 180px;
 	height: 90px;
 	font-size: 11px;
 	color: #333;
@@ -82,7 +82,21 @@ div.debuggingPost {
 	filter:alpha(opacity=50);
 	line-height: 13px;
 	z-index: 10;		
-	}	
+	}
+div.debuggingDbConnection {
+	position:relative;
+	padding: 5px;
+	top: 5px;
+	width: auto;
+	height: 90px;
+	font-size: 13px;
+	color: #6C3;
+	background-color: #FFF;
+	opacity: 0.8;
+	filter:alpha(opacity=80);
+	line-height: 14px;
+	z-index: 10;		
+	}			
 
 div.userLoggedOnInfo {
 	position:absolute;

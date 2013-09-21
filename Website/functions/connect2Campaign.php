@@ -6,10 +6,10 @@
 	# Ver 0.2
 	# Sept 18, 2013
 	
-	function connect2campaign ($host,$user,$password,$db) {		
-	# debugging
-	print "<p>debugging connect2campaign</p>\n";
-	print "<p>host = $host, user = $user, password = $password, db = $db</p><br>\n";
+	function connect2campaign ($host,$user,$password,$db) {	
+		
+	# debugging database connection
+	include ( 'includes/debugging/debuggingDbConnection.php' );
 	
 	# make connection to campaign with input variables
 	$camp_link = mysqli_connect ( "$host", "$user" , "$password" , "$db" )

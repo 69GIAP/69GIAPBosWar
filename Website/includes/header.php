@@ -69,9 +69,10 @@ session_start();
 			echo "<link href=\"css/BosWar_styles.css\" rel=\"stylesheet\" type=\"text/css\" />\n";
 		}
 	##### DEBUGGING ###
-	include ('includes/debuggingSessionVariables.php');	
-	include ( 'includes/debuggingPostVariables.php' );	
-	require ( 'includes/debuggingSessionVariables.php' );			
+	include ('includes/debugging/debuggingSessionVariables.php');	
+	include ( 'includes/debugging/debuggingPostVariables.php' );
+	include ( 'includes/debugging/debuggingMySqlError.php' );	
+			
 ?>
 
 
