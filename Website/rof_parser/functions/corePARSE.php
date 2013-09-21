@@ -9,41 +9,41 @@
 
 // require the functions called by PARSE
 // START
-require ('parser/functions/parseSTART.php');
+require ('rof_parser/functions/parseSTART.php');
 // HIT
-require ('parser/functions/parseHIT.php');
+require ('rof_parser/functions/parseHIT.php');
 // DAMAGE
-require ('parser/functions/parseDAMAGE.php');
+require ('rof_parser/functions/parseDAMAGE.php');
 // KILL
-require ('parser/functions/parseKILL.php');
+require ('rof_parser/functions/parseKILL.php');
 // PLAYER_MISSION_END
-require ('parser/functions/parsePLAYER_MISSION_END.php');
+require ('rof_parser/functions/parsePLAYER_MISSION_END.php');
 // TAKEOFF
-require ('parser/functions/parseTAKEOFF.php');
+require ('rof_parser/functions/parseTAKEOFF.php');
 // LANDING
-require ('parser/functions/parseLANDING.php');
+require ('rof_parser/functions/parseLANDING.php');
 // MISSION_END
-require ('parser/functions/parseMISSION_END.php');
+require ('rof_parser/functions/parseMISSION_END.php');
 // MISSION_OBJECTIVE
-require ('parser/functions/parseMISSION_OBJECTIVE.php');
+require ('rof_parser/functions/parseMISSION_OBJECTIVE.php');
 // AIRFIELD
-require ('parser/functions/parseAIRFIELD.php');
+require ('rof_parser/functions/parseAIRFIELD.php');
 // PLAYERPLANE
-require ('parser/functions/parsePLAYERPLANE.php');
+require ('rof_parser/functions/parsePLAYERPLANE.php');
 // GROUPINIT
-require ('parser/functions/parseGROUPINIT.php');
+require ('rof_parser/functions/parseGROUPINIT.php');
 // GAMEOBJECTINVOLVED
-require ('parser/functions/parseGAMEOBJECTINVOLVED.php');
+require ('rof_parser/functions/parseGAMEOBJECTINVOLVED.php');
 // INFLUENCEAREA_HEADER
-require ('parser/functions/parseINFLUENCEAREA_HEADER.php');
+require ('rof_parser/functions/parseINFLUENCEAREA_HEADER.php');
 // INFLUENCEAREA_BOUNDARY
-require ('parser/functions/parseINFLUENCEAREA_BOUNDARY.php');
+require ('rof_parser/functions/parseINFLUENCEAREA_BOUNDARY.php');
 // VERSION
-require ('parser/functions/parseVERSION.php');
+require ('rof_parser/functions/parseVERSION.php');
 // BOTID
-require ('parser/functions/parseBOTID.php');
+require ('rof_parser/functions/parseBOTID.php');
 // UNKNOWN
-require ('parser/functions/parseUNKNOWN.php');
+require ('rof_parser/functions/parseUNKNOWN.php');
 
 
 function PARSE($numlines) {

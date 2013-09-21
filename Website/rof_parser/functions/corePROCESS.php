@@ -1,8 +1,25 @@
 <?php
+// =69.GIAP=TUSHKA
+// massage the raw data from the logs into more useful (and smaller) arrays
+// of the data we need to report and score
+
+// require the functions called by PROCESS
+// CNTRS
+require ('rof_parser/functions/processCNTRS.php');
+// DEATHS
+//require ('rof_parser/functions/processDEATHS.php');
+// WOUNDS
+//require ('rof_parser/functions/processWOUNDS.php');
+// ENDS
+//require ('rof_parser/functions/processENDS.php');
+// HITSTATS
+//require ('rof_parser/functions/processHITSTATS.php');
+// KILLS
+//require ('rof_parser/functions/processKIILLS.php');
+// LASTHIT
+//require ('rof_parser/functions/processLASTHIT.php');
 
 function PROCESS() {
-// massage the raw data into more useful (and smaller) arrays
-// variables we need
    global $CNTRS; // countries and their coalitions as a string
    global $Part; // array to hold parts of log lines
    global $GTime; // game time at start of mission e.g. 6:30:0

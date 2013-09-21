@@ -122,8 +122,8 @@ function OUTPUT() {
    global $Bline; // lines defining area boundaries
    global $side; // "friendly", "enemy" or "neutral"
 
-   # include the is-point-in-area borrowed class
-   include('parser/classes/pointLocation.php');
+   # require the is-point-in-area borrowed class
+   require ('rof_parser/classes/pointLocation.php');
 
    echo "<p><b>REPORT OF SELECTED RESULTS:</b></p>\n"; 
 
