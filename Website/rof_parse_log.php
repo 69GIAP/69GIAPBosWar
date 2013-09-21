@@ -121,188 +121,6 @@ printf("<p>Report generated in %.1f seconds</p>\n",$end-$start);
 // FLYING, GUNNER, LOSSES, OBJECTCOUNTRYNAME, OBJECTNAME, OBJECTTYPE,
 // PLAYERNAME, TOFROM, WHERE,  WHOSEGUNNER, XYZ
 
-function ACCURACY($i, $j) {
-   // $i is playernumber
-   // $j is linenumber defining that player.
-   global $End; // player ended (or not)
-   global $NAME; // player profile name
-   global $TYPE; // gameobject type in this context
-   global $ShotBUL; // shot bullets
-   global $HitBUL; // bullet hits
-   global $BOMB; // # of bombs
-   global $DroppedBOMB; // dropped bombs
-   global $HitBOMB; // bomb hits
-
-   if (!$End[$i]) { // we have no end data
-   echo "Note: $NAME[$j] has no player-mission-end data, so assume no ammo expended<br>\n";
-   }
-   if (preg_match('/^Turret/',$TYPE[$j])) { // player is a gunner
-      if (!$ShotBUL[$i]) { // no bullets shot
-         echo "gunner $NAME[$j] shot no bullets<br>\n";
-      } else { // can calculate bullet stats
-         $bulletaccuracy = ( 100 * $HitBUL[$i] / $ShotBUL[$i] );
-         $bulletaccuracy = sprintf("%.2f",$bulletaccuracy);
-         echo "gunner $NAME[$j] shot $ShotBUL[$i] bullets with $HitBUL[$i] hits for $bulletaccuracy% accuracy<br>\n";
-      }
-   }
-   elseif (!$BOMB[$j]) { // no bombs aboard
-      if (!$ShotBUL[$i]) { // no bullets shot
-         echo "pilot $NAME[$j] shot no bullets and carried no bombs<br>\n";
-      } else { // can calculate bullet stats
-         $bulletaccuracy = ( 100 * $HitBUL[$i] / $ShotBUL[$i] );
-         $bulletaccuracy = sprintf("%.2f",$bulletaccuracy);
-         echo "pilot $NAME[$j] shot $ShotBUL[$i] bullets with $HitBUL[$i] hits for $bulletaccuracy% accuracy<br>\n";
-      }
-   } elseif (!$ShotBUL[$i]) { // no bullets shot
-      if (!$DroppedBOMB[$i]) { // carried bombs, but didn't drop them
-         echo "pilot $NAME[$j] shot no bullets and dropped no bombs<br>\n";
-      } else { // can calculate bomb stats
-      $bombaccuracy = ( 100 * $HitBOMB[$i] / $DroppedBOMB[$i] );
-      $bombaccuracy = sprintf("%.2f",$bombaccuracy);
-      echo "pilot $NAME[$j] shot no bullets but dropped $DroppedBOMB[$i] bombs with $HitBOMB[$i] hits for $bombaccuracy% accuracy<br>\n"; }
-   } elseif (!$DroppedBOMB[$i]) { // shot but didn't drop
-      $bulletaccuracy = ( 100 * $HitBUL[$i] / $ShotBUL[$i] );
-      $bulletaccuracy = sprintf("%.2f",$bulletaccuracy);
-      echo "pilot $NAME[$j] shot $ShotBUL[$i] bullets with $HitBUL[$i] hits for $bulletaccuracy% accuracy and dropped no bombs.<br>\n";
-   } else { // shot and dropped
-      $bulletaccuracy = ( 100 * $HitBUL[$i] / $ShotBUL[$i] );
-      $bulletaccuracy = sprintf("%.2f",$bulletaccuracy);
-      $bombaccuracy = ( 100 * $HitBOMB[$i] / $DroppedBOMB[$i] );
-      $bombaccuracy = sprintf("%.2f",$bombaccuracy);
-      echo "pilot $NAME[$j] shot $ShotBUL[$i] bullets with $HitBUL[$i] hits for $bulletaccuracy% accuracy and dropped $DroppedBOMB[$i] bombs with $HitBOMB[$i] hits for $bombaccuracy% accuracy<br>\n";
-   }
-}
-
-
-function ANORA($word) {
-// select proper article: "", "an" or "a"
-// easy to extend if needed
-   global $anora; // an or a
-
-   // hacks to avoid an article with certain player names
-   if ((substr($word,0,3) == "=69") || (substr($word,0,3) == "242") ||
-     (substr($word,0,3) == "OZA") || (substr($word,0,3) == "Evi") ||
-     (substr($word,0,3) == "Wil") || (substr($word,0,3) == "Tus") ||
-     (substr($word,0,3) == "Cha") || (substr($word,0,3) == "JZ-") ||
-     (substr($word,0,3) == "J18") || (substr($word,0,3) == "cro") ||
-     (substr($word,0,3) == "_st") || (substr($word,0,3) == "VON") ||
-     (substr($word,0,3) == "col") || (substr($word,0,3) == "vol") ||
-     (substr($word,0,3) == "tyr") || (substr($word,0,3) == "LvA") ||
-     (substr($word,0,3) == "=IR") || (substr($word,0,3) == "lew") ||
-     (substr($word,0,3) == "hq ") || (substr($word,0,3) == "hq_") ||
-     (substr($word,0,3) == "Duc") || (substr($word,0,3) == "WH_") ||
-     (substr($word,0,3) == "K_L") || (substr($word,0,3) == "Hq_") ||
-     (substr($word,0,3) == "LVA") || (substr($word,0,5) == "HeadT") ||
-     (substr($word,0,3) == "=CA") || (substr($word,0,4) == "bfly") ||
-     (substr($word,0,4) == "Otto") || (substr($word,0,5) == "Night") ||
-     (substr($word,0,3) == "AB1") || (substr($word,0,5) == "Tozzi") ||
-     (substr($word,0,3) == "LM_") || (substr($word,0,3) == "JaV") ||
-     (substr($word,0,3) == "-NW") || (substr($word,0,3) == "Alg") ||
-     (substr($word,0,3) == "Tan") || (substr($word,0,3) == "BSS") ||
-     (substr($word,0,3) == "_BT") || (substr($word,0,3) == "BT_") ||
-     (substr($word,0,3) == "The") || (substr($word,0,3) == "RED") ||
-     (substr($word,0,4) == "Lord") || (substr($word,0,3) == "C6-") ||
-     (substr($word,0,3) == "act") || (substr($word,0,4) == "N561") ||
-     (substr($word,0,3) == "BH ") || (substr ($word,0,3) == "BH_") ||
-     (substr($word,0,4) == "John") || (substr($word,0,3) == "=VA") ||
-     (substr($word,0,3) == "Ron") || (substr($word,0,3) == "J2_") ||
-     (substr($word,0,5) == "=III=") || (substr($word,0,4) == "Izra") ||
-     (substr($word,0,4) == "Zach") || (substr($word,0,4) == "Star") ||
-     (substr($word,0,4) == "zerw") || (substr($word,0,4) == "Rood") ||
-     (substr($word,0,4) == "TeeK") || (substr($word,0,4) == "Robi") ||
-     (substr($word,0,4) == "Baro") || (substr($word,0,4) == "Lark") ||
-     (substr($word,0,4) == "Spa ") || (substr($word,0,4) == "Last") ||
-     (substr($word,0,4) == "Par2") || (substr($word,0,4) == "Last") ||
-     (substr($word,0,3) == "JG1") || (substr($word,0,3) == "J5_") ||
-     (substr($word,0,3) == "CaK") || (substr($word,0,4) == "Flak") ||
-     (substr($word,0,4) == "= CA")) {
-        $anora = "";
-   // by sound
-   } elseif ((substr($word,0,1) == "A") || (substr($word,0,2) == "S." ) ||
-     (substr($word,0,2) == "LM") || (substr($word,0,1) == "E") ||
-     (substr($word,0,3) == "HMS") || (substr($word,0,3) == "R.E")) {
-         $anora = "an";
-   } else {
-         $anora = "a";
-   }
-}
-
-function CLOCKTIME($ticks) {
-// convert $Ticks into 24 hr game time
-   global $Startticks; // game start time in number of ticks since midnight
-   global $clocktime; // 24 hr time
-   
-   // use a 24 hr clock
-   if (($Startticks + $ticks) > 4320000) {
-      $Totalticks = ($Startticks + $ticks) - 4320000;
-   }  else {
-      $Totalticks = $Startticks + $ticks;
-   }
-   $hr = (int)(($Totalticks) / 180000);
-   $min = (int)((($Totalticks) - ($hr * 180000)) / 3000);
-   $sec = (int)((($Totalticks) - ($hr * 180000) - ($min * 3000)) / 50);
-   $clocktime = sprintf("%02d",$hr) . ":" . sprintf("%02d",$min) . ":" . sprintf("%02d",$sec); 
-}
-
-function COALITION($ckey) {
-// look up coalitionID from country ID#
-   global $CoCoal; // array of coalition names
-   global $COUNTRY; // country ID
-   global $CoalID; // coalition ID
-
-   $CoalID = "";
-   asort ($CoCoal);
-   while (list ($key, $val) = each ($CoCoal)) {
-      if ($ckey == $key) {
-         $CoalID = $val;
-      }
-   }
-}
-
-function COALITIONNAME($CoalID) {
-// look up coalition name from Coalition ID#
-   global $camp_link;  // link to campaign db
-   global $Coalitions; // array of coalition names
-   global $Coalitionname; // this coalition name 
-
-   $query = "SELECT * FROM rof_coalitions WHERE CoalID = '$CoalID'";
-   // if no result report error  (could do this as an 'else' clause also)
-   if(!$result = $camp_link->query($query)) {
-      die('There was an error running the query [' . $camp_link->error . ']'); }
-   if ($result = mysqli_query($camp_link, $query)) {
-      while ($obj = mysqli_fetch_object($result)) {
-         $Coalitionname	=($obj->Coalitionname);
-      }
-      // free result set
-      mysqli_free_result($result);
-   }
-}
-
-function COUNTRYNAME($ckey) {
-// look up country name from ID#
-// and also report the adjective form
-   global $camp_link;  // link to campaign db
-   global $countryname; // country name
-   global $countryadj;  // adjective form of country name  
-   
-   $countryname = "";
-   $countrynadj = "";
-   $query = "SELECT * FROM rof_countries WHERE ckey = '$ckey'";
-   // if no result report error  (could do this as an 'else' clause also)
-   if(!$result = $camp_link->query($query)) {
-      die('There was an error running the query [' . $camp_link->error . ']'); }
-   if ($result = mysqli_query($camp_link, $query)) {
-      while ($obj = mysqli_fetch_object($result)) {
-         $countryname	=($obj->countryname);
-         $countryadj	=($obj->countryadj);
-      }
-      // free result set
-      mysqli_free_result($result);
-   }
-
-//   echo "ckey = $ckey, countryname = $countryname, countryadj = $countryadj<br>\n";
-}
-
 function CRASHED($pid,$ticks) {
 // determine if a player's plane has crashed by a given time
    global $numkills; // number of kills
@@ -816,24 +634,25 @@ function LOSSES($i) {
 //  echo ("C* $clocktime $attackertype $attackername $aplayername $objecttype $objectname $playername<br>\n");
 }
 
-function OBJECTCOUNTRYNAME ($id,$ticks) {
-// given ID, find a game object's country name
-   global $numgobjects; // number of game objects involved
-   global $GOline; // lines defining game objects
-   global $ID; // object ID
-   global $Ticks; // time since start of mission in 1/50 sec ticks
-   global $COUNTRY; // country ID
-   global $countryid; // country id
+#function OBJECTCOUNTRYNAME ($id,$ticks) {
+#// given ID, find a game object's country name
+#   global $numgobjects; // number of game objects involved
+#   global $GOline; // lines defining game objects
+#   global $ID; // object ID
+#   global $Ticks; // time since start of mission in 1/50 sec ticks
+#   global $COUNTRY; // country ID
+#   global $countryid; // country id
+#
+#   for ($i = 0; $i < $numgobjects; ++$i) {
+#      $j = $GOline[$i];
+#      if (($ID[$j] == $id ) && ($Ticks[$j] <= $ticks)) {
+#         $countryid = $COUNTRY[$j];
+#      }
+#//      echo "id = $id, ID[$j] = $ID[$j], ticks = $ticks, Ticks[$j] = $Ticks[$j]<br>\n";
+#   }
+#   COUNTRYNAME($countryid);
+#}
 
-   for ($i = 0; $i < $numgobjects; ++$i) {
-      $j = $GOline[$i];
-      if (($ID[$j] == $id ) && ($Ticks[$j] <= $ticks)) {
-         $countryid = $COUNTRY[$j];
-      }
-//      echo "id = $id, ID[$j] = $ID[$j], ticks = $ticks, Ticks[$j] = $Ticks[$j]<br>\n";
-   }
-   COUNTRYNAME($countryid);
-}
 
 function OBJECTNAME ($id,$ticks) {
 // given ID, find an object's name
@@ -872,6 +691,7 @@ function OBJECTNAME ($id,$ticks) {
       $objectname = "";
    }
 }
+
 
 function OBJECTTYPE ($id,$ticks) {
 // get object TYPE from ID

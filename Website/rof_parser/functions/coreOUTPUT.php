@@ -123,7 +123,44 @@ function OUTPUT() {
    global $side; // "friendly", "enemy" or "neutral"
 
    # require the is-point-in-area borrowed class
+   # pointLocation
    require ('rof_parser/classes/pointLocation.php');
+
+   # require the functions called by OUTPUT
+   # ACCURACY
+   require ('rof_parser/functions/outputACCURACY.php');
+   # ANORA
+   require ('rof_parser/functions/outputANORA.php');
+   # CLOCKTIME
+   require ('rof_parser/functions/outputCLOCKTIME.php');
+   # COALITIONNAME
+   require ('rof_parser/functions/outputCOALITIONNAME.php');
+   # CRASHED
+//   require ('rof_parser/functions/outputCRASHED.php');
+   # DEAD
+//   require ('rof_parser/functions/outputDEAD.php');
+   # FATES
+//   require ('rof_parser/functions/outputFATES.php');
+   # FLYING
+//   require ('rof_parser/functions/outputFLYING.php');
+   # GUNNER
+//   require ('rof_parser/functions/outputGUNNER.php');
+   # LOSSES
+//   require ('rof_parser/functions/outputLOSSES.php');
+   # OBJECTNAME
+//   require ('rof_parser/functions/outputOBJECTNAME.php');
+   # OBJECTTYPE
+//   require ('rof_parser/functions/outputOBJECTTYPE.php');
+   # PLAYERNAME
+//   require ('rof_parser/functions/outputPLAYERNAME.php');
+   # TOFROM
+//   require ('rof_parser/functions/outputTOFROM.php');
+   # WHERE
+//   require ('rof_parser/functions/outputWHERE.php');
+   # WHOSEGUNNER
+//   require ('rof_parser/functions/outputWHOSEGUNNER.php');
+   # XYZ
+//   require ('rof_parser/functions/outputXYZ.php');
 
    echo "<p><b>REPORT OF SELECTED RESULTS:</b></p>\n"; 
 

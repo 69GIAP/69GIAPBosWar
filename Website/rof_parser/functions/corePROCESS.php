@@ -6,18 +6,24 @@
 // require the functions called by PROCESS
 // CNTRS
 require ('rof_parser/functions/processCNTRS.php');
+// COALITION
+require ('rof_parser/functions/processCOALITION.php');
+// COUNTRYNAME
+require ('rof_parser/functions/processCOUNTRYNAME.php');
 // DEATHS
-//require ('rof_parser/functions/processDEATHS.php');
-// WOUNDS
-//require ('rof_parser/functions/processWOUNDS.php');
+require ('rof_parser/functions/processDEATHS.php');
 // ENDS
-//require ('rof_parser/functions/processENDS.php');
+require ('rof_parser/functions/processENDS.php');
 // HITSTATS
-//require ('rof_parser/functions/processHITSTATS.php');
+require ('rof_parser/functions/processHITSTATS.php');
 // KILLS
-//require ('rof_parser/functions/processKIILLS.php');
+require ('rof_parser/functions/processKILLS.php');
 // LASTHIT
-//require ('rof_parser/functions/processLASTHIT.php');
+require ('rof_parser/functions/processLASTHIT.php');
+// OBJECTCOUNTRYNAME
+require ('rof_parser/functions/processOBJECTCOUNTRYNAME.php');
+// WOUNDS
+require ('rof_parser/functions/processWOUNDS.php');
 
 function PROCESS() {
    global $CNTRS; // countries and their coalitions as a string
