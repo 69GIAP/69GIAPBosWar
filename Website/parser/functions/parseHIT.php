@@ -20,7 +20,7 @@ function HIT($i) { // AType:1
    $TID[$i] = rtrim($Part[1]);
    // add line number to Hline array
    $Hline[$numhits] = $i ;
-   // add one to running total of kills
+   // add one to running total of hits
    ++$numhits;
 // echo ("<p>HIT $Ticks[$i] $AMMO[$i] $AID[$i] $TID[$i]</p>\n");
 }

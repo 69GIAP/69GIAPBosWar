@@ -30,6 +30,21 @@ require ('parser/functions/parseMISSION_OBJECTIVE.php');
 require ('parser/functions/parseAIRFIELD.php');
 // PLAYERPLANE
 require ('parser/functions/parsePLAYERPLANE.php');
+// GROUPINIT
+require ('parser/functions/parseGROUPINIT.php');
+// GAMEOBJECTINVOLVED
+require ('parser/functions/parseGAMEOBJECTINVOLVED.php');
+// INFLUENCEAREA_HEADER
+require ('parser/functions/parseINFLUENCEAREA_HEADER.php');
+// INFLUENCEAREA_BOUNDARY
+require ('parser/functions/parseINFLUENCEAREA_BOUNDARY.php');
+// VERSION
+require ('parser/functions/parseVERSION.php');
+// BOTID
+require ('parser/functions/parseBOTID.php');
+// UNKNOWN
+require ('parser/functions/parseUNKNOWN.php');
+
 
 function PARSE($numlines) {
    global $numlines; // number of log lines
