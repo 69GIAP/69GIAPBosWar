@@ -7,9 +7,6 @@
 # =69.GIAP=TUSHKA
 # Sept 16, 2013
 
-# Incorporate the MySQL debug script.
-	require ( 'includes/debug.php' );
-
 # Incorporate the MySQL connection script.
 #	require ( '../connect_db.php' );
 

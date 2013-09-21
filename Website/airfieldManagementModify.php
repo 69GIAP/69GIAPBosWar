@@ -1,8 +1,5 @@
 <?php 
 
-# Incorporate the MySQL debug script.
-	require ( 'includes/debug.php' );
-
 # Incorporate the MySQL connection script.
 	require ( '../connect_db.php' );
 	
@@ -21,16 +18,16 @@
             <div id="content">
 				<?php
 				
-                echo "$loadedCampaign<br />\n";
-
-	        # TUSHKA - dump all POST variables
-		foreach ($_POST as $param_name => $param_val) {
-		    echo "Param: $param_name; Value: $param_val<br />\n";
-		}
-	
-                # airfield name from selection form
-                $airfieldName = $_POST["airfieldName"];	
-				echo $airfieldName;
+				# airfield name from selection form
+				$airfieldName = $_POST["airfieldName"];
+				$airfieldCoalition = $_POST["airfieldCoalition"];
+				$airfieldModel = $_POST["airfieldModel"];
+				$airfieldNumber = $_POST["airfieldNumber"];	
+				
+				echo "airfieldName: $airfieldName <br>\n";
+				echo "airfieldCoalition: $airfieldCoalition <br>\n";
+				echo "airfieldModel: $airfieldModel <br>\n";
+				echo "airfieldNumber: $airfieldNumber <br>\n";
                      
                 ?>					
             </div>

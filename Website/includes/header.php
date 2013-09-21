@@ -68,8 +68,10 @@ session_start();
 			echo "<!--  Link external CSS Master file containing all other CSS files -->\n";
 			echo "<link href=\"css/BosWar_styles.css\" rel=\"stylesheet\" type=\"text/css\" />\n";
 		}
-	# include for debugging	 session variables on all pages
-	include ('includes/debuggingSessionVariables.php');			
+	##### DEBUGGING ###
+	include ('includes/debuggingSessionVariables.php');	
+	include ( 'includes/debuggingPostVariables.php' );	
+	require ( 'includes/debuggingSessionVariables.php' );			
 ?>
 
 

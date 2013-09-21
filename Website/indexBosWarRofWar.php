@@ -1,6 +1,4 @@
 <?php 
-# Incorporate the MySQL debug script.
-	require ( 'includes/debug.php' );
 
 # Incorporate the MySQL connection script.
 	require ( '../connect_db.php' );

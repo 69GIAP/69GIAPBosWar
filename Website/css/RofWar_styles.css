@@ -59,14 +59,30 @@ div.debugging {
 	top: 5px;
 	left: 0px;
 	width: auto;
-	height: auto;
-	font-size: 12px;
+	height: 90px;
+	font-size: 11px;
 	color: #333;
 	background-color: #FFF;
 	opacity: 0.5;
 	filter:alpha(opacity=50);
+	line-height: 13px;
 	z-index: 10;		
 	}
+div.debuggingPost {
+	position:absolute;
+	padding: 5px;
+	top: 5px;
+	left: 200px;
+	width: auto;
+	height: 90px;
+	font-size: 11px;
+	color: #333;
+	background-color: #FFF;
+	opacity: 0.5;
+	filter:alpha(opacity=50);
+	line-height: 13px;
+	z-index: 10;		
+	}	
 
 div.userLoggedOnInfo {
 	position:absolute;

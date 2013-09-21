@@ -3,9 +3,6 @@
 # Incorporate the MySQL connection script.
 require ( '../connect_db.php' );
 	
-# Incorporate the MySQL debug script.
-require ( 'includes/debug.php' );
-
 # Include the webside header
 include ( 'includes/header.php' );
 	
