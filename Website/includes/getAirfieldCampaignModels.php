@@ -1,22 +1,20 @@
-// Get Aircraft Pool for a pulldown list
-// 69giapmyata
-// ver 1.1
+
 <?php
 
 	# load aircraft list from selected campaign database
-	$query = "SELECT model FROM test_models";
+	$queryModel = "SELECT model FROM test_models";
 	
-	if(!$result = $camp_link->query($query))
+	if(!$resultModel = $camp_link->query($queryModel))
 		{
 			die('There was an error running the query [' . $camp_link->error . ']');
 		}
 	
-	if ($result = mysqli_query($camp_link, $query)) 
+	if ($resultModel = mysqli_query($camp_link, $queryModel)) 
 		{				
 			/* fetch associative array */
-			while ($obj = mysqli_fetch_object($result)) 
+			while ($objModel = mysqli_fetch_object($resultModel)) 
 				{
-					$aircraftModelPool =	($obj->model);
+					$aircraftModelPool =	($objModel->model);
 					echo "<option value=\"". $aircraftModelPool. "\">". $aircraftModelPool. "</option>\n";
 				}
 		}

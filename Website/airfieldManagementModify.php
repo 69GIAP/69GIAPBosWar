@@ -17,21 +17,76 @@
     
             <div id="content">
 				<?php
+					$airfieldName 				= $_POST["airfieldName"];
+				if (!empty($_POST["airfieldModelLoaded1"]))
+					{
+						$airfieldModelLoaded1 		= $_POST["airfieldModelLoaded1"];
+						$airfieldModelQuantity1		= $_POST["airfieldModelQuantity1"];
+						$airfieldModelQuantityNew1	= $_POST["airfieldModelQuantityNew1"];
+					}
+				if (!empty($_POST["airfieldModelLoaded2"]))
+					{
+						$airfieldModelLoaded2 		= $_POST["airfieldModelLoaded2"];
+						$airfieldModelQuantity2		= $_POST["airfieldModelQuantity2"];
+						$airfieldModelQuantityNew2	= $_POST["airfieldModelQuantityNew2"];
+					}
+				if (!empty($_POST["airfieldModelLoaded3"]))
+					{
+						$airfieldModelLoaded3 		= $_POST["airfieldModelLoaded3"];
+						$airfieldModelQuantity3		= $_POST["airfieldModelQuantity3"];
+						$airfieldModelQuantityNew3	= $_POST["airfieldModelQuantityNew3"];
+					}
+				if (!empty($_POST["airfieldModelLoaded4"]))
+					{				
+						$airfieldModelLoaded4 		= $_POST["airfieldModelLoaded4"];
+						$airfieldModelQuantity4		= $_POST["airfieldModelQuantity4"];
+						$airfieldModelQuantityNew4	= $_POST["airfieldModelQuantityNew4"];
+					}
+					
+				$airfieldModelAdd			= $_POST["airfieldModelAdd"];
+				$airfieldModelAddQuantity	= $_POST["airfieldModelAddQuantity"];
 				
-				# POST from airfield form
-				$airfieldName = $_POST["airfieldName"];
-				$airfieldCoalition = $_POST["airfieldCoalition"];
-				$airfieldCoalitionNew = $_POST["airfieldCoalitionNew"];
-				$airfieldModel = $_POST["airfieldModel"];
-				$airfieldModelNew = $_POST["airfieldModelNew"];
-				$airfieldNumber = $_POST["airfieldNumber"];
-				$airfieldNumberNew = $_POST["airfieldNumberNew"];	
-				
-				$query = "UPDATE test_airfields SET model = '$airfieldModelNew', number = '$airfieldNumberNew', coalition = '$airfieldCoalitionNew'
-						WHERE name = '$airfieldName'";
-						
-# get the camp_db connection information START
+				$airfieldCoalition			= $_POST["airfieldCoalition"];
+				$airfieldCoalitionNew		= $_POST["airfieldCoalitionNew"];	
+/*				
+echo "airfieldModelLoaded1: $airfieldModelLoaded1<br>\n";
+echo "airfieldModelQuantityNew1: $airfieldModelQuantityNew1<br>\n";
+echo "airfieldName: $airfieldName<br>\n";
 
+echo "airfieldModelLoaded2: $airfieldModelLoaded2<br>\n";
+echo "airfieldModelQuantityNew2: $airfieldModelQuantityNew2<br>\n";
+echo "airfieldName: $airfieldName<br>\n";
+*/				
+						
+				# prepare sql based on selected aircraft
+				if ($_POST["updateAirfield"] == 1)
+					{
+					$query="UPDATE test_airfields SET number = '$airfieldModelQuantityNew1' WHERE model = '$airfieldModelLoaded1' AND name = '$airfieldName'";
+					}
+				if ($_POST["updateAirfield"] == 2)
+					{
+					$query="UPDATE test_airfields SET number = '$airfieldModelQuantityNew2' WHERE model = '$airfieldModelLoaded2' AND name = '$airfieldName'";
+					}
+				if ($_POST["updateAirfield"] == 3)
+				{
+					$query="UPDATE test_airfields SET number = '$airfieldModelQuantityNew3' WHERE model = '$airfieldModelLoaded3' AND name = '$airfieldName'";
+				}
+				if ($_POST["updateAirfield"] == 4)
+					{
+					$query="UPDATE test_airfields SET number = '$airfieldModelQuantityNew4' WHERE model = '$airfieldModelLoaded4' AND name = '$airfieldName'";
+					}	
+				if ($_POST["updateAirfield"] == 5)
+					{
+					$query="INSERT INTO test_airfields (name, coalition, model, number) VALUES ('$airfieldName', $airfieldCoalition, '$airfieldModelAdd', $airfieldModelAddQuantity)";
+					}
+				if ($_POST["updateAirfield"] == 6)
+					{
+					$query="UPDATE test_airfields SET coalition = '$airfieldCoalitionNew' WHERE name = '$airfieldName'";
+					}	
+							
+# echo "$query <br>\n";
+	
+# get the camp_db connection information START
 				$getInfo = "SELECT * from campaign_settings where camp_db = '$loadedCampaign'";  
 	 
 				if(!$result = $dbc->query($getInfo)) {
@@ -53,19 +108,20 @@
 				
 				# use this information to connect to campaign 
 				$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
-				
 # get the camp_db connection information END
-				
+
+				# sanity checks
+				include ('includes/checkAirfieldDataBeforeUpdate.php');
+
+				# updates
 				if(!$result = $camp_link->query($query)){
-					die('There was an error running the query ' . mysqli_error($camp_link));
+					die('There was an error running the query <br>'.$query."<br>" . mysqli_error($camp_link));
 				}
-				else
+					else
 				{				
-					header ("Location:airfieldManagementSelect.php");
+					header ("Location: airfieldManagementChange.php");
 				}
-				
-				
-					   
+	   
                 ?>					
             </div>
     

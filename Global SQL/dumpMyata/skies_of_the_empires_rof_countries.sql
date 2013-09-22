@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `boswar_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `boswar_db`;
+CREATE DATABASE  IF NOT EXISTS `skies_of_the_empires` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `skies_of_the_empires`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
--- Host: 10.0.0.57    Database: boswar_db
+-- Host: 10.0.0.57    Database: skies_of_the_empires
 -- ------------------------------------------------------
 -- Server version	5.6.13
 
@@ -18,27 +18,28 @@ USE `boswar_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `campaign_users_roles`
+-- Table structure for table `rof_countries`
 --
 
-DROP TABLE IF EXISTS `campaign_users_roles`;
+DROP TABLE IF EXISTS `rof_countries`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `campaign_users_roles` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `role` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+CREATE TABLE `rof_countries` (
+  `id` int(11) NOT NULL,
+  `ckey` int(11) NOT NULL,
+  `countryname` varchar(30) NOT NULL,
+  `countryadj` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `campaign_users_roles`
+-- Dumping data for table `rof_countries`
 --
 
-LOCK TABLES `campaign_users_roles` WRITE;
-/*!40000 ALTER TABLE `campaign_users_roles` DISABLE KEYS */;
-INSERT INTO `campaign_users_roles` VALUES (1,'administrator'),(2,'commander'),(3,'viewer');
-/*!40000 ALTER TABLE `campaign_users_roles` ENABLE KEYS */;
+LOCK TABLES `rof_countries` WRITE;
+/*!40000 ALTER TABLE `rof_countries` DISABLE KEYS */;
+INSERT INTO `rof_countries` VALUES (0,0,'Neutral','neutral'),(0,101,'France','French'),(0,102,'Great Britain','British'),(0,103,'USA','American'),(0,104,'Italy','Italian'),(0,105,'Russia','Russian'),(0,501,'Germany','German'),(0,502,'Austro-Hungary','Austro-Hungarian'),(0,600,'Future Country','Future'),(0,610,'War Dogs Country','War Dogs'),(0,620,'Mercenaries Country','Mercenaries'),(0,630,'Knights Country','Knights'),(0,640,'Corsairs Country','Corsairs');
+/*!40000 ALTER TABLE `rof_countries` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-20 22:40:04
+-- Dump completed on 2013-09-22 19:48:15

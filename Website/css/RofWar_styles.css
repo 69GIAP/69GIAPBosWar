@@ -53,12 +53,12 @@ p {
 	z-index: 10;		
 	}
 	
-div.debugging {
+div.debuggingSession {
 	position:absolute;
 	padding: 5px;
 	top: 5px;
 	left: 0px;
-	width: 180px;
+	width: 230px;
 	height: 90px;
 	font-size: 11px;
 	color: #333;
@@ -72,7 +72,7 @@ div.debuggingPost {
 	position:absolute;
 	padding: 5px;
 	top: 5px;
-	left: 200px;
+	left: 250px;
 	width: 250px;
 	height: 90px;
 	font-size: 11px;
@@ -85,10 +85,11 @@ div.debuggingPost {
 	}
 div.debuggingDbConnection {
 	position:relative;
-	padding: 5px;
+	padding: 0;
+	margin: 10px;
 	top: 5px;
 	width: auto;
-	height: 90px;
+	height: 80px;
 	font-size: 13px;
 	color: #6C3;
 	background-color: #FFF;
@@ -186,7 +187,7 @@ div.userLoggedOnInfo {
 #side {
 	float: left;
 	width: 245px;
-	color: #E6E6E6;		
+	color: #E6E6E6;
 	}
 
 ul#sidebar {
@@ -455,8 +456,8 @@ fieldset.boswar select{
 	}
 
 fieldset.boswar label{
-	width:140px;
 	float:left;
+	width:140px;
 	}
 
 fieldset.boswar button{
@@ -464,6 +465,58 @@ fieldset.boswar button{
 	margin-left: 160px;
 }
 
+/**************/
+fieldset.airfield {
+	width: 395px;
+	border-width: 1px;	
+	border-color: #CCC;
+	margin: 0 0 15px 0;
+	}
+	
+fieldset.airfield ul, fieldset li {
+	border: 0;
+	margin: 0; 
+	padding: 5px;
+	width: 395px;
+	list-style:none;
+	}
+
+fieldset.airfield li {
+	clear:both;
+	list-style:none;
+	padding-bottom:10px;
+	padding-top: 5px;
+	}
+
+fieldset.airfield input {
+	float: left;
+	width: 240px;
+	}
+	
+fieldset.airfield select {
+	float: left;
+	width: 245px;
+	}
+
+fieldset.airfield label {
+	float: left;
+	width: 127px;
+
+	}
+fieldset.airfield button{
+	width: 200px;
+	margin-right: 10px;
+}
+
+form button.airfield {
+	width: 405px;
+	margin-left: 0;
+	padding-left: 0;
+}
+
+fieldset.airfield input.grey, fieldset.airfield label.grey {
+	color: #999;
+	}
 /**************/
 fieldset.UserMgmt {
 	width: 400px;

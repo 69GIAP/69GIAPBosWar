@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `boswar_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `boswar_db`;
+CREATE DATABASE  IF NOT EXISTS `skies_of_the_empires` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `skies_of_the_empires`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
--- Host: 10.0.0.57    Database: boswar_db
+-- Host: 10.0.0.57    Database: skies_of_the_empires
 -- ------------------------------------------------------
 -- Server version	5.6.13
 
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-20 22:40:03
+-- Dump completed on 2013-09-22 19:48:15

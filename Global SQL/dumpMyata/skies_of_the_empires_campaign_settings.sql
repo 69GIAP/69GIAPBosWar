@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `boswar_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `boswar_db`;
+CREATE DATABASE  IF NOT EXISTS `skies_of_the_empires` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `skies_of_the_empires`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
--- Host: 10.0.0.57    Database: boswar_db
+-- Host: 10.0.0.57    Database: skies_of_the_empires
 -- ------------------------------------------------------
 -- Server version	5.6.13
 
@@ -44,7 +44,7 @@ CREATE TABLE `campaign_settings` (
   `logpath` varchar(60) NOT NULL,
   `logfile` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,7 +53,7 @@ CREATE TABLE `campaign_settings` (
 
 LOCK TABLES `campaign_settings` WRITE;
 /*!40000 ALTER TABLE `campaign_settings` DISABLE KEYS */;
-INSERT INTO `campaign_settings` VALUES (1,'RoF','Bloody April','bloody_april','','','','Western Front','rof_westernfront_locations',2,1,1,0,0,0,0,'',''),(2,'RoF','Flanders Eagles','flanders_eagles','localhost','rofwar','rofwar','Channel','rof_channel_locations',3,1,1,0,0,0,0,'logs','missionReportFlandersEagles1.txt'),(3,'RoF','Lake','lake','','','','Lake','rof_lake_locations',1,0,1,0,0,0,0,'',''),(4,'RoF','Skies of the Empires II','skies_of_the_empires_ii','','','','Verdun','rof_verdun_locations',2,0,1,0,0,0,0,'',''),(5,'BoS','Stalingrad','stalingrad','','','','Stalingrad','bos_stalingrad_locations',3,0,1,0,0,0,0,'',''),(6,'RoF','Yankee Doodle','yankee_doodle','','','','Verdun','rof_verdun_locations',2,1,1,0,0,0,0,'',''),(7,'RoF','Skies of the Empires','skies_of_the_empires','localhost','rofwar','rofwar','Verdun','rof_verdun_locations',3,0,1,NULL,NULL,NULL,NULL,'',''),(8,'RoF','1916','1916','localhost','rofwar','rofwar','Western Front','rof_westernfront_locations',3,1,1,NULL,NULL,NULL,NULL,'logs','');
+INSERT INTO `campaign_settings` VALUES (7,'RoF','Skies of the Empires','skies_of_the_empires','localhost','rofwar','rofwar','Verdun','rof_verdun_locations',3,0,1,NULL,NULL,NULL,NULL,'logs','missionReportSoE1.txt');
 /*!40000 ALTER TABLE `campaign_settings` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -66,4 +66,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-20 22:40:03
+-- Dump completed on 2013-09-22 19:48:16

@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `boswar_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `boswar_db`;
+CREATE DATABASE  IF NOT EXISTS `skies_of_the_empires` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `skies_of_the_empires`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
--- Host: 10.0.0.57    Database: boswar_db
+-- Host: 10.0.0.57    Database: skies_of_the_empires
 -- ------------------------------------------------------
 -- Server version	5.6.13
 
@@ -18,31 +18,26 @@ USE `boswar_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users`
+-- Table structure for table `test_models`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `test_models`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
-  `user_id` int(8) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(15) NOT NULL,
-  `password` varchar(32) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `role` varchar(30) NOT NULL,
-  `phone` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`user_id`,`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='User authentication table.';
+CREATE TABLE `test_models` (
+  `model` varchar(45) NOT NULL,
+  PRIMARY KEY (`model`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `test_models`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','1d0258c2440a8d19e716292b231e3190','admin@boswar.com','administrator','001 22 456 897'),(2,'commander','1d0258c2440a8d19e716292b231e3190','commander@boswar.com','commander','00 1 245 63 87'),(3,'viewer','1d0258c2440a8d19e716292b231e3190','viewer@boswar.com','viewer','001 245 897 6'),(4,'TestUser','1d0258c2440a8d19e716292b231e3190','','viewer','');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+LOCK TABLES `test_models` WRITE;
+/*!40000 ALTER TABLE `test_models` DISABLE KEYS */;
+INSERT INTO `test_models` VALUES ('Sky albatrosd5'),('Sky brequet14'),('Sky dfc5'),('Sky felixf2a'),('Sky fokkerd7'),('Sky gothag5');
+/*!40000 ALTER TABLE `test_models` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-20 22:40:03
+-- Dump completed on 2013-09-22 19:48:15
