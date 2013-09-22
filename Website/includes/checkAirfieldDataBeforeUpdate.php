@@ -16,7 +16,7 @@
 			#execute the database checks		
 			$result1 = mysqli_query($camp_link, $check1);
 			/* count rows returned */
-			$rowcount = mysqli_num_rows($result1); 
+			$rowcount = mysqli_num_rows($result1);
 			echo "Error 1<br>";
 			echo "$rowcount rows<br>";
 			# check if maximum amount of models is reached
