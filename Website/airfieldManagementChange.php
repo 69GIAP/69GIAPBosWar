@@ -102,7 +102,7 @@
 						echo "		</li>\n";
 						
 						# ADD NEW MODEL
-						echo "		<li> <label for=\"addModel\">Add Aircraft:</label>\n";
+						echo "		<li> <label for=\"addModel\">Add/Remove Aircraft:</label>\n";
 						echo "		<select name=\"airfieldModelAdd\">\n";
 						# include the drop down list
 						include 'includes/getAirfieldCampaignModels.php'; 
@@ -113,10 +113,12 @@
 						echo "		<input type=\"text\" name=\"airfieldModelAddQuantity\" id=\"airfieldModelAddQuantity\" value='$airfieldNumber' size=\"24\" maxlength=\"50\" />\n";
 						echo "		</li>\n";
 	
-						# BUTTON
+						# BUTTON ADD
 						echo "		<li><label for=\"submit\"></label>\n";
-						echo "		<button type=\"submit\" name =\"updateAirfield\" id=\"submit\" value =\"5\" >Add Aircraft</button>\n";
-						echo "		</li>\n";					
+						echo "		<button type=\"submit\" class=\"AircraftMgmtHalfButton1\" name =\"updateAirfield\" id=\"submit\" value =\"5\" >Add</button>\n";
+						# BUTTON REMOVE
+						echo "		<button type=\"submit\" class=\"AircraftMgmtHalfButton2\" name =\"updateAirfield\" id=\"submit\" value =\"6\" >Remove</button>\n";
+						echo "		</li>\n";						
 					echo "</fieldset>\n";		
 
 					echo "<fieldset class=\"airfield\">\n";										
@@ -148,7 +150,7 @@
 						
 						# BUTTON
 						echo "		<li><label for=\"submit\"></label>\n";
-						echo "		<button type=\"changeCoalition\" name=\"updateAirfield\" value =\"6\" id=\"submit\">Change Coalition</button>\n";
+						echo "		<button type=\"changeCoalition\" name=\"updateAirfield\" value =\"7\" id=\"submit\">Change Coalition</button>\n";
 						echo "		</li>\n";	
 										
 						echo "</fieldset>\n";					

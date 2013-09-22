@@ -514,6 +514,19 @@ form button.airfield {
 	padding-left: 0;
 }
 
+fieldset.airfield button.AircraftMgmtHalfButton1 {
+	width: 100px;
+	margin-top: 0;
+	padding-top: 0;
+	margin-left: 140px;
+}
+fieldset.airfield button.AircraftMgmtHalfButton2 {
+	width: 100px;
+	margin-top: 0;
+	padding-top: 0;
+	margin-left: 5px;
+}
+
 fieldset.airfield input.grey, fieldset.airfield label.grey {
 	color: #999;
 	}

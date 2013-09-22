@@ -81,11 +81,15 @@ echo "airfieldName: $airfieldName<br>\n";
 					}
 				if ($_POST["updateAirfield"] == 6)
 					{
+					$query="DELETE from test_airfields WHERE model = '$airfieldModelAdd' AND name = '$airfieldName'";
+					}
+				if ($_POST["updateAirfield"] == 7)
+					{
 					$query="UPDATE test_airfields SET coalition = '$airfieldCoalitionNew' WHERE name = '$airfieldName'";
-					}	
+					}						
 							
-# echo "$query <br>\n";
-	
+ echo "$query <br>\n";
+
 # get the camp_db connection information START
 				$getInfo = "SELECT * from campaign_settings where camp_db = '$loadedCampaign'";  
 	 
