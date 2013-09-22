@@ -21,6 +21,7 @@
                 	# This redirects the user to the Login screen if he tries to press a button and is not logged on
 					include ( 'includes/errorNotLoggedOn.php' );
 					
+					/* Obsolete as already chosen on Home screen
 					# show campaigns due to User role
 					if ($userRole == "administrator")
 						{
@@ -34,6 +35,7 @@
 						{
 							echo "<p>You don't have the necessary rights to view this content.</p>\n";
 						}
+					*/
 				?>
             </div>
     

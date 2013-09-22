@@ -6,7 +6,13 @@
 	# get campaign database name from previous POST.
 	$_SESSION['camp_db'] = $_POST["db"];
 	$camp_db = $_SESSION['camp_db'];
-
+	
+	if (empty($_SESSION['camp_db']))
+	{
+		header("Location: ../loggedOn.php?btn=home");
+		exit;
+	}
+	
 	# redirect to previous screen with selected $loadedCampaign variable
-	header("Location: ../LoggedOn.php");
+	header("Location: ../CampaignManagment_Admin.php?btn=campmgmt");
 ?>
