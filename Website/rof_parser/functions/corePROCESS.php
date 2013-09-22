@@ -22,6 +22,10 @@ require ('rof_parser/functions/processKILLS.php');
 require ('rof_parser/functions/processLASTHIT.php');
 // OBJECTCOUNTRYNAME
 require ('rof_parser/functions/processOBJECTCOUNTRYNAME.php');
+// OBJECTNAME
+require ('rof_parser/functions/processOBJECTNAME.php');
+// PLAYERNAME
+require ('rof_parser/functions/processPLAYERNAME.php');
 // WOUNDS
 require ('rof_parser/functions/processWOUNDS.php');
 

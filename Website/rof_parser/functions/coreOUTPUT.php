@@ -136,23 +136,21 @@ function OUTPUT() {
    # COALITIONNAME
    require ('rof_parser/functions/outputCOALITIONNAME.php');
    # CRASHED
-//   require ('rof_parser/functions/outputCRASHED.php');
+   require ('rof_parser/functions/outputCRASHED.php');
    # DEAD
-//   require ('rof_parser/functions/outputDEAD.php');
+   require ('rof_parser/functions/outputDEAD.php');
    # FATES
-//   require ('rof_parser/functions/outputFATES.php');
+   require ('rof_parser/functions/outputFATES.php');
    # FLYING
-//   require ('rof_parser/functions/outputFLYING.php');
+   require ('rof_parser/functions/outputFLYING.php');
    # GUNNER
-//   require ('rof_parser/functions/outputGUNNER.php');
+   require ('rof_parser/functions/outputGUNNER.php');
+   # LANDINGSIDE
+   require ('rof_parser/functions/outputLANDINGSIDE.php');
    # LOSSES
-//   require ('rof_parser/functions/outputLOSSES.php');
-   # OBJECTNAME
-//   require ('rof_parser/functions/outputOBJECTNAME.php');
+   require ('rof_parser/functions/outputLOSSES.php');
    # OBJECTTYPE
 //   require ('rof_parser/functions/outputOBJECTTYPE.php');
-   # PLAYERNAME
-//   require ('rof_parser/functions/outputPLAYERNAME.php');
    # TOFROM
 //   require ('rof_parser/functions/outputTOFROM.php');
    # WHERE
