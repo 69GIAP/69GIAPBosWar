@@ -24,6 +24,8 @@ require ('rof_parser/functions/processLASTHIT.php');
 require ('rof_parser/functions/processOBJECTCOUNTRYNAME.php');
 // OBJECTNAME
 require ('rof_parser/functions/processOBJECTNAME.php');
+// OBJECTTYPE
+require ('rof_parser/functions/processOBJECTTYPE.php');
 // PLAYERNAME
 require ('rof_parser/functions/processPLAYERNAME.php');
 // WOUNDS

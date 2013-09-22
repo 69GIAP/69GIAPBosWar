@@ -149,16 +149,14 @@ function OUTPUT() {
    require ('rof_parser/functions/outputLANDINGSIDE.php');
    # LOSSES
    require ('rof_parser/functions/outputLOSSES.php');
-   # OBJECTTYPE
-//   require ('rof_parser/functions/outputOBJECTTYPE.php');
    # TOFROM
-//   require ('rof_parser/functions/outputTOFROM.php');
+   require ('rof_parser/functions/outputTOFROM.php');
    # WHERE
-//   require ('rof_parser/functions/outputWHERE.php');
+   require ('rof_parser/functions/outputWHERE.php');
    # WHOSEGUNNER
-//   require ('rof_parser/functions/outputWHOSEGUNNER.php');
+   require ('rof_parser/functions/outputWHOSEGUNNER.php');
    # XYZ
-//   require ('rof_parser/functions/outputXYZ.php');
+   require ('rof_parser/functions/outputXYZ.php');
 
    echo "<p><b>REPORT OF SELECTED RESULTS:</b></p>\n"; 
 
