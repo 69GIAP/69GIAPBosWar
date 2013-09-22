@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2013 at 05:13 PM
+-- Generation Time: Sep 22, 2013 at 07:52 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -42,12 +42,16 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
   `status` int(1) NOT NULL DEFAULT '4',
   `show_airfield` tinyint(1) NOT NULL,
   `finish_flight_only_landed` tinyint(1) NOT NULL,
-  `redAirAdmin` int(11) DEFAULT NULL,
-  `redGroundAdmin` int(11) DEFAULT NULL,
-  `blueAirAdmin` int(11) DEFAULT NULL,
-  `blueGroundAdmin` int(11) DEFAULT NULL,
+  `red_commander1` int(11) DEFAULT NULL,
+  `red_commander2` int(11) DEFAULT NULL,
+  `blue_commander1` int(11) DEFAULT NULL,
+  `blue_commander2` int(11) DEFAULT NULL,
   `logpath` varchar(60) NOT NULL,
   `logfile` varchar(50) NOT NULL,
+  `kia_pilot` int(11) NOT NULL,
+  `mia_pilot` int(11) NOT NULL,
+  `kia_gunner` int(11) NOT NULL,
+  `mia_gunner` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
@@ -55,8 +59,8 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
 -- Dumping data for table `campaign_settings`
 --
 
-INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `redAirAdmin`, `redGroundAdmin`, `blueAirAdmin`, `blueGroundAdmin`, `logpath`, `logfile`) VALUES
-(7, 'RoF', 'Skies of the Empires', 'skies_of_the_empires', 'localhost', 'rofwar', 'rofwar', 'Verdun', 'rof_verdun_locations', 3, 0, 1, NULL, NULL, NULL, NULL, 'logs', 'missionReportSoE1.txt');
+INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `red_commander1`, `red_commander2`, `blue_commander1`, `blue_commander2`, `logpath`, `logfile`, `kia_pilot`, `mia_pilot`, `kia_gunner`, `mia_gunner`) VALUES
+(7, 'RoF', 'Skies of the Empires', 'skies_of_the_empires', 'localhost', 'rofwar', 'rofwar', 'Verdun', 'rof_verdun_locations', 3, 0, 1, 4, NULL, NULL, NULL, 'logs', 'missionReportSoE1.txt', 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -568,6 +572,57 @@ INSERT INTO `rof_verdun_locations` (`id`, `LID`, `LX`, `LZ`, `LName`) VALUES
 (131, 51, '44100', '13750', 'Vilosnes-Haraumont'),
 (132, 10, '18050', '4200', 'Vraincourt'),
 (133, 51, '19800', '4400', 'Vraincourt');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test_airfields`
+--
+
+DROP TABLE IF EXISTS `test_airfields`;
+CREATE TABLE IF NOT EXISTS `test_airfields` (
+  `name` varchar(45) NOT NULL,
+  `coalition` int(1) NOT NULL,
+  `model` varchar(45) NOT NULL,
+  `number` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`name`,`coalition`,`model`,`number`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `test_airfields`
+--
+
+INSERT INTO `test_airfields` (`name`, `coalition`, `model`, `number`) VALUES
+('Coxyde', 1, 'albatrosd5.mgm', 8),
+('Dunkerque', 1, 'albatrosd5.mgm', 6),
+('Harlebeeke', 1, 'gothag5', 20),
+('Leffinghe', 2, 'felixf2a.mgm', 10),
+('St. Marie Cappel', 1, 'albatrosd5.mgm', 2),
+('Zeebrugge', 2, 'felixf2a.mgm', 15);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test_models`
+--
+
+DROP TABLE IF EXISTS `test_models`;
+CREATE TABLE IF NOT EXISTS `test_models` (
+  `model` varchar(45) NOT NULL,
+  PRIMARY KEY (`model`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `test_models`
+--
+
+INSERT INTO `test_models` (`model`) VALUES
+('albatrosd5.mgm'),
+('brequet14'),
+('dfc5'),
+('felixf2a.mgm'),
+('fokkerd7'),
+('gothag5');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

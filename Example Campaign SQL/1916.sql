@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2013 at 05:52 AM
+-- Generation Time: Sep 22, 2013 at 07:54 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -42,12 +42,16 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
   `status` int(1) NOT NULL DEFAULT '4',
   `show_airfield` tinyint(1) NOT NULL,
   `finish_flight_only_landed` tinyint(1) NOT NULL,
-  `redAirAdmin` int(11) DEFAULT NULL,
-  `redGroundAdmin` int(11) DEFAULT NULL,
-  `blueAirAdmin` int(11) DEFAULT NULL,
-  `blueGroundAdmin` int(11) DEFAULT NULL,
+  `red_commander1` int(11) DEFAULT NULL,
+  `red_commander2` int(11) DEFAULT NULL,
+  `blue_commander1` int(11) DEFAULT NULL,
+  `blue_commander2` int(11) DEFAULT NULL,
   `logpath` varchar(60) NOT NULL,
   `logfile` varchar(50) NOT NULL,
+  `kia_pilot` int(11) NOT NULL,
+  `mia_pilot` int(11) NOT NULL,
+  `kia_gunner` int(11) NOT NULL,
+  `mia_gunner` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
@@ -55,8 +59,8 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
 -- Dumping data for table `campaign_settings`
 --
 
-INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `redAirAdmin`, `redGroundAdmin`, `blueAirAdmin`, `blueGroundAdmin`, `logpath`, `logfile`) VALUES
-(8, 'RoF', '1916', '1916', 'localhost', 'rofwar', 'rofwar', 'Western Front', 'rof_westernfront_locations', 3, 1, 1, NULL, NULL, NULL, NULL, 'logs', 'missionReport1916Rehearsal.txt');
+INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `red_commander1`, `red_commander2`, `blue_commander1`, `blue_commander2`, `logpath`, `logfile`, `kia_pilot`, `mia_pilot`, `kia_gunner`, `mia_gunner`) VALUES
+(8, 'RoF', '1916', '1916', 'localhost', 'rofwar', 'rofwar', 'Western Front', 'rof_westernfront_locations', 3, 1, 1, 4, NULL, NULL, NULL, 'logs', 'missionReport1916Rehearsal.txt', 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -67,7 +71,8 @@ INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `cam
 DROP TABLE IF EXISTS `rof_coalitions`;
 CREATE TABLE IF NOT EXISTS `rof_coalitions` (
   `CoalID` int(11) NOT NULL,
-  `Coalitionname` varchar(30) NOT NULL
+  `Coalitionname` varchar(30) NOT NULL,
+  PRIMARY KEY (`CoalID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
