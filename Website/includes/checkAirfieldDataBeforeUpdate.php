@@ -36,7 +36,7 @@
 			echo "Error 2<br>";
 			echo "$rowcount rows<br>";
 			# check if model already exists
-			if ($rowcount == 1)
+			if ($rowcount >= 1)
 				{
 					header ("Location: airfieldManagementError.php?error=2");
 				}
