@@ -4,7 +4,7 @@
 
     # get the SESSION variables for the users
     # $userRole	= $_SESSION['userRole'];
-	# $user_id	= $_SESSION['user_id'];	
+	# $userId	= $_SESSION['user_id'];	
     
     # load the query according to the user role
     if ($userRole == "administrator")

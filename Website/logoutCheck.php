@@ -26,9 +26,10 @@
 						unset ($_SESSION['username']); 
 						unset ($_SESSION['userRole']);
 						unset ($_SESSION['camp_db']);	
-						unset ($_SESSION['user_id']);
+						unset ($_SESSION['userId']);
 						unset ($_SESSION['camp_db']);
 						unset ($_SESSION['airfieldName']);
+						unset ($_SESSION['coalId']);
 						header("Location: IndexBosWarRofWar.php");
 					} 
 				else

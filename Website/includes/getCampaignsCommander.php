@@ -20,7 +20,7 @@
 				ON  c.camp_db = u.camp_db
 				AND c.status = 3
 				AND c.simulation = '$game'
-				AND u.user_id = '$user_id'";
+				AND u.user_id = '$userId'";
 	
 	if(!$result = $dbc->query($query))
 	   { die('There was an error running the query [' . $dbc->error . ']'); }

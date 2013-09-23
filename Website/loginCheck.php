@@ -19,17 +19,18 @@
             
                 <?php
 				
-				# bind POST variables into variables for easier coding
-				$username 	= 	$_POST["username"]; 
+				# bind POST variables to SESSION
+				$_SESSION["username"]	= $_POST["username"]; 
+				$username				= $_SESSION["username"];				
+				
+				# encrypt transmitted password
 				$password 	= 	md5($_POST["password"]); 
 			  
 				# create SQL query
-				$query = "SELECT username, password FROM users WHERE username LIKE '$username' LIMIT 1"; 
+				$query = "SELECT user_id, username, password, role FROM users WHERE username LIKE '$username' LIMIT 1"; 
 				
 				# execute SQL query
 				$result = mysqli_query($dbc, $query);
-				
-				# fetch results
 				$row 	= mysqli_fetch_object($result);
 				
 				# perform some sanity checks on the data
@@ -43,19 +44,29 @@
 					}
 				else if($row->password == $password)
 				   {
-		
-				# due to users role the redirection is dynamically set to the right page
-					# gather the users role
-					$query 	= "SELECT user_id,role FROM users WHERE username LIKE '$username' LIMIT 1";
-					$result	= mysqli_query($dbc, $query);
-					$row 	= mysqli_fetch_object($result);
+				
+					# bind user_id to SESSION
+					$_SESSION['userId'] = $row->user_id;
+					$userId = $_SESSION['userId'];
 					
 					# bind role to SESSION
 					$_SESSION['userRole'] = ($row->role);
 					$userRole = $_SESSION['userRole'];
-					# bind user_id to SESSION
-					$_SESSION['user_id'] = ($row->user_id);
-					$user_id = $_SESSION['user_id'];					
+					
+					$query = "SELECT coal_id FROM campaign_users WHERE user_id = '$userId'";
+					# execute SQL query
+					$result = mysqli_query($dbc, $query);
+					$row 	= mysqli_fetch_object($result);
+					
+					#  bind coalition to SESSION
+					$_SESSION['coalId'] = $row->coal_id;
+					$coalId = $_SESSION['coalId'];
+				
+ 				# due to users role the redirection is dynamically set to the right page
+					# gather the users role
+					$query 	= "SELECT user_id,role FROM users WHERE username LIKE '$username' LIMIT 1";
+					$result	= mysqli_query($dbc, $query);
+					$row 	= mysqli_fetch_object($result);
 					
 					# bind session variable to variable
 					$_SESSION["username"] = $username;

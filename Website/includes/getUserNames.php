@@ -11,7 +11,7 @@
 			$query = "SELECT * from users u, campaign_users c
 						WHERE u.role = 'commander'
 						AND u.user_id = c.user_id
-						AND u.user_id != '$user_id'
+						AND u.user_id != '$userId'
 						GROUP BY u.user_id";
 		}	
 	
