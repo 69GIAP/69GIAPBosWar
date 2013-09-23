@@ -31,6 +31,22 @@ function FATES($i,$j) {
    global $Ticks; // time since start of mission in 1/50 sec ticks
    global $POS; // position x,y,z
    global $FinishFlightOnlyLanded; // true or false setting
+   global $MissionID; // mission ID (name-date-time)
+   global $camp_link; // link to campaign db
+
+   // PilotStates ($fate):
+   // 0 = did not take off
+   // 1 = landed (pilot) / survived (gunner)
+   // 2 = suffered minor injuries
+   // 3 = suffered serious injuries
+   // 4 = suffered critical injuries
+   // 5 = did not land
+   // 6 = crashed (not set in this function)
+   // 7 = was captured (not set in this function)
+   // 8 = was killed
+
+   // initialize $fate
+   $fate = 0;
 
    // get "", "a" or "an" right for the plane
    ANORA($TYPE[$j]);
@@ -54,6 +70,7 @@ function FATES($i,$j) {
       CLOCKTIME($Deathticks[$i]);
       XYZ($Deathpos[$i]);
       WHERE($posx,$posz,0);
+      $fate = 8;
       if ($Gunner) { //G1:
 //         echo "Woundticks[$i] = $Woundticks[$i], Gunnerticks = $Gunnerticks<br>\n";
          echo "$NAME[$j] as $ag $Gunner for $countryname was killed at $clocktime $where<br>\n";
@@ -66,11 +83,14 @@ function FATES($i,$j) {
       WHERE($posx,$posz,0);
       // how seriously wounded?
       if ($Wound[$i] > .66) {
+         $fate = 4;
          $injuries = "critical injuries";
       }
       else if ($Wound[$i] > .33) {
+         $fate = 3;
          $injuries = "serious injuries";
       } else {
+         $fate = 2;
          $injuries = "minor injuries";
       }
       if ($Gunner) { //G2:
@@ -90,6 +110,7 @@ function FATES($i,$j) {
             XYZ($POS[$l]);
             WHERE($posx,$posz,0);
 //            echo "PID[$j] = $PID[$j], PLID[$j] = $PLID[$j], PID[$l] = $PID[$l]<br>\n";
+            $fate = 1;
             $landed = "landed at $clocktime $where";
          }
       } // end landing check
@@ -105,6 +126,7 @@ function FATES($i,$j) {
                XYZ($POS[$l]);
                WHERE($posx,$posz,0);
 //               echo "PLID[$j] = $PLID[$j], PLID[$j] = $PLID[$j]<br>\n";
+               $fate = 1;
                $landed = "landed at $clocktime $where";
             }
          }
@@ -120,8 +142,10 @@ function FATES($i,$j) {
             }
          }
          if ($tookoff == 0) { // player never took off
+            $fate = 0;
             $landed = "did not take off, surviving to fight another day";
          } else {
+            $fate = 5;
             $landed = "did not land";
          }
       } // end takeoff check
@@ -132,5 +156,16 @@ function FATES($i,$j) {
          echo "$NAME[$j] piloting $a $TYPE[$j] for $countryname $landed<br>\n";
       }
    } // end unwounded
+
+   // record stats for pilot/gunner fates
+   if ($Gunner) {
+      $query = "INSERT into rof_gunner_scores (MissionID,GunnerName,GunnerState) VALUES ('$MissionID','$NAME[$j]','$fate')";
+   } else {
+      $query = "INSERT into rof_pilot_scores (MissionID,PilotName,PilotState) VALUES ('$MissionID','$NAME[$j]','$fate')";
+   }
+//   if (!mysqli_query($camp_link, $query)) {
+//       printf("Error: %s<br>\n", mysqli_sqlstate($camp_link));
+//   }
+
 } // end function
 ?>
