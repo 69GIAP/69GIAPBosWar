@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 24, 2013 at 06:58 PM
+-- Generation Time: Sep 24, 2013 at 09:04 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -28,13 +28,14 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `rof_gunner_scores`;
 CREATE TABLE IF NOT EXISTS `rof_gunner_scores` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` smallint(1) NOT NULL AUTO_INCREMENT,
   `MissionID` varchar(50) NOT NULL,
   `GunnerName` varchar(40) NOT NULL,
   `mgid` int(11) NOT NULL,
   `GunningFor` varchar(40) NOT NULL,
   `GunnerState` int(11) NOT NULL,
-  `GunnerScore` int(11) NOT NULL,
+  `GunnerNegScore` int(11) NOT NULL,
+  `GunnerPosScore` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
