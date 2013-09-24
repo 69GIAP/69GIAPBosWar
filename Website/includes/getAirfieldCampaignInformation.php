@@ -13,7 +13,7 @@
 		{$sql = "SELECT * FROM test_airfields";}
 	else
 	# get only airfields having the right coalition and all neutral airfields
-		{$sql = "SELECT * FROM test_airfields WHERE coalition = $userCoalId OR coalition = \"0\"";}
+		{$sql = "SELECT * FROM test_airfields WHERE coalid = $userCoalId OR coalId = \"0\"";}
 	#echo $sql;
 
 	if(!$result = $camp_link->query($sql)){
@@ -22,7 +22,7 @@
 	# load results into variables 
 	while ($obj = mysqli_fetch_object($result)) {
 		$airfieldName		=($obj->name);
-		$airfieldCoalition	=($obj->coalition);
+		$airfieldCoalition	=($obj->coalId);
 		$airfieldModel		=($obj->model);
 		$airfieldNumber		=($obj->number);
 		echo "<option value=\"". $airfieldName. "\">". $airfieldName. "</option>\n";		

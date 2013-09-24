@@ -21,7 +21,7 @@
                 	# This redirects the user to the Login screen if he tries to press a button and is not logged on
 					include ( 'includes/errorNotLoggedOn.php' );
 					
-					# show user airfields due to UNFILTERED - later coalition
+					# show user airfields due to coalition
 					include ( 'includes/airfieldAdministration.php' );
 					
 					if ($userRole == "viewer")

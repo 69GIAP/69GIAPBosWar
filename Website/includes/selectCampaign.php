@@ -23,7 +23,7 @@
 	else
 		{
 			# get coalition the user is assigned to	in this camapign
-			$query = "SELECT coal_id FROM campaign_users WHERE user_id = '$userId' and camp_db = '$camp_db'";
+			$query = "SELECT coalId FROM campaign_users WHERE user_id = '$userId' and camp_db = '$camp_db'";
 			# execute SQL query
 
 			if(!$result = $dbc->query($query))
@@ -32,7 +32,7 @@
 			$row 	= mysqli_fetch_object($result);
 			
 			#  bind coalition to SESSION
-			$_SESSION['userCoalId'] = ($row->coal_id);
+			$_SESSION['userCoalId'] = ($row->coalId);
 		}
 		
 	# redirect to campaign Management section screen with selected $loadedCampaign variable

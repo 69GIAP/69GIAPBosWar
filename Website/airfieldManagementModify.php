@@ -77,7 +77,7 @@ echo "airfieldName: $airfieldName<br>\n";
 					}	
 				if ($_POST["updateAirfield"] == 5)
 					{
-					$query="INSERT INTO test_airfields (name, coalition, model, number) VALUES ('$airfieldName', $airfieldCoalition, '$airfieldModelAdd', $airfieldModelAddQuantity)";
+					$query="INSERT INTO test_airfields (name, coalId, model, number) VALUES ('$airfieldName', $airfieldCoalition, '$airfieldModelAdd', $airfieldModelAddQuantity)";
 					}
 				if ($_POST["updateAirfield"] == 6)
 					{
@@ -85,7 +85,7 @@ echo "airfieldName: $airfieldName<br>\n";
 					}
 				if ($_POST["updateAirfield"] == 7)
 					{
-					$query="UPDATE test_airfields SET coalition = '$airfieldCoalitionNew' WHERE name = '$airfieldName'";
+					$query="UPDATE test_airfields SET coalId = '$airfieldCoalitionNew' WHERE name = '$airfieldName'";
 					}						
 							
  echo "$query <br>\n";

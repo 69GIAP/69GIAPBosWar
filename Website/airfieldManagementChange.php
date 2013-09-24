@@ -59,7 +59,7 @@
 						$i = 1;
 					while ($obj = mysqli_fetch_object($result)) {
 						$airfieldName		=($obj->name);
-						$airfieldCoalition	=($obj->coalition);
+						$airfieldCoalition	=($obj->coalId);
 						$airfieldModel		=($obj->model);
 						$airfieldNumber		=($obj->number);
 

@@ -5,7 +5,7 @@
 	if ($_POST["updateAirfield"] == 5)
 		{
 			# check if there are already 4 aircraft models assigned to that airfield
-			$check1 = "SELECT * from test_airfields where name = '$airfieldName' and coalition = $airfieldCoalition";
+			$check1 = "SELECT * from test_airfields where name = '$airfieldName' and coalId = $airfieldCoalitionId";
 			# check if there is a primary key violation
 			$check2 = "SELECT * from test_airfields where name = '$airfieldName' AND model = '$airfieldModelAdd'";
 		
