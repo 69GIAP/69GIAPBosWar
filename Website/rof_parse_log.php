@@ -24,6 +24,10 @@ $DEBUG = 0;  // set to 1 for a complete debugging report, 0 for off.
 // 113 for INFLUENCEAREA_HEADER, 114 for INFLUENCEAREA_BOUNDARY,
 // 115 for VERSION (nothing yet for BOTID... haven't found its use)
 
+// Get individual variable from $_POST, but set it here for the moment
+// set StatsCommand (do, undo or ignore)
+$StatsCommand = 'ignore';   
+
 // Get Individual variables from the campaign's campaign_settings table
 $query = "SELECT * FROM campaign_settings";
 if(!$result = $camp_link->query($query))

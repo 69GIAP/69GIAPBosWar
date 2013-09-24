@@ -158,8 +158,6 @@ function FATES($i,$j) {
       }
    } // end unwounded
    // record stats for pilot/gunner fates
-   // set StatsCommand (do, undo or ignore)
-   $StatsCommand = 'ignore';      
 
    if ($StatsCommand == 'do') { // generate an INSERT query
       if ($Gunner) {
@@ -175,7 +173,7 @@ function FATES($i,$j) {
       }
    }
 
-   if (($StatsCommand == 'do') || ($StatsCommand == 'undo') {
+   if (($StatsCommand == 'do') || ($StatsCommand == 'undo')) {
       // process the query
       if (!mysqli_query($camp_link, $query)) {
           printf("Error: %s<br>\n", mysqli_sqlstate($camp_link));
