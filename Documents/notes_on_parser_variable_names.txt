@@ -23,3 +23,6 @@ Changes wouldn't be so bad if we were working under UNIX, because then I could
 easily find and replace all examples, but windows makes that very difficult
 and hence any such changes would require individually searching through a
 large number of function files.
+
+Tushka
+Sept 24, 2013
