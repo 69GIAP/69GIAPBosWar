@@ -8,7 +8,7 @@ Where there is no log entry as a guide I used the following rules-of-thumb.
 If a variable is a local variable it begins with a lower case letter.
 If a variable is a Global Variable it begins with an Upper Case Letter.
 
-Function names are in all caps.
+Function names are in ALL CAPS.
 
 This is not a style guide to follow.  It was just a way for me to keep track
 of the many variables the parser requires.
