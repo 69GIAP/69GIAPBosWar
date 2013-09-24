@@ -33,6 +33,7 @@ function FATES($i,$j) {
    global $FinishFlightOnlyLanded; // true or false setting
    global $MissionID; // mission ID (name-date-time)
    global $camp_link; // link to campaign db
+   global $StatsCommand; // do, undo, or ignore
 
    // PilotStates ($fate):
    // 0 = did not take off
@@ -156,16 +157,29 @@ function FATES($i,$j) {
          echo "$NAME[$j] piloting $a $TYPE[$j] for $countryname $landed<br>\n";
       }
    } // end unwounded
-
    // record stats for pilot/gunner fates
-   if ($Gunner) {
-      $query = "INSERT into rof_gunner_scores (MissionID,GunnerName,GunnerState) VALUES ('$MissionID','$NAME[$j]','$fate')";
-   } else {
-      $query = "INSERT into rof_pilot_scores (MissionID,PilotName,PilotState) VALUES ('$MissionID','$NAME[$j]','$fate')";
-   }
-//   if (!mysqli_query($camp_link, $query)) {
-//       printf("Error: %s<br>\n", mysqli_sqlstate($camp_link));
-//   }
+   // set StatsCommand (do, undo or ignore)
+   $StatsCommand = 'ignore';      
 
+   if ($StatsCommand == 'do') { // generate an INSERT query
+      if ($Gunner) {
+         $query = "INSERT into rof_gunner_scores (MissionID,GunnerName,mgid,GunnerState) VALUES ('$MissionID','$NAME[$j]','$i','$fate')";
+      } else { // pilot
+         $query = "INSERT into rof_pilot_scores (MissionID,PilotName,mpid,PilotState) VALUES ('$MissionID','$NAME[$j]','$i','$fate')";
+      }
+   } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
+      if ($Gunner) {
+         $query = "DELETE from rof_gunner_scores WHERE MissionID='$MissionID' AND GunnerName='$NAME[$j]' AND mgid='$i'";
+      } else { // pilot
+         $query = "DELETE from rof_pilot_scores WHERE MissionID='$MissionID' AND PilotName='$NAME[$j]' AND mpid='$i'";
+      }
+   }
+
+   if (($StatsCommand == 'do') || ($StatsCommand == 'undo') {
+      // process the query
+      if (!mysqli_query($camp_link, $query)) {
+          printf("Error: %s<br>\n", mysqli_sqlstate($camp_link));
+      }
+   }
 } // end function
 ?>
