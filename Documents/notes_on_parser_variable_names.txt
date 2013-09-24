@@ -1,0 +1,25 @@
+You may have wondered about the odd capitalization of various variables, 
+etc. in the parser.  Here is how it came about.
+
+In the basic parser the rule is that a variable has the same capitalization
+as appears in the corresponding log entry.
+
+Where there is no log entry as a guide I used the following rules-of-thumb.
+If a variable is a local variable it begins with a lower case letter.
+If a variable is a Global Variable it begins with an Upper Case Letter.
+
+Function names are in all caps.
+
+This is not a style guide to follow.  It was just a way for me to keep track
+of the many variables the parser requires.
+
+The db tables that are derived from the parser have column names that match
+the corresponding variable names in the parser.  For example $CoalID is a
+global variable, so the column name in the rof_coalitions table is CoalID.
+
+I'd prefer that these not be changed.
+
+Changes wouldn't be so bad if we were working under UNIX, because then I could
+easily find and replace all examples, but windows makes that very difficult
+and hence any such changes would require individually searching through a
+large number of function files.
