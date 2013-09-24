@@ -12,17 +12,17 @@ require ( '../connect_db.php' );
 
 mysqli_query($dbc, "CREATE TEMPORARY TABLE tmp_users LIKE users");
 
-$username = "==69\GIAP==0'TUSHKA";
+$userName = "==69\GIAP==0'TUSHKA";
 
-/* this query will fail, cause we didn't escape $username */
-if (!mysqli_query($dbc, "INSERT into tmp_users (username) VALUES ('$username')")) {
+/* this query will fail, cause we didn't escape $userName */
+if (!mysqli_query($dbc, "INSERT into tmp_users (username) VALUES ('$userName')")) {
     printf("Error: %s<br>\n", mysqli_sqlstate($dbc));
 }
 
-$username = mysqli_real_escape_string($dbc, $username);
+$userName = mysqli_real_escape_string($dbc, $userName);
 
-/* this query with escaped $username will work */
-if (mysqli_query($dbc, "INSERT into tmp_users (username) VALUES ('$username')")) {
+/* this query with escaped $userName will work */
+if (mysqli_query($dbc, "INSERT into tmp_users (username) VALUES ('$userName')")) {
     printf("%d Row inserted.\n", mysqli_affected_rows($dbc));
 }
 

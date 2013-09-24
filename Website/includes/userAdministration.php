@@ -10,19 +10,23 @@
     if ($userRole == "administrator")
     {
         echo "<h3>Registered Users:</h3>\n";
-        $sql = "SELECT * 
-				FROM users u  
+        $sql = "SELECT * FROM users u  
 				LEFT JOIN campaign_users c 
-				ON u.user_id = c.user_id 
-				ORDER BY  username, role, camp_db";
+				ON u.user_id = c.user_id
+				JOIN users_roles r
+				ON u.role_id = r.role_id
+				ORDER BY  u.username, r.role_id, c.camp_db";
     }
     else if ($userRole == "commander")
     {
         echo "<h3>Registered Commanders:</h3>\n";
-        $sql = "SELECT * from users u, campaign_users c
-				WHERE u.role = 'commander'
-				AND u.user_id = c.user_id
-				GROUP BY u.user_id";
+        $sql = "SELECT * FROM users u  
+				LEFT JOIN campaign_users c 
+				ON u.user_id = c.user_id
+				JOIN users_roles r
+				ON u.role_id = r.role_id
+				AND u.role_id = 2
+				ORDER BY  u.username, r.role_id, c.camp_db";
     }
     
     if(!$result = $dbc->query($sql)){

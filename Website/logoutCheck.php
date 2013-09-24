@@ -19,17 +19,18 @@
 				<?php 
         
 				# check to make sure the session variable is registered 
-				if(isset($_SESSION["username"]))
+				if(isset($_SESSION["userName"]))
 					{ 
 						# session variables get cleaned out; SESSION['game'] stays intact 
 						unset ($_SESSION['btn']);
-						unset ($_SESSION['username']); 
+						unset ($_SESSION['userName']); 
 						unset ($_SESSION['userRole']);
+						unset ($_SESSION['userRoleId']);
 						unset ($_SESSION['camp_db']);	
 						unset ($_SESSION['userId']);
 						unset ($_SESSION['camp_db']);
 						unset ($_SESSION['airfieldName']);
-						unset ($_SESSION['coalId']);
+						unset ($_SESSION['userCoalId']);
 						header("Location: IndexBosWarRofWar.php");
 					} 
 				else

@@ -12,10 +12,6 @@
 		{
 			unset($_SESSION['game']); 
 		}
-	if (!empty($_SESSION['username']))
-		{
-			unset($_SESSION['username']); 
-		}
 	if (!empty($_SESSION['btn']))
 		{
 			unset($_SESSION['btn']); 
@@ -24,14 +20,26 @@
 		{
 			unset($_SESSION['userRole']); 
 		}
+	if (!empty($_SESSION['userRoleId']))
+		{
+			unset($_SESSION['userRoleId']); 
+		}
 	if (!empty($_SESSION['camp_db']))
 		{
 			unset($_SESSION['camp_db']); 
 		}
-	if (!empty($_SESSION['user_id']))
+	if (!empty($_SESSION['userName']))
 		{
-			unset($_SESSION['user_id']); 
-		}							
+			unset($_SESSION['userName']);
+		}
+	if (!empty($_SESSION['userId']))
+		{
+			unset($_SESSION['userId']); 
+		}
+	if (!empty($_SESSION['userCoalId']))
+		{
+			unset($_SESSION['userCoalId']); 
+		}									
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

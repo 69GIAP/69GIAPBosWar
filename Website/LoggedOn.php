@@ -23,8 +23,11 @@
             <div id="content">
             
 				<?php 
+					# empty campaign specific variables
     				unset($loadedCampaign);
 					unset($_SESSION['camp_db']);
+
+					
 					# Feedback to the user wich campaign he is connected to right now
 					if (!empty($loadedCampaign))
 						{

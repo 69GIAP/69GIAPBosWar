@@ -1,10 +1,10 @@
 <?php
     # reference the username next to the navigation bar              
-    if(isset($_SESSION["username"])) 
+    if(isset($_SESSION["userName"])) 
         {
-            $username 	= $_SESSION["username"];
+            $userName 	= $_SESSION["userName"];
             echo "<div class=\"userLoggedOnInfo\">";
-			echo "<b>User: </b> $username<br> \n";
+			echo "<b>User: </b> $userName<br> \n";
 			echo "<b>Role: </b>$userRole<br>";
 			if (!empty($loadedCampaign))
 				{

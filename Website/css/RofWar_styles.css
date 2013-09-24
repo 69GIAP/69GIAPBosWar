@@ -59,14 +59,14 @@ div.debuggingSession {
 	top: 5px;
 	left: 0px;
 	width: 230px;
-	height: 90px;
+	min-height: 90px;
 	font-size: 11px;
 	color: #333;
 	background-color: #FFF;
 	opacity: 0.5;
 	filter:alpha(opacity=50);
 	line-height: 13px;
-	z-index: 10;		
+	z-index: 100;		
 	}
 div.debuggingPost {
 	position:absolute;
@@ -74,14 +74,14 @@ div.debuggingPost {
 	top: 5px;
 	left: 250px;
 	width: 250px;
-	height: 90px;
+	min-height: 90px;
 	font-size: 11px;
 	color: #333;
 	background-color: #FFF;
 	opacity: 0.5;
 	filter:alpha(opacity=50);
 	line-height: 13px;
-	z-index: 10;		
+	z-index: 100;		
 	}
 div.debuggingDbConnection {
 	position:relative;
@@ -96,7 +96,7 @@ div.debuggingDbConnection {
 	opacity: 0.8;
 	filter:alpha(opacity=80);
 	line-height: 14px;
-	z-index: 10;		
+	z-index: 100;		
 	}			
 
 div.userLoggedOnInfo {
@@ -106,7 +106,7 @@ div.userLoggedOnInfo {
 	width: auto;
 	height: auto;
 	font-size: 12px;
-	color: #E6E6E6;
+	color: #999;
 	z-index: 10;
 	}
 
@@ -535,7 +535,7 @@ fieldset.UserMgmt {
 	width: 400px;
 	border: 0;	
 	}
-	
+
 fieldset.UserMgmt ul, fieldset li {
 	border: 0;
 	margin: 0; 

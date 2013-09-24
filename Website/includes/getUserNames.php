@@ -3,15 +3,20 @@
 
 	if ($userRole == "administrator") 
 		{
-			$query = "SELECT * FROM users";
+			$query = "SELECT * from users u, campaign_users c, users_roles r
+						WHERE r.role_id = u.role_id
+						AND u.user_id = c.user_id
+						GROUP BY u.user_id";
 		}
 	if ($userRole == "commander")
 		{
-			# show users, who are assigned to my active campaigns, are the only ones visible
-			$query = "SELECT * from users u, campaign_users c
-						WHERE u.role = 'commander'
+			# show commanders, who are assigned to my active campaigns excluding Administrators and viewers, these are the only ones visible
+			$query = "SELECT u.user_id, u.username, r.role from users u, campaign_users c, users_roles r
+						WHERE r.role_id = u.role_id
 						AND u.user_id = c.user_id
-						AND u.user_id != '$userId'
+						AND u.user_id != 'userId'
+						AND u.role_id != 1
+						AND u.role_id != 3
 						GROUP BY u.user_id";
 		}	
 	
@@ -25,10 +30,10 @@
 			/* fetch associative array */
 			while ($obj = mysqli_fetch_object($result)) 
 				{
-					$id			=($obj->user_id);
-					$username	=($obj->username);
-					$Role		=($obj->role);
-					echo "<option value=\"". $id. "\">".$username. " - ".$Role."</option>\n";
+					$id		=($obj->user_id);
+					$name	=($obj->username);
+					$role	=($obj->role);
+					echo "<option value=\"". $id. "\">".$name. " - ".$role."</option>\n";
 				}
 		}
 		

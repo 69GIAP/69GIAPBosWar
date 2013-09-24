@@ -3,17 +3,43 @@
 			<?php
 
 				# check if there is a user logged on
-				if (!empty($_SESSION["username"]))
+				if (!empty($_SESSION["userName"]))
 					{		
-							# get user role
-							$userRole = $_SESSION["userRole"];
-							
-							# check if a navigation button was pressed
-							if (!empty($_SESSION['btn']))
-								{
-									# load the information into the varibale
-									$btn = $_SESSION['btn'];
-									
+						# get user role
+						$userRoleId = $_SESSION['userRoleId'];
+						$userRole 	= $_SESSION["userRole"];
+						
+						# check if a navigation button was pressed
+						if (!empty($_SESSION['btn']))
+							{
+								# load the information into the varibale
+								$btn = $_SESSION['btn'];
+								
+									# was the pressed button Home?
+									if ($btn == "home")
+										{	
+											if ($userRole == "1")
+												{
+													echo "<h2>Home:</h2>\n";
+													echo "	<ul id=\"sidebar\">\n";
+													echo "	    <li></li>\n";														
+													echo "  </ul>\n";
+												}
+											if ($userRole == "2")
+												{
+													echo "<h2>Home:</h2>\n";
+													echo "	<ul id=\"sidebar\">\n";
+													echo "	    <li></li>\n";														
+													echo "  </ul>\n";
+												}
+											if ($userRole == "3")
+												{
+													echo "<h2>Home:</h2>\n";
+													echo "	<ul id=\"sidebar\">\n";
+													echo "	    <li></li>\n";
+												echo "  </ul>\n";
+												}
+										}	
 									# was the pressed button User Management?
 									if ($btn == "usermgmt")
 										{
@@ -33,8 +59,8 @@
 												{
 													echo "<h2>Commander:</h2>\n";
 													echo "	<ul id=\"sidebar\">\n";
-													echo "		<li><a href=\"#\" class=\"redAirBanner\"><span></span></a></li>\n";
-													echo "		<li><a href=\"#\" class=\"redGroundBanner\"><span></span></a></li>\n";
+													#echo "		<li><a href=\"#\" class=\"redAirBanner\"><span></span></a></li>\n";
+													#echo "		<li><a href=\"#\" class=\"redGroundBanner\"><span></span></a></li>\n";
 													echo "	</ul>\n";
 												}
 											# define what a viewer sees in the sidebar
@@ -85,43 +111,18 @@
 															}
 													}
 											}
-										# was the pressed button Home?
-										if ($btn == "home")
-											{	
-												if ($userRole == "administrator")
-													{
-														echo "<h2>Home:</h2>\n";
-														echo "	<ul id=\"sidebar\">\n";
-														echo "	    <li></li>\n";														
-														echo "  </ul>\n";
-													}
-												if ($userRole == "commander")
-													{
-														echo "<h2>Home:</h2>\n";
-														echo "	<ul id=\"sidebar\">\n";
-														echo "	    <li></li>\n";														
-														echo "  </ul>\n";
-													}
-												if ($userRole == "viewer")
-													{
-														echo "<h2>Home:</h2>\n";
-														echo "	<ul id=\"sidebar\">\n";
-														echo "	    <li></li>\n";
-													echo "  </ul>\n";
-													}
-											}											
-									}
-								else
-								{
-									# there is a user logged on but no button was pressed so this is the default view
-									echo "<h1>Choose:</h1>\n";	
 								}
+							else
+							{
+								# there is a user logged on but no button was pressed so this is the default view
+								echo "<h1>Choose:</h1>\n";	
 							}
-					else
-						{
-							# there is no user logged on and no button was pressed so this is the default view
-							echo "<h1>Info:</h1>\n";
 						}
+				else
+					{
+						# there is no user logged on and no button was pressed so this is the default view
+						echo "<h1>Info:</h1>\n";
+					}
             ?>
             
         </div>

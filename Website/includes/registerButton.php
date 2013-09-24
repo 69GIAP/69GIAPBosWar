@@ -2,7 +2,7 @@
 
 # show the login button if the user is not logged on         
        
-	if(!isset($_SESSION["username"])) 
+	if(!isset($_SESSION["userName"])) 
 		{
 		# show the register button
 		echo "		<li><a href=\"registerForm.php\" class=\"register\"><span></span></a></li>\n";

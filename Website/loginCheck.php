@@ -20,14 +20,14 @@
                 <?php
 				
 				# bind POST variables to SESSION
-				$_SESSION["username"]	= $_POST["username"]; 
-				$username				= $_SESSION["username"];				
+				$_SESSION["userName"]	= $_POST["username"]; 
+				$userName				= $_SESSION["userName"];				
 				
 				# encrypt transmitted password
 				$password 	= 	md5($_POST["password"]); 
 			  
 				# create SQL query
-				$query = "SELECT user_id, username, password, role FROM users WHERE username LIKE '$username' LIMIT 1"; 
+				$query = "SELECT u.user_id, u.username, u.password, u.role_id, r.role FROM users u, users_roles r WHERE u.username LIKE '$userName' AND u.role_id = r.role_id"; 
 				
 				# execute SQL query
 				$result = mysqli_query($dbc, $query);
@@ -36,46 +36,38 @@
 				# perform some sanity checks on the data
 				if(empty($row->username))
 					{
-						echo "<p>Username <b>$username</b> is wrong or not registered!</p>\n";
+						echo "<p>Username <b>$userName</b> is wrong or not registered!</p>\n";
+						unset ($_SESSION['userName']);
 					}
 				else if($row->password != $password)
 					{
 						echo "<p>The provided password was wrong!</p>\n";
+						unset ($_SESSION['userName']);
 					}
 				else if($row->password == $password)
 				   {
 				
 					# bind user_id to SESSION
-					$_SESSION['userId'] = $row->user_id;
+					$_SESSION['userId'] = ($row->user_id);
 					$userId = $_SESSION['userId'];
 					
-					# bind role to SESSION
+					# bind role_id to SESSION
+					$_SESSION['userRoleId'] = ($row->role_id);
+					$userRoleId = $_SESSION['userRoleId'];
+					
+					#  bind role name to SESSION
 					$_SESSION['userRole'] = ($row->role);
 					$userRole = $_SESSION['userRole'];
 					
-					$query = "SELECT coal_id FROM campaign_users WHERE user_id = '$userId'";
-					# execute SQL query
-					$result = mysqli_query($dbc, $query);
-					$row 	= mysqli_fetch_object($result);
-					
-					#  bind coalition to SESSION
-					$_SESSION['coalId'] = $row->coal_id;
-					$coalId = $_SESSION['coalId'];
-				
- 				# due to users role the redirection is dynamically set to the right page
-					# gather the users role
-					$query 	= "SELECT user_id,role FROM users WHERE username LIKE '$username' LIMIT 1";
-					$result	= mysqli_query($dbc, $query);
-					$row 	= mysqli_fetch_object($result);
-					
-					# bind session variable to variable
-					$_SESSION["username"] = $username;
-					
+					# bind user name to SESSION
+					$_SESSION['userName'] = ($row->username);
+					$userName = $_SESSION['userName'];
+								 					
 					# if userRole variable is asigned forward to next section
 					if(!empty($userRole))
-					{
-						header("Location: LoggedOn.php");
-					}
+						{
+							header("Location: LoggedOn.php");
+						}
 					exit;
 					} 
 				else 
@@ -84,7 +76,7 @@
 					echo "<p>Please retry!</p>\n"; 
 					} 
 						
-				if(!isset($_SESSION["username"])) 
+				if(!isset($_SESSION["userName"])) 
 					{
 						echo "<form action=\"loginForm.php\" >\n";
 						echo "<input type=\"submit\" value=\"Retry\">\n";

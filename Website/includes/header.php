@@ -44,6 +44,10 @@ session_start();
 		$userRole = "";}
 	else {
 		$userRole = $_SESSION['userRole'];}
+	if (empty($_SESSION['userRoleId'])) {
+		$userRoleId = "";}
+	else {
+		$userRoleId = $_SESSION['userRoleId'];}		
 	
 	# check if a there is alredy a campaign defined
 	if (empty($_SESSION['camp_db'])) {
@@ -57,6 +61,12 @@ session_start();
 	else {
 		$userId = $_SESSION['userId'];}	
 	
+	# check if there is already a user_id assigned
+	if (empty($_SESSION['userCoalId'])) {
+			}
+	else {
+		$userCoalId = $_SESSION['userCoalId'];}	
+	
 	# Style management
 	if ($game == "RoF")
 		{
@@ -68,7 +78,7 @@ session_start();
 			echo "<!--  Link external CSS Master file containing all other CSS files -->\n";
 			echo "<link href=\"css/BosWar_styles.css\" rel=\"stylesheet\" type=\"text/css\" />\n";
 		}
-	##### DEBUGGING ###
+	##### DEBUGGING #####
 	include ('includes/debugging/debuggingSessionVariables.php');	
 	include ( 'includes/debugging/debuggingPostVariables.php' );
 	include ( 'includes/debugging/debuggingMySqlError.php' );	
