@@ -34,6 +34,7 @@ function FATES($i,$j) {
    global $MissionID; // mission ID (name-date-time)
    global $camp_link; // link to campaign db
    global $StatsCommand; // do, undo, or ignore
+   globaL $camp_db; // campaign db
 
    // PlayerFate ($fate):
    // 0 = did not take off
@@ -45,9 +46,9 @@ function FATES($i,$j) {
  
    // PlayerHealth ($health)
    // 0 = fit as a fiddle
-   // 1 = suffered minor injuries
-   // 2 = suffered serious injuries
-   // 3 = suffered critical injuries
+   // 1 = minor injuries
+   // 2 = serious injuries
+   // 3 = critical injuries
    // 4 = dead
 
    // initialize $fate and $health
@@ -166,10 +167,19 @@ function FATES($i,$j) {
    // record stats for pilot/gunner fates
 
    if ($StatsCommand == 'do') { // generate an INSERT query
-      if ($Gunner) {
-         $query = "INSERT into rof_gunner_scores (MissionID,GunnerName,mgid,GunnerFate,GunnerHealth) VALUES ('$MissionID','$NAME[$j]','$i','$fate','$health')";
+      if ($Gunner) { // gunner
+         if ($health == 4 ) { // dead gunner
+            $query = "INSERT into rof_gunner_scores (MissionID,GunnerName,mgid,GunnerFate,GunnerHealth,GunnerNegScore) VALUES ('$MissionID','$NAME[$j]','$i','$fate','$health',(SELECT kia_gunner FROM campaign_settings WHERE camp_db = '$camp_db'))";
+//         $query = "INSERT into rof_gunner_scores (MissionID,GunnerName,mgid,GunnerFate,GunnerHealth) VALUES ('$MissionID','$NAME[$j]','$i','$fate','$health')";
+	 } else { // living gunner - no deduction for now
+            $query = "INSERT into rof_gunner_scores (MissionID,GunnerName,mgid,GunnerFate,GunnerHealth) VALUES ('$MissionID','$NAME[$j]','$i','$fate','$health')";
+         }
       } else { // pilot
-         $query = "INSERT into rof_pilot_scores (MissionID,PilotName,mpid,PilotFate,PilotHealth) VALUES ('$MissionID','$NAME[$j]','$i','$fate','$health')";
+         if ($health == 4 ) { // dead pilot
+         $query = "INSERT into rof_pilot_scores (MissionID,PilotName,mpid,PilotFate,PilotHealth,PilotNegScore) VALUES ('$MissionID','$NAME[$j]','$i','$fate','$health',(SELECT kia_pilot FROM campaign_settings WHERE camp_db = '$camp_db'))";
+	 } else { // living pilot - no deduction for now
+            $query = "INSERT into rof_pilot_scores (MissionID,PilotName,mpid,PilotFate,PilotHealth) VALUES ('$MissionID','$NAME[$j]','$i','$fate','$health')";
+         }
       }
    } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
       if ($Gunner) {
