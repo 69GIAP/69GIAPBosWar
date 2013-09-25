@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2013 at 07:54 PM
+-- Generation Time: Sep 25, 2013 at 07:41 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -25,12 +25,29 @@ USE `1916`;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `campaign_missions`
+--
+
+DROP TABLE IF EXISTS `campaign_missions`;
+CREATE TABLE IF NOT EXISTS `campaign_missions` (
+  `id` smallint(1) NOT NULL AUTO_INCREMENT,
+  `mission_file` varchar(50) NOT NULL,
+  `MissionID` varchar(50) NOT NULL,
+  `mission_status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `mission_file` (`mission_file`),
+  UNIQUE KEY `MissionID` (`MissionID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `campaign_settings`
 --
 
 DROP TABLE IF EXISTS `campaign_settings`;
 CREATE TABLE IF NOT EXISTS `campaign_settings` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(1) NOT NULL AUTO_INCREMENT,
   `simulation` varchar(6) NOT NULL,
   `campaign` varchar(30) NOT NULL,
   `camp_db` varchar(30) NOT NULL,
@@ -42,16 +59,19 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
   `status` int(1) NOT NULL DEFAULT '4',
   `show_airfield` tinyint(1) NOT NULL,
   `finish_flight_only_landed` tinyint(1) NOT NULL,
-  `red_commander1` int(11) DEFAULT NULL,
-  `red_commander2` int(11) DEFAULT NULL,
-  `blue_commander1` int(11) DEFAULT NULL,
-  `blue_commander2` int(11) DEFAULT NULL,
   `logpath` varchar(60) NOT NULL,
+  `log_prefix` varchar(50) NOT NULL,
   `logfile` varchar(50) NOT NULL,
-  `kia_pilot` int(11) NOT NULL,
-  `mia_pilot` int(11) NOT NULL,
-  `kia_gunner` int(11) NOT NULL,
-  `mia_gunner` int(11) NOT NULL,
+  `kia_pilot` int(1) NOT NULL,
+  `mia_pilot` int(1) NOT NULL,
+  `critical_w_pilot` int(1) NOT NULL,
+  `serious_w_pilot` int(1) NOT NULL,
+  `light_w_pilot` int(1) NOT NULL,
+  `kia_gunner` int(1) NOT NULL,
+  `mia_gunner` int(1) NOT NULL,
+  `critical_w_gunner` int(1) NOT NULL,
+  `serious_w_gunner` int(1) NOT NULL,
+  `light_w_gunner` int(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
@@ -59,8 +79,82 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
 -- Dumping data for table `campaign_settings`
 --
 
-INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `red_commander1`, `red_commander2`, `blue_commander1`, `blue_commander2`, `logpath`, `logfile`, `kia_pilot`, `mia_pilot`, `kia_gunner`, `mia_gunner`) VALUES
-(8, 'RoF', '1916', '1916', 'localhost', 'rofwar', 'rofwar', 'Western Front', 'rof_westernfront_locations', 3, 1, 1, 4, NULL, NULL, NULL, 'logs', 'missionReport1916Rehearsal.txt', 0, 0, 0, 0);
+INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `logpath`, `log_prefix`, `logfile`, `kia_pilot`, `mia_pilot`, `critical_w_pilot`, `serious_w_pilot`, `light_w_pilot`, `kia_gunner`, `mia_gunner`, `critical_w_gunner`, `serious_w_gunner`, `light_w_gunner`) VALUES
+(8, 'RoF', '1916', '1916', 'localhost', 'rofwar', 'rofwar', 'Western Front', 'rof_westernfront_locations', 3, 1, 1, 'logs', 'missionReport1916_', 'missionReport1916_1.txt', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mission_status`
+--
+
+DROP TABLE IF EXISTS `mission_status`;
+CREATE TABLE IF NOT EXISTS `mission_status` (
+  `if` tinyint(4) NOT NULL AUTO_INCREMENT,
+  `mission_status` varchar(20) NOT NULL,
+  PRIMARY KEY (`if`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `mission_status`
+--
+
+INSERT INTO `mission_status` (`if`, `mission_status`) VALUES
+(1, 'initialized'),
+(2, 'moving units'),
+(3, 'planning'),
+(4, 'built'),
+(5, 'analyzed');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `player_fate`
+--
+
+DROP TABLE IF EXISTS `player_fate`;
+CREATE TABLE IF NOT EXISTS `player_fate` (
+  `id` tinyint(1) NOT NULL,
+  `fate` varchar(30) NOT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `player_fate`
+--
+
+INSERT INTO `player_fate` (`id`, `fate`) VALUES
+(0, 'did not take off'),
+(1, 'landed'),
+(2, 'did not land'),
+(3, 'crashed'),
+(4, 'captured'),
+(5, 'killed');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `player_health`
+--
+
+DROP TABLE IF EXISTS `player_health`;
+CREATE TABLE IF NOT EXISTS `player_health` (
+  `id` tinyint(4) NOT NULL,
+  `health` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `health` (`health`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `player_health`
+--
+
+INSERT INTO `player_health` (`id`, `health`) VALUES
+(3, 'critical injuries'),
+(4, 'dead'),
+(0, 'fit as a fiddle'),
+(1, 'minor injuries'),
+(2, 'serious injuries');
 
 -- --------------------------------------------------------
 
@@ -121,6 +215,26 @@ INSERT INTO `rof_countries` (`id`, `ckey`, `countryname`, `countryadj`) VALUES
 (0, 620, 'Mercenaries Country', 'Mercenaries'),
 (0, 630, 'Knights Country', 'Knights'),
 (0, 640, 'Corsairs Country', 'Corsairs');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rof_gunner_scores`
+--
+
+DROP TABLE IF EXISTS `rof_gunner_scores`;
+CREATE TABLE IF NOT EXISTS `rof_gunner_scores` (
+  `id` smallint(1) NOT NULL AUTO_INCREMENT,
+  `MissionID` varchar(50) NOT NULL,
+  `GunnerName` varchar(40) NOT NULL,
+  `mgid` smallint(1) NOT NULL,
+  `GunningFor` varchar(40) NOT NULL,
+  `GunnerFate` tinyint(1) NOT NULL,
+  `GunnerHealth` tinyint(1) NOT NULL,
+  `GunnerNegScore` int(1) NOT NULL,
+  `GunnerPosScore` int(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -421,6 +535,25 @@ INSERT INTO `rof_object_roles` (`id`, `unit_class`, `role_description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `rof_pilot_scores`
+--
+
+DROP TABLE IF EXISTS `rof_pilot_scores`;
+CREATE TABLE IF NOT EXISTS `rof_pilot_scores` (
+  `id` smallint(1) NOT NULL AUTO_INCREMENT,
+  `MissionID` varchar(50) NOT NULL,
+  `PilotName` varchar(40) NOT NULL,
+  `mpid` smallint(1) NOT NULL,
+  `PilotFate` tinyint(1) NOT NULL,
+  `PilotHealth` tinyint(1) NOT NULL,
+  `PilotNegScore` int(1) NOT NULL,
+  `PilotPosScore` int(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `rof_westernfront_locations`
 --
 
@@ -433,7 +566,7 @@ CREATE TABLE IF NOT EXISTS `rof_westernfront_locations` (
   `LName` varchar(40) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `LName` (`LName`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=977 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=978 ;
 
 --
 -- Dumping data for table `rof_westernfront_locations`
@@ -1415,7 +1548,8 @@ INSERT INTO `rof_westernfront_locations` (`id`, `LID`, `LX`, `LZ`, `LName`) VALU
 (973, 52, '22373', '347687', 'Central Powers trenches'),
 (974, 52, '19343', '351854', 'Central Powers trenches'),
 (975, 52, '15951', '355940', 'Central Powers trenches'),
-(976, 52, '12699', '358497', 'Central Powers trenches');
+(976, 52, '12699', '358497', 'Central Powers trenches'),
+(977, 20, '247950', '53700', 'La Gorgue');
 
 -- --------------------------------------------------------
 
