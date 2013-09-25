@@ -56,8 +56,12 @@ if ($DEBUG){
 // Declare global variables.
 // This permits us to see these in functions without using them as
 // arguments to the functions.  Lazy but effective!
+global $camp_db;  // campaign db
 global $camp_link;  // link to campaign db
 global $map_locations;  // name of campaign locations file
+
+// get $camp_db from SESSION
+$camp_db =  $_SESSION['camp_db'];
 
 // Set path to logfile relative to parser
 $LOGFILE = $LOGPATH."/".$LOGFILE;
