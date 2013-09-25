@@ -1,8 +1,8 @@
 
 <?php
 
-	# Need to put this in here as er have no header included in this page
-	session_start(); 	
+# Need to put this in here as er have no header included in this page
+session_start(); 	
 
 # as we have no regular page structure on this page we need to add some lines
 # Incorporate the MySQL connection script.
@@ -11,7 +11,7 @@
 	$userId = $_SESSION['userId'];
 			
 	# get campaign database name from previous POST.
-	$_SESSION['camp_db'] = $_POST["db"];
+	$_SESSION['camp_db'] = $_POST["camp_db"]; # changed from db to camp_db
 	$camp_db = $_SESSION['camp_db'];
 	
 	if (empty($_SESSION['camp_db']))

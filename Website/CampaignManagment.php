@@ -27,11 +27,6 @@
 						{
 							include ( 'includes/processCampaignLogs.php' );
 						}
-					# Obsolete as already chosen on Home screen
-					/*if ($userRole == "commander")
-						{
-							include ( 'includes/getCampaignsCommander.php' );
-						}*/
 					if ($userRole == "viewer")
 						{
 							echo "<p>You don't have the necessary rights to view this content.</p>\n";

@@ -82,20 +82,17 @@
 														# turn this menu on if user has loaded a campaign into the SESSION variable campaign
 														if (!empty($loadedCampaign))
 															{
-																#echo $loadedCampaign;
 																echo "<h2>Camp. Mgmt:</h2>\n";
 																echo "	<ul id=\"sidebar\">\n";
-																echo "	    <li>Modify Campaign Settings</li>\n";
-																echo "	    <li>Modify Airfields</li>\n";
+																echo "	    <li><a href=\"CampaignStatsAdmin.php\" class=\"statistics\"><span></span></a></li>\n";
 																echo "  </ul>\n";
 															}
 														else
 															{
-																#echo $loadedCampaign;
 																echo "<h2>Camp. Mgmt:</h2>\n";
 																echo "	<ul id=\"sidebar\">\n";
-																echo "	    <li>Create New Campaign</li>\n";
-																echo "	    <li>Change Campaign Status</li>\n";
+																echo "	    <li>&bull; option 1</li>\n";
+																echo "	    <li>&bull; option 2</li>\n";
 																echo "  </ul>\n";
 															}
 														

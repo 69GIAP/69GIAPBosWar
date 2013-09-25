@@ -39,15 +39,10 @@
 						}
 						
                     # show campaigns due to User role
-                        if ($userRole == "administrator")
+						if ($userRole == "administrator" or $userRole == "commander")
                             {
                                 # get the full campaign list							
-                                include ( 'includes/getCampaignsAdmin.php' );
-                            }
-                        if ($userRole == "commander")
-                            {
-                                # get the filtered campaign list due to user camapaign_users table							
-                                include ( 'includes/getCampaignsCommander.php' );
+                                include ( 'includes/getCampaigns.php' );
                             }
                         if ($userRole == "viewer")
                             {

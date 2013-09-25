@@ -8,7 +8,7 @@
 			#echo "<li><a href=\"loggedOn.php?btn=home\" class=\"home\"><span></span></a></li>\n";
 			echo "<li><a href=\"includes/unsetCampaignSessions.php\" class=\"home\"><span></span></a></li>\n";
 			echo "<li><a href=\"UserManagement.php?btn=usermgmt\" class=\"userMgmt\"><span></span></a></li>\n";
-			echo "<li><a href=\"CampaignManagment.php?btn=campmgmt\" class=\"campMgmt\"><span></span></a></li>\n";
+			echo "<li><a href=\"includes/unsetLoadedCampaign.php\" class=\"campMgmt\"><span></span></a></li>\n";
 		}
 	else if($userRole == "commander") 
 		{

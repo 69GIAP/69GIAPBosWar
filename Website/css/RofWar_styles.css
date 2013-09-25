@@ -203,6 +203,14 @@ ul#sidebar {
 	width: 192;
 }
 
+
+ul#sidebar li a.statistics {
+	background:url(../img/RofWar_Statistics.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
 ul#sidebar li a.redAirBanner {
 	background:url(../img/RofWar_EntenteAirBanner.png) no-repeat scroll top left;
 	display:block;
