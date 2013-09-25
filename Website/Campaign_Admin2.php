@@ -56,12 +56,14 @@ include ( 'functions/connect2Campaign.php' );
                     # use this information to connect to campaign 
                     $camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$camp_db");
                                     
+# Tushka's crude link
+echo "<a href=\"CampaignStatsAdmin.php\">Go to Campaign Stats Admin</a>\n";
                     # do whatever is needed from the campaign database
-                    print "<h2>Processing statistics for $campaign</h2><br>\n";
-                    print "We won't actually do this in the release, but this provides a sandbox for integrating the parser with the campaign database.<br>\n";
+#                    print "<h2>Processing statistics for $campaign</h2><br>\n";
+#                    print "We won't actually do this in the release, but this provides a sandbox for integrating the parser with the campaign database.<br>\n";
                     
                     # include rof_parse_log.php for development purposes
-                    include ( 'rof_parse_log.php' );
+#                    include ( 'rof_parse_log.php' );
                     
                                         
                     # Close the camp_link connection

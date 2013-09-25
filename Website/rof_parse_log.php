@@ -25,8 +25,6 @@ $DEBUG = 0;  // set to 1 for a complete debugging report, 0 for off.
 // 115 for VERSION (nothing yet for BOTID... haven't found its use)
 
 // Get individual variable from $_POST, but set it here for the moment
-// set StatsCommand (do, undo or ignore)
-$StatsCommand = 'ignore';   
 
 // Get Individual variables from the campaign's campaign_settings table
 $query = "SELECT * FROM campaign_settings";
@@ -40,7 +38,6 @@ if ($result = mysqli_query($camp_link, $query)) {
 		$FinishFlightOnlyLanded = ($obj->finish_flight_only_landed);
 		$map_locations	=($obj->map_locations);
 		$LOGPATH	=($obj->logpath);
-		$LOGFILE	=($obj->logfile);
 	}
         // free result set
 	mysqli_free_result($result);
