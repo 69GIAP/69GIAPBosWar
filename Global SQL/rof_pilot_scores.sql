@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 24, 2013 at 09:03 PM
+-- Generation Time: Sep 25, 2013 at 07:12 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -32,9 +32,10 @@ CREATE TABLE IF NOT EXISTS `rof_pilot_scores` (
   `MissionID` varchar(50) NOT NULL,
   `PilotName` varchar(40) NOT NULL,
   `mpid` smallint(1) NOT NULL,
-  `PilotState` tinyint(1) NOT NULL,
+  `PilotFate` tinyint(1) NOT NULL,
+  `PilotHealth` tinyint(1) NOT NULL,
   `PilotNegScore` int(1) NOT NULL,
-  `GunnerPosScore` int(1) NOT NULL,
+  `PilotPosScore` int(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
