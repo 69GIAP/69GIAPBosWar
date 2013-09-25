@@ -26,3 +26,9 @@ large number of function files.
 
 Tushka
 Sept 24, 2013
+
+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+I hope I did not create a mess in your code by changing my coalition variables.
+
+Myata
+Sept 25, 2013
