@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 24, 2013 at 07:16 PM
+-- Generation Time: Sep 25, 2013 at 06:50 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `campaign_settings`;
 CREATE TABLE IF NOT EXISTS `campaign_settings` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(1) NOT NULL AUTO_INCREMENT,
   `simulation` varchar(6) NOT NULL,
   `campaign` varchar(30) NOT NULL,
   `camp_db` varchar(30) NOT NULL,
@@ -43,10 +43,16 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
   `logpath` varchar(60) NOT NULL,
   `log_prefix` varchar(50) NOT NULL,
   `logfile` varchar(50) NOT NULL,
-  `kia_pilot` int(11) NOT NULL,
-  `mia_pilot` int(11) NOT NULL,
-  `kia_gunner` int(11) NOT NULL,
-  `mia_gunner` int(11) NOT NULL,
+  `kia_pilot` int(1) NOT NULL,
+  `mia_pilot` int(1) NOT NULL,
+  `critical_w_pilot` int(1) NOT NULL,
+  `serious_w_pilot` int(1) NOT NULL,
+  `light_w_pilot` int(1) NOT NULL,
+  `kia_gunner` int(1) NOT NULL,
+  `mia_gunner` int(1) NOT NULL,
+  `critical_w_gunner` int(1) NOT NULL,
+  `serious_w_gunner` int(1) NOT NULL,
+  `light_w_gunner` int(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
@@ -54,15 +60,15 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
 -- Dumping data for table `campaign_settings`
 --
 
-INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `logpath`, `log_prefix`, `logfile`, `kia_pilot`, `mia_pilot`, `kia_gunner`, `mia_gunner`) VALUES
-(1, 'RoF', 'Bloody April', 'bloody_april', '', '', '', 'Western Front', 'rof_westernfront_locations', 2, 1, 1, '', '', '', 0, 0, 0, 0),
-(2, 'RoF', 'Flanders Eagles', 'flanders_eagles', 'localhost', 'rofwar', 'rofwar', 'Channel', 'rof_channel_locations', 3, 1, 1, 'logs', '', 'missionReportFlandersEagles1.txt', 0, 0, 0, 0),
-(3, 'RoF', 'Lake', 'lake', '', '', '', 'Lake', 'rof_lake_locations', 1, 0, 1, '', '', '', 0, 0, 0, 0),
-(4, 'RoF', 'Skies of the Empires II', 'skies_of_the_empires_ii', '', '', '', 'Verdun', 'rof_verdun_locations', 2, 0, 1, '', '', '', 0, 0, 0, 0),
-(5, 'BoS', 'Stalingrad', 'stalingrad', '', '', '', 'Stalingrad', 'bos_stalingrad_locations', 3, 0, 1, '', '', '', 0, 0, 0, 0),
-(6, 'RoF', 'Yankee Doodle', 'yankee_doodle', '', '', '', 'Verdun', 'rof_verdun_locations', 2, 1, 1, '', '', '', 0, 0, 0, 0),
-(7, 'RoF', 'Skies of the Empires', 'skies_of_the_empires', 'localhost', 'rofwar', 'rofwar', 'Verdun', 'rof_verdun_locations', 3, 0, 1, '', '', '', 0, 0, 0, 0),
-(8, 'RoF', '1916', '1916', 'localhost', 'rofwar', 'rofwar', 'Western Front', 'rof_westernfront_locations', 3, 1, 1, 'logs', '', '', 0, 0, 0, 0);
+INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `logpath`, `log_prefix`, `logfile`, `kia_pilot`, `mia_pilot`, `critical_w_pilot`, `serious_w_pilot`, `light_w_pilot`, `kia_gunner`, `mia_gunner`, `critical_w_gunner`, `serious_w_gunner`, `light_w_gunner`) VALUES
+(1, 'RoF', 'Bloody April', 'bloody_april', '', '', '', 'Western Front', 'rof_westernfront_locations', 1, 0, 0, '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 'RoF', 'Flanders Eagles', 'flanders_eagles', 'localhost', 'rofwar', 'rofwar', 'Channel', 'rof_channel_locations', 2, 0, 0, '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(3, 'RoF', 'Lake', 'lake', '', '', '', 'Lake', 'rof_lake_locations', 4, 0, 1, '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(4, 'RoF', 'Skies of the Empires II', 'skies_of_the_empires_ii', '', '', '', 'Verdun', 'rof_verdun_locations', 2, 0, 1, '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(5, 'BoS', 'Stalingrad', 'stalingrad', '', '', '', 'Stalingrad', 'bos_stalingrad_locations', 4, 0, 1, '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(6, 'RoF', 'Yankee Doodle', 'yankee_doodle', '', '', '', 'Verdun', 'rof_verdun_locations', 2, 1, 1, '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(7, 'RoF', 'Skies of the Empires', 'skies_of_the_empires', 'localhost', 'rofwar', 'rofwar', 'Verdun', 'rof_verdun_locations', 3, 0, 1, '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(8, 'RoF', '1916', '1916', 'localhost', 'rofwar', 'rofwar', 'Western Front', 'rof_westernfront_locations', 3, 1, 1, 'logs', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
