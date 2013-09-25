@@ -32,3 +32,12 @@ I hope I did not create a mess in your code by changing my coalition variables.
 
 Myata
 Sept 25, 2013
+
+=-=-=-=-=-=-=-=
+Not at all.  You had just missed one coal_id => coalId change that kept my
+stats from working and I fixed it.  However you might note that the name of
+the column in the rof_coalitions file is CoalID, while you use coalId.  To 
+my UNIX-warped mind, those are not the same.  :)
+
+Tushka
+Sept 25, 2013
