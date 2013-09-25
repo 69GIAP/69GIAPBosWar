@@ -1,6 +1,7 @@
 <?php
 	# include connect2CampaignFunction.php (defines connect2campaign($host,$user,$password,$db))
 	 include ( 'functions/connect2Campaign.php' );
+	unset($_SESSION['airfieldName']);
 	
 	# get camp db connection information
 	$query = "SELECT * from campaign_settings where camp_db = '$loadedCampaign'";  

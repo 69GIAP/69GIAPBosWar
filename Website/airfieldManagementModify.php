@@ -46,8 +46,8 @@
 				$airfieldModelAdd			= $_POST["airfieldModelAdd"];
 				$airfieldModelAddQuantity	= $_POST["airfieldModelAddQuantity"];
 				
-				$airfieldCoalition			= $_POST["airfieldCoalition"];
-				$airfieldCoalitionNew		= $_POST["airfieldCoalitionNew"];	
+				$airfieldCoalitionId		= $_POST["airfieldCoalitionId"];
+				$airfieldCoalitionIdNew		= $_POST["airfieldCoalitionIdNew"];	
 /*				
 echo "airfieldModelLoaded1: $airfieldModelLoaded1<br>\n";
 echo "airfieldModelQuantityNew1: $airfieldModelQuantityNew1<br>\n";
@@ -77,7 +77,7 @@ echo "airfieldName: $airfieldName<br>\n";
 					}	
 				if ($_POST["updateAirfield"] == 5)
 					{
-					$query="INSERT INTO test_airfields (name, coalId, model, number) VALUES ('$airfieldName', $airfieldCoalition, '$airfieldModelAdd', $airfieldModelAddQuantity)";
+					$query="INSERT INTO test_airfields (name, coalId, model, number) VALUES ('$airfieldName', $airfieldCoalitionId, '$airfieldModelAdd', $airfieldModelAddQuantity)";
 					}
 				if ($_POST["updateAirfield"] == 6)
 					{
@@ -85,16 +85,14 @@ echo "airfieldName: $airfieldName<br>\n";
 					}
 				if ($_POST["updateAirfield"] == 7)
 					{
-					$query="UPDATE test_airfields SET coalId = '$airfieldCoalitionNew' WHERE name = '$airfieldName'";
+					$query="UPDATE test_airfields SET coalId = '$airfieldCoalitionIdNew' WHERE name = '$airfieldName'";
 					}						
 							
- echo "$query <br>\n";
-
 # get the camp_db connection information START
 				$getInfo = "SELECT * from campaign_settings where camp_db = '$loadedCampaign'";  
 	 
 				if(!$result = $dbc->query($getInfo)) {
-					die('There was an error receiveing the connnection information [' . $dbc->error . ']');
+					die('There was an error receiving the connnection information [' . $dbc->error . ']');
 				}
 	
 				if ($result = mysqli_query($dbc, $getInfo)) {
@@ -116,7 +114,7 @@ echo "airfieldName: $airfieldName<br>\n";
 
 				# sanity checks
 				include ('includes/checkAirfieldDataBeforeUpdate.php');
-
+						
 				# updates
 				if(!$result = $camp_link->query($query)){
 					die('There was an error running the query <br>'.$query."<br>" . mysqli_error($camp_link));
