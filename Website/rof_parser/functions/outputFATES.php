@@ -67,7 +67,6 @@ function FATES($i,$j) {
    // if gunner, ignore wounds acquired before becoming this gunner
    if ($Gunner) {
       WHOSEGUNNER($PLID[$j]);   
-      echo "\$Whosegunner = $Whosegunner<br>\n";
       ANORA($Gunner);
       $ag = $anora;
       if ($Woundticks[$i] < $Gunnerticks) {
