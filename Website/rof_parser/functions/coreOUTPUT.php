@@ -121,6 +121,7 @@ function OUTPUT() {
    global $IAHline; // lines defining Influence Area Headers
    global $Bline; // lines defining area boundaries
    global $side; // "friendly", "enemy" or "neutral"
+   global $BotName; // BotGunner description
 
    # require the is-point-in-area borrowed class
    # pointLocation
@@ -131,6 +132,8 @@ function OUTPUT() {
    require ('rof_parser/functions/outputACCURACY.php');
    # ANORA
    require ('rof_parser/functions/outputANORA.php');
+   # BOTGUNNER
+   require ('rof_parser/functions/outputBOTGUNNER.php');
    # CLOCKTIME
    require ('rof_parser/functions/outputCLOCKTIME.php');
    # COALITIONNAME
@@ -371,35 +374,11 @@ function OUTPUT() {
             if ($Lasthitby[$tonum] == "" ) { // self-inflicted?
                if ($objecttype == "Common Bot") {
                   echo ("$clocktime $playername was killed $where<br>\n");
-               } elseif ($objecttype == "BotGunnerG5_1") { // used in DFW also GK1:
-                  echo ("$clocktime $ca $countryadj gunner ($playername) was killed $where<br>\n");
-               } elseif ($objecttype == "BotGunnerG5_2") { //GK2:
-                  echo ("$clocktime $ca $countryadj gunner ($playername) was killed $where<br>\n"); // used in DFW also
-               } elseif ($objecttype == "BotGunnerDavis") { //GK2:
-                  echo ("$clocktime $ca $countryadj gunner ($playername) was killed $where<br>\n"); // used in HP and Felixstow 
-               } elseif ($objecttype == "BotGunnerBacker") { 
-                  echo ("$clocktime $ca $countryadj Gotha G.V gunner ($playername) was killed $where<br>\n"); // is this particular Becker used elsewhere?
-               } elseif ($objecttype == "BotGunnerBW12") { 
-                  echo ("$clocktime $ca $countryadj Brandenburg W12 gunner ($playername) was killed $where<br>\n");
-               } elseif ($objecttype == "BotGunnerHCL2") { 
-                  echo ("$clocktime $ca $countryadj Halberstadt CL.II gunner ($playername) was killed $where<br>\n"); // is this particular Becker used elsewhere?
-               } elseif ($objecttype == "BotGunnerHP400_1") {
-                  echo ("$clocktime a Handley Page 0/400 nose gunner ($playername) was killed $where<br>\n");
-               } elseif ($objecttype == "BotGunnerHP400_2") {
-                  echo ("$clocktime a Handley Page 0/400 dorsal gunner ($playername) was killed $where<br>\n");
-               } elseif ($objecttype == "BotGunnerHP400_2_WM") {
-                  echo ("$clocktime a Handley Page 0/400 dorsal gunner ($playername) was killed $where<br>\n");
-               } elseif ($objecttype == "BotGunnerHP400_3") {
-                  echo ("$clocktime a Handley Page 0/400 ventral gunner ($playername) was killed $where<br>\n");
-               } elseif ($objecttype == "BotGunnerBreguet14") { // also used in Bristol F2B and F.E.2b
-                  echo ("$clocktime $ca $countryadj Breguet 14.B2 gunner ($playername) was killed $where<br>\n");
-               } elseif ($objecttype == "BotGunnerRE8") {
-                  echo ("$clocktime $ca $countryadj gunner ($playername) was killed $where<br>\n");
-               } elseif ($objecttype == "BotGunnerFelix_top-twin") {
-                  echo ("$clocktime a FelixStowe F2A top gunner ($playername) was killed $where<br>\n");
-               } elseif ($objecttype == "BotGunnerFe2_sing") {
-                  echo ("$clocktime an F.E.2b gunner ($playername) was killed $where<br>\n");
-
+               } elseif (preg_match('/^BotGunner/',$objecttype)) {
+		  BOTGUNNER($objecttype);
+		  $objecttype = "$countryadj $BotName";
+                  echo ("$clocktime $ca $objecttype ($playername) was killed $where<br>\n");
+               // Need a better test than this!
                } elseif ($objectname == "Plane") {
                   if ($flying == 2) { $action = "crashed";}
                   elseif ($flying == 1) { $action = "crashed";}
@@ -412,46 +391,18 @@ function OUTPUT() {
                } else { // U1:
                   echo ("$clocktime $playername's $objecttype ($objectname) was rendered unserviceable $where<br>\n");
                }
-            } else {
+            } else { // not self-inflicted
                if ($objecttype == "Common Bot") {
                   // A:
                   ANORA($Lasthitby[$tonum]);
                   $a3 = $anora;
                   echo ("$clocktime $a3 $Lasthitby[$tonum] killed $playername $where<br>\n");
-               } elseif ($objecttype == "BotGunnerG5_1") { // used in DFW also
+               } elseif (preg_match('/^BotGunner/',$objecttype)) {
+		  BOTGUNNER($objecttype);
+		  $objecttype = "$countryadj $BotName";
                   // B0:
-                  echo ("$clocktime $Lasthitby[$tonum] killed $ca $countryadj gunner ($playername) $where<br>\n");
-               } elseif ($objecttype == "BotGunnerG5_2") { // used in DFW also
-                  // B1:
-                  echo ("$clocktime $Lasthitby[$tonum] killed $ca $countryadj gunner($playername)  $where<br>\n");
-               } elseif ($objecttype == "BotGunnerBacker") {
-                  // B1b1:
-                  echo ("$clocktime $Lasthitby[$tonum] killed a Gotha G.V gunner ($playername) $where<br>\n");
-               } elseif ($objecttype == "BotGunnerBW12") {
-                  // B1b2:
-                  echo ("$clocktime $Lasthitby[$tonum] killed a Brandenburg W12 gunner ($playername) $where<br>\n");
-               } elseif ($objecttype == "BotGunnerHCL2") {
-                  // B1c:
-                  echo ("$clocktime $Lasthitby[$tonum] killed a Halberstadt CL.II gunner ($playername) $where<br>\n");
-               } elseif ($objecttype == "BotGunnerHP400_1") {
-                  // B2:
-                  echo ("$clocktime $Lasthitby[$tonum] killed a Handley Page 0/400 nose gunner ($playername) $where<br>\n");
-               } elseif ($objecttype == "BotGunnerHP400_2") {
-                  // B3a:
-                  echo ("$clocktime $Lasthitby[$tonum] killed a Handley Page 0/400 dorsal gunner ($playername) $where<br>\n");
-               } elseif ($objecttype == "BotGunnerHP400_2_WM") {
-                  // B3b:
-                  echo ("$clocktime $Lasthitby[$tonum] killed a Handley Page 0/400 dorsal gunner ($playername) $where<br>\n");
-               } elseif ($objecttype == "BotGunnerHP400_3") {
-                  // B4:
-                  echo ("$clocktime $Lasthitby[$tonum] killed a Handley Page 0/400 ventral gunner ($playername) $where<br>\n");
-               } elseif ($objecttype == "BotGunnerFelix_top-twin") {
-                  // B5:
-                  echo ("$clocktime $Lasthitby[$tonum] killed a Felixstow F2A top gunner ($playername) $where<br>\n");
-               } elseif ($objecttype == "BotGunnerFe2_sing") {
-                  // B5:
-                  echo ("$clocktime $Lasthitby[$tonum] killed an F.E.2b gunner ($playername) $where<br>\n");
-               } else {
+                  echo ("$clocktime $Lasthitby[$tonum] killed $ca $objecttype ($playername) $where<br>\n");
+               } else { // not botgunner
 //                  echo "flying = $flying<br>\n";
                   ANORA($Lasthitby[$tonum]);
                   $a2 = $anora;
@@ -460,65 +411,35 @@ function OUTPUT() {
                   elseif ($flying == 0) { $action = "destroyed";}
                   elseif ($flying == 3) { $action = "shot down";}
                   if ($TID[$j] == $Lasthitbyid[$tonum]) { $action = "crashed";}
-                  if (preg_match("/^Turret/",$Lasthitby[$tonum])) { // a gunner
+// the following code is either unused or very rarely used - perhaps because not crediting gunner with last hit?
+// check on it
+                  if (preg_match("/^Turret/",$Lasthitby[$tonum])) { // a player gunner?
                      WHOSEGUNNER($Lasthitbyid[$tonum]);
+		     // need better test here
                      if (($objectname == "Plane") || ($objectname == $objecttype)) { // C1:
-                        echo ("$clocktime $Whosegunner\'s gunner $action $a $objecttype $where<br>\n");
-                     } else { // D1
-                        echo ("$clocktime $Whosegunner\'s gunner $action $a $objecttype ($objectname) $where<br>\n");
+                        echo ("C1a:$clocktime $Whosegunner\'s gunner $action $a $objecttype $where<br>\n");
+                     } else { // C2
+                        echo ("C1b:$clocktime $Whosegunner\'s gunner $action $a $objecttype ($objectname) $where<br>\n");
                      }
+                  // need better test here
                   } elseif ($objectname == "Plane") { // C2:
-                     echo ("C2: $clocktime $a2 $Lasthitby[$tonum] $action $a $objecttype $where<br>\n");
-//                     echo ":$i in line # $j, $AID[$j] $TID[$j] in $POS[$j]<br>\n";
-                   } elseif ($objectname == $objecttype) { // C3:
-                     if ($objecttype == "BotGunnerG5_1") { // used in DFW also
-                       echo ("$clocktime $a2 $lasthitby[$tonum] $action $ca $countryadj gunner ($playername)<br>\n");
-                     } elseif ($objecttype == "BotGunnerG5_2") { // used in DFW also
-                       echo ("$clocktime $a2 $Lasthitby[$tonum] $action $ca $countryadj gunner ($playername)<br>\n");
-                     } elseif ($objecttype == "BotGunnerBacker") {
-                       echo ("$clocktime $a2 $Lasthitby[$tonum] $action a Gotha G.V gunner ($playername)<br>\n");
-                     } elseif ($objecttype == "BotGunnerBW12") {
-                       echo ("$clocktime $a2 $Lasthitby[$tonum] $action a Brandenburg W12 gunner ($playername)<br>\n");
-                     } elseif ($objecttype == "BotGunnerHCL2") {
-                       echo ("$clocktime $a2 $Lasthitby[$tonum] $action a Halberstadt CL.II gunner ($playername)<br>\n");
-                     } elseif ($objecttype == "BotGunnerHP400_1") {
-                       echo ("$clocktime $a2 $Lasthitby[$tonum] $action a Handley Page 0/400 nose gunner ($playername)<br>\n");
-                     } elseif ($objecttype == "BotGunnerHP400_2") {
-                       echo ("$clocktime $a2 $Lasthitby[$tonum] $action a Handley Page 0/400 dorsal gunner ($playername)<br>\n");
-                     } elseif ($objecttype == "BotGunnerHP400_2_WM") {
-                       echo ("$clocktime $a2 $Lasthitby[$tonum] $action a Handley Page 0/400 dorsal gunner ($playername)<br>\n");
-                     } elseif ($objecttype == "BotGunnerHP400_3") {
-                       echo ("$clocktime $a2 $Lasthitby[$tonum] $action a Handley Page 0/400 ventral gunner ($playername)<br>\n");
-                     } elseif ($objecttype == "BotGunnerBreguet14") { // also used in Bristol F2B and F.E.2b
-                     } elseif ($objecttype == "BotGunnerFelix_top-twin") {
-                       echo ("$clocktime $a2 $Lasthitby[$tonum] $action a Felixstowe F2A top gunner ($playername)<br>\n");
-                     } elseif ($objecttype == "BotGunnerFe2_sing") {
-                       echo ("$clocktime $a2 $Lasthitby[$tonum] $action an F.E.2b gunner ($playername)<br>\n");
-                     } else { // D1:
                      echo ("$clocktime $a2 $Lasthitby[$tonum] $action $a $objecttype $where<br>\n");
-                     }
+//                     echo ":$i in line # $j, $AID[$j] $TID[$j] in $POS[$j]<br>\n";
                   } else { // D2:
-                     echo ("$clocktime $a2 $Lasthitby[$tonum] $action $a $objecttype ($objectname) $where<br>\n");
+                   echo ("$clocktime $a2 $Lasthitby[$tonum] $action $a $objecttype ($objectname) $where<br>\n");
 //            echo "Lasthitby[$tonum] = $Lasthitby[$tonum]<br>\n";
 //            echo "TID flying = $flying<br>\n";
-                  }
-               }
-            }
+		  } 
+               } // end of not botgunner
+            }  // end of not self-inflicted 
          } else {
 //             echo "flying = $flying<br>\n";
 //             echo "attackertype = $attackertype, attackerobject = $attackerobject, aplayername= $aplayername, objecttype = $objecttype, playername = $playername, objectname = $objectname<br>\n";
             // if flying or if objectname is aerostat, "shot down" else destroyed
-            if ($objecttype == "BotGunnerG5_1") { $objecttype = "$countryadj gunner"; } // used in DFW also
-            elseif ($objecttype == "BotGunnerG5_2") { $objecttype = "$countryadj gunner"; } // used in DFW also
-            elseif ($objecttype == "BotGunnerHP400_1") { $objecttype =  "$countryadj nose gunner";} // also used in Felixstowe F2A
-            elseif ($objecttype == "BotGunnerHP400_2") { $objecttype =  "Handley Page 0/400 dorsal gunner";}
-            elseif ($objecttype == "BotGunnerHP400_2_WM") { $objecttype =  "Handley Page 0/400 dorsal gunner";}
-            elseif ($objecttype == "BotGunnerHP400_3") { $objecttype =  "Handley Page 0/400 ventral gunner";}
-            elseif ($objecttype == "BotGunnerBreguet14") { $objecttype = "$countryadj gunner"; } // also used in Bristol F2B and F.E.2b
-            elseif ($objecttype == "BotGunnerFelix_top-twin") { $objecttype = "Felixstowe F2A top gunner"; } 
-            elseif ($objecttype == "BotGunnerFe2_sing") { $objecttype = "F.E.2b gunner"; } 
-            elseif ($objecttype == "BotGunnerBW12") { $objecttype = "Brandenburg W12 gunner"; } 
-            elseif ($objecttype == "BotGunnerHCL2") { $objecttype = "Halberstadt CL.II gunner"; } 
+            if (preg_match("/^BotGunner/",$objecttype)) {
+               BOTGUNNER($objecttype);
+	       $objecttype = "$countryadj $BotName";
+	    }
             ANORA($objecttype);
             $a = $anora;
             if (($flying == 2) || ($objectname == "Aerostat")) { $action = "shot down";}
