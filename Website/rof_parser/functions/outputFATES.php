@@ -9,6 +9,7 @@ function FATES($i,$j) {
    global $anora; // an or a
    global $Gunner; // gunner type, if set
    global $Gunnerticks; // time became gunner
+   global $Whosegunner; // player piloting this gunner
    global $Wound; // array holding severity of wound
    global $Woundticks; // ticks when last wounded
    global $Woundpos; // position where last wounded
@@ -65,6 +66,8 @@ function FATES($i,$j) {
 
    // if gunner, ignore wounds acquired before becoming this gunner
    if ($Gunner) {
+      WHOSEGUNNER($PLID[$j]);   
+      echo "\$Whosegunner = $Whosegunner<br>\n";
       ANORA($Gunner);
       $ag = $anora;
       if ($Woundticks[$i] < $Gunnerticks) {
@@ -169,15 +172,28 @@ function FATES($i,$j) {
    if ($StatsCommand == 'do') { // generate an INSERT query
       if ($Gunner) { // gunner
          if ($health == 4 ) { // dead gunner
-            $query = "INSERT into rof_gunner_scores (MissionID,GunnerName,mgid,GunnerFate,GunnerHealth,GunnerNegScore) VALUES ('$MissionID','$NAME[$j]','$i','$fate','$health',(SELECT kia_gunner FROM campaign_settings WHERE camp_db = '$camp_db'))";
+            $query = "INSERT into rof_gunner_scores (MissionID,GunnerName,mgid,GunningFor,GunnerFate,GunnerHealth,GunnerNegScore) VALUES ('$MissionID','$NAME[$j]','$i','$Whosegunner','$fate','$health',(SELECT kia_gunner FROM campaign_settings WHERE camp_db = '$camp_db'))";
 //         $query = "INSERT into rof_gunner_scores (MissionID,GunnerName,mgid,GunnerFate,GunnerHealth) VALUES ('$MissionID','$NAME[$j]','$i','$fate','$health')";
-	 } else { // living gunner - no deduction for now
-            $query = "INSERT into rof_gunner_scores (MissionID,GunnerName,mgid,GunnerFate,GunnerHealth) VALUES ('$MissionID','$NAME[$j]','$i','$fate','$health')";
+	 } elseif ($health == 3) { // critically injured gunner
+            $query = "INSERT into rof_gunner_scores (MissionID,GunnerName,mgid,GunningFor,GunnerFate,GunnerHealth,GunnerNegScore) VALUES ('$MissionID','$NAME[$j]','$i','$Whosegunner','$fate','$health',(SELECT critical_w_gunner FROM campaign_settings WHERE camp_db = '$camp_db'))";
+	 } elseif ($health == 2) { // seriously injured gunner
+            $query = "INSERT into rof_gunner_scores (MissionID,GunnerName,mgid,GunningFor,GunnerFate,GunnerHealth,GunnerNegScore) VALUES ('$MissionID','$NAME[$j]','$i','$Whosegunner','$fate','$health',(SELECT serious_w_gunner FROM campaign_settings WHERE camp_db = '$camp_db'))";
+	 } elseif ($health == 1) { // lightly injured gunner
+            $query = "INSERT into rof_gunner_scores (MissionID,GunnerName,mgid,GunningFor,GunnerFate,GunnerHealth,GunnerNegScore) VALUES ('$MissionID','$NAME[$j]','$i','$Whosegunner','$fate','$health',(SELECT light_w_gunner FROM campaign_settings WHERE camp_db = '$camp_db'))";
+	 } else { // healthy gunner - no deduction 
+            $query = "INSERT into rof_gunner_scores (MissionID,GunnerName,mgid,GunningFor,GunnerFate,GunnerHealth) VALUES ('$MissionID','$NAME[$j]','$i','$Whosegunner','$fate','$health')";
          }
+
       } else { // pilot
          if ($health == 4 ) { // dead pilot
          $query = "INSERT into rof_pilot_scores (MissionID,PilotName,mpid,PilotFate,PilotHealth,PilotNegScore) VALUES ('$MissionID','$NAME[$j]','$i','$fate','$health',(SELECT kia_pilot FROM campaign_settings WHERE camp_db = '$camp_db'))";
-	 } else { // living pilot - no deduction for now
+	 } elseif ($health == 3) { // critically injured pilot
+         $query = "INSERT into rof_pilot_scores (MissionID,PilotName,mpid,PilotFate,PilotHealth,PilotNegScore) VALUES ('$MissionID','$NAME[$j]','$i','$fate','$health',(SELECT critical_w_pilot FROM campaign_settings WHERE camp_db = '$camp_db'))";
+	 } elseif ($health == 2) { // seriously injured pilot
+         $query = "INSERT into rof_pilot_scores (MissionID,PilotName,mpid,PilotFate,PilotHealth,PilotNegScore) VALUES ('$MissionID','$NAME[$j]','$i','$fate','$health',(SELECT serious_w_pilot FROM campaign_settings WHERE camp_db = '$camp_db'))";
+	 } elseif ($health == 1) { // lightly injured pilot
+         $query = "INSERT into rof_pilot_scores (MissionID,PilotName,mpid,PilotFate,PilotHealth,PilotNegScore) VALUES ('$MissionID','$NAME[$j]','$i','$fate','$health',(SELECT light_w_pilot FROM campaign_settings WHERE camp_db = '$camp_db'))";
+	 } else { // healthy pilot - no deduction
             $query = "INSERT into rof_pilot_scores (MissionID,PilotName,mpid,PilotFate,PilotHealth) VALUES ('$MissionID','$NAME[$j]','$i','$fate','$health')";
          }
       }
@@ -191,6 +207,7 @@ function FATES($i,$j) {
 
    if (($StatsCommand == 'do') || ($StatsCommand == 'undo')) {
       // process the query
+       
       if (!mysqli_query($camp_link, $query)) {
           printf("Error: %s<br>\n", mysqli_sqlstate($camp_link));
       }
