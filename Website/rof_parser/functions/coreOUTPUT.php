@@ -463,9 +463,9 @@ function OUTPUT() {
                   if (preg_match("/^Turret/",$Lasthitby[$tonum])) { // a gunner
                      WHOSEGUNNER($Lasthitbyid[$tonum]);
                      if (($objectname == "Plane") || ($objectname == $objecttype)) { // C1:
-                        echo ("$clocktime $Whosegunner gunner $action $a $objecttype $where<br>\n");
+                        echo ("$clocktime $Whosegunner\'s gunner $action $a $objecttype $where<br>\n");
                      } else { // D1
-                        echo ("$clocktime $Whosegunner gunner $action $a $objecttype ($objectname) $where<br>\n");
+                        echo ("$clocktime $Whosegunner\'s gunner $action $a $objecttype ($objectname) $where<br>\n");
                      }
                   } elseif ($objectname == "Plane") { // C2:
                      echo ("C2: $clocktime $a2 $Lasthitby[$tonum] $action $a $objecttype $where<br>\n");

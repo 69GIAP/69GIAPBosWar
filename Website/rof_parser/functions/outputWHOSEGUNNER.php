@@ -21,7 +21,7 @@ function WHOSEGUNNER($id) {
          for ($k = 0; $k < $numplayers; ++$k) {
             $l = $Pline[$k];
             if ($pid == $PLID[$l]) {
-               $Whosegunner = "$NAME[$l]'s";
+               $Whosegunner = "$NAME[$l]";
             }
          } 
       }
