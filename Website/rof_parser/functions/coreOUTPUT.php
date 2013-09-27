@@ -59,6 +59,8 @@ function OUTPUT() {
    global $playername; // player name from PLID
    global $objectname; // object name from PID/AID/TID
    global $objecttype; // object type from PID/AID/TID
+   global $objectclass; // object class from rof_object_properties
+   global $objectvalue; // object value from rof_object_properties
    global $countryname; // country name
    global $countryid; // country id
    global $countryadj;  // adjective form of country name  
@@ -123,11 +125,11 @@ function OUTPUT() {
    global $side; // "friendly", "enemy" or "neutral"
    global $BotName; // BotGunner description
 
-   # require the is-point-in-area borrowed class
+   # require the is-point-in-area borrowed CLASS
    # pointLocation
    require ('rof_parser/classes/pointLocation.php');
 
-   # require the functions called by OUTPUT
+   # require the FUNCTIONS called by OUTPUT
    # ACCURACY
    require ('rof_parser/functions/outputACCURACY.php');
    # ANORA
@@ -152,6 +154,8 @@ function OUTPUT() {
    require ('rof_parser/functions/outputLANDINGSIDE.php');
    # LOSSES
    require ('rof_parser/functions/outputLOSSES.php');
+   # OBJECTPROPERTIES
+   require ('rof_parser/functions/outputOBJECTPROPERTIES.php');
    # TOFROM
    require ('rof_parser/functions/outputTOFROM.php');
    # WHERE
