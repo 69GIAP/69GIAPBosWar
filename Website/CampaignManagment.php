@@ -25,7 +25,8 @@
 					# show campaigns due to User role
 					if ($userRole == "administrator")
 						{
-							include ( 'includes/processCampaignLogs.php' );
+							#include ( 'includes/processCampaignLogs.php' );
+							echo "Here has to be some inteligent text other than this!";
 						}
 					if ($userRole == "viewer")
 						{
