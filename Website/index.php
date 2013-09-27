@@ -62,7 +62,7 @@
             <p>Please click to select</p>
             
             <!-- the variable "selection" is used to define the loaded stylesheet in the header -->
-            <form name="selectApplication" action="indexBosWarRofWar.php" method="post" class="RofWarBosWarSelection">                
+            <form name="selectApplication" action="indexBosWarRofWar.php?btn=home" method="post" class="RofWarBosWarSelection">                
                 <input type="submit" name="selection" class="RofWar" value="RoF" />
                 <input type="submit" name="selection" class="BosWar" value="BoS" />
             </form>

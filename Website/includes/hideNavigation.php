@@ -32,4 +32,9 @@
 				echo "	<li><a href=\"CampaignManagment.php?btn=campmgmt\" class=\"campMgmt\"><span></span></a></li>\n";
 			}
 		}
+	elseif($userRole == "" or $userRole == "viewer") 
+		{
+			# show only the buttons
+			echo "	<li><a href=\"indexBosWarRofWar.php?btn=home\" class=\"home\"><span></span></a></li>\n";
+		}
 ?>

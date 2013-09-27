@@ -46,7 +46,7 @@
 												{
 													echo "<h3>Home:</h3>\n";
 													echo "	<ul id=\"sidebar\">\n";
-													echo "	    <li></li>\n";
+													echo "	    <li><a href=\"IndexBosWarRofWar.php?btn=home\" class=\"statistics\"><span></span></a></li>\n";
 												echo "  </ul>\n";
 												}
 										}	
@@ -58,10 +58,7 @@
 												{
 													echo "<h3>Administration:</h3>\n";
 													echo "	<ul id=\"sidebar\">\n";
-													#echo "		<li><a href=\"#\" class=\"adminBanner\"><span></span></a></li>\n";
-													#echo "		<li><a href=\"#\" class=\"sovietBanner\"><span></span></a></li>\n";
-													#echo "		<li><a href=\"#\" class=\"centerBanner\"><span></span></a></li>\n";
-													#echo "		<li><a href=\"#\" class=\"viewerBanner\"><span></span></a></li>\n";                               
+													#echo "		<li><a href=\"#\" class=\"adminBanner\"><span></span></a></li>\n";                          
 													echo "	</ul>\n";
 												}
 											# define what a commander sees in the sidebar
@@ -77,7 +74,7 @@
 												{
 													echo "<h3>Viewer:</h3>\n";
 													echo "	<ul id=\"sidebar\">\n";
-													echo "	    <li><a href=\"#\" class=\"viewerBanner\"><span></span></a></li>\n";
+													echo "	    <li><a href=\"#\" class=\"statistics\"><span></span></a></li>\n";
 													echo "  </ul>\n";
 												}
 											}
@@ -115,6 +112,9 @@
 					{
 						# there is no user logged on and no button was pressed so this is the default view
 						echo "<h3>Info:</h3>\n";
+						echo "	<ul id=\"sidebar\">\n";
+						echo "	    <li><a href=\"#\" class=\"statistics\"><span></span></a></li>\n";
+						echo "  </ul>\n";
 					}
             ?>
             
