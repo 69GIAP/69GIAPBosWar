@@ -5,7 +5,7 @@
 // Sept 27, 2013
 // get object's properties from rof_object_properties
 
-function OBJECTPROPERTIES($objectname) {
+function OBJECTPROPERTIES($objecttype) {
    global $camp_link; // link to campaign db
    global $objectclass; // object class from rof_object_properties
    global $objectvalue; // object value from rof_object_properties
