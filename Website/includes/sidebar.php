@@ -18,23 +18,33 @@
 									# was the pressed button Home?
 									if ($btn == "home")
 										{	
-											if ($userRole == "1")
+											if ($userRole == "administrator")
 												{
-													echo "<h2>Home:</h2>\n";
+													echo "<h3>Home:</h3>\n";
 													echo "	<ul id=\"sidebar\">\n";
-													echo "	    <li></li>\n";														
+													
+													if (empty($loadedCampaign))
+														{
+															echo "		<li><a href=\"CampaignSelect.php?btn=home\" class=\"campConnect\"><span></span></a></li>\n";
+															echo "		<li><a href=\"CampaignCreateNew.php?btn=home\" class=\"campCreate\"><span></span></a></li>\n";
+														}
+													else
+														{
+															echo "	    <li><a href=\"CampaignLogParser.php?btn=campmgmt\" class=\"campLogParser\"><span></span></a></li>\n";
+															echo "		<li><a href=\"CampaignStatus.php?btn=campmgmt\" class=\"campStatus\"><span></span></a></li>\n";															
+														}
 													echo "  </ul>\n";
 												}
-											if ($userRole == "2")
+											if ($userRole == "commander")
 												{
-													echo "<h2>Home:</h2>\n";
+													echo "<h3>Home:</h3>\n";
 													echo "	<ul id=\"sidebar\">\n";
-													echo "	    <li></li>\n";														
+													echo "		<li><a href=\"CampaignSelect.php?btn=home\" class=\"campConnect\"><span></span></a></li>\n";														
 													echo "  </ul>\n";
 												}
-											if ($userRole == "3")
+											if ($userRole == "viewer")
 												{
-													echo "<h2>Home:</h2>\n";
+													echo "<h3>Home:</h3>\n";
 													echo "	<ul id=\"sidebar\">\n";
 													echo "	    <li></li>\n";
 												echo "  </ul>\n";
@@ -46,7 +56,7 @@
 											# define what a administrator sees in the sidebar
 											if ($userRole == "administrator")
 												{
-													echo "<h2>Admin:</h2>\n";
+													echo "<h3>Administration:</h3>\n";
 													echo "	<ul id=\"sidebar\">\n";
 													#echo "		<li><a href=\"#\" class=\"adminBanner\"><span></span></a></li>\n";
 													#echo "		<li><a href=\"#\" class=\"sovietBanner\"><span></span></a></li>\n";
@@ -57,16 +67,15 @@
 											# define what a commander sees in the sidebar
 											else if ($userRole == "commander")
 												{
-													echo "<h2>Commander:</h2>\n";
+													echo "<h3>Commander:</h3>\n";
 													echo "	<ul id=\"sidebar\">\n";
-													#echo "		<li><a href=\"#\" class=\"redAirBanner\"><span></span></a></li>\n";
-													#echo "		<li><a href=\"#\" class=\"redGroundBanner\"><span></span></a></li>\n";
+													echo "		<li><a href=\"CampaignSelect.php?btn=home\" class=\"campConnect\"><span></span></a></li>\n";
 													echo "	</ul>\n";
 												}
 											# define what a viewer sees in the sidebar
 											else if ($userRole == "viewer")
 												{
-													echo "<h2>Viewer:</h2>\n";
+													echo "<h3>Viewer:</h3>\n";
 													echo "	<ul id=\"sidebar\">\n";
 													echo "	    <li><a href=\"#\" class=\"viewerBanner\"><span></span></a></li>\n";
 													echo "  </ul>\n";
@@ -80,45 +89,32 @@
 												if ($userRole == "administrator")
 													{	
 														# turn this menu on if user has loaded a campaign into the SESSION variable campaign
-														if (!empty($loadedCampaign))
-															{
-																echo "<h2>Camp. Mgmt:</h2>\n";
-																echo "	<ul id=\"sidebar\">\n";
-																echo "	    <li><a href=\"CampaignStatsAdmin.php\" class=\"statistics\"><span></span></a></li>\n";
-																echo "  </ul>\n";
-															}
-														else
-															{
-																echo "<h2>Camp. Mgmt:</h2>\n";
-																echo "	<ul id=\"sidebar\">\n";
-																echo "	    <li>&bull; option 1</li>\n";
-																echo "	    <li>&bull; option 2</li>\n";
-																echo "  </ul>\n";
-															}
-														
+														echo "<h3>Campaign Management:</h3>\n";
+														echo "	<ul id=\"sidebar\">\n";
+														echo "	    <li><a href=\"CampaignLogParser.php?btn=campmgmt\" class=\"campLogParser\"><span></span></a></li>\n";
+														echo "		<li><a href=\"CampaignStatus.php?btn=campmgmt\" class=\"campStatus\"><span></span></a></li>\n";																	
+														echo "  </ul>\n";
 													}
 												if ($userRole == "commander")
 													{
-														if (!empty($loadedCampaign))
-															{
-																echo "<h2>$loadedCampaign</h2>\n";
-																echo "	<ul id=\"sidebar\">\n";
-																echo "	    <li><a href=\"airfieldManagementSelect.php\" class=\"airfieldBanner\"><span></span></a></li>\n";
-																echo "  </ul>\n";
-															}
+														echo "<h3>$loadedCampaign</h3>\n";
+														echo "	<ul id=\"sidebar\">\n";
+														echo "	    <li><a href=\"airfieldManagementSelect.php\" class=\"modifyAirfield\"><span></span></a></li>\n";
+														echo "	    <li><a href=\"#\" 							class=\"modifyTroops\"><span></span></a></li>\n";														
+														echo "  </ul>\n";
 													}
 											}
 								}
 							else
 							{
 								# there is a user logged on but no button was pressed so this is the default view
-								echo "<h1>Choose:</h1>\n";	
+								echo "<h3>Choose:</h3>\n";	
 							}
 						}
 				else
 					{
 						# there is no user logged on and no button was pressed so this is the default view
-						echo "<h1>Info:</h1>\n";
+						echo "<h3>Info:</h3>\n";
 					}
             ?>
             

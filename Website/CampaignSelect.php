@@ -23,7 +23,11 @@
             <div id="content">
             
 				<?php 
+					# empty campaign specific variables
+    				unset($loadedCampaign);
+					unset($_SESSION['camp_db']);
 
+					
 					# Feedback to the user wich campaign he is connected to right now
 					if (!empty($loadedCampaign))
 						{
@@ -36,10 +40,9 @@
 						
                     # show campaigns due to User role
 						if ($userRole == "administrator" or $userRole == "commander")
-                            {	
-								echo "<p>Some silly text!</p>\n";
+                            {
                                 # get the full campaign list							
-                                # include ( 'includes/getCampaigns.php' );
+                                include ( 'includes/getCampaigns.php' );
                             }
                         if ($userRole == "viewer")
                             {

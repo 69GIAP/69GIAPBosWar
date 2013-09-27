@@ -202,8 +202,7 @@ ul#sidebar {
 	display: block;
 	width: 192;
 }
-
-
+/*****  Viewer Sidebar ****/
 ul#sidebar li a.statistics {
 	background:url(../img/RofWar_Statistics.png) no-repeat scroll top left;
 	display:block;
@@ -211,64 +210,45 @@ ul#sidebar li a.statistics {
 	height: 64px;
 	position:relative;
 }
-ul#sidebar li a.redAirBanner {
-	background:url(../img/RofWar_EntenteAirBanner.png) no-repeat scroll top left;
+/*****  Admin Sidebar ****/
+ul#sidebar li a.campLogParser {
+	background:url(../img/RofWar-AdminCampLogParser.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
-ul#sidebar li a.redGroundBanner {
-	background:url(../img/RofWar_EntenteGroundBanner.png) no-repeat scroll top left;
+ul#sidebar li a.campStatus {
+	background:url(../img/RofWar-AdminChangeCampStatus.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
-ul#sidebar li a.blueAirBanner {
-	background:url(../img/RofWar_KaiserAirBanner.png) no-repeat scroll top left;
+ul#sidebar li a.campConnect {
+	background:url(../img/RofWar-AdminConnectDB.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
-ul#sidebar li a.blueGroundBanner {
-	background:url(../img/RofWar_KaiserGroundBanner.png) no-repeat scroll top left;
+ul#sidebar li a.campCreate {
+	background:url(../img/RofWar-AdminCreateDB.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
-ul#sidebar li a.adminBanner {
-	background:url(../img/RofWar_adminForces.png) no-repeat scroll top left;
-	display:block;
-	margin-bottom: 10px;
-	height: 64px;
-	position:relative;
-}
-ul#sidebar li a.viewerBanner {
-	background:url(../img/RofWar_viewerForces.png) no-repeat scroll top left;
-	display:block;
-	margin-bottom: 10px;
-	height: 64px;
-	position:relative;
-}
-ul#sidebar li a.sovietBanner {
-	background:url(../img/RofWar_EntenteBanner.png) no-repeat scroll top left;
-	display:block;
-	margin-bottom: 10px;
-	height: 64px;
-	position:relative;
-}
-ul#sidebar li a.centerBanner {
-	background:url(../img/RofWar_CenterBanner.png) no-repeat scroll top left;
-	display:block;
-	margin-bottom: 10px;
-	height: 64px;
-	position:relative;
-}
-ul#sidebar li a.airfieldBanner {
+/*****  Commander Sidebar ****/
+ul#sidebar li a.modifyAirfield {
 	background:url(../img/RofWar_EntenteAirfields.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.modifyTroops {
+	background:url(../img/RofWar_EntenteTroops.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -327,6 +307,7 @@ ul#navigation li a {
 
 ul#navigation li a.home {
 	width:96px;
+	/*background-position:-190px 0px;  remove to reactivate Home*/
 	}
 ul#navigation li a.userMgmt {
 	width:96px;
@@ -350,6 +331,7 @@ ul#navigation li a span {
 
 ul#navigation li a.home span {
 	background-position:0px -54px;
+	/*background-position:-190px -54px;*/
 	}
 ul#navigation li a.userMgmt span {
 	width:95px;

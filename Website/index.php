@@ -1,6 +1,6 @@
 <?php
 	# cleans out the session if the user visited already a subsection and loaded the index.php
-	if (!empty ($session['game']))
+	if (!empty($_SESSION))
 		{
 			session_destroy();
 		}

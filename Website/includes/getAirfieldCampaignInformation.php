@@ -13,7 +13,7 @@
 		{$sql = "SELECT * FROM test_airfields";}
 	else
 	# get only airfields having the right coalition and all neutral airfields
-		{$sql = "SELECT * FROM test_airfields WHERE coalid = $userCoalId OR coalId = \"0\"";}
+		{$sql = "SELECT * FROM test_airfields WHERE coalId = $userCoalId OR coalId = \"0\"";}
 	#echo $sql;
 
 	if(!$result = $camp_link->query($sql)){

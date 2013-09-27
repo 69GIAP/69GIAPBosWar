@@ -16,21 +16,24 @@ session_start();
 <?php
 
 	# check if game variable is already set
-	if (empty($_SESSION['game'])){
+	if (empty($_SESSION['game']))
+		{
 			# check if the variable was already set
 			# get the variable from the first pages button
 			$game = $_POST['selection'];
 			
 			if(!isset($game)) {
 				# redirect to index if user made no choice
-				header("Location: index.php");}
+				header("Location: index.php");
+			}
 				
 			# register value of $_POST["selection"] - chosen game - to Session "game"
 			# syntax: $_SESSION['name'] = "value";
 			$_SESSION['game'] = $game;}
 	else {
-		#get the variable stored into $game
-		$game = $_SESSION['game'];}
+			#get the variable stored into $game
+			$game = $_SESSION['game'];
+		}
 		
 	# check if a navigation button was pressed and introduce SESSION variable for naviagtion button presses
 	if (empty($_GET["btn"])) {
@@ -49,7 +52,7 @@ session_start();
 	else {
 		$userRoleId = $_SESSION['userRoleId'];}		
 	
-	# check if a there is alredy a campaign defined
+	# check if a there is already a campaign defined
 	if (empty($_SESSION['camp_db'])) {
 		$loadedCampaign = "";}
 	else {

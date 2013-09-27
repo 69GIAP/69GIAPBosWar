@@ -69,7 +69,7 @@
 						$airfieldNumber		=($obj->number);
 						
 						# MODEL
-						if ($airfieldModel == 'No Aircraft')
+						if ($airfieldModel == '')
 							{	
 								# MODEL
 								echo "		<li> <label class=\"grey\" for=\"airfieldModel\">No Aircraft:<br></label>\n";
@@ -104,12 +104,10 @@
 		
 								$i += 1;	
 							}
-	
-							echo "</fieldset>\n";
 						}
+						echo "</fieldset>\n";
+					
 						
-		
-
 					echo "<fieldset class=\"airfield\">\n";		
 						# AIRFIELD NAME
 						echo "		<li>\n";
@@ -125,7 +123,7 @@
 						
 						# NEW MODEL QUANTITY
 						echo "		<li> <label for=\"airfieldModelAddQuantity\">Quantity to Add:<br></label>\n";
-						echo "		<input type=\"text\" name=\"airfieldModelAddQuantity\" id=\"airfieldModelAddQuantity\" value='$airfieldNumber' size=\"24\" maxlength=\"50\" />\n";
+						echo "		<input type=\"text\" name=\"airfieldModelAddQuantity\" id=\"airfieldModelAddQuantity\" value='1' size=\"24\" maxlength=\"50\" />\n";
 						echo "		</li>\n";
 						
 						# hidden field to hand airfieldCoalitionId over through POST
@@ -150,7 +148,8 @@
 						# load results into variables 
 						while ($coalObj = mysqli_fetch_object($coalName)) {
 							$airfieldCoalitionName =($coalObj->coalitionname);
-						}		
+						}
+				
 						
 						# COALITION
 						echo "		<li> <label class=\"grey\" for=\"airfieldCoalition\">Coalition:<br></label>\n";

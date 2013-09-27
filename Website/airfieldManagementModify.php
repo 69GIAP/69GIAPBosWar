@@ -114,7 +114,7 @@ echo "airfieldName: $airfieldName<br>\n";
 
 				# sanity checks
 				include ('includes/checkAirfieldDataBeforeUpdate.php');
-						
+
 				# updates
 				if(!$result = $camp_link->query($query)){
 					die('There was an error running the query <br>'.$query."<br>" . mysqli_error($camp_link));

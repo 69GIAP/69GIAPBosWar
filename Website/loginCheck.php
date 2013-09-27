@@ -66,7 +66,7 @@
 					# if userRole variable is asigned forward to next section
 					if(!empty($userRole))
 						{
-							header("Location: LoggedOn.php");
+							header("Location: LoggedOn.php?btn=home");
 						}
 					exit;
 					} 
