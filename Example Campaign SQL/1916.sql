@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2013 at 07:41 PM
+-- Generation Time: Sep 28, 2013 at 07:35 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -30,13 +30,15 @@ USE `1916`;
 
 DROP TABLE IF EXISTS `campaign_missions`;
 CREATE TABLE IF NOT EXISTS `campaign_missions` (
-  `id` smallint(1) NOT NULL AUTO_INCREMENT,
+  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
+  `mission_number` smallint(5) unsigned NOT NULL,
   `mission_file` varchar(50) NOT NULL,
   `MissionID` varchar(50) NOT NULL,
   `mission_status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mission_file` (`mission_file`),
-  UNIQUE KEY `MissionID` (`MissionID`)
+  UNIQUE KEY `MissionID` (`MissionID`),
+  UNIQUE KEY `mission_number` (`mission_number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -47,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `campaign_missions` (
 
 DROP TABLE IF EXISTS `campaign_settings`;
 CREATE TABLE IF NOT EXISTS `campaign_settings` (
-  `id` int(1) NOT NULL AUTO_INCREMENT,
+  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
   `simulation` varchar(6) NOT NULL,
   `campaign` varchar(30) NOT NULL,
   `camp_db` varchar(30) NOT NULL,
@@ -56,23 +58,25 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
   `camp_passwd` varchar(30) NOT NULL,
   `map` varchar(30) NOT NULL,
   `map_locations` varchar(40) NOT NULL,
-  `status` int(1) NOT NULL DEFAULT '4',
+  `status` tinyint(1) NOT NULL DEFAULT '4',
   `show_airfield` tinyint(1) NOT NULL,
   `finish_flight_only_landed` tinyint(1) NOT NULL,
   `logpath` varchar(60) NOT NULL,
   `log_prefix` varchar(50) NOT NULL,
   `logfile` varchar(50) NOT NULL,
-  `kia_pilot` int(1) NOT NULL,
-  `mia_pilot` int(1) NOT NULL,
-  `critical_w_pilot` int(1) NOT NULL,
-  `serious_w_pilot` int(1) NOT NULL,
-  `light_w_pilot` int(1) NOT NULL,
-  `kia_gunner` int(1) NOT NULL,
-  `mia_gunner` int(1) NOT NULL,
-  `critical_w_gunner` int(1) NOT NULL,
-  `serious_w_gunner` int(1) NOT NULL,
-  `light_w_gunner` int(1) NOT NULL,
-  PRIMARY KEY (`id`)
+  `kia_pilot` smallint(1) NOT NULL,
+  `mia_pilot` smallint(1) NOT NULL,
+  `critical_w_pilot` smallint(1) NOT NULL,
+  `serious_w_pilot` smallint(1) NOT NULL,
+  `light_w_pilot` smallint(1) NOT NULL,
+  `kia_gunner` smallint(1) NOT NULL,
+  `mia_gunner` smallint(1) NOT NULL,
+  `critical_w_gunner` smallint(1) NOT NULL,
+  `serious_w_gunner` smallint(1) NOT NULL,
+  `light_w_gunner` smallint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `campaign` (`campaign`),
+  UNIQUE KEY `camp_db` (`camp_db`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
@@ -80,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
 --
 
 INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `logpath`, `log_prefix`, `logfile`, `kia_pilot`, `mia_pilot`, `critical_w_pilot`, `serious_w_pilot`, `light_w_pilot`, `kia_gunner`, `mia_gunner`, `critical_w_gunner`, `serious_w_gunner`, `light_w_gunner`) VALUES
-(8, 'RoF', '1916', '1916', 'localhost', 'rofwar', 'rofwar', 'Western Front', 'rof_westernfront_locations', 3, 1, 1, 'logs', 'missionReport1916_', 'missionReport1916_1.txt', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+(8, 'RoF', '1916', '1916', 'localhost', 'rofwar', 'rofwar', 'Western Front', 'rof_westernfront_locations', 3, 1, 1, 'logs', 'missionReport1916_', 'missionReport1916_1.txt', 100, 50, 30, 20, 10, 50, 50, 30, 20, 10);
 
 -- --------------------------------------------------------
 
@@ -90,16 +94,16 @@ INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `cam
 
 DROP TABLE IF EXISTS `mission_status`;
 CREATE TABLE IF NOT EXISTS `mission_status` (
-  `if` tinyint(4) NOT NULL AUTO_INCREMENT,
+  `id` tinyint(4) unsigned NOT NULL AUTO_INCREMENT,
   `mission_status` varchar(20) NOT NULL,
-  PRIMARY KEY (`if`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `mission_status`
 --
 
-INSERT INTO `mission_status` (`if`, `mission_status`) VALUES
+INSERT INTO `mission_status` (`id`, `mission_status`) VALUES
 (1, 'initialized'),
 (2, 'moving units'),
 (3, 'planning'),
@@ -164,9 +168,10 @@ INSERT INTO `player_health` (`id`, `health`) VALUES
 
 DROP TABLE IF EXISTS `rof_coalitions`;
 CREATE TABLE IF NOT EXISTS `rof_coalitions` (
-  `CoalID` int(11) NOT NULL,
+  `CoalID` tinyint(1) NOT NULL,
   `Coalitionname` varchar(30) NOT NULL,
-  PRIMARY KEY (`CoalID`)
+  PRIMARY KEY (`CoalID`),
+  UNIQUE KEY `Coalitionname` (`Coalitionname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -174,14 +179,14 @@ CREATE TABLE IF NOT EXISTS `rof_coalitions` (
 --
 
 INSERT INTO `rof_coalitions` (`CoalID`, `Coalitionname`) VALUES
-(0, 'Neutral'),
-(1, 'Entente'),
 (2, 'Central Powers'),
-(3, 'War Dogs'),
-(4, 'Mercenaries'),
-(5, 'Knights'),
 (6, 'Corsairs'),
-(7, 'Future');
+(1, 'Entente'),
+(7, 'Future'),
+(5, 'Knights'),
+(4, 'Mercenaries'),
+(0, 'Neutral'),
+(3, 'War Dogs');
 
 -- --------------------------------------------------------
 
@@ -191,10 +196,13 @@ INSERT INTO `rof_coalitions` (`CoalID`, `Coalitionname`) VALUES
 
 DROP TABLE IF EXISTS `rof_countries`;
 CREATE TABLE IF NOT EXISTS `rof_countries` (
-  `id` int(11) NOT NULL,
-  `ckey` int(11) NOT NULL,
+  `id` tinyint(1) NOT NULL,
+  `ckey` smallint(1) NOT NULL,
   `countryname` varchar(30) NOT NULL,
-  `countryadj` varchar(30) NOT NULL
+  `countryadj` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `countryname` (`countryname`),
+  UNIQUE KEY `countryadj` (`countryadj`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -202,19 +210,19 @@ CREATE TABLE IF NOT EXISTS `rof_countries` (
 --
 
 INSERT INTO `rof_countries` (`id`, `ckey`, `countryname`, `countryadj`) VALUES
-(0, 0, 'Neutral', 'neutral'),
-(0, 101, 'France', 'French'),
-(0, 102, 'Great Britain', 'British'),
-(0, 103, 'USA', 'American'),
-(0, 104, 'Italy', 'Italian'),
-(0, 105, 'Russia', 'Russian'),
-(0, 501, 'Germany', 'German'),
-(0, 502, 'Austro-Hungary', 'Austro-Hungarian'),
-(0, 600, 'Future Country', 'Future'),
-(0, 610, 'War Dogs Country', 'War Dogs'),
-(0, 620, 'Mercenaries Country', 'Mercenaries'),
-(0, 630, 'Knights Country', 'Knights'),
-(0, 640, 'Corsairs Country', 'Corsairs');
+(1, 0, 'Neutral', 'neutral'),
+(2, 101, 'France', 'French'),
+(3, 102, 'Great Britain', 'British'),
+(4, 103, 'USA', 'American'),
+(5, 104, 'Italy', 'Italian'),
+(6, 105, 'Russia', 'Russian'),
+(7, 501, 'Germany', 'German'),
+(8, 502, 'Austro-Hungary', 'Austro-Hungarian'),
+(9, 600, 'Future Country', 'Future'),
+(10, 610, 'War Dogs Country', 'War Dogs'),
+(11, 620, 'Mercenaries Country', 'Mercenaries'),
+(12, 630, 'Knights Country', 'Knights'),
+(13, 640, 'Corsairs Country', 'Corsairs');
 
 -- --------------------------------------------------------
 
@@ -234,7 +242,42 @@ CREATE TABLE IF NOT EXISTS `rof_gunner_scores` (
   `GunnerNegScore` int(1) NOT NULL,
   `GunnerPosScore` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
+
+--
+-- Dumping data for table `rof_gunner_scores`
+--
+
+INSERT INTO `rof_gunner_scores` (`id`, `MissionID`, `GunnerName`, `mgid`, `GunningFor`, `GunnerFate`, `GunnerHealth`, `GunnerNegScore`, `GunnerPosScore`) VALUES
+(1, '1916_Mission 1v2-1916.1.1-8:1:0', 'LvA***bsprout', 21, 'LvA**RoodeDuivel', 1, 0, 0, 0),
+(2, '1916_Mission 1v2-1916.1.1-8:1:0', '=69GIAP=RADKO', 22, '=69.GIAP=TUSHKA', 1, 0, 0, 0),
+(3, '1916_Mission 1v2-1916.1.1-8:1:0', 'LvA***Jumper', 30, 'LvA***Biggles', 1, 0, 0, 0),
+(4, '1916_Mission 1v2-1916.1.1-8:1:0', 'LvA***Pod', 32, 'JaVA_KEBEN', 5, 4, 50, 0),
+(5, '1916_Mission 1v2-1916.1.1-8:1:0', 'LvA***Jojo', 38, 'Robin van Eyk ', 5, 4, 50, 0),
+(6, '1916_Mission 1v2-1916.1.1-8:1:0', 'LvA***bsprout', 39, 'LvA**RoodeDuivel', 5, 4, 50, 0),
+(7, '1916_Mission 1v2-1916.1.1-8:1:0', '=69GIAP=RADKO', 43, '=69.GIAP=VLADI', 1, 0, 0, 0),
+(8, '1916_Mission 1v2-1916.1.1-8:1:0', 'LvA***Pod', 48, 'JaVA_KEBEN', 5, 4, 50, 0),
+(9, '1916_Mission 1v2-1916.1.1-8:1:0', 'LvA***Jumper', 49, 'LvA***Biggles', 5, 4, 50, 0),
+(10, '1916_Mission 1v2-1916.1.1-8:1:0', '=69GIAP=RADKO', 51, '=69.GIAP=VLADI', 1, 0, 0, 0),
+(11, '1916_Mission 1v2-1916.1.1-8:1:0', '=69GIAP=KOSHKA', 53, '=69.GIAP=TUSHKA', 0, 2, 20, 0),
+(12, '1916_Mission 1v2-1916.1.1-8:1:0', '=69.GIAP=STENKA', 55, '=69.GIAP=OZABO', 1, 0, 0, 0),
+(13, '1916_Mission 1v2-1916.1.1-8:1:0', '=69.GIAP=STENKA', 56, '=69.GIAP=VLADI', 1, 0, 0, 0),
+(14, '1916_Mission 1v2-1916.1.1-8:1:0', '=69GIAP=RADKO', 57, '=69.GIAP=OZABO', 5, 4, 50, 0),
+(15, '1916_Mission 1v2-1916.1.1-8:1:0', 'J5_Lupfsch', 3, 'J5_Numm', 1, 0, 0, 0),
+(16, '1916_Mission 1v2-1916.1.1-8:1:0', 'AB1 Filip', 9, 'AB1 Richard', 0, 0, 0, 0),
+(17, '1916_Mission 1v2-1916.1.1-8:1:0', 'J18_Capi', 15, 'J18_Taeht Dewoht', 1, 0, 0, 0),
+(18, '1916_Mission 1v2-1916.1.1-8:1:0', 'J18 Graser F.', 18, 'J18_Mika Sperber', 5, 4, 50, 0),
+(19, '1916_Mission 1v2-1916.1.1-8:1:0', 'J18_Guims', 20, 'J18_Voltigeur', 1, 0, 0, 0),
+(20, '1916_Mission 1v2-1916.1.1-8:1:0', 'J18_HVO', 29, 'Otto Von Cro', 5, 4, 50, 0),
+(21, '1916_Mission 1v2-1916.1.1-8:1:0', 'AB1 Filip', 35, 'AB1 Richard', 5, 4, 50, 0),
+(22, '1916_Mission 1v2-1916.1.1-8:1:0', 'AB1 Vasek', 36, 'AB1 Papouchek', 1, 0, 0, 0),
+(23, '1916_Mission 1v2-1916.1.1-8:1:0', 'J18_Capi', 42, 'J18_Taeht Dewoht', 1, 0, 0, 0),
+(24, '1916_Mission 1v2-1916.1.1-8:1:0', 'J5_Stein', 50, 'J5_Vollbracht', 1, 0, 0, 0),
+(25, '1916_Mission 1v2-1916.1.1-8:1:0', 'AB1 Filip', 52, 'JG1Pragr_J6', 0, 2, 20, 0),
+(26, '1916_Mission 1v2-1916.1.1-8:1:0', 'AB1 Richard', 54, 'JG1Thomas_J6', 1, 0, 0, 0),
+(27, '1916_Mission 1v2-1916.1.1-8:1:0', 'J18_HVO', 58, 'J18_Paul', 1, 0, 0, 0),
+(28, '1916_Mission 1v2-1916.1.1-8:1:0', 'J5_Mueller', 59, 'J5_Vorlander', 0, 3, 30, 0),
+(29, '1916_Mission 1v2-1916.1.1-8:1:0', 'AB1 Papouchek', 60, 'J5_Hoffmann', 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -244,12 +287,13 @@ CREATE TABLE IF NOT EXISTS `rof_gunner_scores` (
 
 DROP TABLE IF EXISTS `rof_object_properties`;
 CREATE TABLE IF NOT EXISTS `rof_object_properties` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(1) NOT NULL AUTO_INCREMENT,
   `object_type` varchar(128) NOT NULL,
   `object_class` varchar(8) NOT NULL,
   `object_value` smallint(6) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=223 ;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `object_type` (`object_type`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=234 ;
 
 --
 -- Dumping data for table `rof_object_properties`
@@ -269,7 +313,7 @@ INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `objec
 (11, 'Albatros D.II', 'PFI', 199),
 (12, 'Albatros D.II lt', 'PFI', 100),
 (13, 'Albatros D.Va', 'PFI', 100),
-(14, 'Albatross D.III', 'PFI', 100),
+(14, 'Albatros D.III', 'PFI', 100),
 (15, 'Benz Searchlight', 'VTR', 50),
 (16, 'benz_open', 'VTR', 50),
 (17, 'benz_p', 'VTR', 50),
@@ -405,7 +449,7 @@ INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `objec
 (147, 'ship_stat_cargo', 'STR', 150),
 (148, 'ship_stat_pass', 'SPA', 150),
 (149, 'ship_stat_tank', 'STR', 150),
-(150, 'Sopith Triplane', 'PFI', 100),
+(150, 'Sopwith Triplane', 'PFI', 100),
 (151, 'Sopwith Camel', 'PFI', 100),
 (152, 'Sopwith Dolphin', 'PFI', 100),
 (153, 'SPAD 13.C1', 'PFI', 100),
@@ -477,7 +521,18 @@ INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `objec
 (219, 'Wagon_TankB', 'RWA', 25),
 (220, 'Wagon_TankNB', 'RWA', 25),
 (221, 'Whippet', 'T', 100),
-(222, 'Windsock', 'FLG', 0);
+(222, 'Windsock', 'FLG', 0),
+(223, 'Sopwith Pup', 'PFI', 100),
+(224, 'German naval 105mm gun', 'NAR', 0),
+(225, 'Roland C.IIa', 'PRE', 200),
+(226, 'German naval 52mm gun', 'NAR', 0),
+(227, 'GER Ship Searchlight', 'LGT', 50),
+(228, 'GBR Searchlight', 'LGT', 50),
+(229, 'HMS Ship Searchlight', 'LGT', 50),
+(230, 'churchE_01', 'INF', 0),
+(231, 'CappyChateau', 'INF', 0),
+(232, 'British naval 12pdr gun', 'NAR', 0),
+(233, 'R.E.8', 'PRE', 200);
 
 -- --------------------------------------------------------
 
@@ -549,7 +604,46 @@ CREATE TABLE IF NOT EXISTS `rof_pilot_scores` (
   `PilotNegScore` int(1) NOT NULL,
   `PilotPosScore` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
+
+--
+-- Dumping data for table `rof_pilot_scores`
+--
+
+INSERT INTO `rof_pilot_scores` (`id`, `MissionID`, `PilotName`, `mpid`, `PilotFate`, `PilotHealth`, `PilotNegScore`, `PilotPosScore`) VALUES
+(1, '1916_Mission 1v2-1916.1.1-8:1:0', '=69.GIAP=TUSHKA', 14, 0, 1, 10, 0),
+(2, '1916_Mission 1v2-1916.1.1-8:1:0', 'LvA**RoodeDuivel', 17, 0, 0, 0, 0),
+(3, '1916_Mission 1v2-1916.1.1-8:1:0', '=69.GIAP=OZABO', 19, 0, 0, 0, 0),
+(4, '1916_Mission 1v2-1916.1.1-8:1:0', '=69.GIAP=STENKA', 23, 0, 0, 0, 0),
+(5, '1916_Mission 1v2-1916.1.1-8:1:0', 'JaVA_KEBEN', 24, 1, 0, 0, 0),
+(6, '1916_Mission 1v2-1916.1.1-8:1:0', 'LvA***Biggles', 25, 1, 0, 0, 0),
+(7, '1916_Mission 1v2-1916.1.1-8:1:0', 'Robin van Eyk ', 26, 0, 2, 20, 0),
+(8, '1916_Mission 1v2-1916.1.1-8:1:0', '=69.GIAP=VLADI', 27, 0, 0, 0, 0),
+(9, '1916_Mission 1v2-1916.1.1-8:1:0', 'LvA**RoodeDuivel', 34, 0, 3, 30, 0),
+(10, '1916_Mission 1v2-1916.1.1-8:1:0', '=69.GIAP=OZABO', 37, 5, 4, 100, 0),
+(11, '1916_Mission 1v2-1916.1.1-8:1:0', '=69.GIAP=STENKA', 40, 1, 0, 0, 0),
+(12, '1916_Mission 1v2-1916.1.1-8:1:0', '=69.GIAP=VLADI', 44, 0, 2, 20, 0),
+(13, '1916_Mission 1v2-1916.1.1-8:1:0', 'JaVA_KEBEN', 46, 0, 3, 30, 0),
+(14, '1916_Mission 1v2-1916.1.1-8:1:0', 'LvA***Biggles', 47, 5, 4, 100, 0),
+(15, '1916_Mission 1v2-1916.1.1-8:1:0', '=69.GIAP=TUSHKA', 61, 1, 0, 0, 0),
+(16, '1916_Mission 1v2-1916.1.1-8:1:0', 'AB1 Richard', 0, 0, 1, 10, 0),
+(17, '1916_Mission 1v2-1916.1.1-8:1:0', 'J2_Izra-il', 1, 1, 0, 0, 0),
+(18, '1916_Mission 1v2-1916.1.1-8:1:0', 'J5_Numm', 2, 0, 1, 10, 0),
+(19, '1916_Mission 1v2-1916.1.1-8:1:0', 'J18_Taeht Dewoht', 4, 0, 1, 10, 0),
+(20, '1916_Mission 1v2-1916.1.1-8:1:0', 'J5_Vorlander', 5, 0, 2, 20, 0),
+(21, '1916_Mission 1v2-1916.1.1-8:1:0', 'J5_Vollbracht', 6, 1, 0, 0, 0),
+(22, '1916_Mission 1v2-1916.1.1-8:1:0', 'Otto Von Cro', 7, 1, 0, 0, 0),
+(23, '1916_Mission 1v2-1916.1.1-8:1:0', 'J5_Hoffmann', 8, 1, 0, 0, 0),
+(24, '1916_Mission 1v2-1916.1.1-8:1:0', 'J2_drookasi', 10, 1, 0, 0, 0),
+(25, '1916_Mission 1v2-1916.1.1-8:1:0', 'J5_Mueller', 11, 5, 4, 100, 0),
+(26, '1916_Mission 1v2-1916.1.1-8:1:0', 'JG1Thomas_J6', 12, 1, 0, 0, 0),
+(27, '1916_Mission 1v2-1916.1.1-8:1:0', 'J18_Mika Sperber', 13, 5, 4, 100, 0),
+(28, '1916_Mission 1v2-1916.1.1-8:1:0', 'J18_Voltigeur', 16, 1, 0, 0, 0),
+(29, '1916_Mission 1v2-1916.1.1-8:1:0', 'J18_Paul', 28, 1, 0, 0, 0),
+(30, '1916_Mission 1v2-1916.1.1-8:1:0', 'JG1Pragr_J6', 31, 1, 0, 0, 0),
+(31, '1916_Mission 1v2-1916.1.1-8:1:0', 'AB1 Papouchek', 33, 1, 0, 0, 0),
+(32, '1916_Mission 1v2-1916.1.1-8:1:0', 'J18_Corsaire', 41, 1, 0, 0, 0),
+(33, '1916_Mission 1v2-1916.1.1-8:1:0', 'J5_Stein', 45, 5, 4, 100, 0);
 
 -- --------------------------------------------------------
 
@@ -559,8 +653,8 @@ CREATE TABLE IF NOT EXISTS `rof_pilot_scores` (
 
 DROP TABLE IF EXISTS `rof_westernfront_locations`;
 CREATE TABLE IF NOT EXISTS `rof_westernfront_locations` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `LID` int(2) NOT NULL,
+  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
+  `LID` smallint(1) unsigned NOT NULL,
   `LX` decimal(15,0) NOT NULL,
   `LZ` decimal(15,0) NOT NULL,
   `LName` varchar(40) NOT NULL,
