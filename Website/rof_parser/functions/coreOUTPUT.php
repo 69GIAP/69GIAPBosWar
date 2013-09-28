@@ -118,7 +118,7 @@ function OUTPUT() {
    global $GID; // group ID
    global $LID; // lead plane ID
    global $FinishFlightOnlyLanded; // true or false setting
-   global $LOCATIONSFILE; // which map locations are we using?
+   global $map_locations;  // name of campaign locations table
    global $numiaheaders; // number of influence area headers
    global $IAHline; // lines defining Influence Area Headers
    global $Bline; // lines defining area boundaries
@@ -211,9 +211,10 @@ function OUTPUT() {
    echo "All other settings reported in log: OFF<br>&nbsp<br>\n";
    }
    if ($FinishFlightOnlyLanded) { echo "Finish Flight only landed: ON<br>\n"; }
-   if ($LOCATIONSFILE == "RoF_locations.csv") {echo "Map: Western Front<br>&nbsp;<br>\n";}
-   if ($LOCATIONSFILE == "Verdun_locations.csv") {echo "Map: Verdun<br>&nbsp;<br>\n";}
-   if ($LOCATIONSFILE == "Lake_locations.csv") {echo "Map: Lake<br>&nbsp;<br>\n";}
+   if ($map_locations == "rof_westernfront_locations") {echo "Map: Western Front<br>&nbsp;<br>\n";}
+   elseif ($map_locations == "rof_channel_locations") {echo "Map: Channel<br>&nbsp;<br>\n";}
+   elseif ($map_locations == "rof_verdun_locations") {echo "Map: Verdun<br>&nbsp;<br>\n";}
+   elseif ($map_locations == "rof_lake_locations") {echo "Map: Lake<br>&nbsp;<br>\n";}
    // Players
    echo "=-=-=-=-= Players and Their Fates =-=-=-=-=-=<br>\n";
    echo "There were $numplayers player positions.<br>&nbsp;<br>\n";
@@ -383,18 +384,16 @@ function OUTPUT() {
 		  BOTGUNNER($objecttype);
 		  $objecttype = "$countryadj $BotName";
                   echo ("$clocktime $ca $objecttype ($playername) was killed $where<br>\n");
-               // Need a better test than this!
-               } elseif (preg_match('/^P/','$objectclass')) { // Plane
+		  // check if target object is an airplane (Plane)
+               } elseif (preg_match('/^P/','$objectclass')) { 
                   if ($flying == 2) { $action = "crashed";}
                   elseif ($flying == 1) { $action = "crashed";}
                   elseif ($flying == 0) { $action = "crashed on takeoff";}
                   elseif ($flying == 3) { $action = "crashed";}
+		  // S1:	
                   echo ("$clocktime $playername's $objecttype $action $where<br>\n");
-               } elseif (($objectname == "Aerostat") || ($objectname == "Train" ) ||
-                  ($objectname == "Vehicle") || ($objectname == "Wagon")) {
-                  echo ("$clocktime $a $objecttype ($objectname) was destroyed $where<br>\n");
                } else { // U1:
-                  echo ("$clocktime $playername's $objecttype ($objectname) was rendered unserviceable $where<br>\n");
+                  echo ("$clocktime $playername's $objecttype ($objectname) self-destructed $where<br>\n");
                }
             } else { // not self-inflicted
                if ($objecttype == "Common Bot") {
@@ -421,8 +420,8 @@ function OUTPUT() {
                   if (preg_match("/^Turret/",$Lasthitby[$tonum])) { // a player gunner?
                      WHOSEGUNNER($Lasthitbyid[$tonum]);
 		     // need better test here
-                     if (($objectname == "Plane") || ($objectname == $objecttype)) { // C1:
-                        echo ("C1a:$clocktime $Whosegunner\'s gunner $action $a $objecttype $where<br>\n");
+                     if (($objectname == "Plane") || ($objectname == $objecttype)) { // C1a (used rarely)
+                        echo ("$clocktime $Whosegunner's gunner $action $a $objecttype $where<br>\n");
                      } else { // C1b (used rarely)
                         echo ("$clocktime $Whosegunner's gunner $action $a $objecttype ($objectname) $where<br>\n");
                      }
