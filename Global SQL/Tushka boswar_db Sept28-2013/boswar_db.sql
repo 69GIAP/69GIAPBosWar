@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 28, 2013 at 05:59 PM
+-- Generation Time: Sep 28, 2013 at 07:32 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -98,13 +98,15 @@ CREATE TABLE IF NOT EXISTS `airfields` (
 
 DROP TABLE IF EXISTS `campaign_missions`;
 CREATE TABLE IF NOT EXISTS `campaign_missions` (
-  `id` smallint(1) NOT NULL AUTO_INCREMENT,
+  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
+  `mission_number` smallint(5) unsigned NOT NULL,
   `mission_file` varchar(50) NOT NULL,
   `MissionID` varchar(50) NOT NULL,
   `mission_status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mission_file` (`mission_file`),
-  UNIQUE KEY `MissionID` (`MissionID`)
+  UNIQUE KEY `MissionID` (`MissionID`),
+  UNIQUE KEY `mission_number` (`mission_number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -115,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `campaign_missions` (
 
 DROP TABLE IF EXISTS `campaign_settings`;
 CREATE TABLE IF NOT EXISTS `campaign_settings` (
-  `id` int(1) NOT NULL AUTO_INCREMENT,
+  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
   `simulation` varchar(6) NOT NULL,
   `campaign` varchar(30) NOT NULL,
   `camp_db` varchar(30) NOT NULL,
@@ -124,22 +126,22 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
   `camp_passwd` varchar(30) NOT NULL,
   `map` varchar(30) NOT NULL,
   `map_locations` varchar(40) NOT NULL,
-  `status` int(1) NOT NULL DEFAULT '4',
+  `status` tinyint(1) NOT NULL DEFAULT '4',
   `show_airfield` tinyint(1) NOT NULL,
   `finish_flight_only_landed` tinyint(1) NOT NULL,
   `logpath` varchar(60) NOT NULL,
   `log_prefix` varchar(50) NOT NULL,
   `logfile` varchar(50) NOT NULL,
-  `kia_pilot` int(1) NOT NULL,
-  `mia_pilot` int(1) NOT NULL,
-  `critical_w_pilot` int(1) NOT NULL,
-  `serious_w_pilot` int(1) NOT NULL,
-  `light_w_pilot` int(1) NOT NULL,
-  `kia_gunner` int(1) NOT NULL,
-  `mia_gunner` int(1) NOT NULL,
-  `critical_w_gunner` int(1) NOT NULL,
-  `serious_w_gunner` int(1) NOT NULL,
-  `light_w_gunner` int(1) NOT NULL,
+  `kia_pilot` smallint(1) NOT NULL,
+  `mia_pilot` smallint(1) NOT NULL,
+  `critical_w_pilot` smallint(1) NOT NULL,
+  `serious_w_pilot` smallint(1) NOT NULL,
+  `light_w_pilot` smallint(1) NOT NULL,
+  `kia_gunner` smallint(1) NOT NULL,
+  `mia_gunner` smallint(1) NOT NULL,
+  `critical_w_gunner` smallint(1) NOT NULL,
+  `serious_w_gunner` smallint(1) NOT NULL,
+  `light_w_gunner` smallint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `campaign` (`campaign`),
   UNIQUE KEY `camp_db` (`camp_db`)
@@ -167,7 +169,7 @@ INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `cam
 
 DROP TABLE IF EXISTS `campaign_status`;
 CREATE TABLE IF NOT EXISTS `campaign_status` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` tinyint(4) NOT NULL AUTO_INCREMENT,
   `campaign_status` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
@@ -190,8 +192,8 @@ INSERT INTO `campaign_status` (`id`, `campaign_status`) VALUES
 
 DROP TABLE IF EXISTS `campaign_users`;
 CREATE TABLE IF NOT EXISTS `campaign_users` (
-  `id` int(1) NOT NULL AUTO_INCREMENT,
-  `user_id` int(1) NOT NULL,
+  `id` smallint(1) NOT NULL AUTO_INCREMENT,
+  `user_id` smallint(1) NOT NULL,
   `camp_db` varchar(30) NOT NULL,
   `CoalID` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
@@ -282,7 +284,7 @@ INSERT INTO `maps` (`id`, `map`, `simulation`, `map_locations`) VALUES
 
 DROP TABLE IF EXISTS `mission_status`;
 CREATE TABLE IF NOT EXISTS `mission_status` (
-  `id` tinyint(1) NOT NULL AUTO_INCREMENT,
+  `id` tinyint(1) unsigned NOT NULL AUTO_INCREMENT,
   `mission_status` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mission_status` (`mission_status`)
@@ -425,8 +427,8 @@ CREATE TABLE IF NOT EXISTS `rof_airfields` (
 
 DROP TABLE IF EXISTS `rof_channel_locations`;
 CREATE TABLE IF NOT EXISTS `rof_channel_locations` (
-  `id` int(1) NOT NULL AUTO_INCREMENT,
-  `LID` int(1) NOT NULL,
+  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
+  `LID` smallint(1) unsigned NOT NULL,
   `LX` decimal(15,0) NOT NULL,
   `LZ` decimal(15,0) NOT NULL,
   `LName` varchar(40) NOT NULL,
@@ -1039,7 +1041,7 @@ INSERT INTO `rof_coalitions` (`CoalID`, `Coalitionname`) VALUES
 DROP TABLE IF EXISTS `rof_countries`;
 CREATE TABLE IF NOT EXISTS `rof_countries` (
   `id` tinyint(1) NOT NULL,
-  `ckey` int(1) NOT NULL,
+  `ckey` smallint(1) NOT NULL,
   `countryname` varchar(30) NOT NULL,
   `countryadj` varchar(30) NOT NULL,
   PRIMARY KEY (`id`),
@@ -1094,8 +1096,8 @@ CREATE TABLE IF NOT EXISTS `rof_gunner_scores` (
 
 DROP TABLE IF EXISTS `rof_lake_locations`;
 CREATE TABLE IF NOT EXISTS `rof_lake_locations` (
-  `id` int(1) NOT NULL AUTO_INCREMENT,
-  `LID` int(1) NOT NULL,
+  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
+  `LID` smallint(1) unsigned NOT NULL,
   `LX` decimal(15,0) NOT NULL,
   `LZ` decimal(15,0) NOT NULL,
   `LName` varchar(40) NOT NULL,
@@ -1488,7 +1490,7 @@ INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `objec
 
 DROP TABLE IF EXISTS `rof_object_roles`;
 CREATE TABLE IF NOT EXISTS `rof_object_roles` (
-  `id` int(1) NOT NULL AUTO_INCREMENT,
+  `id` tinyint(1) unsigned NOT NULL AUTO_INCREMENT,
   `unit_class` varchar(10) DEFAULT NULL,
   `role_description` varchar(23) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -1562,8 +1564,8 @@ CREATE TABLE IF NOT EXISTS `rof_pilot_scores` (
 
 DROP TABLE IF EXISTS `rof_verdun_locations`;
 CREATE TABLE IF NOT EXISTS `rof_verdun_locations` (
-  `id` int(1) NOT NULL AUTO_INCREMENT,
-  `LID` int(1) NOT NULL,
+  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
+  `LID` smallint(1) unsigned NOT NULL,
   `LX` decimal(15,0) NOT NULL,
   `LZ` decimal(15,0) NOT NULL,
   `LName` varchar(40) NOT NULL,
@@ -1717,8 +1719,8 @@ INSERT INTO `rof_verdun_locations` (`id`, `LID`, `LX`, `LZ`, `LName`) VALUES
 
 DROP TABLE IF EXISTS `rof_westernfront_locations`;
 CREATE TABLE IF NOT EXISTS `rof_westernfront_locations` (
-  `id` int(1) NOT NULL AUTO_INCREMENT,
-  `LID` int(1) NOT NULL,
+  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
+  `LID` smallint(1) unsigned NOT NULL,
   `LX` decimal(15,0) NOT NULL,
   `LZ` decimal(15,0) NOT NULL,
   `LName` varchar(40) NOT NULL,
