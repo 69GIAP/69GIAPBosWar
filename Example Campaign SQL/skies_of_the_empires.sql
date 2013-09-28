@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2013 at 07:42 PM
+-- Generation Time: Sep 28, 2013 at 07:46 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -30,13 +30,15 @@ USE `skies_of_the_empires`;
 
 DROP TABLE IF EXISTS `campaign_missions`;
 CREATE TABLE IF NOT EXISTS `campaign_missions` (
-  `id` smallint(1) NOT NULL AUTO_INCREMENT,
+  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
+  `mission_number` smallint(5) unsigned NOT NULL,
   `mission_file` varchar(50) NOT NULL,
   `MissionID` varchar(50) NOT NULL,
   `mission_status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mission_file` (`mission_file`),
-  UNIQUE KEY `MissionID` (`MissionID`)
+  UNIQUE KEY `MissionID` (`MissionID`),
+  UNIQUE KEY `mission_number` (`mission_number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -47,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `campaign_missions` (
 
 DROP TABLE IF EXISTS `campaign_settings`;
 CREATE TABLE IF NOT EXISTS `campaign_settings` (
-  `id` int(1) NOT NULL AUTO_INCREMENT,
+  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
   `simulation` varchar(6) NOT NULL,
   `campaign` varchar(30) NOT NULL,
   `camp_db` varchar(30) NOT NULL,
@@ -56,23 +58,25 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
   `camp_passwd` varchar(30) NOT NULL,
   `map` varchar(30) NOT NULL,
   `map_locations` varchar(40) NOT NULL,
-  `status` int(1) NOT NULL DEFAULT '4',
+  `status` tinyint(1) NOT NULL DEFAULT '4',
   `show_airfield` tinyint(1) NOT NULL,
   `finish_flight_only_landed` tinyint(1) NOT NULL,
   `logpath` varchar(60) NOT NULL,
   `log_prefix` varchar(50) NOT NULL,
   `logfile` varchar(50) NOT NULL,
-  `kia_pilot` int(1) NOT NULL,
-  `mia_pilot` int(1) NOT NULL,
-  `critical_w_pilot` int(1) NOT NULL,
-  `serious_w_pilot` int(1) NOT NULL,
-  `light_w_pilot` int(1) NOT NULL,
-  `kia_gunner` int(1) NOT NULL,
-  `mia_gunner` int(1) NOT NULL,
-  `critical_w_gunner` int(1) NOT NULL,
-  `serious_w_gunner` int(1) NOT NULL,
-  `light_w_gunner` int(1) NOT NULL,
-  PRIMARY KEY (`id`)
+  `kia_pilot` smallint(1) NOT NULL,
+  `mia_pilot` smallint(1) NOT NULL,
+  `critical_w_pilot` smallint(1) NOT NULL,
+  `serious_w_pilot` smallint(1) NOT NULL,
+  `light_w_pilot` smallint(1) NOT NULL,
+  `kia_gunner` smallint(1) NOT NULL,
+  `mia_gunner` smallint(1) NOT NULL,
+  `critical_w_gunner` smallint(1) NOT NULL,
+  `serious_w_gunner` smallint(1) NOT NULL,
+  `light_w_gunner` smallint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `campaign` (`campaign`),
+  UNIQUE KEY `camp_db` (`camp_db`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
@@ -80,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
 --
 
 INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `logpath`, `log_prefix`, `logfile`, `kia_pilot`, `mia_pilot`, `critical_w_pilot`, `serious_w_pilot`, `light_w_pilot`, `kia_gunner`, `mia_gunner`, `critical_w_gunner`, `serious_w_gunner`, `light_w_gunner`) VALUES
-(7, 'RoF', 'Skies of the Empires', 'skies_of_the_empires', 'localhost', 'rofwar', 'rofwar', 'Verdun', 'rof_verdun_locations', 3, 0, 1, 'logs', 'missionReportSoE', 'missionReportSoE1.txt', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+(7, 'RoF', 'Skies of the Empires', 'skies_of_the_empires', 'localhost', 'rofwar', 'rofwar', 'Verdun', 'rof_verdun_locations', 3, 0, 1, 'logs', 'missionReportSoE', 'missionReportSoE1.txt', 100, 50, 30, 20, 10, 50, 50, 30, 20, 10);
 
 -- --------------------------------------------------------
 
@@ -90,16 +94,16 @@ INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `cam
 
 DROP TABLE IF EXISTS `mission_status`;
 CREATE TABLE IF NOT EXISTS `mission_status` (
-  `if` tinyint(4) NOT NULL AUTO_INCREMENT,
+  `id` tinyint(1) unsigned NOT NULL AUTO_INCREMENT,
   `mission_status` varchar(20) NOT NULL,
-  PRIMARY KEY (`if`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `mission_status`
 --
 
-INSERT INTO `mission_status` (`if`, `mission_status`) VALUES
+INSERT INTO `mission_status` (`id`, `mission_status`) VALUES
 (1, 'initialized'),
 (2, 'moving units'),
 (3, 'planning'),
@@ -191,10 +195,13 @@ INSERT INTO `rof_coalitions` (`CoalID`, `Coalitionname`) VALUES
 
 DROP TABLE IF EXISTS `rof_countries`;
 CREATE TABLE IF NOT EXISTS `rof_countries` (
-  `id` int(11) NOT NULL,
-  `ckey` int(11) NOT NULL,
+  `id` tinyint(1) NOT NULL,
+  `ckey` smallint(1) NOT NULL,
   `countryname` varchar(30) NOT NULL,
-  `countryadj` varchar(30) NOT NULL
+  `countryadj` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `countryname` (`countryname`),
+  UNIQUE KEY `countryadj` (`countryadj`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -202,19 +209,19 @@ CREATE TABLE IF NOT EXISTS `rof_countries` (
 --
 
 INSERT INTO `rof_countries` (`id`, `ckey`, `countryname`, `countryadj`) VALUES
-(0, 0, 'Neutral', 'neutral'),
-(0, 101, 'France', 'French'),
-(0, 102, 'Great Britain', 'British'),
-(0, 103, 'USA', 'American'),
-(0, 104, 'Italy', 'Italian'),
-(0, 105, 'Russia', 'Russian'),
-(0, 501, 'Germany', 'German'),
-(0, 502, 'Austro-Hungary', 'Austro-Hungarian'),
-(0, 600, 'Future Country', 'Future'),
-(0, 610, 'War Dogs Country', 'War Dogs'),
-(0, 620, 'Mercenaries Country', 'Mercenaries'),
-(0, 630, 'Knights Country', 'Knights'),
-(0, 640, 'Corsairs Country', 'Corsairs');
+(1, 0, 'Neutral', 'neutral'),
+(2, 101, 'France', 'French'),
+(3, 102, 'Great Britain', 'British'),
+(4, 103, 'USA', 'American'),
+(5, 104, 'Italy', 'Italian'),
+(6, 105, 'Russia', 'Russian'),
+(7, 501, 'Germany', 'German'),
+(8, 502, 'Austro-Hungary', 'Austro-Hungarian'),
+(9, 600, 'Future Country', 'Future'),
+(10, 610, 'War Dogs Country', 'War Dogs'),
+(11, 620, 'Mercenaries Country', 'Mercenaries'),
+(12, 630, 'Knights Country', 'Knights'),
+(13, 640, 'Corsairs Country', 'Corsairs');
 
 -- --------------------------------------------------------
 
@@ -234,7 +241,20 @@ CREATE TABLE IF NOT EXISTS `rof_gunner_scores` (
   `GunnerNegScore` int(1) NOT NULL,
   `GunnerPosScore` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `rof_gunner_scores`
+--
+
+INSERT INTO `rof_gunner_scores` (`id`, `MissionID`, `GunnerName`, `mgid`, `GunningFor`, `GunnerFate`, `GunnerHealth`, `GunnerNegScore`, `GunnerPosScore`) VALUES
+(1, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '=CAI= Itafolgore', 25, '=CAI= Cix', 5, 4, 50, 0),
+(2, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 'Vladi', 23, '=69.GIAP=STENKA', 5, 4, 50, 0),
+(3, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 'Vladi', 24, '=69.GIAP=TUSHKA', 1, 0, 0, 0),
+(4, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '-NW-Rossolini', 25, '=CAI= Cix', 5, 4, 50, 0),
+(5, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '-NW-Rossolini', 26, '=CAI= Piddu', 1, 0, 0, 0),
+(6, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '=CAI= Cix', 27, '=CAI= Itafolgore', 1, 0, 0, 0),
+(7, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '-NW-Rossolini', 28, '=CAI= Piddu', 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -244,12 +264,13 @@ CREATE TABLE IF NOT EXISTS `rof_gunner_scores` (
 
 DROP TABLE IF EXISTS `rof_object_properties`;
 CREATE TABLE IF NOT EXISTS `rof_object_properties` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(1) NOT NULL AUTO_INCREMENT,
   `object_type` varchar(128) NOT NULL,
   `object_class` varchar(8) NOT NULL,
   `object_value` smallint(6) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=223 ;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `object_type` (`object_type`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=235 ;
 
 --
 -- Dumping data for table `rof_object_properties`
@@ -269,7 +290,7 @@ INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `objec
 (11, 'Albatros D.II', 'PFI', 199),
 (12, 'Albatros D.II lt', 'PFI', 100),
 (13, 'Albatros D.Va', 'PFI', 100),
-(14, 'Albatross D.III', 'PFI', 100),
+(14, 'Albatros D.III', 'PFI', 100),
 (15, 'Benz Searchlight', 'VTR', 50),
 (16, 'benz_open', 'VTR', 50),
 (17, 'benz_p', 'VTR', 50),
@@ -405,7 +426,7 @@ INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `objec
 (147, 'ship_stat_cargo', 'STR', 150),
 (148, 'ship_stat_pass', 'SPA', 150),
 (149, 'ship_stat_tank', 'STR', 150),
-(150, 'Sopith Triplane', 'PFI', 100),
+(150, 'Sopwith Triplane', 'PFI', 100),
 (151, 'Sopwith Camel', 'PFI', 100),
 (152, 'Sopwith Dolphin', 'PFI', 100),
 (153, 'SPAD 13.C1', 'PFI', 100),
@@ -477,7 +498,18 @@ INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `objec
 (219, 'Wagon_TankB', 'RWA', 25),
 (220, 'Wagon_TankNB', 'RWA', 25),
 (221, 'Whippet', 'T', 100),
-(222, 'Windsock', 'FLG', 0);
+(222, 'Windsock', 'FLG', 0),
+(223, 'Sopwith Pup', 'PFI', 100),
+(224, 'German naval 105mm gun', 'NAR', 0),
+(226, 'Roland C.IIa', 'PRE', 200),
+(227, 'German naval 52mm gun', 'NAR', 0),
+(228, 'GER Ship Searchlight', 'LGT', 50),
+(229, 'GBR Searchlight', 'LGT', 50),
+(230, 'HMS Ship Searchlight', 'LGT', 50),
+(231, 'churchE_01', 'INF', 0),
+(232, 'CappyChateau', 'INF', 0),
+(233, 'British naval 12pdr gun', 'NAR', 0),
+(234, 'R.E.8', 'PRE', 200);
 
 -- --------------------------------------------------------
 
@@ -549,7 +581,61 @@ CREATE TABLE IF NOT EXISTS `rof_pilot_scores` (
   `PilotNegScore` int(1) NOT NULL,
   `PilotPosScore` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
+
+--
+-- Dumping data for table `rof_pilot_scores`
+--
+
+INSERT INTO `rof_pilot_scores` (`id`, `MissionID`, `PilotName`, `mpid`, `PilotFate`, `PilotHealth`, `PilotNegScore`, `PilotPosScore`) VALUES
+(1, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '=69.GIAP=REDVO', 1, 5, 4, 100, 0),
+(2, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 'Nightwitch', 2, 5, 4, 100, 0),
+(3, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 'Charlie Chap', 4, 1, 0, 0, 0),
+(4, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '=69.GIAP=BOOS', 5, 5, 4, 100, 0),
+(5, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 'Tanker', 7, 1, 0, 0, 0),
+(6, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '=69.GIAP=YARICK', 9, 5, 4, 100, 0),
+(7, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '=69.GIAP=REZNOV', 10, 5, 4, 100, 0),
+(8, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '242Sqn_Prof', 15, 1, 0, 0, 0),
+(9, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 'Algy Dunkersworth', 17, 1, 0, 0, 0),
+(10, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 'BSS_DrGlow', 19, 0, 1, 10, 0),
+(11, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '-NW-Rossolini', 20, 5, 4, 100, 0),
+(12, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '=69GIAP=ALEXEJ', 21, 2, 0, 0, 0),
+(13, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '=CAI= Kampf', 0, 5, 4, 100, 0),
+(14, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '_BT_Shogun', 3, 1, 0, 0, 0),
+(15, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '=CAI= Itafolgore', 6, 5, 4, 100, 0),
+(16, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '=CAI= Cix', 8, 1, 0, 0, 0),
+(17, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 'BT_Colosky', 11, 1, 0, 0, 0),
+(18, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '=CAI= Alatriste', 12, 1, 0, 0, 0),
+(19, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '=CAI= Torec', 13, 1, 0, 0, 0),
+(20, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '=CAI= Gladio', 14, 1, 0, 0, 0),
+(21, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '_BT_Patwar', 16, 1, 0, 0, 0),
+(22, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '=CAI= Diablo85', 18, 1, 0, 0, 0),
+(23, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '=CAI= Piddu', 22, 1, 0, 0, 0),
+(24, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '=CAI= Rudy', 23, 5, 4, 100, 0),
+(25, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '=CAI= Roby', 24, 0, 1, 10, 0),
+(26, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '=69.GIAP=STENKA', 0, 5, 4, 100, 0),
+(27, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 'Algy Dunkersworth', 1, 1, 0, 0, 0),
+(28, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 'Charlie Chap', 3, 1, 0, 0, 0),
+(29, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '=69.GIAP=TUSHKA', 4, 5, 4, 100, 0),
+(30, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '=69.GIAP=REDVO', 10, 5, 4, 100, 0),
+(31, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 'Tanker', 12, 1, 0, 0, 0),
+(32, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 'BSS_DrGlow', 13, 1, 0, 0, 0),
+(33, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '=69.GIAP=YARICK', 17, 5, 4, 100, 0),
+(34, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '242Sqn_Prof', 18, 1, 0, 0, 0),
+(35, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '=69.GIAP=GRACH', 19, 0, 1, 10, 0),
+(36, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '=CAI= Piddu', 2, 1, 0, 0, 0),
+(37, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '=CAI= Alatriste', 5, 1, 0, 0, 0),
+(38, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '=CAI= Kampf', 6, 5, 4, 100, 0),
+(39, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '=CAI= Pochill', 7, 1, 0, 0, 0),
+(40, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '_BT_Shogun', 8, 5, 4, 100, 0),
+(41, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '=CAI= Sonk', 9, 1, 0, 0, 0),
+(42, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '=CAI= Itafolgore', 11, 1, 0, 0, 0),
+(43, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '=CAI= Rudy', 14, 1, 0, 0, 0),
+(44, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 'Colosky', 15, 1, 0, 0, 0),
+(45, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '=CAI= Cix', 16, 5, 4, 100, 0),
+(46, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '=CAI= Gladio', 20, 0, 1, 10, 0),
+(47, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '=CAI= Diablo85', 21, 1, 0, 0, 0),
+(48, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', '-NW-Rossolini', 22, 5, 4, 100, 0);
 
 -- --------------------------------------------------------
 
@@ -559,8 +645,8 @@ CREATE TABLE IF NOT EXISTS `rof_pilot_scores` (
 
 DROP TABLE IF EXISTS `rof_verdun_locations`;
 CREATE TABLE IF NOT EXISTS `rof_verdun_locations` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `LID` int(2) NOT NULL,
+  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
+  `LID` smallint(1) unsigned NOT NULL,
   `LX` decimal(15,0) NOT NULL,
   `LZ` decimal(15,0) NOT NULL,
   `LName` varchar(40) NOT NULL,
