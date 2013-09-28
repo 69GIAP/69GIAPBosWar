@@ -15,7 +15,7 @@ function GUNNER($j){
    $Gunnerticks = "";
    if (($TYPE[$j] == "TurretGothaG5_1") ||
       ($TYPE[$j] == "BotGunnerG5_1")) { // used in DFW also
-      OBJECTCOUNTRYNAME($TID[$j],$Ticks[$j]);
+      @OBJECTCOUNTRYNAME($ID[$j],$Ticks[$j]); // @ suppress notices
       $Gunner = "$countryadj gunner";
    } elseif (($TYPE[$j] == "TurretGothaG5_2") ||
       ($TYPE[$j] == "BotGunnerG5_2")) { // used in DFW also
