@@ -35,7 +35,7 @@ function LANDINGSIDE($pid,$posx,$posz){
    // get  country of each area
    for ($i = 0; $i < $numB; ++$i) {
       $j = $Bline[$i];
-      for ($k = 0; $k < $numB; ++$k) {  // peek at first two IAHlines
+      for ($k = 0; $k < $numB; ++$k) {  // peek at each of the IAHlines
          $l = $IAHline[$k];
 //         echo "LANDINGSIDE B0: i = $i, AreaID[$i] = $AID[$j]<br>\n";
 //         echo "LANDINGSIDE B0.1:  IAHeader AreaID[$i] = $AID[$l]<br>\n";
@@ -71,7 +71,7 @@ function LANDINGSIDE($pid,$posx,$posz){
       // interpret result
       if ($place == "inside") {
 //         echo "i = $i ,LANDINGSIDE reports inside.<br>\n";
-         if ($pcoalition == $acoalition[$i]) {
+         if ($pcoalition == @$acoalition[$i]) { // @ suppresses notices
             $side = "friendly"; 
             $i = $numB; // we are done
             $k = $numB; // we are done
