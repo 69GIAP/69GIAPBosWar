@@ -454,7 +454,7 @@ function OUTPUT() {
             elseif ($flying == 0) { $action = "destroyed";}
             elseif ($flying == 3) { $action = "shot down";}
 //	    echo "\$aplayername = $aplayername<br>\n";
-            if ("$aplayername" == "Vehicle") { $aplayername = $attackertype;} 
+//            if ("$aplayername" == "Vehicle") { $aplayername = $attackertype;} 
 //            if ($aplayername == "TurretDH4_1") {$aplayername = "D.H.4 gunner";}
 //            if ($aplayername == "TurretDH4_1_WM") {$aplayername = "D.H.4 gunner";}
 //            if ($aplayername == "TurretDFWC_1") {$aplayername = "DFW C.V gunner";}
