@@ -5,7 +5,7 @@ with a password of "rofwar".  This user should have full permissions on this
 The skies_of_the_empire database uses the same user and password as 
 flanders_eagles.
 
-Likewise for 1916.
+Likewise for 1916 and Bloody April.
 
 I will use this same user and password for some future campaign db examples, 
 though I reserve the right to try yet another user just to make sure that
