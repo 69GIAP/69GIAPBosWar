@@ -344,9 +344,10 @@ function OUTPUT() {
          PLAYERNAME($AID[$j],$Ticks[$j]);
          $aplayername = $playername;
          OBJECTTYPE($TID[$j],$Ticks[$j]);
-         PLAYERNAME($TID[$j],$Ticks[$j]);
          OBJECTNAME($TID[$j],$Ticks[$j]);
+	 OBJECTPROPERTIES($objecttype);
          OBJECTCOUNTRYNAME($TID[$j],$Ticks[$j]);
+         PLAYERNAME($TID[$j],$Ticks[$j]);
          FLYING($TID[$j],$Ticks[$j]);
          XYZ($POS[$j]);
          WHERE($posx,$posz,0);
@@ -383,7 +384,7 @@ function OUTPUT() {
 		  $objecttype = "$countryadj $BotName";
                   echo ("$clocktime $ca $objecttype ($playername) was killed $where<br>\n");
                // Need a better test than this!
-               } elseif ($objectname == "Plane") {
+               } elseif (preg_match('/^P/','$objectclass')) { // Plane
                   if ($flying == 2) { $action = "crashed";}
                   elseif ($flying == 1) { $action = "crashed";}
                   elseif ($flying == 0) { $action = "crashed on takeoff";}
@@ -422,8 +423,8 @@ function OUTPUT() {
 		     // need better test here
                      if (($objectname == "Plane") || ($objectname == $objecttype)) { // C1:
                         echo ("C1a:$clocktime $Whosegunner\'s gunner $action $a $objecttype $where<br>\n");
-                     } else { // C2
-                        echo ("C1b:$clocktime $Whosegunner\'s gunner $action $a $objecttype ($objectname) $where<br>\n");
+                     } else { // C1b (used rarely)
+                        echo ("$clocktime $Whosegunner's gunner $action $a $objecttype ($objectname) $where<br>\n");
                      }
                   // need better test here
                   } elseif ($objectname == "Plane") { // C2:
