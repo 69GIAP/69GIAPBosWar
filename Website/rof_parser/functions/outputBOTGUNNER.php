@@ -22,6 +22,8 @@ function BOTGUNNER($type) {
    elseif ($type == "BotGunnerFe2_sing") { $BotName = "F.E.2b gunner"; }
    elseif ($type == "BotGunnerBW12") { $objecttype = "Brandenburg W12 gunner"; }
    elseif ($type == "BotGunnerHCL2") { $objecttype = "Halberstadt CL.II gunner"; }
+   else { $objecttype = "unexpected Botgunner $type<br>";
+
 
 }
 ?>
