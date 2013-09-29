@@ -1,0 +1,325 @@
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1241;
+  LinkTrId = 0;
+  XPos = 2353.614;
+  YPos = 6.098;
+  ZPos = 400.647;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\13pdraaa.txt";
+  Model = "graphics\artillery\13pdraaa\13pdraaa.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1242;
+  LinkTrId = 0;
+  XPos = 1984.877;
+  YPos = 5.214;
+  ZPos = 363.774;
+  XOri = 358.60;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\45qf.txt";
+  Model = "graphics\artillery\45qf\45qf.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1243;
+  LinkTrId = 0;
+  XPos = 1653.013;
+  YPos = 4.315;
+  ZPos = 326.900;
+  XOri = 358.60;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\75fg1897.txt";
+  Model = "graphics\artillery\75fg1897\75fg1897.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1244;
+  LinkTrId = 0;
+  XPos = 1321.149;
+  YPos = 4.315;
+  ZPos = 326.900;
+  XOri = 358.60;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\77mmaaa.txt";
+  Model = "graphics\artillery\77mmaaa\77mmaaa.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1245;
+  LinkTrId = 0;
+  XPos = 1013.868;
+  YPos = 4.015;
+  ZPos = 314.609;
+  XOri = 358.60;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\daimleraaa.txt";
+  Model = "graphics\artillery\daimleraaa\daimleraaa.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1246;
+  LinkTrId = 0;
+  XPos = 694.295;
+  YPos = 5.834;
+  ZPos = 339.191;
+  XOri = 358.60;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1247;
+  LinkTrId = 0;
+  XPos = 411.596;
+  YPos = 6.754;
+  ZPos = 326.900;
+  XOri = 358.60;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\m13.txt";
+  Model = "graphics\artillery\m13\m13.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1248;
+  LinkTrId = 0;
+  XPos = 116.606;
+  YPos = 2.844;
+  ZPos = 339.191;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 1.40;
+  Script = "LuaScripts\WorldObjects\hotchkiss.txt";
+  Model = "graphics\artillery\machineguns\hotchkiss.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1249;
+  LinkTrId = 0;
+  XPos = -239.840;
+  YPos = 0.000;
+  ZPos = 326.900;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\hotchkissaaa.txt";
+  Model = "graphics\artillery\machineguns\hotchkissaaa.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1250;
+  LinkTrId = 0;
+  XPos = -596.286;
+  YPos = 0.000;
+  ZPos = 363.774;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\lmg08.txt";
+  Model = "graphics\artillery\machineguns\lmg08.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1251;
+  LinkTrId = 0;
+  XPos = -965.024;
+  YPos = 0.000;
+  ZPos = 339.191;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\lmg08aaa.txt";
+  Model = "graphics\artillery\machineguns\lmg08aaa.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1252;
+  LinkTrId = 0;
+  XPos = -1346.053;
+  YPos = 0.000;
+  ZPos = 363.774;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\mflak.txt";
+  Model = "graphics\artillery\mflak\mflak.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1253;
+  LinkTrId = 0;
+  XPos = -1727.082;
+  YPos = 0.000;
+  ZPos = 351.482;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\thornycroftaaa.txt";
+  Model = "graphics\artillery\thornycroftaaa\thornycroftaaa.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+

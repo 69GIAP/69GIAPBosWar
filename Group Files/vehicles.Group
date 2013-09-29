@@ -1,0 +1,600 @@
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1254;
+  LinkTrId = 0;
+  XPos = 2365.906;
+  YPos = 21.951;
+  ZPos = 1457.695;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\a7v.txt";
+  Model = "graphics\vehicles\a7v\a7v.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1255;
+  LinkTrId = 0;
+  XPos = 2009.459;
+  YPos = 20.850;
+  ZPos = 1445.404;
+  XOri = 358.60;
+  YOri = 0.00;
+  ZOri = 1.40;
+  Script = "LuaScripts\WorldObjects\benz_open.txt";
+  Model = "graphics\vehicles\benz\benz_open.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1256;
+  LinkTrId = 0;
+  XPos = 1628.430;
+  YPos = 21.539;
+  ZPos = 1433.113;
+  XOri = 358.60;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\benz_p.txt";
+  Model = "graphics\vehicles\benz\benz_p.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1257;
+  LinkTrId = 0;
+  XPos = 1284.275;
+  YPos = 17.909;
+  ZPos = 1469.986;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 1.40;
+  Script = "LuaScripts\WorldObjects\benz_soft.txt";
+  Model = "graphics\vehicles\benz\benz_soft.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1258;
+  LinkTrId = 0;
+  XPos = 940.120;
+  YPos = 15.046;
+  ZPos = 1433.113;
+  XOri = 1.40;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\ca1.txt";
+  Model = "graphics\vehicles\ca1\ca1.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1259;
+  LinkTrId = 0;
+  XPos = 559.091;
+  YPos = 9.756;
+  ZPos = 1457.695;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\crossley.txt";
+  Model = "graphics\vehicles\crossley\crossley.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1260;
+  LinkTrId = 0;
+  XPos = 276.393;
+  YPos = 6.741;
+  ZPos = 1494.569;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 1.40;
+  Script = "LuaScripts\WorldObjects\daimlermarienfelde.txt";
+  Model = "graphics\vehicles\daimlermarienfelde\daimlermarienfelde.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1261;
+  LinkTrId = 0;
+  XPos = -92.345;
+  YPos = 0.000;
+  ZPos = 1506.860;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\daimlermarienfelde_s.txt";
+  Model = "graphics\vehicles\daimlermarienfelde\daimlermarienfelde_s.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1262;
+  LinkTrId = 0;
+  XPos = -448.791;
+  YPos = 0.000;
+  ZPos = 1482.278;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\ft17c.txt";
+  Model = "graphics\vehicles\ft17\ft17c.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1263;
+  LinkTrId = 0;
+  XPos = -817.529;
+  YPos = 0.000;
+  ZPos = 1506.860;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\ft17m.txt";
+  Model = "graphics\vehicles\ft17\ft17m.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1264;
+  LinkTrId = 0;
+  XPos = -1210.849;
+  YPos = 0.000;
+  ZPos = 1494.569;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leyland.txt";
+  Model = "graphics\vehicles\leyland\leyland.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1265;
+  LinkTrId = 0;
+  XPos = -1591.878;
+  YPos = 0.000;
+  ZPos = 1494.569;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leylands.txt";
+  Model = "graphics\vehicles\leyland\leylands.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1266;
+  LinkTrId = 0;
+  XPos = -1972.907;
+  YPos = 0.000;
+  ZPos = 1469.986;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\merc22.txt";
+  Model = "graphics\vehicles\merc22\merc22.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1267;
+  LinkTrId = 0;
+  XPos = -2366.227;
+  YPos = 0.000;
+  ZPos = 1457.695;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\mk4f.txt";
+  Model = "graphics\vehicles\mk4\mk4f.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1268;
+  LinkTrId = 0;
+  XPos = -2808.712;
+  YPos = 0.000;
+  ZPos = 1457.695;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\mk4fger.txt";
+  Model = "graphics\vehicles\mk4\mk4fger.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1269;
+  LinkTrId = 0;
+  XPos = -3189.741;
+  YPos = 0.000;
+  ZPos = 1433.113;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\mk4m.txt";
+  Model = "graphics\vehicles\mk4\mk4m.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1270;
+  LinkTrId = 0;
+  XPos = 2390.488;
+  YPos = 25.378;
+  ZPos = 2109.132;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 1.40;
+  Script = "LuaScripts\WorldObjects\mk4mger.txt";
+  Model = "graphics\vehicles\mk4\mk4mger.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1271;
+  LinkTrId = 0;
+  XPos = 2070.916;
+  YPos = 27.972;
+  ZPos = 2096.840;
+  XOri = 358.60;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\mk5f.txt";
+  Model = "graphics\vehicles\mk5\mk5f.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1272;
+  LinkTrId = 0;
+  XPos = 1689.887;
+  YPos = 23.417;
+  ZPos = 2059.967;
+  XOri = 358.81;
+  YOri = 0.00;
+  ZOri = 359.80;
+  Script = "LuaScripts\WorldObjects\mk5m.txt";
+  Model = "graphics\vehicles\mk5\mk5m.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1273;
+  LinkTrId = 0;
+  XPos = 1296.567;
+  YPos = 18.668;
+  ZPos = 2072.258;
+  XOri = 358.60;
+  YOri = 0.00;
+  ZOri = 2.79;
+  Script = "LuaScripts\WorldObjects\quad.txt";
+  Model = "graphics\vehicles\quad\quad.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1274;
+  LinkTrId = 0;
+  XPos = 927.829;
+  YPos = 13.415;
+  ZPos = 2084.549;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\quad_p.txt";
+  Model = "graphics\vehicles\quad\quad_p.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1275;
+  LinkTrId = 0;
+  XPos = 534.509;
+  YPos = 9.378;
+  ZPos = 2072.258;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 1.40;
+  Script = "LuaScripts\WorldObjects\quada.txt";
+  Model = "graphics\vehicles\quad\quada.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1276;
+  LinkTrId = 0;
+  XPos = 165.771;
+  YPos = 3.659;
+  ZPos = 2096.840;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\stchamond.txt";
+  Model = "graphics\vehicles\stchamond\stchamond.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1277;
+  LinkTrId = 0;
+  XPos = -264.423;
+  YPos = 0.000;
+  ZPos = 2121.423;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\whippet.txt";
+  Model = "graphics\vehicles\whippet\whippet.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+

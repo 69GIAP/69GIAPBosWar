@@ -1,0 +1,183 @@
+Vehicle
+{
+  Name = "REGIMENT 1 Platoon 1";
+  Index = 1;
+  LinkTrId = 2;
+  XPos = 100.000;
+  YPos = 0.000;
+  ZPos = 100.000;
+  XOri = 0.00;
+  YOri = 45.62;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leyland.txt";
+  Model = "graphics\vehicles\leyland\leyland.mgm";
+  Desc = "Allied static 3 leyland";
+  Country = 105;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 2;
+  Name = "REGIMENT 1 Platoon 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 100.000;
+  YPos = 0.000;
+  ZPos = 100.000;
+  XOri = 0.00;
+  YOri = 45.62;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 1;
+}
+
+MCU_Waypoint
+{
+  Index = 3;
+  Name = "REGIMENT 1 Platoon 1";
+  Desc = "";
+  Targets = [];
+  Objects = [2];
+  XPos = 350.000;
+  YPos = 0.000;
+  ZPos = 350.000;
+  XOri = 0.00;
+  YOri = 45.62;
+  ZOri = 0.00;
+  Area = 20;
+  Speed = 10;
+  Priority = 1;
+  GoalType = 0;
+}
+
+Vehicle
+{
+  Name = "REGIMENT 1 Platoon 2";
+  Index = 4;
+  LinkTrId = 5;
+  XPos = 150.000;
+  YPos = 0.000;
+  ZPos = 50.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leyland.txt";
+  Model = "graphics\vehicles\leyland\leyland.mgm";
+  Desc = "Allied static 2 leyland";
+  Country = 105;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 5;
+  Name = "REGIMENT 1 Platoon 2 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 150.000;
+  YPos = 0.000;
+  ZPos = 50.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 4;
+}
+
+MCU_Waypoint
+{
+  Index = 6;
+  Name = "REGIMENT 1 Platoon 2";
+  Desc = "";
+  Targets = [];
+  Objects = [5];
+  XPos = 400.000;
+  YPos = 0.000;
+  ZPos = 300.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Area = 20;
+  Speed = 10;
+  Priority = 1;
+  GoalType = 0;
+}
+
+Vehicle
+{
+  Name = "REGIMENT 2 Platoon 1";
+  Index = 7;
+  LinkTrId = 8;
+  XPos = 1100.000;
+  YPos = 0.000;
+  ZPos = 100.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leyland.txt";
+  Model = "graphics\vehicles\leyland\leyland.mgm";
+  Desc = "Allied moving  4 leyland";
+  Country = 105;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 8;
+  Name = "REGIMENT 2 Platoon 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 1100.000;
+  YPos = 0.000;
+  ZPos = 100.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 7;
+}
+
+MCU_Waypoint
+{
+  Index = 9;
+  Name = "REGIMENT 2 Platoon 1";
+  Desc = "";
+  Targets = [];
+  Objects = [8];
+  XPos = 1350.000;
+  YPos = 0.000;
+  ZPos = 350.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Area = 20;
+  Speed = 10;
+  Priority = 1;
+  GoalType = 0;
+}
+

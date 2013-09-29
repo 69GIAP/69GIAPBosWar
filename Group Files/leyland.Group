@@ -1,0 +1,42 @@
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1248;
+  LinkTrId = 1249;
+  XPos = 2441.448;
+  YPos = 20.117;
+  ZPos = 1374.796;
+  XOri = 358.60;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leyland.txt";
+  Model = "graphics\vehicles\leyland\leyland.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 1249;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 2441.448;
+  YPos = 20.317;
+  ZPos = 1374.796;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 1248;
+}
+

@@ -1,0 +1,44 @@
+MCU_Icon
+{
+  Index = 1;
+  Targets = [];
+  Objects = [];
+  XPos = 270.243;
+  YPos = 14.803;
+  ZPos = 448.662;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 43;
+  LCDesc = 44;
+  IconId = 0;
+  RColor = 255;
+  GColor = 0;
+  BColor = 0;
+  LineType = 0;
+  Coalitions = [1, 2];
+}
+ 
+MCU_Icon
+{
+  Index = 2;
+  Targets = [];
+  Objects = [];
+  XPos = 295.463;
+  YPos = 16.185;
+  ZPos = 746.255;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 45;
+  LCDesc = 46;
+  IconId = 0;
+  RColor = 255;
+  GColor = 0;
+  BColor = 0;
+  LineType = 0;
+  Coalitions = [1, 2];
+}
+ 

@@ -1,0 +1,126 @@
+Vehicle
+{
+  Name = "Regiment 1 Platoon 1";
+  Index = 1254;
+  LinkTrId = 1255;
+  XPos = 1599.646;
+  YPos = 17.241;
+  ZPos = 1206.877;
+  XOri = 358.60;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leyland.txt";
+  Model = "graphics\vehicles\leyland\leyland.mgm";
+  Desc = "Static Reg 1 Plat 1";
+  Country = 105;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 1255;
+  Name = "Regiment 1 Platoon 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 1599.646;
+  YPos = 17.441;
+  ZPos = 1206.877;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 1254;
+}
+
+Vehicle
+{
+  Name = "Regiment 1 Platoon 2";
+  Index = 1256;
+  LinkTrId = 1257;
+  XPos = 1647.052;
+  YPos = 17.241;
+  ZPos = 2866.114;
+  XOri = 358.60;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leyland.txt";
+  Model = "graphics\vehicles\leyland\leyland.mgm";
+  Desc = "Static Reg 1 Plat 1";
+  Country = 105;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 1257;
+  Name = "Regiment 1 Platoon 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 1647.052;
+  YPos = 17.441;
+  ZPos = 2866.114;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 1256;
+}
+
+Vehicle
+{
+  Name = "Regiment 2 Platoon 1";
+  Index = 1259;
+  LinkTrId = 1260;
+  XPos = 1789.273;
+  YPos = 17.241;
+  ZPos = 4620.164;
+  XOri = 358.60;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leyland.txt";
+  Model = "graphics\vehicles\leyland\leyland.mgm";
+  Desc = "Static Reg 1 Plat 1";
+  Country = 105;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 1260;
+  Name = "Regiment 1 Platoon 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 1789.273;
+  YPos = 17.441;
+  ZPos = 4620.164;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 1259;
+}
+

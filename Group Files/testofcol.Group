@@ -1,0 +1,210 @@
+MCU_TR_MissionBegin
+{
+  Index = 24;
+  Name = "Translator Mission Begin";
+  Desc = "";
+  Targets = [25];
+  Objects = [];
+  XPos = 12.354;
+  YPos = 2.739;
+  ZPos = 13.328;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_Timer
+{
+  Index = 25;
+  Name = "Trigger Timer";
+  Desc = "";
+  Targets = [26,33];
+  Objects = [];
+  XPos = 13.027;
+  YPos = 2.414;
+  ZPos = 53.141;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 90;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 26;
+  Name = "Trigger Timer";
+  Desc = "";
+  Targets = [34];
+  Objects = [];
+  XPos = 13.027;
+  YPos = 2.414;
+  ZPos = 91.225;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 135;
+  Random = 100;
+}
+
+MCU_Activate
+{
+  Index = 33;
+  Name = "Trigger Activate";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 45.121;
+  YPos = 2.472;
+  ZPos = 51.372;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Waypoint
+{
+  Index = 34;
+  Name = "Trigger Waypoint";
+  Desc = "";
+  Targets = [];
+  Objects = [36];
+  XPos = 309.948;
+  YPos = 16.433;
+  ZPos = 305.700;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Area = 20;
+  Speed = 11;
+  Priority = 1;
+  GoalType = 0;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 35;
+  LinkTrId = 36;
+  XPos = 144.869;
+  YPos = 7.936;
+  ZPos = 155.203;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 3.14;
+  Script = "LuaScripts\WorldObjects\crossley.txt";
+  Model = "graphics\vehicles\crossley\crossley.mgm";
+  Desc = "";
+  Country = 102;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 36;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 144.869;
+  YPos = 8.136;
+  ZPos = 155.203;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 35;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 37;
+  LinkTrId = 38;
+  XPos = 137.869;
+  YPos = 5.537;
+  ZPos = 113.204;
+  XOri = 356.87;
+  YOri = 0.00;
+  ZOri = 3.14;
+  Script = "LuaScripts\WorldObjects\leyland.txt";
+  Model = "graphics\vehicles\leyland\leyland.mgm";
+  Desc = "";
+  Country = 102;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 38;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [36];
+  Objects = [];
+  XPos = 137.869;
+  YPos = 5.737;
+  ZPos = 113.204;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 37;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 39;
+  LinkTrId = 40;
+  XPos = 115.119;
+  YPos = 5.600;
+  ZPos = 137.120;
+  XOri = 356.87;
+  YOri = 0.00;
+  ZOri = 3.14;
+  Script = "LuaScripts\WorldObjects\leyland.txt";
+  Model = "graphics\vehicles\leyland\leyland.mgm";
+  Desc = "";
+  Country = 102;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 40;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [36];
+  Objects = [];
+  XPos = 115.119;
+  YPos = 5.800;
+  ZPos = 137.120;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 39;
+}
+

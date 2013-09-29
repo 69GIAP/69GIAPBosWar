@@ -1,0 +1,84 @@
+Vehicle
+{
+  Name = "Regiment 1 Platoon 1";
+  Index = 1241;
+  LinkTrId = 1242;
+  XPos = 379.254;
+  YPos = 8.537;
+  ZPos = 521.474;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts/WorldObjects/leyland.txt";
+  Model = "graphics/vehicles/leyland/leyland.mgm";
+  Desc = "what does description do here";
+  Country = 105;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 1242;
+  Name = "Regiment 1 Platoon 1:10xleyland";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 379.254;
+  YPos = 8.737;
+  ZPos = 521.474;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 1241;
+}
+
+Vehicle
+{
+  Name = "Regiment 1 Platoon 2:10 x leyla";
+  Index = 1244;
+  LinkTrId = 1245;
+  XPos = 379.254;
+  YPos = 7.317;
+  ZPos = 2228.118;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leyland.txt";
+  Model = "graphics\vehicles\leyland\leyland.mgm";
+  Desc = "";
+  Country = 105;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 1245;
+  Name = "Regiment 1 Platoon 1:10xleyland";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 379.254;
+  YPos = 7.517;
+  ZPos = 2228.118;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 1244;
+}
+
