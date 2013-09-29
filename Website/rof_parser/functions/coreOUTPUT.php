@@ -148,8 +148,6 @@ function OUTPUT() {
    require ('rof_parser/functions/outputFATES.php');
    # FLYING
    require ('rof_parser/functions/outputFLYING.php');
-   # GUNNER
-   require ('rof_parser/functions/outputGUNNER.php');
    # LANDINGSIDE
    require ('rof_parser/functions/outputLANDINGSIDE.php');
    # LOSSES
@@ -158,6 +156,8 @@ function OUTPUT() {
    require ('rof_parser/functions/outputOBJECTPROPERTIES.php');
    # TOFROM
    require ('rof_parser/functions/outputTOFROM.php');
+   # TURRETGUNNER 
+   require ('rof_parser/functions/outputTURRETGUNNER.php');
    # WHERE
    require ('rof_parser/functions/outputWHERE.php');
    # WHOSEGUNNER
@@ -432,8 +432,12 @@ function OUTPUT() {
 //            echo "Lasthitby[$tonum] = $Lasthitby[$tonum]<br>\n";
 //            echo "TID flying = $flying<br>\n";
 		  } 
-		// end of elseif airplane	
-               } else { // what is left, if anything?
+		// end of elseif airplane, is target a ship?
+               } elseif(preg_match('/^S/',$objectclass)) {
+		   $action = "sank";
+                   echo ("D3:$clocktime $a2 $Lasthitby[$tonum] $action $a $objecttype ($objectname) $where<br>\n");
+               } else { // what is left, if anything? 
+		   $action = "destroyed";
                    echo ("Unexpected:$clocktime $a2 $Lasthitby[$tonum] $action $a $objecttype ($objectname) $where<br>\n");
                }
 	       

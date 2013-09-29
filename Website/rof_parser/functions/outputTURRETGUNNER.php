@@ -1,5 +1,5 @@
 <?php
-function GUNNER($j){
+function TURRETGUNNER($j){
 // given linenumber, determine if gunner and if so, what description to use
    global $TYPE; // type of plane, object, or objective - primary or secondary
    global $Ticks; // time since start of mission in 1/50 sec ticks - begins each log line
@@ -13,38 +13,26 @@ function GUNNER($j){
    global $Log; // log lines (for debugging this one)
    $Gunner = ""; 
    $Gunnerticks = "";
-   if (($TYPE[$j] == "TurretGothaG5_1") ||
-      ($TYPE[$j] == "BotGunnerG5_1")) { // used in DFW also
-      @OBJECTCOUNTRYNAME($ID[$j],$Ticks[$j]); // @ suppress notices
-      $Gunner = "$countryadj gunner";
-   } elseif (($TYPE[$j] == "TurretGothaG5_2") ||
-      ($TYPE[$j] == "BotGunnerG5_2")) { // used in DFW also
-      $Gunner = "$countryadj gunner";
+
+//   echo "GUNNER: $TYPE[$j]<br>\n";
+   if ($TYPE[$j] == "TurretGothaG5_1") { // used in DFW also
+      $Gunner = "gunner";
+   } elseif ($TYPE[$j] == "TurretGothaG5_2") { // used in DFW also
+      $Gunner = "gunner";
    } elseif (($TYPE[$j] == "TurretGothaG5_2_WM_Twin_Parabellum") ||
       ($TYPE[$j] == "TurretGothaG5_1_WM_Becker_AP")) { 
       $Gunner = "Gotha G.V gunner";
-   } elseif ($TYPE[$j] == "BotGunnerBacker") { // is this used elsewhere?
+   } elseif ($TYPE[$j] == "TurretGothaG5_1_WM_Twin_Parabellum") {
       $Gunner = "Gotha G.V gunner";
-   } elseif ($TYPE[$j] == "BotGunnerBW12") {
-      $Gunner = "Brandenburg W12 gunner";
    } elseif ($TYPE[$j] == "TurretHalberstadtCL2_1") {
       $Gunner = "Halberstadt CL.II gunner";
    } elseif ($TYPE[$j] == "TurretHalberstadtCL2au_1_WM_TwinPar") {
       $Gunner = "Halberstadt CLIIau gunner";
-   } elseif ($TYPE[$j] == "BotGunnerHCL2") {
-      $Gunner = "Halberstadt CL.II gunner";
-   } elseif ($TYPE[$j] == "BotGunnerDavis") {
-      $Gunner = "$countryadj Davis gunner";
-   } elseif ($TYPE[$j] == "BotGunnerFe2_sing") {
-      $Gunner = "$countryadj F.E.2b gunner";
-   } elseif (($TYPE[$j] == "TurretHP400_1") || ($TYPE[$j] == "TurretHP400_1_WM") ||
-      ($TYPE[$j] == "BotGunnerHP400_1")) { // just a guess as to which gunner is which - edit if needed
+   } elseif (($TYPE[$j] == "TurretHP400_1") || ($TYPE[$j] == "TurretHP400_1_WM")) { // just a guess as to which gunner is which - edit if needed
       $Gunner = "Handley Page 0/400 nose gunner";
-   } elseif (($TYPE[$j] == "TurretHP400_2") ||
-      ($TYPE[$j] == "BotGunnerHP400_2") || ($TYPE[$j] == "BotGunnerHP400_2_WM") || ($TYPE[$j] == "TurretHP400_2" ) || ($TYPE[$j] == "TurretHP400_2_WM")) { // just a guess as to which gunner is which - edit if needed
+   } elseif (($TYPE[$j] == "TurretHP400_2") || ($TYPE[$j] == "TurretHP400_2_WM")) { // just a guess as to which gunner is which - edit if needed
       $Gunner = "Handley Page 0/400 dorsal gunner";
-   } elseif (($TYPE[$j] == "TurretHP400_3") ||
-      ($TYPE[$j] == "BotGunnerHP400_3")) { // just a guess as to which gunner is which - edit if needed
+   } elseif ($TYPE[$j] == "TurretHP400_3") { // just a guess as to which gunner is which - edit if needed
       $Gunner = "Handley Page 0/400 ventral gunner";
    } elseif ($TYPE[$j] == "TurretDFWC_1") {
       $Gunner = "DFW C.V gunner";
@@ -52,8 +40,7 @@ function GUNNER($j){
       $Gunner = "DFW C.V gunner";
    } elseif ($TYPE[$j] == "TurretDFWC_1_WM_Becker_HEAP") {
       $Gunner = "DFW C.V gunner";
-   } elseif (($TYPE[$j] == "TurretBreguet14_1") ||
-      ($TYPE[$j] == "BotGunnerBreguet14_1")) { // also used in Bristol and F.E.2b
+   } elseif ($TYPE[$j] == "TurretBreguet14_1") { // also used in Bristol and F.E.2b
       $Gunner = "$countryadj Breguet 14.B2 gunner";
    } elseif ($TYPE[$j] == "TurretBristolF2B_1") {
       $Gunner = "Bristol F2.B gunner";
@@ -87,10 +74,13 @@ function GUNNER($j){
       $Gunner = "Roland C.IIa gunner";
    } elseif ($TYPE[$j] == "TurretRolandC2a_1_WM_TwinPar") {
       $Gunner = "Roland C.IIa gunner";
-   } elseif ($TYPE[$j] == "BotGunnerRE8") {
-      OBJECTCOUNTRYNAME($TID[$j],$Ticks[$j]);
-      $Gunner = "$countryadj gunner";
+   } elseif ($TYPE[$j] == "TurretRE8") {
+      $Gunner = "gunner";
+   } elseif (preg_match('/^Turret/',$TYPE[$j])) {
+      // something new
+      $Gunner = "unexpected $TYPE[$j] gunner"; 
    }
+
    if ($Gunner) { 
    // Gunnerticks may not be doing what it is expected to.  May need to redefine it.
    // yes.. should use time from GAMEOBJECTINVOLVED, not current time.

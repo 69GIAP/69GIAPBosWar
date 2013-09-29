@@ -62,7 +62,7 @@ function FATES($i,$j) {
    // get player's country name
    COUNTRYNAME($COUNTRY[$j]);
    // is this player a pilot or gunner?
-   GUNNER($j);
+   TURRETGUNNER($j);
 
    // if gunner, ignore wounds acquired before becoming this gunner
    if ($Gunner) {
