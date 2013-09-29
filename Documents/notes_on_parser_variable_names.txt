@@ -41,3 +41,8 @@ my UNIX-warped mind, those are not the same.  :)
 
 Tushka
 Sept 25, 2013
+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+Yeah, I tend to use camel style variabels starting lower case.
+
+Myata
+Sept 29, 2013
