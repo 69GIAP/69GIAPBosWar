@@ -1,4 +1,4 @@
-The intended meanings of each mission status is as follows:
+The intended meaning of each mission status is as follows:
 1) initialized - the campaign settings have been completed and all allocated
    starting units have been placed at the edges of the map.  This is the stage
    in which the admin sends the two sides their initial group files.  Skip to
@@ -15,8 +15,15 @@ The intended meanings of each mission status is as follows:
 4) built - planning is complete and admin has built the mission file for the
    next mission.
 
-5) analyzed - mission has been flown and the mission log files have been
-   analyzed.  Next step is 2) moving units.
+5) analyzing - mission has been flown and mission log files have been analyzed.
+   The admin now adds scoring for any special missions that were completed and
+   makes other necessary adjustments to the scores.  Perhaps a preliminary mission
+   report is posted in the forums at this stage.
+
+6) scored - log analysis and final scoring are completed and made public.  
+   Next step is 2) moving units.
    
 Tushka
 Sept 24, 2013
+updated Sept 29, splitting final stage into "analyzing" and "scored".
+

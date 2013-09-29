@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2013 at 07:26 PM
+-- Generation Time: Sep 29, 2013 at 07:27 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -23,21 +23,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rof_pilot_scores`
+-- Table structure for table `inbox`
 --
 
-DROP TABLE IF EXISTS `rof_pilot_scores`;
-CREATE TABLE IF NOT EXISTS `rof_pilot_scores` (
-  `id` smallint(1) NOT NULL AUTO_INCREMENT,
-  `MissionID` varchar(50) NOT NULL,
+DROP TABLE IF EXISTS `inbox`;
+CREATE TABLE IF NOT EXISTS `inbox` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `lin` text,
+  `data_value` varchar(200) DEFAULT NULL,
+  `data_dec_value` decimal(20,3) DEFAULT NULL,
   `CoalID` tinyint(3) unsigned NOT NULL,
-  `PilotName` varchar(40) NOT NULL,
-  `mpid` smallint(1) NOT NULL,
-  `PilotFate` tinyint(1) NOT NULL,
-  `PilotHealth` tinyint(1) NOT NULL,
-  `PilotNegScore` int(1) NOT NULL,
-  `PilotPosScore` int(1) NOT NULL,
-  PRIMARY KEY (`id`)
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

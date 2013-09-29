@@ -132,9 +132,9 @@
 						
 						# BUTTON ADD
 						echo "		<li><label for=\"submit\"></label>\n";
-						echo "		<button type=\"submit\" class=\"AircraftMgmtHalfButton1\" name =\"updateAirfield\" id=\"submit\" value =\"5\" >Add</button>\n";
+						echo "		<button type=\"submit\" class=\"AircraftMgmtHalfButton1\" name =\"updateAirfield\" id=\"submit\" value =\"7\" >Add</button>\n";
 						# BUTTON REMOVE
-						echo "		<button type=\"submit\" class=\"AircraftMgmtHalfButton2\" name =\"updateAirfield\" id=\"submit\" value =\"6\" >Remove</button>\n";
+						echo "		<button type=\"submit\" class=\"AircraftMgmtHalfButton2\" name =\"updateAirfield\" id=\"submit\" value =\"8\" >Remove</button>\n";
 						echo "		</li>\n";						
 					echo "</fieldset>\n";		
 
@@ -168,7 +168,7 @@
 						
 						# BUTTON
 						echo "		<li><label for=\"submit\"></label>\n";
-						echo "		<button type=\"changeCoalition\" name=\"updateAirfield\" value =\"7\" id=\"submit\">Change Coalition</button>\n";
+						echo "		<button type=\"changeCoalition\" name=\"updateAirfield\" value =\"9\" id=\"submit\">Change Coalition</button>\n";
 						echo "		</li>\n";	
 										
 						echo "	</fieldset>\n";					

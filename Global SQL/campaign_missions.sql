@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 24, 2013 at 07:55 PM
+-- Generation Time: Sep 29, 2013 at 06:33 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -28,13 +28,16 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `campaign_missions`;
 CREATE TABLE IF NOT EXISTS `campaign_missions` (
-  `id` smallint(1) NOT NULL AUTO_INCREMENT,
+  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
+  `mission_number` smallint(5) unsigned NOT NULL,
   `mission_file` varchar(50) NOT NULL,
+  `mission_log` varchar(50) NOT NULL,
   `MissionID` varchar(50) NOT NULL,
   `mission_status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mission_file` (`mission_file`),
-  UNIQUE KEY `MissionID` (`MissionID`)
+  UNIQUE KEY `MissionID` (`MissionID`),
+  UNIQUE KEY `mission_number` (`mission_number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,7 +1,7 @@
 
 <?php
 
-	if ($_POST["updateAirfield"] == 5)
+	if ($_POST["updateAirfield"] == 7)
 		{
 				
 # check 1			
@@ -13,21 +13,20 @@
 			$result = mysqli_query($camp_link, $check1);
 			$num	= mysqli_num_rows($result);
 			# check if maximum amount of models is reached
-			echo $num;
 			if ($num != 0)
 				{	
 					$query="UPDATE test_airfields SET model = '$airfieldModelAdd', number = '$airfieldModelAddQuantity' WHERE model = '' AND name = '$airfieldName'";
 				}
 
 # check 2
-			# check if there are already 4 aircraft models assigned to that airfield
+			# check if there are already 6 aircraft models assigned to that airfield
 			$check2 = "SELECT * from test_airfields where name = '$airfieldName' and coalId = $airfieldCoalitionId";
 
 			#execute the database checks		
 			$result = mysqli_query($camp_link, $check2);
 			$num	= mysqli_num_rows($result);
 			# check if maximum amount of models is reached
-			if ($num > 4)
+			if ($num >= 6)
 				{
 					header ("Location: airfieldManagementError.php?error=1");
 					# without the exit the script would just ignore the result and check the $check2 which results in a green light - no error
@@ -49,7 +48,7 @@
 				}
 		}
 		
-	if ($_POST["updateAirfield"] == 6)
+	if ($_POST["updateAirfield"] == 8)
 		{
 			# check if airport has only one entry left
 			$check4 = "SELECT * from test_airfields where name = '$airfieldName'";

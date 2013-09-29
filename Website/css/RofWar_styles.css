@@ -108,7 +108,7 @@ div.debuggingDbConnection {
 	opacity: 0.8;
 	filter:alpha(opacity=80);
 	line-height: 14px;
-	z-index: 100;		
+	z-index: 90;		
 	}			
 
 div.userLoggedOnInfo {
