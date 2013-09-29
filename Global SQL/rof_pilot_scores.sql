@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2013 at 07:12 PM
+-- Generation Time: Sep 29, 2013 at 07:26 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -30,6 +30,7 @@ DROP TABLE IF EXISTS `rof_pilot_scores`;
 CREATE TABLE IF NOT EXISTS `rof_pilot_scores` (
   `id` smallint(1) NOT NULL AUTO_INCREMENT,
   `MissionID` varchar(50) NOT NULL,
+  `CoalID` tinyint(3) unsigned NOT NULL,
   `PilotName` varchar(40) NOT NULL,
   `mpid` smallint(1) NOT NULL,
   `PilotFate` tinyint(1) NOT NULL,
