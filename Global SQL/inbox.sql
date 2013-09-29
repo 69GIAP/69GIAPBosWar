@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2013 at 07:01 PM
+-- Generation Time: Sep 29, 2013 at 07:27 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `inbox` (
   `lin` text,
   `data_value` varchar(200) DEFAULT NULL,
   `data_dec_value` decimal(20,3) DEFAULT NULL,
+  `CoalID` tinyint(3) unsigned NOT NULL,
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
