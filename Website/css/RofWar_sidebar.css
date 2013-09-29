@@ -1,0 +1,75 @@
+@charset "utf-8";
+/* CSS Document */
+
+/************************************************************************
+/*Sidebar Styles */
+#side {
+	float: left;
+	width: 245px;
+	color: #E6E6E6;
+	}
+
+ul#sidebar {
+	list-style-type:none;
+	margin: 0;
+	padding: 0;	
+}
+
+ul#sidebar {
+	margin-left: 20px;
+	margin-top:	30px;
+	display: block;
+	width: 192;
+}
+/*****  Viewer Sidebar ****/
+ul#sidebar li a.statistics {
+	background:url(../img/RofWar_Statistics.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+/*****  Admin Sidebar ****/
+ul#sidebar li a.campLogParser {
+	background:url(../img/RofWar-AdminCampLogParser.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.campStatus {
+	background:url(../img/RofWar-AdminChangeCampStatus.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.campConnect {
+	background:url(../img/RofWar-AdminConnectDB.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.campCreate {
+	background:url(../img/RofWar-AdminCreateDB.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+/*****  Commander Sidebar ****/
+ul#sidebar li a.modifyAirfield {
+	background:url(../img/RofWar_EntenteAirfields.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.modifyTroops {
+	background:url(../img/RofWar_EntenteTroops.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}

@@ -1,3 +1,15 @@
+/******************************************************/
+/*** INCLUDE OTHER CSS FILES ***/
+/******************************************************/
+
+@import url("RofWar_navigation.css");
+@import url("RofWar_sidebar.css");
+
+
+
+
+
+/* Main CSS*/
 html, body {
 	margin: 0;
 	padding: 0;
@@ -182,78 +194,7 @@ div.userLoggedOnInfo {
 	margin: 10px 0px;
 	padding: 5px 15px 10px 5px;
 	}
-/************************************************************************
-/*Sidebar Styles */
-#side {
-	float: left;
-	width: 245px;
-	color: #E6E6E6;
-	}
-
-ul#sidebar {
-	list-style-type:none;
-	margin: 0;
-	padding: 0;	
-}
-
-ul#sidebar {
-	margin-left: 20px;
-	margin-top:	30px;
-	display: block;
-	width: 192;
-}
-/*****  Viewer Sidebar ****/
-ul#sidebar li a.statistics {
-	background:url(../img/RofWar_Statistics.png) no-repeat scroll top left;
-	display:block;
-	margin-bottom: 10px;
-	height: 64px;
-	position:relative;
-}
-/*****  Admin Sidebar ****/
-ul#sidebar li a.campLogParser {
-	background:url(../img/RofWar-AdminCampLogParser.png) no-repeat scroll top left;
-	display:block;
-	margin-bottom: 10px;
-	height: 64px;
-	position:relative;
-}
-ul#sidebar li a.campStatus {
-	background:url(../img/RofWar-AdminChangeCampStatus.png) no-repeat scroll top left;
-	display:block;
-	margin-bottom: 10px;
-	height: 64px;
-	position:relative;
-}
-ul#sidebar li a.campConnect {
-	background:url(../img/RofWar-AdminConnectDB.png) no-repeat scroll top left;
-	display:block;
-	margin-bottom: 10px;
-	height: 64px;
-	position:relative;
-}
-ul#sidebar li a.campCreate {
-	background:url(../img/RofWar-AdminCreateDB.png) no-repeat scroll top left;
-	display:block;
-	margin-bottom: 10px;
-	height: 64px;
-	position:relative;
-}
-/*****  Commander Sidebar ****/
-ul#sidebar li a.modifyAirfield {
-	background:url(../img/RofWar_EntenteAirfields.png) no-repeat scroll top left;
-	display:block;
-	margin-bottom: 10px;
-	height: 64px;
-	position:relative;
-}
-ul#sidebar li a.modifyTroops {
-	background:url(../img/RofWar_EntenteTroops.png) no-repeat scroll top left;
-	display:block;
-	margin-bottom: 10px;
-	height: 64px;
-	position:relative;
-}	
+	
 	
 /************************************************************************
 /*  Footer Styles */
@@ -280,137 +221,6 @@ div#credits p {
 	color: #E6E6E6;	
 }	
 
-/************************************************************************
-/*  NAVIGATION */
-
-ul#navigation {
-	right: 0;
-	height:54px;
-	list-style:none;
-	margin:0;
-	padding:0;
-	padding-top:111px;
-	padding-left:245px;
-	z-index: 999;
-	}
-
-ul#navigation li {
-	float:left;
-	}
-
-ul#navigation li a {
-	background:url(../img/RofWar_NavMenuLeftSprite.png) no-repeat scroll top left;
-	display:block;
-	height:54px;
-	position:relative;
-	}
-
-ul#navigation li a.home {
-	width:96px;
-	/*background-position:-190px 0px;  remove to reactivate Home*/
-	}
-ul#navigation li a.userMgmt {
-	width:96px;
-	background-position:-96px 0px;
-	}
-ul#navigation li a.campMgmt {
-	width:96px;
-	background-position:-192px 0px;
-	}	
-	
-ul#navigation li a span {
-	background:url(../img/RofWar_NavMenuLeftSprite.png) no-repeat scroll bottom left;
-	display:block;
-	position:absolute;
-	top:0;
-	left:0;
-	height:100%;
-	width:100%;
-	z-index:100;
-	}
-
-ul#navigation li a.home span {
-	background-position:0px -54px;
-	/*background-position:-190px -54px;*/
-	}
-ul#navigation li a.userMgmt span {
-	width:95px;
-	background-position:-96px -54px;
-	}
-ul#navigation li a.campMgmt span {
-	width:95px;
-	background-position:-192px -54px;
-	}	
-
-ul#navigation li a span:hover {
-	cursor:pointer;
-	}
-
-ul#register {
-	position: absolute;
-	right: 10%;
-	top: 111px;
-	height:54px;
-	width: auto;
-	list-style:none;
-	margin:0;
-	padding:0;
-	z-index: 1000;
-	}
-
-ul#register li {
-	float:left;
-	}
-
-ul#register li a {
-	background:url(../img/RofWar_NavMenuRightSprite.png) no-repeat scroll top left;
-	display:block;
-	height:54px;
-	position:relative;
-	}
-
-ul#register li a.register {
-	width: 84px;
-	}
-
-ul#register li a.login {
-	width: 84px;
-	background-position:-84px 0px;
-	}
-
-ul#register li a.logout {
-	width: 84px;
-	background-position:-168px 0px;
-	}
-
-ul#register li a span {
-	background:url(../img/RofWar_NavMenuRightSprite.png) no-repeat scroll bottom left;
-	display:block;
-	position:absolute;
-	top:0;
-	left:0;
-	height:100%;
-	width:100%;
-	z-index:100;
-	}
-
-ul#register li a.register span {
-	background-position:0px -54px;
-	}
-
-ul#register li a.login span {
-	width: 83px;
-	background-position:-84px -54px;
-	}
-
-ul#register li a.logout span {
-	width: 83px;
-	background-position:-168px -54px;
-	}
-
-ul#register li a span:hover {
-	cursor:pointer;
-	}
 
 /**************************************************************************
 /* Form styles */
