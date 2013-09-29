@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `flanders_eagles` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `flanders_eagles`;
+CREATE DATABASE  IF NOT EXISTS `skies_of_the_empires` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `skies_of_the_empires`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
--- Host: 10.0.0.57    Database: flanders_eagles
+-- Host: 10.0.0.57    Database: skies_of_the_empires
 -- ------------------------------------------------------
 -- Server version	5.6.13
 
@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `test_airfields`;
 CREATE TABLE `test_airfields` (
   `name` varchar(45) NOT NULL,
   `coalId` int(1) NOT NULL,
-  `model` varchar(45) NOT NULL,
+  `model` varchar(45) NOT NULL DEFAULT '',
   `number` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`name`,`coalId`,`model`,`number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -39,7 +39,7 @@ CREATE TABLE `test_airfields` (
 
 LOCK TABLES `test_airfields` WRITE;
 /*!40000 ALTER TABLE `test_airfields` DISABLE KEYS */;
-INSERT INTO `test_airfields` VALUES ('Coxyde',1,'No Aircraft',0),('Dunkerque',1,'No Aircraft',0),('Harlebeeke',1,'No Aircraft',0),('Leffinghe',1,'No Aircraft',0),('St. Marie Cappel',2,'No Aircraft',0),('Zeebrugge',2,'No Aircraft',0);
+INSERT INTO `test_airfields` VALUES ('Coxyde',1,'albatrosd5.mgm',8),('Dunkerque',1,'albatrosd5.mgm',6),('Harlebeeke',1,'gothag5',20),('Leffinghe',2,'',0),('St. Marie Cappel',1,'albatrosd5.mgm',2),('Zeebrugge',2,'felixf2a.mgm',15);
 /*!40000 ALTER TABLE `test_airfields` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-25 17:13:45
+-- Dump completed on 2013-09-29 10:23:24
