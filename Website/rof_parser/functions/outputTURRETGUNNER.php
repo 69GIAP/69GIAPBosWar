@@ -1,6 +1,13 @@
 <?php
+// TURRETGUNNER
+// given linenumber of a player gunner determine what description to use
+// =69.GIAP=TUSHKA
+// Sept 28, 2013
+// BOSWAR version 1.1
+// Sept 29, 2013
+// consider putting this in object_specifications along with BOTGUNNER
+
 function TURRETGUNNER($j){
-// given linenumber, determine if gunner and if so, what description to use
    global $TYPE; // type of plane, object, or objective - primary or secondary
    global $Ticks; // time since start of mission in 1/50 sec ticks - begins each log line
    global $numgobjects; // number of gameobjects
@@ -16,28 +23,41 @@ function TURRETGUNNER($j){
 
 //   echo "GUNNER: $TYPE[$j]<br>\n";
    if ($TYPE[$j] == "TurretGothaG5_1") { // used in DFW also
-      $Gunner = "gunner";
+      $Gunner = "rear gunner";
    } elseif ($TYPE[$j] == "TurretGothaG5_2") { // used in DFW also
-      $Gunner = "gunner";
-   } elseif (($TYPE[$j] == "TurretGothaG5_2_WM_Twin_Parabellum") ||
-      ($TYPE[$j] == "TurretGothaG5_1_WM_Becker_AP")) { 
+      $Gunner = "rear gunner";
+   } elseif ($TYPE[$j] == "TurretGothaG5_2_WM_Twin_Parabellum") {
+      $Gunner = "Gotha G.V rear gunner";
+   } elseif ($TYPE[$j] == "TurretGothaG5_1_WM_Becker_AP") { 
       $Gunner = "Gotha G.V gunner";
+   } elseif ($TYPE[$j] == "TurretGothaG5_1_WM_Becker_HE") { 
+      $Gunner = "Gotha G.V nose gunner";
+   } elseif ($TYPE[$j] == "TurretGothaG5_1_WM_Becker_HEAP") { 
+      $Gunner = "Gotha G.V nose gunner";
    } elseif ($TYPE[$j] == "TurretGothaG5_1_WM_Twin_Parabellum") {
-      $Gunner = "Gotha G.V gunner";
+      $Gunner = "Gotha G.V nose gunner";
    } elseif ($TYPE[$j] == "TurretHalberstadtCL2_1") {
       $Gunner = "Halberstadt CL.II gunner";
+   } elseif ($TYPE[$j] == "TurretHalberstadtCL2_1_WM_TwinPar") {
+      $Gunner = "Halberstadt CLII gunner";
+   } elseif ($TYPE[$j] == "TurretHalberstadtCL2au_1") {
+      $Gunner = "Halberstadt CLII gunner";
    } elseif ($TYPE[$j] == "TurretHalberstadtCL2au_1_WM_TwinPar") {
-      $Gunner = "Halberstadt CLIIau gunner";
-   } elseif (($TYPE[$j] == "TurretHP400_1") || ($TYPE[$j] == "TurretHP400_1_WM")) { // just a guess as to which gunner is which - edit if needed
+      $Gunner = "Halberstadt CLII gunner";
+   } elseif (($TYPE[$j] == "TurretHP400_1") || ($TYPE[$j] == "TurretHP400_1_WM")) {
       $Gunner = "Handley Page 0/400 nose gunner";
-   } elseif (($TYPE[$j] == "TurretHP400_2") || ($TYPE[$j] == "TurretHP400_2_WM")) { // just a guess as to which gunner is which - edit if needed
+   } elseif (($TYPE[$j] == "TurretHP400_2") || ($TYPE[$j] == "TurretHP400_2_WM")) {
       $Gunner = "Handley Page 0/400 dorsal gunner";
-   } elseif ($TYPE[$j] == "TurretHP400_3") { // just a guess as to which gunner is which - edit if needed
+   } elseif ($TYPE[$j] == "TurretHP400_3") {
       $Gunner = "Handley Page 0/400 ventral gunner";
    } elseif ($TYPE[$j] == "TurretDFWC_1") {
       $Gunner = "DFW C.V gunner";
    } elseif ($TYPE[$j] == "TurretDFWC_1_WM_Twin_Parabellum") {
       $Gunner = "DFW C.V gunner";
+   } elseif ($TYPE[$j] == "TurretDFWC_1_WM_Becker_HE") {
+	  $Gunner = "DFW C.V gunner";
+   } elseif ($TYPE[$j] == "TurretDFWC_1_WM_Becker_AP") {
+	  $Gunner = "DFW C.V gunner";
    } elseif ($TYPE[$j] == "TurretDFWC_1_WM_Becker_HEAP") {
       $Gunner = "DFW C.V gunner";
    } elseif ($TYPE[$j] == "TurretBreguet14_1") { // also used in Bristol and F.E.2b
@@ -74,8 +94,8 @@ function TURRETGUNNER($j){
       $Gunner = "Roland C.IIa gunner";
    } elseif ($TYPE[$j] == "TurretRolandC2a_1_WM_TwinPar") {
       $Gunner = "Roland C.IIa gunner";
-   } elseif ($TYPE[$j] == "TurretRE8") {
-      $Gunner = "gunner";
+//   } elseif ($TYPE[$j] == "TurretRE8") {
+//      $Gunner = "gunner";
    } elseif (preg_match('/^Turret/',$TYPE[$j])) {
       // something new
       $Gunner = "unexpected $TYPE[$j] gunner"; 

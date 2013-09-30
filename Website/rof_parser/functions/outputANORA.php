@@ -1,7 +1,11 @@
 <?php
+// ANORA
+// select proper article: "an" or "a" (or no article at all)
+// =69.GIAP=TUSHKA
+// BOSWAR version 1.1
+// Sept 29, 2013
+
 function ANORA($word) {
-// select proper article: "", "an" or "a"
-// easy to extend if needed
    global $anora; // an or a
 
    // hacks to avoid an article with certain player names
@@ -45,7 +49,8 @@ function ANORA($word) {
    // by sound
    } elseif ((substr($word,0,1) == "A") || (substr($word,0,2) == "S." ) ||
      (substr($word,0,2) == "LM") || (substr($word,0,1) == "E") ||
-     (substr($word,0,3) == "HMS") || (substr($word,0,3) == "R.E")) {
+     (substr($word,0,3) == "HMS") || (substr($word,0,3) == "R.E") ||
+     (substr($word,0,3) == "F.E")) {
          $anora = "an";
    } else {
          $anora = "a";
