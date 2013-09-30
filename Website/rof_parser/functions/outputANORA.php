@@ -2,8 +2,8 @@
 // ANORA
 // select proper article: "an" or "a" (or no article at all)
 // =69.GIAP=TUSHKA
-// BOSWAR version 1.1
-// Sept 29, 2013
+// BOSWAR version 1.2
+// Sept 30, 2013
 
 function ANORA($word) {
    global $anora; // an or a
@@ -44,7 +44,7 @@ function ANORA($word) {
      (substr($word,0,4) == "Par2") || (substr($word,0,4) == "Last") ||
      (substr($word,0,3) == "JG1") || (substr($word,0,3) == "J5_") ||
      (substr($word,0,3) == "CaK") || (substr($word,0,4) == "Flak") ||
-     (substr($word,0,4) == "= CA")) {
+     (substr($word,0,3) == "SPA") || (substr($word,0,4) == "= CA")) {
         $anora = "";
    // by sound
    } elseif ((substr($word,0,1) == "A") || (substr($word,0,2) == "S." ) ||
