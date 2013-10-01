@@ -16,24 +16,18 @@
         <div id="container">
     
             <div id="content">
-            
-                <p><b>Please Login:</b></p>
-                
-                <fieldset class="boswar">
-                    <form  name="login"  action="loginCheck.php" method="post">
-                        <li> <label for="username">Your Username:<br></label>
-                        <input type="text" name="username" id="username" size="24" maxlength="50" />
-                        </li>
-                         <li> <label for="password">Your Password:<br></label>
-                        <input type="password" name="password" id="password" size="24" maxlength="50" />
-                        </li>
 
-                        <li><label for="submit"></label>
-                        <button type="submit" id="submit">Login</button>
-                        </li>
-                    </form>
-				</fieldset>
-                
+                <form id="loginForm" name="login" action="loginCheck.php" method="post">
+                    <h1 id="h1Form">Log In</h1>
+                    <fieldset id="inputs">
+                        <input id="username" type="text" name="username" placeholder="Username" autofocus required>   
+                        <input id="password" type="password"  name="password" placeholder="Password" required>
+                    </fieldset>
+                    <fieldset id="actions">
+                        <input type="submit" id="loginSubmit" value="Log in">
+                    </fieldset>
+                </form>
+
             </div>
     
         </div>

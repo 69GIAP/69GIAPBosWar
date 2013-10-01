@@ -19,6 +19,8 @@
 	if(!$result = $camp_link->query($sql)){
 		die('There was an error running the query ' . mysqli_error($camp_link));
 	}
+	
+	echo "<option value=\"\" disabled selected>Select Airfield</option>\n";
 	# load results into variables 
 	while ($obj = mysqli_fetch_object($result)) {
 		$airfieldName		=($obj->name);

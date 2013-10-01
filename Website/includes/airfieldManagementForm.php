@@ -25,8 +25,8 @@
 ?>
 			<!-- form for changing information in the users table -->
                 <h3>Please select the airfield you want to modify:</h3>
-                <fieldset class="UserMgmt">
-                    <form name="delete" action="includes/selectAirfield.php" method="post">
+<!--                <fieldset class="UserMgmt">
+                    <form action="includes/selectAirfield.php" method="post">
                         <ul>
                             <li><label for="airfieldName">Airfield Name</label>
                                 <select name="airfieldName">
@@ -40,3 +40,16 @@
                         </ul>
                     </form>
                 </fieldset>
+-->                
+                
+				<form id="loginForm" name="delete" action="includes/selectAirfield.php" method="post">
+                    <fieldset id="inputs">
+                        <select id="select" type="text" name="airfieldName" autofocus required>
+	                        <?php include 'includes/getAirfieldCampaignInformation.php' ?>
+                        </select>   
+                    </fieldset>
+                    
+                    <fieldset id="actions">
+                        <input type="submit" id="loginSubmitAirfield" value="Load Airfield Data">
+                    </fieldset>
+                </form>
