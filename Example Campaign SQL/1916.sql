@@ -1654,7 +1654,7 @@ INSERT INTO `rof_westernfront_locations` (`id`, `LID`, `LX`, `LZ`, `LName`) VALU
 DROP TABLE IF EXISTS `test_airfields`;
 CREATE TABLE IF NOT EXISTS `test_airfields` (
   `name` varchar(45) NOT NULL,
-  `coalition` int(1) NOT NULL,
+  `coalId` int(1) NOT NULL,
   `model` varchar(45) NOT NULL,
   `number` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`name`,`coalition`,`model`,`number`)
@@ -1665,12 +1665,12 @@ CREATE TABLE IF NOT EXISTS `test_airfields` (
 --
 
 INSERT INTO `test_airfields` (`name`, `coalition`, `model`, `number`) VALUES
-('Coxyde', 1, 'albatrosd5.mgm', 8),
-('Dunkerque', 1, 'albatrosd5.mgm', 6),
+('Coxyde', 1, 'albatrosd5', 8),
+('Dunkerque', 1, 'albatrosd5', 6),
 ('Harlebeeke', 1, 'gothag5', 20),
-('Leffinghe', 2, 'felixf2a.mgm', 10),
-('St. Marie Cappel', 1, 'albatrosd5.mgm', 2),
-('Zeebrugge', 2, 'felixf2a.mgm', 15);
+('Leffinghe', 2, 'felixf2a', 10),
+('St. Marie Cappel', 1, 'albatrosd5', 2),
+('Zeebrugge', 2, 'felixf2a', 15);
 
 -- --------------------------------------------------------
 
@@ -1689,10 +1689,10 @@ CREATE TABLE IF NOT EXISTS `test_models` (
 --
 
 INSERT INTO `test_models` (`model`) VALUES
-('albatrosd5.mgm'),
+('albatrosd5'),
 ('brequet14'),
 ('dfc5'),
-('felixf2a.mgm'),
+('felixf2a'),
 ('fokkerd7'),
 ('gothag5');
 
