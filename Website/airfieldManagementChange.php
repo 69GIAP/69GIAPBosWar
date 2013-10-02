@@ -69,9 +69,9 @@
 					# MODEL
 					if ($airfieldModel == '')
 						{
-							echo "<fieldset id=\"none\">\n";								
+							echo "<fieldset id=\"none\">\n";							
 							# MODEL
-							echo "	<input readonly=\"readonly\" type=\"text\" name='' id=\"none\" value='' size=\"24\" maxlength=\"50\" />\n";
+							echo "	<input readonly=\"readonly\" type=\"text\" name='' id=\"none\" placeholder=\"No Aircraft Assigned To Airfield\" value='' size=\"24\" maxlength=\"50\" />\n";
 							echo "</fieldset>";						
 						}
 					else
@@ -132,7 +132,7 @@
 						while ($coalObj = mysqli_fetch_object($coalName)) {
 							$airfieldCoalitionName =($coalObj->coalitionname);
 						}
-				
+						echo "	<p>Airfield Coalition:</p><br>\n";
 						# COALITION
 						echo "		<input readonly=\"readonly\" type=\"text\" id=\"world\" value='$airfieldCoalitionName' size=\"24\" maxlength=\"50\" />\n";
 						# hidden field to hand airfieldCoalitionId over through POST
