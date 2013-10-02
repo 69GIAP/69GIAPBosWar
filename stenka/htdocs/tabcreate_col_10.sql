@@ -23,6 +23,7 @@ col_ZPos DEC(12,3) DEFAULT 0,
 col_YOri DEC(5,2) DEFAULT 0,
 col_dest_XPos DEC(12,3) DEFAULT 0,
 col_dest_ZPos DEC(12,3) DEFAULT 0,
-col_speed INT DEFAULT 10
+col_speed INT DEFAULT 10,
+col_formation INT DEFAULT 4
 )
 ;
