@@ -103,8 +103,8 @@ ul#register li a.login {
 	}
 
 ul#register li a.logout {
-	width: 84px;
-	background-position:-168px 0px;
+	width: 87px;
+	background-position:-166px 0px;
 	}
 
 ul#register li a span {
@@ -128,7 +128,7 @@ ul#register li a.login span {
 	}
 
 ul#register li a.logout span {
-	width: 83px;
+	width: 86px;
 	background-position:-166px -54px;
 	}
 
