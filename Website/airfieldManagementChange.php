@@ -42,7 +42,6 @@
 					
 					# get airfield name from selection form and use as header
 					$airfieldName = $_SESSION["airfieldName"];	
-					echo "<h3>Airfield $airfieldName</h3><br>\n";
 		
 					# get data from test_airfield table
 					$sql = "SELECT * FROM test_airfields WHERE name = '$airfieldName'";
@@ -55,10 +54,9 @@
 					$num = mysqli_num_rows($result);
 	
 					# start form
-					echo "<fieldset class=\"boswar\">\n";
-					echo "	<form  name=\"airfieldModify\"  action=\"airfieldManagementModify.php\" method=\"post\">\n";					
-					
-					echo "		<fieldset class=\"airfield\">\n";	
+					echo "<form id=\"airfieldForm\" name=\"login\" action=\"airfieldManagementModify.php\" method=\"post\">\n";
+					echo "    <h1 id=\"h1Form\">$airfieldName</h1>\n";
+
 
 					# load results into variables and build form
 					$i = 1;
@@ -67,78 +65,63 @@
 						$airfieldCoalitionId=($obj->coalId);
 						$airfieldModel		=($obj->model);
 						$airfieldNumber		=($obj->number);
-						
-						# MODEL
-						if ($airfieldModel == '')
-							{	
-								# MODEL
-								echo "		<li> <label class=\"grey\" for=\"airfieldModel\">No Aircraft:<br></label>\n";
-								echo "		<input class=\"grey\" readonly=\"readonly\" type=\"text\" name='' id=\"airfieldModelExample\" value='' size=\"24\" maxlength=\"50\" />\n";
-								echo "		</li>\n";
-							}
-						else
-							{
-								# MODEL
-								echo "		<li> <label class=\"grey\" for=\"airfieldModel\">Aircraft $i:<br></label>\n";
-								$airfieldModelLoaded = "airfieldModelLoaded".$i;						
-								echo "		<input class=\"grey\" readonly=\"readonly\" type=\"text\" name='$airfieldModelLoaded' id=\"airfieldModelExample\" value='$airfieldModel' size=\"24\" maxlength=\"50\" />\n";
-								echo "		</li>\n";
-	
-								# QUANTITY
-								echo "		<li> <label class=\"grey\" for=\"airfieldNumber\">Current Quantity $i:<br></label>\n";
-								$airfieldModelQuantity = "airfieldModelQuantity".$i;
-								echo "		<input class=\"grey\" readonly=\"readonly\"  name ='$airfieldModelQuantity' type=\"text\" id=\"airfieldNumber\" value='$airfieldNumber' size=\"24\" maxlength=\"50\" />\n";
-								echo "		</li>\n";
-								
-								# NEW QUANTITY
-								echo "		<li> <label for=\"airfieldNumber\">New Quantity:<br></label>\n";
-								# dynamically create name variable for automatically created fields
-								$airfieldModelQuantityNew = "airfieldModelQuantityNew".$i;
-								echo "		<input type=\"text\" name='$airfieldModelQuantityNew' id=\"airfieldModelQuantityNew\" value='$airfieldNumber' size=\"24\" maxlength=\"50\" />\n";
-								echo "		</li>\n";
-								
-								# BUTTON
-								echo "		<li><label for=\"submit\"></label>\n";
-								echo "		<button type=\"submit\" name =\"updateAirfield\" id=\"submit\" value =\"$i\" >Update Aircraft $i</button>\n";
-								echo "		</li>\n";						
-		
-								$i += 1;	
-							}
+			
+					# MODEL
+					if ($airfieldModel == '')
+						{
+							echo "<fieldset id=\"inputs\">\n";								
+							# MODEL
+							echo "	<input readonly=\"readonly\" type=\"text\" name='' id=\"airfieldModelExample\" value='' size=\"24\" maxlength=\"50\" />\n";
+							echo "</fieldset>";						
 						}
-						echo "</fieldset>\n";
-					
-						
-					echo "<fieldset class=\"airfield\">\n";		
+					else
+						{
+							echo "<fieldset id=\"inputs\">\n";						
+							echo "	<p>Aircraft $i</p><br>\n";
+							# MODEL
+							$airfieldModelLoaded = "airfieldModelLoaded".$i;						
+							echo "	<input readonly=\"readonly\" type=\"text\" name='$airfieldModelLoaded' id=\"airfieldModelExample\" value='$airfieldModel' size=\"24\" maxlength=\"50\" />\n";
+	
+							# QUANTITY
+							$airfieldModelQuantity = "airfieldModelQuantity".$i;
+							echo "	<input readonly=\"readonly\" type=\"text\" name ='$airfieldModelQuantity' id=\"airfieldNumber\" value='$airfieldNumber' size=\"24\" maxlength=\"50\" />\n";
+							
+							# NEW QUANTITY
+							# dynamically create name variable for automatically created fields
+							$airfieldModelQuantityNew = "airfieldModelQuantityNew".$i;
+							echo "	<input type=\"text\" name='$airfieldModelQuantityNew' placeholder=\"New Quantitiy\" value='' size=\"24\" maxlength=\"50\" />\n";
+							echo "</fieldset>";
+							echo "<fieldset id=\"actions\">";
+							# BUTTON
+							echo "	<button type=\"submit\" name =\"updateAirfield\" id=\"loginSubmit\" value =\"$i\" >Update Aircraft $i</button>\n";	
+							echo "</fieldset>\n";				
+							$i ++;	
+						}
+					}
+
+					echo "<fieldset id=\"inputs\">\n";							
 						# AIRFIELD NAME
-						echo "		<li>\n";
-						echo "		<input readonly=\"readonly\" type=\"hidden\" name='airfieldName' id=\"airfieldName\" value='$airfieldName' size=\"24\" maxlength=\"50\" />\n";
-						echo "		</li>\n";
+						echo "	<input readonly=\"readonly\" type=\"hidden\" name='airfieldName' value='$airfieldName' size=\"24\" maxlength=\"50\" />\n";
 						
 						# NEW MODEL SELECT
-						echo "		<li> <label for=\"addModel\">Aircraft to Add/Remove:</label>\n";
 						echo "		<select name=\"airfieldModelAdd\">\n";
-						# include the drop down list
-						include 'includes/getAirfieldCampaignModels.php'; 
-						echo "		</select></li>\n";
+									# include the drop down list
+									include 'includes/getAirfieldCampaignModels.php'; 
+						echo "		</select>\n";
 						
 						# NEW MODEL QUANTITY
-						echo "		<li> <label for=\"airfieldModelAddQuantity\">Quantity to Add:<br></label>\n";
-						echo "		<input type=\"text\" name=\"airfieldModelAddQuantity\" id=\"airfieldModelAddQuantity\" value='1' size=\"24\" maxlength=\"50\" />\n";
-						echo "		</li>\n";
+						echo "		<input type=\"text\" name=\"airfieldModelAddQuantity\" placeholder=\"Quantitiy To Add\" value='' size=\"24\" maxlength=\"50\" />\n";
 						
 						# hidden field to hand airfieldCoalitionId over through POST
-						echo "		<input readonly=\"readonly\" type=\"hidden\" name='airfieldCoalitionId' id=\"airfieldCoalitionId\" value='$airfieldCoalitionId'/>\n";
-						echo "		</li>\n";	
-						
+						echo "		<input readonly=\"readonly\" type=\"hidden\" name='airfieldCoalitionId' value='$airfieldCoalitionId'/>\n";	
+					echo "	</fieldset>";
+					echo "	<fieldset id=\"actions\">";
 						# BUTTON ADD
-						echo "		<li><label for=\"submit\"></label>\n";
-						echo "		<button type=\"submit\" class=\"AircraftMgmtHalfButton1\" name =\"updateAirfield\" id=\"submit\" value =\"7\" >Add</button>\n";
+						echo "		<button type=\"submit\" name =\"updateAirfield\" id=\"submitHalfsize\" value =\"7\" >Add</button>\n";
 						# BUTTON REMOVE
-						echo "		<button type=\"submit\" class=\"AircraftMgmtHalfButton2\" name =\"updateAirfield\" id=\"submit\" value =\"8\" >Remove</button>\n";
-						echo "		</li>\n";						
-					echo "</fieldset>\n";		
-
-					echo "<fieldset class=\"airfield\">\n";										
+						echo "		<button type=\"submit\" name =\"updateAirfield\" id=\"submitHalfsize\" value =\"8\" >Remove</button>\n";
+					echo "</fieldset>\n";
+					echo "<fieldset id=\"inputs\">\n";										
 						# get coalition name and store to variable
 						$getCoalName = "SELECT coalitionname FROM rof_coalitions WHERE coalID = '$airfieldCoalitionId'";
 										
@@ -150,34 +133,27 @@
 							$airfieldCoalitionName =($coalObj->coalitionname);
 						}
 				
-						
 						# COALITION
-						echo "		<li> <label class=\"grey\" for=\"airfieldCoalition\">Coalition:<br></label>\n";
-						echo "		<input class=\"grey\" readonly=\"readonly\" type=\"text\" id=\"airfieldCoalition\" value='$airfieldCoalitionName' size=\"24\" maxlength=\"50\" />\n";
+						echo "		<input readonly=\"readonly\" type=\"text\" value='$airfieldCoalitionName' size=\"24\" maxlength=\"50\" />\n";
 						# hidden field to hand airfieldCoalitionId over through POST
-						echo "		<input readonly=\"readonly\" type=\"hidden\" name='airfieldCoalitionId' id=\"airfieldCoalitionId\" value='$airfieldCoalitionId'/>\n";
-						echo "		</li>\n";
+						echo "		<input readonly=\"readonly\" type=\"hidden\" name='airfieldCoalitionId' value='$airfieldCoalitionId'/>\n";
 			
 						# NEW COALITION
-						echo "		<li> <label for=\"airfieldCoalitionIdNew\">Change Coalition:</label>\n";
 						echo "		<select name=\"airfieldCoalitionIdNew\">\n";
 						
 						# include the drop down list
 						include 'includes/getCampaignCoalitions.php'; 
-						echo "		</select></li>\n";
-						
+						echo "		</select>\n";
+					echo "	</fieldset>";
+					
+                    echo "	<fieldset id=\"actions\">";
 						# BUTTON
-						echo "		<li><label for=\"submit\"></label>\n";
-						echo "		<button type=\"changeCoalition\" name=\"updateAirfield\" value =\"9\" id=\"submit\">Change Coalition</button>\n";
-						echo "		</li>\n";	
+						echo "		<label for=\"submit\"></label>\n";
+						echo "		<button type=\"changeCoalition\" name=\"updateAirfield\" value =\"9\" id=\"loginSubmit\">Change Coalition</button>\n";
 										
-						echo "	</fieldset>\n";					
-						echo "</form>\n";
-
-					# Close the camp_link connection
-					mysqli_close($camp_link);		
-				?> 
-
+					echo "	</fieldset>\n";	
+					?>
+                </form>
             </div>
     
         </div>

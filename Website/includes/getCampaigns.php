@@ -13,7 +13,8 @@ include 'functions/getRadiobuttonForStats.php';
 
 if ($userRole == "administrator" or $userRole == "commander")
 	{
-		echo "<form name=\"input\" action=\"includes/selectCampaign.php\" method=\"post\">\n";
+		echo "<form id=\"loginForm\" name=\"input\" action=\"includes/selectCampaign.php\" method=\"post\">\n";
+		#echo "<form name=\"input\" action=\"includes/selectCampaign.php\" method=\"post\">\n";
 		
 		if ($userRole == "administrator")
 			{
@@ -65,7 +66,8 @@ if ($userRole == "commander")
 			get_radiobutton_for_stats($dbc,$query);
 			
 			# create form button
-			echo "	<input type=\"submit\" value=\"Connect\"><br>\n";
+			echo "	<input type=\"submit\" id=\"loginSubmit\" value=\"Connect\"><br>\n";
+			#echo "	<input type=\"submit\" value=\"Connect\"><br>\n";
 			echo "</form><br>\n";
 			echo "<p>If you miss your campaign in the list or you not even see a list, then please contact your administrator to assign you as commander!</p>\n";
 		}

@@ -50,6 +50,6 @@
                     </fieldset>
                     
                     <fieldset id="actions">
-                        <input type="submit" id="loginSubmitAirfield" value="Load Airfield Data">
+                        <input type="submit" id="loginSubmit" value="Load Airfield Data">
                     </fieldset>
                 </form>

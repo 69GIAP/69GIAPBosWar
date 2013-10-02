@@ -24,7 +24,7 @@
                         <input id="password" type="password"  name="password" placeholder="Password" required>
                     </fieldset>
                     <fieldset id="actions">
-                        <input type="submit" id="loginSubmit" value="Log in">
+                        <input type="submit" id="loginSubmit" value="LOG IN">
                     </fieldset>
                 </form>
 

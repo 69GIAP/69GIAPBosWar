@@ -14,6 +14,7 @@
 	
 	if ($result = mysqli_query($camp_link, $query)) 
 		{				
+			echo "<option class=\"grey\" value=\"\" disabled selected>Select New Coalition</option>\n";	
 			/* fetch associative array */
 			while ($obj = mysqli_fetch_object($result)) 
 				{

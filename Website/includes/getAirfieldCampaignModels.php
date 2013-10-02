@@ -10,7 +10,8 @@
 		}
 	
 	if ($resultModel = mysqli_query($camp_link, $queryModel)) 
-		{				
+		{	
+		echo "<option value=\"\" disabled selected>Select Aircraft Model to Add/Remove</option>\n";			
 			/* fetch associative array */
 			while ($objModel = mysqli_fetch_object($resultModel)) 
 				{

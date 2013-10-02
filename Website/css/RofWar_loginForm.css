@@ -8,6 +8,13 @@
     width: 400px;    
     padding: 30px;	  
 }
+#airfieldForm
+{
+    background-color: #fff;
+    height: auto;
+    width: 400px;    
+    padding: 30px;	  
+}
 
 #loginForm:before
 {
@@ -77,12 +84,12 @@ fieldset
 {
     background: #f1f1f1 url(../img/formSprite.png) no-repeat;
     padding: 15px 15px 15px 30px;
-    margin: 0 0 10px 0;
+    margin: 2px 0 2px 0;
     width: 353px; /* 353 + 2 + 45 = 400 */
     border: 1px solid #ccc;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
     -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
     -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
     box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
@@ -92,12 +99,12 @@ fieldset
 {
     background: #f1f1f1 url(../img/formSprite.png) no-repeat;
     padding: 15px 15px 15px 30px;
-    margin: 0 0 10px 0;
-    width: 353px; /* 353 + 2 + 45 = 400 */
+    margin: 2px 0 2px 0;
+    width: 400px; /* 353 + 2 + 45 = 400 */
     border: 1px solid #ccc;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
     -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
     -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
     box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
@@ -112,6 +119,7 @@ fieldset
 {
     background-position: 5px -52px !important;
 }
+
 #select
 {
     background-position: 5px -97px !important;
@@ -140,10 +148,10 @@ fieldset
 /*--------------------*/
 #actions
 {
-    margin: 25px 0 0 0;
+    margin: 2px 0 30px 0;
 }
 
-#loginSubmit, #loginSubmitAirfield
+#loginSubmit, #submitHalfsize
 {		
     background-color: #5C85AD;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#BFC8DE), to(#5C85AD));
@@ -153,11 +161,11 @@ fieldset
     background-image: -o-linear-gradient(top, #BFC8DE, #5C85AD);
     background-image: linear-gradient(top, #BFC8DE, #5C85AD);
     
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
     
-    text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+	text-shadow: 0 1px 0 rgba(0,0,0,0.5);
     
      -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(0, 0, 0, 0.3) inset;
      -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(0, 0, 0, 0.3) inset;
@@ -167,26 +175,26 @@ fieldset
 #loginSubmit
 {		
     float: left;
-    height: 35px;
+    height: 45px;
     padding: 0;
-    width: 120px;
+    width: 400px;
     cursor: pointer;
-    font: bold 15px Arial, Helvetica;
+    font: 26px "Trebuchet MS", Arial, Helvetica, sans-serif;
     color: #E6E6E6;
 }
-
-#loginSubmitAirfield
+#submitHalfsize
 {		
     float: left;
-    height: 35px;
+    height: 45px;
     padding: 0;
-    width: 220px;
+	margin: 0 5px 0 0;
+    width: 195px;
     cursor: pointer;
-    font: bold 15px Arial, Helvetica;
+    font: 26px "Trebuchet MS", Arial, Helvetica, sans-serif;
     color: #E6E6E6;
 }
 
-#loginSubmit:hover,#submit:focus
+#loginSubmit:hover, #submit:focus
 {		
     background-color: #5C85AD;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#5C85AD), to(#BFC8DE));
@@ -218,3 +226,11 @@ fieldset
     line-height: 35px;
     margin-left: 10px;
 }
+
+form fieldset p
+{
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+}
+
