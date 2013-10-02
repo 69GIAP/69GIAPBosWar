@@ -80,7 +80,7 @@ fieldset
 
 /*--------------------*/
 
-#inputs input
+#inputs input, #none input
 {
     background: #f1f1f1 url(../img/formSprite.png) no-repeat;
     padding: 15px 15px 15px 30px;
@@ -95,7 +95,7 @@ fieldset
     box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
 }
 
-#inputs select
+#inputs select, #none select
 {
     background: #f1f1f1 url(../img/formSprite.png) no-repeat;
     padding: 15px 15px 15px 30px;
@@ -120,12 +120,26 @@ fieldset
     background-position: 5px -52px !important;
 }
 
-#select
+#aircraft
 {
     background-position: 5px -97px !important;
 }
 
-#inputs input:focus
+#none
+{
+    background-position: 5px -137px !important;
+}
+#number
+{
+    background-position: 5px -177px !important;
+}
+
+#world
+{
+    background-position: 5px -227px !important;
+}
+
+#inputs input:focus, #none input:focus
 {
     background-color: #fff;
     border-color: #BFC8DE;
@@ -135,7 +149,7 @@ fieldset
     box-shadow: 0 0 0 1px #BFC8DE inset;
 }
 
-#inputs select:focus
+#inputs select:focus, #none select:focus
 {
     background-color: #fff;
     border-color: #BFC8DE;

@@ -10,10 +10,10 @@
 	
 	# get data from test_airfield table dependent on selection
 	if ($userCoalId == "0")
-		{$sql = "SELECT * FROM test_airfields";}
+		{$sql = "SELECT * FROM test_airfields group by name";}
 	else
 	# get only airfields having the right coalition and all neutral airfields
-		{$sql = "SELECT * FROM test_airfields WHERE coalId = $userCoalId OR coalId = \"0\"";}
+		{$sql = "SELECT * FROM test_airfields WHERE coalId = $userCoalId OR coalId = \"0\" group by name";}
 	#echo $sql;
 
 	if(!$result = $camp_link->query($sql)){

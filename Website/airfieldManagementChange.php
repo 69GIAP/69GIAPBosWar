@@ -69,9 +69,9 @@
 					# MODEL
 					if ($airfieldModel == '')
 						{
-							echo "<fieldset id=\"inputs\">\n";								
+							echo "<fieldset id=\"none\">\n";								
 							# MODEL
-							echo "	<input readonly=\"readonly\" type=\"text\" name='' id=\"airfieldModelExample\" value='' size=\"24\" maxlength=\"50\" />\n";
+							echo "	<input readonly=\"readonly\" type=\"text\" name='' id=\"none\" value='' size=\"24\" maxlength=\"50\" />\n";
 							echo "</fieldset>";						
 						}
 					else
@@ -80,16 +80,16 @@
 							echo "	<p>Aircraft $i</p><br>\n";
 							# MODEL
 							$airfieldModelLoaded = "airfieldModelLoaded".$i;						
-							echo "	<input readonly=\"readonly\" type=\"text\" name='$airfieldModelLoaded' id=\"airfieldModelExample\" value='$airfieldModel' size=\"24\" maxlength=\"50\" />\n";
+							echo "	<input readonly=\"readonly\" type=\"text\" name='$airfieldModelLoaded' id=\"aircraft\" value='$airfieldModel' size=\"24\" maxlength=\"50\" />\n";
 	
 							# QUANTITY
 							$airfieldModelQuantity = "airfieldModelQuantity".$i;
-							echo "	<input readonly=\"readonly\" type=\"text\" name ='$airfieldModelQuantity' id=\"airfieldNumber\" value='$airfieldNumber' size=\"24\" maxlength=\"50\" />\n";
+							echo "	<input readonly=\"readonly\" type=\"text\" name ='$airfieldModelQuantity' id=\"number\" value='$airfieldNumber' size=\"24\" maxlength=\"50\" />\n";
 							
 							# NEW QUANTITY
 							# dynamically create name variable for automatically created fields
 							$airfieldModelQuantityNew = "airfieldModelQuantityNew".$i;
-							echo "	<input type=\"text\" name='$airfieldModelQuantityNew' placeholder=\"New Quantitiy\" value='' size=\"24\" maxlength=\"50\" />\n";
+							echo "	<input type=\"text\" name='$airfieldModelQuantityNew' id=\"number\" placeholder=\"New Quantitiy\" value='' size=\"24\" maxlength=\"50\" />\n";
 							echo "</fieldset>";
 							echo "<fieldset id=\"actions\">";
 							# BUTTON
@@ -104,13 +104,13 @@
 						echo "	<input readonly=\"readonly\" type=\"hidden\" name='airfieldName' value='$airfieldName' size=\"24\" maxlength=\"50\" />\n";
 						
 						# NEW MODEL SELECT
-						echo "		<select name=\"airfieldModelAdd\">\n";
+						echo "		<select name=\"airfieldModelAdd\" id=\"aircraft\">\n";
 									# include the drop down list
 									include 'includes/getAirfieldCampaignModels.php'; 
 						echo "		</select>\n";
 						
 						# NEW MODEL QUANTITY
-						echo "		<input type=\"text\" name=\"airfieldModelAddQuantity\" placeholder=\"Quantitiy To Add\" value='' size=\"24\" maxlength=\"50\" />\n";
+						echo "		<input type=\"text\" name=\"airfieldModelAddQuantity\" id=\"number\" placeholder=\"Quantitiy To Add\" value='' size=\"24\" maxlength=\"50\" />\n";
 						
 						# hidden field to hand airfieldCoalitionId over through POST
 						echo "		<input readonly=\"readonly\" type=\"hidden\" name='airfieldCoalitionId' value='$airfieldCoalitionId'/>\n";	
@@ -134,12 +134,12 @@
 						}
 				
 						# COALITION
-						echo "		<input readonly=\"readonly\" type=\"text\" value='$airfieldCoalitionName' size=\"24\" maxlength=\"50\" />\n";
+						echo "		<input readonly=\"readonly\" type=\"text\" id=\"world\" value='$airfieldCoalitionName' size=\"24\" maxlength=\"50\" />\n";
 						# hidden field to hand airfieldCoalitionId over through POST
-						echo "		<input readonly=\"readonly\" type=\"hidden\" name='airfieldCoalitionId' value='$airfieldCoalitionId'/>\n";
+						echo "		<input readonly=\"readonly\" type=\"hidden\" name='airfieldCoalitionId' id=\"world\" value='$airfieldCoalitionId'/>\n";
 			
 						# NEW COALITION
-						echo "		<select name=\"airfieldCoalitionIdNew\">\n";
+						echo "		<select name=\"airfieldCoalitionIdNew\" id=\"world\">\n";
 						
 						# include the drop down list
 						include 'includes/getCampaignCoalitions.php'; 
