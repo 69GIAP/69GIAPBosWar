@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2013 at 05:28 PM
+-- Generation Time: Oct 03, 2013 at 07:21 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `rof_coalitions`;
 CREATE TABLE IF NOT EXISTS `rof_coalitions` (
-  `CoalID` tinyint(1) NOT NULL,
+  `CoalID` tinyint(1) unsigned NOT NULL,
   `Coalitionname` varchar(40) NOT NULL,
   PRIMARY KEY (`CoalID`),
   UNIQUE KEY `Coalitionname` (`Coalitionname`)
