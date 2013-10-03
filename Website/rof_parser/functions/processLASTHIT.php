@@ -1,8 +1,12 @@
 <?php
-function LASTHIT($numhits) {
+// LASTHIT
+// =69.GIAP=TUSHKA
+// BOSWAR version 1.2
+// Oct 3, 2013
 // track last game object/player to hit another game object
 // this is used to attribute delayed kills from engine damage, fire, etc.
 // in the future consider expanding this to record assists
+function LASTHIT($numhits) {
    global $Hline; // lines that define hits
    global $numgobjects; // number of game objects involved
    global $GOline; // lines defining game objects
@@ -12,6 +16,7 @@ function LASTHIT($numhits) {
    global $Ticks; // time since start of mission in 1/50 sec ticks
    global $TYPE; // gameobject type in this context
    global $objecttype; // object type from PID/AID/TID
+   global $objectclass; // object class from rof_object_properties
    global $playername; // player name from PLID
    global $Lasthitbyid; // ID of last attacker to hit player
    global $Lasthitby; // name or type of last attacker to hit player
@@ -21,13 +26,13 @@ function LASTHIT($numhits) {
    // loop through gameobjects 
    for ($i = 0; $i < $numgobjects; ++$i) {
       $j = $GOline[$i];
-      $Lasthitbyid[$i] = "0";
-      $LHTick[$i] = "0";
+      // initialize variables
+      $Lasthitbyid[$i] = "0"; // the ID we are looing for (got last hit) 
+      $LHTick[$i] = "0"; // the time at which that last hit occurred.
       // loop through hits
       for ($k = 0; $k < $numhits; ++$k) {
          $l = $Hline[$k];
          // look for last hit - but not after object already killed
-         //if (($ID[$j] == $TID[$l]) && ($LHTick[$i] < $Ticks[$l])) {
          if (($ID[$j] == $TID[$l]) && ($LHTick[$i] < $Ticks[$l]) && ($Killticks[$i] >= $Ticks[$l])) {
             // ignore "Intrinsic" hits
             if ($AID[$l] > -1) {
@@ -39,12 +44,15 @@ function LASTHIT($numhits) {
       $Lasthitby[$i] = "";
       if ($Lasthitbyid[$i] > 0) {
          OBJECTTYPE($Lasthitbyid[$i],$LHTick[$i]);
+	 OBJECTPROPERTIES($objecttype);
          playername($Lasthitbyid[$i],$LHTick[$i]);
-//         echo "Object $i: Lasthitbyid[$i] = $Lasthitbyid[$i], LHtick[$i] = $LHTick[$i],<br>Ticks[j] =$Ticks[$j], TYPE[l] = $TYPE[$l], TYPE[j] = $TYPE[$j] Killticks[$i] = $Killticks[$i] objecttype = $objecttype playername = $playername<br>\n";
-         if ($playername == "Vehicle") {
-           $Lasthitby[$i] = $objecttype;
+//	   echo "LASTHIT: Object $i: \$Lasthitbyid[$i] = $Lasthitbyid[$i], \$LHtick[$i] = $LHTick[$i],<br>\$Ticks[j] =$Ticks[$j], \$TYPE[$j] = $TYPE[$j] \$Killticks[$i] = $Killticks[$i] \$objecttype = $objecttype \$playername = $playername<br>\n";
+//         echo "LASTHIT: Object $i: \$Lasthitbyid[$i] = $Lasthitbyid[$i], \$objectclass = $objectclass <br>\$objecttype = $objecttype \$playername = $playername<br>\n";
+	 if ($objecttype == 'TUR' || preg_match('/^P/',$objectclass)) {
+            // if player, use callsign
+            $Lasthitby[$i] = $playername;
          } else {
-           $Lasthitby[$i] = $playername;
+            $Lasthitby[$i] = $objecttype;
          }
       }
    }
