@@ -4,7 +4,7 @@
 <?php
 # require is connecting user peter to stalingrad1 database
 # the user must have all rights to the database as we will change structure
-require('../connect_db_STENKA.php');
+require('require.php');
 # stick up database structure on screen
 $q='SHOW TABLES';
 $r=mysqli_query($dbc,$q);

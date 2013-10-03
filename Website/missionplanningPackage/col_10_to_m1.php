@@ -4,7 +4,7 @@
 <?php
 # require is connecting user peter to stalingrad1 database
 # here
-require('../connect_db_STENKA.php');
+require('require.php');
 $q1="DROP TABLE IF EXISTS mission_1";
 	$r1= mysqli_query($dbc,$q1);
 	if ($r1)

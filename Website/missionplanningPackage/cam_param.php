@@ -4,7 +4,7 @@
 <?php
 # require is connecting user peter to stalingrad1 database
 # here
-require('../connect_db_STENKA.php');
+require('require.php');
 $q='SELECT * FROM cam_param WHERE id = 1';
 $r=mysqli_query($dbc,$q);
 $r_data = mysqli_fetch_row($r);

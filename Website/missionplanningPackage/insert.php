@@ -1,5 +1,5 @@
 <?php
-require('../connect_db_STENKA.php');
+require('require.php');
 function show_records($dbc)
 {
 $q='SELECT * FROM colveh_10';

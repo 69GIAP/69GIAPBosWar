@@ -4,7 +4,7 @@
 <?php
 # require is connecting user peter to stalingrad1 database
 # here
-require('../connect_db_STENKA.php');
+require('require.php');
 $q='SELECT id FROM inbox WHERE LEFT(lin,8) = "Airfield"';
 $r=mysqli_query($dbc,$q);
 if($r)

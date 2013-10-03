@@ -4,7 +4,7 @@
 <?php
 # require is connecting user peter to stalingrad1 database
 # here
-require('../connect_db_STENKA.php');
+require('require.php');
 $count = 0;
 $current_object = "Unknown";
 $current_Name = "Unknown";

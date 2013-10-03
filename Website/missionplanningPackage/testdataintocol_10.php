@@ -2,7 +2,7 @@
 # Stenka 29/09/13
 # Load test data into col_10
 <?php
-require('../connect_db_STENKA.php');
+require('require.php');
 $q3="INSERT INTO col_10 (col_Name,col_moving,col_Model,col_supplypoint,col_qty,col_coalition) VALUES ('REGIMENT 1 Platoon 1','0','leyland','1',5,'1')";
 $r3= mysqli_query($dbc,$q3);
 if ($r3)

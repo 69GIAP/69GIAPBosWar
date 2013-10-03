@@ -3,7 +3,7 @@
 # Php version of inbox table to load into airfields table runs after inbox load
 <?php
 # require is connecting user peter to stalingrad1 database
-require('../connect_db_STENKA.php');
+require('require.php');
 # initialise variables
 # the id of start of Airfield header in inbox is id_af_inbox
 $id_af_inbox = 0;

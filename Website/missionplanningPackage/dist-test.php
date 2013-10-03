@@ -4,7 +4,7 @@
 <?php
 # require is connecting user peter to stalingrad1 database
 # here
-require('../connect_db_STENKA.php');
+require('require.php');
 $XPos = 10;
 $ZPos = 20;
 $dest_XPos = 31000;

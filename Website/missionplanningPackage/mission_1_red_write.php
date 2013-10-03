@@ -4,7 +4,7 @@
 <?php
 # require is connecting user peter to stalingrad1 database
 # here
-require('../connect_db_STENKA.php');
+require('require.php');
 # next load campaign variable into constants
 require('cam_param.php');
 # pre process columns

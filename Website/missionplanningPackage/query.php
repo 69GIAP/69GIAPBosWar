@@ -1,5 +1,5 @@
 <?php
-require('../connect_db_STENKA.php');
+require('require.php');
 $q='SHOW TABLES';
 $r=mysqli_query($dbc,$q);
 if($r)
