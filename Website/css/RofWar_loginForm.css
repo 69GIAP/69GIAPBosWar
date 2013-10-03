@@ -139,6 +139,11 @@ fieldset
     background-position: 5px -227px !important;
 }
 
+#airfield
+{
+    background-position: 5px -277px !important;
+}
+
 #inputs input:focus, #none input:focus
 {
     background-color: #fff;

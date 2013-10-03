@@ -27,7 +27,7 @@
                 <h3>Please select the airfield you want to modify:</h3>
 				<form id="loginForm" name="delete" action="includes/selectAirfield.php" method="post">
                     <fieldset id="inputs">
-                        <select id="aircraft" type="text" name="airfieldName" autofocus required>
+                        <select id="airfield" type="text" name="airfieldName" autofocus required>
 	                        <?php include 'includes/getAirfieldCampaignInformation.php' ?>
                         </select>   
                     </fieldset>
