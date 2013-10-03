@@ -13,9 +13,14 @@ that works also.  If I do that, I'll warn you.  :)
 
 If you prefer to use a different user just edit the username and password in
 the campaign_settings tables of boswar_db and flanders_eagles to match what 
-you have set up.
+you have set up.  However, I recommend you use the defined one to save needing
+to repeat those changes each time the example db's are updated.
 
-I have made user #4 a commander (red or blue) in each of these, i.e. this is
-probably you.  If not, adjust the campaign's campaign_settings as needed.
+Also note that Skies of the Empires uses custom Coalitions and non-standard 
+assignment of countries to coalitions.  So, don't overwrite the rof_countries 
+and rof_coalitions files of this campaign if you want stats reported on the 
+correct sides.  :)
+
+
 
 Tushka
