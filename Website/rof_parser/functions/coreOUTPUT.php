@@ -1,8 +1,11 @@
 <?php
+// OUTPUT
+// =69.GIAP=TUSHKA
+// output simple text report and calculate some stats for the db
+// BOSWAR version 1.2
+// Oct 3, 2013
 
 function OUTPUT() {
-// temporarily output simple text report
-// eventually this will be a web page
 // what follows is an almost complete collection of global variables
 // some of these variables are needed just for the debugging section
 // others may not be needed here at all
@@ -152,8 +155,6 @@ function OUTPUT() {
    require ('rof_parser/functions/outputLANDINGSIDE.php');
    # LOSSES
    require ('rof_parser/functions/outputLOSSES.php');
-   # OBJECTPROPERTIES
-   require ('rof_parser/functions/outputOBJECTPROPERTIES.php');
    # TOFROM
    require ('rof_parser/functions/outputTOFROM.php');
    # TURRETGUNNER 
@@ -379,23 +380,31 @@ function OUTPUT() {
 //            echo "Lasthitby[$tonum] = $Lasthitby[$tonum]<br>\n";
 //            echo "flying = $flying<br>\n";
             if ($Lasthitby[$tonum] == "" ) { // self-inflicted?
-               if ($objecttype == "Common Bot") {
+               if ($objecttype == "Common Bot") { // SD1
+		  // already accounted for in FATES
                   echo ("$clocktime $playername was killed $where<br>\n");
-               } elseif (preg_match('/^BotGunner/',$objecttype)) {
-		  BOTGUNNER($objecttype);
+               } elseif (preg_match('/^BotGunner/',$playername)) { // SD2a
+		  // AI gunner so no need to score
+		  BOTGUNNER($objectname);
 		  $objecttype = "$countryadj $BotName";
                   echo ("$clocktime $ca $objecttype ($playername) was killed $where<br>\n");
+
+               } elseif (preg_match('/^BotGunner/',$objecttype)) { // SD2b
+		  // already accounted for in FATES
+		  BOTGUNNER($objecttype);
+		  $objecttype = "$countryadj $BotName";
+                  echo ("$clocktime $objecttype $playername was killed $where<br>\n");
 	       // check if target object is an airplane (Plane)
                } elseif (preg_match('/^P/',$objectclass)) { 
                   if ($flying == 2) { $action = "crashed";}
                   elseif ($flying == 1) { $action = "crashed";}
                   elseif ($flying == 0) { $action = "crashed on takeoff";}
                   elseif ($flying == 3) { $action = "crashed";}
-		  // SD1:	
-                  echo ("$clocktime $playername's $objecttype $action $where<br>\n");
+		  // SD3:	
+                  echo ("SD3: $clocktime $playername's $objecttype $action $where<br>\n");
 	       // not an airplane
-               } else { // SD2:
-                  echo ("$clocktime $playername's $objecttype ($objectname) self-destructed $where<br>\n");
+               } else { // SD4:
+                  echo ("SD4: $clocktime $playername's $objecttype ($objectname) self-destructed $where<br>\n");
                }
             } else { // hit by someone else - not self-inflicted
                if ($objecttype == "Common Bot") {
@@ -422,10 +431,10 @@ function OUTPUT() {
 // check on it
                   if (preg_match("/^Turret/",$Lasthitby[$tonum])) { // a player gunner?
                      WHOSEGUNNER($Lasthitbyid[$tonum]);
-                     if ($objectname == $objecttype) { // C1a (used rarely)
-                        echo ("$clocktime $Whosegunner's gunner $action $a $objecttype $where<br>\n");
+                     if ( $objectname == $objecttype ) { // C1a (used rarely)
+                        echo ("$clocktime $Whosegunner's gunner $aplayername $action $a $objecttype $where<br>\n");
                      } else { // C1b (used rarely)
-                        echo ("$clocktime $Whosegunner's gunner $action $a $objecttype ($objectname) $where<br>\n");
+                        echo ("$clocktime $Whosegunner's gunner $aplayername $action $a $objecttype ($objectname) $where<br>\n");
                      }
                   } else { // D2:
                    echo ("$clocktime $a2 $Lasthitby[$tonum] $action $a $objecttype ($objectname) $where<br>\n");
@@ -457,28 +466,6 @@ function OUTPUT() {
             elseif ($flying == 1) { $action = "shot down";}
             elseif ($flying == 0) { $action = "destroyed";}
             elseif ($flying == 3) { $action = "shot down";}
-//	    echo "\$aplayername = $aplayername<br>\n";
-//            if ("$aplayername" == "Vehicle") { $aplayername = $attackertype;} 
-//            if ($aplayername == "TurretDH4_1") {$aplayername = "D.H.4 gunner";}
-//            if ($aplayername == "TurretDH4_1_WM") {$aplayername = "D.H.4 gunner";}
-//            if ($aplayername == "TurretDFWC_1") {$aplayername = "DFW C.V gunner";}
-//            if ($aplayername == "TurretDFWC_1_WM_Twin_Parabellum") {$aplayername = "DFW C.V gunner";}
-//            if ($aplayername == "TurretDFWC_1_WM_Becker_HEAP") {$aplayername = "DFW C.V gunner";}
-//            if ($aplayername == "TurretRE8_1") {$aplayername = "R.E.8 gunner";}
-//            if ($aplayername == "TurretRE8_1_WM2") {$aplayername = "R.E.8 gunner";}
-//            if ($aplayername == "TurretHalberstadtCL2_1") {$aplayername = "Halberstadt CL.II gunner";}
-//            if ($aplayername == "TurretHalberstadtCL2au_1_WM_TwinPar") {$aplayername = "Halberstadt CLIIau gunner";}
-//            if ($aplayername == "TurretBristolF2B_1") {$aplayername = "Bristol F2.B gunner";}
-//            if ($aplayername == "TurretBristolF2BF2_1_WM2") {$aplayername = "Bristol F2.B gunner";}
-//		    if ($aplayername == "TurretBristolF2BF3_1_WM2") {$aplayername = "Bristol F2.B gunner";}
-//            if ($aplayername == "TurretFe2b_1") {$aplayername = "F.E.2b gunner";}
-//            if ($aplayername == "TurretFe2b_1_WM") {$aplayername = "F.E.2b gunner";}
-//            if ($aplayername == "TurretFelixF2A_2") {$aplayername = "Felixstowe F2A gunner";}
-//            if ($aplayername == "TurretFelixF2A_3") {$aplayername = "Felixstowe F2A gunner";}
-//            if ($aplayername == "TurretFelixF2A_3_WM") {$aplayername = "Felixstowe F2A gunner";}
-//            if ($aplayername == "TurretBW12_1_WM_Twin_Parabellum") {$aplayername = "Brandenburg W12 gunner";}
-//            if ($aplayername == "TurretRolandC2a_1") {$aplayername = "Roland C.IIa gunner";}
-//            if ($aplayername == "TurretRolandC2a_1_WM_TwinPar") {$aplayername = "Roland C.IIa gunner";}
             ANORA($aplayername);
             $a1 = $anora;
 

@@ -1,7 +1,10 @@
 <?php
+// PROCESS
 // =69.GIAP=TUSHKA
 // massage the raw data from the logs into more useful (and smaller) arrays
 // of the data we need to report and score
+// BOSWAR version 1.1
+// Oct 3, 2013
 
 // require the functions called by PROCESS
 // CNTRS
@@ -24,6 +27,8 @@ require ('rof_parser/functions/processLASTHIT.php');
 require ('rof_parser/functions/processOBJECTCOUNTRYNAME.php');
 // OBJECTNAME
 require ('rof_parser/functions/processOBJECTNAME.php');
+# OBJECTPROPERTIES
+require ('rof_parser/functions/processOBJECTPROPERTIES.php');
 // OBJECTTYPE
 require ('rof_parser/functions/processOBJECTTYPE.php');
 // PLAYERNAME
