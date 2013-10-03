@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2013 at 05:37 PM
+-- Generation Time: Oct 03, 2013 at 09:53 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -26,16 +26,20 @@ SET time_zone = "+00:00";
 -- Table structure for table `rof_object_properties`
 --
 
-DROP TABLE IF EXISTS `rof_object_properties`;
 CREATE TABLE IF NOT EXISTS `rof_object_properties` (
-  `id` int(1) NOT NULL AUTO_INCREMENT,
+  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
   `object_type` varchar(50) NOT NULL,
   `object_class` varchar(8) NOT NULL,
-  `object_value` smallint(6) NOT NULL,
+  `object_value` smallint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `object_type` (`object_type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=234 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=235 ;
 
+--
+-- Truncate table before insert `rof_object_properties`
+--
+
+TRUNCATE TABLE `rof_object_properties`;
 --
 -- Dumping data for table `rof_object_properties`
 --
@@ -243,7 +247,7 @@ INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `objec
 (200, 'TurretHP400_3', 'TUR', 0),
 (201, 'TurretRE8_1', 'TUR', 0),
 (202, 'TurretRE8_1_WM', 'TUR', 0),
-(203, 'TurretRolandC2a_1_WM_Twin_Par', 'TUR', 0),
+(203, 'TurretRolandC2a_1_WM_TwinPar', 'TUR', 0),
 (204, 'Wagon_BoxB', 'RWA', 25),
 (205, 'Wagon_BoxNB', 'RWA', 25),
 (206, 'Wagon_G8T', 'RWA', 25),
@@ -273,7 +277,8 @@ INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `objec
 (230, 'churchE_01', 'INF', 0),
 (231, 'CappyChateau', 'INF', 0),
 (232, 'British naval 12pdr gun', 'NAR', 0),
-(233, 'R.E.8', 'PRE', 200);
+(233, 'R.E.8', 'PRE', 200),
+(234, 'TurretRolandC2a_1', 'TUR', 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
