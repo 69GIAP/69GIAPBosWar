@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2013 at 05:32 PM
+-- Generation Time: Oct 03, 2013 at 07:23 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `rof_countries`;
 CREATE TABLE IF NOT EXISTS `rof_countries` (
-  `id` tinyint(1) NOT NULL,
-  `ckey` smallint(1) NOT NULL,
+  `id` tinyint(1) unsigned NOT NULL,
+  `ckey` smallint(1) unsigned NOT NULL,
   `countryname` varchar(30) NOT NULL,
   `countryadj` varchar(30) NOT NULL,
-  `CoalID` tinyint(1) NOT NULL,
+  `CoalID` tinyint(1) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `countryname` (`countryname`),
   UNIQUE KEY `countryadj` (`countryadj`)
