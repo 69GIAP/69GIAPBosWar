@@ -493,7 +493,7 @@ DROP TABLE IF EXISTS `rof_coalitions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rof_coalitions` (
-  `CoalID` tinyint(11) NOT NULL,
+  `CoalID` tinyint(1) NOT NULL,
   `Coalitionname` varchar(40) NOT NULL,
   PRIMARY KEY (`CoalID`),
   UNIQUE KEY `Coalitionname` (`Coalitionname`)
@@ -522,6 +522,7 @@ CREATE TABLE `rof_countries` (
   `ckey` smallint(1) NOT NULL,
   `countryname` varchar(30) NOT NULL,
   `countryadj` varchar(30) NOT NULL,
+  `CoalID` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `countryname` (`countryname`),
   UNIQUE KEY `countryadj` (`countryadj`)
@@ -534,7 +535,7 @@ CREATE TABLE `rof_countries` (
 
 LOCK TABLES `rof_countries` WRITE;
 /*!40000 ALTER TABLE `rof_countries` DISABLE KEYS */;
-INSERT INTO `rof_countries` VALUES (1,0,'Neutral','neutral'),(2,101,'France','French'),(3,102,'Great Britain','British'),(4,103,'USA','American'),(5,104,'Italy','Italian'),(6,105,'Russia','Russian'),(7,501,'Germany','German'),(8,502,'Austro-Hungary','Austro-Hungarian'),(9,600,'Future Country','Future'),(10,610,'War Dogs Country','War Dogs'),(11,620,'Mercenaries Country','Mercenaries'),(12,630,'Knights Country','Knights'),(13,640,'Corsairs Country','Corsairs');
+INSERT INTO `rof_countries` VALUES (1,0,'Neutral','neutral',0),(2,101,'France','French',1),(3,102,'Great Britain','British',1),(4,103,'USA','American',1),(5,104,'Italy','Italian',1),(6,105,'Russia','Russian',1),(7,501,'Germany','German',2),(8,502,'Austro-Hungary','Austro-Hungarian',2),(9,600,'Future Country','Future',3),(10,610,'War Dogs Country','War Dogs',4),(11,620,'Mercenaries Country','Mercenaries',5),(12,630,'Knights Country','Knights',6),(13,640,'Corsairs Country','Corsairs',7);
 /*!40000 ALTER TABLE `rof_countries` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -606,7 +607,7 @@ DROP TABLE IF EXISTS `rof_object_properties`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rof_object_properties` (
   `id` int(1) NOT NULL AUTO_INCREMENT,
-  `object_type` varchar(128) NOT NULL,
+  `object_type` varchar(50) NOT NULL,
   `object_class` varchar(8) NOT NULL,
   `object_value` smallint(6) NOT NULL,
   PRIMARY KEY (`id`),
@@ -818,7 +819,7 @@ CREATE TABLE `test_airfields` (
 
 LOCK TABLES `test_airfields` WRITE;
 /*!40000 ALTER TABLE `test_airfields` DISABLE KEYS */;
-INSERT INTO `test_airfields` VALUES ('Coxyde',1,'albatrosd5.mgm',10),('Dunkerque',1,'albatrosd5.mgm',6),('Harlebeeke',1,'gothag5',20),('Leffinghe',2,'felixf2a.mgm',10),('St. Marie Cappel',1,'albatrosd5.mgm',2),('Zeebrugge',2,'felixf2a.mgm',15);
+INSERT INTO `test_airfields` VALUES ('Coxyde',1,'',0),('Dunkerque',1,'',0),('Harlebeeke',2,'',0),('Leffinghe',2,'',0),('St. Marie Cappel',1,'',0),('Zeebrugge',2,'',0);
 /*!40000 ALTER TABLE `test_airfields` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -841,7 +842,7 @@ CREATE TABLE `test_models` (
 
 LOCK TABLES `test_models` WRITE;
 /*!40000 ALTER TABLE `test_models` DISABLE KEYS */;
-INSERT INTO `test_models` VALUES ('albatrosd5.mgm'),('brequet14.mgm'),('dfc5.mgm'),('felixf2a.mgm'),('fokkerd7.mgm'),('gothag5.mgm');
+INSERT INTO `test_models` VALUES ('albatrosd5'),('brequet14'),('dfc5'),('felixf2a'),('fokkerd7'),('gothag5');
 /*!40000 ALTER TABLE `test_models` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -906,4 +907,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-10-02 22:55:16
+-- Dump completed on 2013-10-03 18:30:35
