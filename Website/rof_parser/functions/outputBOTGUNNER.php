@@ -1,4 +1,8 @@
 <?php
+// BOTGUNNER
+// translate BotGunner into more natural description
+// BOSWAR version 1.1
+// Oct 4, 2013
 function BOTGUNNER($type) {
    // translate BotGunner into more natural description
    global $BotName; // BotGunner description
@@ -12,7 +16,7 @@ function BOTGUNNER($type) {
    elseif ($type == "BotGunnerHP400_1") { $BotName = "nose gunner"; }
    elseif ($type == "BotGunnerDavis") { $BotName = "Davis gunner"; } 
    // used in Breguet14, Bristol F2B and F.E.2b
-   elseif ($type == "BotGunnerBreguet14") { $BotName = "nose gunner"; }
+   elseif ($type == "BotGunnerBreguet14") { $BotName = "gunner"; }
    // used in RE8 and DH4
    elseif ($type == "BotGunnerRE8") { $BotName = "gunner"; }
    elseif ($type == "BotGunnerHP400_2") { $BotName = "Handley Page 0/400 dorsal gunner";}
