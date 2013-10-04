@@ -4,6 +4,7 @@
 // ver 1.0
 // Sept 27, 2013
 // get object's properties from rof_object_properties
+// called from processLASTHIT and coreOUTPUT
 
 function OBJECTPROPERTIES($objecttype) {
    global $camp_link; // link to campaign db
