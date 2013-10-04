@@ -2,7 +2,7 @@
 // OUTPUT
 // =69.GIAP=TUSHKA
 // output simple text report and calculate some stats for the db
-// BOSWAR version 1.2
+// BOSWAR version 1.03
 // Oct 3, 2013
 
 function OUTPUT() {
@@ -127,6 +127,9 @@ function OUTPUT() {
    global $Bline; // lines defining area boundaries
    global $side; // "friendly", "enemy" or "neutral"
    global $BotName; // BotGunner description
+   global $camp_link; // link to campaign db
+   global $StatsCommand; // do, undo, or ignore
+   globaL $camp_db; // campaign db
 
    # require the is-point-in-area borrowed CLASS
    # pointLocation
@@ -325,7 +328,7 @@ function OUTPUT() {
 //      LOSSES($i);
 //   }
 
-   // Mission Event Chronology
+   // Mission Event Chronology (& kill scoring)
    echo "<br>=-=-=-=-=-= Mission Event Chronology =-=-=-=-=-=<br>\n";
    echo "There were $numevents Notable events during this mission.<br>Here are all except any landings by dead pilots:<br>&nbsp;<br>\n";
    // loop through mission events using EVline index
@@ -349,6 +352,7 @@ function OUTPUT() {
          OBJECTNAME($TID[$j],$Ticks[$j]);
 	 OBJECTPROPERTIES($objecttype);
          OBJECTCOUNTRYNAME($TID[$j],$Ticks[$j]);
+	 COALITION($countryid);
          PLAYERNAME($TID[$j],$Ticks[$j]);
          FLYING($TID[$j],$Ticks[$j]);
          XYZ($POS[$j]);
@@ -360,6 +364,7 @@ function OUTPUT() {
          $a = $anora;
          ANORA($countryadj);
          $ca = $anora;
+	 $query = ""; // make sure have empty query
          // get objectnumber for target
 	 // NOTE: gameobject ID is NOT NECESSARILY UNIQUE.  See AT13 -
 	 // Caquot destroyed at beginning and a Camel have the same
@@ -380,7 +385,7 @@ function OUTPUT() {
 //            echo "Lasthitby[$tonum] = $Lasthitby[$tonum]<br>\n";
 //            echo "flying = $flying<br>\n";
             if ($Lasthitby[$tonum] == "" ) { // self-inflicted?
-               if ($objecttype == "Common Bot") { // SD1
+               if ($objecttype == "Common Bot") { // SD1 (rare)
 		  // already accounted for in FATES
                   echo ("$clocktime $playername was killed $where<br>\n");
                } elseif (preg_match('/^BotGunner/',$playername)) { // SD2a
@@ -401,10 +406,17 @@ function OUTPUT() {
                   elseif ($flying == 0) { $action = "crashed on takeoff";}
                   elseif ($flying == 3) { $action = "crashed";}
 		  // SD3:	
-                  echo ("SD3: $clocktime $playername's $objecttype $action $where<br>\n");
+		  echo ("$clocktime $playername's $objecttype $action $where<br>\n");
+	 	  if ($StatsCommand == 'do') { // generate an INSERT query	  
+//		     echo "\$countryid = $countryid, \$CoalID = $CoalID<br>\n";
+		     $query = "INSERT into rof_kills (MissionID,clocktime,attackerID,attackerName,action,targetID,targetName,targetCountryID,targetCoalID) VALUES ('$MissionID','$clocktime','$AID[$j]','$aplayername','$action','$TID[$j]','$objecttype','$countryid','$CoalID')";
+		   } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
+		     $query = "DELETE from rof_kills where MissionID = '$MissionID' and clocktime = '$clocktime' and targetID = '$TID[$j]'";
+		   }
 	       // not an airplane
                } else { // SD4:
-                  echo ("SD4: $clocktime $playername's $objecttype ($objectname) self-destructed $where<br>\n");
+                  $action = "self-destructed";
+                  echo ("$clocktime $ca $countryadj $objecttype ($objectname) $action $where<br>\n");
                }
             } else { // hit by someone else - not self-inflicted
                if ($objecttype == "Common Bot") {
@@ -445,9 +457,9 @@ function OUTPUT() {
                } elseif(preg_match('/^S/',$objectclass)) {
 		   $action = "sank";
                    echo ("D3:$clocktime $a2 $Lasthitby[$tonum] $action $a $objecttype ($objectname) $where<br>\n");
-               } else { // what is left, if anything? 
+               } else { // infrastructure is about all that remains 
 		   $action = "destroyed";
-                   echo ("Unexpected:$clocktime $a2 $Lasthitby[$tonum] $action $a $objecttype ($objectname) $where<br>\n");
+                   echo ("$clocktime $a2 $Lasthitby[$tonum] $action $a $objecttype ($objectname) $where<br>\n");
                }
 	       
             }  // end of not self-inflicted 
@@ -497,6 +509,18 @@ function OUTPUT() {
             }
          }
 //         echo ("G: $clocktime $attackertype $attackername $aplayername $objecttype $objectname $playername $where<br>\n");
+	  
+//	 echo "OUTPUT: \$StatsCommnand = $StatsCommand<br>\n";
+	 // do we have db work to do?
+	 if (($StatsCommand == 'do') || ($StatsCommand == 'undo')) {
+	    if ($query) {
+	       // process the query
+	       if (!mysqli_query($camp_link, $query)) {
+	          printf("Error: %s<br>\n", mysqli_sqlstate($camp_link));
+		}
+	    }
+         }
+	// end of if KILL
       } elseif ($AType[$j] == "5") { // TAKEOFF
 //         echo "$clocktime TAKEOFF<br>\n";
          OBJECTTYPE($PID[$j],$Ticks[$j]);
