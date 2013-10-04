@@ -1,6 +1,10 @@
 <?php
+// OBJECTTYPE
+// =69.GIAP=TUSHKA
+// get object TYPE from ID from among defined game objects
+// BOSWAR version 1.1
+// Oct 4, 2013
 function OBJECTTYPE ($id,$ticks) {
-// get object TYPE from ID
    global $Ticks; // time since start of mission in 1/50 sec ticks
    global $ID; // object ID
    global $TYPE; // type of object in this context
@@ -20,8 +24,8 @@ function OBJECTTYPE ($id,$ticks) {
    }
    if ( $id == "-1") {
       $objecttype = "Intrinsic";
-   } elseif (!$found) {
-      $objecttype = "Uknown Object";
+   } elseif (!$found) { // if not an object, must be a player
+      $objecttype = "Player";
    }
 }
 
