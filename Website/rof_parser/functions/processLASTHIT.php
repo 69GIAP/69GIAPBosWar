@@ -1,7 +1,7 @@
 <?php
 // LASTHIT
 // =69.GIAP=TUSHKA
-// BOSWAR version 1.3
+// BOSWAR version 1.4
 // Oct 4, 2013
 // track last game object/player to hit another game object
 // this is used to attribute delayed kills from engine damage, fire, etc.
@@ -50,10 +50,10 @@ function LASTHIT($numhits) {
 	 } else {
 	    OBJECTPROPERTIES($objecttype);
 	 }
-         playername($Lasthitbyid[$i],$LHTick[$i]);
+         PLAYERNAME($Lasthitbyid[$i],$LHTick[$i]);
 //	   echo "LASTHIT: Object $i: \$Lasthitbyid[$i] = $Lasthitbyid[$i], \$LHtick[$i] = $LHTick[$i],<br>\$Ticks[j] =$Ticks[$j], \$TYPE[$j] = $TYPE[$j] \$Killticks[$i] = $Killticks[$i] \$objecttype = $objecttype \$playername = $playername<br>\n";
 //         echo "LASTHIT: Object $i: \$Lasthitbyid[$i] = $Lasthitbyid[$i], \$objectclass = $objectclass <br>\$objecttype = $objecttype \$playername = $playername<br>\n";
-	 if ($objecttype == 'TUR' || preg_match('/^P/',$objectclass)) {
+	 if ($objectclass == 'TUR' || $objectclass == 'HUM' || preg_match('/^P/',$objectclass)) {
             // if player, use callsign
             $Lasthitby[$i] = $playername;
          } else {
