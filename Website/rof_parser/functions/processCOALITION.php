@@ -1,4 +1,9 @@
 <?php
+// COALITION
+// =69.GIAP=TUSHKA
+// BOSWAR version 1.0
+// Oct 3, 2013
+// perhaps I should convert this to db lookup at some point
 function COALITION($ckey) {
 // look up coalitionID from country ID#
    global $CoCoal; // array of coalition names
