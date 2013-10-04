@@ -2,8 +2,8 @@
 // OUTPUT
 // =69.GIAP=TUSHKA
 // output simple text report and calculate some stats for the db
-// BOSWAR version 1.04
-// Oct 3, 2013
+// BOSWAR version 1.05
+// Oct 4, 2013
 
 function OUTPUT() {
 // what follows is an almost complete collection of global variables
@@ -342,74 +342,82 @@ function OUTPUT() {
       } elseif ($AType[$j] == "3") { // KILL
 //         echo "$clocktime KILL<br>\n";
          CLOCKTIME($Ticks[$j]);
-         OBJECTTYPE($AID[$j],$Ticks[$j]);
+         OBJECTTYPE($AID[$j],$Ticks[$j]); // get attacker objecttype
          $attackertype = $objecttype;
-         OBJECTNAME($AID[$j],$Ticks[$j]);
+         OBJECTNAME($AID[$j],$Ticks[$j]); // get attacker objectname
          $attackerobject = $objectname;
-         PLAYERNAME($AID[$j],$Ticks[$j]);
+         PLAYERNAME($AID[$j],$Ticks[$j]); // get attacker playername
          $aplayername = $playername;
-         OBJECTTYPE($TID[$j],$Ticks[$j]);
-         OBJECTNAME($TID[$j],$Ticks[$j]);
-	 OBJECTPROPERTIES($objecttype);
-         OBJECTCOUNTRYNAME($TID[$j],$Ticks[$j]);
-	 COALITION($countryid);
-         PLAYERNAME($TID[$j],$Ticks[$j]);
+         OBJECTTYPE($TID[$j],$Ticks[$j]); // get target objecttype
+	 $targettype = $objecttype;
+         OBJECTNAME($TID[$j],$Ticks[$j]); // get target objectname
+	 $targetobject = $objectname;
+	 OBJECTPROPERTIES($targettype); // get target properties
+	 $targetclass = $objectclass;
+	 $targetvalue = $objectvalue;
+         OBJECTCOUNTRYNAME($TID[$j],$Ticks[$j]); // get target's country, etc
+	 $tcountryid = $countryid;
+	 $tcountryname = $countryname;
+	 $tcountryadj = $countryadj;
+	 COALITION($tcountryid); // get target's coalition
+	 $tCoalID = $CoalID;
+         PLAYERNAME($TID[$j],$Ticks[$j]); // get target's playername
+	 $tplayername = $playername;
          FLYING($TID[$j],$Ticks[$j]);
          XYZ($POS[$j]);
          WHERE($posx,$posz,0);
 //         echo "$i in line # $j, $AID[$j] $TID[$j] in $POS[$j]<br>\n";
-//         echo "attackertype = $attackertype, attackerobject = $attackerobject, aplayername= $aplayername, objecttype = $objecttype, playername = $playername, objectname = $objectname<br>\n";
-//	 echo "$objecttype is $objectclass<br>\n";
-         ANORA($objecttype);
+//         echo "attackertype = $attackertype, attackerobject = $attackerobject, aplayername= $aplayername, targetobject = $targetobject, tplayername = $tplayername, targetobject = $targetobject<br>\n";
+//	 echo "$targetobject is $targetclass<br>\n";
+         ANORA($targettype);
          $a = $anora;
-         ANORA($countryadj);
+         ANORA($tcountryadj);
          $ca = $anora;
 	 $query = ""; // make sure have empty query
          // get objectnumber for target
 	 // NOTE: gameobject ID is NOT NECESSARILY UNIQUE.  See AT13 -
 	 // Caquot destroyed at beginning and a Camel have the same
 	 // ID!  So the ID is unique at any particular time, but not
-	 // over all mission time.  So the following fails in that
-	 // case...  reporting a Camel rather than a Caquot.
-         // need to add a time factor to make it correct.
-	 // Ah... use time of death for object.
+	 // over all mission time.  Need to add a time factor to make
+	 // it correct.  Ah... use time of death for object.
          for ($k = 0; $k < $numgobjects; ++$k) {
             $l = $GOline[$k];
             //if (($ID[$l] == $TID[$j]) && ($Deathticks[$l] >= $Ticks[$j])) {
             if (($ID[$l] == $TID[$j])) {
-               $tonum = $k;
+               $tonum = $k; // target object number
 //               echo "j = $j k = $k l = $l ID[l] = $ID[$l] TID[j] = $TID[$j] Ticks[l] = $Ticks[$l] Ticks[j] = $Ticks[$j]<br>\n";
             }
          }
-         if (($AID[$j] == "-1") || ($aplayername == "Intrinsic")) { // AI attacker
+         if (($AID[$j] == "-1") || ($aplayername == "Intrinsic")) {
+	 // non-combat accidents and incidents - no attacker involved
 //            echo "Lasthitby[$tonum] = $Lasthitby[$tonum]<br>\n";
 //            echo "flying = $flying<br>\n";
             if ($Lasthitby[$tonum] == "" ) { // self-inflicted?
-               if ($objecttype == "Common Bot") { // SD1 (rare)
+               if ($targettype == "Common Bot") { // SD1 (rare) player pilot
 		  // already accounted for in FATES
-                  echo ("$clocktime $playername was killed $where<br>\n");
-               } elseif (preg_match('/^BotGunner/',$playername)) { // SD2a
+                  echo ("$clocktime $tplayername was killed $where<br>\n");
+               } elseif (preg_match('/^BotGunner/',$tplayername)) { // SD2a
 		  // AI gunner so no need to score
-		  BOTGUNNER($objectname);
-		  $objecttype = "$countryadj $BotName";
-                  echo ("$clocktime $ca $objecttype ($playername) was killed $where<br>\n");
+		  BOTGUNNER($targetobject);
+		  $targettype = "$tcountryadj $BotName";
+                  echo ("$clocktime $ca $targettype ($tplayername) was killed $where<br>\n");
 
-               } elseif (preg_match('/^BotGunner/',$objecttype)) { // SD2b
+               } elseif (preg_match('/^BotGunner/',$targettype)) { // SD2b
 		  // already accounted for in FATES
-		  BOTGUNNER($objecttype);
-		  $objecttype = "$countryadj $BotName";
-                  echo ("$clocktime $objecttype $playername was killed $where<br>\n");
+		  BOTGUNNER($targettype);
+		  $targettype = "$tcountryadj $BotName";
+                  echo ("$clocktime $targettype $tplayername was killed $where<br>\n");
 	       // check if target object is an airplane (Plane)
-               } elseif (preg_match('/^P/',$objectclass)) { 
+               } elseif (preg_match('/^P/',$targetclass)) { 
                   if ($flying == 2) { $action = "crashed";}
                   elseif ($flying == 1) { $action = "crashed";}
                   elseif ($flying == 0) { $action = "crashed on takeoff";}
                   elseif ($flying == 3) { $action = "crashed";}
 		  // SD3:	
-		  echo ("$clocktime $playername's $objecttype $action $where<br>\n");
+		  echo ("$clocktime $tplayername's $targettype $action $where<br>\n");
 	 	  if ($StatsCommand == 'do') { // generate an INSERT query	  
-//		     echo "\$countryid = $countryid, \$CoalID = $CoalID<br>\n";
-		     $query = "INSERT into rof_kills (MissionID,clocktime,attackerID,attackerName,action,targetID,targetName,targetCountryID,targetCoalID) VALUES ('$MissionID','$clocktime','$AID[$j]','$aplayername','$action','$TID[$j]','$objecttype','$countryid','$CoalID')";
+//		     echo "\$tcountryid = $tcountryid, \$tCoalID = $tCoalID<br>\n";
+		     $query = "INSERT into rof_kills (MissionID,clocktime,attackerID,attackerName,action,targetID,targetName,targetCountryID,targetCoalID) VALUES ('$MissionID','$clocktime','$AID[$j]','$aplayername','$action','$TID[$j]','$targettype','$tcountryid','$tCoalID')";
 //		     echo "$query<br>\n";
 		  } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
 		     $query = "DELETE from rof_kills where MissionID = '$MissionID' and clocktime = '$clocktime' and targetID = '$TID[$j]'";
@@ -417,28 +425,40 @@ function OUTPUT() {
 	       // not an airplane
                } else { // SD4:
                   $action = "self-destructed";
-                  echo ("$clocktime $ca $countryadj $objecttype ($objectname) $action $where<br>\n");
+                  echo ("$clocktime $ca $tcountryadj $targettype ($targetobject) $action $where<br>\n");
 	 	  if ($StatsCommand == 'do') { // generate an INSERT query	  
-//		     echo "\$countryid = $countryid, \$CoalID = $CoalID<br>\n";
-		     $query = "INSERT into rof_kills (MissionID,clocktime,attackerID,attackerName,action,targetID,targetName,targetCountryID,targetCoalID) VALUES ('$MissionID','$clocktime','$AID[$j]','$aplayername','$action','$TID[$j]','$objecttype','$countryid','$CoalID')";
+//		     echo "\$tcountryid = $tcountryid, \$tCoalID = $tCoalID<br>\n";
+		     $query = "INSERT into rof_kills (MissionID,clocktime,attackerID,attackerName,action,targetID,targetName,targetCountryID,targetCoalID) VALUES ('$MissionID','$clocktime','$AID[$j]','$aplayername','$action','$TID[$j]','$targettype','$tcountryid','$tCoalID')";
 //		     echo "$query<br>\n";
 		  } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
 		     $query = "DELETE from rof_kills where MissionID = '$MissionID' and clocktime = '$clocktime' and targetID = '$TID[$j]'";
 		  }
                }
-            } else { // hit by someone else - not self-inflicted
-               if ($objecttype == "Common Bot") {
+            } else { // hit by an attacker - but some time earlier
+               // get more information about the attacker
+	       OBJECTCOUNTRYNAME($Lasthitbyid[$tonum],$Ticks[$j]);
+	       COALITION($countryid); 
+               if ($targettype == "Common Bot") { // target is player pilot
                   // A:
                   ANORA($Lasthitby[$tonum]);
                   $a3 = $anora;
-                  echo ("$clocktime $a3 $Lasthitby[$tonum] killed $playername $where<br>\n");
-               } elseif (preg_match('/^BotGunner/',$objecttype)) {
-		  BOTGUNNER($objecttype);
-		  $objecttype = "$countryadj $BotName";
+		  $action = 'killed';
+                  echo ("$clocktime $a3 $Lasthitby[$tonum] killed $tplayername $where<br>\n");
+	 	  if ($StatsCommand == 'do') { // generate an INSERT query	  
+//		     echo "\$tcountryid = $tcountryid, \$tCoalID = $tCoalID<br>\n";
+//		     echo "\$countryid = $countryid, \$CoalID = $CoalID<br>\n";
+		     $query = "INSERT into rof_kills (MissionID,clocktime,attackerID,attackerName,attackerCountryID,attackerCoalID,action,targetID,targetName,targetCountryID,targetCoalID) VALUES ('$MissionID','$clocktime','$Lasthitbyid[$tonum]','$Lasthitby[$tonum]','$countryid','$CoalID','$action','$TID[$j]','$tplayername','$tcountryid','$tCoalID')";
+//		     echo "$query<br>\n";
+		  } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
+		     $query = "DELETE from rof_kills where MissionID = '$MissionID' and clocktime = '$clocktime' and targetID = '$TID[$j]'";
+		  }
+               } elseif (preg_match('/^BotGunner/',$targettype)) {
+		  BOTGUNNER($targettype);
+		  $targettype = "$tcountryadj $BotName";
                   // B0:
-                  echo ("$clocktime $Lasthitby[$tonum] killed $ca $objecttype ($playername) $where<br>\n");
+                  echo ("$clocktime $Lasthitby[$tonum] killed $ca $targettype ($tplayername) $where<br>\n");
 		// not botgunner, perhaps airplane?
-               } elseif(preg_match('/^P/',$objectclass)) {
+               } elseif(preg_match('/^P/',$targetclass)) {
 //                  echo "flying = $flying<br>\n";
                   ANORA($Lasthitby[$tonum]);
                   $a2 = $anora;
@@ -449,74 +469,74 @@ function OUTPUT() {
                   if ($TID[$j] == $Lasthitbyid[$tonum]) { $action = "crashed";}
 // the following code is either unused or very rarely used - perhaps because not crediting gunner with last hit?
 // check on it
-                  if (preg_match("/^Turret/",$Lasthitby[$tonum])) { // a player gunner?
+                  if (preg_match("/^Turret/",$Lasthitby[$tonum])) { // a player gunner
                      WHOSEGUNNER($Lasthitbyid[$tonum]);
-                     if ( $objectname == $objecttype ) { // C1a (used rarely)
-                        echo ("$clocktime $Whosegunner's gunner $aplayername $action $a $objecttype $where<br>\n");
+                     if ( $targetobject == $targettype ) { // C1a (used rarely)
+                        echo ("$clocktime $Whosegunner's gunner $aplayername $action $a $targettype $where<br>\n");
                      } else { // C1b (used rarely)
-                        echo ("$clocktime $Whosegunner's gunner $aplayername $action $a $objecttype ($objectname) $where<br>\n");
+                        echo ("$clocktime $Whosegunner's gunner $aplayername $action $a $targettype ($targetobject) $where<br>\n");
                      }
                   } else { // D2:
-                   echo ("$clocktime $a2 $Lasthitby[$tonum] $action $a $objecttype ($objectname) $where<br>\n");
+                   echo ("$clocktime $a2 $Lasthitby[$tonum] $action $a $targettype ($targetobject) $where<br>\n");
 //            echo "Lasthitby[$tonum] = $Lasthitby[$tonum]<br>\n";
 //            echo "TID flying = $flying<br>\n";
 		  } 
 		// end of elseif airplane, is target a ship?
-               } elseif(preg_match('/^S/',$objectclass)) {
+               } elseif(preg_match('/^S/',$targetclass)) {
 		   $action = "sank";
-                   echo ("D3:$clocktime $a2 $Lasthitby[$tonum] $action $a $objecttype ($objectname) $where<br>\n");
+                   echo ("D3:$clocktime $a2 $Lasthitby[$tonum] $action $a $targettype ($targetobject) $where<br>\n");
                } else { // infrastructure is about all that remains 
 		   $action = "destroyed";
-                   echo ("$clocktime $a2 $Lasthitby[$tonum] $action $a $objecttype ($objectname) $where<br>\n");
+                   echo ("$clocktime $a2 $Lasthitby[$tonum] $action $a $targettype ($targetobject) $where<br>\n");
                }
 	       
             }  // end of not self-inflicted 
-         // end of AI attacker
-         } else { // must be a human attacker
+         // end of non-combat accidents and incidents
+         } else { // involves a human or AI attacker
 //             echo "flying = $flying<br>\n";
-//             echo "attackertype = $attackertype, attackerobject = $attackerobject, aplayername= $aplayername, objecttype = $objecttype, playername = $playername, objectname = $objectname<br>\n";
-            // if flying or if objectname is aerostat, "shot down" else destroyed
-            if (preg_match("/^BotGunner/",$objecttype)) {
-               BOTGUNNER($objecttype);
-	       $objecttype = "$countryadj $BotName";
+//             echo "attackertype = $attackertype, attackerobject = $attackerobject, aplayername= $aplayername, targettype = $targettype, tplayername = $tplayername, targetobject = $targetobject<br>\n";
+            // if flying or if targetobject is aerostat, "shot down" else destroyed
+            if (preg_match("/^BotGunner/",$targettype)) {
+               BOTGUNNER($targettype);
+	       $targettype = "$tcountryadj $BotName";
 	    }
-            ANORA($objecttype);
+            ANORA($targettype);
             $a = $anora;
-            if (($flying == 2) || ($objectname == "Aerostat")) { $action = "shot down";}
+            if (($flying == 2) || ($targetobject == "Aerostat")) { $action = "shot down";}
             elseif ($flying == 1) { $action = "shot down";}
             elseif ($flying == 0) { $action = "destroyed";}
             elseif ($flying == 3) { $action = "shot down";}
             ANORA($aplayername);
             $a1 = $anora;
 
-            if ("$objectname" == "Common Bot") {
-               $objectname = $playername;
+            if ("$targetobject" == "Common Bot") {
+               $targetobject = $tplayername;
                $action = "killed";
                // E:
-               echo ("$clocktime $a1 $aplayername $action $objectname $where<br>\n");
+               echo ("$clocktime $a1 $aplayername $action $targetobject $where<br>\n");
             } else {
             ANORA($aplayername);
             $a3 = $anora;
-            if (preg_match('/ship/',$objecttype)) { $action = "sank";
-               if ($objecttype == "ship_stat_pass") {$objecttype = "stationary passenger ship";}
-               if ($objecttype == "ship_stat_tank") {$objecttype = "stationary tanker ship";}
-               if ($objecttype == "ship_stat_cargo") {$objecttype = "stationary cargo ship";}
+            if (preg_match('/ship/',$targettype)) { $action = "sank";
+               if ($targettype == "ship_stat_pass") {$targettype = "stationary passenger ship";}
+               if ($targettype == "ship_stat_tank") {$targettype = "stationary tanker ship";}
+               if ($targettype == "ship_stat_cargo") {$targettype = "stationary cargo ship";}
             }
-            if ($objecttype == "HMS submarine") { $action = "sank";
-            $objecttype = "surfaced $countryadj submarine";}
-            if ($objecttype == "GER submarine") { $action = "sank";
-            $objecttype = "surfaced $countryadj submarine";}
-            if ($objecttype == "ger_med") {
-            $objecttype = "$countryadj airfield";}
-            if ($objecttype == "GER Ship Searchlight") {$objecttype = "$countryadj ship searchlight";}
-            if ($objecttype == "HMS Ship Searchlight") {$objecttype = "$countryadj ship searchlight";}
-            if ($objecttype == "GBR Searchlight") {$objecttype = "$countryadj searchlight";}
+            if ($targettype == "HMS submarine") { $action = "sank";
+            $targettype = "surfaced $tcountryadj submarine";}
+            if ($targettype == "GER submarine") { $action = "sank";
+            $targettype = "surfaced $tcountryadj submarine";}
+            if ($targettype == "ger_med") {
+            $targettype = "$tcountryadj airfield";}
+            if ($targettype == "GER Ship Searchlight") {$targettype = "$tcountryadj ship searchlight";}
+            if ($targettype == "HMS Ship Searchlight") {$targettype = "$tcountryadj ship searchlight";}
+            if ($targettype == "GBR Searchlight") {$targettype = "$tcountryadj searchlight";}
             // F:
             // F:
-            echo ("$clocktime $a3 $aplayername $action $a $objecttype ($objectname) $where<br>\n");
+            echo ("$clocktime $a3 $aplayername $action $a $targettype ($targetobject) $where<br>\n");
             }
          }
-//         echo ("G: $clocktime $attackertype $attackername $aplayername $objecttype $objectname $playername $where<br>\n");
+//         echo ("G: $clocktime $attackertype $attackername $aplayername $targettype $targetobject $tplayername $where<br>\n");
 	  
 //	 echo "OUTPUT: \$StatsCommnand = $StatsCommand<br>\n";
 	 // do we have db work to do?
@@ -724,7 +744,7 @@ function OUTPUT() {
             WHERE($posx,$posz,0);
             COUNTRYNAME($COUNTRY[$i]); 
             echo ("$AID[$i] $COUNTRY[$i] $POS[$i] $IDS[$i]<br>\n");
-            echo ("$AID[$i] $countryname $where $IDS[$i]<br>\n");
+            echo ("$AID[$i] $tcountryname $where $IDS[$i]<br>\n");
          }
       }
    }
@@ -738,7 +758,7 @@ function OUTPUT() {
          CLOCKTIME($Ticks[$j]);
          COUNTRYNAME($COUNTRY[$j]); 
 //         echo ("$i $clocktime $NAME[$j] $PLID[$j] $PID[$j] $BUL[$j] $BOMB[$j] $TYPE[$j] $COUNTRY[$j]<br>\n");
-         echo ("$i $clocktime $NAME[$j] $PLID[$j] $PID[$j] $BUL[$j] $BOMB[$j] $TYPE[$j] $countryname<br>\n");
+         echo ("$i $clocktime $NAME[$j] $PLID[$j] $PID[$j] $BUL[$j] $BOMB[$j] $TYPE[$j] $tcountryname<br>\n");
       }
    }
 
@@ -761,7 +781,7 @@ function OUTPUT() {
          COUNTRYNAME($COUNTRY[$j]); 
          OBJECTTYPE($ID[$j],$Ticks[$j]); 
          OBJECTNAME($ID[$j],$Ticks[$j]);
-         echo ("$i $clocktime $ID[$j] $TYPE[$j] $NAME[$j] $countryname $PID[$j]<br>\n");
+         echo ("$i $clocktime $ID[$j] $TYPE[$j] $NAME[$j] $tcountryname $PID[$j]<br>\n");
       }
    }
 
