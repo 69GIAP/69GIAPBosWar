@@ -2,7 +2,7 @@
 // OUTPUT
 // =69.GIAP=TUSHKA
 // output simple text report and calculate some stats for the db
-// BOSWAR version 1.03
+// BOSWAR version 1.04
 // Oct 3, 2013
 
 function OUTPUT() {
@@ -410,13 +410,21 @@ function OUTPUT() {
 	 	  if ($StatsCommand == 'do') { // generate an INSERT query	  
 //		     echo "\$countryid = $countryid, \$CoalID = $CoalID<br>\n";
 		     $query = "INSERT into rof_kills (MissionID,clocktime,attackerID,attackerName,action,targetID,targetName,targetCountryID,targetCoalID) VALUES ('$MissionID','$clocktime','$AID[$j]','$aplayername','$action','$TID[$j]','$objecttype','$countryid','$CoalID')";
-		   } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
+//		     echo "$query<br>\n";
+		  } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
 		     $query = "DELETE from rof_kills where MissionID = '$MissionID' and clocktime = '$clocktime' and targetID = '$TID[$j]'";
-		   }
+		  }
 	       // not an airplane
                } else { // SD4:
                   $action = "self-destructed";
                   echo ("$clocktime $ca $countryadj $objecttype ($objectname) $action $where<br>\n");
+	 	  if ($StatsCommand == 'do') { // generate an INSERT query	  
+//		     echo "\$countryid = $countryid, \$CoalID = $CoalID<br>\n";
+		     $query = "INSERT into rof_kills (MissionID,clocktime,attackerID,attackerName,action,targetID,targetName,targetCountryID,targetCoalID) VALUES ('$MissionID','$clocktime','$AID[$j]','$aplayername','$action','$TID[$j]','$objecttype','$countryid','$CoalID')";
+//		     echo "$query<br>\n";
+		  } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
+		     $query = "DELETE from rof_kills where MissionID = '$MissionID' and clocktime = '$clocktime' and targetID = '$TID[$j]'";
+		  }
                }
             } else { // hit by someone else - not self-inflicted
                if ($objecttype == "Common Bot") {
