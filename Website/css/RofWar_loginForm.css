@@ -199,10 +199,11 @@ fieldset
     border-radius: 0px;
     
 	text-shadow: 0 1px 0 rgba(0,0,0,0.5);
-    
+ /*   
      -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(0, 0, 0, 0.3) inset;
      -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(0, 0, 0, 0.3) inset;
-     box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(0, 0, 0, 0.3) inset;    
+     box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(0, 0, 0, 0.3) inset; 
+	 */
 }
 
 #loginSubmit
@@ -230,21 +231,24 @@ fieldset
 #loginSubmit:hover, #submit:focus
 {		
     background-color: #5C85AD;
+
     background-image: -webkit-gradient(linear, left top, left bottom, from(#5C85AD), to(#BFC8DE));
     background-image: -webkit-linear-gradient(top, #5C85AD, #BFC8DE);
     background-image: -moz-linear-gradient(top, #5C85AD, #BFC8DE);
     background-image: -ms-linear-gradient(top, #5C85AD, #BFC8DE);
     background-image: -o-linear-gradient(top, #5C85AD, #BFC8DE);
     background-image: linear-gradient(top, #5C85AD, #BFC8DE);
+
 }	
 
 #loginSubmit:active
 {		
     outline: none;
-   
+ 
      -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
      -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
-     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;		
+     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+	
 }
 
 #loginSubmit::-moz-focus-inner
