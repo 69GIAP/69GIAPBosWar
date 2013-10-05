@@ -1,4 +1,5 @@
 <?php 
+// still doesn't have buttons!
 
 # Incorporate the MySQL connection script.
 require ( '../connect_db.php' );
@@ -59,15 +60,25 @@ if ($result = mysqli_query($camp_link, $query)) { /* fetch associative array */
 
 print "<form action = \"CampaignReportsAdmin2.php\", method=post>\n";
 echo "<h2>Managing reports and statistics for $campaign</h2><br>\n";
-echo "Run report AND<br>\n";
+// return to plain html while trying to fix buttons.
+?>
 
-echo "</p><input type=\"radio\" name=\"StatsCommand\" value = \"ignore\" checked=\"checked\"> Do NOT do mission stats<br>\n";
-echo "<input type=\"radio\" name=\"StatsCommand\" value = \"do\"> DO mission stats<br>\n";
-echo "<input type=\"radio\" name=\"StatsCommand\" value = \"undo\"> UNDO mission stats<br>\n";
+<p>
+Run report AND
+</p>
+<div class="radio">
+<p>
+      <input type="radio" name="StatsCommand" value = "ignore" checked="checked"> Do NOT do mission stats
+</p><p>
+      <input type="radio" name="StatsCommand" value = "do"> DO mission stats
+</p><p>
+      <input type="radio" name="StatsCommand" value = "undo"> UNDO mission stats
+</p>
+</div>
 
+<?php // and back to php!
 print "<select name=\"LOGFILE\">\n";
 
-# future include?
 // get list of files as array, removing '.' and '..' from the list
 $files=array_diff(scandir($logpath), array('.','..'));
 
@@ -83,17 +94,8 @@ while (list ($key, $value) = each ($files)) {
    }
 }
 
-
 echo "</p><input type=\"submit\" value=\"Go\"><br>\n";
 
-                    # do whatever is needed from the campaign database
-#                    print "<h2>Processing statistics for $campaign</h2><br>\n";
-#                    print "We won't actually do this in the release, but this provides a sandbox for integrating the parser with the campaign database.<br>\n";
-                    
-                    # include rof_parse_log.php for development purposes
-#                    include ( 'rof_parse_log.php' );
-                    
-                                        
                     # Close the camp_link connection
                     mysqli_close($camp_link);
 ?>
