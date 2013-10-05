@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2013 at 03:17 AM
+-- Generation Time: Oct 05, 2013 at 04:43 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -26,18 +26,21 @@ SET time_zone = "+00:00";
 -- Table structure for table `rof_kills`
 --
 
+DROP TABLE IF EXISTS `rof_kills`;
 CREATE TABLE IF NOT EXISTS `rof_kills` (
   `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
   `MissionID` varchar(60) NOT NULL,
   `clocktime` time NOT NULL,
   `attackerID` mediumint(1) NOT NULL,
   `attackerName` varchar(50) NOT NULL,
-  `attackerCountry` smallint(1) NOT NULL,
+  `attackerCountryID` smallint(1) NOT NULL,
   `attackerCoalID` tinyint(1) unsigned NOT NULL,
   `action` varchar(20) NOT NULL,
   `targetID` mediumint(1) NOT NULL,
+  `targetClass` varchar(8) NOT NULL,
+  `targetType` varchar(50) NOT NULL,
   `targetName` varchar(50) NOT NULL,
-  `targetCountry` smallint(1) unsigned NOT NULL,
+  `targetCountryID` smallint(1) unsigned NOT NULL,
   `targetCoalID` tinyint(1) unsigned NOT NULL,
   `targetValue` smallint(1) NOT NULL,
   PRIMARY KEY (`id`)
