@@ -13,6 +13,9 @@
 	if(!$result = $dbc->query($sql)){
 		die('There was an error running the query ' . mysqli_error($dbc));
 	}
+	
+	echo "<h3>Campaign Plane Set</h3>\n";	
+	echo "<div class=\"checkboxWrapper\">\n";
 
 	# load results into variables 
 	while ($obj = mysqli_fetch_object($result)) {
@@ -30,7 +33,7 @@
 		echo "</div>\n";
 	$i ++;
 	}
-
+	echo "</div>\n";
 
 ?>
 

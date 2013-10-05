@@ -157,6 +157,10 @@ fieldset
 {
     background-position: 5px -277px !important;
 }
+#database
+{
+    background-position: 5px -327px !important;
+}
 
 #inputs input:focus, #none input:focus
 {
@@ -253,7 +257,7 @@ fieldset
 
 #loginSubmit::-moz-focus-inner
 {
-  border: none;
+  	border: none;
 }
 
 #actions a
@@ -273,6 +277,20 @@ form fieldset p
 
 
 /************* MASTER AIRFIELD CHECKBOXES *****************/
+.checkboxWrapper {
+	margin: 3px 0;
+	padding: 10px;
+	width: 378px;
+	background: #f1f1f1;
+	border: 1px solid #ccc;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+}
+
 .checkbox, .radio {
 	font: normal 18px "Trebuchet MS", Arial, Helvetica, sans-serif;
 }

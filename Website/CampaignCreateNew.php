@@ -24,8 +24,7 @@
             
 				<?php
 					echo "<p>We start with a hardcoded campaign name stalingrad1_db.<p>\n";
-					include 'includes/createNewCampaign.php';
-                               
+					include 'includes/createNewCampaign.php';          
                 ?>
             
             </div>

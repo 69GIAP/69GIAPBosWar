@@ -13,10 +13,14 @@
 	if(!$result = $dbc->query($sql)){
 		die('There was an error running the query ' . mysqli_error($dbc));
 	}
+	
+	echo "<h3>Campaign Airfield Set</h3>\n";	
+	echo "<div class=\"checkboxWrapper\">\n";
 
 	# load results into variables 
 	while ($obj = mysqli_fetch_object($result)) {
 		$airfieldName		=($obj->af_Name);
+
 		echo "<div class=\"checkbox\">\n";		
 		echo "		<input id=\"checkboxAirfield$i\" type=\"checkbox\" name =\"add$i\" value =\"$airfieldName\">\n";
 		echo "		<label for=\"checkboxAirfield$i\"><b>$airfieldName</b></label><br \>\n";
@@ -30,7 +34,7 @@
 		echo "</div>\n";
 	$i ++;
 	}
-
+	echo "</div>\n";
 
 ?>
 
