@@ -1,14 +1,22 @@
 # V1.0
 # Stenka 29/9/13
-# Php version of inbox table to load into col_10 from template_allies_back.Group 
+# Php version of inbox table to load into col_10 from template_allies_back.Group or template_central_back.Group
 <?php
 # require is connecting user peter to stalingrad1 database
 # here
-require('require.php');
+require('../connect_db.php');
+# $path is the path to where the user keeps the group files
+$path = 'c:/BOSWAR/';
+# are we inputting an allied or central
+$coalition="allies";
+#$coalition="central";
+# end coalition select
 $count = 0;
 $current_object = "Unknown";
 $current_Name = "Unknown";
-$filename = "c:/BOSWAR/template_allies_back.Group";
+$filename = $path.'template_'.$coalition."_back.Group";
+echo '<br>Filename is :'.$filename;
+#$filename = "c:/BOSWAR/template_allies_back.Group";
 $fp = fopen( $filename, "r" ) or die("Couldn't open $filename");
 while ( ! feof( $fp ) ) {
 	$line = fgets( $fp, 1024 );

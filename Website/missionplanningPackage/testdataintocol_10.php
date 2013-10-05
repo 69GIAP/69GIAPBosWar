@@ -33,3 +33,9 @@ if ($r3)
 	{echo'<br>column added';}
 else
 	{echo'<p>'.mysqli_error($dbc).'</p>';} 
+$q3="INSERT INTO col_10 (col_Name,col_moving,col_Model,col_supplypoint,col_qty,col_coalition,col_Country) VALUES ('REGIMENT 3 Zug 1','1','hotchkiss','2',4,'2','501')";
+$r3= mysqli_query($dbc,$q3);
+if ($r3)
+	{echo'<br>column added';}
+else
+	{echo'<p>'.mysqli_error($dbc).'</p>';} 

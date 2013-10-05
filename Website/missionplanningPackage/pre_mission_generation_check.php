@@ -11,12 +11,16 @@ require('cam_param.php');
 $time_availiable=CAM_MISSION_TIME+CAM_LINEUP_TIME;
 $speed=CAM_GROUND_TRANSPORT_SPEED;
 # end of my variables initialisation
-$q = 'SELECT * from mission_1';
+$current_mission = 1;
+$miss = 'mission_'.$current_mission;
+# $path is the path to where the user keeps the group files
+$path = 'c:/BOSWAR/';
+$q = 'SELECT * from '.$miss;
 $r = mysqli_query($dbc,$q);
 $num = mysqli_num_rows($r);
 if ($num > 0)
 {
-	echo '<br>Records in mission_1 table';
+	echo '<br>Records in mission table';
 	while ($row = mysqli_fetch_array($r,MYSQLI_ASSOC))
 	{
 	echo '<br>'.$row['id'].'|'.$row['col_Name'].$row['col_Country'];
@@ -32,7 +36,9 @@ if ($num > 0)
 	if ($r2_data[0]) 
 		{
 			$Model = $r2_data[1];
+			echo '<br> Found the model is a :'.$Model;
 			$moving_becomes = $r2_data[2];
+			echo '<br> moving becomes is a :'.$Model;
 			$game_name = $r2_data[3];
 			$modelpath2 = $r2_data[4];
 			$modelpath3 = $r2_data[5];
@@ -55,6 +61,7 @@ if ($num > 0)
 	if ($r3_data[0]) 
 		{
 			$Model = $r3_data[1];
+			echo '<br> So this is now a :'.$Model;
 			$moving_becomes = $r3_data[2];
 			$game_name = $r3_data[3];
 			$modelpath2 = $r3_data[4];
@@ -71,7 +78,8 @@ if ($speed > $cruise_speed_kmh)
 	{$speed_of_column = $cruise_speed_kmh;}
 else
 	{$speed_of_column = $speed;}
-#end of working out speed
+		echo '<br>Speed of column is : '.$cruise_speed_kmh;
+	#end of working out speed
 	$col_moving = $row['col_moving'];
 	$col_qty = $row['col_qty'];
 	$col_Country = $row['col_Country'];
@@ -95,8 +103,8 @@ else
 		$dest_XPos = $XPos + ($deltax * $fractiontraveled);
 		$dest_ZPos = $ZPos + ($deltax * $fractiontraveled);
 	}
-# if vehicle destination is not greater than 100 metres set to static and Destination = start
-	if ($tripdistance < 100.000)
+# if vehicle destination is not greater than ground spacing *20  set to static and Destination = start
+	if ($tripdistance < (CAM_GROUND_SPACING*20))
 	{
 	$dest_XPos = $XPos;
 	$dest_ZPos = $ZPos;
@@ -113,7 +121,7 @@ else
 	echo '<br> Final destination Z:'.$dest_ZPos;
 # here I will write back the destination x & z to  mission_1	
 	echo '<br> im updating col_moving with '.$col_moving;
-	$q1="UPDATE mission_1 set 
+	$q1="UPDATE ".$miss. " set 
 	col_dest_XPos = $dest_XPos,
 	col_dest_ZPos = $dest_ZPos,
 	col_moving = substr($col_moving,1,1)
@@ -121,7 +129,7 @@ else
 	$r1= mysqli_query($dbc,$q1);
 	if ($r1)
 	{
-		echo'<br> written destination z x pos back to mission_1';
+		echo'<br> written destination z x pos back to mission';
 	}
 	else
 		{echo'<p>'.mysqli_error($dbc).'</p>';} 	

@@ -1,6 +1,7 @@
 # V1.0
-# Stenka 03/10/2013
-# Php version of col_10 create vehicles in template_allies.Group
+# Stenka 04/10/2013
+# Php version of col_10 create vehicles in template_allies or central.Group
+# version with parameter for path and coalition
 <?php
 # require is connecting user peter to stalingrad1 database
 # here
@@ -8,7 +9,9 @@ require('require.php');
 # next load campaign variable into constants
 require('cam_param.php');
 # now we will start creating vehicles
-# initialise variables
+# initialise variables 
+# $path is the path to where the user keeps the group files
+$path = 'c:/BOSWAR/';
 # are we outputting an allied or central
 $coalition="allies";
 #$coalition="central";
@@ -29,7 +32,8 @@ $cam_blue_supply_3_x = CAM_BLUE_SUPPLY_3_X;
 $cam_blue_supply_3_z = CAM_BLUE_SUPPLY_3_Z;
 # end of my variables initialisation
 #prepare datafile for output
-$filename = "c:/BOSWAR/template_".$coalition.".Group";
+$filename = $path.'template_'.$coalition.".Group";
+echo '<br>Filename is :'.$filename;
 if (file_exists($filename)) 
 {
     echo "<p>The file $filename exists";

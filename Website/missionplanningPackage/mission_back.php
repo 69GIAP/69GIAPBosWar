@@ -1,14 +1,22 @@
 # V1.0
-# Stenka 10/9/13
-# Php version of inbox table to load into airfields table runs after inbox load
+# Stenka 04/10/13
+# Php version of reading back group after planning in editor
 <?php
 # require is connecting user peter to stalingrad1 database
-# here
 require('require.php');
+# initialise variables
+$current_mission = 1;
+$miss = 'mission_'.$current_mission;
+# $path is the path to where the user keeps the group files
+$path = 'c:/BOSWAR/';
+# are we inputting an allied or central
+$coalition="allies";
+#$coalition="central";
 $count = 0;
 $current_object = "Unknown";
 $current_Name = "Unknown";
-$filename = "c:/BOSWAR/red_m1_back.Group";
+#$filename = "c:/BOSWAR/allied_m1_back.Group";
+$filename = $path. $coalition . "_m".$current_mission."_back.Group";
 $dest_XPos = 0;
 $dest_ZPos = 0;
 $fp = fopen( $filename, "r" ) or die("Couldn't open $filename");
@@ -95,10 +103,10 @@ while ( ! feof( $fp ) ) {
 	if (substr($line,0,1)=='}')
 	{
 	echo '<br> Updating Vehicle or Artillery';
-	$q1="UPDATE col_10 set 
-	col_XPos = $XPos,
-	col_ZPos = $ZPos,
-	col_YOri = $YOri,
+	$q1="UPDATE ".$miss." set 
+#	col_XPos = $XPos,
+#	col_ZPos = $ZPos,
+#	col_YOri = $YOri,
 	col_dest_XPos = $dest_XPos,
 	col_dest_ZPos = $dest_ZPos
 	where col_Name = '$current_Name'";

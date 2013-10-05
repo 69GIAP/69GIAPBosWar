@@ -1,16 +1,20 @@
 # V1.0
-# Stenka 10/9/13
-# Php version of mission 1 create vehicles in outbox
+# Stenka 04/10/13
+# Php version of mission create vehicles in group file
 <?php
 # require is connecting user peter to stalingrad1 database
 # here
 require('require.php');
 # next load campaign variable into constants
 require('cam_param.php');
-# make nice new Outbox_1 and outbox_2
-# require('outbox_create.php');
-# now we will start creating vehicles
 # initialise variables
+$current_mission = 1;
+$miss = 'mission_'.$current_mission;
+# $path is the path to where the user keeps the group files
+$path = 'c:/BOSWAR/';
+# are we outputting an allied or central
+$coalition="allies";
+#$coalition="central";
 # $index_no is the index number 
 $index_no = 1;
 # x and z pos of supply positions
@@ -28,7 +32,8 @@ $cam_blue_supply_3_x = CAM_BLUE_SUPPLY_3_X;
 $cam_blue_supply_3_z = CAM_BLUE_SUPPLY_3_Z;
 # end of my variables initialisation
 #prepare datafile for output
-$filename = "c:/BOSWAR/allied_m1.Group";
+$filename = $path. $coalition . "_m".$current_mission.".Group";
+echo '<br> File:'.$filename;
 if (file_exists($filename)) 
 {
     echo "<p>The file $filename exists";
@@ -52,12 +57,15 @@ $fh = fopen($filename,'w') or die("Can not open file");
 
 
 #
-$q = 'SELECT * from mission_1';
+if ($coalition=="central")
+{$q = 'SELECT * from mission_'.$current_mission. ' WHERE col_coalition = "2"';}
+else
+{$q = 'SELECT * from mission_'.$current_mission. ' WHERE col_coalition = "1"';}
 $r = mysqli_query($dbc,$q);
 $num = mysqli_num_rows($r);
 if ($num > 0)
 {
-	echo '<br>Records in mission 1 table';
+	echo '<br>Records in mission table';
 	while ($row = mysqli_fetch_array($r,MYSQLI_ASSOC))
 	{
 	echo '<br>'.$row['id'].'|'.$row['col_Name'].$row['col_Country'];
@@ -207,12 +215,12 @@ if ($num > 0)
 	fwrite($fh,$writestring);
 	$writestring = '  Objects = ['.($index_no-1).'];'."\r\n";		
 	fwrite($fh,$writestring);
-	$way_XPos = ($col_XPos+(CAM_GROUND_SPACING*50));
+	$way_XPos = ($col_XPos+(CAM_GROUND_SPACING*10));
 	$writestring = '  XPos = '.number_format($way_XPos, 3, '.', '').';'."\r\n";	
 	fwrite($fh,$writestring);
 	$writestring = '  YPos = 0.000;'."\r\n";	
 	fwrite($fh,$writestring); 	
-	$way_ZPos = ($col_ZPos+(CAM_GROUND_SPACING*50));	
+	$way_ZPos = ($col_ZPos+(CAM_GROUND_SPACING*10));	
 	$writestring = '  ZPos = '.number_format($way_ZPos, 3, '.', '').';'."\r\n";	
 	fwrite($fh,$writestring);
 	$writestring = '  XOri = 0.00;'."\r\n";	
