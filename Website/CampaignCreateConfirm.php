@@ -44,8 +44,8 @@
 						}
 					
 					# CREATE CAMPAIGN DB
-					$query = "INSERT INTO campaign_settings (simulation, campaign, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status, show_airfield, finish_flight_only_landed, logpath, log_prefix, logfile, kia_pilot, mia_pilot, critical_w_pilot, serious_w_pilot, light_w_pilot, kia_gunner, mia_gunner, critical_w_gunner, serious_w_gunner, light_w_gunner, healthy, min_x, min_z, max_x, max_z) ";
-					$query = $query ."VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', 'localhost', '$newCampaignDBUser', '$newCampaginDBPassword', '$campaignMap', '$campaignMapLocation', 1, 0, 0, '', '', '', 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0) ";
+					$query = "INSERT INTO campaign_settings (simulation, campaign, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
+					$query = $query ."VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', 'localhost', '$newCampaignDBUser', '$newCampaginDBPassword', '$campaignMap', '$campaignMapLocation',1) ";
 					echo $query
                 ?>
             
