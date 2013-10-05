@@ -1,8 +1,8 @@
 <?php
 // BOTGUNNER
 // translate BotGunner into more natural description
-// BOSWAR version 1.1
-// Oct 4, 2013
+// BOSWAR version 1.2
+// Oct 5, 2013
 function BOTGUNNER($type) {
    // translate BotGunner into more natural description
    global $BotName; // BotGunner description
@@ -24,8 +24,8 @@ function BOTGUNNER($type) {
    elseif ($type == "BotGunnerHP400_3") { $BotName = "Handley Page 0/400 ventral gunner";}
    elseif ($type == "BotGunnerFelix_top-twin") { $BotName = "Felixstowe F2A top gunner"; }
    elseif ($type == "BotGunnerFe2_sing") { $BotName = "F.E.2b gunner"; }
-   elseif ($type == "BotGunnerBW12") { $objecttype = "Brandenburg W12 gunner"; }
-   elseif ($type == "BotGunnerHCL2") { $objecttype = "Halberstadt CL.II gunner"; }
+   elseif ($type == "BotGunnerBW12") { $BotName = "Brandenburg W12 gunner"; }
+   elseif ($type == "BotGunnerHCL2") { $BotName = "Halberstadt CL.II gunner"; }
    else { $objecttype = "unexpected Botgunner $type<br>"; }
    
 
