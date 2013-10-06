@@ -58,6 +58,13 @@ ul#sidebar li a.campCreate {
 	height: 64px;
 	position:relative;
 }
+ul#sidebar li a.campDrop {
+	background:url(../img/RofWar-AdminDropDB.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
 /*****  Commander Sidebar ****/
 ul#sidebar li a.modifyAirfield {
 	background:url(../img/RofWar_EntenteAirfields.png) no-repeat scroll top left;

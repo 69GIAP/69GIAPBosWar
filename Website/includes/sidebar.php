@@ -27,6 +27,7 @@
 														{
 															echo "		<li><a href=\"CampaignSelect.php?btn=home\" class=\"campConnect\"><span></span></a></li>\n";
 															echo "		<li><a href=\"CampaignCreateNew.php?btn=home\" class=\"campCreate\"><span></span></a></li>\n";
+															echo "		<li><a href=\"CampaignDrop.php?btn=home\" class=\"campDrop\"><span></span></a></li>\n";															
 														}
 													else
 														{
