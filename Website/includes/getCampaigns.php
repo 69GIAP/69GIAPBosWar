@@ -13,7 +13,7 @@ include 'functions/getRadiobuttonForStats.php';
 
 if ($userRole == "administrator" or $userRole == "commander")
 	{
-		echo "<form id=\"campaignForm\" name=\"input\" action=\"includes/selectCampaign.php\" method=\"post\">\n";
+		echo "<form id=\"campaignForm\" name=\"input\" action=\"includes/campaignSelect.php\" method=\"post\">\n";
 
 		if ($userRole == "administrator")
 			{
