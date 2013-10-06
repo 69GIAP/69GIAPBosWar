@@ -68,11 +68,14 @@ Run report AND
 </p>
 <div class="radio">
 <p>
-      <input type="radio" name="StatsCommand" value = "ignore" checked="checked"> Do NOT do mission stats
+      <input id="checked" type="radio" name="StatsCommand" value = "ignore" checked="checked"> 
+      <label for="checked">Do NOT do mission stats</label>
 </p><p>
-      <input type="radio" name="StatsCommand" value = "do"> DO mission stats
+      <input id="do" type="radio" name="StatsCommand" value = "do">
+      <label for="do">DO mission stats</label> 
 </p><p>
-      <input type="radio" name="StatsCommand" value = "undo"> UNDO mission stats
+      <input id="undo" type="radio" name="StatsCommand" value = "undo">
+      <label for="undo">UNDO mission stats</label>  
 </p>
 </div>
 
