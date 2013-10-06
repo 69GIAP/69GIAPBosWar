@@ -1,8 +1,7 @@
 
 <?php
-
 	# load map
-	$query = "SELECT map FROM campaign_maps";
+	$query = "SELECT map FROM maps where simulation = '$game'";
 	
 	if(!$result = $dbc->query($query))
 		{
@@ -15,7 +14,7 @@
 			/* fetch associative array */
 			while ($obj = mysqli_fetch_object($result)) 
 				{
-					$campaignMap 			=	($obj->map);
+					$campaignMap = ($obj->map);
 					echo "<option value=\"". $campaignMap. "\">". $campaignMap. "</option>\n";
 				}
 		}

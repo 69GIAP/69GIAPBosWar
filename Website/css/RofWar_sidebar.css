@@ -38,7 +38,7 @@ ul#sidebar li a.campLogParser {
 	position:relative;
 }
 ul#sidebar li a.campStatus {
-	background:url(../img/RofWar-AdminChangeCampStatus.png) no-repeat scroll top left;
+	background:url(../img/RofWar-AdminConfigureCamp.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;

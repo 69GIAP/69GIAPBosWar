@@ -31,7 +31,7 @@
 													else
 														{
 															echo "	    <li><a href=\"CampaignLogParser.php?btn=campmgmt\" class=\"campLogParser\"><span></span></a></li>\n";
-															echo "		<li><a href=\"CampaignStatus.php?btn=campmgmt\" class=\"campStatus\"><span></span></a></li>\n";															
+															echo "		<li><a href=\"CampaignConfiguration.php?btn=campmgmt\" class=\"campStatus\"><span></span></a></li>\n";															
 														}
 													echo "  </ul>\n";
 												}
@@ -89,7 +89,7 @@
 														echo "<h3>Campaign Management:</h3>\n";
 														echo "	<ul id=\"sidebar\">\n";
 														echo "	    <li><a href=\"CampaignLogParser.php?btn=campmgmt\" class=\"campLogParser\"><span></span></a></li>\n";
-														echo "		<li><a href=\"CampaignStatus.php?btn=campmgmt\" class=\"campStatus\"><span></span></a></li>\n";																	
+														echo "		<li><a href=\"CampaignConfiguration.php?btn=campmgmt\" class=\"campStatus\"><span></span></a></li>\n";																	
 														echo "  </ul>\n";
 													}
 												if ($userRole == "commander")
