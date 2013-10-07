@@ -28,7 +28,7 @@
 					$campaignMap			= $_POST['campaignMap'];
 					
 					# load map location
-					$query = "SELECT map_locations FROM campaign_maps";
+					$query = "SELECT map_locations FROM maps";
 					
 					if(!$result = $dbc->query($query))
 						{die('There was an error running the query [' . $dbc->error . ']');}
