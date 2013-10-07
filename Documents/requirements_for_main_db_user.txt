@@ -8,3 +8,8 @@ But I am still unable to create the new user.  What am I missing?
 
 I presume the campaign user will also need 'FILE' global privileges.
 
+
+*-*-*--*--*-*-*-*--*---**--*--*
+Good question. My boswar_db user is dbo right now. We have to find out by trial and error or google the minimum required rights for creation of a new DB
+The created DB user for the campaign DB has reduced rights right now.
+SELECT, INSERT, UPDATE
