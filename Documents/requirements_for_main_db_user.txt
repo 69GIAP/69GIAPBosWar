@@ -1,0 +1,10 @@
+Until Myata build the 'create new campaign' function, the only global
+privilege my boswar_db user had or needed was 'FILE' (so it could read
+and write files freely).
+
+Now my user has 'SELECT','INSERT','UPDATE','DELETE', 'CREATE', 'DROP'
+'RELOAD', 'FILE', 'ALTER', 'CREATE USER' and 'GRANT OPTION' global privileges.
+But I am still unable to create the new user.  What am I missing?
+
+I presume the campaign user will also need 'FILE' global privileges.
+
