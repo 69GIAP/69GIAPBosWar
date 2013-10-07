@@ -27,14 +27,33 @@
 				# encrypt pasword
 					$password = md5($_POST["password"]);
 				# User role
-					$newUserRole = $_POST["newUserRole"];
-					# get corresponding roleID
-					$sql = "SELECT role_id FROM users_roles WHERE role = '$newUserRole'";
-					$result = $dbc->query($sql);
-					while($row = $result->fetch_assoc()) 
-					 {
-						$newUserRoleId = $row['role_id'];
-					 }					
+					if (empty($_POST['newUserRole']))
+						{
+							$sql="SELECT role_id from users where user_id = $id";
+							$result = $dbc->query($sql);
+							while($row = $result->fetch_assoc()) 
+							 {
+								$newUserRoleId = $row['role_id'];
+							 }
+							 # get corresponding role
+							$sql = "SELECT role FROM users_roles WHERE role_id = '$newUserRoleId'";
+							$result = $dbc->query($sql);
+							while($row = $result->fetch_assoc()) 
+							 {
+								$newUserRole = $row['role'];
+							 }
+						}
+					else
+						{
+							$newUserRole = $_POST["newUserRole"];
+							# get corresponding roleID
+							$sql = "SELECT role_id FROM users_roles WHERE role = '$newUserRole'";
+							$result = $dbc->query($sql);
+							while($row = $result->fetch_assoc()) 
+							 {
+								$newUserRoleId = $row['role_id'];
+							 }
+						}
 						
 				# campaign database
 					$campdb = $_POST["campdb"];
@@ -59,24 +78,30 @@
 				# if a user wants to have his password reset
 				if (($_POST["modify"] == 1))
 					{
-						$sql = "UPDATE users set password = '$password' WHERE user_id = '$id'";
+						$sql = "UPDATE users SET password = '$password' WHERE user_id = '$id'";
 					}
 					else
 				# if a user wants to have another role
 				if (($_POST["modify"] == 2))
 					{
-						$sql = "UPDATE users set role_id = \"$newUserRoleId\" WHERE user_id = '$id'";
+						$sql = "UPDATE users SET role_id = \"$newUserRoleId\" WHERE user_id = '$id'";
 					}
 				# if a user is assigned to a campaign
 				if (($_POST["modify"] == 3))
 					{	
-						$sql = "INSERT into campaign_users (user_id, camp_db) VALUES ('$id', '$campdb')";
+						$sql = "INSERT INTO campaign_users (user_id, camp_db, CoalID) VALUES ('$id', '$campdb', 0)";
 					}
 				# remove a user from a campaign
 				if (($_POST["modify"] == 4))
 					{	
-						$sql = "DELETE FROM campaign_users where user_id = '$id' and camp_db = '$campdb'";
-					}										
+						$sql = "DELETE FROM campaign_users WHERE user_id = '$id' and camp_db = '$campdb'";
+					}
+				# update coalition
+				if (($_POST["modify"] == 5))
+					{	
+						$userCoalitionIdNew = $_POST["userCoalitionIdNew"];
+						$sql = "UPDATE campaign_users SET CoalID = $userCoalitionIdNew WHERE user_id = '$id'";
+					}													
 				
 				# Feedback success or failure
 				if (!mysqli_multi_query($dbc,$sql))
@@ -106,6 +131,21 @@
 				if (($_POST["modify"] == 4))
 					{
 						echo "<br>The user <b>$modifiedUser</b> has been removed from the <b>$campdb</b> campaign successfully!\n";
+					}	
+				if (($_POST["modify"] == 5))
+					{	
+						$query="SELECT Coalitionname from rof_coalitions where CoalID = $userCoalitionIdNew";
+						if(!$result = $dbc->query($query)) {
+							die('There was an error receiving the connnection information [' . $dbc->error . ']');
+						}
+			
+						if ($result = mysqli_query($dbc, $query)) {
+							/* fetch associative array */
+							while ($row = mysqli_fetch_object($result)) {
+								$userCoalitionNew =($row->Coalitionname);
+							}
+						}
+						echo "<br>The user <b>$modifiedUser</b> has been assigned to the <b>$userCoalitionNew</b> coalition successfully!\n";
 					}										
 				?>
 				

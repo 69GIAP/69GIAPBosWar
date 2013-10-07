@@ -36,16 +36,17 @@
     # Print out the contents of the entry 
     while($row = $result->fetch_assoc()) 
      {
-        echo "<div class=\"userRecordFrame\"><p>\n";
+        print "<div class=\"userRecordFrame\"><p>\n";
         print "<b>Username:</b> ".$row['username'] . " <br>\n";	
         print "<b>Email Adress:</b> ".$row['email'] . " <br>\n";
         print "<b>Telephone:</b> ".$row['phone'] . " <br>\n";				
         print "<b>Role:</b> ".$row['role'] . " <br>\n";
-        print "<b>Campaign DB:</b> ".$row['camp_db'] . " <br>\n</div>\n";
+        print "<b>Campaign DB:</b> ".$row['camp_db'] . " <br>\n";
+        print "<b>Coalition:</b> ".$row['CoalID'] . " <br>\n</div>\n";		
      }
      
      echo '<br>Total results: ' . $result->num_rows . " <br>\n";
 
      echo "</p>\n";
-    
+   
 ?>

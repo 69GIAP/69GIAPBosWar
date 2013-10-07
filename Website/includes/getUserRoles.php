@@ -18,6 +18,7 @@
 	
 	if ($result = mysqli_query($dbc, $query)) 
 		{				
+			echo "<option value=\"\" disabled selected>Select New Role</option>\n";	
 			/* fetch associative array */
 			while ($obj = mysqli_fetch_object($result)) 
 				{

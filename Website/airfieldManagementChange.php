@@ -136,7 +136,7 @@
 						# COALITION
 						echo "		<input readonly=\"readonly\" type=\"text\" id=\"world\" value='$airfieldCoalitionName' size=\"24\" maxlength=\"50\" />\n";
 						# hidden field to hand airfieldCoalitionId over through POST
-						echo "		<input readonly=\"readonly\" type=\"hidden\" name='airfieldCoalitionId' id=\"world\" value='$airfieldCoalitionId'/>\n";
+						echo "		<input readonly=\"readonly\" type=\"hidden\" name='airfieldCoalitionId' value='$airfieldCoalitionId'/>\n";
 			
 						# NEW COALITION
 						echo "		<select name=\"airfieldCoalitionIdNew\" id=\"world\">\n";

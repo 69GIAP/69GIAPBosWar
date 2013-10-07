@@ -1,18 +1,18 @@
-// Get campaign coalitions for a pulldown list
+// Get global coalitions for a pulldown list
 // 69giapmyata
-// ver 1.1
+// ver 1.0
 <?php
 
 	# load the campaign coalitions
 
-	$query = "SELECT * FROM rof_coalitions";
+	$query = "SELECT * FROM rof_coalitions order by CoalID";
 	
-	if(!$result = $camp_link->query($query))
+	if(!$result = $dbc->query($query))
 		{
-			die('There was an error running the query [' . $camp_link->error . ']');
+			die('There was an error running the query [' . $dbc->error . ']');
 		}
 	
-	if ($result = mysqli_query($camp_link, $query)) 
+	if ($result = mysqli_query($dbc, $query)) 
 		{				
 			echo "<option value=\"\" disabled selected>Select New Coalition</option>\n";	
 			/* fetch associative array */
