@@ -41,7 +41,6 @@
 							}
 						}
 					
-					
 					# INSERT CAMPAIGN DB INFORMATION TO MASTER TABLE
 					$query 	=	"INSERT INTO campaign_settings (simulation, campaign, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
 					$query .=	"VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaginDBPassword', '$campaignMap', '$campaignMapLocation',1);";
