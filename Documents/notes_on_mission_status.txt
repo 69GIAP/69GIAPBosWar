@@ -1,29 +1,39 @@
 The intended meaning of each mission status is as follows:
-1) initialized - the campaign settings have been completed and all allocated
-   starting units have been placed at the edges of the map.  This is the stage
-   in which the admin sends the two sides their initial group files.  Skip to
-   3) planning.
 
-2) moving units - (after previous mission has been analyzed) moving units are
+1) created - the new campaign database has been created and populated and a user has been
+   selected or created to access this campaign.
+
+2) configured - the campaign settings have been completed.  This includes setting scoring
+   values for possible targets in rof/bos_object_properties, selecting which airfields will
+   be active, selecting which aircraft will be available, and (possibly) selecting which units 
+   will be used.
+
+3) initialized - all allocated starting units have been placed at the edges of the map. 
+   This is the stage in which the admin sends the two sides their initial group files.  
+   Skip to 5) planning because their are no previous moves to worry about. 
+
+4) moving units - (after previous mission has been analyzed) moving units are
    being placed in their new locations and destroyed units are being removed 
    from the map.  New units (if any) are allocated and admin sends the two
    sides their respective updated group files.
 
-3) planning - the commanders submit group files with their plans and admin 
+5) planning - the commanders submit group files with their plans and admin 
    merges these.
 
-4) built - planning is complete and admin has built the mission file for the
+6) built - planning is complete and admin has built the mission file for the
    next mission.
 
-5) analyzing - mission has been flown and mission log files have been analyzed.
+7) analyzing - mission has been flown and mission log files have been analyzed.
    The admin now adds scoring for any special missions that were completed and
    makes other necessary adjustments to the scores.  Perhaps a preliminary mission
    report is posted in the forums at this stage.
 
-6) scored - log analysis and final scoring are completed and made public.  
-   Next step is 2) moving units.
+8) scored - log analysis and final scoring are completed and made public.  
+   Next step is 4) moving units, though logically this also could be done
+   immediately after analyzing while final scoring is taking place.
    
 Tushka
 Sept 24, 2013
 updated Sept 29, splitting final stage into "analyzing" and "scored".
+updated Oct 8,adding "created" and "configured"
 
