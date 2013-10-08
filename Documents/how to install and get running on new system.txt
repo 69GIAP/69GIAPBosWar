@@ -19,3 +19,69 @@ We will have to address this before we put 10 beta testers stuck in front of a l
 I can't do this beacause I can't get it to work.
 
 Thanks in advance.
+
+=-=-=-=-=-=-=
+Tushka's quick start guide
+
+Create a database by the name of boswar_db (or just import one of Myata's sql files... his are the
+ones that begin with 
+CREATE DATABASE  IF NOT EXISTS `boswar_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
+An example is user_roles.sql
+
+(I don't put that in my .sql files because I import most of my files into the example campaign
+db's as well as into boswar.db)
+
+Then import *every* file that is in the Global SQL directory into boswar_db.  Order doesn't matter.
+
+We do not have a precise definition for the user that uses boswar_db.  Each of us is using a different
+user with a different definition.  It doesn't matter much at this stage as long as it has sufficient
+privileges.  I call mine boswar, and it needs at a minimum global FILE and CREATE USER and GRANT 
+privileges.  Boswar has a few others that I added when trying to get the database create function
+working, but I don't know if any of those are actually needed.
+
+Back to the thread.  Once you have imported every GLOBAL SQL file into boswar_db you should have a
+proper working basic database. 
+
+Now put all the Website files into a directory where your webserver can see them (as you have already
+done) and click on RofWar.  (BoSWar is reserved for future developments :) ).
+
+Click on the login button on the menu bar and log in as "admin" with a password of "manager".
+
+On the right you will see three buttons, one of which is "Create New DB".  Click it.
+
+We are doing this because at the moment this function forces you to create a new user.  It won't
+in the future, but it should still have a create a new user function if you don't already have a
+proper one.
+
+Fill in the blanks for the campaign... it doesn't matter what names you choose, but you need to enter
+the host correctly.  I use 'localhost' but MYATA uses an IP and port here.  Use whatever you have
+configured MySQL to recognize.  'localhost' usually works.
+
+Now for the user enter the DB user "rofwar" and the password "rofwar" for the Campaign User.
+
+Select any map and press "Create Campaign" at the bottom.
+
+Now you will have a user that will work with not only your new campaign, but also with all the
+example campaigns.  The only privilege this user doesn't have at the moment but needs is global FILE
+privilege.  That will certainly change sooner rather than later.  For now if you need to write any
+files you'll have to add that from within MySQL.
+
+Be careful not to remove this user unless you are ready to recreate it.  The "!Drop DEB!" function
+currently will not only remove the campaign you select, but the user associated with it.  That will 
+have to change in the future.
+
+Now you are ready to create (in MySQL, not in RoFWar) the example databases.  I will export my
+current copies of their tables so you can import them as one batch per example database and I'll
+add a CREATE DATABASE IF NOT EXISTS line at the top of each.
+
+Then you will be able to run reports and see the start I've gotten on collecting scoring data 
+(by looking at the tables in the campaign db after "DO"ing some scoring... not yet visible as
+a RoFWar function.)
+
+Let me get those example DB's ready for you.
+
+Tushka
+Oct 8, 2013
+
+
+
