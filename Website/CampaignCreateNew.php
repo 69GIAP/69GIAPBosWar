@@ -51,7 +51,7 @@
 				
 					# BUTTON	
 					echo "<fieldset id=\"actions\">\n";
-					echo "		<button type=\"submit\" name =\"createCampaign\" id=\"loginSubmit\" value =\"init\" >Initialize Campaign</button>\n";	
+					echo "		<button type=\"submit\" name =\"createCampaign\" id=\"loginSubmit\" value =\"init\" >Create Campaign</button>\n";	
 					echo "	</fieldset>\n";
 				
 					echo "</form>\n";          
