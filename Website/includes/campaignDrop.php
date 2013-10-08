@@ -47,7 +47,7 @@ session_start();
 	   		{ die('There was an error running the query '.$query.' [' . $dbc->error . ']'); }			
 
 			# drop database
-			$query = "DROP USER $camp_user;";
+			$query	= "DROP USER IF EXISTS $camp_user;";
 			$query .= "DROP DATABASE IF EXISTS $camp_db;";
 			
 			# execute SQL query
