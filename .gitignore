@@ -220,3 +220,5 @@ pip-log.txt
 #################
 *.LCK
 dwsync.xml
+# Visual Office lock on a .doc file
+*.doc#
