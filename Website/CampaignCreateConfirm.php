@@ -23,7 +23,7 @@
 					$newCampaignName 		= $_POST['newCampaignName'];
 					$newCampaignDBName 		= $_POST['newCampaignDatabaseName'];
 					$newCampaignDBUser 		= $_POST['newCampaignDatabaseUser'];
-					$newCampaginDBPassword 	= $_POST['newCampaignDatabasePassword'];
+					$newCampaignDBPassword 	= $_POST['newCampaignDatabasePassword'];
 					$newCampaignDBHost	 	= $_POST['newCampaignDatabaseHost'];					
 					$campaignMap			= $_POST['campaignMap'];
 					
@@ -43,13 +43,13 @@
 					
 					# INSERT CAMPAIGN DB INFORMATION TO MASTER TABLE
 					$query 	=	"INSERT INTO campaign_settings (simulation, campaign, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
-					$query .=	"VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaginDBPassword', '$campaignMap', '$campaignMapLocation',1);";
+					$query .=	"VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocation',1);";
 					
 					# CREATE CAMPAIGN DB
 					$query .= "CREATE DATABASE IF NOT EXISTS $newCampaignDBName ;";
 
 					# GRANT CAMPAIGN DB USER RIGHTS ON NEW DB
-					$query .= "GRANT SELECT, INSERT, UPDATE ON $newCampaignDBName.* TO '$newCampaignDBUser' IDENTIFIED BY '$newCampaginDBPassword' ;";
+					$query .= "GRANT SELECT, INSERT, UPDATE ON $newCampaignDBName.* TO '$newCampaignDBUser'@'$newCampaignDBHost' IDENTIFIED BY '$newCampaignDBPassword' ;";
 					
 					# COPY INITIAL TABLESET FROM BOSWAR_DB TO NEW CAMPAIGN DB
 					$query .= "CREATE TABLE $newCampaignDBName.rof_airfields	SELECT * FROM boswar_db.rof_airfields;";
