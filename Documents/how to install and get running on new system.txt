@@ -1,0 +1,21 @@
+I have now tried to get boswar installed and running on two different computers.
+
+each time I can get as far as a login screen and no further
+
+There is no document that describes the steps needed to get the system working??
+
+What users and databases must exist at at what point in the database?
+
+What scripts are run in what order?
+
+What are the default users and their passwords at the level of database and in the application?
+
+I have tried hacking my way through, changing passwords by sql and still nothing will work.
+
+I cannot get beyond a login or registration screen to do anything useful.
+
+We will have to address this before we put 10 beta testers stuck in front of a login screen, why not do it now?
+
+I can't do this beacause I can't get it to work.
+
+Thanks in advance.
