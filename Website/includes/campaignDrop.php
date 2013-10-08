@@ -38,17 +38,13 @@ session_start();
 				}
 			}
 
-			# delete entry in campaign_settings table
-			$query = "DELETE FROM campaign_settings where camp_db = '$camp_db'";
-			
-			# execute SQL query
-
-			if(!$result = $dbc->query($query))
-	   		{ die('There was an error running the query '.$query.' [' . $dbc->error . ']'); }			
-
+			// drop the user
+			$query	= "DROP USER '$camp_user'@'$camp_host';";
 			# drop database
-			$query	= "DROP USER IF EXISTS $camp_user;";
 			$query .= "DROP DATABASE IF EXISTS $camp_db;";
+			# delete entry in campaign_settings table
+			// this should be the last in the series
+			$query .= "DELETE FROM campaign_settings where camp_db = '$camp_db'";
 			
 			# execute SQL query
 
