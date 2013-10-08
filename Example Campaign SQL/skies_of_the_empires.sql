@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2013 at 07:35 PM
+-- Generation Time: Oct 09, 2013 at 12:06 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `campaign_missions` (
 DROP TABLE IF EXISTS `campaign_settings`;
 CREATE TABLE IF NOT EXISTS `campaign_settings` (
   `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
-  `simulation` varchar(6) NOT NULL,
+  `simulation` enum('RoF','BoS') NOT NULL,
   `campaign` varchar(30) NOT NULL,
   `camp_db` varchar(30) NOT NULL,
   `camp_host` varchar(30) NOT NULL,
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
   `camp_passwd` varchar(30) NOT NULL,
   `map` varchar(30) NOT NULL,
   `map_locations` varchar(40) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '4',
+  `status` enum('1','2','3','4') NOT NULL DEFAULT '4',
   `show_airfield` tinyint(1) NOT NULL,
   `finish_flight_only_landed` tinyint(1) NOT NULL,
   `logpath` varchar(60) NOT NULL,
@@ -143,25 +143,31 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
   `critical_w_gunner` smallint(1) NOT NULL,
   `serious_w_gunner` smallint(1) NOT NULL,
   `light_w_gunner` smallint(1) NOT NULL,
-  `healthy` smallint(1) NOT NULL,
+  `healthy` smallint(1) NOT NULL DEFAULT '0',
   `min_x` mediumint(1) NOT NULL,
   `min_z` mediumint(1) NOT NULL,
   `max_x` mediumint(1) NOT NULL,
   `max_z` mediumint(1) NOT NULL,
-  `visibility` smallint(1) NOT NULL,
-  `duration` smallint(1) NOT NULL,
-  `grounddistance` smallint(1) NOT NULL,
+  `air_detect_distance` smallint(1) unsigned NOT NULL DEFAULT '5000',
+  `ground_detect_distance` smallint(1) unsigned NOT NULL DEFAULT '500',
+  `air_ai_level` enum('1','2','3') NOT NULL DEFAULT '2',
+  `ground_ai_level` enum('1','2','3') NOT NULL DEFAULT '2',
+  `ground_max_speed_kmh` tinyint(1) unsigned NOT NULL DEFAULT '50',
+  `ground_transport_speed_kmh` tinyint(1) unsigned NOT NULL DEFAULT '10',
+  `ground_spacing` tinyint(1) unsigned NOT NULL DEFAULT '5',
+  `lineup_minutes` tinyint(1) unsigned NOT NULL DEFAULT '30',
+  `mission_minutes` tinyint(1) unsigned NOT NULL DEFAULT '90',
   PRIMARY KEY (`id`),
   UNIQUE KEY `campaign` (`campaign`),
   UNIQUE KEY `camp_db` (`camp_db`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `campaign_settings`
 --
 
-INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `logpath`, `log_prefix`, `logfile`, `kia_pilot`, `mia_pilot`, `critical_w_pilot`, `serious_w_pilot`, `light_w_pilot`, `kia_gunner`, `mia_gunner`, `critical_w_gunner`, `serious_w_gunner`, `light_w_gunner`, `healthy`, `min_x`, `min_z`, `max_x`, `max_z`, `visibility`, `duration`, `grounddistance`) VALUES
-(7, 'RoF', 'Skies of the Empires', 'skies_of_the_empires', 'localhost', 'rofwar', 'rofwar', 'Verdun', 'rof_verdun_locations', 3, 0, 1, 'logs', 'missionReportSoE', 'missionReportSoE1.txt', 100, 50, 30, 20, 10, 50, 50, 30, 20, 10, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `logpath`, `log_prefix`, `logfile`, `kia_pilot`, `mia_pilot`, `critical_w_pilot`, `serious_w_pilot`, `light_w_pilot`, `kia_gunner`, `mia_gunner`, `critical_w_gunner`, `serious_w_gunner`, `light_w_gunner`, `healthy`, `min_x`, `min_z`, `max_x`, `max_z`, `air_detect_distance`, `ground_detect_distance`, `air_ai_level`, `ground_ai_level`, `ground_max_speed_kmh`, `ground_transport_speed_kmh`, `ground_spacing`, `lineup_minutes`, `mission_minutes`) VALUES
+(1, 'RoF', 'Skies of the Empires', 'skies_of_the_empires', 'localhost', 'rofwar', 'rofwar', 'Verdun', 'rof_verdun_locations', '3', 0, 1, 'logs', 'missionReportSoE', '', 100, 50, 30, 20, 10, 50, 50, 30, 20, 10, 0, 0, 0, 0, 0, 5000, 500, '2', '2', 50, 10, 5, 30, 90);
 
 -- --------------------------------------------------------
 
@@ -187,22 +193,24 @@ CREATE TABLE IF NOT EXISTS `inbox` (
 
 DROP TABLE IF EXISTS `mission_status`;
 CREATE TABLE IF NOT EXISTS `mission_status` (
-  `id` tinyint(4) unsigned NOT NULL AUTO_INCREMENT,
+  `id` tinyint(1) unsigned NOT NULL AUTO_INCREMENT,
   `mission_status` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `mission_status`
 --
 
 INSERT INTO `mission_status` (`id`, `mission_status`) VALUES
-(1, 'initialized'),
-(2, 'moving units'),
-(3, 'planning'),
-(4, 'built'),
-(5, 'analyzing'),
-(6, 'scored');
+(1, 'created'),
+(2, 'configured'),
+(3, 'initialized'),
+(4, 'moving units'),
+(5, 'planning'),
+(6, 'built'),
+(7, 'analyzing'),
+(8, 'scored');
 
 -- --------------------------------------------------------
 
@@ -253,6 +261,86 @@ INSERT INTO `player_health` (`id`, `health`) VALUES
 (0, 'fit as a fiddle'),
 (1, 'minor injuries'),
 (2, 'serious injuries');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rof_airfields`
+--
+
+DROP TABLE IF EXISTS `rof_airfields`;
+CREATE TABLE IF NOT EXISTS `rof_airfields` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `l1` char(8) DEFAULT 'Airfield',
+  `l2` char(1) DEFAULT '{',
+  `af_Name` varchar(80) DEFAULT 'Airfield with no name',
+  `l3` varchar(200) DEFAULT '  Name = "Airfield with no name";',
+  `af_Index` int(11) DEFAULT '1',
+  `l4` varchar(200) DEFAULT '  Index = 1;',
+  `af_LinkTrid` int(11) DEFAULT '2',
+  `l5` varchar(200) DEFAULT '  LinkTrid = 2;',
+  `af_Xpos` decimal(12,3) DEFAULT '100.000',
+  `l6` varchar(200) DEFAULT '  XPos = 100.000;',
+  `af_Ypos` decimal(12,3) DEFAULT '0.000',
+  `l7` varchar(200) DEFAULT '  YPos = 0.000;',
+  `af_Zpos` decimal(12,3) DEFAULT '0.000',
+  `l8` varchar(200) DEFAULT '  ZPos = 100.000;',
+  `l9` varchar(200) DEFAULT '  XOri = 0.00;',
+  `af_YOri` decimal(5,2) DEFAULT '0.00',
+  `l10` varchar(200) DEFAULT '  YOri = 0.00;',
+  `l11` varchar(200) DEFAULT '  ZOri = 0.00;',
+  `l12` varchar(200) DEFAULT '  Model = "graphicsairfieldsfr_med.mgm";',
+  `l13` varchar(200) DEFAULT '  Script = "LuaScriptsWorldObjectsfr_med.txt";',
+  `af_Country` char(3) DEFAULT '102',
+  `l14` char(16) DEFAULT '  Country = 102;',
+  `l15` varchar(200) DEFAULT '  Desc = "";',
+  `l16` varchar(200) DEFAULT '  Durability = 25000;',
+  `l17` varchar(200) DEFAULT '  DamageReport = 50;',
+  `l18` varchar(200) DEFAULT '  DamageThreshold = 1;',
+  `l19` varchar(200) DEFAULT '  DeleteAfterDeath = 0;',
+  `l20` varchar(200) DEFAULT '  ReturnPlanes = 0;',
+  `l21` varchar(200) DEFAULT '  Hydrodrome = 0;',
+  `l22` varchar(200) DEFAULT '  RepairFriendlies = 0;',
+  `l23` varchar(200) DEFAULT '  RearmFriendlies = 0;',
+  `l24` varchar(200) DEFAULT '  RefuelFriendlies = 0;',
+  `l25` varchar(200) DEFAULT '  RepairTime = 0;',
+  `l26` varchar(200) DEFAULT '  RearmTime = 0;',
+  `l27` varchar(200) DEFAULT '  RefuelTime = 0;',
+  `l28` varchar(200) DEFAULT '  MaintenanceRadius = 1000;',
+  `l29` varchar(200) DEFAULT '}',
+  `l30` varchar(200) DEFAULT '',
+  `l31` varchar(200) DEFAULT 'MCU_TR_Entity',
+  `l32` varchar(200) DEFAULT '{',
+  `mcu_Index` int(11) DEFAULT '2',
+  `l33` varchar(200) DEFAULT '  Index = 2;',
+  `l34` varchar(200) DEFAULT '  Name = "Outines entity";',
+  `l35` varchar(200) DEFAULT '  Desc = "";',
+  `l36` varchar(200) DEFAULT '  Targets = [];',
+  `l37` varchar(200) DEFAULT '  Objects = [];',
+  `l38` varchar(200) DEFAULT '  XPos = 100.000;',
+  `l39` varchar(200) DEFAULT '  YPos = 0.000;',
+  `l40` varchar(200) DEFAULT '  ZPos = 100.000;',
+  `l41` varchar(200) DEFAULT '  XOri = 0.00;',
+  `l42` varchar(200) DEFAULT '  YOri = 0.00;',
+  `l43` varchar(200) DEFAULT '  ZOri = 0.00;',
+  `af_Enabled` char(1) DEFAULT '1',
+  `l44` varchar(200) DEFAULT '  Enabled = 1;',
+  `l45` varchar(200) DEFAULT '  MisObjID = 1;',
+  `l46` varchar(200) DEFAULT '}',
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `rof_airfields`
+--
+
+INSERT INTO `rof_airfields` (`id`, `l1`, `l2`, `af_Name`, `l3`, `af_Index`, `l4`, `af_LinkTrid`, `l5`, `af_Xpos`, `l6`, `af_Ypos`, `l7`, `af_Zpos`, `l8`, `l9`, `af_YOri`, `l10`, `l11`, `l12`, `l13`, `af_Country`, `l14`, `l15`, `l16`, `l17`, `l18`, `l19`, `l20`, `l21`, `l22`, `l23`, `l24`, `l25`, `l26`, `l27`, `l28`, `l29`, `l30`, `l31`, `l32`, `mcu_Index`, `l33`, `l34`, `l35`, `l36`, `l37`, `l38`, `l39`, `l40`, `l41`, `l42`, `l43`, `af_Enabled`, `l44`, `l45`, `l46`) VALUES
+(1, 'Airfield', '{', 'Coxyde', '  Name = "Airfield with no name";', 1, '  Index = 1;', 2, '  LinkTrid = 2;', '100.000', '  XPos = 100.000;', '0.000', '  YPos = 0.000;', '0.000', '  ZPos = 100.000;', '  XOri = 0.00;', '0.00', '  YOri = 0.00;', '  ZOri = 0.00;', '  Model = "graphicsairfieldsfr_med.mgm";', '  Script = "LuaScriptsWorldObjectsfr_med.txt";', '102', '  Country = 102;', '  Desc = "";', '  Durability = 25000;', '  DamageReport = 50;', '  DamageThreshold = 1;', '  DeleteAfterDeath = 0;', '  ReturnPlanes = 0;', '  Hydrodrome = 0;', '  RepairFriendlies = 0;', '  RearmFriendlies = 0;', '  RefuelFriendlies = 0;', '  RepairTime = 0;', '  RearmTime = 0;', '  RefuelTime = 0;', '  MaintenanceRadius = 1000;', '}', '', 'MCU_TR_Entity', '{', 2, '  Index = 2;', '  Name = "Outines entity";', '  Desc = "";', '  Targets = [];', '  Objects = [];', '  XPos = 100.000;', '  YPos = 0.000;', '  ZPos = 100.000;', '  XOri = 0.00;', '  YOri = 0.00;', '  ZOri = 0.00;', '1', '  Enabled = 1;', '  MisObjID = 1;', '}'),
+(2, 'Airfield', '{', 'Dunkerque', '  Name = "Airfield with no name";', 1, '  Index = 1;', 2, '  LinkTrid = 2;', '100.000', '  XPos = 100.000;', '0.000', '  YPos = 0.000;', '0.000', '  ZPos = 100.000;', '  XOri = 0.00;', '0.00', '  YOri = 0.00;', '  ZOri = 0.00;', '  Model = "graphicsairfieldsfr_med.mgm";', '  Script = "LuaScriptsWorldObjectsfr_med.txt";', '102', '  Country = 102;', '  Desc = "";', '  Durability = 25000;', '  DamageReport = 50;', '  DamageThreshold = 1;', '  DeleteAfterDeath = 0;', '  ReturnPlanes = 0;', '  Hydrodrome = 0;', '  RepairFriendlies = 0;', '  RearmFriendlies = 0;', '  RefuelFriendlies = 0;', '  RepairTime = 0;', '  RearmTime = 0;', '  RefuelTime = 0;', '  MaintenanceRadius = 1000;', '}', '', 'MCU_TR_Entity', '{', 2, '  Index = 2;', '  Name = "Outines entity";', '  Desc = "";', '  Targets = [];', '  Objects = [];', '  XPos = 100.000;', '  YPos = 0.000;', '  ZPos = 100.000;', '  XOri = 0.00;', '  YOri = 0.00;', '  ZOri = 0.00;', '1', '  Enabled = 1;', '  MisObjID = 1;', '}'),
+(3, 'Airfield', '{', 'Harlebeeke', '  Name = "Airfield with no name";', 1, '  Index = 1;', 2, '  LinkTrid = 2;', '100.000', '  XPos = 100.000;', '0.000', '  YPos = 0.000;', '0.000', '  ZPos = 100.000;', '  XOri = 0.00;', '0.00', '  YOri = 0.00;', '  ZOri = 0.00;', '  Model = "graphicsairfieldsfr_med.mgm";', '  Script = "LuaScriptsWorldObjectsfr_med.txt";', '102', '  Country = 102;', '  Desc = "";', '  Durability = 25000;', '  DamageReport = 50;', '  DamageThreshold = 1;', '  DeleteAfterDeath = 0;', '  ReturnPlanes = 0;', '  Hydrodrome = 0;', '  RepairFriendlies = 0;', '  RearmFriendlies = 0;', '  RefuelFriendlies = 0;', '  RepairTime = 0;', '  RearmTime = 0;', '  RefuelTime = 0;', '  MaintenanceRadius = 1000;', '}', '', 'MCU_TR_Entity', '{', 2, '  Index = 2;', '  Name = "Outines entity";', '  Desc = "";', '  Targets = [];', '  Objects = [];', '  XPos = 100.000;', '  YPos = 0.000;', '  ZPos = 100.000;', '  XOri = 0.00;', '  YOri = 0.00;', '  ZOri = 0.00;', '1', '  Enabled = 1;', '  MisObjID = 1;', '}'),
+(4, 'Airfield', '{', 'Leffinghe', '  Name = "Airfield with no name";', 1, '  Index = 1;', 2, '  LinkTrid = 2;', '100.000', '  XPos = 100.000;', '0.000', '  YPos = 0.000;', '0.000', '  ZPos = 100.000;', '  XOri = 0.00;', '0.00', '  YOri = 0.00;', '  ZOri = 0.00;', '  Model = "graphicsairfieldsfr_med.mgm";', '  Script = "LuaScriptsWorldObjectsfr_med.txt";', '102', '  Country = 102;', '  Desc = "";', '  Durability = 25000;', '  DamageReport = 50;', '  DamageThreshold = 1;', '  DeleteAfterDeath = 0;', '  ReturnPlanes = 0;', '  Hydrodrome = 0;', '  RepairFriendlies = 0;', '  RearmFriendlies = 0;', '  RefuelFriendlies = 0;', '  RepairTime = 0;', '  RearmTime = 0;', '  RefuelTime = 0;', '  MaintenanceRadius = 1000;', '}', '', 'MCU_TR_Entity', '{', 2, '  Index = 2;', '  Name = "Outines entity";', '  Desc = "";', '  Targets = [];', '  Objects = [];', '  XPos = 100.000;', '  YPos = 0.000;', '  ZPos = 100.000;', '  XOri = 0.00;', '  YOri = 0.00;', '  ZOri = 0.00;', '1', '  Enabled = 1;', '  MisObjID = 1;', '}'),
+(5, 'Airfield', '{', 'St. Marie Cappel', '  Name = "Airfield with no name";', 1, '  Index = 1;', 2, '  LinkTrid = 2;', '100.000', '  XPos = 100.000;', '0.000', '  YPos = 0.000;', '0.000', '  ZPos = 100.000;', '  XOri = 0.00;', '0.00', '  YOri = 0.00;', '  ZOri = 0.00;', '  Model = "graphicsairfieldsfr_med.mgm";', '  Script = "LuaScriptsWorldObjectsfr_med.txt";', '102', '  Country = 102;', '  Desc = "";', '  Durability = 25000;', '  DamageReport = 50;', '  DamageThreshold = 1;', '  DeleteAfterDeath = 0;', '  ReturnPlanes = 0;', '  Hydrodrome = 0;', '  RepairFriendlies = 0;', '  RearmFriendlies = 0;', '  RefuelFriendlies = 0;', '  RepairTime = 0;', '  RearmTime = 0;', '  RefuelTime = 0;', '  MaintenanceRadius = 1000;', '}', '', 'MCU_TR_Entity', '{', 2, '  Index = 2;', '  Name = "Outines entity";', '  Desc = "";', '  Targets = [];', '  Objects = [];', '  XPos = 100.000;', '  YPos = 0.000;', '  ZPos = 100.000;', '  XOri = 0.00;', '  YOri = 0.00;', '  ZOri = 0.00;', '1', '  Enabled = 1;', '  MisObjID = 1;', '}'),
+(6, 'Airfield', '{', 'Zeebrugge', '  Name = "Airfield with no name";', 1, '  Index = 1;', 2, '  LinkTrid = 2;', '100.000', '  XPos = 100.000;', '0.000', '  YPos = 0.000;', '0.000', '  ZPos = 100.000;', '  XOri = 0.00;', '0.00', '  YOri = 0.00;', '  ZOri = 0.00;', '  Model = "graphicsairfieldsfr_med.mgm";', '  Script = "LuaScriptsWorldObjectsfr_med.txt";', '102', '  Country = 102;', '  Desc = "";', '  Durability = 25000;', '  DamageReport = 50;', '  DamageThreshold = 1;', '  DeleteAfterDeath = 0;', '  ReturnPlanes = 0;', '  Hydrodrome = 0;', '  RepairFriendlies = 0;', '  RearmFriendlies = 0;', '  RefuelFriendlies = 0;', '  RepairTime = 0;', '  RearmTime = 0;', '  RefuelTime = 0;', '  MaintenanceRadius = 1000;', '}', '', 'MCU_TR_Entity', '{', 2, '  Index = 2;', '  Name = "Outines entity";', '  Desc = "";', '  Targets = [];', '  Objects = [];', '  XPos = 100.000;', '  YPos = 0.000;', '  ZPos = 100.000;', '  XOri = 0.00;', '  YOri = 0.00;', '  ZOri = 0.00;', '1', '  Enabled = 1;', '  MisObjID = 1;', '}');
 
 -- --------------------------------------------------------
 
@@ -338,20 +426,7 @@ CREATE TABLE IF NOT EXISTS `rof_gunner_scores` (
   `GunnerNegScore` int(1) NOT NULL,
   `GunnerPosScore` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
-
---
--- Dumping data for table `rof_gunner_scores`
---
-
-INSERT INTO `rof_gunner_scores` (`id`, `MissionID`, `CoalID`, `country`, `GunnerName`, `mgid`, `GunningFor`, `GunnerFate`, `GunnerHealth`, `GunnerNegScore`, `GunnerPosScore`) VALUES
-(1, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '=CAI= Itafolgore', 25, '=CAI= Cix', 5, 4, 50, 0),
-(2, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, 'Vladi', 23, '=69.GIAP=STENKA', 5, 4, 50, 0),
-(3, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, 'Vladi', 24, '=69.GIAP=TUSHKA', 1, 0, 0, 0),
-(4, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '-NW-Rossolini', 25, '=CAI= Cix', 5, 4, 50, 0),
-(5, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '-NW-Rossolini', 26, '=CAI= Piddu', 1, 0, 0, 0),
-(6, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '=CAI= Cix', 27, '=CAI= Itafolgore', 1, 0, 0, 0),
-(7, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '-NW-Rossolini', 28, '=CAI= Piddu', 1, 0, 0, 0);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -361,20 +436,47 @@ INSERT INTO `rof_gunner_scores` (`id`, `MissionID`, `CoalID`, `country`, `Gunner
 
 DROP TABLE IF EXISTS `rof_kills`;
 CREATE TABLE IF NOT EXISTS `rof_kills` (
-  `id` smallint(1) unsigned NOT NULL,
-  `MissionID` varchar(50) NOT NULL,
+  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
+  `MissionID` varchar(60) NOT NULL,
   `clocktime` time NOT NULL,
   `attackerID` mediumint(1) NOT NULL,
   `attackerName` varchar(50) NOT NULL,
-  `attackerCountry` smallint(1) NOT NULL,
+  `attackerCountryID` smallint(1) NOT NULL,
   `attackerCoalID` tinyint(1) unsigned NOT NULL,
+  `action` varchar(20) NOT NULL,
   `targetID` mediumint(1) NOT NULL,
+  `targetClass` varchar(8) NOT NULL,
+  `targetType` varchar(50) NOT NULL,
   `targetName` varchar(50) NOT NULL,
-  `targetCountry` smallint(1) unsigned NOT NULL,
+  `targetCountryID` smallint(1) unsigned NOT NULL,
   `targetCoalID` tinyint(1) unsigned NOT NULL,
   `targetValue` smallint(1) NOT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rof_models`
+--
+
+DROP TABLE IF EXISTS `rof_models`;
+CREATE TABLE IF NOT EXISTS `rof_models` (
+  `model` varchar(45) NOT NULL,
+  PRIMARY KEY (`model`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `rof_models`
+--
+
+INSERT INTO `rof_models` (`model`) VALUES
+('albatrosd5'),
+('brequet14'),
+('dfc5'),
+('felixf2a'),
+('fokkerd7'),
+('gothag5');
 
 -- --------------------------------------------------------
 
@@ -390,7 +492,7 @@ CREATE TABLE IF NOT EXISTS `rof_object_properties` (
   `object_value` smallint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `object_type` (`object_type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=234 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=236 ;
 
 --
 -- Dumping data for table `rof_object_properties`
@@ -407,10 +509,10 @@ INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `objec
 (8, 'AeType', 'BAL', 50),
 (9, 'Airco D.H.2', 'PFI', 100),
 (10, 'Airco D.H.4', 'PRE', 200),
-(11, 'Albatros D.II', 'PFI', 199),
+(11, 'Albatros D.II', 'PFI', 100),
 (12, 'Albatros D.II lt', 'PFI', 100),
-(13, 'Albatros D.Va', 'PFI', 100),
-(14, 'Albatros D.III', 'PFI', 100),
+(13, 'Albatros D.III', 'PFI', 100),
+(14, 'Albatros D.Va', 'PFI', 100),
 (15, 'Benz Searchlight', 'VTR', 50),
 (16, 'benz_open', 'VTR', 50),
 (17, 'benz_p', 'VTR', 50),
@@ -451,185 +553,187 @@ INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `objec
 (52, 'bridge_rr90', 'INF', 0),
 (53, 'Bristol F2B (F.II)', 'PRE', 200),
 (54, 'Bristol F2B (F.III)', 'PRE', 200),
-(55, 'British naval 4in AAA gun', 'NAA', 80),
-(56, 'British naval 4in gun', 'NAR', 0),
-(57, 'British navel 6in gun', 'NAR', 0),
-(58, 'Ca1', 'T', 100),
-(59, 'Caquot', 'BAL', 50),
-(60, 'Cargo Ship', 'STR', 300),
-(61, 'Common Bot', 'BOT', 0),
-(62, 'Crossley', 'VTR', 50),
-(63, 'DaimlerAAA', 'VAA', 80),
-(64, 'DaimlerMarienfelde', 'VTR', 50),
-(65, 'DaimlerMarienfelde_S', 'VTR', 50),
-(66, 'DFW C.V', 'PRE', 200),
-(67, 'Drachen', 'BAL', 50),
-(68, 'F.E.2b', 'PRE', 200),
-(69, 'F17M', 'T', 100),
-(70, 'factory_01', 'INF', 0),
-(71, 'factory_02', 'INF', 0),
-(72, 'factory_03', 'INF', 0),
-(73, 'factory_04', 'INF', 0),
-(74, 'factory_05', 'INF', 0),
-(75, 'factory_06', 'INF', 0),
-(76, 'factory_07', 'INF', 0),
-(77, 'factory_08', 'INF', 0),
-(78, 'Felixstowe F2A', 'PSE', 200),
-(79, 'FK96', 'ART', 100),
-(80, 'Flag', 'FLG', 0),
-(81, 'Fokker D.VII', 'PFI', 100),
-(82, 'Fokker D.VIIF', 'PFI', 100),
-(83, 'Fokker D.VIII', 'PFI', 100),
-(84, 'Fokker Dr.I', 'PFI', 100),
-(85, 'Fokker E.III', 'PFI', 100),
-(86, 'FrpenicheAAA', 'SAA', 80),
-(87, 'fr_lrg', 'INF', 0),
-(88, 'fr_med', 'INF', 0),
-(89, 'FT17C', 'T', 100),
-(90, 'G8', 'RLO', 50),
-(91, 'GER light cruiser', 'SCR', 1000),
-(92, 'GER submarine', 'SSU', 500),
-(93, 'GERpenicheAAA', 'SAA', 80),
-(94, 'ger_lrg', 'INF', 0),
-(95, 'ger_med', 'INF', 0),
-(96, 'Gotha G.V', 'PBO', 200),
-(97, 'gunpos01', 'INF', 0),
-(98, 'gunpos_g01', 'INF', 0),
-(99, 'Halberstadt CL.II', 'PRE', 200),
-(100, 'Halberstadt CL.II 200hp', 'PRE', 200),
-(101, 'Halberstadt D.II', 'PFI', 100),
-(102, 'Handley Page 0-400', 'PBO', 200),
-(103, 'HMS light cruiser', 'SCR', 1000),
-(104, 'HMS submarine', 'SSU', 500),
-(105, 'Hotchkiss', 'IMG', 50),
-(106, 'HotchkissAAA', 'IMA', 80),
-(107, 'Leyland', 'VTR', 50),
-(108, 'LeylandS', 'VTR', 50),
-(109, 'LMG08AAA', 'IMA', 80),
-(110, 'LMGO8', 'IMG', 50),
-(111, 'M-Flak', 'IMA', 80),
-(112, 'm13', 'ART', 100),
-(113, 'Merc22', 'VTR', 50),
-(114, 'Mk4F', 'T', 100),
-(115, 'Mk4FGER', 'T', 100),
-(116, 'Mk4M', 'T', 100),
-(117, 'MK4MGER', 'T', 100),
-(118, 'Mk5F', 'T', 100),
-(119, 'Mk5M', 'T', 100),
-(120, 'Nieuport 11.C1', 'PFI', 100),
-(121, 'Nieuport 17.C1', 'PFI', 100),
-(122, 'Nieuport 17.C1 GBR', 'PFI', 100),
-(123, 'Nieuport 28.C1', 'PFI', 100),
-(124, 'Parseval', 'BAL', 50),
-(125, 'Passenger Ship', 'SPA', 300),
-(126, 'Pfalz D.IIIa', 'PFI', 100),
-(127, 'Pfalz D.XII', 'PFI', 100),
-(128, 'pillbox01', 'INF', 0),
-(129, 'pillbox02', 'INF', 0),
-(130, 'pillbox03', 'INF', 0),
-(131, 'pillbox04', 'INF', 0),
-(132, 'Portal', 'INF', 0),
-(133, 'Quad', 'VTR', 50),
-(134, 'Quad Searchlight', 'VTR', 50),
-(135, 'QuadA', 'VTR', -50),
-(136, 'railwaystation_1', 'INF', 0),
-(137, 'railwaystation_2', 'INF', 0),
-(138, 'railwaystation_3', 'INF', 0),
-(139, 'railwaystation_4', 'INF', 0),
-(140, 'railwaystation_5', 'INF', 0),
-(141, 'river_airbase', 'INF', 0),
-(142, 'river_airbase2', 'INF', 0),
-(143, 'river_airbase3', 'INF', 0),
-(144, 'Roucourt', 'INF', 0),
-(145, 'rwstation', 'INF', 0),
-(146, 'S.E.5a', 'PFI', 100),
-(147, 'ship_stat_cargo', 'STR', 150),
-(148, 'ship_stat_pass', 'SPA', 150),
-(149, 'ship_stat_tank', 'STR', 150),
-(150, 'Sopwith Triplane', 'PFI', 100),
-(151, 'Sopwith Camel', 'PFI', 100),
-(152, 'Sopwith Dolphin', 'PFI', 100),
-(153, 'SPAD 13.C1', 'PFI', 100),
-(154, 'SPAD 7.C1 150hp', 'PFI', 100),
-(155, 'SPAD 7.C1 180hp', 'PFI', 100),
-(156, 'StChamond', 'T', 100),
-(157, 'Tanker Ship', 'STR', 300),
-(158, 'tent01', 'INF', 1000),
-(159, 'tent02', 'INF', 0),
-(160, 'tent03', 'INF', 0),
-(161, 'tent_camp01', 'INF', 0),
-(162, 'tent_camp02', 'INF', 0),
-(163, 'tent_camp03', 'INF', 0),
-(164, 'tent_camp04', 'INF', 0),
-(165, 'thornycroftaaa', 'VAA', 80),
-(166, 'TurretBreguet14_1', 'TUR', 0),
-(167, 'TurretBristolF2BF2_1_WM2', 'TUR', 0),
-(168, 'TurretBristolF2BF3_1_WM2', 'TUR', 0),
-(169, 'TurretBW12_1', 'TUR', 0),
-(170, 'TurretBW12_1_WM_Becker_AP', 'TUR', 0),
-(171, 'TurretBW12_1_WM_Becker_HE', 'TUR', 0),
-(172, 'TurretBW12_1_WM_Becker_HEAP', 'TUR', 0),
-(173, 'TurretBW12_1_WM_Twin_Parabellum', 'TUR', 0),
-(174, 'TurretDFWC_1', 'TUR', 0),
-(175, 'TurretDFWC_1_WM_Becker_AP', 'TUR', 0),
-(176, 'TurretDFWC_1_WM_Becker_HE', 'TUR', 0),
-(177, 'TurretDFWC_1_WM_Becker_HEAP', 'TUR', 0),
-(178, 'TurretDFWC_1_WM_Twin_Parabellum', 'TUR', 0),
-(179, 'TurretDH4_1', 'TUR', 0),
-(180, 'TurretDH4_1_WM', 'TUR', 0),
-(181, 'TurretFe2b_1', 'TUR', 0),
-(182, 'TurretFe2b_1_WM', 'TUR', 0),
-(183, 'TurretFelixF2A_2', 'TUR', 0),
-(184, 'TurretFelixF2A_3', 'TUR', 0),
-(185, 'TurretFelixF2A_3_WM', 'TUR', 0),
-(186, 'TurretGothaG5_1', 'TUR', 0),
-(187, 'TurretGothaG5_1_WM_Becker_AP', 'TUR', 0),
-(188, 'TurretGothaG5_1_WM_Becker_HE', 'TUR', 0),
-(189, 'TurretGothaG5_1_WM_Becker_HEAP', 'TUR', 0),
-(190, 'TurretGothaG5_2', 'TUR', 0),
-(191, 'TurretGothaG5_2_WM_Twin_Parabellum', 'TUR', 0),
-(192, 'TurretHalberstadtCL2au_1', 'TUR', 0),
-(193, 'TurretHalberstadtCL2au_1_WM_TwinPar', 'TUR', 0),
-(194, 'TurretHalberstadtCL2_1', 'TUR', 0),
-(195, 'TurretHalberstadtCL2_1_WM_TwinPar', 'TUR', 0),
-(196, 'TurretHP400_1', 'TUR', 0),
-(197, 'TurretHP400_1_WM', 'TUR', 0),
-(198, 'TurretHP400_2', 'TUR', 0),
-(199, 'TurretHP400_2_WM', 'TUR', 0),
-(200, 'TurretHP400_3', 'TUR', 0),
-(201, 'TurretRE8_1', 'TUR', 0),
-(202, 'TurretRE8_1_WM', 'TUR', 0),
-(203, 'TurretRolandC2a_1_WM_Twin_Par', 'TUR', 0),
-(204, 'Wagon_BoxB', 'RWA', 25),
-(205, 'Wagon_BoxNB', 'RWA', 25),
-(206, 'Wagon_G8T', 'RWA', 25),
-(207, 'Wagon_GondolaB', 'RWA', 25),
-(208, 'Wagon_GondolaNB', 'RWA', 25),
-(209, 'Wagon_Pass', 'RWA', 25),
-(210, 'Wagon_PassA', 'RWA', -25),
-(211, 'Wagon_PassAC', 'RWA', 25),
-(212, 'Wagon_PassC', 'RWA', 25),
-(213, 'Wagon_PlatformA7V', 'RWA', 25),
-(214, 'Wagon_PlatformB', 'RWA', 25),
-(215, 'Wagon_PlatformEmptyB', 'RWA', 25),
-(216, 'Wagon_PlatformEmptyNB', 'RWA', 25),
-(217, 'Wagon_PlatformMk4', 'RWA', 25),
-(218, 'Wagon_PlatformNB', 'RWA', 25),
-(219, 'Wagon_TankB', 'RWA', 25),
-(220, 'Wagon_TankNB', 'RWA', 25),
-(221, 'Whippet', 'T', 100),
-(222, 'Windsock', 'FLG', 0),
-(223, 'Sopwith Pup', 'PFI', 100),
-(224, 'German naval 105mm gun', 'NAR', 0),
-(225, 'Roland C.IIa', 'PRE', 200),
-(226, 'German naval 52mm gun', 'NAR', 0),
-(227, 'GER Ship Searchlight', 'LGT', 50),
-(228, 'GBR Searchlight', 'LGT', 50),
-(229, 'HMS Ship Searchlight', 'LGT', 50),
-(230, 'churchE_01', 'INF', 0),
-(231, 'CappyChateau', 'INF', 0),
-(232, 'British naval 12pdr gun', 'NAR', 0),
-(233, 'R.E.8', 'PRE', 200);
+(55, 'British naval 12pdr gun', 'NAR', 0),
+(56, 'British naval 4in AAA gun', 'NAA', 80),
+(57, 'British naval 4in gun', 'NAR', 0),
+(58, 'British navel 6in gun', 'NAR', 0),
+(59, 'Ca1', 'T', 100),
+(60, 'CappyChateau', 'INF', 0),
+(61, 'Caquot', 'BAL', 50),
+(62, 'Cargo Ship', 'STR', 300),
+(63, 'churchE_01', 'INF', 0),
+(64, 'Common Bot', 'HUM', 0),
+(65, 'Crossley', 'VTR', 50),
+(66, 'DaimlerAAA', 'VAA', 80),
+(67, 'DaimlerMarienfelde', 'VTR', 50),
+(68, 'DaimlerMarienfelde_S', 'VTR', 50),
+(69, 'DFW C.V', 'PRE', 200),
+(70, 'Drachen', 'BAL', 50),
+(71, 'F.E.2b', 'PRE', 200),
+(72, 'F17M', 'T', 100),
+(73, 'factory_01', 'INF', 0),
+(74, 'factory_02', 'INF', 0),
+(75, 'factory_03', 'INF', 0),
+(76, 'factory_04', 'INF', 0),
+(77, 'factory_05', 'INF', 0),
+(78, 'factory_06', 'INF', 0),
+(79, 'factory_07', 'INF', 0),
+(80, 'factory_08', 'INF', 0),
+(81, 'Felixstowe F2A', 'PSE', 200),
+(82, 'FK96', 'ART', 100),
+(83, 'Flag', 'FLG', 0),
+(84, 'Fokker D.VII', 'PFI', 100),
+(85, 'Fokker D.VIIF', 'PFI', 100),
+(86, 'Fokker D.VIII', 'PFI', 100),
+(87, 'Fokker Dr.I', 'PFI', 100),
+(88, 'Fokker E.III', 'PFI', 100),
+(89, 'FrpenicheAAA', 'SAA', 80),
+(90, 'fr_lrg', 'INF', 0),
+(91, 'fr_med', 'INF', 0),
+(92, 'FT17C', 'T', 100),
+(93, 'G8', 'RLO', 50),
+(94, 'GBR Searchlight', 'LGT', 50),
+(95, 'GER light cruiser', 'SCR', 1000),
+(96, 'GER Ship Searchlight', 'LGT', 50),
+(97, 'GER submarine', 'SSU', 500),
+(98, 'German naval 105mm gun', 'NAR', 0),
+(99, 'German naval 52mm gun', 'NAR', 0),
+(100, 'GERpenicheAAA', 'SAA', 80),
+(101, 'ger_lrg', 'INF', 0),
+(102, 'ger_med', 'INF', 0),
+(103, 'Gotha G.V', 'PBO', 200),
+(104, 'gunpos01', 'INF', 0),
+(105, 'gunpos_g01', 'INF', 0),
+(106, 'Halberstadt CL.II', 'PRE', 200),
+(107, 'Halberstadt CL.II 200hp', 'PRE', 200),
+(108, 'Halberstadt D.II', 'PFI', 100),
+(109, 'Handley Page 0-400', 'PBO', 200),
+(110, 'HMS light cruiser', 'SCR', 1000),
+(111, 'HMS Ship Searchlight', 'LGT', 50),
+(112, 'HMS submarine', 'SSU', 500),
+(113, 'Hotchkiss', 'IMG', 50),
+(114, 'HotchkissAAA', 'IMA', 80),
+(115, 'Leyland', 'VTR', 50),
+(116, 'LeylandS', 'VTR', 50),
+(117, 'LMG08AAA', 'IMA', 80),
+(118, 'LMGO8', 'IMG', 50),
+(119, 'M-Flak', 'IMA', 80),
+(120, 'm13', 'ART', 100),
+(121, 'Merc22', 'VTR', 50),
+(122, 'Mk4F', 'T', 100),
+(123, 'Mk4FGER', 'T', 100),
+(124, 'Mk4M', 'T', 100),
+(125, 'MK4MGER', 'T', 100),
+(126, 'Mk5F', 'T', 100),
+(127, 'Mk5M', 'T', 100),
+(128, 'Nieuport 11.C1', 'PFI', 100),
+(129, 'Nieuport 17.C1', 'PFI', 100),
+(130, 'Nieuport 17.C1 GBR', 'PFI', 100),
+(131, 'Nieuport 28.C1', 'PFI', 100),
+(132, 'Parseval', 'BAL', 50),
+(133, 'Passenger Ship', 'SPA', 300),
+(134, 'Pfalz D.IIIa', 'PFI', 100),
+(135, 'Pfalz D.XII', 'PFI', 100),
+(136, 'pillbox01', 'INF', 0),
+(137, 'pillbox02', 'INF', 0),
+(138, 'pillbox03', 'INF', 0),
+(139, 'pillbox04', 'INF', 0),
+(140, 'Portal', 'INF', 0),
+(141, 'Quad', 'VTR', 50),
+(142, 'Quad Searchlight', 'VTR', 50),
+(143, 'QuadA', 'VTR', -50),
+(144, 'R.E.8', 'PRE', 200),
+(145, 'railwaystation_1', 'INF', 0),
+(146, 'railwaystation_2', 'INF', 0),
+(147, 'railwaystation_3', 'INF', 0),
+(148, 'railwaystation_4', 'INF', 0),
+(149, 'railwaystation_5', 'INF', 0),
+(150, 'river_airbase', 'INF', 0),
+(151, 'river_airbase2', 'INF', 0),
+(152, 'river_airbase3', 'INF', 0),
+(153, 'Roland C.IIa', 'PRE', 200),
+(154, 'Roucourt', 'INF', 0),
+(155, 'rwstation', 'INF', 0),
+(156, 'S.E.5a', 'PFI', 100),
+(157, 'ship_stat_cargo', 'STR', 150),
+(158, 'ship_stat_pass', 'SPA', 150),
+(159, 'ship_stat_tank', 'STR', 150),
+(160, 'Sopwith Camel', 'PFI', 100),
+(161, 'Sopwith Dolphin', 'PFI', 100),
+(162, 'Sopwith Pup', 'PFI', 100),
+(163, 'Sopwith Triplane', 'PFI', 100),
+(164, 'SPAD 13.C1', 'PFI', 100),
+(165, 'SPAD 7.C1 150hp', 'PFI', 100),
+(166, 'SPAD 7.C1 180hp', 'PFI', 100),
+(167, 'StChamond', 'T', 100),
+(168, 'Tanker Ship', 'STR', 300),
+(169, 'tent01', 'INF', 1000),
+(170, 'tent02', 'INF', 0),
+(171, 'tent03', 'INF', 0),
+(172, 'tent_camp01', 'INF', 0),
+(173, 'tent_camp02', 'INF', 0),
+(174, 'tent_camp03', 'INF', 0),
+(175, 'tent_camp04', 'INF', 0),
+(176, 'thornycroftaaa', 'VAA', 80),
+(177, 'TurretBreguet14_1', 'TUR', 0),
+(178, 'TurretBristolF2BF2_1_WM2', 'TUR', 0),
+(179, 'TurretBristolF2BF3_1_WM2', 'TUR', 0),
+(180, 'TurretBristolF2B_1', 'TUR', 0),
+(181, 'TurretBW12_1', 'TUR', 0),
+(182, 'TurretBW12_1_WM_Becker_AP', 'TUR', 0),
+(183, 'TurretBW12_1_WM_Becker_HE', 'TUR', 0),
+(184, 'TurretBW12_1_WM_Becker_HEAP', 'TUR', 0),
+(185, 'TurretBW12_1_WM_Twin_Parabellum', 'TUR', 0),
+(186, 'TurretDFWC_1', 'TUR', 0),
+(187, 'TurretDFWC_1_WM_Becker_AP', 'TUR', 0),
+(188, 'TurretDFWC_1_WM_Becker_HE', 'TUR', 0),
+(189, 'TurretDFWC_1_WM_Becker_HEAP', 'TUR', 0),
+(190, 'TurretDFWC_1_WM_Twin_Parabellum', 'TUR', 0),
+(191, 'TurretDH4_1', 'TUR', 0),
+(192, 'TurretDH4_1_WM', 'TUR', 0),
+(193, 'TurretFe2b_1', 'TUR', 0),
+(194, 'TurretFe2b_1_WM', 'TUR', 0),
+(195, 'TurretFelixF2A_2', 'TUR', 0),
+(196, 'TurretFelixF2A_3', 'TUR', 0),
+(197, 'TurretFelixF2A_3_WM', 'TUR', 0),
+(198, 'TurretGothaG5_1', 'TUR', 0),
+(199, 'TurretGothaG5_1_WM_Becker_AP', 'TUR', 0),
+(200, 'TurretGothaG5_1_WM_Becker_HE', 'TUR', 0),
+(201, 'TurretGothaG5_1_WM_Becker_HEAP', 'TUR', 0),
+(202, 'TurretGothaG5_2', 'TUR', 0),
+(203, 'TurretGothaG5_2_WM_Twin_Parabellum', 'TUR', 0),
+(204, 'TurretHalberstadtCL2au_1', 'TUR', 0),
+(205, 'TurretHalberstadtCL2au_1_WM_TwinPar', 'TUR', 0),
+(206, 'TurretHalberstadtCL2_1', 'TUR', 0),
+(207, 'TurretHalberstadtCL2_1_WM_TwinPar', 'TUR', 0),
+(208, 'TurretHP400_1', 'TUR', 0),
+(209, 'TurretHP400_1_WM', 'TUR', 0),
+(210, 'TurretHP400_2', 'TUR', 0),
+(211, 'TurretHP400_2_WM', 'TUR', 0),
+(212, 'TurretHP400_3', 'TUR', 0),
+(213, 'TurretRE8_1', 'TUR', 0),
+(214, 'TurretRE8_1_WM', 'TUR', 0),
+(215, 'TurretRolandC2a_1', 'TUR', 0),
+(216, 'TurretRolandC2a_1_WM_TwinPar', 'TUR', 0),
+(217, 'Wagon_BoxB', 'RWA', 25),
+(218, 'Wagon_BoxNB', 'RWA', 25),
+(219, 'Wagon_G8T', 'RWA', 25),
+(220, 'Wagon_GondolaB', 'RWA', 25),
+(221, 'Wagon_GondolaNB', 'RWA', 25),
+(222, 'Wagon_Pass', 'RWA', 25),
+(223, 'Wagon_PassA', 'RWA', -25),
+(224, 'Wagon_PassAC', 'RWA', 25),
+(225, 'Wagon_PassC', 'RWA', 25),
+(226, 'Wagon_PlatformA7V', 'RWA', 25),
+(227, 'Wagon_PlatformB', 'RWA', 25),
+(228, 'Wagon_PlatformEmptyB', 'RWA', 25),
+(229, 'Wagon_PlatformEmptyNB', 'RWA', 25),
+(230, 'Wagon_PlatformMk4', 'RWA', 25),
+(231, 'Wagon_PlatformNB', 'RWA', 25),
+(232, 'Wagon_TankB', 'RWA', 25),
+(233, 'Wagon_TankNB', 'RWA', 25),
+(234, 'Whippet', 'T', 100),
+(235, 'Windsock', 'FLG', 0);
 
 -- --------------------------------------------------------
 
@@ -639,50 +743,53 @@ INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `objec
 
 DROP TABLE IF EXISTS `rof_object_roles`;
 CREATE TABLE IF NOT EXISTS `rof_object_roles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `unit_class` varchar(10) DEFAULT NULL,
-  `role_description` varchar(23) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
+  `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `unit_class` varchar(8) DEFAULT NULL,
+  `role_description` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unit_class` (`unit_class`),
+  UNIQUE KEY `role_description` (`role_description`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `rof_object_roles`
 --
 
 INSERT INTO `rof_object_roles` (`id`, `unit_class`, `role_description`) VALUES
-(1, 'ART', 'Artillery'),
-(2, 'AAA', 'Artillery:Anti-Aircraft'),
+(1, 'AAA', 'Artillery:Anti-Aircraft'),
+(2, 'ART', 'Artillery'),
 (3, 'BOT', 'Bot'),
-(4, 'IMA', 'Infantry: MG AA'),
-(5, 'IMG', 'Infantry:Machine Gun'),
-(6, 'INF', 'Infrastructure'),
-(7, 'NAA', 'Naval:Anti-Aircraft'),
-(8, 'NAR', 'Naval:Artillery'),
-(9, 'PBO', 'Plane:Bomber'),
-(10, 'PFI', 'Plane:Fighter'),
+(4, 'HUM', 'Human'),
+(5, 'IMA', 'Infantry: MG AA'),
+(6, 'IMG', 'Infantry:Machine Gun'),
+(7, 'INF', 'Infrastructure'),
+(8, 'NAA', 'Naval:Anti-Aircraft'),
+(9, 'NAR', 'Naval:Artillery'),
+(10, 'PBO', 'Plane:Bomber'),
 (11, 'PFB', 'Plane:Fighter-Bomber'),
-(12, 'PRE', 'Plane:Reconnaissance'),
-(13, 'PSE', 'Plane:Seaplane'),
-(14, 'PTR', 'Plane:Transport'),
-(15, 'RAA', 'Rail:Anti-Aircraft'),
-(16, 'RCV', 'Rail:Civil Train'),
-(17, 'RLO', 'Rail:Locomotive'),
-(18, 'RWA', 'Rail:Wagon'),
-(19, 'VRI', 'Regular Infantry'),
+(12, 'PFI', 'Plane:Fighter'),
+(13, 'PRE', 'Plane:Reconnaissance'),
+(14, 'PSE', 'Plane:Seaplane'),
+(15, 'PTR', 'Plane:Transport'),
+(16, 'RAA', 'Rail:Anti-Aircraft'),
+(17, 'RCV', 'Rail:Civil Train'),
+(18, 'RLO', 'Rail:Locomotive'),
+(19, 'RWA', 'Rail:Wagon'),
 (20, 'SAA', 'Ship:Anti-Aircraft'),
 (21, 'SBA', 'Ship:Battleship'),
 (22, 'SCR', 'Ship:Cruiser'),
 (23, 'SDE', 'Ship:Destroyer'),
 (24, 'SPB', 'Ship:Patrol Boat'),
 (25, 'SSU', 'Ship:Submarine'),
-(26, 'TAA', 'Tank:Anti-Aircraft'),
-(27, 'TSP', 'Tank:Self-Propelled Gun'),
-(28, 'T', 'Tank:Standard'),
+(26, 'T', 'Tank:Standard'),
+(27, 'TAA', 'Tank:Anti-Aircraft'),
+(28, 'TSP', 'Tank:Self-Propelled Gun'),
 (29, 'TTD', 'Tank:Tank Destroyer'),
 (30, 'TUR', 'Turret'),
 (31, 'VAA', 'Vehicle:Anti-Aircraft'),
 (32, 'VMI', 'Vehicle:Mech. Infantry'),
-(33, 'VTR', 'Vehicle:Transport');
+(33, 'VRI', 'Regular Infantry'),
+(34, 'VTR', 'Vehicle:Transport');
 
 -- --------------------------------------------------------
 
@@ -703,61 +810,7 @@ CREATE TABLE IF NOT EXISTS `rof_pilot_scores` (
   `PilotNegScore` int(1) NOT NULL,
   `PilotPosScore` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
-
---
--- Dumping data for table `rof_pilot_scores`
---
-
-INSERT INTO `rof_pilot_scores` (`id`, `MissionID`, `CoalID`, `country`, `PilotName`, `mpid`, `PilotFate`, `PilotHealth`, `PilotNegScore`, `PilotPosScore`) VALUES
-(1, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '=69.GIAP=REDVO', 1, 5, 4, 100, 0),
-(2, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, 'Nightwitch', 2, 5, 4, 100, 0),
-(3, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, 'Charlie Chap', 4, 1, 0, 0, 0),
-(4, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '=69.GIAP=BOOS', 5, 5, 4, 100, 0),
-(5, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, 'Tanker', 7, 1, 0, 0, 0),
-(6, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '=69.GIAP=YARICK', 9, 5, 4, 100, 0),
-(7, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '=69.GIAP=REZNOV', 10, 5, 4, 100, 0),
-(8, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '242Sqn_Prof', 15, 1, 0, 0, 0),
-(9, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, 'Algy Dunkersworth', 17, 1, 0, 0, 0),
-(10, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, 'BSS_DrGlow', 19, 0, 1, 10, 0),
-(11, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '-NW-Rossolini', 20, 5, 4, 100, 0),
-(12, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '=69GIAP=ALEXEJ', 21, 2, 0, 0, 0),
-(13, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '=CAI= Kampf', 0, 5, 4, 100, 0),
-(14, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '_BT_Shogun', 3, 1, 0, 0, 0),
-(15, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '=CAI= Itafolgore', 6, 5, 4, 100, 0),
-(16, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '=CAI= Cix', 8, 1, 0, 0, 0),
-(17, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, 'BT_Colosky', 11, 1, 0, 0, 0),
-(18, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '=CAI= Alatriste', 12, 1, 0, 0, 0),
-(19, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '=CAI= Torec', 13, 1, 0, 0, 0),
-(20, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '=CAI= Gladio', 14, 1, 0, 0, 0),
-(21, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '_BT_Patwar', 16, 1, 0, 0, 0),
-(22, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '=CAI= Diablo85', 18, 1, 0, 0, 0),
-(23, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '=CAI= Piddu', 22, 1, 0, 0, 0),
-(24, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '=CAI= Rudy', 23, 5, 4, 100, 0),
-(25, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 0, 0, '=CAI= Roby', 24, 0, 1, 10, 0),
-(26, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '=69.GIAP=STENKA', 0, 5, 4, 100, 0),
-(27, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, 'Algy Dunkersworth', 1, 1, 0, 0, 0),
-(28, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, 'Charlie Chap', 3, 1, 0, 0, 0),
-(29, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '=69.GIAP=TUSHKA', 4, 5, 4, 100, 0),
-(30, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '=69.GIAP=REDVO', 10, 5, 4, 100, 0),
-(31, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, 'Tanker', 12, 1, 0, 0, 0),
-(32, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, 'BSS_DrGlow', 13, 1, 0, 0, 0),
-(33, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '=69.GIAP=YARICK', 17, 5, 4, 100, 0),
-(34, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '242Sqn_Prof', 18, 1, 0, 0, 0),
-(35, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '=69.GIAP=GRACH', 19, 0, 1, 10, 0),
-(36, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '=CAI= Piddu', 2, 1, 0, 0, 0),
-(37, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '=CAI= Alatriste', 5, 1, 0, 0, 0),
-(38, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '=CAI= Kampf', 6, 5, 4, 100, 0),
-(39, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '=CAI= Pochill', 7, 1, 0, 0, 0),
-(40, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '_BT_Shogun', 8, 5, 4, 100, 0),
-(41, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '=CAI= Sonk', 9, 1, 0, 0, 0),
-(42, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '=CAI= Itafolgore', 11, 1, 0, 0, 0),
-(43, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '=CAI= Rudy', 14, 1, 0, 0, 0),
-(44, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, 'Colosky', 15, 1, 0, 0, 0),
-(45, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '=CAI= Cix', 16, 5, 4, 100, 0),
-(46, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '=CAI= Gladio', 20, 0, 1, 10, 0),
-(47, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '=CAI= Diablo85', 21, 1, 0, 0, 0),
-(48, 'SKIES OF THE EMPIRES 1919.mission-1919.1.2-8:30:0', 0, 0, '-NW-Rossolini', 22, 5, 4, 100, 0);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -930,30 +983,6 @@ CREATE TABLE IF NOT EXISTS `supply_points` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `supplypointName` (`supplypointName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `test_models`
---
-
-DROP TABLE IF EXISTS `test_models`;
-CREATE TABLE IF NOT EXISTS `test_models` (
-  `model` varchar(45) NOT NULL,
-  PRIMARY KEY (`model`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `test_models`
---
-
-INSERT INTO `test_models` (`model`) VALUES
-('albatrosd5.mgm'),
-('brequet14'),
-('dfc5'),
-('felixf2a.mgm'),
-('fokkerd7'),
-('gothag5');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
