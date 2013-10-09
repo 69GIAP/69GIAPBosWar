@@ -9,6 +9,7 @@ function SHIPS($type) {
    if ($type == "ship_stat_pass") { $targetdesc = "stationary passenger ship"; } 
    elseif ($type == "ship_stat_tank") { $targetdesc = "stationary tanker ship"; } 
    elseif ($type == "ship_stat_cargo") { $targetdesc = "stationary cargo ship"; } 
+   elseif ($type == "Tanker Ship") { $targetdesc = "tanker ship"; }
    elseif ($type == "HMS submarine") { $targetdesc = "submarine"; }
    elseif ($type == "GER submarine") { $targetdesc = "submarine"; } 
    elseif ($type == "HMS cruiser") { $targetdesc = "cruiser"; }
