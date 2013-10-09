@@ -15,7 +15,6 @@ function SHIPS($type) {
    elseif ($type == "GER cruiser") { $targetdesc = "cruiser"; }
    elseif ($type == "frpenicheaaa") { $targetdesc = "peniche AAA barge";}
    elseif ($type == "gerpenicheaaa") { $targetdesc = "peniche AAA barge";}
-   elseif ($type == "BotGunnerHCL2") { $targetdesc = "Halberstadt CL.II gunner"; }
    else { $targetdesc = "unexpected ship type $type<br>"; }
 
 }
