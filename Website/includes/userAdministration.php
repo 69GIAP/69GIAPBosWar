@@ -1,7 +1,7 @@
 <?php
 	# include the form to manage users
 	include ( 'includes/userManagementForm.php' );
-
+/*
     # get the SESSION variables for the users
     # $userRole	= $_SESSION['userRole'];
 	# $userId	= $_SESSION['user_id'];	
@@ -48,5 +48,6 @@
      echo '<br>Total results: ' . $result->num_rows . " <br>\n";
 
      echo "</p>\n";
-   
+ */
+
 ?>

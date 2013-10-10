@@ -23,7 +23,15 @@
 				
 				# bind post variable into variables
 				#  User id
-					$id = $_POST["userId"];			
+					$id = $_POST["userId"];
+
+				# Coalition NEW
+				if (empty($_POST["userCoalitionIdNew"]))
+				{
+					$_POST["userCoalitionIdNew"] = '0';
+				}
+				$userCoalitionIdNew = $_POST["userCoalitionIdNew"];
+						
 				# encrypt pasword
 					$password = md5($_POST["password"]);
 				# User role
@@ -86,10 +94,33 @@
 					{
 						$sql = "UPDATE users SET role_id = \"$newUserRoleId\" WHERE user_id = '$id'";
 					}
-				# if a user is assigned to a campaign
+				# if a user is assigned to a campaign / update coalition
 				if (($_POST["modify"] == 3))
-					{	
-						$sql = "INSERT INTO campaign_users (user_id, camp_db, CoalID) VALUES ('$id', '$campdb', 0)";
+					{
+						# check if an entry exists
+						$sql = "SELECT user_id from campaign_users where user_id = '$id' and camp_db = '$campdb'";
+						
+						if(!$result = $dbc->query($sql))
+							{die('There was an error running the query [' . $dbc->error . ']');}
+							
+						if ($result = mysqli_query($dbc, $sql)) 
+						{				
+							/* fetch associative array */
+							while ($obj = mysqli_fetch_object($result)) 
+								{
+									$exists=($obj->user_id);
+								}
+							# if an entry exists we update the coalition Id, if not we create a new entry. This avoids duplicate conflicting entries
+							if (isset($exists))
+								{
+									$sql = "UPDATE campaign_users SET CoalID = '$userCoalitionIdNew' WHERE user_id = '$id' and camp_db = '$campdb'";
+								}
+							else 
+								{
+									$sql = "INSERT INTO campaign_users (user_id, camp_db, CoalID) VALUES ('$id', '$campdb', '$userCoalitionIdNew')";
+								}
+						}
+				
 					}
 				# remove a user from a campaign
 				if (($_POST["modify"] == 4))
@@ -99,14 +130,13 @@
 				# update coalition
 				if (($_POST["modify"] == 5))
 					{	
-						$userCoalitionIdNew = $_POST["userCoalitionIdNew"];
-						$sql = "UPDATE campaign_users SET CoalID = $userCoalitionIdNew WHERE user_id = '$id'";
+						$sql = "UPDATE campaign_users SET CoalID = $userCoalitionIdNew WHERE user_id = '$id' and camp_db = '$campdb'";
 					}													
 				
 				# Feedback success or failure
 				if (!mysqli_multi_query($dbc,$sql))
 					{
-						die('<br>There was an error running the query: ' . mysqli_error($dbc));
+						die("<br>There was an error running the query: $sql. <br>" . mysqli_error($dbc));
 					}
 				  
 				if (($_POST["modify"] == 0)) 
@@ -126,14 +156,6 @@
 					}
 				if (($_POST["modify"] == 3))
 					{
-						echo "<br>The user <b>$modifiedUser</b> has been assigned to the <b>$campdb</b> campaign successfully!\n";
-					}
-				if (($_POST["modify"] == 4))
-					{
-						echo "<br>The user <b>$modifiedUser</b> has been removed from the <b>$campdb</b> campaign successfully!\n";
-					}	
-				if (($_POST["modify"] == 5))
-					{	
 						$query="SELECT Coalitionname from rof_coalitions where CoalID = $userCoalitionIdNew";
 						if(!$result = $dbc->query($query)) {
 							die('There was an error receiving the connnection information [' . $dbc->error . ']');
@@ -145,8 +167,12 @@
 								$userCoalitionNew =($row->Coalitionname);
 							}
 						}
-						echo "<br>The user <b>$modifiedUser</b> has been assigned to the <b>$userCoalitionNew</b> coalition successfully!\n";
-					}										
+						echo "<br>The user <b>$modifiedUser</b> has been assigned to the <b>$userCoalitionNew</b> coalition in the <b>$campdb</b> campaign successfully!\n";
+					}
+				if (($_POST["modify"] == 4))
+					{
+						echo "<br>The user <b>$modifiedUser</b> has been removed from the <b>$campdb</b> campaign successfully!\n";
+					}	
 				?>
 				
             </div>
