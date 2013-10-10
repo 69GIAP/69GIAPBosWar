@@ -26,7 +26,17 @@ while($row = mysqli_fetch_array($result))
 	  	print "<div class=\"userRecordFrame\">";
 		print "<p>\n";
   		print "<b>User ID:</b> " . $row['user_id'] . "<br>\n";
-        print "<b>Username:</b> ".$row['username'] . " <br>\n";	
+        print "<b>Username:</b> ".$row['username'] . " <br>\n";
+        
+		# get Role Name for Display
+		$RoleID = $row['role_id'];			
+		$sql3 = "SELECT role from users_roles where role_id = $RoleID";
+			$result1 = mysqli_query($dbc,$sql3);
+			while($row1 = mysqli_fetch_array($result1))
+			{
+				$roleName = $row1['role'];
+			}
+        print "<b>User Role:</b> ".$roleName." <br>\n";			
         print "<b>Email Adress:</b> ".$row['email'] . " <br>\n";
         print "<b>Telephone:</b> ".$row['phone'] . " <br>\n";
   }

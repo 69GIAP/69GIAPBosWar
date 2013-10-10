@@ -358,6 +358,13 @@ input[type=checkbox]:checked + label:before {
 
 #userDetails {
 	position: absolute;
-	top: 210px;
+	top: 212px;
 	left: 750px;
+}
+
+.userRecordFrame {
+	border: solid 1px #8BAAC9;;
+	width: 400px;
+	margin: 0 0 10px 0;
+	padding: 5px 15px 10px 5px;
 }
