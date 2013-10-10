@@ -45,8 +45,15 @@ $result = mysqli_query($dbc,$sql2);
 
 while($row = mysqli_fetch_array($result))
   {
-        print "<b>Campaign DB:</b> ".$row['camp_db'] . " <b>Coalition:</b> ".$row['CoalID'] . "<br>\n";
-  }
+	  $CoalId = $row['CoalID'];
+	  $sql4 = "SELECT Coalitionname from rof_coalitions where CoalId = $CoalId";
+			$result2 = mysqli_query($dbc,$sql4);
+			while($row2 = mysqli_fetch_array($result2))
+			{
+				$CoalName = $row2['Coalitionname'];
+			}
+		print "<b>Campaign DB:</b> ".$row['camp_db'] . " <b>Coalition:</b> ".$CoalName . "<br>\n";
+	}
 		print "</p>\n";
 		print "</div>\n";
 
