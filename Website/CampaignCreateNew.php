@@ -35,11 +35,40 @@
 					echo "		<input type=\"text\" name=\"newCampaignDatabaseName\" id=\"database\" placeholder=\"Please enter the campaigns database name.\" value='' size=\"24\" maxlength=\"50\" />\n";
 					# NEW CAMPAIGN HOST
 					echo "		<input type=\"text\" name=\"newCampaignDatabaseHost\" id=\"database\" placeholder=\"Please enter the host (localhost / IP).\" value='' size=\"24\" maxlength=\"50\" />\n";	
-					echo "<h3>Campaign User</h3>\n";
-					# NEW CAMPAIGN DATABASE USER
-					echo "		<input type=\"text\" name=\"newCampaignDatabaseUser\" id=\"username\" placeholder=\"Please enter the campaign DB user.\" value='' size=\"24\" maxlength=\"50\" />\n";	
-					# NEW CAMPAIGN DATABASE PASSWORD
-					echo "		<input type=\"text\" name=\"newCampaignDatabasePassword\" id=\"password\" placeholder=\"Please enter the campaign users password.\" value='' size=\"24\" maxlength=\"50\" />\n";
+					echo "<h3>Database User</h3>\n";
+					
+					# check if there is already a user stored in the campaign_settings table
+					$query = "SELECT camp_user, camp_passwd FROM campaign_settings where camp_user != '' GROUP BY camp_user";
+					
+					if(!$result = $dbc->query($query))
+					{die('There was an error running the query [' . $dbc->error . ']');}
+				
+					if ($result = mysqli_query($dbc, $query)) 
+					{				
+						/* fetch associative array */
+						while ($obj = mysqli_fetch_object($result)) 
+							{
+								$campUser	=($obj->camp_user);
+								$campUserPW	=($obj->camp_passwd);
+							}
+						if (empty($campUser))
+						{
+							# NEW CAMPAIGN DATABASE USER
+							echo "		<input type=\"text\" name=\"newCampaignDatabaseUser\" id=\"username\" placeholder=\"Please enter the campaign DB user.\" value='' size=\"24\" maxlength=\"50\" />\n";	
+							# NEW CAMPAIGN DATABASE PASSWORD
+							echo "		<input type=\"text\" name=\"newCampaignDatabasePassword\" id=\"password\" placeholder=\"Please enter the campaign users password.\" value='' size=\"24\" maxlength=\"50\" />\n";
+						}
+						else
+						{
+							# CHOOSE CAMPAIGN MAP
+							echo "		<select name=\"newCampaignDatabaseUser\" id=\"username\">\n";
+							include 'includes/getDbUsers.php';
+							echo "		</select>\n";
+							echo "		<input type=\"hidden\" name=\"newCampaignDatabasePassword\" id=\"password\" value='' />\n";	
+						}
+					}
+					
+					
 				
 					echo "<h3>Campaign Map</h3>\n";
 					# CHOOSE CAMPAIGN MAP

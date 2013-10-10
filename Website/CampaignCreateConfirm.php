@@ -23,7 +23,22 @@
 					$newCampaignName 		= $_POST['newCampaignName'];
 					$newCampaignDBName 		= $_POST['newCampaignDatabaseName'];
 					$newCampaignDBUser 		= $_POST['newCampaignDatabaseUser'];
-					$newCampaignDBPassword 	= $_POST['newCampaignDatabasePassword'];
+					# if no PW was provided a current DB user was chosen so we need the stored PW
+					if (empty($_POST['newCampaignDatabasePassword']))
+						{
+							$sql = "SELECT distinct(camp_passwd) from campaign_settings where camp_user = '$newCampaignDBUser'";
+							if(!$result = $dbc->query($sql))
+								{die('There was an error running the query [' . $dbc->error . ']');}
+								while ($obj = mysqli_fetch_object($result)) 
+								{
+									$newCampaignDBPassword	=	($obj->camp_passwd);
+								}
+						}
+					else
+						{
+							$newCampaignDBPassword 	= $_POST['newCampaignDatabasePassword'];
+						}
+
 					$newCampaignDBHost	 	= $_POST['newCampaignDatabaseHost'];					
 					$campaignMap			= $_POST['campaignMap'];
 					
@@ -68,29 +83,29 @@ $query .= "CREATE TABLE IF NOT EXISTS $newCampaignDBName.rof_pilot_scores LIKE b
 $query .= "CREATE TABLE IF NOT EXISTS $newCampaignDBName.supply_points LIKE boswar_db.supply_points;";
 // Now do the rest of the tables that need to be populated
 $query .= "CREATE TABLE IF NOT EXISTS $newCampaignDBName.mission_status LIKE boswar_db.mission_status;";
-$query .="INSERT INTO $newCampaignDBName.mission_status SELECT * FROM boswar_db.mission_status;";
+$query .= "INSERT INTO $newCampaignDBName.mission_status SELECT * FROM boswar_db.mission_status;";
 $query .= "CREATE TABLE IF NOT EXISTS $newCampaignDBName.player_fate LIKE boswar_db.player_fate;";
-$query .="INSERT INTO $newCampaignDBName.player_fate SELECT * FROM boswar_db.player_fate;";
+$query .= "INSERT INTO $newCampaignDBName.player_fate SELECT * FROM boswar_db.player_fate;";
 $query .= "CREATE TABLE IF NOT EXISTS $newCampaignDBName.player_health LIKE boswar_db.player_health;";
-$query .="INSERT INTO $newCampaignDBName.player_health SELECT * FROM boswar_db.player_health;";
+$query .= "INSERT INTO $newCampaignDBName.player_health SELECT * FROM boswar_db.player_health;";
 $query .= "CREATE TABLE IF NOT EXISTS $newCampaignDBName.rof_coalitions LIKE boswar_db.rof_coalitions;";
-$query .="INSERT INTO $newCampaignDBName.rof_coalitions SELECT * FROM boswar_db.rof_coalitions;";
+$query .= "INSERT INTO $newCampaignDBName.rof_coalitions SELECT * FROM boswar_db.rof_coalitions;";
 $query .= "CREATE TABLE IF NOT EXISTS $newCampaignDBName.rof_countries LIKE boswar_db.rof_countries;";
-$query .="INSERT INTO $newCampaignDBName.rof_countries SELECT * FROM boswar_db.rof_countries;";
+$query .= "INSERT INTO $newCampaignDBName.rof_countries SELECT * FROM boswar_db.rof_countries;";
 $query .= "CREATE TABLE IF NOT EXISTS $newCampaignDBName.rof_object_properties LIKE boswar_db.rof_object_properties;";
-$query .="INSERT INTO $newCampaignDBName.rof_object_properties SELECT * FROM boswar_db.rof_object_properties;";
+$query .= "INSERT INTO $newCampaignDBName.rof_object_properties SELECT * FROM boswar_db.rof_object_properties;";
 $query .= "CREATE TABLE IF NOT EXISTS $newCampaignDBName.rof_object_roles LIKE boswar_db.rof_object_roles;";
-$query .="INSERT INTO $newCampaignDBName.rof_object_roles SELECT * FROM boswar_db.rof_object_roles;";
+$query .= "INSERT INTO $newCampaignDBName.rof_object_roles SELECT * FROM boswar_db.rof_object_roles;";
 // create the selected map_locations table
 $query .= "CREATE TABLE IF NOT EXISTS $newCampaignDBName.$campaignMapLocations LIKE boswar_db.$campaignMapLocations;";
 $query .= "CREATE TABLE IF NOT EXISTS $newCampaignDBName.campaign_settings LIKE boswar_db.campaign_settings;";
-$query .="INSERT INTO $newCampaignDBName.campaign_settings (simulation, campaign, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
-$query .=	"VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
+$query .= "INSERT INTO $newCampaignDBName.campaign_settings (simulation, campaign, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
+$query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
 # INSERT CAMPAIGN DB INFORMATION TO MASTER TABLE
 // this should be at the end of the creation chain
 // so it won't be created if there is an error
-$query 	.=	"INSERT INTO campaign_settings (simulation, campaign, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
-$query .=	"VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
+$query .= "INSERT INTO campaign_settings (simulation, campaign, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
+$query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
 
 // Tushka now returns you to your original indentation scheme
 
@@ -112,6 +127,7 @@ $query .=	"VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaig
 					
 					# forward to campaign configuration screen
 					$_SESSION['camp_db'] = $newCampaignDBName;
+					
 					header("Location: CampaignConfiguration.php?btn=home");
 
                 ?>
