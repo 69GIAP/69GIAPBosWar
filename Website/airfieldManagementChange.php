@@ -131,9 +131,8 @@
 						while ($coalObj = mysqli_fetch_object($coalName)) {
 							$airfieldCoalitionName =($coalObj->coalitionname);
 						}
-						echo "	<p>Airfield Coalition:</p><br>\n";
+						echo "	<p>Airfield Coalition: <b>$airfieldCoalitionName</b></p><br>\n";
 						# COALITION
-						echo "		<input readonly=\"readonly\" type=\"text\" id=\"world\" value='$airfieldCoalitionName' size=\"24\" maxlength=\"50\" />\n";
 						# hidden field to hand airfieldCoalitionId over through POST
 						echo "		<input readonly=\"readonly\" type=\"hidden\" name='airfieldCoalitionId' value='$airfieldCoalitionId'/>\n";
 						# NEW COALITION
