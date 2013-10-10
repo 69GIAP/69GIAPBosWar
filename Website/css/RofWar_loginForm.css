@@ -161,6 +161,14 @@ fieldset
 {
     background-position: 5px -327px !important;
 }
+#email
+{
+    background-position: 5px -377px !important;
+}
+#phone
+{
+    background-position: 5px -427px !important;
+}
 
 #inputs input:focus, #none input:focus
 {

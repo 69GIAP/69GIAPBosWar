@@ -16,32 +16,20 @@
         <div id="container">
     
             <div id="content">
-            
-                <p><b>Register:</b></p>
-                 
-                <fieldset class="boswar"> 
-                    <form name="register" action="register.php" method="post">
-                        <ul>
-                            <li> <label for="username">User Name:</label>
-                            <input type="text" name="username" id="username" size="30" />
-                            </li>
-                            <li> <label for="email">Email Address:</label>
-                            <input type="text" name="email" id="email" size="30" />
-                            </li>
-                            <li> <label for="password">Password:</label>
-                            <input type="password" name="password" id="password" size="30" />
-                            </li>
-                            <li> <label for="password2">Repeat Password:</label>
-                            <input type="password" name="password2" id="password2" size="30" />
-                            </li>
-                            <li> <label for="phone">Telephone Number:</label>
-                            <input type="text" name="phone" id="phone" size="30" />
-                            </li>                        
-                            <li><label for="submit"></label>
-                            <button type="submit" id="submit">Submit</button></li>
-                        <ul>
-                    </form>
-                </fieldset>
+
+                <form id="loginForm" name="login" action="register.php" method="post">
+                    <h1 id="h1Form">Register</h1>
+                    <fieldset id="inputs">
+                        <input id="username" type="text" name="username" placeholder="Choose Username" autofocus required> 
+                        <input id="email" type="text" name="email" placeholder="Email Address" autofocus required>                           
+                        <input id="password" type="password"  name="password" placeholder="Choose Password" required>
+                        <input id="password" type="password"  name="password2" placeholder="Repeat Password" required> 
+                        <input id="phone" type="text"  name="phone" placeholder="Telephone Number:" required>                                                
+                    </fieldset>
+                    <fieldset id="actions">
+                        <input type="submit" id="loginSubmit" value="Submit">
+                    </fieldset>
+                </form>                
                 
             </div>
     

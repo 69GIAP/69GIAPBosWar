@@ -48,9 +48,9 @@
 					# if user does not exists a new entry will be stored to the table
 					if($values == 0) 
 						{
-						$userRole = "viewer";
+						$userRoleID = "3";
 						
-						$entry = "INSERT INTO users (username, password, email, phone, role_id) VALUES ('$userName', '$password', '$email', '$phone', '$userRole')"; 
+						$entry = "INSERT INTO users (username, password, email, phone, role_id) VALUES ('$userName', '$password', '$email', '$phone', '$userRoleID')"; 
 						$entries = mysqli_query($dbc, $entry); 
 					
 					# check if user was added correctly
