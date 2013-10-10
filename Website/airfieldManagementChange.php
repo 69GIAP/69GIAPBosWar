@@ -99,29 +99,28 @@
 						}
 					}
 
-					echo "<fieldset id=\"inputs\">\n";							
+						echo "<fieldset id=\"inputs\">\n";							
 						# AIRFIELD NAME
 						echo "	<input readonly=\"readonly\" type=\"hidden\" name='airfieldName' value='$airfieldName' size=\"24\" maxlength=\"50\" />\n";
-						
-						# NEW MODEL SELECT
-						echo "		<select name=\"airfieldModelAdd\" id=\"aircraft\">\n";
-									# include the drop down list
-									include 'includes/getAirfieldCampaignModels.php'; 
-						echo "		</select>\n";
-						
-						# NEW MODEL QUANTITY
-						echo "		<input type=\"text\" name=\"airfieldModelAddQuantity\" id=\"number\" placeholder=\"Quantitiy To Add\" value='' size=\"24\" maxlength=\"50\" />\n";
-						
+								# NEW MODEL SELECT
+						echo "	<select name=\"airfieldModelAdd\" id=\"aircraft\">\n";
+								# include the drop down list
+								include 'includes/getAirfieldCampaignModels.php'; 
+						echo "	</select>\n";
+								# NEW MODEL QUANTITY
+						echo "	<input type=\"text\" name=\"airfieldModelAddQuantity\" id=\"number\" placeholder=\"Quantitiy To Add\" value='' size=\"24\" maxlength=\"50\" />\n";
 						# hidden field to hand airfieldCoalitionId over through POST
-						echo "		<input readonly=\"readonly\" type=\"hidden\" name='airfieldCoalitionId' value='$airfieldCoalitionId'/>\n";	
-					echo "	</fieldset>";
-					echo "	<fieldset id=\"actions\">";
-						# BUTTON ADD
-						echo "		<button type=\"submit\" name =\"updateAirfield\" id=\"submitHalfsize\" value =\"7\" >Add</button>\n";
-						# BUTTON REMOVE
-						echo "		<button type=\"submit\" name =\"updateAirfield\" id=\"submitHalfsize\" value =\"8\" >Remove</button>\n";
-					echo "</fieldset>\n";
-					echo "<fieldset id=\"inputs\">\n";										
+						echo "	<input readonly=\"readonly\" type=\"hidden\" name='airfieldCoalitionId' value='$airfieldCoalitionId'/>\n";	
+						echo "</fieldset>";
+						
+						echo "<fieldset id=\"actions\">";
+								# BUTTON ADD
+						echo "	<button type=\"submit\" name =\"updateAirfield\" id=\"submitHalfsize\" value =\"7\" >Add</button>\n";
+								# BUTTON REMOVE
+						echo "	<button type=\"submit\" name =\"updateAirfield\" id=\"submitHalfsize\" value =\"8\" >Remove</button>\n";
+						echo "</fieldset>\n";
+						
+						echo "<fieldset id=\"inputs\">\n";										
 						# get coalition name and store to variable
 						$getCoalName = "SELECT coalitionname FROM rof_coalitions WHERE coalID = '$airfieldCoalitionId'";
 										
@@ -137,19 +136,17 @@
 						echo "		<input readonly=\"readonly\" type=\"text\" id=\"world\" value='$airfieldCoalitionName' size=\"24\" maxlength=\"50\" />\n";
 						# hidden field to hand airfieldCoalitionId over through POST
 						echo "		<input readonly=\"readonly\" type=\"hidden\" name='airfieldCoalitionId' value='$airfieldCoalitionId'/>\n";
-			
 						# NEW COALITION
-						echo "		<select name=\"airfieldCoalitionIdNew\" id=\"world\">\n";
+						echo "	<select name=\"airfieldCoalitionIdNew\" id=\"world\">\n";
 						
 						# include the drop down list
 						include 'includes/getCampaignCoalitions.php'; 
-						echo "		</select>\n";
-					echo "	</fieldset>";
-					
-                    echo "	<fieldset id=\"actions\">";
-						# BUTTON
-						echo "		<label for=\"submit\"></label>\n";
-						echo "		<button type=\"changeCoalition\" name=\"updateAirfield\" value =\"9\" id=\"loginSubmit\">Change Coalition</button>\n";
+						echo "	</select>\n";
+						echo "	</fieldset>";
+
+						echo "	<fieldset id=\"actions\">";
+							# BUTTON
+						echo "	<button type=\"changeCoalition\" name=\"updateAirfield\" value =\"9\" id=\"loginSubmit\">Change Coalition</button>\n";
 										
 					echo "	</fieldset>\n";	
 					?>
