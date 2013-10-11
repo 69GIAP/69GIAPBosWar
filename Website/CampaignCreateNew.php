@@ -56,7 +56,7 @@ $count = mysqli_query($dbc,"SELECT COUNT(*) FROM campaign_settings;");
 					   echo "		<input type=\"text\" name=\"newCampaignDatabaseUser\" id=\"username\" placeholder=\"Please enter the campaign DB user.\" value='' size=\"24\" maxlength=\"50\" />\n";	
 					   # NEW CAMPAIGN DATABASE PASSWORD
 					   echo "		<input type=\"text\" name=\"newCampaignDatabasePassword\" id=\"password\" placeholder=\"Please enter the campaign users password.\" value='' size=\"24\" maxlength=\"50\" />\n";
-$query = "SELECT `camp_host`, `camp_user`, `camp_passwd` from `campaign_settings` WHERE `camp_user` != '';";
+$query = "SELECT `camp_host`, `camp_user`, `camp_passwd` from `campaign_settings` WHERE `camp_user` != '' GROUP BY `camp_user` ;";
 					   echo "<p><h3>OR select an existing one</h3></p>\n";
 					   echo "<p>Note: existing users take precedence over new.</p>\n";
 
