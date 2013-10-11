@@ -3,16 +3,11 @@
 # Incorporate the MySQL connection script.
 	require ( '../connect_db.php' );
 
-# clear some SESSION variables
-#	unset ($_SESSION['camp_db']);
-#	unset ($_SESSION['airfieldName']);
-		
 # Include the webside header
 	include ( 'includes/header.php' );
 	
 # Include the navigation on top
 	include ( 'includes/navigation.php' );
-
 
 ?>
 
@@ -26,21 +21,18 @@
 					# empty campaign specific variables
     				unset($loadedCampaign);
 					unset($_SESSION['camp_db']);
-
 					
-					# Feedback to the user wich campaign he is connected to right now
-					if (!empty($loadedCampaign))
-						{
-							echo "<p>You are connected to the <b>$loadedCampaign</b> database</p>\n";	
-						}
-					else
-						{
-							echo "<h2>Please connect to a database</h2>\n";		
-						}
+					
 						
                     # show campaigns due to User role
 						if ($userRole == "administrator" or $userRole == "commander")
                             {
+								# Feedback to the user wich campaign he is connected to right now
+								if (!empty($loadedCampaign))
+									{	echo "<p>You are connected to the <b>$loadedCampaign</b> database</p>\n";	}
+								else
+									{	echo "<h2>Please connect to a database</h2>\n";	}
+									
                                 # get the full campaign list							
                                 include ( 'includes/getCampaigns.php' );
                             }

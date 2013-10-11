@@ -34,7 +34,7 @@
 		}
 	elseif($userRole == "" or $userRole == "viewer") 
 		{
-			# show only the buttons
-			echo "	<li><a href=\"indexBosWarRofWar.php?btn=home\" class=\"home\"><span></span></a></li>\n";
+			# show no buttons
+			#echo "	<li><a href=\"indexBosWarRofWar.php?btn=home\" class=\"home\"><span></span></a></li>\n";
 		}
 ?>

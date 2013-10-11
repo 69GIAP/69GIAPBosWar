@@ -114,7 +114,7 @@
 						# there is no user logged on and no button was pressed so this is the default view
 						echo "<h3>Info:</h3>\n";
 						echo "	<ul id=\"sidebar\">\n";
-						echo "	    <li><a href=\"#\" class=\"statistics\"><span></span></a></li>\n";
+						echo "	    <li><a href=\"IndexBosWarRofWar.php?btn=home\" class=\"statistics\"><span></span></a></li>\n";
 						echo "  </ul>\n";
 					}
             ?>

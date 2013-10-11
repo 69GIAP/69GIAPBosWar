@@ -16,8 +16,18 @@
         <div id="container">
     
             <div id="content">
-				<p>As this is the main screen the user sees we will put navigation description and general information on the tool in here.</p>
-            	<?php 
+				
+            	<?php
+					echo "<h2>Welcome to ";
+					
+                	if ($game == 'RoF')
+						{	echo "ROFWAR";	}
+					else
+						{	echo "BOSWAR";	}
+					
+					echo "!</h2>\n";
+					echo "<p>Please select the campaign you are interested in.</p>\n";
+					
 					include ( 'includes/getCampaigns.php' );
 				?>
             </div>

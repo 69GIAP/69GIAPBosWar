@@ -21,7 +21,13 @@
             <div id="content">
 <?php
     # get campaign database name from previous POST.
+	# if no radio button was selected
+	if (empty($_POST["camp_db"])) {
+		header ("Location: IndexBosWarRofWar.php?btn=home");
+	}
+	else {
      $camp_db = $_POST["camp_db"];
+	}
 
     # use it to get remaining variables
 	$query = "SELECT * from campaign_settings where camp_db = '$camp_db'";   
