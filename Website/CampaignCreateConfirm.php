@@ -34,7 +34,7 @@ $existing = $_POST['existing'];
 if ($existing) { // selected if not empty
 	// split 'existing' into three parts at the '+'
 	$Part = explode('+',$existing,3);
-        $newCampaignDBHost = $Part[0];
+	$newCampaignDBHost = $Part[0];
 	$newCampaignDBUser = $Part[1];
 	$newCampaignDBPassword = $Part[2];
 }
@@ -101,12 +101,12 @@ $query .= "INSERT INTO `$newCampaignDBName`.rof_object_roles SELECT * FROM boswa
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.$campaignMapLocations LIKE boswar_db.$campaignMapLocations;";
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.campaign_settings LIKE boswar_db.campaign_settings;";
 $query .= "INSERT INTO `$newCampaignDBName`.campaign_settings (simulation, campaign, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
-$query .=	"VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
+$query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
 # INSERT CAMPAIGN DB INFORMATION TO MASTER TABLE
 // this should be at the end of the creation chain
 // so it won't be created if there is an error
-$query 	.=	"INSERT INTO campaign_settings (simulation, campaign, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
-$query .=	"VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
+$query .= "INSERT INTO campaign_settings (simulation, campaign, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
+$query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
 
 // Tushka now returns you to your original indentation scheme
 
@@ -128,6 +128,7 @@ $query .=	"VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaig
 					
 					# forward to campaign configuration screen
 					$_SESSION['camp_db'] = "$newCampaignDBName";
+
 					header("Location: CampaignConfiguration.php?btn=home");
 
                 ?>
