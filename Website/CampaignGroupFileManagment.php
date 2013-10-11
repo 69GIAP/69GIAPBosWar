@@ -22,7 +22,7 @@
 					include ( 'includes/errorNotLoggedOn.php' );
 					
 				
-                	echo "<h3>Stenkas Test</h3>";
+                	echo "<h3>Stenkas Test 1</h3>";
                     echo "<li><a href=\"CampaignGroupFileTESTS.php?state=1\">testdataintocol_10.php</a></li>";
                     echo "<li><a href=\"CampaignGroupFileTESTS.php?state=2\">testdataintostatic.php</a></li>";
                     echo "<li><a href=\"CampaignGroupFileTESTS.php?state=3\">col_10_to_template.php</a></li>";
@@ -31,6 +31,14 @@
                     echo "<li><a href=\"CampaignGroupFileTESTS.php?state=6\">Mission_to_editor.php </a></li>";
                     echo "<li><a href=\"CampaignGroupFileTESTS.php?state=7\">mission_back.php</a></li>";
                     echo "<li><a href=\"CampaignGroupFileTESTS.php?state=8\">Mission_write.php</a></li>";
+					
+					echo "<h3>Stenkas Test 2</h3>";
+                    echo "<li><a href=\"CampaignGroupFileTESTS.php?state=9\">static_to_template.php</a></li>";
+                    echo "<li><a href=\"CampaignGroupFileTESTS.php?state=10\">template_to_static.php</a></li>";
+                    echo "<li><a href=\"CampaignGroupFileTESTS.php?state=11\">static_to_m1.php</a></li>";
+                    echo "<li><a href=\"CampaignGroupFileTESTS.php?state=12\">static_mission_to_editor.php</a></li>";
+                    echo "<li><a href=\"CampaignGroupFileTESTS.php?state=13\">static_mission_back.php</a></li>";
+                    echo "<li><a href=\"CampaignGroupFileTESTS.php?state=14\">static_mission_write.php</a></li>";
                 ?>	<h3>Group File Upload script</h3>
                     <form id="loginForm" name="login" action="uploadFile.php" method="post" enctype="multipart/form-data">
                         <h1 id="h1Form">Upload</h1>
