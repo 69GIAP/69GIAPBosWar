@@ -67,7 +67,7 @@ if(!$result = $dbc->query($query)) {
 mysqli_free_result($result);	
 
 if ($result = mysqli_query($dbc, $query)) {				
-	echo "<select id = \"existing\" name = \"existing\"><br>\n";
+	echo "<select id = \"username\" name = \"existing\"><br>\n";
 	echo "<option value=\"\" selected>Select existing campaign user </option>\n";	
 	/* fetch result array */
 	while ($obj = mysqli_fetch_object($result)) {
