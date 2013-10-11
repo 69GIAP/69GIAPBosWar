@@ -4,7 +4,7 @@
 <?php
 # require is connecting user peter to stalingrad1 database
 # here
-require('../connect_db.php');
+require('require.php');
 # $path is the path to where the user keeps the group files
 $path = 'c:/BOSWAR/';
 # are we inputting an allied or central
