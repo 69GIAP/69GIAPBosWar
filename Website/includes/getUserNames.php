@@ -10,13 +10,14 @@
 		}
 	if ($userRole == "commander")
 		{
-			# show commanders, who are assigned to my active campaigns excluding Administrators and viewers, these are the only ones visible
+			# show commanders, who are assigned to my active campaigns excluding me, administrators and viewers, these are the only ones visible
 			$query = "SELECT u.user_id, u.username, r.role from users u, campaign_users c, users_roles r
 						WHERE r.role_id = u.role_id
 						AND u.user_id = c.user_id
 						AND u.user_id != 'userId'
 						AND u.role_id != 1
 						AND u.role_id != 3
+						AND u.user_id != $userId
 						GROUP BY u.user_id";
 		}	
 	
@@ -33,8 +34,7 @@
 				{
 					$id		=($obj->user_id);
 					$name	=($obj->username);
-					$role	=($obj->role);
-					echo "<option value=\"". $id. "\">".$name. " - ".$role."</option>\n";
+					echo "<option value=\"". $id. "\">".$name."</option>\n";
 				}
 		}
 		

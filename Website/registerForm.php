@@ -22,9 +22,9 @@
                     <fieldset id="inputs">
                         <input id="username" type="text" name="username" placeholder="Choose Username" autofocus required> 
                         <input id="email" type="text" name="email" placeholder="Email Address" autofocus required>                           
-                        <input id="password" type="password"  name="password" placeholder="Choose Password" required>
-                        <input id="password" type="password"  name="password2" placeholder="Repeat Password" required> 
-                        <input id="phone" type="text"  name="phone" placeholder="Telephone Number:" required>                                                
+                        <input id="password" type="password" name="password" placeholder="Choose Password" required>
+                        <input id="password" type="password" name="password2" placeholder="Repeat Password" required> 
+                        <input id="phone" type="text" name="phone" placeholder="Telephone Number" required>               
                     </fieldset>
                     <fieldset id="actions">
                         <input type="submit" id="loginSubmit" value="Submit">

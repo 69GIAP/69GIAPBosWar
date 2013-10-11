@@ -10,7 +10,7 @@
 	# SELECT USER
 	echo "		<select name=\"userId\" id=\"username\" onchange=\"showUser(this.value)\">\n";
 	# include the drop down list
-	include 'includes/getUserNamesAJAX.php'; 
+	include 'includes/getUserNames.php'; 
 	echo "		</select>\n";
 
 	
