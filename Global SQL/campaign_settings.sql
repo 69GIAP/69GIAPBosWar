@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2013 at 11:10 PM
+-- Generation Time: Oct 11, 2013 at 11:24 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -40,24 +40,24 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
   `status` enum('1','2','3','4') NOT NULL DEFAULT '4',
   `show_airfield` enum('true','false') NOT NULL DEFAULT 'true',
   `finish_flight_only_landed` enum('true','false') NOT NULL DEFAULT 'true',
-  `logpath` varchar(60) NOT NULL,
-  `log_prefix` varchar(50) NOT NULL,
-  `logfile` varchar(50) NOT NULL,
-  `kia_pilot` smallint(1) NOT NULL,
-  `mia_pilot` smallint(1) NOT NULL,
-  `critical_w_pilot` smallint(1) NOT NULL,
-  `serious_w_pilot` smallint(1) NOT NULL,
-  `light_w_pilot` smallint(1) NOT NULL,
-  `kia_gunner` smallint(1) NOT NULL,
-  `mia_gunner` smallint(1) NOT NULL,
-  `critical_w_gunner` smallint(1) NOT NULL,
-  `serious_w_gunner` smallint(1) NOT NULL,
-  `light_w_gunner` smallint(1) NOT NULL,
+  `logpath` varchar(60) NOT NULL DEFAULT 'logs',
+  `log_prefix` varchar(50) NOT NULL DEFAULT 'MissionReport',
+  `logfile` varchar(50) NOT NULL DEFAULT 'MissionReport',
+  `kia_pilot` smallint(1) NOT NULL DEFAULT '100',
+  `mia_pilot` smallint(1) NOT NULL DEFAULT '50',
+  `critical_w_pilot` smallint(1) NOT NULL DEFAULT '30',
+  `serious_w_pilot` smallint(1) NOT NULL DEFAULT '20',
+  `light_w_pilot` smallint(1) NOT NULL DEFAULT '10',
+  `kia_gunner` smallint(1) NOT NULL DEFAULT '50',
+  `mia_gunner` smallint(1) NOT NULL DEFAULT '50',
+  `critical_w_gunner` smallint(1) NOT NULL DEFAULT '30',
+  `serious_w_gunner` smallint(1) NOT NULL DEFAULT '20',
+  `light_w_gunner` smallint(1) NOT NULL DEFAULT '10',
   `healthy` smallint(1) NOT NULL DEFAULT '0',
-  `min_x` mediumint(1) NOT NULL,
-  `min_z` mediumint(1) NOT NULL,
-  `max_x` mediumint(1) NOT NULL,
-  `max_z` mediumint(1) NOT NULL,
+  `min_x` mediumint(1) NOT NULL DEFAULT '0',
+  `min_z` mediumint(1) NOT NULL DEFAULT '0',
+  `max_x` mediumint(9) NOT NULL DEFAULT '100000',
+  `max_z` mediumint(1) NOT NULL DEFAULT '100000',
   `air_detect_distance` smallint(1) unsigned NOT NULL DEFAULT '5000',
   `ground_detect_distance` smallint(1) unsigned NOT NULL DEFAULT '500',
   `air_ai_level` enum('1','2','3') NOT NULL DEFAULT '2',
