@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2013 at 04:16 AM
+-- Generation Time: Oct 12, 2013 at 12:21 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -29,15 +29,15 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `rof_pilot_scores`;
 CREATE TABLE IF NOT EXISTS `rof_pilot_scores` (
   `id` smallint(1) NOT NULL AUTO_INCREMENT,
-  `MissionID` varchar(50) NOT NULL,
-  `CoalID` tinyint(3) unsigned NOT NULL,
-  `country` smallint(1) NOT NULL,
-  `PilotName` varchar(40) NOT NULL,
-  `mpid` smallint(1) NOT NULL,
-  `PilotFate` tinyint(1) NOT NULL,
-  `PilotHealth` tinyint(1) NOT NULL,
-  `PilotNegScore` int(1) NOT NULL,
-  `PilotPosScore` int(1) NOT NULL,
+  `MissionID` varchar(50) NOT NULL DEFAULT 'missionid',
+  `CoalID` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `country` smallint(1) NOT NULL DEFAULT '0',
+  `PilotName` varchar(40) NOT NULL DEFAULT 'pilotname',
+  `mpid` smallint(1) NOT NULL DEFAULT '0',
+  `PilotFate` tinyint(1) NOT NULL DEFAULT '0',
+  `PilotHealth` tinyint(1) NOT NULL DEFAULT '0',
+  `PilotNegScore` int(1) NOT NULL DEFAULT '0',
+  `PilotPosScore` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 

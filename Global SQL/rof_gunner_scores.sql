@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2013 at 04:15 AM
+-- Generation Time: Oct 11, 2013 at 11:58 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -29,16 +29,16 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `rof_gunner_scores`;
 CREATE TABLE IF NOT EXISTS `rof_gunner_scores` (
   `id` int(1) NOT NULL AUTO_INCREMENT,
-  `MissionID` varchar(50) NOT NULL,
-  `CoalID` tinyint(1) unsigned NOT NULL,
-  `country` smallint(1) NOT NULL,
-  `GunnerName` varchar(40) NOT NULL,
-  `mgid` int(1) NOT NULL,
-  `GunningFor` varchar(40) NOT NULL,
-  `GunnerFate` tinyint(1) NOT NULL,
-  `GunnerHealth` tinyint(1) NOT NULL,
-  `GunnerNegScore` int(1) NOT NULL,
-  `GunnerPosScore` int(1) NOT NULL,
+  `MissionID` varchar(50) NOT NULL DEFAULT 'missionid',
+  `CoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `country` smallint(1) NOT NULL DEFAULT '0',
+  `GunnerName` varchar(40) NOT NULL DEFAULT 'gunnername',
+  `mgid` int(1) NOT NULL DEFAULT '0',
+  `GunningFor` varchar(40) NOT NULL DEFAULT 'pilotname',
+  `GunnerFate` tinyint(1) NOT NULL DEFAULT '0',
+  `GunnerHealth` tinyint(1) NOT NULL DEFAULT '0',
+  `GunnerNegScore` int(1) NOT NULL DEFAULT '0',
+  `GunnerPosScore` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
