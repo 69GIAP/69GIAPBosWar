@@ -42,6 +42,7 @@
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
 					
 					$state = $_GET['state'];
+					# test 1
 					if ($state == 1)
 					{include ( 'missionplanningPackage/testdataintocol_10.php' );}
 					if ($state == 2)
@@ -57,16 +58,19 @@
 					if ($state == 7)
 					{include ( 'missionplanningPackage/mission_back.php' );}
 					if ($state == 8)
-					{include ( 'missionplanningPackage/static_to_template.php' );}
+					{include ( 'missionplanningPackage/mission_write.php' );}
+					# test 2
 					if ($state == 9)
-					{include ( 'missionplanningPackage/template_to_static.php' );}
+					{include ( 'missionplanningPackage/static_to_template.php' );}
 					if ($state == 10)
-					{include ( 'missionplanningPackage/static_to_m1.php' );}
+					{include ( 'missionplanningPackage/template_to_static.php' );}
 					if ($state == 11)
+					{include ( 'missionplanningPackage/static_to_m1.php' );}
+					if ($state == 12)
 					{include ( 'missionplanningPackage/static_mission_to_editor.php ' );}
-					if ($state == 12)
+					if ($state == 13)
 					{include ( 'missionplanningPackage/static_mission_back.php' );}
-					if ($state == 12)
+					if ($state == 14)
 					{include ( 'missionplanningPackage/static_mission_write.php' );}
 					
                 ?>	
