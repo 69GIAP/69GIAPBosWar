@@ -169,6 +169,10 @@ fieldset
 {
     background-position: 5px -427px !important;
 }
+#file
+{
+    background-position: 5px -477px !important;
+}
 
 #inputs input:focus, #none input:focus
 {
