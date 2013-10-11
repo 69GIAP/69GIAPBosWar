@@ -2,9 +2,6 @@
 # Stenka 04/10/13
 # Php version of mission create vehicles in group file
 <?php
-# require is connecting user peter to stalingrad1 database
-# here
-require('require.php');
 # next load campaign variable into constants
 require('cam_param.php');
 # initialise variables
@@ -61,7 +58,7 @@ if ($coalition=="central")
 {$q = 'SELECT * from mission_'.$current_mission. ' WHERE col_coalition = "2"';}
 else
 {$q = 'SELECT * from mission_'.$current_mission. ' WHERE col_coalition = "1"';}
-$r = mysqli_query($dbc,$q);
+$r = mysqli_query($camp_link,$q);
 $num = mysqli_num_rows($r);
 if ($num > 0)
 {
@@ -84,7 +81,7 @@ if ($num > 0)
 	echo '<br> starting to look for vehicle:'.$col_Model;
 	$col_Model = rtrim($col_Model);
 	$q2 = "SELECT * from Vehicles where Model = '$col_Model'LIMIT 1";
-	$r2 = mysqli_query($dbc,$q2);
+	$r2 = mysqli_query($camp_link,$q2);
 	$r2_data = mysqli_fetch_row($r2);
 	if ($r2_data[0]) 
 	{
@@ -95,7 +92,7 @@ if ($num > 0)
 		$modelpath3 = $r2_data[5];		
 	}	
 	else
-		{echo'<p>'.mysqli_error($dbc).'</p>';}
+		{echo'<p>'.mysqli_error($camp_link).'</p>';}
 # end of recovery of path	
 	# here is where we start writing a record to outbox_1
 	$writestring="Vehicle\r\n";

@@ -6,27 +6,27 @@
 $current_mission = 1;
 $miss_old = 'mission_'.$current_mission;
 $miss_new = 'mission_'.($current_mission+1);
-require('require.php');
+require('../connect_db.php');
 $q1="DROP TABLE IF EXISTS ".$miss_new;
 echo '<br>'.$q1;
-	$r1= mysqli_query($dbc,$q1);
+	$r1= mysqli_query($camp_link,$q1);
 	if ($r1)
 			{echo '<br> table dropped ';}
 	else
-			{echo'<p>'.mysqli_error($dbc).'</p>';}
+			{echo'<p>'.mysqli_error($camp_link).'</p>';}
 $q1="CREATE TABLE ".$miss_new. ' LIKE '.$miss_old;
 echo '<br>'.$q1;
-	$r1= mysqli_query($dbc,$q1);
+	$r1= mysqli_query($camp_link,$q1);
 	if ($r1)
 			{echo '<br> table created ';}
 	else
-			{echo'<p>'.mysqli_error($dbc).'</p>';}
+			{echo'<p>'.mysqli_error($camp_link).'</p>';}
 $q1="INSERT ".$miss_new. ' SELECT * FROM '.$miss_old;
-	$r1= mysqli_query($dbc,$q1);
+	$r1= mysqli_query($camp_link,$q1);
 	if ($r1)
 			{echo '<br> data copied ';}
 	else
-			{echo'<p>'.mysqli_error($dbc).'</p>';}
+			{echo'<p>'.mysqli_error($camp_link).'</p>';}
 
 
 

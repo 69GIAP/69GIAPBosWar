@@ -2,9 +2,6 @@
 # Stenka 05/10/13
 # Php version of mission create ststic objects in group file
 <?php
-# require is connecting user peter to stalingrad1 database
-# here
-require('require.php');
 # next load campaign variable into constants
 require('cam_param.php');
 # initialise variables
@@ -68,7 +65,7 @@ $q = 'SELECT * from static_mission_'.$current_mission. ' WHERE static_coalition 
 echo '<br>select is:'.$q;
 }
 #$q = 'SELECT * from static_mission_1'
-$r = mysqli_query($dbc,$q);
+$r = mysqli_query($camp_link,$q);
 $num = mysqli_num_rows($r);
 if ($num > 0)
 {
@@ -91,7 +88,7 @@ if ($num > 0)
 		echo '<br> starting to look for vehicle:'.$static_Model;
 		$static_Model = rtrim($static_Model);
 		$q2 = "SELECT * from Vehicles where Model = '$static_Model'LIMIT 1";
-		$r2 = mysqli_query($dbc,$q2);
+		$r2 = mysqli_query($camp_link,$q2);
 		$r2_data = mysqli_fetch_row($r2);
 		if ($r2_data[0]) 
 		{
@@ -102,7 +99,7 @@ if ($num > 0)
 			$modelpath3 = $r2_data[5];		
 		}	
 		else
-			{echo'<p>'.mysqli_error($dbc).'</p>';}
+			{echo'<p>'.mysqli_error($camp_link).'</p>';}
 		$writestring="Vehicle\r\n";
 		fwrite($fh,$writestring);	
 	}
@@ -111,7 +108,7 @@ if ($num > 0)
 		echo '<br> starting to look for Block:'.$static_Model;
 		$static_Model = rtrim($static_Model);
 		$q2 = "SELECT * from Blocks where Model = '$static_Model'LIMIT 1";
-		$r2 = mysqli_query($dbc,$q2);
+		$r2 = mysqli_query($camp_link,$q2);
 		$r2_data = mysqli_fetch_row($r2);
 		if ($r2_data[0]) 
 		{
@@ -122,7 +119,7 @@ if ($num > 0)
 			$modelpath3 = $r2_data[5];		
 		}	
 		else
-			{echo'<p>'.mysqli_error($dbc).'</p>';}
+			{echo'<p>'.mysqli_error($camp_link).'</p>';}
 		$writestring="Block\r\n";
 		fwrite($fh,$writestring);	
 	}
@@ -131,7 +128,7 @@ if ($num > 0)
 		echo '<br> starting to look for Train:'.$static_Model;
 		$static_Model = rtrim($static_Model);
 		$q2 = "SELECT * from Trains where Model = '$static_Model'LIMIT 1";
-		$r2 = mysqli_query($dbc,$q2);
+		$r2 = mysqli_query($camp_link,$q2);
 		$r2_data = mysqli_fetch_row($r2);
 		if ($r2_data[0]) 
 		{
@@ -143,7 +140,7 @@ if ($num > 0)
 			
 		}	
 		else
-			{echo'<p>'.mysqli_error($dbc).'</p>';}
+			{echo'<p>'.mysqli_error($camp_link).'</p>';}
 		$writestring="Train\r\n";
 		fwrite($fh,$writestring);	
 	}
@@ -152,7 +149,7 @@ if ($num > 0)
 		echo '<br> starting to look for Flag:'.$static_Model;
 		$static_Model = rtrim($static_Model);
 		$q2 = "SELECT * from Flags where Model = '$static_Model'LIMIT 1";
-		$r2 = mysqli_query($dbc,$q2);
+		$r2 = mysqli_query($camp_link,$q2);
 		$r2_data = mysqli_fetch_row($r2);
 		if ($r2_data[0]) 
 		{
@@ -161,7 +158,7 @@ if ($num > 0)
 			$modelpath2 = $r2_data[3];
 		}	
 		else
-			{echo'<p>'.mysqli_error($dbc).'</p>';}
+			{echo'<p>'.mysqli_error($camp_link).'</p>';}
 		$writestring="Flag\r\n";
 		fwrite($fh,$writestring);	
 	}	

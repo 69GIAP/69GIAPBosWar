@@ -3,9 +3,6 @@
 # Php version of static create ststic objects in template_allies or central.Group
 # version with parameter for path and coalition
 <?php
-# require is connecting user peter to stalingrad1 database
-# here
-require('require.php');
 # next load campaign variable into constants
 require('cam_param.php');
 # now we will start creating vehicles
@@ -59,7 +56,7 @@ if ($coalition == 'allies')
 {$q = 'SELECT * from static where static_coalition="1"';}
 else
 {$q = 'SELECT * from static where static_coalition="2"';}
-$r = mysqli_query($dbc,$q);
+$r = mysqli_query($camp_link,$q);
 $num = mysqli_num_rows($r);
 if ($num > 0)
 {
@@ -145,21 +142,21 @@ if ($num > 0)
 	fwrite($fh,$writestring);
 # here I will write back the x & z to  static	
 	$q1="UPDATE static set static_XPos = $static_XPos where id = $current_rec";
-	$r1= mysqli_query($dbc,$q1);
+	$r1= mysqli_query($camp_link,$q1);
 	if ($r1)
 	{
 		echo'<br> written x pos back to static';
 	}
 	else
-		{echo'<p>'.mysqli_error($dbc).'</p>';} 	
+		{echo'<p>'.mysqli_error($camp_link).'</p>';} 	
 	$q1="UPDATE static set static_ZPos = $static_ZPos where id = $current_rec";
-	$r1= mysqli_query($dbc,$q1);
+	$r1= mysqli_query($camp_link,$q1);
 	if ($r1)
 	{
 		echo'<br> written Z pos back to static';
 	}
 	else
-		{echo'<p>'.mysqli_error($dbc).'</p>';} 		
+		{echo'<p>'.mysqli_error($camp_link).'</p>';} 		
 # finished update of static 	
 	$writestring = '  XOri = 0.00;'."\r\n";	
 	fwrite($fh,$writestring);
@@ -175,7 +172,7 @@ if ($num > 0)
 		echo '<br> starting to look for vehicle:'.$static_Model;
 		$static_Model = rtrim($static_Model);
 		$q2 = "SELECT * from Vehicles where Model = '$static_Model'LIMIT 1";
-		$r2 = mysqli_query($dbc,$q2);
+		$r2 = mysqli_query($camp_link,$q2);
 		$r2_data = mysqli_fetch_row($r2);
 		if ($r2_data[0]) 
 		{
@@ -186,7 +183,7 @@ if ($num > 0)
 			$modelpath3 = $r2_data[5];		
 		}	
 		else
-			{echo'<p>'.mysqli_error($dbc).'</p>';}
+			{echo'<p>'.mysqli_error($camp_link).'</p>';}
 		$writestring = '  Model = "graphics'."\\"."$modelpath2"."\\"."$modelpath3"."\\".rtrim($static_Model).'.mgm";'."\r\n";	
 		fwrite($fh,$writestring);
 	}
@@ -197,7 +194,7 @@ if ($num > 0)
 		echo '<br> starting to look for Block:'.$static_Model;
 		$static_Model = rtrim($static_Model);
 		$q2 = "SELECT * from Blocks where Model = '$static_Model'LIMIT 1";
-		$r2 = mysqli_query($dbc,$q2);
+		$r2 = mysqli_query($camp_link,$q2);
 		$r2_data = mysqli_fetch_row($r2);
 		if ($r2_data[0]) 
 		{
@@ -208,7 +205,7 @@ if ($num > 0)
 			$modelpath3 = $r2_data[5];		
 		}	
 		else
-			{echo'<p>'.mysqli_error($dbc).'</p>';}
+			{echo'<p>'.mysqli_error($camp_link).'</p>';}
 		$writestring = '  Model = "graphics'."\\"."$modelpath2"."\\".rtrim($static_Model).'.mgm";'."\r\n";	
 		fwrite($fh,$writestring);
 	}
@@ -219,7 +216,7 @@ if ($num > 0)
 		echo '<br> starting to look for Train:'.$static_Model;
 		$static_Model = rtrim($static_Model);
 		$q2 = "SELECT * from Trains where Model = '$static_Model'LIMIT 1";
-		$r2 = mysqli_query($dbc,$q2);
+		$r2 = mysqli_query($camp_link,$q2);
 		$r2_data = mysqli_fetch_row($r2);
 		if ($r2_data[0]) 
 		{
@@ -230,7 +227,7 @@ if ($num > 0)
 			$modelpath3 = $r2_data[4];		
 		}	
 		else
-			{echo'<p>'.mysqli_error($dbc).'</p>';}
+			{echo'<p>'.mysqli_error($camp_link).'</p>';}
 		$writestring = '  Model = "graphics'."\\"."$modelpath2"."\\"."$modelpath3"."\\".rtrim($static_Model).'.mgm";'."\r\n";	
 		fwrite($fh,$writestring);
 	}
@@ -241,7 +238,7 @@ if ($num > 0)
 		echo '<br> starting to look for Flag:'.$static_Model;
 		$static_Model = rtrim($static_Model);
 		$q2 = "SELECT * from Flags where Model = '$static_Model'LIMIT 1";
-		$r2 = mysqli_query($dbc,$q2);
+		$r2 = mysqli_query($camp_link,$q2);
 		$r2_data = mysqli_fetch_row($r2);
 		if ($r2_data[0]) 
 		{
@@ -250,7 +247,7 @@ if ($num > 0)
 			$modelpath2 = $r2_data[3];
 		}	
 		else
-			{echo'<p>'.mysqli_error($dbc).'</p>';}
+			{echo'<p>'.mysqli_error($camp_link).'</p>';}
 		$writestring = '  Model = "graphics'."\\"."$modelpath2"."\\".rtrim($static_Model).'.mgm";'."\r\n";	
 		fwrite($fh,$writestring);
 	}

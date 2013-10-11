@@ -2,9 +2,6 @@
 # Stenka 06/10/13
 # Php version of inbox table to load into static_mission_n from static_mission_allies_back.Group or static_mission_central_back.Group
 <?php
-# require is connecting user peter to stalingrad1 database
-# here
-require('require.php');
 # $path is the path to where the user keeps the group files
 $path = 'c:/BOSWAR/';
 # are we inputting an allied or central
@@ -18,11 +15,11 @@ if ($coalition == "allies")
 {$q1="UPDATE ".$miss." set static_updated = 0 where static_coalition = '1'";}
 else
 {$q1="UPDATE ".$miss." set static_updated = 0 where static_coalition = '2'";}
-$r1= mysqli_query($dbc,$q1);
+$r1= mysqli_query($camp_link,$q1);
 if ($r1)
 	{echo '<br> update flag updated';}
 else
-	{echo'<p>'.mysqli_error($dbc).'</p>';}
+	{echo'<p>'.mysqli_error($camp_link).'</p>';}
 $count = 0;
 $current_object = "Unknown";
 $current_Name = "Unknown";
@@ -109,7 +106,7 @@ while ( ! feof( $fp ) )
 	$id = 0;
 	$q2="SELECT * from ".$miss." where static_Name = '$current_Name' AND static_Model = '$Model' AND static_updated = 0 LIMIT 1";
 	echo '<br> My select is:'.$q2;
-	$r2=mysqli_query($dbc,$q2);
+	$r2=mysqli_query($camp_link,$q2);
 	$r2_data = mysqli_fetch_row($r2);
 	if ($r2_data[0]) 
 		{
@@ -117,14 +114,14 @@ while ( ! feof( $fp ) )
 			echo '<br>I found record no:'.$id;
 			$q1="UPDATE ".$miss." set static_XPos = $XPos,static_ZPos = $ZPos,static_YOri = $YOri,static_updated=1 where id = $id";
 			echo '<br> My update select is:'.$q1;
-			$r1= mysqli_query($dbc,$q1);
+			$r1= mysqli_query($camp_link,$q1);
 			if ($r1)
 				{echo '<br> updated record'.$id;}
 			else
-				{echo'<p>'.mysqli_error($dbc).'</p>';}
+				{echo'<p>'.mysqli_error($camp_link).'</p>';}
 		}	
 			
 	}	
 	else
-		{echo'<p>'.mysqli_error($dbc).'</p>';}
+		{echo'<p>'.mysqli_error($camp_link).'</p>';}
 }	

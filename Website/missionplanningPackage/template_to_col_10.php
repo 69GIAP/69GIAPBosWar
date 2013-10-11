@@ -2,9 +2,6 @@
 # Stenka 29/9/13
 # Php version of inbox table to load into col_10 from template_allies_back.Group or template_central_back.Group
 <?php
-# require is connecting user peter to stalingrad1 database
-# here
-require('require.php');
 # $path is the path to where the user keeps the group files
 $path = 'c:/BOSWAR/';
 # are we inputting an allied or central
@@ -74,11 +71,11 @@ while ( ! feof( $fp ) ) {
 	{
 	echo '<br> Updating Vehicle or Artillery';
 	$q1="UPDATE col_10 set col_XPos = $XPos,col_ZPos = $ZPos,col_YOri = $YOri where col_Name = '$current_Name'";
-	$r1= mysqli_query($dbc,$q1);
+	$r1= mysqli_query($camp_link,$q1);
 	if ($r1)
 			{echo '<br> updated';}
 	else
-			{echo'<p>'.mysqli_error($dbc).'</p>';}
+			{echo'<p>'.mysqli_error($camp_link).'</p>';}
 	}	
 	$count = 1+$count;
 }

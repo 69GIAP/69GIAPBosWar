@@ -2,9 +2,6 @@
 # Stenka 06/10/13
 # Php version of mission 1 write
 <?php
-# require is connecting user peter to stalingrad1 database
-# here
-require('require.php');
 # next load campaign variable into constants
 require('cam_param.php');
 echo '<br>ground transport speed is '. CAM_GROUND_TRANSPORT_SPEED;
@@ -39,11 +36,11 @@ if ($coalition == "allies")
 {$q1="UPDATE static_".$miss." set static_updated = 0 where static_coalition = '1'";}
 else
 {$q1="UPDATE static_".$miss." set static_updated = 0 where static_coalition = '2'";}
-$r1= mysqli_query($dbc,$q1);
+$r1= mysqli_query($camp_link,$q1);
 if ($r1)
 	{echo '<br> update flag updated';}
 else
-	{echo'<p>'.mysqli_error($dbc).'</p>';}
+	{echo'<p>'.mysqli_error($camp_link).'</p>';}
 #prepare datafile for output
 #$filename = "c:/BOSWAR/allied_m1_final.Group";
 $filename = $path.$coalition.'_static_'.$miss.".Group";
@@ -70,7 +67,7 @@ else
 $fh = fopen($filename,'w') or die("Can not open file");
 # now we write the static vehicles
 $q = 'SELECT * from static_'.$miss. ' where static_Type = "Vehicle" ORDER BY static_coalition,static_Name';
-$r = mysqli_query($dbc,$q);
+$r = mysqli_query($camp_link,$q);
 $num = mysqli_num_rows($r);
 $list_of_mcus ="";
 if ($num > 0)
@@ -82,7 +79,7 @@ if ($num > 0)
 	$search_Name = $row['static_Name'];
 	$q5 = 'SELECT * from static_'.$miss. ' where static_Type = "Vehicle" AND static_Name = "'.$search_Name.'" AND static_updated = 0 AND static_coalition = '.$coa ;
 	echo '<br>Select:'.$q5;
-	$r5 = mysqli_query($dbc,$q5);
+	$r5 = mysqli_query($camp_link,$q5);
 	$num5 = mysqli_num_rows($r5);
 	$list_of_mcus ="";
 	if ($num5 > 0)
@@ -103,7 +100,7 @@ if ($num > 0)
 			$lead=1;
 # we need to collect the Vehicle information from the Vehicle Table
 			$q2="SELECT * from Vehicles WHERE Model = ('$static_Model')";
-			$r2=mysqli_query($dbc,$q2);
+			$r2=mysqli_query($camp_link,$q2);
 			$r2_data = mysqli_fetch_row($r2);
 			if ($r2_data[0]) 
 			{
@@ -117,7 +114,7 @@ if ($num > 0)
 				$range_m = $r2_data[7];			
 			}	
 			else
-				{echo'<p>'.mysqli_error($dbc).'</p>';}
+				{echo'<p>'.mysqli_error($camp_link).'</p>';}
 			$writestring="Vehicle\r\n";
 			fwrite($fh,$writestring);		
 			$writestring="{\r\n";
@@ -221,11 +218,11 @@ if ($num > 0)
 			$static_ZPos = $static_ZPos - (2*CAM_GROUND_SPACING) + rand(-CAM_GROUND_SPACING,CAM_GROUND_SPACING);
 			echo '<br> Updating Vehicle or Artillery';
 			$q6="UPDATE static_".$miss." set static_updated = 1 where id = ".$current_rec;
-			$r6= mysqli_query($dbc,$q6);
+			$r6= mysqli_query($camp_link,$q6);
 			if ($r6)
 				{echo '<br> updated';}
 			else
-				{echo'<p>'.mysqli_error($dbc).'</p>';}
+				{echo'<p>'.mysqli_error($camp_link).'</p>';}
 		}
 		$list_of_mcus = substr($list_of_mcus,0,-1);
 		echo '<br> list of mcus:'.$list_of_mcus;
@@ -603,7 +600,7 @@ $q = 'SELECT * from static_mission_'.$current_mission. ' WHERE static_coalition 
 echo '<br>select is:'.$q;
 }
 #$q = 'SELECT * from static_mission_1'
-$r = mysqli_query($dbc,$q);
+$r = mysqli_query($camp_link,$q);
 $num = mysqli_num_rows($r);
 if ($num > 0)
 {
@@ -626,7 +623,7 @@ if ($num > 0)
 		echo '<br> starting to look for vehicle:'.$static_Model;
 		$static_Model = rtrim($static_Model);
 		$q2 = "SELECT * from Vehicles where Model = '$static_Model'LIMIT 1";
-		$r2 = mysqli_query($dbc,$q2);
+		$r2 = mysqli_query($camp_link,$q2);
 		$r2_data = mysqli_fetch_row($r2);
 		if ($r2_data[0]) 
 		{
@@ -637,7 +634,7 @@ if ($num > 0)
 			$modelpath3 = $r2_data[5];		
 		}	
 		else
-			{echo'<p>'.mysqli_error($dbc).'</p>';}
+			{echo'<p>'.mysqli_error($camp_link).'</p>';}
 		$writestring="Vehicle\r\n";
 		fwrite($fh,$writestring);	
 	}
@@ -646,7 +643,7 @@ if ($num > 0)
 		echo '<br> starting to look for Block:'.$static_Model;
 		$static_Model = rtrim($static_Model);
 		$q2 = "SELECT * from Blocks where Model = '$static_Model'LIMIT 1";
-		$r2 = mysqli_query($dbc,$q2);
+		$r2 = mysqli_query($camp_link,$q2);
 		$r2_data = mysqli_fetch_row($r2);
 		if ($r2_data[0]) 
 		{
@@ -657,7 +654,7 @@ if ($num > 0)
 			$modelpath3 = $r2_data[5];		
 		}	
 		else
-			{echo'<p>'.mysqli_error($dbc).'</p>';}
+			{echo'<p>'.mysqli_error($camp_link).'</p>';}
 		$writestring="Block\r\n";
 		fwrite($fh,$writestring);	
 	}
@@ -666,7 +663,7 @@ if ($num > 0)
 		echo '<br> starting to look for Train:'.$static_Model;
 		$static_Model = rtrim($static_Model);
 		$q2 = "SELECT * from Trains where Model = '$static_Model'LIMIT 1";
-		$r2 = mysqli_query($dbc,$q2);
+		$r2 = mysqli_query($camp_link,$q2);
 		$r2_data = mysqli_fetch_row($r2);
 		if ($r2_data[0]) 
 		{
@@ -678,7 +675,7 @@ if ($num > 0)
 			
 		}	
 		else
-			{echo'<p>'.mysqli_error($dbc).'</p>';}
+			{echo'<p>'.mysqli_error($camp_link).'</p>';}
 		$writestring="Train\r\n";
 		fwrite($fh,$writestring);	
 	}
@@ -687,7 +684,7 @@ if ($num > 0)
 		echo '<br> starting to look for Flag:'.$static_Model;
 		$static_Model = rtrim($static_Model);
 		$q2 = "SELECT * from Flags where Model = '$static_Model'LIMIT 1";
-		$r2 = mysqli_query($dbc,$q2);
+		$r2 = mysqli_query($camp_link,$q2);
 		$r2_data = mysqli_fetch_row($r2);
 		if ($r2_data[0]) 
 		{
@@ -696,7 +693,7 @@ if ($num > 0)
 			$modelpath2 = $r2_data[3];
 		}	
 		else
-			{echo'<p>'.mysqli_error($dbc).'</p>';}
+			{echo'<p>'.mysqli_error($camp_link).'</p>';}
 		$writestring="Flag\r\n";
 		fwrite($fh,$writestring);	
 	}	

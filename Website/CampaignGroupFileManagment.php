@@ -21,7 +21,17 @@
                 	# This redirects the user to the Login screen if he tries to press a button and is not logged on
 					include ( 'includes/errorNotLoggedOn.php' );
 					
-				?>
+				
+                	echo "<h3>Stenkas Test</h3>";
+                    echo "<li><a href=\"CampaignGroupFileTESTS.php?state=1\">testdataintocol_10.php</a></li>";
+                    echo "<li><a href=\"CampaignGroupFileTESTS.php?state=2\">testdataintostatic.php</a></li>";
+                    echo "<li><a href=\"CampaignGroupFileTESTS.php?state=3\">col_10_to_template.php</a></li>";
+                    echo "<li><a href=\"CampaignGroupFileTESTS.php?state=4\">template_to_col_10.php</a></li>";
+                    echo "<li><a href=\"CampaignGroupFileTESTS.php?state=5\">Col_10_to_m1.php</a></li>";
+                    echo "<li><a href=\"CampaignGroupFileTESTS.php?state=6\">Mission_to_editor.php </a></li>";
+                    echo "<li><a href=\"CampaignGroupFileTESTS.php?state=7\">mission_back.php</a></li>";
+                    echo "<li><a href=\"CampaignGroupFileTESTS.php?state=8\">Mission_write.php</a></li>";
+                ?>	<h3>Group File Upload script</h3>
                     <form id="loginForm" name="login" action="uploadFile.php" method="post" enctype="multipart/form-data">
                         <h1 id="h1Form">Upload</h1>
                         <fieldset id="inputs">

@@ -2,9 +2,6 @@
 # Stenka 04/10/13
 # Php version of mission 1 write
 <?php
-# require is connecting user peter to stalingrad1 database
-# here
-require('require.php');
 # next load campaign variable into constants
 require('cam_param.php');
 echo '<br>ground transport speed is '. CAM_GROUND_TRANSPORT_SPEED;
@@ -60,7 +57,7 @@ $fh = fopen($filename,'w') or die("Can not open file");
 
 #
 $q = 'SELECT * from '.$miss. ' where col_moving = "1"';
-$r = mysqli_query($dbc,$q);
+$r = mysqli_query($camp_link,$q);
 $num = mysqli_num_rows($r);
 if ($num > 0)
 {
@@ -88,7 +85,7 @@ if ($num > 0)
 	echo '<br>col moving is '.$col_moving;
 # we need to collect the Vehicle information from the Vehicle Table
 	$q2="SELECT * from Vehicles WHERE Model = ('$col_Model')";
-	$r2=mysqli_query($dbc,$q2);
+	$r2=mysqli_query($camp_link,$q2);
 	$r2_data = mysqli_fetch_row($r2);
 	if ($r2_data[0]) 
 		{
@@ -102,7 +99,7 @@ if ($num > 0)
 			$range_m = $r2_data[7];			
 		}	
 	else
-		{echo'<p>'.mysqli_error($dbc).'</p>';}
+		{echo'<p>'.mysqli_error($camp_link).'</p>';}
 	if ($Model == $moving_becomes)
 	{
 	echo '<br>This is a vehicle capable of moving';
@@ -111,7 +108,7 @@ if ($num > 0)
 	{	
 	echo '<br>This is artillery must be loaded into vehicle';
 	$q3="SELECT * from Vehicles WHERE Model = ('$moving_becomes')";
-	$r3=mysqli_query($dbc,$q3);
+	$r3=mysqli_query($camp_link,$q3);
 	$r3_data = mysqli_fetch_row($r3);
 	if ($r3_data[0]) 
 		{
@@ -125,7 +122,7 @@ if ($num > 0)
 			$range_m = $r3_data[7];			
 		}	
 	else
-		{echo'<p>'.mysqli_error($dbc).'</p>';}
+		{echo'<p>'.mysqli_error($camp_link).'</p>';}
 	}
 # here is where we start writing a record to group file
 # start a while loop that will carry on till qty of vehicles is 0
@@ -402,7 +399,7 @@ if ($num > 0)
 # this is the end of the do while loop	
 # now we write the static columns
 $q = 'SELECT * from '.$miss. ' where col_moving = "0"';
-$r = mysqli_query($dbc,$q);
+$r = mysqli_query($camp_link,$q);
 $num = mysqli_num_rows($r);
 if ($num > 0)
 {
@@ -430,7 +427,7 @@ if ($num > 0)
 	echo '<br>col moving is '.$col_moving;
 # we need to collect the Vehicle information from the Vehicle Table
 	$q2="SELECT * from Vehicles WHERE Model = ('$col_Model')";
-	$r2=mysqli_query($dbc,$q2);
+	$r2=mysqli_query($camp_link,$q2);
 	$r2_data = mysqli_fetch_row($r2);
 	if ($r2_data[0]) 
 		{
@@ -444,7 +441,7 @@ if ($num > 0)
 			$range_m = $r2_data[7];			
 		}	
 	else
-		{echo'<p>'.mysqli_error($dbc).'</p>';}
+		{echo'<p>'.mysqli_error($camp_link).'</p>';}
 #	if ($Model == $moving_becomes)
 #	{
 #	echo '<br>This is a vehicle capable of moving';
@@ -453,7 +450,7 @@ if ($num > 0)
 #	{	
 #	echo '<br>This is artillery must be loaded into vehicle';
 #	$q3="SELECT * from Vehicles WHERE Model = ('$moving_becomes')";
-#	$r3=mysqli_query($dbc,$q3);
+#	$r3=mysqli_query($camp_link,$q3);
 #	$r3_data = mysqli_fetch_row($r3);
 #	if ($r3_data[0]) 
 #		{
@@ -467,7 +464,7 @@ if ($num > 0)
 #			$range_m = $r3_data[7];			
 #		}	
 #	else
-#		{echo'<p>'.mysqli_error($dbc).'</p>';}
+#		{echo'<p>'.mysqli_error($camp_link).'</p>';}
 #	}
 # here is where we start writing a record to group file
 $list_of_mcus ="";

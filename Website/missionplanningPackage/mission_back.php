@@ -2,8 +2,6 @@
 # Stenka 04/10/13
 # Php version of reading back group after planning in editor
 <?php
-# require is connecting user peter to stalingrad1 database
-require('require.php');
 # initialise variables
 $current_mission = 1;
 $miss = 'mission_'.$current_mission;
@@ -110,11 +108,11 @@ while ( ! feof( $fp ) ) {
 	col_dest_XPos = $dest_XPos,
 	col_dest_ZPos = $dest_ZPos
 	where col_Name = '$current_Name'";
-	$r1= mysqli_query($dbc,$q1);
+	$r1= mysqli_query($camp_link,$q1);
 	if ($r1)
 			{echo '<br> updated';}
 	else
-			{echo'<p>'.mysqli_error($dbc).'</p>';}
+			{echo'<p>'.mysqli_error($camp_link).'</p>';}
 	}	
 	$count = 1+$count;
 }
