@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2013 at 11:01 PM
+-- Generation Time: Oct 12, 2013 at 05:45 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -99,11 +99,11 @@ CREATE TABLE IF NOT EXISTS `airfields` (
 DROP TABLE IF EXISTS `campaign_missions`;
 CREATE TABLE IF NOT EXISTS `campaign_missions` (
   `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
-  `mission_number` smallint(1) unsigned NOT NULL,
-  `mission_file` varchar(50) NOT NULL,
-  `mission_log` varchar(50) NOT NULL,
-  `MissionID` varchar(50) NOT NULL,
-  `mission_status` tinyint(1) NOT NULL,
+  `mission_number` smallint(1) unsigned NOT NULL DEFAULT '0',
+  `mission_file` varchar(50) NOT NULL DEFAULT 'mission_file.mis',
+  `mission_log` varchar(50) NOT NULL DEFAULT 'missionReport',
+  `MissionID` varchar(50) NOT NULL DEFAULT 'missionid',
+  `mission_status` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `mission_file` (`mission_file`),
   UNIQUE KEY `MissionID` (`MissionID`),
@@ -128,26 +128,26 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
   `map` varchar(30) NOT NULL,
   `map_locations` varchar(40) NOT NULL,
   `status` enum('1','2','3','4') NOT NULL DEFAULT '4',
-  `show_airfield` tinyint(1) NOT NULL,
-  `finish_flight_only_landed` tinyint(1) NOT NULL,
-  `logpath` varchar(60) NOT NULL,
-  `log_prefix` varchar(50) NOT NULL,
-  `logfile` varchar(50) NOT NULL,
-  `kia_pilot` smallint(1) NOT NULL,
-  `mia_pilot` smallint(1) NOT NULL,
-  `critical_w_pilot` smallint(1) NOT NULL,
-  `serious_w_pilot` smallint(1) NOT NULL,
-  `light_w_pilot` smallint(1) NOT NULL,
-  `kia_gunner` smallint(1) NOT NULL,
-  `mia_gunner` smallint(1) NOT NULL,
-  `critical_w_gunner` smallint(1) NOT NULL,
-  `serious_w_gunner` smallint(1) NOT NULL,
-  `light_w_gunner` smallint(1) NOT NULL,
+  `show_airfield` enum('true','false') NOT NULL DEFAULT 'true',
+  `finish_flight_only_landed` enum('true','false') NOT NULL DEFAULT 'true',
+  `logpath` varchar(60) NOT NULL DEFAULT 'logs',
+  `log_prefix` varchar(50) NOT NULL DEFAULT 'MissionReport',
+  `logfile` varchar(50) NOT NULL DEFAULT 'MissionReport',
+  `kia_pilot` smallint(1) NOT NULL DEFAULT '100',
+  `mia_pilot` smallint(1) NOT NULL DEFAULT '50',
+  `critical_w_pilot` smallint(1) NOT NULL DEFAULT '30',
+  `serious_w_pilot` smallint(1) NOT NULL DEFAULT '20',
+  `light_w_pilot` smallint(1) NOT NULL DEFAULT '10',
+  `kia_gunner` smallint(1) NOT NULL DEFAULT '50',
+  `mia_gunner` smallint(1) NOT NULL DEFAULT '50',
+  `critical_w_gunner` smallint(1) NOT NULL DEFAULT '30',
+  `serious_w_gunner` smallint(1) NOT NULL DEFAULT '20',
+  `light_w_gunner` smallint(1) NOT NULL DEFAULT '10',
   `healthy` smallint(1) NOT NULL DEFAULT '0',
-  `min_x` mediumint(1) NOT NULL,
-  `min_z` mediumint(1) NOT NULL,
-  `max_x` mediumint(1) NOT NULL,
-  `max_z` mediumint(1) NOT NULL,
+  `min_x` mediumint(1) NOT NULL DEFAULT '0',
+  `min_z` mediumint(1) NOT NULL DEFAULT '0',
+  `max_x` mediumint(9) NOT NULL DEFAULT '100000',
+  `max_z` mediumint(1) NOT NULL DEFAULT '100000',
   `air_detect_distance` smallint(1) unsigned NOT NULL DEFAULT '5000',
   `ground_detect_distance` smallint(1) unsigned NOT NULL DEFAULT '500',
   `air_ai_level` enum('1','2','3') NOT NULL DEFAULT '2',
@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
 --
 
 INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `logpath`, `log_prefix`, `logfile`, `kia_pilot`, `mia_pilot`, `critical_w_pilot`, `serious_w_pilot`, `light_w_pilot`, `kia_gunner`, `mia_gunner`, `critical_w_gunner`, `serious_w_gunner`, `light_w_gunner`, `healthy`, `min_x`, `min_z`, `max_x`, `max_z`, `air_detect_distance`, `ground_detect_distance`, `air_ai_level`, `ground_ai_level`, `ground_max_speed_kmh`, `ground_transport_speed_kmh`, `ground_spacing`, `lineup_minutes`, `mission_minutes`) VALUES
-(1, 'RoF', 'Bloody April', 'bloody_april', 'localhost', 'rofwar', 'rofwar', 'Western Front', 'rof_westernfront_locations', '2', 1, 1, 'logs', 'missionReportBloodyAprilMission', '', 100, 50, 30, 20, 10, 50, 50, 30, 20, 10, 0, 0, 0, 0, 0, 5000, 500, '2', '2', 50, 10, 5, 30, 90);
+(1, 'RoF', 'Bloody April', 'bloody_april', 'localhost', 'rofwar', 'rofwar', 'Western Front', 'rof_westernfront_locations', '2', 'true', 'true', 'logs', 'missionReportBloodyAprilMission', 'missionReportBloodyAprilMission1', 100, 50, 30, 20, 10, 50, 50, 30, 20, 10, 0, 0, 0, 100000, 100000, 5000, 500, '2', '2', 50, 10, 5, 30, 90);
 
 -- --------------------------------------------------------
 
@@ -414,17 +414,17 @@ INSERT INTO `rof_countries` (`id`, `ckey`, `countryname`, `countryadj`, `CoalID`
 
 DROP TABLE IF EXISTS `rof_gunner_scores`;
 CREATE TABLE IF NOT EXISTS `rof_gunner_scores` (
-  `id` smallint(1) NOT NULL AUTO_INCREMENT,
-  `MissionID` varchar(50) NOT NULL,
-  `CoalID` tinyint(1) unsigned NOT NULL,
-  `country` smallint(1) NOT NULL,
-  `GunnerName` varchar(40) NOT NULL,
-  `mgid` smallint(1) NOT NULL,
-  `GunningFor` varchar(40) NOT NULL,
-  `GunnerFate` tinyint(1) NOT NULL,
-  `GunnerHealth` tinyint(1) NOT NULL,
-  `GunnerNegScore` int(1) NOT NULL,
-  `GunnerPosScore` int(1) NOT NULL,
+  `id` int(1) NOT NULL AUTO_INCREMENT,
+  `MissionID` varchar(50) NOT NULL DEFAULT 'missionid',
+  `CoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `country` smallint(1) NOT NULL DEFAULT '0',
+  `GunnerName` varchar(40) NOT NULL DEFAULT 'gunnername',
+  `mgid` int(1) NOT NULL DEFAULT '0',
+  `GunningFor` varchar(40) NOT NULL DEFAULT 'pilotname',
+  `GunnerFate` tinyint(1) NOT NULL DEFAULT '0',
+  `GunnerHealth` tinyint(1) NOT NULL DEFAULT '0',
+  `GunnerNegScore` int(1) NOT NULL DEFAULT '0',
+  `GunnerPosScore` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -437,20 +437,20 @@ CREATE TABLE IF NOT EXISTS `rof_gunner_scores` (
 DROP TABLE IF EXISTS `rof_kills`;
 CREATE TABLE IF NOT EXISTS `rof_kills` (
   `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
-  `MissionID` varchar(60) NOT NULL,
-  `clocktime` time NOT NULL,
-  `attackerID` mediumint(1) NOT NULL,
-  `attackerName` varchar(50) NOT NULL,
-  `attackerCountryID` smallint(1) NOT NULL,
-  `attackerCoalID` tinyint(1) unsigned NOT NULL,
-  `action` varchar(20) NOT NULL,
-  `targetID` mediumint(1) NOT NULL,
-  `targetClass` varchar(8) NOT NULL,
-  `targetType` varchar(50) NOT NULL,
-  `targetName` varchar(50) NOT NULL,
-  `targetCountryID` smallint(1) unsigned NOT NULL,
-  `targetCoalID` tinyint(1) unsigned NOT NULL,
-  `targetValue` smallint(1) NOT NULL,
+  `MissionID` varchar(60) NOT NULL DEFAULT 'missionid',
+  `clocktime` time NOT NULL DEFAULT '00:00:00',
+  `attackerID` mediumint(1) NOT NULL DEFAULT '0',
+  `attackerName` varchar(50) NOT NULL DEFAULT 'attacker name',
+  `attackerCountryID` smallint(1) NOT NULL DEFAULT '0',
+  `attackerCoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `action` varchar(20) NOT NULL DEFAULT 'action',
+  `targetID` mediumint(1) NOT NULL DEFAULT '0',
+  `targetClass` varchar(8) NOT NULL DEFAULT 'xxx',
+  `targetType` varchar(50) NOT NULL DEFAULT 'target type',
+  `targetName` varchar(50) NOT NULL DEFAULT 'target name',
+  `targetCountryID` smallint(1) unsigned NOT NULL DEFAULT '0',
+  `targetCoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `targetValue` smallint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -800,15 +800,15 @@ INSERT INTO `rof_object_roles` (`id`, `unit_class`, `role_description`) VALUES
 DROP TABLE IF EXISTS `rof_pilot_scores`;
 CREATE TABLE IF NOT EXISTS `rof_pilot_scores` (
   `id` smallint(1) NOT NULL AUTO_INCREMENT,
-  `MissionID` varchar(50) NOT NULL,
-  `CoalID` tinyint(3) unsigned NOT NULL,
-  `country` smallint(1) NOT NULL,
-  `PilotName` varchar(40) NOT NULL,
-  `mpid` smallint(1) NOT NULL,
-  `PilotFate` tinyint(1) NOT NULL,
-  `PilotHealth` tinyint(1) NOT NULL,
-  `PilotNegScore` int(1) NOT NULL,
-  `PilotPosScore` int(1) NOT NULL,
+  `MissionID` varchar(50) NOT NULL DEFAULT 'missionid',
+  `CoalID` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `country` smallint(1) NOT NULL DEFAULT '0',
+  `PilotName` varchar(40) NOT NULL DEFAULT 'pilotname',
+  `mpid` smallint(1) NOT NULL DEFAULT '0',
+  `PilotFate` tinyint(1) NOT NULL DEFAULT '0',
+  `PilotHealth` tinyint(1) NOT NULL DEFAULT '0',
+  `PilotNegScore` int(1) NOT NULL DEFAULT '0',
+  `PilotPosScore` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -1820,14 +1820,14 @@ INSERT INTO `rof_westernfront_locations` (`id`, `LID`, `LX`, `LZ`, `LName`) VALU
 
 DROP TABLE IF EXISTS `supply_points`;
 CREATE TABLE IF NOT EXISTS `supply_points` (
-  `id` tinyint(1) NOT NULL,
-  `xPos` smallint(1) NOT NULL,
-  `zPos` smallint(6) NOT NULL,
-  `CoalID` smallint(6) NOT NULL,
-  `supplypointName` varchar(40) NOT NULL,
+  `id` tinyint(1) unsigned NOT NULL AUTO_INCREMENT,
+  `xPos` smallint(1) NOT NULL DEFAULT '0',
+  `zPos` smallint(6) NOT NULL DEFAULT '0',
+  `CoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `supplypointName` varchar(40) NOT NULL DEFAULT 'supplypoint name',
   PRIMARY KEY (`id`),
   UNIQUE KEY `supplypointName` (`supplypointName`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
