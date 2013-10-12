@@ -38,12 +38,24 @@ if ($result = mysqli_query($camp_link, $query)) {
 		$FinishFlightOnlyLanded = ($obj->finish_flight_only_landed);
 		$map_locations	=($obj->map_locations);
 		$LOGPATH	=($obj->logpath);
+		$kia_pilot	=($obj->kia_pilot);
+		$mia_pilot	=($obj->mia_pilot);
+		$critical_w_pilot	=($obj->critical_w_pilot);
+		$serious_w_pilot	=($obj->serious_w_pilot);
+		$light_w_pilot	=($obj->light_w_pilot);
+		$kia_gunner	=($obj->kia_gunner);
+		$mia_gunner	=($obj->mia_gunner);
+		$critical_w_gunner	=($obj->critical_w_gunner);
+		$serious_w_gunner	=($obj->serious_w_gunner);
+		$light_w_gunner	=($obj->light_w_gunner);
+		$healthy	=($obj->healthy);
 	}
         // free result set
 	mysqli_free_result($result);
 }
 
 // debugging
+//if (true){
 if ($DEBUG){
    print "DEBUG rof_parse_log.php parser configuration:<br>\n";
    print "SHOWAF = $SHOWAF<br>\n";
@@ -51,6 +63,7 @@ if ($DEBUG){
    print "map_locations = $map_locations<br>\n";
    print "LOGPATH = $LOGPATH<br>\n";
    print "LOGFILE = $LOGFILE<br>\n";
+   print "\$critical_w_gunner = $critical_w_gunner<br>\n";
 }
 
 // Declare global variables.
