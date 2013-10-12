@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2013 at 11:24 PM
+-- Generation Time: Oct 12, 2013 at 04:43 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -29,20 +29,20 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `campaign_settings`;
 CREATE TABLE IF NOT EXISTS `campaign_settings` (
   `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
-  `simulation` enum('RoF','BoS') NOT NULL,
-  `campaign` varchar(30) NOT NULL,
-  `camp_db` varchar(30) NOT NULL,
-  `camp_host` varchar(30) NOT NULL,
-  `camp_user` varchar(30) NOT NULL,
-  `camp_passwd` varchar(30) NOT NULL,
-  `map` varchar(30) NOT NULL,
-  `map_locations` varchar(40) NOT NULL,
+  `simulation` enum('RoF','BoS') NOT NULL DEFAULT 'RoF',
+  `campaign` varchar(30) NOT NULL DEFAULT 'campaign',
+  `camp_db` varchar(30) NOT NULL DEFAULT 'campaign_database',
+  `camp_host` varchar(30) NOT NULL DEFAULT 'localhost',
+  `camp_user` varchar(30) NOT NULL DEFAULT 'campaign db user',
+  `camp_passwd` varchar(30) NOT NULL DEFAULT 'password for campaign user',
+  `map` varchar(30) NOT NULL DEFAULT 'map',
+  `map_locations` varchar(40) NOT NULL DEFAULT 'map_locations table',
   `status` enum('1','2','3','4') NOT NULL DEFAULT '4',
   `show_airfield` enum('true','false') NOT NULL DEFAULT 'true',
   `finish_flight_only_landed` enum('true','false') NOT NULL DEFAULT 'true',
   `logpath` varchar(60) NOT NULL DEFAULT 'logs',
-  `log_prefix` varchar(50) NOT NULL DEFAULT 'MissionReport',
-  `logfile` varchar(50) NOT NULL DEFAULT 'MissionReport',
+  `log_prefix` varchar(50) NOT NULL DEFAULT 'missionReport',
+  `logfile` varchar(50) NOT NULL DEFAULT 'missionReport',
   `kia_pilot` smallint(1) NOT NULL DEFAULT '100',
   `mia_pilot` smallint(1) NOT NULL DEFAULT '50',
   `critical_w_pilot` smallint(1) NOT NULL DEFAULT '30',
