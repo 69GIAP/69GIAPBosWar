@@ -2,6 +2,12 @@
 # Stenka 29/09/13
 # Load test data into col_10
 <?php
+$q3="TRUNCATE table col_10";
+$r3= mysqli_query($camp_link,$q3);
+if ($r3)
+	{echo'<br>static added';}
+else
+	{echo'<p>'.mysqli_error($camp_link).'</p>';} 
 $q3="INSERT INTO col_10 (col_Name,col_moving,col_Model,col_supplypoint,col_qty,col_coalition) VALUES ('REGIMENT 1 Platoon 1','0','leyland','1',5,'1')";
 $r3= mysqli_query($camp_link,$q3);
 if ($r3)
