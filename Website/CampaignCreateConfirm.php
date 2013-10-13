@@ -58,7 +58,7 @@ if ($existing) { // selected if not empty
 $query = "CREATE DATABASE IF NOT EXISTS `$newCampaignDBName` ;";
 					
 # GRANT CAMPAIGN DB USER RIGHTS ON NEW DB
-$query .= "GRANT SELECT, INSERT, UPDATE, DELETE ON `$newCampaignDBName`.* TO '$newCampaignDBUser'@'$newCampaignDBHost' IDENTIFIED BY '$newCampaignDBPassword' ;";
+$query .= "GRANT SELECT, INSERT, UPDATE, DELETE, DROP ON `$newCampaignDBName`.* TO '$newCampaignDBUser'@'$newCampaignDBHost' IDENTIFIED BY '$newCampaignDBPassword' ;";
 
 // GRANT GLOBAL FILE PRIVILEGE to db user so can read and write group files
 $query .= "GRANT FILE ON *.* TO '$newCampaignDBUser'@'$newCampaignDBHost' ;";
