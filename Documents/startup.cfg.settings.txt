@@ -1,0 +1,12 @@
+In data\startup.cfg in the final section [KEY = system]
+Use the following settings:
+
+gamelog = 1
+keep_binary_log = 0
+mission_text_log = 1
+
+This will generate small text log files, one every fifteen seconds or so.
+
+You will need copy.bat to combine them.
+
+See 69giap_RoF-text_log_parser_howto.txt for more information.
