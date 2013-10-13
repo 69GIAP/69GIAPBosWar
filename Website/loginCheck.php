@@ -27,7 +27,10 @@
 				$password 	= 	md5($_POST["password"]); 
 			  
 				# create SQL query
-				$query = "SELECT u.user_id, u.username, u.password, u.role_id, r.role FROM users u, users_roles r WHERE u.username LIKE '$userName' AND u.role_id = r.role_id"; 
+				$query = "SELECT u.user_id, u.username, u.password, u.role_id, r.role 
+							FROM users u, users_roles r 
+							WHERE u.username LIKE '$userName' 
+							AND u.role_id = r.role_id"; 
 				
 				# execute SQL query
 				$result = mysqli_query($dbc, $query);

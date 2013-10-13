@@ -60,6 +60,35 @@
 		# BUTTON DELETE USER
 		echo "		<button type=\"modify\" name =\"modify\" id=\"loginSubmit\" value =\"0\" >!! Delete User !!</button>\n";
 	}
+	
+	if ($userRole == 'commander') {
+		echo "<h3>Choose the default folder for your Group Files:</h3>\n";
+		# get actual folder path
+		$query = "SELECT groupFileFolder from campaign_users 
+					WHERE user_id = $userId
+					AND camp_db = $loadedCampaign";
+		if ($result = mysqli_query($dbc, $query)) 
+		{				
+			echo "<option value=\"\" disabled selected>Select New Role</option>\n";	
+			/* fetch associative array */
+			while ($obj = mysqli_fetch_object($result)) 
+				{
+					$groupFilePath=($obj->groupFilePath);
+				}
+		}
+		
+		if (empty($groupFilePath)) {
+			echo "	<fieldset id=\"inputs\">\n";
+			echo "		<input id=\"file\" type=\"text\"  name=\"groupFilePath\" placeholder=\"Please insert a folder path.\" >\n";
+		}
+		else {
+			echo "	<fieldset id=\"inputs\">\n";
+			echo "		<input id=\"file\" type=\"text\"  name=\"groupFilePath\" placeholder=$groupFilePath >\n";
+		}
+		echo "	<fieldset id=\"actions\">";
+		# BUTTON SAVE
+		echo "		<button type=\"modify\" name =\"modify\" id=\"loginSubmit\" value =\"6\" >SAVE</button>\n";		
+	}
 	echo "	</fieldset>\n";
 	echo "</form>\n"; 
 	

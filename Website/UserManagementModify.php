@@ -23,7 +23,21 @@
 				
 				# bind post variable into variables
 				#  User id
-					$id = $_POST["userId"];
+					if (empty($_POST["userId"])) {
+						$_POST["userId"] = $userId;
+						$id = $userId;
+					}
+					else {
+						$id = $_POST["userId"];
+					}
+				# group file folder path
+				if (empty($_POST['groupFilePath'])) {
+					$_POST['groupFilePath'] = '';
+				}
+				else {
+					$groupFilePath = $_POST['groupFilePath'];
+					$groupFilePath = mysqli_real_escape_string($dbc, $groupFilePath);
+				}
 
 				# Coalition NEW
 				if (empty($_POST["userCoalitionIdNew"]))
@@ -64,7 +78,13 @@
 						}
 						
 				# campaign database
-					$campdb = $_POST["campdb"];
+					if(empty($_POST["campdb"])) {
+						$_POST["campdb"] = $loadedCampaign;
+						$campdb = $_POST["campdb"];
+					}
+					else {
+						$campdb = $_POST["campdb"];
+					}
 
 				# get user name
 					$sql = "SELECT username FROM users WHERE user_id = $id";
@@ -131,7 +151,12 @@
 				if (($_POST["modify"] == 5))
 					{	
 						$sql = "UPDATE campaign_users SET CoalID = $userCoalitionIdNew WHERE user_id = '$id' and camp_db = '$campdb'";
-					}													
+					}
+				# store group file path, each single user has to do this on his own - only commanders can see the form field
+				if (($_POST["modify"] == 6))
+					{	
+						$sql = "UPDATE campaign_users SET groupFile_path = '$groupFilePath' WHERE user_id = '$id' and camp_db = '$campdb'";
+					}																		
 				
 				# Feedback success or failure
 				if (!mysqli_multi_query($dbc,$sql))
@@ -172,7 +197,11 @@
 				if (($_POST["modify"] == 4))
 					{
 						echo "<br>The user <b>$modifiedUser</b> has been removed from the <b>$campdb</b> campaign successfully!\n";
-					}	
+					}
+				if (($_POST["modify"] == 6))
+					{
+						echo "<br>Your Group file path has been changed to successfully!\n";
+					}						
 				?>
 				
             </div>

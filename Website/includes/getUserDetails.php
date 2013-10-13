@@ -24,7 +24,7 @@ while($row = mysqli_fetch_array($result))
   {
 	  	print "<div class=\"userRecordFrame\">";
 		print "<p>\n";
-  		print "<b>User ID:</b> " . $row['user_id'] . "<br>\n";
+  		#print "<b>User ID:</b> " . $row['user_id'] . "<br>\n";
         print "<b>Username:</b> ".$row['username'] . " <br>\n";
         
 		# get Role Name for Display
@@ -35,23 +35,27 @@ while($row = mysqli_fetch_array($result))
 			{
 				$roleName = $row1['role'];
 			}
-        print "<b>User Role:</b> ".$roleName." <br>\n";			
-        print "<b>Email Adress:</b> ".$row['email'] . " <br>\n";
-        print "<b>Telephone:</b> ".$row['phone'] . " <br>\n";
+        print "<b>User Role: </b> ".$roleName." <br>\n";			
+        print "<b>Email Adress: </b> ".$row['email'] . " <br>\n";
+        print "<b>Telephone: </b> ".$row['phone'] . " <br>\n";
   }
 
 $result = mysqli_query($dbc,$sql2);
 
 while($row = mysqli_fetch_array($result))
   {
-	  $CoalId = $row['CoalID'];
+	  $CoalId 			= $row['CoalID'];
+	  $groupFilePath	= $row['groupFile_path'];
+	  
 	  $sql4 = "SELECT Coalitionname from rof_coalitions where CoalId = $CoalId";
 			$result2 = mysqli_query($dbc,$sql4);
 			while($row2 = mysqli_fetch_array($result2))
 			{
 				$CoalName = $row2['Coalitionname'];
 			}
-		print "<b>Campaign DB:</b> ".$row['camp_db'] . " <b>Coalition:</b> ".$CoalName . "<br>\n";
+		print "<hr noshade width=\"auto\" size=\"1\" align=\"left\">\n";
+		print "<b>Campaign DB: </b> ".$row['camp_db'] . " <b>Coalition:</b> ".$CoalName . "<br>\n";
+		print "<b>Group File Path: </b>".$groupFilePath."<br>\n";
 	}
 		print "</p>\n";
 		print "</div>\n";
