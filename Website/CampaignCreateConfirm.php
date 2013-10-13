@@ -64,17 +64,11 @@ $query .= "GRANT SELECT, INSERT, UPDATE, DELETE ON `$newCampaignDBName`.* TO '$n
 $query .= "GRANT FILE ON *.* TO '$newCampaignDBUser'@'$newCampaignDBHost' ;";
 
 # COPY INITIAL TABLESET FROM BOSWAR_DB TO NEW CAMPAIGN DB
-$query .= "CREATE TABLE `$newCampaignDBName`.rof_airfields	SELECT * FROM boswar_db.rof_airfields;";
-$query .= "CREATE TABLE `$newCampaignDBName`.rof_models 		SELECT * FROM boswar_db.rof_models;";
-
-// Note that the simple CREATE TABLE method used above does not recreate indices, etc
-// To get those, use CREATE TABLE...LIKE
-// Here is an example with rof_airfields2... compare to rof_airfields above
-// I know we don't need both, but the comparison is enlightening
-// Compare structure for 'id'
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_airfields2 LIKE boswar_db.rof_airfields;";
-// Populate the new table with data from rof_airfields just for fun
-$query .= "INSERT INTO `$newCampaignDBName`.rof_airfields2 SELECT * FROM boswar_db.rof_airfields;";
+# temporarily used tables until we populate the final tables with data
+$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_airfields LIKE boswar_db.rof_airfields;";
+$query .= "INSERT INTO `$newCampaignDBName`.rof_airfields SELECT * FROM boswar_db.rof_airfields;";
+$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_models LIKE boswar_db.rof_models;";
+$query .= "INSERT INTO `$newCampaignDBName`.rof_models SELECT * FROM boswar_db.rof_models;";
 // Do the remainder of the empty tables that we need
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.campaign_missions LIKE boswar_db.campaign_missions;";
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.inbox LIKE boswar_db.inbox;";
@@ -102,6 +96,15 @@ $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.$campaignMapLocations
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.campaign_settings LIKE boswar_db.campaign_settings;";
 $query .= "INSERT INTO `$newCampaignDBName`.campaign_settings (simulation, campaign, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
 $query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
+// create tables necessary for gourp files
+$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.col_10 LIKE boswar_db.col_10;";
+$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.Trains LIKE boswar_db.trains;";
+$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.Blocks LIKE boswar_db.blocks;";
+$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.Vehicles LIKE boswar_db.vehicles;";
+$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.static LIKE boswar_db.static;";
+$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.cam_param LIKE boswar_db.cam_param;";
+$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.Flags LIKE boswar_db.flags;";
+
 # INSERT CAMPAIGN DB INFORMATION TO MASTER TABLE
 // this should be at the end of the creation chain
 // so it won't be created if there is an error
