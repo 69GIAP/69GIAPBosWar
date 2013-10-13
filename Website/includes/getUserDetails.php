@@ -11,8 +11,7 @@ if (!$dbc)
 
 # get the user list
 $sql1 = "SELECT * FROM users
-			WHERE user_id = '".$q."'		
-			ORDER BY  username";
+			WHERE user_id = '".$q."'";
 			
 # get the selected users asigned campaigns			
 $sql2 = "SELECT * FROM campaign_users

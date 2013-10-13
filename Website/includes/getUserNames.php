@@ -3,15 +3,17 @@
 
 	if ($userRole == "administrator") 
 		{
-			$query = "SELECT * from users u, campaign_users c, users_roles r
-						WHERE r.role_id = u.role_id
-						AND u.user_id = c.user_id
-						GROUP BY u.user_id";
+			$query = "SELECT u.user_id, u.username, u.email, u.phone, c.camp_db, r.role_id, r.role from users u
+						LEFT JOIN campaign_users c
+						ON u.user_id = c.user_id
+						LEFT JOIN users_roles r
+						ON r.role_id = u.role_id
+						GROUP BY u.user_id;";
 		}
 	if ($userRole == "commander")
 		{
 			# show commanders, who are assigned to my active campaigns excluding me, administrators and viewers, these are the only ones visible
-			$query = "SELECT u.user_id, u.username, r.role from users u, campaign_users c, users_roles r
+			$query = "SELECT u.user_id, u.username, u.email, u.phone, r.role from users u, campaign_users c, users_roles r
 						WHERE r.role_id = u.role_id
 						AND u.user_id = c.user_id
 						AND u.user_id != 'userId'
