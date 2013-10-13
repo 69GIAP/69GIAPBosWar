@@ -99,11 +99,16 @@ $query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaig
 // create tables necessary for gourp files
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.col_10 LIKE boswar_db.col_10;";
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.Trains LIKE boswar_db.trains;";
+$query .= "INSERT INTO `$newCampaignDBName`.trains SELECT * FROM boswar_db.trains;";
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.Blocks LIKE boswar_db.blocks;";
+$query .= "INSERT INTO `$newCampaignDBName`.blocks SELECT * FROM boswar_db.blocks;";
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.Vehicles LIKE boswar_db.vehicles;";
+$query .= "INSERT INTO `$newCampaignDBName`.vehicles SELECT * FROM boswar_db.vehicles;";
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.static LIKE boswar_db.static;";
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.cam_param LIKE boswar_db.cam_param;";
+$query .= "INSERT INTO `$newCampaignDBName`.cam_param SELECT * FROM boswar_db.cam_param;";
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.Flags LIKE boswar_db.flags;";
+$query .= "INSERT INTO `$newCampaignDBName`.flags SELECT * FROM boswar_db.flags;";
 
 # INSERT CAMPAIGN DB INFORMATION TO MASTER TABLE
 // this should be at the end of the creation chain

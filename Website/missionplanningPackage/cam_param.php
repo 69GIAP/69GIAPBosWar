@@ -11,9 +11,9 @@ if ($r_data[0])
 	echo "<br> Zero vari:".$r_data[0];
 	echo "<br> One vari:".$r_data[1];
 	define('CAM_SIM',$r_data[1]);
-	echo "<br> SIM is:".CAM_SIM;
+	echo "<br> SIM is:".'CAM_SIM';
 	define('CAM_MAP',$r_data[2]);	
-	echo "<br> MAP is:".CAM_MAP;
+	echo "<br> MAP is:".'CAM_MAP';
 	define('CAM_BOT_LEFT_X',$r_data[3]);	
 	echo "<br> Bottom left X of sector is:".CAM_BOT_LEFT_X;	
 	define('CAM_BOT_LEFT_Z',$r_data[4]);	

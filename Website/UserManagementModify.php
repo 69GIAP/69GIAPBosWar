@@ -35,7 +35,7 @@
 					$_POST['groupFilePath'] = '';
 				}
 				else {
-					$groupFilePath = $_POST['groupFilePath'];
+					$groupFilePath = $_POST['groupFilePath']."\\";
 					$groupFilePath = mysqli_real_escape_string($dbc, $groupFilePath);
 				}
 
