@@ -188,8 +188,8 @@ function OUTPUT() {
    // all start out uncaptured
    $captured = 0;
 
-//if ($DEBUG){
-if (true){
+//if (true){
+if ($DEBUG){
    print "DEBUG OUTPUT configuration:<br>\n";
    print "FinishFlightOnlyLanded = $FinishFlightOnlyLanded<br>\n";
    print "map_locations = $map_locations<br>\n";
