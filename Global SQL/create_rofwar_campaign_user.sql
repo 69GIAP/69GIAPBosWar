@@ -10,11 +10,8 @@
    testing, not production. It was added by =69.GIAP=MYATA
 */
 
-GRANT USAGE ON *.* TO 'rofwar'@'localhost';
-DROP USER 'rofwar'@'localhost';
-CREATE USER 'rofwar'@'localhost';
-SET PASSWORD FOR 'rofwar'@'localhost' = PASSWORD('rofwar');
 GRANT FILE ON *.* TO 'rofwar'@'localhost';
+SET PASSWORD FOR 'rofwar'@'localhost' = PASSWORD('rofwar');
 GRANT SELECT, INSERT, UPDATE, DELETE, DROP ON bloody_april.* TO 'rofwar'@'localhost';
 GRANT SELECT, INSERT, UPDATE, DELETE, DROP ON flanders_eagles.* TO 'rofwar'@'localhost';
 GRANT SELECT, INSERT, UPDATE, DELETE, DROP ON skies_of_the_empires.* TO 'rofwar'@'localhost';
