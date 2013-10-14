@@ -52,7 +52,6 @@ if ($r1)
 else
 	{echo'<p>'.mysqli_error($camp_link).'</p>';}
 #prepare datafile for output
-#$filename = "c:/BOSWAR/allied_m1_final.Group";
 $filename = $groupFilePath.$coalition.'_static_'.$miss.".Group";
 echo'<br> filename is:'.$filename;
 if (file_exists($filename)) 
@@ -88,7 +87,7 @@ if ($num > 0)
 	echo '<br>'.$row['id'].'|'.$row['static_Name'].$row['static_Country'];
 	$search_Name = $row['static_Name'];
 	$q5 = 'SELECT * from static_'.$miss. ' where static_Type = "Vehicle" AND static_Name = "'.$search_Name.'" AND static_updated = 0 AND static_coalition = '.$coa ;
-	echo '<br>Select:'.$q5;
+	#echo '<br>Select:'.$q5;
 	$r5 = mysqli_query($camp_link,$q5);
 	$num5 = mysqli_num_rows($r5);
 	$list_of_mcus ="";
@@ -602,12 +601,12 @@ if ($num > 0)
 if ($coalition=="central")
 {
 $q = 'SELECT * from static_mission_'.$current_mission. ' WHERE static_coalition = "2" AND static_updated = 0';
-echo '<br>select is:'.$q;
+#echo '<br>select is:'.$q;
 }
 else
 {
 $q = 'SELECT * from static_mission_'.$current_mission. ' WHERE static_coalition = "1"AND static_updated = 0';
-echo '<br>select is:'.$q;
+#echo '<br>select is:'.$q;
 }
 #$q = 'SELECT * from static_mission_1'
 $r = mysqli_query($camp_link,$q);

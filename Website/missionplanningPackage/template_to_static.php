@@ -1,7 +1,7 @@
 # V1.0<br />
 # Stenka 29/9/13<br />
 # Php version of inbox table to load into ststic0 from static_template_allies_back.Group<br />
- or ststic_template_central_back.Group.<br />
+ or static_template_central_back.Group.<br />
 <?php
 # $groupFilePath is the path to where the user keeps the group files
 $sql = "SELECT groupFile_path FROM campaign_users 
@@ -114,7 +114,7 @@ while ( ! feof( $fp ) )
 # check if corresponding record exists in static
 	$id = 0;
 	$q2="SELECT * from static where static_Name = '$current_Name' AND static_Model = '$Model' AND static_updated = 0 LIMIT 1";
-	echo '<br> My select is:'.$q2;
+#	echo '<br> My select is:'.$q2;
 	$r2=mysqli_query($camp_link,$q2);
 	$r2_data = mysqli_fetch_row($r2);
 	if ($r2_data[0]) 
@@ -122,7 +122,7 @@ while ( ! feof( $fp ) )
 			$id = $r2_data[0];
 			echo '<br>I found record no:'.$id;
 			$q1="UPDATE static set static_XPos = $XPos,static_ZPos = $ZPos,static_YOri = $YOri,static_updated=1 where id = $id";
-			echo '<br> My update select is:'.$q1;
+#			echo '<br> My update select is:'.$q1;
 			$r1= mysqli_query($camp_link,$q1);
 			if ($r1)
 				{echo '<br> updated record'.$id;}

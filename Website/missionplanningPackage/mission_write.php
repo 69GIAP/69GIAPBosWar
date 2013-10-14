@@ -1,6 +1,6 @@
-# V1.0
-# Stenka 04/10/13
-# Php version of mission 1 write
+# V1.0<br />
+# Stenka 04/10/13<br />
+# Php version of mission 1 write<br />
 <?php
 # next load campaign variable into constants
 require('cam_param.php');

@@ -1,6 +1,6 @@
-# V1.0
-# Stenka 04/10/13
-# Php version of reading back group after planning in editor
+# V1.0<br />
+# Stenka 04/10/13<br />
+# Php version of reading back group after planning in editor<br />
 <?php
 # initialise variables
 $current_mission = 1;

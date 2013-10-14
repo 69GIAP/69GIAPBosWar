@@ -1,6 +1,6 @@
-# V1.0
-# Stenka 21/9/13
-# loading campaign variables into memory
+# V1.0<br />
+# Stenka 21/9/13<br />
+# loading campaign variables into memory<br />
 <?php
 
 $q='SELECT * FROM cam_param WHERE id = 1';
