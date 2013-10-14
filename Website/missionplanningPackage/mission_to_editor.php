@@ -1,14 +1,25 @@
-# V1.0
-# Stenka 04/10/13
-# Php version of mission create vehicles in group file
+# V1.0 <br />
+# Stenka 04/10/13 <br />
+# Php version of mission create vehicles in group file. <br />
 <?php
 # next load campaign variable into constants
 require('cam_param.php');
+# $groupFilePath is the path to where the user keeps the group files
+$sql = "SELECT groupFile_path FROM campaign_users 
+		WHERE user_id = $userId 
+		AND camp_db = '$loadedCampaign';";
+if ($result = mysqli_query($dbc, $sql)) 
+		{				
+			/* fetch associative array */
+			while ($obj = mysqli_fetch_object($result)) 
+				{
+					$groupFilePath	=($obj->groupFile_path);
+				}
+		}
 # initialise variables
 $current_mission = 1;
 $miss = 'mission_'.$current_mission;
-# $path is the path to where the user keeps the group files
-$path = 'c:/BOSWAR/';
+
 # are we outputting an allied or central
 $coalition="allies";
 #$coalition="central";
@@ -29,7 +40,7 @@ $cam_blue_supply_3_x = CAM_BLUE_SUPPLY_3_X;
 $cam_blue_supply_3_z = CAM_BLUE_SUPPLY_3_Z;
 # end of my variables initialisation
 #prepare datafile for output
-$filename = $path. $coalition . "_m".$current_mission.".Group";
+$filename = $groupFilePath. $coalition . "_m".$current_mission.".Group";
 echo '<br> File:'.$filename;
 if (file_exists($filename)) 
 {

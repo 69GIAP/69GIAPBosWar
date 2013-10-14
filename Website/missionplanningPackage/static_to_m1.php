@@ -1,6 +1,6 @@
-# V1.0
-# Stenka 05/10/13
-# Php version of creation of static_mission_1 table from static ready for planning
+# V1.0<br />
+# Stenka 05/10/13<br />
+# Php version of creation of static_mission_1 table from static ready for planning.<br />
 <?php
 # require is connecting user peter to stalingrad1 database
 # here

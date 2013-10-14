@@ -1,14 +1,24 @@
-# V1.0
-# Stenka 05/10/2013
-# Php version of static create ststic objects in template_allies or central.Group
-# version with parameter for path and coalition
+# V1.0<br />
+# Stenka 05/10/2013<br />
+# Php version of static create ststic objects in template_allies or central.Group<br />
+# version with parameter for path and coalition<br />
 <?php
 # next load campaign variable into constants
 require('cam_param.php');
 # now we will start creating vehicles
 # initialise variables 
-# $path is the path to where the user keeps the group files
-$path = 'c:/BOSWAR/';
+# $groupFilePath is the path to where the user keeps the group files
+$sql = "SELECT groupFile_path FROM campaign_users 
+		WHERE user_id = $userId 
+		AND camp_db = '$loadedCampaign';";
+if ($result = mysqli_query($dbc, $sql)) 
+		{				
+			/* fetch associative array */
+			while ($obj = mysqli_fetch_object($result)) 
+				{
+					$groupFilePath	=($obj->groupFile_path);
+				}
+		}
 # are we outputting an allied or central
 $coalition="allies";
 #$coalition="central";
@@ -29,7 +39,7 @@ $cam_blue_supply_3_x = CAM_BLUE_SUPPLY_3_X;
 $cam_blue_supply_3_z = CAM_BLUE_SUPPLY_3_Z;
 # end of my variables initialisation
 #prepare datafile for output
-$filename = $path.'static_template_'.$coalition.".Group";
+$filename = $groupFilePath.'static_template_'.$coalition.".Group";
 echo '<br>Filename is :'.$filename;
 if (file_exists($filename)) 
 {

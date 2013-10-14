@@ -1,6 +1,6 @@
-# V1.0
-# Stenka 04/10/13
-# Php version of creation of mission_1 table from col_10 ready for planning
+# V1.0 <br />
+# Stenka 04/10/13 <br />
+# Php version of creation of mission_1 table from col_10 ready for planning <br />
 <?php
 $q1="DROP TABLE IF EXISTS mission_1";
 	$r1= mysqli_query($camp_link,$q1);

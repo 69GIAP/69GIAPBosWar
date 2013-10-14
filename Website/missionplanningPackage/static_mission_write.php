@@ -1,6 +1,6 @@
-# V1.0
-# Stenka 06/10/13
-# Php version of mission 1 write
+# V1.0<br />
+# Stenka 06/10/13<br />
+# Php version of mission 1 write<br />
 <?php
 # next load campaign variable into constants
 require('cam_param.php');
@@ -14,8 +14,18 @@ if ($coalition == "allies")
 {$coa = 1;}
 else
 {$coa = 2;}
-# $path is the path to where the user keeps the group files
-$path = 'c:/BOSWAR/';
+# $groupFilePath is the path to where the user keeps the group files
+$sql = "SELECT groupFile_path FROM campaign_users 
+		WHERE user_id = $userId 
+		AND camp_db = '$loadedCampaign';";
+if ($result = mysqli_query($dbc, $sql)) 
+		{				
+			/* fetch associative array */
+			while ($obj = mysqli_fetch_object($result)) 
+				{
+					$groupFilePath	=($obj->groupFile_path);
+				}
+		}
 # $index_no is the index number 
 $index_no = 1;
 # x and z pos of supply positions
@@ -43,7 +53,7 @@ else
 	{echo'<p>'.mysqli_error($camp_link).'</p>';}
 #prepare datafile for output
 #$filename = "c:/BOSWAR/allied_m1_final.Group";
-$filename = $path.$coalition.'_static_'.$miss.".Group";
+$filename = $groupFilePath.$coalition.'_static_'.$miss.".Group";
 echo'<br> filename is:'.$filename;
 if (file_exists($filename)) 
 {

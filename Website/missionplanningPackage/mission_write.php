@@ -11,8 +11,18 @@ require('pre_mission_generation_check.php');
 # initialise variables
 $current_mission = 1;
 $miss = 'mission_'.$current_mission;
-# $path is the path to where the user keeps the group files
-$path = 'c:/BOSWAR/';
+# $groupFilePath is the path to where the user keeps the group files
+$sql = "SELECT groupFile_path FROM campaign_users 
+		WHERE user_id = $userId 
+		AND camp_db = '$loadedCampaign';";
+if ($result = mysqli_query($dbc, $sql)) 
+		{				
+			/* fetch associative array */
+			while ($obj = mysqli_fetch_object($result)) 
+				{
+					$groupFilePath	=($obj->groupFile_path);
+				}
+		}
 # $index_no is the index number 
 $index_no = 1;
 # x and z pos of supply positions
@@ -31,7 +41,7 @@ $cam_blue_supply_3_z = CAM_BLUE_SUPPLY_3_Z;
 # end of my variables initialisation
 #prepare datafile for output
 #$filename = "c:/BOSWAR/allied_m1_final.Group";
-$filename = $path.$miss.".Group";
+$filename = $groupFilePath.$miss.".Group";
 echo'<br> filename is:'.$filename;
 if (file_exists($filename)) 
 {

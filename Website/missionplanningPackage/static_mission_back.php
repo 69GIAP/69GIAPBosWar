@@ -1,9 +1,20 @@
-# V1.0
-# Stenka 06/10/13
-# Php version of inbox table to load into static_mission_n from static_mission_allies_back.Group or static_mission_central_back.Group
+# V1.0<br />
+# Stenka 06/10/13<br />
+# Php version of inbox table to load into static_mission_n from static_mission_allies_back.Group<br />
+or static_mission_central_back.Group<br />
 <?php
-# $path is the path to where the user keeps the group files
-$path = 'c:/BOSWAR/';
+# $groupFilePath is the path to where the user keeps the group files
+$sql = "SELECT groupFile_path FROM campaign_users 
+		WHERE user_id = $userId 
+		AND camp_db = '$loadedCampaign';";
+if ($result = mysqli_query($dbc, $sql)) 
+		{				
+			/* fetch associative array */
+			while ($obj = mysqli_fetch_object($result)) 
+				{
+					$groupFilePath	=($obj->groupFile_path);
+				}
+		}
 # are we inputting an allied or central
 $coalition="allies";
 #$coalition="central";
@@ -23,7 +34,7 @@ else
 $count = 0;
 $current_object = "Unknown";
 $current_Name = "Unknown";
-$filename = $path.'static_mission_'.$coalition."_back.Group";
+$filename = $groupFilePath.'static_mission_'.$coalition."_back.Group";
 echo '<br>Filename is :'.$filename;
 $fp = fopen( $filename, "r" ) or die("Couldn't open $filename");
 while ( ! feof( $fp ) ) 
