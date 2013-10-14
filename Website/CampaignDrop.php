@@ -3,16 +3,11 @@
 # Incorporate the MySQL connection script.
 	require ( '../connect_db.php' );
 
-# clear some SESSION variables
-#	unset ($_SESSION['camp_db']);
-#	unset ($_SESSION['airfieldName']);
-		
 # Include the webside header
 	include ( 'includes/header.php' );
 	
 # Include the navigation on top
 	include ( 'includes/navigation.php' );
-
 
 ?>
 
@@ -26,7 +21,6 @@
 					# empty campaign specific variables
     				unset($loadedCampaign);
 					unset($_SESSION['camp_db']);
-
 					
 					# Feedback to the user wich campaign he is connected to right now
 					if (!empty($loadedCampaign))

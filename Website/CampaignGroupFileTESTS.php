@@ -26,7 +26,7 @@
 					$query = "SELECT * from campaign_settings where camp_db = '$loadedCampaign'";  
 					
 					if(!$result = $dbc->query($query)) {
-					die('There was an error running the query [' . $dbc->error . ']');
+						die('There was an error running the query [' . $dbc->error . ']');
 						}
 						
 						if ($result = mysqli_query($dbc, $query)) {

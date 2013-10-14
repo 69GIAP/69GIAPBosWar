@@ -27,18 +27,16 @@
 					$newCampaignDBHost	 	= $_POST['newCampaignDatabaseHost'];					
 					$campaignMap			= $_POST['campaignMap'];
 
-// Tushka is skipping the extra indentation while testing
-// If selected, $existing contains host, user, and passwd
-$existing = $_POST['existing'];
-// check to see if 'existing' was the selected option
-if ($existing) { // selected if not empty
-	// split 'existing' into three parts at the '+'
-	$Part = explode('+',$existing,3);
-	$newCampaignDBHost = $Part[0];
-	$newCampaignDBUser = $Part[1];
-	$newCampaignDBPassword = $Part[2];
-}
-// Tushka now returns you to the extra indentation
+					// If selected, $existing contains host, user, and passwd
+					$existing = $_POST['existing'];
+					// check to see if 'existing' was the selected option
+					if ($existing) { // selected if not empty
+						// split 'existing' into three parts at the '+'
+						$Part = explode('+',$existing,3);
+						$newCampaignDBHost		= $Part[0];
+						$newCampaignDBUser		= $Part[1];
+						$newCampaignDBPassword	= $Part[2];
+					}
 
 					# load map location
 					$query = "SELECT map_locations FROM maps";

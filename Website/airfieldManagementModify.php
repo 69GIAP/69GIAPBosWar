@@ -60,15 +60,6 @@
 				
 				$airfieldCoalitionId		= $_POST["airfieldCoalitionId"];
 				$airfieldCoalitionIdNew		= $_POST["airfieldCoalitionIdNew"];	
-/*				
-echo "airfieldModelLoaded1: $airfieldModelLoaded1<br>\n";
-echo "airfieldModelQuantityNew1: $airfieldModelQuantityNew1<br>\n";
-echo "airfieldName: $airfieldName<br>\n";
-
-echo "airfieldModelLoaded2: $airfieldModelLoaded2<br>\n";
-echo "airfieldModelQuantityNew2: $airfieldModelQuantityNew2<br>\n";
-echo "airfieldName: $airfieldName<br>\n";
-*/				
 						
 				# prepare sql based on selected aircraft
 				if ($_POST["updateAirfield"] == 1)

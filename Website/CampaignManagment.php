@@ -20,7 +20,6 @@
 				
                 	# This redirects the user to the Login screen if he tries to press a button and is not logged on
 					include ( 'includes/errorNotLoggedOn.php' );
-					
 
 					# show campaigns due to User role
 					if ($userRole == "administrator")
@@ -41,10 +40,10 @@
     
         </div>
 
-<?php
-	# Include the general sidebar
-	include ( 'includes/sidebar.php' );
-?>	
+		<?php
+            # Include the general sidebar
+            include ( 'includes/sidebar.php' );
+        ?>	
 
 		<div id="clearing"></div>
 	</div>

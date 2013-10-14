@@ -36,10 +36,10 @@
     
         </div>
 
-<?php
-	# Include the general sidebar
-	include ( 'includes/sidebar.php' );
-?>	
+		<?php
+            # Include the general sidebar
+            include ( 'includes/sidebar.php' );
+        ?>	
 
 		<div id="clearing"></div>
 	</div>

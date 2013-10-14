@@ -2,10 +2,6 @@
 
 # Incorporate the MySQL connection script.
 	require ( '../connect_db.php' );
-
-# clear some SESSION variables
-#	unset ($_SESSION['camp_db']);
-#	unset ($_SESSION['airfieldName']);
 		
 # Include the webside header
 	include ( 'includes/header.php' );
