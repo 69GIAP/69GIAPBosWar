@@ -4,8 +4,7 @@
    Oct 11, 2013
    for testing: run this only after importing the four example campaign
    databases 
-   Updated Oct 13, 2013 with DROP USER statement in case of preexisting user
-   and a preceeding GRANT USAGE (harmless) on same user to ensure one exists
+   Updated Oct 13, 2013
    Note: the DROP privilege for a campaign db user may only be needed for 
    testing, not production. It was added by =69.GIAP=MYATA
 */
