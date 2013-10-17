@@ -2,7 +2,7 @@
 <?php
 
 	# load aircraft list from selected campaign database
-	$queryModel = "SELECT model FROM test_models";
+	$queryModel = "SELECT model FROM rof_models";
 	
 	if(!$resultModel = $camp_link->query($queryModel))
 		{

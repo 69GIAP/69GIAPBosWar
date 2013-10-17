@@ -5,7 +5,7 @@
 
 	# load the query into a variable dependent on the role the user owns
 
-	$query = "SELECT model FROM test_models";
+	$query = "SELECT model FROM rof_models";
 	
 	if(!$result = $dbc->query($query))
 		{
