@@ -1,9 +1,6 @@
-# V1.0 05/10/2013
-# Stenka script to create test database
-# use for initial create will crush data
-# 
-CREATE DATABASE IF NOT EXISTS stalingrad1_db ;
-USE stalingrad1_db;
+
+CREATE DATABASE IF NOT EXISTS boswar_db ;
+USE boswar;
 SHOW TABLES;
 
 DROP TABLE IF EXISTS bridges;
