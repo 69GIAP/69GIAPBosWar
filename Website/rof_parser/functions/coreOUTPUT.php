@@ -62,7 +62,7 @@ function OUTPUT() {
    global $playername; // player name from PLID
    global $objectname; // object name from PID/AID/TID
    global $objecttype; // object type from PID/AID/TID
-   global $objectclass; // object class from rof_object_properties
+   global $object_class; // object class from rof_object_properties
    global $objectvalue; // object value from rof_object_properties
    global $countryname; // country name
    global $countryid; // country id
@@ -130,7 +130,7 @@ function OUTPUT() {
    global $camp_link; // link to campaign db
    global $StatsCommand; // do, undo, or ignore
    globaL $camp_db; // campaign db
-   global $objectdesc; // object description
+   global $object_desc; // object description from rof_object_properties
    global $kia_pilot; // points lost for killed pilot
    global $mia_pilot; // points lost for missing/captured pilot
    global $critical_w_pilot; // points lost for critically wounded pilot
@@ -380,7 +380,7 @@ if ($DEBUG){
          OBJECTNAME($TID[$j],$Ticks[$j]); // get target objectname
 	 $targetobject = $objectname; // is this still useful?
 	 OBJECTPROPERTIES($targettype); // get target properties
-	 $targetclass = $objectclass;
+	 $targetclass = $object_class;
 	 $targetvalue = $objectvalue;
          OBJECTCOUNTRYNAME($TID[$j],$Ticks[$j]); // get target's country, etc
 	 $tcountryid = $countryid;
@@ -436,7 +436,7 @@ if ($DEBUG){
 		  // see 1916_1 for four examples
 		  // AI gunner so no need to score
 		  BOTGUNNER($targettype);
-		  $tplayername = "$objectdesc";
+		  $tplayername = "$object_desc";
 		  $action = "was killed";
                   echo ("$clocktime $ca $tcountryadj $tplayername ($targettype) $action $where<br>\n");
 //		  echo "\$targetclass = $targetclass, \$targettype = $targettype, \$tplayername = $tplayername<br>\n";
@@ -504,7 +504,7 @@ if ($DEBUG){
 		  }
                } elseif ($targetclass == 'BOT') {
 		  BOTGUNNER($targettype);
-		  $tplayername = "$objectdesc";
+		  $tplayername = "$object_desc";
 		  $action = 'killed';
                   // B:
 		  // see 1916_2 for two examples
@@ -570,7 +570,7 @@ if ($DEBUG){
                   $a2 = $anora;
 		  SHIPS($targettype);
 		  $action = "sank";
-                  echo ("$clocktime $a2 $Lasthitby[$tonum] $action $a $objectdesc ($targetobject) $where<br>\n");
+                  echo ("$clocktime $a2 $Lasthitby[$tonum] $action $a $object_desc ($targetobject) $where<br>\n");
 	 	  if ($StatsCommand == 'do') { // generate an INSERT query	  
 		     $query = "INSERT into rof_kills (MissionID,clocktime,attackerID,attackerName,attackerCountryID,attackerCoalID,action,targetID,targetClass,targetType,targetName,targetCountryID,targetCoalID) VALUES ('$MissionID','$clocktime','$Lasthitbyid[$tonum]','$Lasthitby[$tonum]','$countryid','$CoalID','$action','$TID[$j]','$targetclass','$targettype','$tplayername','$tcountryid','$tCoalID')";
 //		     echo "D3: $query<br>\n";
@@ -632,7 +632,7 @@ if ($DEBUG){
                $a = $anora;
 	       SHIPS($targettype);
 	       $action = "sank";
-               echo ("$clocktime $a $aplayername $action $ca $tcountryadj $objectdesc ($targetobject) $where<br>\n");
+               echo ("$clocktime $a $aplayername $action $ca $tcountryadj $object_desc ($targetobject) $where<br>\n");
 	       if ($StatsCommand == 'do') { // generate an INSERT query 
 	          $query = "INSERT into rof_kills (MissionID,clocktime,attackerID,attackerName,attackerCountryID,attackerCoalID,action,targetID,targetClass,targetType,targetName,targetCountryID,targetCoalID) VALUES ('$MissionID','$clocktime','$Lasthitbyid[$tonum]','$Lasthitby[$tonum]','$countryid','$CoalID','$action','$TID[$j]','$targetclass','$targettype','$tplayername','$tcountryid','$tCoalID')";
 //	          echo "F2: $query<br>\n";
@@ -643,7 +643,7 @@ if ($DEBUG){
                // F3
 	       // see 1916_1 for three examples
 	       BOTGUNNER($targettype);
-	       $tplayername = "$objectdesc";
+	       $tplayername = "$object_desc";
                ANORA($aplayername);
                $a = $anora;
 	       $action = "killed";
@@ -659,7 +659,7 @@ if ($DEBUG){
 	       // F4
 	       // see 1916_1 for twenty three examples!
 	       $action = "destroyed";
-               echo ("$clocktime $a $aplayername $action $ca $tcountryadj $objectdesc ($targetobject) $where<br>\n");
+               echo ("$clocktime $a $aplayername $action $ca $tcountryadj $object_desc ($targetobject) $where<br>\n");
 	       if ($StatsCommand == 'do') { // generate an INSERT query 
 	          $query = "INSERT into rof_kills (MissionID,clocktime,attackerID,attackerName,attackerCountryID,attackerCoalID,action,targetID,targetClass,targetType,targetName,targetCountryID,targetCoalID) VALUES ('$MissionID','$clocktime','$Lasthitbyid[$tonum]','$Lasthitby[$tonum]','$countryid','$CoalID','$action','$TID[$j]','$targetclass','$targettype','$tplayername','$tcountryid','$tCoalID')";
 //	          echo "F4: $query<br>\n";

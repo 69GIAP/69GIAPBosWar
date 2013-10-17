@@ -15,7 +15,7 @@ function FATES($i,$j) {
    global $TYPE; // type of plane in this context
    global $anora; // an or a
    global $Gunner; // gunner type, if set
-   global $Gunnerticks; // time became gunner
+//   global $Gunnerticks; // time became gunner
    global $Whosegunner; // player piloting this gunner
    global $Wound; // array holding severity of wound
    global $Woundticks; // ticks when last wounded
@@ -43,7 +43,7 @@ function FATES($i,$j) {
    global $MissionID; // mission ID (name-date-time)
    global $camp_link; // link to campaign db
    global $StatsCommand; // do, undo, or ignore
-   globaL $camp_db; // campaign db
+   global $camp_db; // campaign db
    global $kia_pilot; // points lost for killed pilot
    global $mia_pilot; // points lost for missing/captured pilot
    global $critical_w_pilot; // points lost for critically wounded pilot
@@ -55,6 +55,8 @@ function FATES($i,$j) {
    global $serious_w_gunner; // points lost for seriously wounded gunner
    global $light_w_gunner; // points lost for lightly wounded gunner
    global $healthy; // points lost for healthy pilot/gunner
+   global $object_class; // object class from rof_object_properties
+   global $object_desc; // object description
 
    // PlayerFate ($fate):
    // 0 = did not take off
@@ -87,18 +89,10 @@ if ($DEBUG){
    $a = $anora;
    // get player's country name
    COUNTRYNAME($COUNTRY[$j]);
-   // is this player a pilot or gunner?
+   // get object_class and object_desc
    TURRETGUNNER($j);
-
-   // if gunner, ignore wounds acquired before becoming this gunner
-   if ($Gunner) {
-      WHOSEGUNNER($PLID[$j]);   
-      ANORA($Gunner);
-      $ag = $anora;
-      if ($Woundticks[$i] < $Gunnerticks) {
-         $Wound[$i] = 0;
-      }
-   }
+   ANORA($object_desc);
+   $ag = $anora;
 
    // now print out the fate of the player
    if ($Death[$i]) { // player has been killed
@@ -107,9 +101,10 @@ if ($DEBUG){
       WHERE($posx,$posz,0);
       $fate = 5;
       $health = 4;
-      if ($Gunner) { //G1:
+      if ($object_class == 'TUR') { //G1:
+         WHOSEGUNNER($PLID[$j]);   
 //         echo "Woundticks[$i] = $Woundticks[$i], Gunnerticks = $Gunnerticks<br>\n";
-         echo "$NAME[$j] as $ag $Gunner for $countryname was killed at $clocktime $where<br>\n";
+         echo "$NAME[$j] as $ag $object_desc for $countryname was killed at $clocktime $where<br>\n";
       } else { // not gunner so must be pilot
          echo "$NAME[$j] piloting $a $TYPE[$j] for $countryname was killed at $clocktime $where<br>\n";
       }
@@ -129,9 +124,9 @@ if ($DEBUG){
          $health = 1;
          $injuries = "minor injuries";
       }
-      if ($Gunner) { //G2:
+      if ($object_class == 'TUR') { //G2:
 //         echo "Woundticks[$i] = $Woundticks[$i], Gunnerticks = $Gunnerticks<br>\n";
-         echo "$NAME[$j] as $ag $Gunner for $countryname suffered $injuries at $clocktime $where<br>\n";
+         echo "$NAME[$j] as $ag $object_desc for $countryname suffered $injuries at $clocktime $where<br>\n";
       } else { // not gunner so must be pilot
          echo "$NAME[$j] piloting $a $TYPE[$j] for $countryname suffered $injuries at $clocktime $where<br>\n";
       }
@@ -193,8 +188,8 @@ if ($DEBUG){
          }
       } // end takeoff check
 
-      if ($Gunner) { // gunners do not take off or land independently G3:
-         echo "$NAME[$j] as $ag $Gunner for $countryname survived safe and sound<br>\n";
+      if ($object_class == 'TUR') { // gunners do not take off or land independently G3:
+         echo "$NAME[$j] as $ag $object_desc for $countryname survived safe and sound<br>\n";
       } else { //  pilot player took off and landed
          echo "$NAME[$j] piloting $a $TYPE[$j] for $countryname $landed<br>\n";
       }
@@ -205,7 +200,7 @@ if ($DEBUG){
 //   echo "\$j = $j; \$COUNTRY[\$j] = $COUNTRY[$j], \$CoalID = $CoalID<br>\n";
 
    if ($StatsCommand == 'do') { // generate an INSERT query
-      if ($Gunner) { // gunner
+      if ($object_class == 'TUR') { // gunner
          if ($health == 4 ) { // dead gunner
             $GunnerNegScore = "$kia_gunner";
 	 } elseif ($health == 3) { // critically injured gunner
@@ -235,7 +230,7 @@ if ($DEBUG){
             $query = "INSERT into rof_pilot_scores (MissionID,CoalID,country,PilotName,mpid,PilotFate,PilotHealth,PilotNegScore) VALUES ('$MissionID','$CoalID','$COUNTRY[$j]','$NAME[$j]','$i','$fate','$health','$PilotNegScore')";
       }
    } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
-      if ($Gunner) {
+      if ($object_class == 'TUR') {
          $query = "DELETE from rof_gunner_scores WHERE MissionID='$MissionID' AND GunnerName='$NAME[$j]' AND mgid='$i'";
       } else { // pilot
          $query = "DELETE from rof_pilot_scores WHERE MissionID='$MissionID' AND PilotName='$NAME[$j]' AND mpid='$i'";
