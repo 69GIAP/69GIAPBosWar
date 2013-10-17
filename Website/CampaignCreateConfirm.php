@@ -94,7 +94,7 @@ $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.$campaignMapLocations
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.campaign_settings LIKE boswar_db.campaign_settings;";
 $query .= "INSERT INTO `$newCampaignDBName`.campaign_settings (simulation, campaign, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
 $query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
-// create tables necessary for gourp files
+// create tables necessary for group files
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.col_10 LIKE boswar_db.col_10;";
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.Trains LIKE boswar_db.trains;";
 $query .= "INSERT INTO `$newCampaignDBName`.trains SELECT * FROM boswar_db.trains;";
@@ -107,6 +107,8 @@ $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.cam_param LIKE boswar
 $query .= "INSERT INTO `$newCampaignDBName`.cam_param SELECT * FROM boswar_db.cam_param;";
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.Flags LIKE boswar_db.flags;";
 $query .= "INSERT INTO `$newCampaignDBName`.flags SELECT * FROM boswar_db.flags;";
+$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.bridges LIKE boswar_db.bridges;";
+$query .= "INSERT INTO `$newCampaignDBName`.bridges SELECT * FROM boswar_db.bridges;";
 
 # INSERT CAMPAIGN DB INFORMATION TO MASTER TABLE
 // this should be at the end of the creation chain

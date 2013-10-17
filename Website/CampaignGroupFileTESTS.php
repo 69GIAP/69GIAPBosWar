@@ -72,6 +72,9 @@
 					{include ( 'missionplanningPackage/static_mission_back.php' );}
 					if ($state == 14)
 					{include ( 'missionplanningPackage/static_mission_write.php' );}
+					# test 3
+					if ($state == 15)
+					{include ( 'missionplanningPackage/template_to_bridges.php' );}
 					
                 ?>	
             </div>

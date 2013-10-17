@@ -37,6 +37,9 @@
                     echo "<li><a href=\"CampaignGroupFileTESTS.php?state=12\">static_mission_to_editor.php</a></li>";
                     echo "<li><a href=\"CampaignGroupFileTESTS.php?state=13\">static_mission_back.php</a></li>";
                     echo "<li><a href=\"CampaignGroupFileTESTS.php?state=14\">static_mission_write.php</a></li>";
+					
+					echo "<h3>Stenkas Test 3</h3>";
+                    echo "<li><a href=\"CampaignGroupFileTESTS.php?state=15\">template_to_bridges.php</a></li>";
                 ?>	
                 <h3>Group File Upload script</h3>
                 <form id="loginForm" name="login" action="uploadFile.php" method="post" enctype="multipart/form-data">
