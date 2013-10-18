@@ -21,8 +21,6 @@
 					# empty campaign specific variables
     				unset($loadedCampaign);
 					unset($_SESSION['camp_db']);
-					
-					
 						
                     # show campaigns due to User role
 						if ($userRole == "administrator" or $userRole == "commander")
@@ -38,7 +36,7 @@
                             }
                         if ($userRole == "viewer")
                             {
-                                echo "<p>As <b>$userRole</b> you don't have the necessary rights to connect to a database.<br>\n";
+                                echo "<p>Sorry, but as <b>$userRole</b> you don't have the necessary rights to connect to a database.<br>\n";
 								echo "Please contact your administrator.</p>\n";
                             }
                         else

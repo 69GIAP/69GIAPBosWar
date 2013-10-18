@@ -24,11 +24,11 @@
 					# show campaigns due to User role
 					if ($userRole == "administrator")
 						{
-							echo "Here has to be some intelligent text other than this!";
+							echo "<p>Please select one of the sidebar menu options to proceed!</p>\n";
 						}
 					if ($userRole == "commander")
 						{
-							echo "Please choose out of one of the options in the side menu!";
+							echo "<p>Please choose out of one of the options in the side menu!</p>\n";
 						}
 					if ($userRole == "viewer")
 						{

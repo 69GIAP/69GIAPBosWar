@@ -32,13 +32,11 @@
                     # show campaigns due to User role
 						if ($userRole == "administrator" or $userRole == "commander")
                             {	
-								echo "<p>Some silly text!</p>\n";
-                                # get the full campaign list							
-                                # include ( 'includes/getCampaigns.php' );
+								header ("Location: CampaignSelect.php?btn=home");
                             }
                         if ($userRole == "viewer")
                             {
-                                echo "<p>As <b>$userRole</b> you don't have the necessary rights to connect to a database.<br>\n";
+                                echo "<p>Sorry, but as <b>$userRole</b> you don't have the necessary rights to connect to a database.<br>\n";
 								echo "Please contact your administrator.</p>\n";
                             }
                         else
