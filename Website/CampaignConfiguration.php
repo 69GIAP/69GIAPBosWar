@@ -36,6 +36,16 @@
 							$camp_host	=($obj->camp_host);
 							$camp_user	=($obj->camp_user);
 							$camp_passwd=($obj->camp_passwd);
+							$camp_status_id=($obj->status);
+							
+							# get campaign status
+							$sql="SELECT campaign_status FROM campaign_status where id = $camp_status_id";
+							if ($result = mysqli_query($dbc, $sql)) {
+							/* fetch associative array */
+							while ($obj = mysqli_fetch_object($result)) {
+								$camp_status=($obj->campaign_status);
+								}
+							}
 						}
 					} 
 									
@@ -43,8 +53,20 @@
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
 					
 					# start form
-					echo "<form id=\"airfieldForm\" name=\"login\" action=\"CampaignCreateConfirm.php\" method=\"post\">\n";
+					echo "<form id=\"airfieldForm\" name=\"login\" action=\"CampaignConfigureConfirm.php\" method=\"post\">\n";
 				
+					echo "	<fieldset id=\"inputs\">\n";
+					echo "		<p>The current status of the campaign is: <b>$camp_status</b></p>\n";
+					echo "		<select name=\"newCampStatus\" id=\"database\">\n";
+					# CHANGE CAMPAIGN STATUS
+					include 'includes/getCampaignStatusGlobal.php'; 
+					echo "		</select>\n";
+					echo "	</fieldset>\n";
+					# BUTTON	
+					echo "<fieldset id=\"actions\">\n";
+					echo "		<button type=\"submit\" name =\"createCampaign\" id=\"loginSubmit\" value =\"1\" >Change Campaign Status</button>\n";	
+					echo "	</fieldset>\n";
+
 					echo "	<fieldset id=\"inputs\">\n";
 					# MASTER AIRFIELD LIST
 					include 'includes/getMasterAirfieldInformation.php'; 
@@ -56,7 +78,7 @@
 				
 					# BUTTON	
 					echo "<fieldset id=\"actions\">\n";
-					echo "		<button type=\"submit\" name =\"createCampaign\" id=\"loginSubmit\" value =\"init\" >Initialize Campaign</button>\n";	
+					echo "		<button type=\"submit\" name =\"createCampaign\" id=\"loginSubmit\" value =\"2\" >Initialize Campaign</button>\n";	
 					echo "	</fieldset>\n";
 				
 					echo "</form>\n";          
