@@ -4,7 +4,7 @@
 $query = "SELECT MissionID, clocktime, attackerName, attackerCountryID, attackerCoalID, action, targetType, targetName, targetCountryID, targetCoalID, targetValue
 		FROM rof_kills
 		WHERE MissionId = '$MissionID'
-		ORDER BY MissionID, clocktime asc";
+		ORDER BY attackerCountryID, attackerCoalID, clocktime asc";
 	
 if(!$result = $camp_link->query($query))
    { die('There was an error running the query [' . $camp_link->error . ']'); }
