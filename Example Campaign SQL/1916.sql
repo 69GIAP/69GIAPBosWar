@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2013 at 04:58 AM
+-- Generation Time: Oct 18, 2013 at 11:03 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -216,6 +216,7 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
   `ground_spacing` tinyint(1) unsigned NOT NULL DEFAULT '5',
   `lineup_minutes` tinyint(1) unsigned NOT NULL DEFAULT '30',
   `mission_minutes` tinyint(1) unsigned NOT NULL DEFAULT '90',
+  `detect_off_time` tinyint(1) unsigned NOT NULL DEFAULT '15',
   PRIMARY KEY (`id`),
   UNIQUE KEY `campaign` (`campaign`),
   UNIQUE KEY `camp_db` (`camp_db`)
@@ -225,8 +226,8 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
 -- Dumping data for table `campaign_settings`
 --
 
-INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `logpath`, `log_prefix`, `logfile`, `kia_pilot`, `mia_pilot`, `critical_w_pilot`, `serious_w_pilot`, `light_w_pilot`, `kia_gunner`, `mia_gunner`, `critical_w_gunner`, `serious_w_gunner`, `light_w_gunner`, `healthy`, `min_x`, `min_z`, `max_x`, `max_z`, `air_detect_distance`, `ground_detect_distance`, `air_ai_level`, `ground_ai_level`, `ground_max_speed_kmh`, `ground_transport_speed_kmh`, `ground_spacing`, `lineup_minutes`, `mission_minutes`) VALUES
-(1, 'RoF', '1916', '1916', 'localhost', 'rofwar', 'rofwar', 'Western Front', 'rof_westernfront_locations', '3', 'true', 'true', 'logs', 'missionReport1916_', 'missionReport1916_1', 100, 50, 30, 20, 10, 50, 50, 30, 20, 10, 0, 0, 0, 100000, 100000, 5000, 500, '2', '2', 50, 10, 5, 30, 90);
+INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `logpath`, `log_prefix`, `logfile`, `kia_pilot`, `mia_pilot`, `critical_w_pilot`, `serious_w_pilot`, `light_w_pilot`, `kia_gunner`, `mia_gunner`, `critical_w_gunner`, `serious_w_gunner`, `light_w_gunner`, `healthy`, `min_x`, `min_z`, `max_x`, `max_z`, `air_detect_distance`, `ground_detect_distance`, `air_ai_level`, `ground_ai_level`, `ground_max_speed_kmh`, `ground_transport_speed_kmh`, `ground_spacing`, `lineup_minutes`, `mission_minutes`, `detect_off_time`) VALUES
+(1, 'RoF', '1916', '1916', 'localhost', 'rofwar', 'rofwar', 'Western Front', 'rof_westernfront_locations', '3', 'true', 'true', 'logs', 'missionReport1916_', 'missionReport1916_1', 100, 50, 30, 20, 10, 50, 50, 30, 20, 10, 0, 0, 0, 100000, 100000, 5000, 500, '2', '2', 50, 10, 5, 30, 90, 15);
 
 -- --------------------------------------------------------
 
@@ -586,7 +587,7 @@ CREATE TABLE IF NOT EXISTS `rof_gunner_scores` (
   `GunnerNegScore` int(1) NOT NULL DEFAULT '0',
   `GunnerPosScore` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=88 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -612,7 +613,7 @@ CREATE TABLE IF NOT EXISTS `rof_kills` (
   `targetCoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `targetValue` smallint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=235 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -969,7 +970,7 @@ CREATE TABLE IF NOT EXISTS `rof_pilot_scores` (
   `PilotNegScore` int(1) NOT NULL DEFAULT '0',
   `PilotPosScore` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=100 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -2009,7 +2010,19 @@ CREATE TABLE IF NOT EXISTS `supply_points` (
   `supplypointName` varchar(40) NOT NULL DEFAULT 'supplypoint name',
   PRIMARY KEY (`id`),
   UNIQUE KEY `supplypointName` (`supplypointName`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `supply_points`
+--
+
+INSERT INTO `supply_points` (`id`, `xPos`, `zPos`, `CoalID`, `supplypointName`) VALUES
+(1, 100, 100, 1, 'red supply 1'),
+(2, 1100, 100, 1, 'red supply 2'),
+(3, 2100, 1100, 1, 'red supply 3'),
+(4, 100, 1100, 2, 'blue supply 1'),
+(5, 1100, 1100, 2, 'blue supply 2'),
+(6, 2100, 1100, 2, 'blue supply 3');
 
 -- --------------------------------------------------------
 
