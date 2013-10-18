@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2013 at 05:47 AM
+-- Generation Time: Oct 18, 2013 at 03:17 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -93,6 +93,65 @@ CREATE TABLE IF NOT EXISTS `airfields` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `blocks`
+--
+
+DROP TABLE IF EXISTS `blocks`;
+CREATE TABLE IF NOT EXISTS `blocks` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Model` varchar(30) NOT NULL,
+  `game_name` set('ROF','BOS') DEFAULT 'ROF',
+  `modelpath1` varchar(40) DEFAULT 'graphics',
+  `modelpath2` varchar(40) DEFAULT NULL,
+  `modelpath3` varchar(40) DEFAULT NULL,
+  UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `Model` (`Model`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `blocks`
+--
+
+INSERT INTO `blocks` (`id`, `Model`, `game_name`, `modelpath1`, `modelpath2`, `modelpath3`) VALUES
+(1, 'tent01', 'ROF', 'graphics', 'battlefield', NULL),
+(2, 'tent_camp01', 'ROF', 'graphics', 'battlefield', NULL),
+(3, 'tent_camp02', 'ROF', 'graphics', 'battlefield', NULL),
+(4, 'tent_camp03', 'ROF', 'graphics', 'battlefield', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bridges`
+--
+
+DROP TABLE IF EXISTS `bridges`;
+CREATE TABLE IF NOT EXISTS `bridges` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bridge_Name` char(31) DEFAULT 'Bridge',
+  `bridge_Model` char(20) DEFAULT NULL,
+  `bridge_Desc` varchar(80) DEFAULT NULL,
+  `bridge_Country` enum('0','101','102','103','104','105','501','502','600','610','620','630','640') DEFAULT '0',
+  `bridge_coalition` enum('0','1','2') DEFAULT '0',
+  `bridge_XPos` decimal(12,3) DEFAULT '0.000',
+  `bridge_ZPos` decimal(12,3) DEFAULT '0.000',
+  `bridge_YOri` decimal(5,2) DEFAULT '0.00',
+  `bridge_updated` int(11) DEFAULT '0',
+  `bridge_damage_1` int(11) DEFAULT '0',
+  `bridge_damage_2` int(11) DEFAULT '0',
+  `bridge_damage_3` int(11) DEFAULT '0',
+  `bridge_damage_4` int(11) DEFAULT '0',
+  `bridge_damage_5` int(11) DEFAULT '0',
+  `bridge_damage_6` int(11) DEFAULT '0',
+  `bridge_damage_7` int(11) DEFAULT '0',
+  `bridge_damage_8` int(11) DEFAULT '0',
+  `bridge_damage_9` int(11) DEFAULT '0',
+  `bridge_damage_10` int(11) DEFAULT '0',
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `campaign_missions`
 --
 
@@ -168,6 +227,105 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
 
 INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `logpath`, `log_prefix`, `logfile`, `kia_pilot`, `mia_pilot`, `critical_w_pilot`, `serious_w_pilot`, `light_w_pilot`, `kia_gunner`, `mia_gunner`, `critical_w_gunner`, `serious_w_gunner`, `light_w_gunner`, `healthy`, `min_x`, `min_z`, `max_x`, `max_z`, `air_detect_distance`, `ground_detect_distance`, `air_ai_level`, `ground_ai_level`, `ground_max_speed_kmh`, `ground_transport_speed_kmh`, `ground_spacing`, `lineup_minutes`, `mission_minutes`) VALUES
 (1, 'RoF', 'Skies of the Empires', 'skies_of_the_empires', 'localhost', 'rofwar', 'rofwar', 'Verdun', 'rof_verdun_locations', '3', 'false', 'true', 'logs', 'missionReportSoE', 'missionReportSoE1', 100, 50, 30, 20, 10, 50, 50, 30, 20, 10, 0, 0, 0, 100000, 100000, 5000, 500, '2', '2', 50, 10, 5, 30, 90);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cam_param`
+--
+
+DROP TABLE IF EXISTS `cam_param`;
+CREATE TABLE IF NOT EXISTS `cam_param` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cam_sim` enum('RoF','BoS') DEFAULT 'RoF',
+  `cam_map` varchar(80) DEFAULT 'Northern France',
+  `cam_bot_left_X` decimal(12,3) DEFAULT '0.000',
+  `cam_bot_left_Z` decimal(12,3) DEFAULT '0.000',
+  `cam_top_right_X` decimal(12,3) DEFAULT '100000.000',
+  `cam_top_right_Z` decimal(12,3) DEFAULT '100000.000',
+  `cam_red_supply_1_x` decimal(12,3) DEFAULT '100.000',
+  `cam_red_supply_1_z` decimal(12,3) DEFAULT '100.000',
+  `cam_red_supply_2_x` decimal(12,3) DEFAULT '1100.000',
+  `cam_red_supply_2_z` decimal(12,3) DEFAULT '100.000',
+  `cam_red_supply_3_x` decimal(12,3) DEFAULT '2100.000',
+  `cam_red_supply_3_z` decimal(12,3) DEFAULT '1100.000',
+  `cam_blue_supply_1_x` decimal(12,3) DEFAULT '100.000',
+  `cam_blue_supply_1_z` decimal(12,3) DEFAULT '1100.000',
+  `cam_blue_supply_2_x` decimal(12,3) DEFAULT '1100.000',
+  `cam_blue_supply_2_z` decimal(12,3) DEFAULT '1100.000',
+  `cam_blue_supply_3_x` decimal(12,3) DEFAULT '2100.000',
+  `cam_blue_supply_3_z` decimal(12,3) DEFAULT '1100.000',
+  `cam_detect_dist` decimal(4,0) DEFAULT '5000',
+  `cam_ground_ai_level` enum('1','2','3') DEFAULT '2',
+  `cam_air_ai_level` enum('1','2','3') DEFAULT '2',
+  `cam_ground_max_speed_kmh` decimal(3,0) DEFAULT '50',
+  `cam_ground_transport_speed_kmh` decimal(3,0) DEFAULT '10',
+  `cam_ground_spacing` decimal(3,0) DEFAULT '5',
+  `cam_lineup_time` decimal(3,0) DEFAULT '30',
+  `cam_mission_time` decimal(3,0) DEFAULT '90',
+  `cam_detect_ground` decimal(5,0) DEFAULT '500',
+  `cam_detect_air` decimal(5,0) DEFAULT '5000',
+  `cam_detect_off_time` decimal(2,0) DEFAULT '15',
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `cam_param`
+--
+
+INSERT INTO `cam_param` (`id`, `cam_sim`, `cam_map`, `cam_bot_left_X`, `cam_bot_left_Z`, `cam_top_right_X`, `cam_top_right_Z`, `cam_red_supply_1_x`, `cam_red_supply_1_z`, `cam_red_supply_2_x`, `cam_red_supply_2_z`, `cam_red_supply_3_x`, `cam_red_supply_3_z`, `cam_blue_supply_1_x`, `cam_blue_supply_1_z`, `cam_blue_supply_2_x`, `cam_blue_supply_2_z`, `cam_blue_supply_3_x`, `cam_blue_supply_3_z`, `cam_detect_dist`, `cam_ground_ai_level`, `cam_air_ai_level`, `cam_ground_max_speed_kmh`, `cam_ground_transport_speed_kmh`, `cam_ground_spacing`, `cam_lineup_time`, `cam_mission_time`, `cam_detect_ground`, `cam_detect_air`, `cam_detect_off_time`) VALUES
+(1, 'RoF', 'Northern France', '0.000', '0.000', '100000.000', '100000.000', '100.000', '100.000', '1100.000', '100.000', '2100.000', '1100.000', '100.000', '1100.000', '1100.000', '1100.000', '2100.000', '1100.000', '5000', '2', '2', '50', '10', '5', '30', '90', '500', '5000', '15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `col_10`
+--
+
+DROP TABLE IF EXISTS `col_10`;
+CREATE TABLE IF NOT EXISTS `col_10` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `col_Name` char(31) DEFAULT 'REGIMENT 1 Platoon 1',
+  `col_moving` enum('0','1') DEFAULT '0',
+  `col_Model` char(20) DEFAULT 'leyland',
+  `col_Desc` varchar(80) DEFAULT NULL,
+  `col_Country` enum('0','101','102','103','104','105','501','502','600','610','620','630','640') DEFAULT '105',
+  `col_coalition` enum('1','2') DEFAULT '1',
+  `col_supplypoint` enum('1','2','3') DEFAULT '1',
+  `col_qty` int(11) DEFAULT '1',
+  `col_XPos` decimal(12,3) DEFAULT '0.000',
+  `col_ZPos` decimal(12,3) DEFAULT '0.000',
+  `col_YOri` decimal(5,2) DEFAULT '0.00',
+  `col_dest_XPos` decimal(12,3) DEFAULT '0.000',
+  `col_dest_ZPos` decimal(12,3) DEFAULT '0.000',
+  `col_speed` int(11) DEFAULT '10',
+  `col_formation` int(11) DEFAULT '4',
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `flags`
+--
+
+DROP TABLE IF EXISTS `flags`;
+CREATE TABLE IF NOT EXISTS `flags` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Model` varchar(30) NOT NULL,
+  `game_name` set('RoF','BoS') DEFAULT 'RoF',
+  `modelpath2` varchar(40) DEFAULT NULL,
+  `modelpath3` varchar(40) DEFAULT NULL,
+  UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `Model` (`Model`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `flags`
+--
+
+INSERT INTO `flags` (`id`, `Model`, `game_name`, `modelpath2`, `modelpath3`) VALUES
+(1, 'windsock', 'RoF', 'flag', NULL);
 
 -- --------------------------------------------------------
 
@@ -490,6 +648,7 @@ CREATE TABLE IF NOT EXISTS `rof_object_properties` (
   `object_type` varchar(50) NOT NULL,
   `object_class` varchar(8) NOT NULL,
   `object_value` smallint(1) NOT NULL,
+  `object_desc` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `object_type` (`object_type`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=236 ;
@@ -498,242 +657,239 @@ CREATE TABLE IF NOT EXISTS `rof_object_properties` (
 -- Dumping data for table `rof_object_properties`
 --
 
-INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `object_value`) VALUES
-(1, '13PdrAAA', 'AAA', 80),
-(2, '13PrdaaaAttached', 'AAA', 80),
-(3, '45QF', 'ART', 100),
-(4, '75FG1897', 'ART', 100),
-(5, '77mmAAA', 'AAA', 80),
-(6, '77mmAAAAttached', 'AAA', 80),
-(7, 'A7V', 'T', 100),
-(8, 'AeType', 'BAL', 50),
-(9, 'Airco D.H.2', 'PFI', 100),
-(10, 'Airco D.H.4', 'PRE', 200),
-(11, 'Albatros D.II', 'PFI', 100),
-(12, 'Albatros D.II lt', 'PFI', 100),
-(13, 'Albatros D.III', 'PFI', 100),
-(14, 'Albatros D.Va', 'PFI', 100),
-(15, 'Benz Searchlight', 'VTR', 50),
-(16, 'benz_open', 'VTR', 50),
-(17, 'benz_p', 'VTR', 50),
-(18, 'benz_soft', 'VTR', 50),
-(19, 'BotBoatSwain', 'BOT', 0),
-(20, 'BotGunner', 'BOT', 0),
-(21, 'BotGunnerBacker', 'BOT', 0),
-(22, 'BotGunnerBreguet14', 'BOT', 0),
-(23, 'BotGunnerBreguet14_1', 'BOT', 0),
-(24, 'BotGunnerBW12', 'BOT', 0),
-(25, 'BotGunnerDavis', 'BOT', 0),
-(26, 'BotGunnerFe2_sing', 'BOT', 0),
-(27, 'BotGunnerFelix_top-twin', 'BOT', 0),
-(28, 'BotGunnerG5_1', 'BOT', 0),
-(29, 'BotGunnerG5_2', 'BOT', 0),
-(30, 'BotGunnerHCL2', 'BOT', 0),
-(31, 'BotGunnerHP400_1', 'BOT', 0),
-(32, 'BotGunnerHP400_2', 'BOT', 0),
-(33, 'BotGunnerHP400_2_WM', 'BOT', 0),
-(34, 'BotGunnerHP400_3', 'BOT', 0),
-(35, 'BotGunnerRE8', 'BOT', 0),
-(36, 'Brandenburg W12', 'PSE', 200),
-(37, 'Breguet 14.B2', 'PRE', 200),
-(38, 'bridge_hw110', 'INF', 0),
-(39, 'bridge_hw130', 'INF', 0),
-(40, 'bridge_hw150', 'INF', 0),
-(41, 'bridge_hw170', 'INF', 0),
-(42, 'bridge_hw190', 'INF', 0),
-(43, 'bridge_hw40', 'INF', 0),
-(44, 'bridge_hw70', 'INF', 0),
-(45, 'bridge_hw90', 'INF', 0),
-(46, 'bridge_rr110', 'INF', 0),
-(47, 'bridge_rr130', 'INF', 0),
-(48, 'bridge_rr150', 'INF', 0),
-(49, 'bridge_rr170', 'INF', 0),
-(50, 'bridge_rr190', 'INF', 0),
-(51, 'bridge_rr70', 'INF', 0),
-(52, 'bridge_rr90', 'INF', 0),
-(53, 'Bristol F2B (F.II)', 'PRE', 200),
-(54, 'Bristol F2B (F.III)', 'PRE', 200),
-(55, 'British naval 12pdr gun', 'NAR', 0),
-(56, 'British naval 4in AAA gun', 'NAA', 80),
-(57, 'British naval 4in gun', 'NAR', 0),
-(58, 'British navel 6in gun', 'NAR', 0),
-(59, 'Ca1', 'T', 100),
-(60, 'CappyChateau', 'INF', 0),
-(61, 'Caquot', 'BAL', 50),
-(62, 'Cargo Ship', 'STR', 300),
-(63, 'churchE_01', 'INF', 0),
-(64, 'Common Bot', 'HUM', 0),
-(65, 'Crossley', 'VTR', 50),
-(66, 'DaimlerAAA', 'VAA', 80),
-(67, 'DaimlerMarienfelde', 'VTR', 50),
-(68, 'DaimlerMarienfelde_S', 'VTR', 50),
-(69, 'DFW C.V', 'PRE', 200),
-(70, 'Drachen', 'BAL', 50),
-(71, 'F.E.2b', 'PRE', 200),
-(72, 'F17M', 'T', 100),
-(73, 'factory_01', 'INF', 0),
-(74, 'factory_02', 'INF', 0),
-(75, 'factory_03', 'INF', 0),
-(76, 'factory_04', 'INF', 0),
-(77, 'factory_05', 'INF', 0),
-(78, 'factory_06', 'INF', 0),
-(79, 'factory_07', 'INF', 0),
-(80, 'factory_08', 'INF', 0),
-(81, 'Felixstowe F2A', 'PSE', 200),
-(82, 'FK96', 'ART', 100),
-(83, 'Flag', 'FLG', 0),
-(84, 'Fokker D.VII', 'PFI', 100),
-(85, 'Fokker D.VIIF', 'PFI', 100),
-(86, 'Fokker D.VIII', 'PFI', 100),
-(87, 'Fokker Dr.I', 'PFI', 100),
-(88, 'Fokker E.III', 'PFI', 100),
-(89, 'FrpenicheAAA', 'SAA', 80),
-(90, 'fr_lrg', 'INF', 0),
-(91, 'fr_med', 'INF', 0),
-(92, 'FT17C', 'T', 100),
-(93, 'G8', 'RLO', 50),
-(94, 'GBR Searchlight', 'LGT', 50),
-(95, 'GER light cruiser', 'SCR', 1000),
-(96, 'GER Ship Searchlight', 'LGT', 50),
-(97, 'GER submarine', 'SSU', 500),
-(98, 'German naval 105mm gun', 'NAR', 0),
-(99, 'German naval 52mm gun', 'NAR', 0),
-(100, 'GERpenicheAAA', 'SAA', 80),
-(101, 'ger_lrg', 'INF', 0),
-(102, 'ger_med', 'INF', 0),
-(103, 'Gotha G.V', 'PBO', 200),
-(104, 'gunpos01', 'INF', 0),
-(105, 'gunpos_g01', 'INF', 0),
-(106, 'Halberstadt CL.II', 'PRE', 200),
-(107, 'Halberstadt CL.II 200hp', 'PRE', 200),
-(108, 'Halberstadt D.II', 'PFI', 100),
-(109, 'Handley Page 0-400', 'PBO', 200),
-(110, 'HMS light cruiser', 'SCR', 1000),
-(111, 'HMS Ship Searchlight', 'LGT', 50),
-(112, 'HMS submarine', 'SSU', 500),
-(113, 'Hotchkiss', 'IMG', 50),
-(114, 'HotchkissAAA', 'IMA', 80),
-(115, 'Leyland', 'VTR', 50),
-(116, 'LeylandS', 'VTR', 50),
-(117, 'LMG08AAA', 'IMA', 80),
-(118, 'LMGO8', 'IMG', 50),
-(119, 'M-Flak', 'IMA', 80),
-(120, 'm13', 'ART', 100),
-(121, 'Merc22', 'VTR', 50),
-(122, 'Mk4F', 'T', 100),
-(123, 'Mk4FGER', 'T', 100),
-(124, 'Mk4M', 'T', 100),
-(125, 'MK4MGER', 'T', 100),
-(126, 'Mk5F', 'T', 100),
-(127, 'Mk5M', 'T', 100),
-(128, 'Nieuport 11.C1', 'PFI', 100),
-(129, 'Nieuport 17.C1', 'PFI', 100),
-(130, 'Nieuport 17.C1 GBR', 'PFI', 100),
-(131, 'Nieuport 28.C1', 'PFI', 100),
-(132, 'Parseval', 'BAL', 50),
-(133, 'Passenger Ship', 'SPA', 300),
-(134, 'Pfalz D.IIIa', 'PFI', 100),
-(135, 'Pfalz D.XII', 'PFI', 100),
-(136, 'pillbox01', 'INF', 0),
-(137, 'pillbox02', 'INF', 0),
-(138, 'pillbox03', 'INF', 0),
-(139, 'pillbox04', 'INF', 0),
-(140, 'Portal', 'INF', 0),
-(141, 'Quad', 'VTR', 50),
-(142, 'Quad Searchlight', 'VTR', 50),
-(143, 'QuadA', 'VTR', -50),
-(144, 'R.E.8', 'PRE', 200),
-(145, 'railwaystation_1', 'INF', 0),
-(146, 'railwaystation_2', 'INF', 0),
-(147, 'railwaystation_3', 'INF', 0),
-(148, 'railwaystation_4', 'INF', 0),
-(149, 'railwaystation_5', 'INF', 0),
-(150, 'river_airbase', 'INF', 0),
-(151, 'river_airbase2', 'INF', 0),
-(152, 'river_airbase3', 'INF', 0),
-(153, 'Roland C.IIa', 'PRE', 200),
-(154, 'Roucourt', 'INF', 0),
-(155, 'rwstation', 'INF', 0),
-(156, 'S.E.5a', 'PFI', 100),
-(157, 'ship_stat_cargo', 'STR', 150),
-(158, 'ship_stat_pass', 'SPA', 150),
-(159, 'ship_stat_tank', 'STR', 150),
-(160, 'Sopwith Camel', 'PFI', 100),
-(161, 'Sopwith Dolphin', 'PFI', 100),
-(162, 'Sopwith Pup', 'PFI', 100),
-(163, 'Sopwith Triplane', 'PFI', 100),
-(164, 'SPAD 13.C1', 'PFI', 100),
-(165, 'SPAD 7.C1 150hp', 'PFI', 100),
-(166, 'SPAD 7.C1 180hp', 'PFI', 100),
-(167, 'StChamond', 'T', 100),
-(168, 'Tanker Ship', 'STR', 300),
-(169, 'tent01', 'INF', 1000),
-(170, 'tent02', 'INF', 0),
-(171, 'tent03', 'INF', 0),
-(172, 'tent_camp01', 'INF', 0),
-(173, 'tent_camp02', 'INF', 0),
-(174, 'tent_camp03', 'INF', 0),
-(175, 'tent_camp04', 'INF', 0),
-(176, 'thornycroftaaa', 'VAA', 80),
-(177, 'TurretBreguet14_1', 'TUR', 0),
-(178, 'TurretBristolF2BF2_1_WM2', 'TUR', 0),
-(179, 'TurretBristolF2BF3_1_WM2', 'TUR', 0),
-(180, 'TurretBristolF2B_1', 'TUR', 0),
-(181, 'TurretBW12_1', 'TUR', 0),
-(182, 'TurretBW12_1_WM_Becker_AP', 'TUR', 0),
-(183, 'TurretBW12_1_WM_Becker_HE', 'TUR', 0),
-(184, 'TurretBW12_1_WM_Becker_HEAP', 'TUR', 0),
-(185, 'TurretBW12_1_WM_Twin_Parabellum', 'TUR', 0),
-(186, 'TurretDFWC_1', 'TUR', 0),
-(187, 'TurretDFWC_1_WM_Becker_AP', 'TUR', 0),
-(188, 'TurretDFWC_1_WM_Becker_HE', 'TUR', 0),
-(189, 'TurretDFWC_1_WM_Becker_HEAP', 'TUR', 0),
-(190, 'TurretDFWC_1_WM_Twin_Parabellum', 'TUR', 0),
-(191, 'TurretDH4_1', 'TUR', 0),
-(192, 'TurretDH4_1_WM', 'TUR', 0),
-(193, 'TurretFe2b_1', 'TUR', 0),
-(194, 'TurretFe2b_1_WM', 'TUR', 0),
-(195, 'TurretFelixF2A_2', 'TUR', 0),
-(196, 'TurretFelixF2A_3', 'TUR', 0),
-(197, 'TurretFelixF2A_3_WM', 'TUR', 0),
-(198, 'TurretGothaG5_1', 'TUR', 0),
-(199, 'TurretGothaG5_1_WM_Becker_AP', 'TUR', 0),
-(200, 'TurretGothaG5_1_WM_Becker_HE', 'TUR', 0),
-(201, 'TurretGothaG5_1_WM_Becker_HEAP', 'TUR', 0),
-(202, 'TurretGothaG5_2', 'TUR', 0),
-(203, 'TurretGothaG5_2_WM_Twin_Parabellum', 'TUR', 0),
-(204, 'TurretHalberstadtCL2au_1', 'TUR', 0),
-(205, 'TurretHalberstadtCL2au_1_WM_TwinPar', 'TUR', 0),
-(206, 'TurretHalberstadtCL2_1', 'TUR', 0),
-(207, 'TurretHalberstadtCL2_1_WM_TwinPar', 'TUR', 0),
-(208, 'TurretHP400_1', 'TUR', 0),
-(209, 'TurretHP400_1_WM', 'TUR', 0),
-(210, 'TurretHP400_2', 'TUR', 0),
-(211, 'TurretHP400_2_WM', 'TUR', 0),
-(212, 'TurretHP400_3', 'TUR', 0),
-(213, 'TurretRE8_1', 'TUR', 0),
-(214, 'TurretRE8_1_WM', 'TUR', 0),
-(215, 'TurretRolandC2a_1', 'TUR', 0),
-(216, 'TurretRolandC2a_1_WM_TwinPar', 'TUR', 0),
-(217, 'Wagon_BoxB', 'RWA', 25),
-(218, 'Wagon_BoxNB', 'RWA', 25),
-(219, 'Wagon_G8T', 'RWA', 25),
-(220, 'Wagon_GondolaB', 'RWA', 25),
-(221, 'Wagon_GondolaNB', 'RWA', 25),
-(222, 'Wagon_Pass', 'RWA', 25),
-(223, 'Wagon_PassA', 'RWA', -25),
-(224, 'Wagon_PassAC', 'RWA', 25),
-(225, 'Wagon_PassC', 'RWA', 25),
-(226, 'Wagon_PlatformA7V', 'RWA', 25),
-(227, 'Wagon_PlatformB', 'RWA', 25),
-(228, 'Wagon_PlatformEmptyB', 'RWA', 25),
-(229, 'Wagon_PlatformEmptyNB', 'RWA', 25),
-(230, 'Wagon_PlatformMk4', 'RWA', 25),
-(231, 'Wagon_PlatformNB', 'RWA', 25),
-(232, 'Wagon_TankB', 'RWA', 25),
-(233, 'Wagon_TankNB', 'RWA', 25),
-(234, 'Whippet', 'T', 100),
-(235, 'Windsock', 'FLG', 0);
+INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `object_value`, `object_desc`) VALUES
+(1, '13PdrAAA', 'AAA', 80, '13-pounder AAA'),
+(2, '13PrdaaaAttached', 'AAA', 80, '13-pounder AAA'),
+(3, '45QF', 'ART', 100, '4.5 in. Quick Fire artillery'),
+(4, '75FG1897', 'ART', 100, '75mm M1897 artillery'),
+(5, '77mmAAA', 'AAA', 80, '77mm AAA'),
+(6, '77mmAAAAttached', 'AAA', 80, '77mm AAA'),
+(7, 'A7V', 'T', 100, 'A7V tank'),
+(8, 'AeType', 'BAL', 50, 'Type Ae observation balloon'),
+(9, 'Airco D.H.2', 'PFI', 100, NULL),
+(10, 'Airco D.H.4', 'PRE', 200, NULL),
+(11, 'Albatros D.II', 'PFI', 100, NULL),
+(12, 'Albatros D.II lt', 'PFI', 100, NULL),
+(13, 'Albatros D.III', 'PFI', 100, NULL),
+(14, 'Albatros D.Va', 'PFI', 100, NULL),
+(15, 'Benz Searchlight', 'VTR', 50, 'Benz Cargo truck with searchlight'),
+(16, 'benz_open', 'VTR', 50, 'Benz Cargo open truck'),
+(18, 'benz_soft', 'VTR', 50, 'Benz Cargo covered truck'),
+(19, 'BotBoatSwain', 'BOT', 0, 'bosun'),
+(21, 'BotGunnerBacker', 'BOT', 0, 'Becker gunner'),
+(22, 'BotGunnerBreguet14', 'BOT', 0, 'gunner'),
+(24, 'BotGunnerBW12', 'BOT', 0, 'Brandenburg W12 gunner'),
+(25, 'BotGunnerDavis', 'BOT', 0, 'Davis gunner'),
+(26, 'BotGunnerFe2_sing', 'BOT', 0, 'F.E.2b gunner'),
+(27, 'BotGunnerFelix_top-twin', 'BOT', 0, 'Felixstowe F.2A top gunner'),
+(28, 'BotGunnerG5_1', 'BOT', 0, 'gunner'),
+(29, 'BotGunnerG5_2', 'BOT', 0, 'gunner'),
+(30, 'BotGunnerHCL2', 'BOT', 0, 'Halberstadt Cl.II gunner'),
+(31, 'BotGunnerHP400_1', 'BOT', 0, 'nose gunner'),
+(32, 'BotGunnerHP400_2', 'BOT', 0, 'Handley Page 0/400 dorsal gunner'),
+(33, 'BotGunnerHP400_2_WM', 'BOT', 0, 'Handley Page O/400 dorsal gunner'),
+(34, 'BotGunnerHP400_3', 'BOT', 0, 'Handley Page O/400 belly gunner'),
+(35, 'BotGunnerRE8', 'BOT', 0, 'gunner'),
+(36, 'Brandenburg W12', 'PSE', 200, NULL),
+(37, 'Breguet 14.B2', 'PRE', 200, NULL),
+(38, 'bridge_hw110', 'INF', 0, '110m road bridge'),
+(39, 'bridge_hw130', 'INF', 0, '130m road bridge'),
+(40, 'bridge_hw150', 'INF', 0, '150m road bridge'),
+(41, 'bridge_hw170', 'INF', 0, '170m road bridge'),
+(42, 'bridge_hw190', 'INF', 0, '190m road bridge'),
+(43, 'bridge_hw40', 'INF', 0, '40m road bridge'),
+(44, 'bridge_hw70', 'INF', 0, '70m road bridge'),
+(45, 'bridge_hw90', 'INF', 0, '90m road bridge'),
+(46, 'bridge_rr110', 'INF', 0, '110m rail bridge'),
+(47, 'bridge_rr130', 'INF', 0, '130m rail bridge'),
+(48, 'bridge_rr150', 'INF', 0, '150m rail bridge'),
+(49, 'bridge_rr170', 'INF', 0, '170m rail bridge'),
+(50, 'bridge_rr190', 'INF', 0, '190m rail bridge'),
+(51, 'bridge_rr70', 'INF', 0, '70m rail bridge'),
+(52, 'bridge_rr90', 'INF', 0, '90m rail bridge'),
+(53, 'Bristol F2B (F.II)', 'PRE', 200, NULL),
+(54, 'Bristol F2B (F.III)', 'PRE', 200, NULL),
+(55, 'British naval 12pdr gun', 'NAR', 0, 'naval 12-pounder gun'),
+(56, 'British naval 4in AAA gun', 'NAA', 80, '4in naval AAA gun'),
+(57, 'British naval 4in gun', 'NAR', 0, 'naval 4in gun'),
+(58, 'British navel 6in gun', 'NAR', 0, 'naval 6in gun'),
+(59, 'Ca1', 'T', 100, 'Schneider CA1 tank'),
+(60, 'CappyChateau', 'INF', 0, 'Cappy Chateau'),
+(61, 'Caquot', 'BAL', 50, 'Caquot Type R observation balloon'),
+(62, 'Cargo Ship', 'STR', 300, 'cargo ship'),
+(63, 'churchE_01', 'INF', 0, 'church'),
+(64, 'Common Bot', 'HUM', 0, 'pilot'),
+(65, 'Crossley', 'VTR', 50, 'Crossley 4X2 Staff Car'),
+(66, 'DaimlerAAA', 'VAA', 80, '77mm AAA on Daimler truck'),
+(67, 'DaimlerMarienfelde', 'VTR', 50, 'Daimler Marienfelde truck'),
+(68, 'DaimlerMarienfelde_S', 'VTR', 50, 'Daimler Marienfelde truck'),
+(69, 'DFW C.V', 'PRE', 200, NULL),
+(70, 'Drachen', 'BAL', 50, 'Drachen type observation balloon'),
+(71, 'F.E.2b', 'PRE', 200, NULL),
+(72, 'F17M', 'T', 100, 'Renault FT17 machine gun tank'),
+(73, 'factory_01', 'INF', 0, 'factory'),
+(74, 'factory_02', 'INF', 0, 'factory'),
+(75, 'factory_03', 'INF', 0, NULL),
+(76, 'factory_04', 'INF', 0, NULL),
+(77, 'factory_05', 'INF', 0, NULL),
+(78, 'factory_06', 'INF', 0, 'factory'),
+(79, 'factory_07', 'INF', 0, 'factory'),
+(80, 'factory_08', 'INF', 0, 'factory'),
+(81, 'Felixstowe F2A', 'PSE', 200, NULL),
+(82, 'FK96', 'ART', 100, 'Feldkanone 96 77mm artillery'),
+(83, 'Flag', 'FLG', 0, 'flag'),
+(84, 'Fokker D.VII', 'PFI', 100, NULL),
+(85, 'Fokker D.VIIF', 'PFI', 100, NULL),
+(86, 'Fokker D.VIII', 'PFI', 100, NULL),
+(87, 'Fokker Dr.I', 'PFI', 100, NULL),
+(88, 'Fokker E.III', 'PFI', 100, NULL),
+(89, 'FRpenicheAAA', 'SAA', 80, 'peniche AAA barge'),
+(90, 'fr_lrg', 'INF', 0, NULL),
+(91, 'fr_med', 'INF', 0, 'airfield'),
+(92, 'FT17C', 'T', 100, 'Renault FT17 cannon tank'),
+(93, 'G8', 'RLO', 50, 'locomotive'),
+(94, 'GBR Searchlight', 'LGT', 50, NULL),
+(95, 'GER light cruiser', 'SCR', 1000, 'light cruiser'),
+(96, 'GER Ship Searchlight', 'LGT', 50, 'ship searchlight'),
+(97, 'GER submarine', 'SSU', 500, 'U-boat'),
+(98, 'German naval 105mm gun', 'NAR', 0, 'naval 105mm gun'),
+(99, 'German naval 52mm gun', 'NAR', 0, 'naval 52mm gun'),
+(100, 'GERpenicheAAA', 'SAA', 80, 'peniche AAA barge'),
+(101, 'ger_lrg', 'INF', 0, 'airfield'),
+(102, 'ger_med', 'INF', 0, 'airfield'),
+(103, 'Gotha G.V', 'PBO', 200, NULL),
+(104, 'gunpos01', 'INF', 0, 'gun position'),
+(105, 'gunpos_g01', 'INF', 0, 'gun position'),
+(106, 'Halberstadt CL.II', 'PRE', 200, NULL),
+(107, 'Halberstadt CL.II 200hp', 'PRE', 200, NULL),
+(108, 'Halberstadt D.II', 'PFI', 100, NULL),
+(109, 'Handley Page 0-400', 'PBO', 200, NULL),
+(110, 'HMS light cruiser', 'SCR', 1000, 'light cruiser'),
+(111, 'HMS Ship Searchlight', 'LGT', 50, 'ship searchlight'),
+(112, 'HMS submarine', 'SSU', 500, 'submarine'),
+(113, 'Hotchkiss', 'IMG', 50, 'Hotchkiss machine gun'),
+(114, 'HotchkissAAA', 'IMA', 80, 'anti-aircraft Hotchkiss machine gun'),
+(115, 'Leyland', 'VTR', 50, 'Leyland 3-tonner truck'),
+(116, 'LeylandS', 'VTR', 50, 'Leyland 3-tonner truck'),
+(117, 'LMG08AAA', 'IMA', 80, 'anti-aircraft Maxim machine gun'),
+(118, 'LMGO8', 'IMG', 50, 'Maxim machine gun'),
+(119, 'M-Flak', 'IMA', 80, '37mm automatic flak gun'),
+(120, 'm13', 'ART', 100, '15cm schweres Feldhaubitze M13 Lang'),
+(121, 'Merc22', 'VTR', 50, 'Mercedes 22 Staff Car'),
+(122, 'Mk4F', 'T', 100, 'Mk IV Female tank'),
+(123, 'Mk4FGER', 'T', 100, 'Mk IV Female tank'),
+(124, 'Mk4M', 'T', 100, 'Mk IV Male tank'),
+(125, 'MK4MGER', 'T', 100, 'Mk IV Male tank'),
+(126, 'Mk5F', 'T', 100, 'Mk V Female tank'),
+(127, 'Mk5M', 'T', 100, 'Mk V Male tank'),
+(128, 'Nieuport 11.C1', 'PFI', 100, NULL),
+(129, 'Nieuport 17.C1', 'PFI', 100, NULL),
+(130, 'Nieuport 17.C1 GBR', 'PFI', 100, NULL),
+(131, 'Nieuport 28.C1', 'PFI', 100, NULL),
+(132, 'Parseval', 'BAL', 50, 'Parseval-Sigsfeld kite balloon'),
+(133, 'Passenger Ship', 'SPA', 300, 'passenger ship'),
+(134, 'Pfalz D.IIIa', 'PFI', 100, NULL),
+(135, 'Pfalz D.XII', 'PFI', 100, NULL),
+(136, 'pillbox01', 'INF', 0, NULL),
+(137, 'pillbox02', 'INF', 0, NULL),
+(138, 'pillbox03', 'INF', 0, 'pillbox'),
+(139, 'pillbox04', 'INF', 0, NULL),
+(140, 'Portal', 'INF', 0, NULL),
+(141, 'Quad', 'VTR', 50, 'Jeffery Quad Portee open truck'),
+(142, 'Quad Searchlight', 'VTR', 50, 'Jeffery Quad Portee with searchlight'),
+(143, 'QuadA', 'VTR', -50, 'Jeffery Quad Portee closed truck'),
+(144, 'R.E.8', 'PRE', 200, NULL),
+(145, 'railwaystation_1', 'INF', 0, NULL),
+(146, 'railwaystation_2', 'INF', 0, NULL),
+(147, 'railwaystation_3', 'INF', 0, NULL),
+(148, 'railwaystation_4', 'INF', 0, 'railway station'),
+(149, 'railwaystation_5', 'INF', 0, NULL),
+(150, 'river_airbase', 'INF', 0, 'seaplane pier'),
+(151, 'river_airbase2', 'INF', 0, 'seaplane pier'),
+(152, 'river_airbase3', 'INF', 0, NULL),
+(153, 'Roland C.IIa', 'PRE', 200, NULL),
+(154, 'Roucourt', 'INF', 0, 'airfield'),
+(155, 'rwstation', 'INF', 0, NULL),
+(156, 'S.E.5a', 'PFI', 100, NULL),
+(157, 'ship_stat_cargo', 'STR', 150, 'stationary cargo ship'),
+(158, 'ship_stat_pass', 'SPA', 150, 'stationary passenger ship'),
+(159, 'ship_stat_tank', 'STR', 150, 'stationary tanker ship'),
+(160, 'Sopwith Camel', 'PFI', 100, NULL),
+(161, 'Sopwith Dolphin', 'PFI', 100, NULL),
+(162, 'Sopwith Pup', 'PFI', 100, NULL),
+(163, 'Sopwith Triplane', 'PFI', 100, NULL),
+(164, 'SPAD 13.C1', 'PFI', 100, NULL),
+(165, 'SPAD 7.C1 150hp', 'PFI', 100, NULL),
+(166, 'SPAD 7.C1 180hp', 'PFI', 100, NULL),
+(167, 'StChamond', 'T', 100, 'Saint-Chamond tank'),
+(168, 'Tanker Ship', 'STR', 300, 'tanker ship'),
+(169, 'tent01', 'INF', 1000, 'the HQ tent'),
+(170, 'tent02', 'INF', 0, NULL),
+(171, 'tent03', 'INF', 0, NULL),
+(172, 'tent_camp01', 'INF', 0, 'tent emcampment'),
+(173, 'tent_camp02', 'INF', 0, 'tent encampment'),
+(174, 'tent_camp03', 'INF', 0, 'tent encampment'),
+(175, 'tent_camp04', 'INF', 0, 'tent encampment'),
+(176, 'thornycroftaaa', 'VAA', 80, '13-pounder AAA on Thornycraft truck'),
+(177, 'TurretBreguet14_1', 'TUR', 0, 'gunner'),
+(178, 'TurretBristolF2BF2_1_WM2', 'TUR', 0, 'Bristol F2.B gunner'),
+(179, 'TurretBristolF2BF3_1_WM2', 'TUR', 0, 'Bristol F2.B gunner'),
+(180, 'TurretBristolF2B_1', 'TUR', 0, 'Bristol F2.B gunner'),
+(181, 'TurretBW12_1', 'TUR', 0, 'Brandenburg W12 gunner'),
+(182, 'TurretBW12_1_WM_Becker_AP', 'TUR', 0, 'Brandenburg W12 gunner'),
+(183, 'TurretBW12_1_WM_Becker_HE', 'TUR', 0, 'Brandenburg W12 gunner'),
+(184, 'TurretBW12_1_WM_Becker_HEAP', 'TUR', 0, 'Brandenburg W12 gunner'),
+(185, 'TurretBW12_1_WM_Twin_Parabellum', 'TUR', 0, 'Brandenburg W12 gunner'),
+(186, 'TurretDFWC_1', 'TUR', 0, 'DFW C.V gunner'),
+(187, 'TurretDFWC_1_WM_Becker_AP', 'TUR', 0, 'DFW C.V gunner'),
+(188, 'TurretDFWC_1_WM_Becker_HE', 'TUR', 0, 'DFW C.V gunner'),
+(189, 'TurretDFWC_1_WM_Becker_HEAP', 'TUR', 0, 'DFW C.V gunner'),
+(190, 'TurretDFWC_1_WM_Twin_Parabellum', 'TUR', 0, 'DFW C.V gunner'),
+(191, 'TurretDH4_1', 'TUR', 0, 'D.H.4 gunner'),
+(192, 'TurretDH4_1_WM', 'TUR', 0, 'D.H.4 gunner'),
+(193, 'TurretFe2b_1', 'TUR', 0, 'F.E.2b gunner'),
+(194, 'TurretFe2b_1_WM', 'TUR', 0, 'F.E.2b gunner'),
+(195, 'TurretFelixF2A_2', 'TUR', 0, 'Felixstowe F.2A gunner'),
+(196, 'TurretFelixF2A_3', 'TUR', 0, 'Felixstowe F.2A gunner'),
+(197, 'TurretFelixF2A_3_WM', 'TUR', 0, 'Felixstowe F.2A gunner'),
+(198, 'TurretGothaG5_1', 'TUR', 0, 'Gotha G.V nose gunner'),
+(199, 'TurretGothaG5_1_WM_Becker_AP', 'TUR', 0, 'Gotha G.V nose gunner'),
+(200, 'TurretGothaG5_1_WM_Becker_HE', 'TUR', 0, 'Gotha G.V nose gunner'),
+(201, 'TurretGothaG5_1_WM_Becker_HEAP', 'TUR', 0, 'Gotha G.V nose gunner'),
+(202, 'TurretGothaG5_2', 'TUR', 0, 'rear gunner'),
+(203, 'TurretGothaG5_2_WM_Twin_Parabellum', 'TUR', 0, 'rear gunner'),
+(204, 'TurretHalberstadtCL2au_1', 'TUR', 0, 'Halberstadt CL.II gunner'),
+(205, 'TurretHalberstadtCL2au_1_WM_TwinPar', 'TUR', 0, 'Halberstadt CL.II gunner'),
+(206, 'TurretHalberstadtCL2_1', 'TUR', 0, 'Halberstadt CL.II gunner'),
+(207, 'TurretHalberstadtCL2_1_WM_TwinPar', 'TUR', 0, 'Halberstadt CL.II gunner'),
+(208, 'TurretHP400_1', 'TUR', 0, 'Handley Page O/400 nose gunner'),
+(209, 'TurretHP400_1_WM', 'TUR', 0, 'Handley Page O/400 nose gunner'),
+(210, 'TurretHP400_2', 'TUR', 0, 'Handley Page O/400 dorsal gunner'),
+(211, 'TurretHP400_2_WM', 'TUR', 0, 'Handley Page O/400 dorsal gunner'),
+(212, 'TurretHP400_3', 'TUR', 0, 'Handley Page O/400 belly gunner'),
+(213, 'TurretRE8_1', 'TUR', 0, 'R.E.8 gunner'),
+(214, 'TurretRE8_1_WM2', 'TUR', 0, 'R.E.8 gunner'),
+(215, 'TurretRolandC2a_1', 'TUR', 0, 'Roland C.IIa gunner'),
+(216, 'TurretRolandC2a_1_WM_TwinPar', 'TUR', 0, 'Roland C.IIa gunner'),
+(217, 'Wagon_BoxB', 'RWA', 25, 'boxcar'),
+(218, 'Wagon_BoxNB', 'RWA', 25, 'boxcar'),
+(219, 'Wagon_G8T', 'RWA', 25, 'tender'),
+(220, 'Wagon_GondolaB', 'RWA', 25, 'covered gondola'),
+(221, 'Wagon_GondolaNB', 'RWA', 25, 'covered gondola'),
+(222, 'Wagon_Pass', 'RWA', 25, 'passenger railcar'),
+(223, 'Wagon_PassA', 'RWA', -25, 'hospital railcar'),
+(224, 'Wagon_PassAC', 'RWA', 25, 'hospital railcar'),
+(225, 'Wagon_PassC', 'RWA', 25, 'passenger railcar'),
+(226, 'Wagon_PlatformA7V', 'RWA', 25, 'loaded flatcar'),
+(227, 'Wagon_PlatformB', 'RWA', 25, 'loaded flatcar'),
+(228, 'Wagon_PlatformEmptyB', 'RWA', 25, 'empty flatcar'),
+(229, 'Wagon_PlatformEmptyNB', 'RWA', 25, 'empty flatcar'),
+(230, 'Wagon_PlatformMk4', 'RWA', 25, 'loaded flatcar'),
+(231, 'Wagon_PlatformNB', 'RWA', 25, 'loaded flatcar'),
+(232, 'Wagon_TankB', 'RWA', 25, 'tank railcar'),
+(233, 'Wagon_TankNB', 'RWA', 25, 'tank railcar'),
+(234, 'Whippet', 'T', 100, 'Whippet Mk A tank'),
+(235, 'Windsock', 'FLG', 0, 'windsock');
 
 -- --------------------------------------------------------
 
@@ -970,6 +1126,29 @@ INSERT INTO `rof_verdun_locations` (`id`, `LID`, `LX`, `LZ`, `LName`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `static`
+--
+
+DROP TABLE IF EXISTS `static`;
+CREATE TABLE IF NOT EXISTS `static` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `static_Name` char(31) DEFAULT 'STATIC 1 Object 1',
+  `static_Model` char(20) DEFAULT 'leyland',
+  `static_Type` enum('Vehicle','Block','Flag','Train') DEFAULT 'Vehicle',
+  `static_Desc` varchar(80) DEFAULT NULL,
+  `static_Country` enum('0','101','102','103','104','105','501','502','600','610','620','630','640') DEFAULT '105',
+  `static_coalition` enum('1','2') DEFAULT '1',
+  `static_supplypoint` enum('1','2','3') DEFAULT '1',
+  `static_XPos` decimal(12,3) DEFAULT '0.000',
+  `static_ZPos` decimal(12,3) DEFAULT '0.000',
+  `static_YOri` decimal(5,2) DEFAULT '0.00',
+  `static_updated` int(11) DEFAULT '0',
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `supply_points`
 --
 
@@ -983,6 +1162,96 @@ CREATE TABLE IF NOT EXISTS `supply_points` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `supplypointName` (`supplypointName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `trains`
+--
+
+DROP TABLE IF EXISTS `trains`;
+CREATE TABLE IF NOT EXISTS `trains` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Model` varchar(30) NOT NULL,
+  `game_name` set('ROF','BOS') DEFAULT 'ROF',
+  `modelpath2` varchar(40) DEFAULT NULL,
+  `modelpath3` varchar(40) DEFAULT NULL,
+  `max_speed_kmh` decimal(3,0) DEFAULT '50',
+  `cruise_speed_kmh` decimal(3,0) DEFAULT '25',
+  `range_m` decimal(4,0) DEFAULT NULL,
+  UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `Model` (`Model`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `trains`
+--
+
+INSERT INTO `trains` (`id`, `Model`, `game_name`, `modelpath2`, `modelpath3`, `max_speed_kmh`, `cruise_speed_kmh`, `range_m`) VALUES
+(1, 'passa', 'ROF', 'trains', 'pass', '0', '0', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehicles`
+--
+
+DROP TABLE IF EXISTS `vehicles`;
+CREATE TABLE IF NOT EXISTS `vehicles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Model` varchar(30) NOT NULL,
+  `moving_becomes` varchar(30) DEFAULT NULL,
+  `game_name` set('ROF','BOS') DEFAULT 'ROF',
+  `modelpath2` varchar(40) DEFAULT NULL,
+  `modelpath3` varchar(40) DEFAULT NULL,
+  `max_speed_kmh` decimal(3,0) DEFAULT '20',
+  `cruise_speed_kmh` decimal(3,0) DEFAULT '5',
+  `range_m` decimal(4,0) DEFAULT NULL,
+  UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `Model` (`Model`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
+
+--
+-- Dumping data for table `vehicles`
+--
+
+INSERT INTO `vehicles` (`id`, `Model`, `moving_becomes`, `game_name`, `modelpath2`, `modelpath3`, `max_speed_kmh`, `cruise_speed_kmh`, `range_m`) VALUES
+(1, 'a7v', 'a7v', 'ROF', 'vehicles', 'a7v', '6', '4', NULL),
+(2, 'benz_open', 'benz_open', 'ROF', 'vehicles', 'benz', '50', '20', NULL),
+(3, 'benz_p', 'benz_p', 'ROF', 'vehicles', 'benz', '50', '20', NULL),
+(4, 'benz_soft', 'benz_soft', 'ROF', 'vehicles', 'benz', '50', '20', NULL),
+(5, 'ca1', 'ca1', 'ROF', 'vehicles', 'ca1', '6', '4', NULL),
+(6, 'crossley', 'crossley', 'ROF', 'vehicles', 'crossley', '50', '20', NULL),
+(7, 'daimlermarienfelde', 'daimlermarienfelde', 'ROF', 'vehicles', 'daimlermarienfelde', '50', '20', NULL),
+(8, 'daimlermarienfelde_s', 'daimlermarienfelde_s', 'ROF', 'vehicles', 'daimlermarienfelde', '50', '20', NULL),
+(9, 'ft17c', 'ft17', 'ROF', 'vehicles', 'ft17', '6', '4', NULL),
+(10, 'ft17m', 'ft17', 'ROF', 'vehicles', 'ft17', '6', '4', NULL),
+(11, 'leyland', 'leyland', 'ROF', 'vehicles', 'leyland', '50', '20', NULL),
+(12, 'leylands', 'leylands', 'ROF', 'vehicles', 'leyland', '50', '20', NULL),
+(13, 'mk4f', 'mk4f', 'ROF', 'vehicles', 'mk4', '6', '4', NULL),
+(14, 'mk4fger', 'mk4fger', 'ROF', 'vehicles', 'mk4', '6', '4', NULL),
+(15, 'mk4m', 'mk4m', 'ROF', 'vehicles', 'mk4', '6', '4', NULL),
+(16, 'mk4mger', 'mk4mger', 'ROF', 'vehicles', 'mk4', '6', '4', NULL),
+(17, 'mk5f', 'mk5f', 'ROF', 'vehicles', 'mk5', '6', '4', NULL),
+(18, 'mk5m', 'mk5m', 'ROF', 'vehicles', 'mk5', '6', '4', NULL),
+(19, 'quad', 'quad', 'ROF', 'vehicles', 'quad', '50', '20', NULL),
+(20, 'quad_p', 'quad_p', 'ROF', 'vehicles', 'quad', '50', '20', NULL),
+(21, 'quada', 'quada', 'ROF', 'vehicles', 'quad', '50', '20', NULL),
+(22, 'stchamond', 'stchamond', 'ROF', 'vehicles', 'stchamond', '6', '4', NULL),
+(23, 'whippet', 'whippet', 'ROF', 'vehicles', 'whippet', '15', '10', NULL),
+(24, '13pdraaa', 'leylands', 'ROF', 'artillery', '13pdraaa', '0', '0', NULL),
+(25, '45qf', 'leylands', 'ROF', 'artillery', '45qf', '0', '0', NULL),
+(26, '75fg1897', 'leylands', 'ROF', 'artillery', '75fg1897', '0', '0', NULL),
+(27, '77mmaaa', 'daimlermarienfeld_s', 'ROF', 'artillery', '77mmaaa', '0', '0', NULL),
+(28, 'daimleraaa', 'daimleraaa', 'ROF', 'artillery', 'daimleraaa', '50', '20', NULL),
+(29, 'fk96', 'daimlermarienfeld_s', 'ROF', 'artillery', 'fk96', '0', '0', NULL),
+(30, 'm13', 'daimlermarienfelds', 'ROF', 'artillery', 'm13', '0', '0', NULL),
+(31, 'hotchkiss', 'leylands', 'ROF', 'artillery', 'machineguns', '0', '0', NULL),
+(32, 'hotchkissaaa', 'leylands', 'ROF', 'artillery', 'machineguns', '0', '0', NULL),
+(33, 'lmg08', 'daimlermarienfeld_s', 'ROF', 'artillery', 'machineguns', '0', '0', NULL),
+(34, 'lmg08aaa', 'daimlermarienfeld_s', 'ROF', 'artillery', 'machineguns', '0', '0', NULL),
+(35, 'mflak', 'daimlermarienfeld_s', 'ROF', 'artillery', 'mflak', '0', '0', NULL),
+(36, 'thornycroftaaa', 'thornycroftaaa', 'ROF', 'artillery', 'thornycroftaaa', '50', '20', NULL);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
