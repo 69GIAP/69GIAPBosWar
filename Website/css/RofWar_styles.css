@@ -393,13 +393,13 @@ fieldset.UserMgmt button.UserMgmtHalfButton2 {
 }
 
 #statistics td, #statistics th {
-	font-size:1em;
+	font-size:12px;
 	border:1px solid #7B9EC1;
 	padding:3px 7px 2px 7px;
 }
 	
 #statistics th {
-	font-size:1.1em;
+	font-size:12px;
 	text-align:left;
 	padding-top:5px;
 	padding-bottom:4px;
