@@ -75,10 +75,11 @@ if ($userRole == "administrator" or $userRole == "commander")
 			echo "<p>If you miss your campaign in the list or you not even see a list, then please contact your administrator to assign you as commander!</p>\n";
 			}
 	}
-	
+
+# load statistics	
 if ($userRole == "viewer" or $userRole == "")
 	{
-		echo "<form id=\"campaignForm\" name=\"input\" action=\"Statistics.php?btn=home\" method=\"post\">\n";	
+		echo "<form id=\"campaignForm\" name=\"input\" action=\"CampaignStatistics.php?btn=home\" method=\"post\">\n";	
 
 		echo "		<h3 id=\"h3Form\">Active $game Campaigns</h3>\n";
 		
