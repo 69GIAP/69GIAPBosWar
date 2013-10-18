@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2013 at 04:59 AM
+-- Generation Time: Oct 18, 2013 at 11:07 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -216,6 +216,7 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
   `ground_spacing` tinyint(1) unsigned NOT NULL DEFAULT '5',
   `lineup_minutes` tinyint(1) unsigned NOT NULL DEFAULT '30',
   `mission_minutes` tinyint(1) unsigned NOT NULL DEFAULT '90',
+  `detect_off_time` tinyint(1) unsigned NOT NULL DEFAULT '15',
   PRIMARY KEY (`id`),
   UNIQUE KEY `campaign` (`campaign`),
   UNIQUE KEY `camp_db` (`camp_db`)
@@ -225,8 +226,8 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
 -- Dumping data for table `campaign_settings`
 --
 
-INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `logpath`, `log_prefix`, `logfile`, `kia_pilot`, `mia_pilot`, `critical_w_pilot`, `serious_w_pilot`, `light_w_pilot`, `kia_gunner`, `mia_gunner`, `critical_w_gunner`, `serious_w_gunner`, `light_w_gunner`, `healthy`, `min_x`, `min_z`, `max_x`, `max_z`, `air_detect_distance`, `ground_detect_distance`, `air_ai_level`, `ground_ai_level`, `ground_max_speed_kmh`, `ground_transport_speed_kmh`, `ground_spacing`, `lineup_minutes`, `mission_minutes`) VALUES
-(1, 'RoF', 'Flanders Eagles', 'flanders_eagles', 'localhost', 'rofwar', 'rofwar', 'Channel', 'rof_channel_locations', '3', 'true', 'true', 'logs', 'missionReportFlandersEagles', 'missionReportFlandersEagles1', 100, 50, 30, 20, 10, 50, 50, 30, 20, 10, 0, 0, 0, 100000, 100000, 5000, 500, '2', '2', 50, 10, 5, 30, 90);
+INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `logpath`, `log_prefix`, `logfile`, `kia_pilot`, `mia_pilot`, `critical_w_pilot`, `serious_w_pilot`, `light_w_pilot`, `kia_gunner`, `mia_gunner`, `critical_w_gunner`, `serious_w_gunner`, `light_w_gunner`, `healthy`, `min_x`, `min_z`, `max_x`, `max_z`, `air_detect_distance`, `ground_detect_distance`, `air_ai_level`, `ground_ai_level`, `ground_max_speed_kmh`, `ground_transport_speed_kmh`, `ground_spacing`, `lineup_minutes`, `mission_minutes`, `detect_off_time`) VALUES
+(1, 'RoF', 'Flanders Eagles', 'flanders_eagles', 'localhost', 'rofwar', 'rofwar', 'Channel', 'rof_channel_locations', '3', 'true', 'true', 'logs', 'missionReportFlandersEagles', 'missionReportFlandersEagles1', 100, 50, 30, 20, 10, 50, 50, 30, 20, 10, 0, 0, 0, 100000, 100000, 5000, 500, '2', '2', 50, 10, 5, 30, 90, 15);
 
 -- --------------------------------------------------------
 
@@ -369,65 +370,6 @@ INSERT INTO `mission_status` (`id`, `mission_status`) VALUES
 (6, 'built'),
 (7, 'analyzing'),
 (8, 'scored');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `o_campaign_settings`
---
-
-DROP TABLE IF EXISTS `o_campaign_settings`;
-CREATE TABLE IF NOT EXISTS `o_campaign_settings` (
-  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
-  `simulation` enum('RoF','BoS') NOT NULL,
-  `campaign` varchar(30) NOT NULL,
-  `camp_db` varchar(30) NOT NULL,
-  `camp_host` varchar(30) NOT NULL,
-  `camp_user` varchar(30) NOT NULL,
-  `camp_passwd` varchar(30) NOT NULL,
-  `map` varchar(30) NOT NULL,
-  `map_locations` varchar(40) NOT NULL,
-  `status` enum('1','2','3','4') NOT NULL DEFAULT '4',
-  `show_airfield` tinyint(1) NOT NULL,
-  `finish_flight_only_landed` tinyint(1) NOT NULL,
-  `logpath` varchar(60) NOT NULL,
-  `log_prefix` varchar(50) NOT NULL,
-  `logfile` varchar(50) NOT NULL,
-  `kia_pilot` smallint(1) NOT NULL,
-  `mia_pilot` smallint(1) NOT NULL,
-  `critical_w_pilot` smallint(1) NOT NULL,
-  `serious_w_pilot` smallint(1) NOT NULL,
-  `light_w_pilot` smallint(1) NOT NULL,
-  `kia_gunner` smallint(1) NOT NULL,
-  `mia_gunner` smallint(1) NOT NULL,
-  `critical_w_gunner` smallint(1) NOT NULL,
-  `serious_w_gunner` smallint(1) NOT NULL,
-  `light_w_gunner` smallint(1) NOT NULL,
-  `healthy` smallint(1) NOT NULL DEFAULT '0',
-  `min_x` mediumint(1) NOT NULL,
-  `min_z` mediumint(1) NOT NULL,
-  `max_x` mediumint(1) NOT NULL,
-  `max_z` mediumint(1) NOT NULL,
-  `air_detect_distance` smallint(1) unsigned NOT NULL DEFAULT '5000',
-  `ground_detect_distance` smallint(1) unsigned NOT NULL DEFAULT '500',
-  `air_ai_level` enum('1','2','3') NOT NULL DEFAULT '2',
-  `ground_ai_level` enum('1','2','3') NOT NULL DEFAULT '2',
-  `ground_max_speed_kmh` tinyint(1) unsigned NOT NULL DEFAULT '50',
-  `ground_transport_speed_kmh` tinyint(1) unsigned NOT NULL DEFAULT '10',
-  `ground_spacing` tinyint(1) unsigned NOT NULL DEFAULT '5',
-  `lineup_minutes` tinyint(1) unsigned NOT NULL DEFAULT '30',
-  `mission_minutes` tinyint(1) unsigned NOT NULL DEFAULT '90',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `campaign` (`campaign`),
-  UNIQUE KEY `camp_db` (`camp_db`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `o_campaign_settings`
---
-
-INSERT INTO `o_campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `logpath`, `log_prefix`, `logfile`, `kia_pilot`, `mia_pilot`, `critical_w_pilot`, `serious_w_pilot`, `light_w_pilot`, `kia_gunner`, `mia_gunner`, `critical_w_gunner`, `serious_w_gunner`, `light_w_gunner`, `healthy`, `min_x`, `min_z`, `max_x`, `max_z`, `air_detect_distance`, `ground_detect_distance`, `air_ai_level`, `ground_ai_level`, `ground_max_speed_kmh`, `ground_transport_speed_kmh`, `ground_spacing`, `lineup_minutes`, `mission_minutes`) VALUES
-(1, 'RoF', 'Flanders Eagles', 'flanders_eagles', 'localhost', 'rofwar', 'rofwar', 'Channel', 'rof_channel_locations', '3', 1, 1, 'logs', 'missionReportFlandersEagles', '', 100, 50, 30, 20, 10, 50, 50, 30, 20, 10, 0, 0, 0, 0, 0, 5000, 500, '2', '2', 50, 10, 5, 30, 90);
 
 -- --------------------------------------------------------
 
