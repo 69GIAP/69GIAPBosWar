@@ -23,8 +23,8 @@
 					// If selected, $existing contains host, user, and passwd
 					$camp_db_mission = $_POST['camp_db_mission'];
 					// check to see if 'existing' was the selected option
-					if ($camp_db_mission) { // selected if not empty
-						// split 'existing' into three parts at the '+'
+					if ($camp_db_mission) { // camp_db_mission if not empty
+						// split 'existing' into 2 parts at the '+'
 						$Part = explode('+',$camp_db_mission,2);
 						$camp_db		= $Part[0];
 						$MissionID		= $Part[1];
