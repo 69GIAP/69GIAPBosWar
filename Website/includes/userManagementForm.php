@@ -56,13 +56,19 @@
 		# BUTTON REMOVE
 		echo "		<button type=\"modify\" name =\"modify\" id=\"submitHalfsize\" value =\"4\" >Remove</button>\n";
 		echo "	</fieldset>\n";
-	
+		echo "	<fieldset id=\"actions\">";
 		# BUTTON DELETE USER
 		echo "		<button type=\"modify\" name =\"modify\" id=\"loginSubmit\" value =\"0\" >!! Delete User !!</button>\n";
+		echo "	</fieldset>\n";
 	}
 	
-	if ($userRole == 'commander') {
 		echo "<h3>Choose the default folder for your Group Files:</h3>\n";
+		if ($userRole == 'administrator') {
+				echo "<p>The file path is stored for the logged on user and the selected campaign. It is not possible to change the folder path for any other user!</p>\n";
+			}
+		else {
+				echo "<p>It is not possible to change the folder path for any other user!</p>\n";
+			}
 		# get actual folder path
 		$query = "SELECT groupFileFolder from campaign_users 
 					WHERE user_id = $userId
@@ -88,7 +94,7 @@
 		echo "	<fieldset id=\"actions\">";
 		# BUTTON SAVE
 		echo "		<button type=\"modify\" name =\"modify\" id=\"loginSubmit\" value =\"6\" >SAVE</button>\n";		
-	}
+
 	echo "	</fieldset>\n";
 	echo "</form>\n"; 
 	

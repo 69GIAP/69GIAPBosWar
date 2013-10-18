@@ -155,7 +155,18 @@
 				# store group file path, each single user has to do this on his own - only commanders can see the form field
 				if (($_POST["modify"] == 6))
 					{	
-						$sql = "UPDATE campaign_users SET groupFile_path = '$groupFilePath' WHERE user_id = '$id' and camp_db = '$campdb'";
+						$sql = "SELECT * from campaign_users WHERE user_id = '$id' and camp_db = '$campdb'";
+						$result = mysqli_query($dbc, $sql);
+						if (mysqli_num_rows($result)!=0)
+							{
+								$sql = "UPDATE campaign_users SET groupFile_path = '$groupFilePath' WHERE user_id = '$id' and camp_db = '$campdb'";
+								$error = 0;
+							}
+						else
+							{
+								echo "Error!\n";
+								$error = 1;
+							}
 					}																		
 				
 				# Feedback success or failure
@@ -199,8 +210,13 @@
 						echo "<br>The user <b>$modifiedUser</b> has been removed from the <b>$campdb</b> campaign successfully!\n";
 					}
 				if (($_POST["modify"] == 6))
-					{
-						echo "<br>Your Group file path has been changed to successfully!\n";
+					{	
+						if($error == 1) {
+							echo "<br>The user is not assigned to the selected campaign! Please first assign the user and then retry storing the Group File path.\n";
+						}
+						else {
+							echo "<br>Your Group file path has been changed to successfully!\n";
+						}
 					}						
 				?>
 				
