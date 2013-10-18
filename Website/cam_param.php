@@ -56,6 +56,7 @@ if ($result = $camp_link->query($query)){
       if ($i == 1) {
          define("CAM_RED_SUPPLY_1_X","$obj->xPos");	
          define("CAM_RED_SUPPLY_1_Z","$obj->zPos");	
+//         echo "red<br>\n";
 //         echo CAM_RED_SUPPLY_1_X."<br>\n";
 //         echo CAM_RED_SUPPLY_1_Z."<br>\n";
       } elseif ($i == 2) {
@@ -68,6 +69,35 @@ if ($result = $camp_link->query($query)){
          define("CAM_RED_SUPPLY_3_Z","$obj->zPos");	
 //         echo CAM_RED_SUPPLY_3_X."<br>\n";
 //         echo CAM_RED_SUPPLY_3_Z."<br>\n";
+      }
+   }
+   // free result set
+   mysqli_free_result($result); 
+} else { 
+   die('There was an error running the query [' . $camp_link->error . ']');
+}
+// get results for 'blue' supply points
+$query = "SELECT * from supply_points WHERE CoalID ='2'";
+if ($result = $camp_link->query($query)){
+   $i = 0; 
+   while ($obj = mysqli_fetch_object($result)) {
+      ++$i;
+      if ($i == 1) {
+         define("CAM_BLUE_SUPPLY_1_X","$obj->xPos");	
+         define("CAM_BLUE_SUPPLY_1_Z","$obj->zPos");	
+//         echo "blue<br>\n";
+//         echo CAM_BLUE_SUPPLY_1_X."<br>\n";
+//         echo CAM_BLUE_SUPPLY_1_Z."<br>\n";
+      } elseif ($i == 2) {
+         define("CAM_BLUE_SUPPLY_2_X","$obj->xPos");	
+         define("CAM_BLUE_SUPPLY_2_Z","$obj->zPos");	
+//         echo CAM_BLUE_SUPPLY_2_X."<br>\n";
+//         echo CAM_BLUE_SUPPLY_2_Z."<br>\n";
+      } elseif ($i == 3) {
+         define("CAM_BLUE_SUPPLY_3_X","$obj->xPos");	
+         define("CAM_BLUE_SUPPLY_3_Z","$obj->zPos");	
+//         echo CAM_BLUE_SUPPLY_3_X."<br>\n";
+//         echo CAM_BLUE_SUPPLY_3_Z."<br>\n";
       }
    }
    // free result set
