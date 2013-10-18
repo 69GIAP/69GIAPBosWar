@@ -79,7 +79,7 @@ if ($userRole == "administrator" or $userRole == "commander")
 # load statistics	
 if ($userRole == "viewer" or $userRole == "")
 	{
-		echo "<form id=\"campaignForm\" name=\"input\" action=\"CampaignStatistics.php?btn=home\" method=\"post\">\n";	
+		echo "<form id=\"campaignForm\" name=\"input\" action=\"CampaignStatisticsMissions.php?btn=home\" method=\"post\">\n";	
 
 		echo "		<h3 id=\"h3Form\">Active $game Campaigns</h3>\n";
 		

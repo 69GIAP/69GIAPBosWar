@@ -20,24 +20,17 @@
     
             <div id="content">
 				<?php
-					// If selected, $existing contains host, user, and passwd
-					$camp_db_mission = $_POST['camp_db_mission'];
-					// check to see if 'existing' was the selected option
-					if ($camp_db_mission) { // selected if not empty
-						// split 'existing' into three parts at the '+'
-						$Part = explode('+',$camp_db_mission,2);
-						$camp_db		= $Part[0];
-						$MissionID		= $Part[1];
-					}
-
                     # get campaign database name from previous POST.
                     # if no radio button was selected
-                    if (empty($camp_db)) {
+                    if (empty($_POST["camp_db"])) {
                         header ("Location: IndexBosWarRofWar.php?btn=home");
                     	}
-
+                    else {
+                     	$camp_db = $_POST["camp_db"];
+                   	 }
+                
                     # use it to get remaining variables
-                    $query = "SELECT * from campaign_settings where camp_db = '$camp_db'";   
+                    $query = "SELECT * from campaign_settings where camp_db = '$camp_db'"; 
                     if(!$result = $dbc->query($query)) {
                         die('There was an error running the query [' . $dbc->error . ']');
                         }
@@ -55,10 +48,10 @@
                     # use this information to connect to campaign 
                     $camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$camp_db");
                     # print header
-                    print "<h1>$campaign Statistics</h1><br>";
+                    print "<h1>$campaign Missions</h1><br>";
                     # do whatever is needed from the campaign database
-
-					include ( 'includes/statisticsLoad.php' );
+  
+					include ( 'includes/getMissions.php' );;
 					# Close the camp_link connection
                     mysqli_close($camp_link);			  
 				?>

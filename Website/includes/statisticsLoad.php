@@ -3,6 +3,7 @@
 # get active campaigns
 $query = "SELECT MissionID, clocktime, attackerName, attackerCountryID, attackerCoalID, action, targetType, targetName, targetCountryID, targetCoalID, targetValue
 		FROM rof_kills
+		WHERE MissionId = '$MissionID'
 		ORDER BY MissionID, clocktime asc";
 	
 if(!$result = $camp_link->query($query))
@@ -12,11 +13,10 @@ if ($result = mysqli_query($camp_link, $query))
 	{
 		
 		# created first table line
-		echo "<h3>MissionStats</h3>";
+		echo "<h3>MissionStats of mission $MissionID</h3>";
 		echo "<table id=\"statistics\">\n";
 		# build stats table header
 		echo "	<tr>\n";
-		echo "		<th>Mission</th>\n";
 		echo "		<th>Time</th>\n";
 		echo "		<th>Attacker</th>\n";
 		echo "		<th>Attacker Country</th>\n";
@@ -35,7 +35,6 @@ if ($result = mysqli_query($camp_link, $query))
 		/* fetch associative array */
 		while ($obj = mysqli_fetch_object($result)) 
 			{
-			$MissionID			=($obj->MissionID);
 			$clocktime			=($obj->clocktime);
 			$attackerName		=($obj->attackerName);
 			$attackerCountryID	=($obj->attackerCountryID);
@@ -51,7 +50,6 @@ if ($result = mysqli_query($camp_link, $query))
 				{
 					# build even numbered rows of stats table
 					echo "	<tr class=\"even\">\n";
-					echo "		<td>$MissionID</td>\n";
 					echo "		<td>$clocktime</td>\n";
 					echo "		<td>$attackerName</td>\n";
 					echo "		<td>$attackerCountryID</td>\n";
@@ -71,7 +69,6 @@ if ($result = mysqli_query($camp_link, $query))
 				{
 					# build odd numbered rows of stats table
 					echo "	<tr class=\"odd\">\n";
-					echo "		<td>$MissionID</td>\n";
 					echo "		<td>$clocktime</td>\n";
 					echo "		<td>$attackerName</td>\n";
 					echo "		<td>$attackerCountryID</td>\n";
