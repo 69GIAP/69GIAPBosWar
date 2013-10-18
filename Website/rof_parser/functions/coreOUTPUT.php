@@ -131,6 +131,7 @@ function OUTPUT() {
    global $StatsCommand; // do, undo, or ignore
    globaL $camp_db; // campaign db
    global $object_desc; // object description from rof_object_properties
+   global $object_value; // object value from rof_object_properties
    global $kia_pilot; // points lost for killed pilot
    global $mia_pilot; // points lost for missing/captured pilot
    global $critical_w_pilot; // points lost for critically wounded pilot
@@ -371,17 +372,21 @@ if ($DEBUG){
          CLOCKTIME($Ticks[$j]);
          OBJECTTYPE($AID[$j],$Ticks[$j]); // get attacker objecttype
          $attackertype = $objecttype;
+	 OBJECTPROPERTIES($attackertype); // get attacker properties
+	 $attackerclass = $object_class;
+	 $attackerdesc = $object_desc;
          OBJECTNAME($AID[$j],$Ticks[$j]); // get attacker objectname
-         $attackerobject = $objectname;
+	 $attackerobject = $objectname;
          PLAYERNAME($AID[$j],$Ticks[$j]); // get attacker playername
          $aplayername = $playername;
          OBJECTTYPE($TID[$j],$Ticks[$j]); // get target objecttype
 	 $targettype = $objecttype;
-         OBJECTNAME($TID[$j],$Ticks[$j]); // get target objectname
-	 $targetobject = $objectname; // is this still useful?
 	 OBJECTPROPERTIES($targettype); // get target properties
 	 $targetclass = $object_class;
-	 $targetvalue = $objectvalue;
+	 $targetvalue = $object_value;
+	 $targetdesc = $object_desc;
+         OBJECTNAME($TID[$j],$Ticks[$j]); // get target objectname
+	 $targetobject = $objectname; // is this still useful?
          OBJECTCOUNTRYNAME($TID[$j],$Ticks[$j]); // get target's country, etc
 	 $tcountryid = $countryid;
 	 $tcountryname = $countryname;
@@ -395,7 +400,7 @@ if ($DEBUG){
          WHERE($posx,$posz,0);
 //         echo "$i in line # $j, $AID[$j] $TID[$j] in $POS[$j]<br>\n";
 //         echo "attackertype = $attackertype, attackerobject = $attackerobject, aplayername= $aplayername, targetobject = $targetobject, tplayername = $tplayername, targetobject = $targetobject<br>\n";
-//	 echo "$targetobject is $targetclass<br>\n";
+//	 echo "$targettype is $targetclass with value $targetvalue<br>\n";
          ANORA($targettype);
          $a = $anora;
          ANORA($tcountryadj);

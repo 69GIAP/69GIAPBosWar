@@ -1,23 +1,24 @@
 <?php
 // SHIPS
 // translate ship type into more natural description
-// BOSWAR version 1.2
-// Oct 9, 2013
+// BOSWAR version 1.3
+// Oct 17, 2013
 function SHIPS($type) {
-   global $objectdesc; // object description
+   global $camp_link; // link to campaign db
+   global $object_class; // object class from rof_object_properties
+   global $object_desc; // object description from rof_object_properties
 
-   if ($type == "ship_stat_pass") { $objectdesc = "stationary passenger ship"; } 
-   elseif ($type == "ship_stat_tank") { $objectdesc = "stationary tanker ship"; } 
-   elseif ($type == "ship_stat_cargo") { $objectdesc = "stationary cargo ship"; } 
-   elseif ($type == "Cargo Ship") { $objectdesc = "cargo ship"; }
-   elseif ($type == "Passenger Ship") { $objectdesc = "passenger ship"; }
-   elseif ($type == "Tanker Ship") { $objectdesc = "tanker ship"; }
-   elseif ($type == "HMS submarine") { $objectdesc = "submarine"; }
-   elseif ($type == "GER submarine") { $objectdesc = "submarine"; } 
-   elseif ($type == "HMS light cruiser") { $objectdesc = "light cruiser"; }
-   elseif ($type == "GER light cruiser") { $objectdesc = "light cruiser"; }
-   elseif ($type == "FRpenicheAAA") { $objectdesc = "peniche AAA barge";}
-   elseif ($type == "GERpenicheAAA") { $objectdesc = "peniche AAA barge";}
-   else { $objectdesc = "unexpected ship type $type<br>"; }
+   $query = "SELECT object_class, object_desc FROM rof_object_properties WHERE object_type = '$type'";
+   if ($result = mysqli_query($camp_link, $query)) {
+      // get results
+      while ($obj = mysqli_fetch_object($result)) {
+      $object_class	= ($obj->object_class);
+      $object_desc	= ($obj->object_desc);
+   }
+      // free result set
+      mysqli_free_result($result); 
+   } else { 
+      die('There was an error running the query [' . $camp_link->error . ']');
+   }
 }
 ?>
