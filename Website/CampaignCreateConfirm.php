@@ -108,7 +108,7 @@ $query .= "INSERT INTO `$newCampaignDBName`.cam_param SELECT * FROM boswar_db.ca
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.Flags LIKE boswar_db.flags;";
 $query .= "INSERT INTO `$newCampaignDBName`.flags SELECT * FROM boswar_db.flags;";
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.bridges LIKE boswar_db.bridges;";
-$query .= "INSERT INTO `$newCampaignDBName`.bridges SELECT * FROM boswar_db.bridges;";
+//$query .= "INSERT INTO `$newCampaignDBName`.bridges SELECT * FROM boswar_db.bridges;";
 
 # INSERT CAMPAIGN DB INFORMATION TO MASTER TABLE
 // this should be at the end of the creation chain

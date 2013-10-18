@@ -1,6 +1,5 @@
-
 CREATE DATABASE IF NOT EXISTS boswar_db ;
-USE boswar;
+USE boswar_db;
 SHOW TABLES;
 
 DROP TABLE IF EXISTS bridges;
