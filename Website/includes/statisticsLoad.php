@@ -13,7 +13,7 @@ if ($result = mysqli_query($camp_link, $query))
 	{
 		
 		# created first table line
-		echo "<h3>MissionStats of mission $MissionID</h3>";
+		echo "<h3>Mission statistics of mission: $MissionID</h3>";
 		echo "<table id=\"statistics\">\n";
 		# build stats table header
 		echo "	<tr>\n";
