@@ -1,9 +1,10 @@
 <?php
 // OUTPUT
 // =69.GIAP=TUSHKA
+// 2011-2013
 // output simple text report and calculate some stats for the db
-// BOSWAR version 1.08
-// Oct 9, 2013
+// BOSWAR version 1.09
+// Oct 19, 2013
 
 function OUTPUT() {
 // what follows is an almost complete collection of global variables
@@ -121,8 +122,6 @@ function OUTPUT() {
    global $numcplosses; // number of central powers losses
    global $GID; // group ID
    global $LID; // lead plane ID
-   global $FinishFlightOnlyLanded; // true or false setting
-   global $map_locations;  // name of campaign locations table
    global $numiaheaders; // number of influence area headers
    global $IAHline; // lines defining Influence Area Headers
    global $Bline; // lines defining area boundaries
@@ -132,17 +131,6 @@ function OUTPUT() {
    globaL $camp_db; // campaign db
    global $object_desc; // object description from rof_object_properties
    global $object_value; // object value from rof_object_properties
-   global $kia_pilot; // points lost for killed pilot
-   global $mia_pilot; // points lost for missing/captured pilot
-   global $critical_w_pilot; // points lost for critically wounded pilot
-   global $serious_w_pilot; // points lost for seriously wounded pilot
-   global $light_w_pilot; // points lost for lightly wounded pilot
-   global $kia_gunner; // points lost for killed gunner
-   global $mia_gunner; // points lost for missing/captured gunner
-   global $critical_w_gunner; // points lost for critically wounded gunner
-   global $serious_w_gunner; // points lost for seriously wounded gunner
-   global $light_w_gunner; // points lost for lightly wounded gunner
-   global $healthy; // points lost for healthy pilot/gunner
 
    # require the is-point-in-area borrowed CLASS
    # pointLocation
@@ -192,8 +180,8 @@ function OUTPUT() {
 //if (true){
 if ($DEBUG){
    print "DEBUG OUTPUT configuration:<br>\n";
-   print "FinishFlightOnlyLanded = $FinishFlightOnlyLanded<br>\n";
-   print "map_locations = $map_locations<br>\n";
+   print "FinishFlightOnlyLanded = ".FinishFlightOnlyLanded."<br>\n";
+   print "map_locations = ".map_locations."<br>\n";
    print "\$critical_w_gunner = $critical_w_gunner<br>\n";
 }
 
@@ -242,11 +230,11 @@ if ($DEBUG){
    } else {
    echo "All other settings reported in log: OFF<br>&nbsp<br>\n";
    }
-   if ($FinishFlightOnlyLanded) { echo "Finish Flight only landed: ON<br>\n"; }
-   if ($map_locations == "rof_westernfront_locations") {echo "Map: Western Front<br>&nbsp;<br>\n";}
-   elseif ($map_locations == "rof_channel_locations") {echo "Map: Channel<br>&nbsp;<br>\n";}
-   elseif ($map_locations == "rof_verdun_locations") {echo "Map: Verdun<br>&nbsp;<br>\n";}
-   elseif ($map_locations == "rof_lake_locations") {echo "Map: Lake<br>&nbsp;<br>\n";}
+   if (FinishFlightOnlyLanded == 'true') { echo "Finish Flight only landed: ON<br>\n"; }
+   if (map_locations == "rof_westernfront_locations") {echo "Map: Western Front<br>&nbsp;<br>\n";}
+   elseif (map_locations == "rof_channel_locations") {echo "Map: Channel<br>&nbsp;<br>\n";}
+   elseif (map_locations == "rof_verdun_locations") {echo "Map: Verdun<br>&nbsp;<br>\n";}
+   elseif (map_locations == "rof_lake_locations") {echo "Map: Lake<br>&nbsp;<br>\n";}
    // Players
    echo "=-=-=-=-= Players and Their Fates =-=-=-=-=-=<br>\n";
    echo "There were $numplayers player positions.<br>&nbsp;<br>\n";

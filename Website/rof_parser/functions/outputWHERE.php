@@ -1,9 +1,12 @@
 <?php
-function WHERE($x,$z,$fieldonly) {
-// find closest location and vaguely describe distance from it
+// WHERE
+// find closest named location and vaguely describe distance from it
 // if $fieldonly is 1 check airfields only
+// =69.GIAP=TUSHKA
+// BOSWAR version 1.1
+// Oct 19. 2013
+function WHERE($x,$z,$fieldonly) {
    global $camp_link;  // link to campaign db
-   global $map_locations;  // name of campaign locations file
    global $Locs; // locations
    global $playername; // player name from PLID
    global $numlocs; // number of locations
@@ -12,7 +15,6 @@ function WHERE($x,$z,$fieldonly) {
    global $LZ; // location Z coordinate
    global $LName; // location name
    global $where; // position in english
-   global $SHOWAF; // Show airfield names (binary)
 
    // set starting conditions
    $mindist = 20001; // 20 km plus a meter
@@ -20,11 +22,10 @@ function WHERE($x,$z,$fieldonly) {
    $mintype = 0;
    $minfield = "";
 
-//   $query = "SELECT * FROM '$map_locations'";
-   $query = "SELECT * FROM $map_locations";
+   $query = "SELECT * FROM ".map_locations;
    // if no result report error  (could do this as an 'else' clause also)
    if(!$result = $camp_link->query($query)) {
-      die('There was an error running the query [' . $camp_link->error . ']');
+      die('outputWHERE: error running a query [' . $camp_link->error . ']');
    }
 
 // find closest location using brute force... only 660/743 locations to check.  :)
@@ -86,9 +87,9 @@ function WHERE($x,$z,$fieldonly) {
    if ( $mindist >= 20000.0 ) {
      $where = $desc;
    } elseif (( $mintype == "10" ) || ( $mintype == "20" )) {
-     if ($SHOWAF) { 
+     if (SHOWAF == 'true') { 
        $where = $desc . " " . $minname . " airfield";
-     } else {
+     } else { // don't name the airfield
        $where = $desc . " " . "an undisclosed airfield";
      }
    } else {
