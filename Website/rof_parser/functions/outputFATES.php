@@ -64,20 +64,24 @@ function FATES($i,$j) {
 if ($DEBUG){
    print "DEBUG FATES configuration:<br>\n";
    print "FinishFlightOnlyLanded = ".FinishFlightOnlyLanded."<br>\n";
-   print "\$critical_w_gunner = $critical_w_gunner<br>\n";
+   print "critical_w_gunner = ".critical_w_gunner."<br>\n";
 }
 
    // initialize $fate and $health
+   $Whosegunner = '';
    $fate = 0;
    $health = 0;
 
    // get "", "a" or "an" right for the plane
    ANORA($TYPE[$j]);
    $a = $anora;
+   // save player id
+   $plid = $PLID[$j];
    // get player's country name
    COUNTRYNAME($COUNTRY[$j]);
    // get object_class and object_desc
    TURRETGUNNER($j);
+   WHOSEGUNNER($plid);   
    ANORA($object_desc);
    $ag = $anora;
 
@@ -89,7 +93,6 @@ if ($DEBUG){
       $fate = 5;
       $health = 4;
       if ($object_class == 'TUR') { //G1:
-         WHOSEGUNNER($PLID[$j]);   
          echo "$NAME[$j] as $ag $object_desc for $countryname was killed at $clocktime $where<br>\n";
       } else { // not gunner so must be pilot
          echo "$NAME[$j] piloting $a $TYPE[$j] for $countryname was killed at $clocktime $where<br>\n";
@@ -197,7 +200,7 @@ if ($DEBUG){
 	 } else { // healthy gunner - no deduction 
             $GunnerNegScore = healthy;
          }
-            $query = "INSERT into rof_gunner_scores (MissionID,CoalID,country,GunnerName,mgid,GunningFor,GunnerFate,GunnerHealth,GunnerNegScore) VALUES ('$MissionID','$CoalID','$COUNTRY[$j]','$NAME[$j]','$i','$Whosegunner','$fate','$health','$GunnerNegScore')";
+            $query = "INSERT into rof_gunner_scores (MissionID,CoalID,country,GunnerName,plid,GunningFor,GunnerFate,GunnerHealth,GunnerNegScore) VALUES ('$MissionID','$CoalID','$COUNTRY[$j]','$NAME[$j]','$plid','$Whosegunner','$fate','$health','$GunnerNegScore')";
 
       } else { // pilot
          if ($health == 4 ) { // dead pilot
@@ -211,13 +214,13 @@ if ($DEBUG){
 	 } else { // healthy pilot - no deduction
             $PilotNegScore = healthy;
          }
-            $query = "INSERT into rof_pilot_scores (MissionID,CoalID,country,PilotName,mpid,PilotFate,PilotHealth,PilotNegScore) VALUES ('$MissionID','$CoalID','$COUNTRY[$j]','$NAME[$j]','$i','$fate','$health','$PilotNegScore')";
+            $query = "INSERT into rof_pilot_scores (MissionID,CoalID,country,PilotName,plid,PilotFate,PilotHealth,PilotNegScore) VALUES ('$MissionID','$CoalID','$COUNTRY[$j]','$NAME[$j]','$plid','$fate','$health','$PilotNegScore')";
       }
    } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
       if ($object_class == 'TUR') {
-         $query = "DELETE from rof_gunner_scores WHERE MissionID='$MissionID' AND GunnerName='$NAME[$j]' AND mgid='$i'";
+         $query = "DELETE from rof_gunner_scores WHERE MissionID='$MissionID' AND GunnerName='$NAME[$j]' AND plid='$plid'";
       } else { // pilot
-         $query = "DELETE from rof_pilot_scores WHERE MissionID='$MissionID' AND PilotName='$NAME[$j]' AND mpid='$i'";
+         $query = "DELETE from rof_pilot_scores WHERE MissionID='$MissionID' AND PilotName='$NAME[$j]' AND plid='$plid'";
       }
    }
 

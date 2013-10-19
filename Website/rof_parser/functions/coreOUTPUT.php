@@ -114,8 +114,6 @@ function OUTPUT() {
    global $Woundpos; // position where last wounded
    global $flying;  // on ground, flying, crashing, or already landed/crashed
    global $anora; // an or a
-   global $Gunner; // gunner type, if set
-   global $Gunnerticks; // time became gunner
    global $Whosegunner; // player piloting this gunner
    global $Kcountryid; // country id of a killed object
    global $numententelosses; // number of entente losses
@@ -182,7 +180,7 @@ if ($DEBUG){
    print "DEBUG OUTPUT configuration:<br>\n";
    print "FinishFlightOnlyLanded = ".FinishFlightOnlyLanded."<br>\n";
    print "map_locations = ".map_locations."<br>\n";
-   print "\$critical_w_gunner = $critical_w_gunner<br>\n";
+   print "critical_w_gunner = ".critical_w_gunner."<br>\n";
 }
 
    echo "<p><b>REPORT OF SELECTED RESULTS:</b></p>\n"; 
@@ -722,6 +720,8 @@ if ($DEBUG){
             } elseif ($side == 'enemy') {
 	       $captured = 1;
                echo ("$clocktime $playername survived a forced/crash landing $where in $side territory and was captured.<br>\n");
+	       $PilotNegScore = mia_pilot;
+//$query = "UPDATE rof_pilot_scores SET PilotNegScore = PilotNegScore + $PilotNegScore, PilotFate = '4' WHERE MissionID = '$MissionID' AND mpid = '$i' AND PilotFate < 4";
             } else {
                echo ("$clocktime $playername survived a forced/crash landing $where in $side territory<br>\n");
             }
