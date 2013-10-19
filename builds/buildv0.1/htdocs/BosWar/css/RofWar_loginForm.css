@@ -1,0 +1,390 @@
+@charset "utf-8";
+/* CSS Document */
+
+#loginForm
+{
+    background-color: #fff;
+    height: 240px;
+    width: 400px;    
+    padding: 30px;	  
+}
+#campaignForm
+{
+	background-color: #fff;
+    height: 240px;
+    width: 500px;    
+    padding: 30px;
+	margin: 0 0 30px 0;  
+}
+#h3Form
+{
+	margin: 15px 0 5px 0;
+/*	color: #8BAAC9;*/
+}
+
+#airfieldForm
+{
+    background-color: #fff;
+    height: auto;
+    width: 400px;    
+    padding: 30px;	  
+}
+
+#loginForm:before
+{
+    content: '';
+    position: absolute;
+    z-index: -1;
+}
+
+/*--------------------*/
+
+#h1Form
+{
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .7), 0px 2px 0 rgba(0, 0, 0, .5);
+    text-transform: uppercase;
+    text-align: center;
+    color: #666;
+    margin: 0 0 30px 0;
+    letter-spacing: 4px;
+    font: normal 23px/1 "Trebuchet MS", Arial, Helvetica, sans-serif;
+    position: relative;
+}
+
+#h1Form:after, #h1Form:before
+{
+    background-color: #777;
+    content: "";
+    height: 1px;
+    position: absolute;
+    top: 15px;
+    width: 120px;   
+}
+
+#h1Form:after
+{ 
+    background-image: -webkit-gradient(linear, left top, right top, from(#777), to(#fff));
+    background-image: -webkit-linear-gradient(left, #777, #fff);
+    background-image: -moz-linear-gradient(left, #777, #fff);
+    background-image: -ms-linear-gradient(left, #777, #fff);
+    background-image: -o-linear-gradient(left, #777, #fff);
+    background-image: linear-gradient(left, #777, #fff);      
+    right: 0;
+}
+
+#h1Form:before
+{
+    background-image: -webkit-gradient(linear, right top, left top, from(#777), to(#fff));
+    background-image: -webkit-linear-gradient(right, #777, #fff);
+    background-image: -moz-linear-gradient(right, #777, #fff);
+    background-image: -ms-linear-gradient(right, #777, #fff);
+    background-image: -o-linear-gradient(right, #777, #fff);
+    background-image: linear-gradient(right, #777, #fff);
+    left: 0;
+}
+
+/*--------------------*/
+
+fieldset
+{
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+/*--------------------*/
+
+#inputs input, #none input
+{
+    background: #f1f1f1 url(../img/formSprite.png) no-repeat;
+    padding: 15px 15px 15px 30px;
+    margin: 2px 0 2px 0;
+    width: 353px; /* 353 + 2 + 45 = 400 */
+    border: 1px solid #ccc;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+}
+
+#inputs select, #none select
+{
+    background: #f1f1f1 url(../img/formSprite.png) no-repeat;
+    padding: 15px 15px 15px 30px;
+    margin: 2px 0 2px 0;
+    width: 400px; /* 353 + 2 + 45 = 400 */
+    border: 1px solid #ccc;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+}
+
+#username
+{
+    background-position: 5px -2px !important;
+}
+
+#password
+{
+    background-position: 5px -52px !important;
+}
+
+#aircraft
+{
+    background-position: 5px -97px !important;
+}
+
+#none
+{
+    background-position: 5px -137px !important;
+}
+#number
+{
+    background-position: 5px -177px !important;
+}
+
+#world
+{
+    background-position: 5px -227px !important;
+}
+
+#airfield
+{
+    background-position: 5px -277px !important;
+}
+#database
+{
+    background-position: 5px -327px !important;
+}
+#email
+{
+    background-position: 5px -377px !important;
+}
+#phone
+{
+    background-position: 5px -427px !important;
+}
+#file
+{
+    background-position: 5px -477px !important;
+}
+
+#inputs input:focus, #none input:focus
+{
+    background-color: #fff;
+    border-color: #BFC8DE;
+    outline: none;
+    -moz-box-shadow: 0 0 0 1px #BFC8DE inset;
+    -webkit-box-shadow: 0 0 0 1px #BFC8DE inset;
+    box-shadow: 0 0 0 1px #BFC8DE inset;
+}
+
+#inputs select:focus, #none select:focus
+{
+    background-color: #fff;
+    border-color: #BFC8DE;
+    outline: none;
+    -moz-box-shadow: 0 0 0 1px #BFC8DE inset;
+    -webkit-box-shadow: 0 0 0 1px #BFC8DE inset;
+    box-shadow: 0 0 0 1px #BFC8DE inset;
+}
+
+/*--------------------*/
+#actions
+{
+    margin: 2px 0 30px 0;
+}
+
+#loginSubmit, #submitHalfsize
+{		
+    background-color: #5C85AD;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#BFC8DE), to(#5C85AD));
+    background-image: -webkit-linear-gradient(top, #BFC8DE, #5C85AD);
+    background-image: -moz-linear-gradient(top, #BFC8DE, #5C85AD);
+    background-image: -ms-linear-gradient(top, #BFC8DE, #5C85AD);
+    background-image: -o-linear-gradient(top, #BFC8DE, #5C85AD);
+    background-image: linear-gradient(top, #BFC8DE, #5C85AD);
+    
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    
+	text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+ /*   
+     -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(0, 0, 0, 0.3) inset;
+     -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(0, 0, 0, 0.3) inset;
+     box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(0, 0, 0, 0.3) inset; 
+	 */
+}
+
+#loginSubmit
+{		
+    float: left;
+    height: 45px;
+    padding: 0;
+    width: 400px;
+    cursor: pointer;
+    font: 26px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #E6E6E6;
+}
+#submitHalfsize
+{		
+    float: left;
+    height: 45px;
+    padding: 0;
+	margin: 0 5px 0 0;
+    width: 195px;
+    cursor: pointer;
+    font: 26px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #E6E6E6;
+}
+
+#loginSubmit:hover, #submit:focus
+{		
+    background-color: #5C85AD;
+
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#5C85AD), to(#BFC8DE));
+    background-image: -webkit-linear-gradient(top, #5C85AD, #BFC8DE);
+    background-image: -moz-linear-gradient(top, #5C85AD, #BFC8DE);
+    background-image: -ms-linear-gradient(top, #5C85AD, #BFC8DE);
+    background-image: -o-linear-gradient(top, #5C85AD, #BFC8DE);
+    background-image: linear-gradient(top, #5C85AD, #BFC8DE);
+
+}	
+
+#loginSubmit:active
+{		
+    outline: none;
+ 
+     -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+     -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+	
+}
+
+#loginSubmit::-moz-focus-inner
+{
+  	border: none;
+}
+
+#actions a
+{
+    color: #3151A2;    
+    float: right;
+    line-height: 35px;
+    margin-left: 10px;
+}
+
+form fieldset p
+{
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+}
+
+
+/************* MASTER AIRFIELD CHECKBOXES *****************/
+.checkboxWrapper {
+	margin: 3px 0;
+	padding: 10px;
+	width: 378px;
+	background: #f1f1f1;
+	border: 1px solid #ccc;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+}
+
+.checkbox, .radio {
+	font: normal 18px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.checkbox {
+	margin: 5px 0 2px 0;
+}
+
+.radio {
+	margin: 0 0 0 25px;
+}
+
+label {  
+    display: inline-block;  
+    cursor: pointer;  
+    position: relative;  
+    padding-left: 25px;  
+    margin-right: 15px;  
+    font-size: 13px;  
+}
+
+input[type=radio] {  
+    display: none;
+}
+
+input[type=checkbox] {  
+    display: none;
+}
+  
+label:before {  
+    content: "";  
+    display: inline-block; 
+	 
+    width: 16px;  
+    height: 16px;
+	 
+	margin-right: 10px; 
+    position: absolute;  
+    left: 0;  
+    bottom: 1px;  
+    background-color: #aaa;  
+    box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
+} 
+
+.radio label:before {  
+    border-radius: 8px;  
+}
+
+div.radio label {
+	margin-bottom: 5px; /* vertical distance between radio buttons */
+}
+
+.checkbox label:before {  
+    border-radius: 3px;  
+}  
+
+input[type=radio]:checked + label:before {  
+    content: "\2022"; /* bullet symbol */
+    color: #f3f3f3;  
+    font-size: 30px;  
+    text-align: center;  
+    line-height: 10px; /* position of radio bullet once selesecte */
+}  
+
+input[type=checkbox]:checked + label:before {  
+    content: "\2713";  /* check symbol */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+    font-size: 15px;  
+    color: #f3f3f3;  
+    text-align: center;  
+    line-height: 15px;  
+}  
+
+#userDetails {
+	position: absolute;
+	top: 212px;
+	left: 750px;
+}
+
+.userRecordFrame {
+	border: solid 1px #8BAAC9;;
+	width: auto;
+	margin: 0 0 10px 0;
+	padding: 5px 15px 10px 5px;
+}

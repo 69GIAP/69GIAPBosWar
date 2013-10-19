@@ -1,0 +1,414 @@
+/******************************************************/
+/*** INCLUDE OTHER CSS FILES ***/
+/******************************************************/
+
+@import url("RofWar_navigation.css");
+@import url("RofWar_sidebar.css");
+@import url("RofWar_loginForm.css");
+
+
+
+
+
+/* Main CSS*/
+html, body {
+	margin: 0;
+	padding: 0;
+	background-color: #8BAAC9;
+	}
+
+body.index {
+	background-color: #CCC;
+	}
+
+html {
+	line-height: 1.1em;	
+	}
+
+h1 {
+	padding: 0;
+	margin: 15;
+	line-height: 1.5em;
+	text-align: center;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	}
+
+h2 {
+	padding: 0;
+	margin: 10px;
+	line-height: 1 em;
+	text-align: left;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	}
+h3 {
+	padding: 0;
+	margin: 35px 0 5px 10px;
+	line-height: 1 em;
+	text-align: left;
+	font-size: 16px;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	}
+	
+p {
+	padding: 5px 0px;
+	margin: 5px;
+	font-size: 13px;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	}
+	
+/************************************************************************
+/* Header Styles */
+#header {
+	background-color: #F5F6F8;
+	color: #E6E6E6;
+	height:165px;
+	background: url(../img/RofWar_Header_bg.png) repeat-x;
+	z-index: 10;		
+	}
+	
+div.debuggingSession {
+	position:absolute;
+	padding: 5px;
+	top: 5px;
+	left: 0px;
+	width: 230px;
+	min-height: 90px;
+	font-size: 11px;
+	color: #333;
+	background-color: #FFF;
+	opacity: 0.5;
+	filter:alpha(opacity=50);
+	line-height: 13px;
+	z-index: 100;		
+	}
+div.debuggingPost {
+	position:absolute;
+	padding: 5px;
+	top: 5px;
+	left: 250px;
+	width: 250px;
+	min-height: 90px;
+	font-size: 11px;
+	color: #333;
+	background-color: #FFF;
+	opacity: 0.5;
+	filter:alpha(opacity=50);
+	line-height: 13px;
+	z-index: 100;		
+	}
+div.debuggingDbConnection {
+	position:relative;
+	padding: 0;
+	margin: 10px;
+	top: 5px;
+	width: auto;
+	height: 80px;
+	font-size: 13px;
+	color: #6C3;
+	background-color: #FFF;
+	opacity: 0.8;
+	filter:alpha(opacity=80);
+	line-height: 14px;
+	z-index: 90;		
+	}			
+
+div.userLoggedOnInfo {
+	position:absolute;
+	top: 111px;
+	left: 20px;
+	width: auto;
+	height: auto;
+	font-size: 12px;
+	color: #999;
+	z-index: 10;
+	}
+
+#titleRofWar {
+	position: absolute;
+	top: 27px;
+	left: 50%;
+	right:50%;
+	margin-left: -146px;
+	width: 293px;
+	height: 57px;
+	background-image: url(../img/RofWar_Title.png);
+	z-index: 999;
+	}
+	
+#titleBosWar {
+	position: absolute;
+	top: 27px;
+	left: 50%;
+	right:50%;
+	margin-left: -146px;
+	width: 293px;
+	height: 57px;
+	background-image: url(../img/BosWar_Title.png);
+	z-index: 999;
+	}
+
+#indexRofWar {
+	display:block;
+	text-align:center;
+	margin-top:150px;
+	padding: 15px;
+	}
+	
+#indexBosWar {
+	display:block;
+	text-align:center;
+	padding: 15px;
+}
+/************************************************************************
+/* Content Styles */
+#wrapper {
+	background: url(../img/RofWar_Side_bg.gif);
+	background-position: left;
+	background-repeat: repeat-y;
+	}
+
+#container {
+	background: url(../img/RofWar_Side_bg.gif);
+	background-position: left;
+	background-repeat: repeat-y;
+	float: right;
+	margin: 0 0 0 -260px ;
+	width: 100%;
+	}
+
+#content {
+	margin: 0 0 0 245px;
+	padding: 15px;
+	background-color: #fff;
+	color: #293442;
+	min-height: 650px; /* applied min height for base setup of layout */
+	}
+
+#clearing {
+	clear: both;
+	height: 0px;
+	}
+
+/************************************************************************
+/*  Footer Styles */
+#footer {
+	background-color: #8BAAC9;
+	border:none;
+	color: #E6E6E6;
+	height: 48px;	
+	}
+
+#credits {
+	position: relative;
+	right: 10px;
+	top: 10px;
+	height: auto;
+	width: auto;
+	text-align: right;
+	font-size:	11px;
+	}
+	
+div#credits p {
+	padding: 0;
+	margin: 0;
+	color: #E6E6E6;	
+}	
+
+
+/**************************************************************************
+/* Form styles */
+	
+fieldset.boswar {
+	width: 380px;
+	border: none;	
+	}
+	
+fieldset.boswar ul, fieldset li{
+	border:0;
+	margin:0; 
+	width: 360px;
+	padding:5px; 
+	list-style:none;
+	}
+
+fieldset.boswar li{
+	clear:both;
+	list-style:none;
+	padding-bottom:10px;
+	padding-top: 5px;
+	}
+
+fieldset.boswar input{
+	float:left;
+	width: 210px;
+	}
+
+fieldset.boswar select{
+	float:left;
+	width: 215px;
+	}
+
+fieldset.boswar label{
+	float:left;
+	width:140px;
+	}
+
+fieldset.boswar button{
+	width: 150px;
+	margin-left: 160px;
+}
+
+/**************/
+fieldset.airfield {
+	width: 395px;
+	border-width: 1px;	
+	border-color: #CCC;
+	margin: 0 0 15px 0;
+	}
+	
+fieldset.airfield ul, fieldset li {
+	border: 0;
+	margin: 0; 
+	padding: 5px;
+	width: 395px;
+	list-style:none;
+	}
+
+fieldset.airfield li {
+	clear:both;
+	list-style:none;
+	padding-bottom:10px;
+	padding-top: 5px;
+	}
+
+fieldset.airfield input {
+	float: left;
+	width: 240px;
+	}
+	
+fieldset.airfield select {
+	float: left;
+	width: 245px;
+	}
+
+fieldset.airfield label {
+	float: left;
+	width: 127px;
+
+	}
+fieldset.airfield button{
+	width: 200px;
+	margin-right: 10px;
+}
+
+form button.airfield {
+	width: 405px;
+	margin-left: 0;
+	padding-left: 0;
+}
+
+fieldset.airfield button.AircraftMgmtHalfButton1 {
+	width: 100px;
+	margin-top: 0;
+	padding-top: 0;
+	margin-left: 140px;
+}
+fieldset.airfield button.AircraftMgmtHalfButton2 {
+	width: 100px;
+	margin-top: 0;
+	padding-top: 0;
+	margin-left: 5px;
+}
+
+fieldset.airfield input.grey, fieldset.airfield label.grey {
+	color: #999;
+	}
+/**************/
+fieldset.UserMgmt {
+	width: 400px;
+	border: 0;	
+	}
+
+fieldset.UserMgmt ul, fieldset li {
+	border: 0;
+	margin: 0; 
+	width: 380px;
+	padding: 5px; 
+	list-style: none;
+	}
+
+fieldset.UserMgmt li{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 14px;	
+	clear: both;
+	list-style: none;
+	padding-bottom: 10px;
+	padding-top: 5px;
+	}
+
+fieldset.UserMgmt input{
+	float: left;
+	width: 205px;
+	}
+
+fieldset.UserMgmt select{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	float: left;
+	width: 210px;
+	}
+
+fieldset.UserMgmt label{
+	width:140px;
+	float:left;
+	}
+
+fieldset.UserMgmt button{
+	width: 210px;
+	margin-left: 140px;
+}
+fieldset.UserMgmt button.UserMgmtHalfButton1 {
+	width: 100px;
+	margin-top: 0;
+	padding-top: 0;
+	margin-left: 140px;
+}
+fieldset.UserMgmt button.UserMgmtHalfButton2 {
+	width: 100px;
+	margin-top: 0;
+	padding-top: 0;
+	margin-left: 5px;
+}
+
+/*************************************************************************************
+/* statistic table styles */
+
+#statistics {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	width:100%;
+	border-collapse:collapse;
+}
+
+#statistics td, #statistics th {
+	font-size:12px;
+	border:1px solid #7B9EC1;
+	padding:3px 7px 2px 7px;
+}
+	
+#statistics th {
+	font-size:12px;
+	text-align:left;
+	padding-top:5px;
+	padding-bottom:4px;
+	background-color: #8BAAC9;
+	color:#ffffff;
+}
+	
+#statistics tr.odd td {
+	color:#000000;
+	background-color:#F5F8FA;
+}
+#statistics tr.even td {
+	color:#000000;
+	background-color:#E4ECF1;
+}
