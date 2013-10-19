@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2013 at 11:03 PM
+-- Generation Time: Oct 19, 2013 at 11:52 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -580,7 +580,7 @@ CREATE TABLE IF NOT EXISTS `rof_gunner_scores` (
   `CoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `country` smallint(1) NOT NULL DEFAULT '0',
   `GunnerName` varchar(40) NOT NULL DEFAULT 'gunnername',
-  `mgid` int(1) NOT NULL DEFAULT '0',
+  `plid` mediumint(1) NOT NULL DEFAULT '0',
   `GunningFor` varchar(40) NOT NULL DEFAULT 'pilotname',
   `GunnerFate` tinyint(1) NOT NULL DEFAULT '0',
   `GunnerHealth` tinyint(1) NOT NULL DEFAULT '0',
@@ -964,7 +964,7 @@ CREATE TABLE IF NOT EXISTS `rof_pilot_scores` (
   `CoalID` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `country` smallint(1) NOT NULL DEFAULT '0',
   `PilotName` varchar(40) NOT NULL DEFAULT 'pilotname',
-  `mpid` smallint(1) NOT NULL DEFAULT '0',
+  `plid` mediumint(1) NOT NULL DEFAULT '0',
   `PilotFate` tinyint(1) NOT NULL DEFAULT '0',
   `PilotHealth` tinyint(1) NOT NULL DEFAULT '0',
   `PilotNegScore` int(1) NOT NULL DEFAULT '0',
