@@ -306,13 +306,14 @@ form fieldset p
 .checkbox, .radio {
 	font: normal 18px "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
+
 .checkbox {
 	margin: 5px 0 2px 0;
 }
-.radio {
-	margin: 0 0 15px 25px;
-}
 
+.radio {
+	margin: 0 0 0 25px;
+}
 
 label {  
     display: inline-block;  
@@ -322,21 +323,23 @@ label {
     margin-right: 15px;  
     font-size: 13px;  
 }
+
 input[type=radio] {  
-    display: none;  
+    display: none;
 }
+
 input[type=checkbox] {  
     display: none;
 }
   
 label:before {  
     content: "";  
-    display: inline-block;  
-  
+    display: inline-block; 
+	 
     width: 16px;  
-    height: 16px;  
-  
-    margin-right: 10px;  
+    height: 16px;
+	 
+	margin-right: 10px; 
     position: absolute;  
     left: 0;  
     bottom: 1px;  
@@ -346,7 +349,12 @@ label:before {
 
 .radio label:before {  
     border-radius: 8px;  
-}  
+}
+
+div.radio label {
+	margin-bottom: 5px; /* vertical distance between radio buttons */
+}
+
 .checkbox label:before {  
     border-radius: 3px;  
 }  

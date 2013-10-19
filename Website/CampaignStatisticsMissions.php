@@ -48,7 +48,7 @@
                     # use this information to connect to campaign 
                     $camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$camp_db");
                     # print header
-                    print "<h1>$campaign Missions</h1><br>";
+                    print "<h2>$campaign Missions</h2>";
                     # do whatever is needed from the campaign database
   
 					include ( 'includes/getMissions.php' );;
