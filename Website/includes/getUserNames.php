@@ -16,9 +16,9 @@
 			$query = "SELECT u.user_id, u.username, u.email, u.phone, r.role from users u, campaign_users c, users_roles r
 						WHERE r.role_id = u.role_id
 						AND u.user_id = c.user_id
-						AND u.user_id != 'userId'
 						AND u.role_id != 1
 						AND u.role_id != 3
+						AND c.CoalId = $userCoalId
 						GROUP BY u.user_id";
 		}	
 	

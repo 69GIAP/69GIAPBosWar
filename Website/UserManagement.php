@@ -26,10 +26,6 @@
 						{
 							include ( 'includes/userAdministration.php' );
 						}
-					else
-						{
-							echo "<p>You don't have the necessary rights to view this content.</p>\n";
-						}					
 				?>
 
             </div>
