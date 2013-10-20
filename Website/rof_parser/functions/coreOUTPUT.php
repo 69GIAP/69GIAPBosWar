@@ -126,7 +126,7 @@ function OUTPUT() {
    global $side; // "friendly", "enemy" or "neutral"
    global $camp_link; // link to campaign db
    global $StatsCommand; // do, undo, or ignore
-   globaL $camp_db; // campaign db
+   global $camp_db; // campaign db
    global $object_desc; // object description from rof_object_properties
    global $object_value; // object value from rof_object_properties
 
@@ -180,7 +180,7 @@ if ($DEBUG){
    print "DEBUG OUTPUT configuration:<br>\n";
    print "FinishFlightOnlyLanded = ".FinishFlightOnlyLanded."<br>\n";
    print "map_locations = ".map_locations."<br>\n";
-   print "critical_w_gunner = ".critical_w_gunner."<br>\n";
+//   print "critical_w_gunner = ".critical_w_gunner."<br>\n";
 }
 
    echo "<p><b>REPORT OF SELECTED RESULTS:</b></p>\n"; 
@@ -264,7 +264,6 @@ if ($DEBUG){
          FATES($i,$j);
       }
    }
-
    // now show Central Powers players
    COALITIONNAME(2);
    echo "<br>$numcentralpowers $Coalitionname:<br>\n";	
