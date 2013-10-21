@@ -36,5 +36,5 @@ session_start();
 		}
 		
 	# redirect to campaign Management section screen with selected $loadedCampaign variable
-	header("Location: ../CampaignManagment.php?btn=campmgmt");
+	header("Location: ../CampaignMgmt.php?btn=campmgmt");
 ?>

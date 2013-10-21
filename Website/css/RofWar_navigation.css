@@ -27,20 +27,31 @@ ul#navigation li a {
 	}
 
 ul#navigation li a.home {
-	width:96px;
+	width:97px;
 	/*background-position:-190px 0px;  remove to reactivate Home*/
 	}
 	
 ul#navigation li a.userMgmt {
-	width:96px;
-	background-position:-96px 0px;
+	width:95px;
+	background-position:-97px 0px;
 	}
-	
+ul#navigation li a.prepCamp {
+	width:98px;
+	background-position:-192px 0px;
+	}
+ul#navigation li a.preMsn {
+	width:94px;
+	background-position:-288px 0px;
+	}
+ul#navigation li a.postMsn {
+	width:96px;
+	background-position:-384px 0px;
+	}			
 ul#navigation li a.campMgmt {
 	width:96px;
-	background-position:-192px 0px;
-	}	
-	
+	background-position:-480px 0px;
+	}
+		
 ul#navigation li a span {
 	background:url(../img/RofWar_NavMenuLeftSprite.png) no-repeat scroll bottom left;
 	display:block;
@@ -58,14 +69,25 @@ ul#navigation li a.home span {
 	
 ul#navigation li a.userMgmt span {
 	width:95px;
-	background-position:-96px -54px;
+	background-position:-97px -54px;
 	}
-	
-ul#navigation li a.campMgmt span {
+ul#navigation li a.prepCamp span {
 	width:95px;
 	background-position:-192px -54px;
-	}	
-
+	}
+ul#navigation li a.preMsn span {
+	width:94px;
+	background-position:-288px -54px;
+	}
+ul#navigation li a.postMsn span {
+	width:95px;
+	background-position:-384px -54px;
+	}				
+ul#navigation li a.campMgmt span {
+	width:95px;
+	background-position:-480px -54px;
+	}
+	
 ul#navigation li a span:hover {
 	cursor:pointer;
 	}
