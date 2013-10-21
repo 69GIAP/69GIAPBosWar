@@ -4,9 +4,8 @@
 // mission report text files
 // written by =69.GIAP=TUSHKA
 // 2011-2013
-// Version 69GIAPBoSWar 0.5
-// Sat Sep 21 2013
-//
+// Version 69GIAPBoSWar 0.6
+// Oct 19, 2013
 
 // the main program 
 
@@ -26,44 +25,54 @@ $DEBUG = 0;  // set to 1 for a complete debugging report, 0 for off.
 
 // Get individual variable from $_POST, but set it here for the moment
 
-// Get Individual variables from the campaign's campaign_settings table
+// Get campaign constants from the campaign_settings table
 $query = "SELECT * FROM campaign_settings";
 if(!$result = $camp_link->query($query))
-   { die('There was an error running the query [' . $camp_link->error . ']'); }
+   { die('rof_parse_log: error running a query [' . $camp_link->error . ']'); }
 	
 if ($result = mysqli_query($camp_link, $query)) {
-	 // get results
-	 while ($obj = mysqli_fetch_object($result)) {
-		$SHOWAF	=($obj->show_airfield);
-		$FinishFlightOnlyLanded = ($obj->finish_flight_only_landed);
-		$map_locations	=($obj->map_locations);
-		$LOGPATH	=($obj->logpath);
-		$kia_pilot	=($obj->kia_pilot);
-		$mia_pilot	=($obj->mia_pilot);
-		$critical_w_pilot	=($obj->critical_w_pilot);
-		$serious_w_pilot	=($obj->serious_w_pilot);
-		$light_w_pilot	=($obj->light_w_pilot);
-		$kia_gunner	=($obj->kia_gunner);
-		$mia_gunner	=($obj->mia_gunner);
-		$critical_w_gunner	=($obj->critical_w_gunner);
-		$serious_w_gunner	=($obj->serious_w_gunner);
-		$light_w_gunner	=($obj->light_w_gunner);
-		$healthy	=($obj->healthy);
-	}
-        // free result set
-	mysqli_free_result($result);
+   // get results
+   while ($obj = mysqli_fetch_object($result)) {
+      define('SHOWAF', "$obj->show_airfield");
+      define('FinishFlightOnlyLanded', "$obj->finish_flight_only_landed");
+      define('map_locations', "$obj->map_locations");
+      define('LOGPATH', "$obj->logpath");
+      define('kia_pilot', "$obj->kia_pilot");
+      define('mia_pilot', "$obj->mia_pilot");
+      define('critical_w_pilot', "$obj->critical_w_pilot");
+      define('serious_w_pilot', "$obj->serious_w_pilot");
+      define('light_w_pilot', "$obj->light_w_pilot");
+      define('kia_gunner', "$obj->kia_gunner");
+      define('mia_gunner', "$obj->mia_gunner");
+      define('critical_w_gunner', "$obj->critical_w_gunner");
+      define('serious_w_gunner', "$obj->serious_w_gunner");
+      define('light_w_gunner', "$obj->light_w_gunner");
+      define('healthy', "$obj->healthy");
+      }
+      // free result set
+      mysqli_free_result($result);
 }
 
 // debugging
 //if (true){
 if ($DEBUG){
    print "DEBUG rof_parse_log.php parser configuration:<br>\n";
-   print "SHOWAF = $SHOWAF<br>\n";
-   print "FinishFlightOnlyLanded = $FinishFlightOnlyLanded<br>\n";
-   print "map_locations = $map_locations<br>\n";
-   print "LOGPATH = $LOGPATH<br>\n";
+   print "SHOWAF = ".SHOWAF."<br>\n";
+   print "FinishFlightOnlyLanded = ".FinishFlightOnlyLanded."<br>\n";
+   print "map_locations = ".map_locations."<br>\n";
+   print "LOGPATH = ".LOGPATH."<br>\n";
    print "LOGFILE = $LOGFILE<br>\n";
-   print "\$critical_w_gunner = $critical_w_gunner<br>\n";
+   print "kia_pilot = ".kia_pilot."<br>\n";
+   print "mia_pilot = ".mia_pilot."<br>\n";
+   print "critical_w_pilot = ".critical_w_pilot."<br>\n";
+   print "serious_w_pilot = ".serious_w_pilot."<br>\n";
+   print "light_w_pilot = ".light_w_pilot."<br>\n";
+   print "kia_gunner = ".kia_gunner."<br>\n";
+   print "mia_gunner = ".mia_gunner."<br>\n";
+   print "critical_w_gunner = ".critical_w_gunner."<br>\n";
+   print "serious_w_gunner = ".serious_w_gunner."<br>\n";
+   print "light_w_gunner = ".light_w_gunner."<br>\n";
+   print "healthy = ".healthy."<br>\n";
 }
 
 // Declare global variables.
@@ -71,13 +80,13 @@ if ($DEBUG){
 // arguments to the functions.  Lazy but effective!
 global $camp_db;  // campaign db
 global $camp_link;  // link to campaign db
-global $map_locations;  // name of campaign locations file
 
 // get $camp_db from SESSION
 $camp_db =  $_SESSION['camp_db'];
 
 // Set path to logfile relative to parser
-$LOGFILE = $LOGPATH."/".$LOGFILE;
+// $LOGFILE is a filename supplied by the calling page
+$LOGFILE = LOGPATH."/".$LOGFILE;
 
 // End individual variables
 
