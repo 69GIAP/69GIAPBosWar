@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2013 at 05:24 AM
+-- Generation Time: Oct 21, 2013 at 05:58 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `rof_object_roles` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `unit_class` (`unit_class`),
   UNIQUE KEY `role_description` (`role_description`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
 
 --
 -- Dumping data for table `rof_object_roles`
@@ -74,7 +74,8 @@ INSERT INTO `rof_object_roles` (`id`, `unit_class`, `role_description`) VALUES
 (31, 'VAA', 'Vehicle:Anti-Aircraft'),
 (32, 'VMI', 'Vehicle:Mech. Infantry'),
 (33, 'VRI', 'Regular Infantry'),
-(34, 'VTR', 'Vehicle:Transport');
+(34, 'VTR', 'Vehicle:Transport'),
+(35, 'DNA', 'Intrinsic');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
