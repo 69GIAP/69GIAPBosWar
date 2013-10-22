@@ -1,7 +1,12 @@
 <?php
-function PLAYERNAME($plid,$ticks) {
+// PLAYERNAME
 // get player's name from PLID
-// may call OBJECTNAME
+// may call OBJECTNAME - probably obsolete
+// =69.GIAP=TUSHKA
+// 2011-2013
+// BOSWAR version 1.1
+// Oct 22, 2013
+function PLAYERNAME($plid,$ticks) {
    global $PLID; // player plane id 
    global $PID; // plane ID (whether bot or player)
    global $NAME; // player profile name
@@ -9,7 +14,9 @@ function PLAYERNAME($plid,$ticks) {
    global $Pline;  // lines that define players
    global $objectname; // object name from PID/AID/TID
    global $playername; // player name from PLID
+   global $playerplaneid; // ID of player's plane
 
+   $playerplaneid = 0;
    $playername = "";
    $found = "0";
    if ($plid == "-1") {
@@ -19,12 +26,14 @@ function PLAYERNAME($plid,$ticks) {
    } else {
       for ($i = 0; $i < $numplayers; ++$i) {
          $j = $Pline[$i];
-//         if ("$PLID[$j]" == "$plid")) {
          if (("$PLID[$j]" == "$plid") || ("$PID[$j]" == "$plid")) {
             $playername = $NAME[$j];
             $found = "1";
 //            echo "PLAYERNAME 2- playername = $playername<br>\n"; 
          }
+         if ("$PID[$j]" == "$plid") {
+	    $playerplaneid = $PLID[$j];
+	 }
       }
    }
    if (!$found) {

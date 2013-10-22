@@ -3,8 +3,8 @@
 // =69.GIAP=TUSHKA
 // 2011-2013
 // output simple text report and calculate some stats for the db
-// BOSWAR version 1.1
-// Oct 21, 2013
+// BOSWAR version 1.2
+// Oct 22, 2013
 
 function OUTPUT() {
 // what follows is an almost complete collection of global variables
@@ -129,6 +129,7 @@ function OUTPUT() {
    global $camp_db; // campaign db
    global $object_desc; // object description from rof_object_properties
    global $object_value; // object value from rof_object_properties
+   global $playerplaneid; // ID of player's plane
 
    # require the is-point-in-area borrowed CLASS
    # pointLocation
@@ -372,45 +373,62 @@ if ($DEBUG){
 	 $tCoalID = $CoalID;
          PLAYERNAME($TID[$j],$Ticks[$j]); // get target's playername
 	 $tplayername = $playername;
+	 $tplayerplaneid = $playerplaneid;
          FLYING($TID[$j],$Ticks[$j]);
          ANORA($tcountryadj);
          $ca = $anora;
-	 // END TARGET STUFF
 
-         XYZ($POS[$j]);
-         WHERE($posx,$posz,0);
 //         echo "$i in line # $j, $AID[$j] $TID[$j] in $POS[$j]<br>\n";
 //         echo "attackertype = $attackertype, attackerobject = $attackerobject, aplayername= $aplayername, targetobject = $targetobject, tplayername = $tplayername, targetobject = $targetobject<br>\n";
 //	 echo "$targettype is $targetclass with value $targetvalue<br>\n";
 	 $query = ""; // make sure have empty query
 
-         // get objectnumber for target
+         // get objectnumber for target and perhaps player's plane
 	 // NOTE: gameobject ID is NOT NECESSARILY UNIQUE.  See AT13 -
 	 // Caquot destroyed at beginning and a Camel have the same
 	 // ID!  So the ID is unique at any particular time, but not
 	 // over all mission time.  Need to add a time factor to make
 	 // it correct.  Ah... use time of death for object.
 	 //
+         $tonum = 0; 
+         $tplanenum = 0; 
          for ($k = 0; $k < $numgobjects; ++$k) {
             $l = $GOline[$k];
             //if (($ID[$l] == $TID[$j]) && ($Deathticks[$l] >= $Ticks[$j])) {
-            if (($ID[$l] == $TID[$j])) {
+            if ($ID[$l] == $TID[$j]) {
                $tonum = $k; // target object number
 //               echo "j = $j k = $k l = $l ID[l] = $ID[$l] TID[j] = $TID[$j] Ticks[l] = $Ticks[$l] Ticks[j] = $Ticks[$j]<br>\n";
             }
-         }
+            if ($ID[$l] == $tplayerplaneid) {
+               $tplanenum = $k; // target object number
+            }
+         } 
+	 // END TARGET PROCESSING
 
 	 // ATTACKER
+	 // With a player target there are two 'last hits' to consider
+	 // one hits the player directly, wounding and perhaps killing player
+	 // The other shoots down the plane, with the crash killing player
+	 // The question becomes, which one counts as last hit?
+	 // For now I'll say that the hit that kills the plane is the one
+	 // that should get credit for a subsequent pilot death, even if
+	 // a 'kill stealer' later peppers the doomed plane unless he
+	 // directly kills the player in the process.
 	 $attackerid = '';
 	 $attackerid = $AID[$j]; // record direct attackerid
-         if ($attackerid == "-1" && isset($tonum)) {
+        if ($attackerid == "-1" && isset($tonum)) {
             if ($Lasthitbyid[$tonum] > 0  ) {
 	       $attackerid = $Lasthitbyid[$tonum];
 	    } else {
-		    // if target is pilot
-		    // check lasthit on pilot's plane (function not written)
+	       // if target is player check lasthit on player's plane
+	       if ($targetclass == 'HUM' || $targetclass == 'TUR') {
+		  if (isset($tplanenum) && $Lasthitbyid[$tplanenum] > 0 ) {
+	             $attackerid = $Lasthitbyid[$tplanenum];
+		  }
+	       }
 	    }
-         }
+         }	 
+
          OBJECTCOUNTRYNAME($attackerid,$Ticks[$j]); // get attacker's country, etc
 	 $acountryid = $countryid;
 	 $acountryname = $countryname;
@@ -425,17 +443,27 @@ if ($DEBUG){
          OBJECTNAME($attackerid,$Ticks[$j]); // get attacker objectname
 	 $attackerobject = $objectname;
          PLAYERNAME($attackerid,$Ticks[$j]); // get attacker playername
-         $aplayername = $playername;
+	 if (preg_match('/^P/',$attackerclass) || $attackerclass == 'TUR') {
+	    // if attacker is a plane or player gunner, use player's name
+            $aplayername = $playername;
+	 } else {
+            // else use object's description 
+            $aplayername = $attackerdesc;
+	 }
          ANORA($aplayername);
          $ap = $anora;
-         ANORA($attackerdesc);
-         $ad = $anora;
-	 // END ATTACKER STUFF
+	 // END ATTACKER PROCESSING
+	 
+         XYZ($POS[$j]);
+         WHERE($posx,$posz,0);
 
+	 // BEGIN REPORTING AND SCORING
          if ($attackerid == "-1") { // Intrinsic damage
             if ($Lasthitby[$tonum] == "" ) { // no identified attacker
-	       // accident or killed indirectly (if plane, can no longer maintain altitude)
-	       // e.g. burn, overspeed engine, fly into tree, run out of fuel or oil, etc.
+	       // accident or killed indirectly
+	       // if plane, can no longer maintain altitude
+	       // e.g. burning, overspeed engine, break wing, fly into tree,
+	       // run out of fuel or oil, etc.
                if ($targettype == "Common Bot") { // SD1: player pilot
 		  // see 1916_2 for six examples
 		  // pilotNegScore scoring already accounted for in FATES
@@ -455,10 +483,9 @@ if ($DEBUG){
                   echo ("$clocktime $ca $tcountryadj $tplayername ($targettype) $action $where<br>\n");
 //		  echo "\$targetclass = $targetclass, \$targettype = $targettype, \$tplayername = $tplayername<br>\n";
                } elseif (preg_match('/^P/',$targetclass)) { 
-		  // this is probably an event that needs to be scored
 		  if ($flying == 0) { // has not flown
 		     $action = "crashed on takeoff";
-		  } // has not flown
+		  }
 		  elseif ($flying == 1) { // flying
 		     $action = "crashed";
 		  }
