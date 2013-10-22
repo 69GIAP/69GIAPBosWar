@@ -10,10 +10,10 @@
 	
 	# get data from test_airfield table dependent on selection
 	if ($userCoalId == "0")
-		{$sql = "SELECT * FROM test_airfields group by name";}
+		{$sql = "SELECT * FROM airfields group by af_Name";}
 	else
 	# get only airfields having the right coalition and all neutral airfields
-		{$sql = "SELECT * FROM test_airfields WHERE coalId = $userCoalId OR coalId = \"0\" group by name";}
+		{$sql = "SELECT * FROM airfields WHERE af_Country = $userCoalId OR af_Country = \"0\" group by af_Name";}
 	#echo $sql;
 
 	if(!$result = $camp_link->query($sql)){
@@ -23,10 +23,10 @@
 	echo "<option value=\"\" disabled selected>Select Airfield</option>\n";
 	# load results into variables 
 	while ($obj = mysqli_fetch_object($result)) {
-		$airfieldName		=($obj->name);
-		$airfieldCoalition	=($obj->coalId);
-		$airfieldModel		=($obj->model);
-		$airfieldNumber		=($obj->number);
+		$airfieldName		=($obj->af_Name);
+		$airfieldCoalition	=($obj->af_Country);
+		#$airfieldModel		=($obj->model);
+		#$airfieldNumber		=($obj->number);
 		echo "<option value=\"". $airfieldName. "\">". $airfieldName. "</option>\n";		
 	}	
 ?>

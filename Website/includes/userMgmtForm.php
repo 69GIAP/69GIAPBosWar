@@ -4,7 +4,7 @@
 <!-- form for changing information in the users table -->
 <?PHP
 	# start form
-	echo "<form id=\"airfieldForm\" name=\"login\" action=\"UserManagementModify.php\" method=\"post\">\n";
+	echo "<form id=\"airfieldForm\" name=\"login\" action=\"UserMgmtModify.php\" method=\"post\">\n";
 	echo "	<fieldset id=\"inputs\">\n";
 	
 	# SELECT USER

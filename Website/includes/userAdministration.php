@@ -1,6 +1,6 @@
 <?php
 	# include the form to manage users
-	include ( 'includes/userManagementForm.php' );
+	include ( 'includes/userMgmtForm.php' );
 /*
     # get the SESSION variables for the users
     # $userRole	= $_SESSION['userRole'];
