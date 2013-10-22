@@ -430,27 +430,20 @@ if ($DEBUG){
          $aplayername = $playername;
 	 // END ATTACKER STUFF
 
-         if ($attackerid == "-1") {
-	 // killed indirectly (wing shot off, flew into ground, etc.)
-//            echo "Lasthitby[$tonum] = $Lasthitby[$tonum]<br>\n";
-//            echo "flying = $flying<br>\n";
-            if ($Lasthitby[$tonum] == "" ) { // indirect or self-inflicted? SD1
+         if ($attackerid == "-1") { // Intrinsic damage
+            if ($Lasthitby[$tonum] == "" ) { // no identified attacker
+	       // accident or killed indirectly (if plane, can no longer maintain altitude)
+	       // e.g. burn, overspeed engine, fly into tree, run out of fuel or oil, etc.
                if ($targettype == "Common Bot") { // SD1: player pilot
 		  // see 1916_2 for six examples
 		  // pilotNegScore scoring already accounted for in FATES
 		  // Pilot wasn't hit, but plane may have been.
 		  // If wing fell off, or set afire, might be here.
 		  // Should be able to track that and give proper credit!
-		  // Need plane thyat this pilot is/was flying. 
-		  // Then need to run LASTHITBY on that.
+		  // Need to find plane that this pilot is/was flying. 
+		  // Then need to run LASTHIT on that.
 		  $action = "was killed";
                   echo ("$clocktime $tplayername $action $where<br>\n");
-	 	  if ($StatsCommand == 'do') { // generate an INSERT query	  
-		     $query = "INSERT INTO rof_kills (MissionID,clocktime,attackerID,attackerName,attackerCountryID,attackerCoalID,action,targetID,targetClass,targetType,targetName,targetCountryID,targetCoalID,targetValue) VALUES ('$MissionID','$clocktime','$attackerid','$aplayername','$acountryid','$aCoalID','$action','$TID[$j]','$targetclass','$targettype','$tplayername','$tcountryid','$tCoalID','$targetvalue')";
-//		     echo "SD1: $query<br>\n";
-		  } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
-		     $query = "DELETE from rof_kills where MissionID = '$MissionID' and clocktime = '$clocktime' and targetID = '$TID[$j]'";
-		  }
                } elseif ($targetclass == 'BOT') { // SD2:
 		  // see 1916_1 for eleven examples
 		  // AI gunner (currently score value of zero)
@@ -459,13 +452,6 @@ if ($DEBUG){
 		  $action = "was killed";
                   echo ("$clocktime $ca $tcountryadj $tplayername ($targettype) $action $where<br>\n");
 //		  echo "\$targetclass = $targetclass, \$targettype = $targettype, \$tplayername = $tplayername<br>\n";
-	 	  if ($StatsCommand == 'do') { // generate an INSERT query
-		     $query = "INSERT INTO rof_kills (MissionID,clocktime,attackerID,attackerName,attackerCountryID,attackerCoalID,action,targetID,targetClass,targetType,targetName,targetCountryID,targetCoalID,targetValue) VALUES ('$MissionID','$clocktime','$attackerid','$aplayername','$acountryid','$aCoalID','$action','$TID[$j]','$targetclass','$targettype','$tplayername','$tcountryid','$tCoalID','$targetvalue')";
-//		     echo "SD2: $query<br>\n";
-		  } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
-		     $query = "DELETE from rof_kills where MissionID = '$MissionID' and clocktime = '$clocktime' and targetID = '$TID[$j]'";
-		  }
-	       // now check if target object is an airplane (Plane)
                } elseif (preg_match('/^P/',$targetclass)) { 
 		  // this is probably an event that needs to be scored
 		  if ($flying == 0) { // has not flown
@@ -484,27 +470,22 @@ if ($DEBUG){
 		  // See 1916_1 for a single (rare) example.
 		  echo ("$clocktime $tplayername's $targettype $action $where<br>\n");
 //		  echo "\$targetclass = $targetclass, \$targettype = $targettype, \$tplayername = $tplayername<br>\n";
-	 	  if ($StatsCommand == 'do') { // generate an INSERT query
-		     $query = "INSERT INTO rof_kills (MissionID,clocktime,attackerID,attackerName,attackerCountryID,attackerCoalID,action,targetID,targetClass,targetType,targetName,targetCountryID,targetCoalID,targetValue) VALUES ('$MissionID','$clocktime','$attackerid','$aplayername','$acountryid','$aCoalID','$action','$TID[$j]','$targetclass','$targettype','$tplayername','$tcountryid','$tCoalID','$targetvalue')";
-//		     echo "SD3: $query<br>\n";
-		  } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
-		     $query = "DELETE from rof_kills where MissionID = '$MissionID' and clocktime = '$clocktime' and targetID = '$TID[$j]'";
-		  }
 	       // not an airplane
                } else { // SD4:
 		  // see 1916_1 for sixteen! examples
                   $action = "self-destructed";
                   echo ("$clocktime $ca $tcountryadj $targettype ($targetobject) $action $where<br>\n");
 //		  echo "\$targetclass = $targetclass, \$targettype = $targettype, \$tplayername = $tplayername<br>\n";
-	 	  if ($StatsCommand == 'do') { // generate an INSERT query
-		     $query = "INSERT INTO rof_kills (MissionID,clocktime,attackerID,attackerName,attackerCountryID,attackerCoalID,action,targetID,targetClass,targetType,targetName,targetCountryID,targetCoalID,targetValue) VALUES ('$MissionID','$clocktime','$attackerid','$aplayername','$acountryid','$aCoalID','$action','$TID[$j]','$targetclass','$targettype','$tplayername','$tcountryid','$tCoalID','$targetvalue')";
-//		     echo "SD4: $query<br>\n";
-		  } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
-		     $query = "DELETE from rof_kills where MissionID = '$MissionID' and clocktime = '$clocktime' and targetID = '$TID[$j]'";
-		  }
                }
-	       
-            }  // end of indirect/unidentified or self-inflicted kills
+            } 
+	    // move accidental/self-inflicted/etc kills query to here
+	    if ($StatsCommand == 'do') { // generate an INSERT query
+	       $query = "INSERT INTO rof_kills (MissionID,clocktime,attackerID,attackerName,attackerCountryID,attackerCoalID,action,targetID,targetClass,targetType,targetName,targetCountryID,targetCoalID,targetValue) VALUES ('$MissionID','$clocktime','$attackerid','$aplayername','$acountryid','$aCoalID','$action','$TID[$j]','$targetclass','$targettype','$tplayername','$tcountryid','$tCoalID','$targetvalue')";
+//		     echo "indirect kill: $query<br>\n";
+	    } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
+	       $query = "DELETE from rof_kills where MissionID = '$MissionID' and clocktime = '$clocktime' and targetID = '$TID[$j]'";
+	    }
+	    // end of kills with no identified attacker
          } else { // killed directly by an identified human or AI attacker
 //             echo "flying = $flying<br>\n";
 //             echo "attackertype = $attackertype, attackerobject = $attackerobject, aplayername= $aplayername, targettype = $targettype, tplayername = $tplayername, targetobject = $targetobject<br>\n";
@@ -519,24 +500,12 @@ if ($DEBUG){
                // E1:
 	       // see 1916_1 for three examples
                echo ("$clocktime $aplayername $action $tcountryadj pilot $tplayername $where<br>\n");
-	 	  if ($StatsCommand == 'do') { // generate an INSERT query 
-		     $query = "INSERT INTO rof_kills (MissionID,clocktime,attackerID,attackerName,attackerCountryID,attackerCoalID,action,targetID,targetClass,targetType,targetName,targetCountryID,targetCoalID,targetValue) VALUES ('$MissionID','$clocktime','$attackerid','$aplayername','$acountryid','$aCoalID','$action','$TID[$j]','$targetclass','$targettype','$tplayername','$tcountryid','$tCoalID','$targetvalue')";
-//		     echo "E1: $query<br>\n";
-		  } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
-		     $query = "DELETE from rof_kills where MissionID = '$MissionID' and clocktime = '$clocktime' and targetID = '$TID[$j]'";
-		  }
             } elseif(preg_match('/^P/',$targetclass)) { // plane
                ANORA($aplayername);
                $a3 = $anora;
 	       // F1:
 	       // see 1916_1 for eight examples
                echo ("$clocktime $a3 $aplayername $action $tplayername's $targettype ($targetobject) $where<br>\n");
-	       if ($StatsCommand == 'do') { // generate an INSERT query 
-	          $query = "INSERT INTO rof_kills (MissionID,clocktime,attackerID,attackerName,attackerCountryID,attackerCoalID,action,targetID,targetClass,targetType,targetName,targetCountryID,targetCoalID,targetValue) VALUES ('$MissionID','$clocktime','$attackerid','$aplayername','$acountryid','$aCoalID','$action','$TID[$j]','$targetclass','$targettype','$tplayername','$tcountryid','$tCoalID','$targetvalue')";
-//	          echo "F1: $query<br>\n";
-	       } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
-	          $query = "DELETE from rof_kills where MissionID = '$MissionID' and clocktime = '$clocktime' and targetID = '$TID[$j]'";
-	       }
             } elseif(preg_match('/^S/',$targetclass)) { // ship
 	       // F2:	
 	       // see FE1 for two examples
@@ -545,14 +514,8 @@ if ($DEBUG){
 	       SHIPS($targettype);
 	       $action = "sank";
                echo ("$clocktime $a $aplayername $action $ca $tcountryadj $object_desc ($targetobject) $where<br>\n");
-	       if ($StatsCommand == 'do') { // generate an INSERT query 
-	          $query = "INSERT INTO rof_kills (MissionID,clocktime,attackerID,attackerName,attackerCountryID,attackerCoalID,action,targetID,targetClass,targetType,targetName,targetCountryID,targetCoalID,targetValue) VALUES ('$MissionID','$clocktime','$attackerid','$aplayername','$acountryid','$aCoalID','$action','$TID[$j]','$targetclass','$targettype','$tplayername','$tcountryid','$tCoalID','$targetvalue')";
-//	          echo "F2: $query<br>\n";
-	       } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
-	          $query = "DELETE from rof_kills where MissionID = '$MissionID' and clocktime = '$clocktime' and targetID = '$TID[$j]'";
-	       }
             } elseif($targetclass == 'BOT') { // BOT
-               // F3
+               // F3:
 	       // see 1916_1 for three examples
 	       BOTGUNNER($targettype);
 	       $tplayername = "$object_desc";
@@ -560,39 +523,28 @@ if ($DEBUG){
                $a = $anora;
 	       $action = "killed";
                echo ("$clocktime $a $aplayername $action $ca $tcountryadj $tplayername ($targetobject) $where<br>\n");
-	       if ($StatsCommand == 'do') { // generate an INSERT query 
-	          $query = "INSERT INTO rof_kills (MissionID,clocktime,attackerID,attackerName,attackerCountryID,attackerCoalID,action,targetID,targetClass,targetType,targetName,targetCountryID,targetCoalID,targetValue) VALUES ('$MissionID','$clocktime','$attackerid','$aplayername','$acountryid','$aCoalID','$action','$TID[$j]','$targetclass','$targettype','$tplayername','$tcountryid','$tCoalID','$targetvalue')";
-//	          echo "F3: $query<br>\n";
-	       } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
-	          $query = "DELETE from rof_kills where MissionID = '$MissionID' and clocktime = '$clocktime' and targetID = '$TID[$j]'";
-	       }
             } elseif(preg_match('/^R/', $targetclass)) { // Railtrain
 	       TRAINS($targettype);
-	       // F4
+	       // F4:
 	       // see 1916_1 for twenty three examples!
 	       $action = "destroyed";
                echo ("$clocktime $a $aplayername $action $ca $tcountryadj $object_desc ($targetobject) $where<br>\n");
-	       if ($StatsCommand == 'do') { // generate an INSERT query 
-	          $query = "INSERT INTO rof_kills (MissionID,clocktime,attackerID,attackerName,attackerCountryID,attackerCoalID,action,targetID,targetClass,targetType,targetName,targetCountryID,targetCoalID,targetValue) VALUES ('$MissionID','$clocktime','$attackerid','$aplayername','$acountryid','$aCoalID','$action','$TID[$j]','$targetclass','$targettype','$tplayername','$tcountryid','$tCoalID','$targetvalue')";
-//	          echo "F4: $query<br>\n";
-	       } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
-	          $query = "DELETE from rof_kills where MissionID = '$MissionID' and clocktime = '$clocktime' and targetID = '$TID[$j]'";
-	       }
 
 	    } else { // everything else
-               // F5
+               // F5:
 	       // see 1916_1 for eleven examples 
                ANORA($aplayername);
                $a3 = $anora;
                echo ("$clocktime $a3 $aplayername $action $ca $tcountryadj $targettype ($targetobject) $where<br>\n");
-	       if ($StatsCommand == 'do') { // generate an INSERT query 
-	          $query = "INSERT INTO rof_kills (MissionID,clocktime,attackerID,attackerName,attackerCountryID,attackerCoalID,action,targetID,targetClass,targetType,targetName,targetCountryID,targetCoalID,targetValue) VALUES ('$MissionID','$clocktime','$attackerid','$aplayername','$acountryid','$aCoalID','$action','$TID[$j]','$targetclass','$targettype','$tplayername','$tcountryid','$tCoalID','$targetvalue')";
-//	          echo "F5: $query<br>\n";
-	       } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
-	          $query = "DELETE from rof_kills where MissionID = '$MissionID' and clocktime = '$clocktime' and targetID = '$TID[$j]'";
-	       }
             }
-         }
+	    // move direct kills query to here
+	    if ($StatsCommand == 'do') { // generate an INSERT query 
+	       $query = "INSERT INTO rof_kills (MissionID,clocktime,attackerID,attackerName,attackerCountryID,attackerCoalID,action,targetID,targetClass,targetType,targetName,targetCountryID,targetCoalID,targetValue) VALUES ('$MissionID','$clocktime','$attackerid','$aplayername','$acountryid','$aCoalID','$action','$TID[$j]','$targetclass','$targettype','$tplayername','$tcountryid','$tCoalID','$targetvalue')";
+//	          echo "direct kill: $query<br>\n";
+	    } elseif ($StatsCommand == 'undo') {  // generate a DELETE query
+	       $query = "DELETE from rof_kills where MissionID = '$MissionID' and clocktime = '$clocktime' and targetID = '$TID[$j]'";
+	    }
+         } // end killed directly section
 	  
 //	 echo "OUTPUT: \$StatsCommnand = $StatsCommand<br>\n";
 	 // do we have db work to do?
