@@ -373,8 +373,6 @@ if ($DEBUG){
          PLAYERNAME($TID[$j],$Ticks[$j]); // get target's playername
 	 $tplayername = $playername;
          FLYING($TID[$j],$Ticks[$j]);
-         ANORA($targettype);
-         $a = $anora;
          ANORA($tcountryadj);
          $ca = $anora;
 	 // END TARGET STUFF
@@ -428,6 +426,10 @@ if ($DEBUG){
 	 $attackerobject = $objectname;
          PLAYERNAME($attackerid,$Ticks[$j]); // get attacker playername
          $aplayername = $playername;
+         ANORA($aplayername);
+         $ap = $anora;
+         ANORA($attackerdesc);
+         $ad = $anora;
 	 // END ATTACKER STUFF
 
          if ($attackerid == "-1") { // Intrinsic damage
@@ -468,13 +470,13 @@ if ($DEBUG){
 		  }
 		  // SD3:	
 		  // See 1916_1 for a single (rare) example.
-		  echo ("$clocktime $tplayername's $targettype $action $where<br>\n");
+		  echo ("$clocktime $tplayername's $targetdesc $action $where<br>\n");
 //		  echo "\$targetclass = $targetclass, \$targettype = $targettype, \$tplayername = $tplayername<br>\n";
 	       // not an airplane
                } else { // SD4:
 		  // see 1916_1 for sixteen! examples
                   $action = "self-destructed";
-                  echo ("$clocktime $ca $tcountryadj $targettype ($targetobject) $action $where<br>\n");
+                  echo ("$clocktime $ca $tcountryadj $targetdesc ($targetobject) $action $where<br>\n");
 //		  echo "\$targetclass = $targetclass, \$targettype = $targettype, \$tplayername = $tplayername<br>\n";
                }
             } 
@@ -499,43 +501,35 @@ if ($DEBUG){
                $action = "killed";
                // E1:
 	       // see 1916_1 for three examples
-               echo ("$clocktime $aplayername $action $tcountryadj pilot $tplayername $where<br>\n");
+               echo ("$clocktime $ap $aplayername $action $tcountryadj pilot $tplayername $where<br>\n");
             } elseif(preg_match('/^P/',$targetclass)) { // plane
-               ANORA($aplayername);
-               $a3 = $anora;
 	       // F1:
 	       // see 1916_1 for eight examples
-               echo ("$clocktime $a3 $aplayername $action $tplayername's $targettype ($targetobject) $where<br>\n");
+               echo ("$clocktime $ap $aplayername $action $tplayername's $targetdesc ($targetobject) $where<br>\n");
             } elseif(preg_match('/^S/',$targetclass)) { // ship
 	       // F2:	
 	       // see FE1 for two examples
-               ANORA($aplayername);
-               $a = $anora;
 	       SHIPS($targettype);
 	       $action = "sank";
-               echo ("$clocktime $a $aplayername $action $ca $tcountryadj $object_desc ($targetobject) $where<br>\n");
+               echo ("$clocktime $ap $aplayername $action $ca $tcountryadj $object_desc ($targetobject) $where<br>\n");
             } elseif($targetclass == 'BOT') { // BOT
                // F3:
 	       // see 1916_1 for three examples
 	       BOTGUNNER($targettype);
 	       $tplayername = "$object_desc";
-               ANORA($aplayername);
-               $a = $anora;
 	       $action = "killed";
-               echo ("$clocktime $a $aplayername $action $ca $tcountryadj $tplayername ($targetobject) $where<br>\n");
+               echo ("$clocktime $ap $aplayername $action $ca $tcountryadj $tplayername ($targetobject) $where<br>\n");
             } elseif(preg_match('/^R/', $targetclass)) { // Railtrain
 	       TRAINS($targettype);
 	       // F4:
 	       // see 1916_1 for twenty three examples!
 	       $action = "destroyed";
-               echo ("$clocktime $a $aplayername $action $ca $tcountryadj $object_desc ($targetobject) $where<br>\n");
+               echo ("$clocktime $ap $aplayername $action $ca $tcountryadj $object_desc ($targetobject) $where<br>\n");
 
 	    } else { // everything else
                // F5:
 	       // see 1916_1 for eleven examples 
-               ANORA($aplayername);
-               $a3 = $anora;
-               echo ("$clocktime $a3 $aplayername $action $ca $tcountryadj $targettype ($targetobject) $where<br>\n");
+               echo ("$clocktime $ap $aplayername $action $ca $tcountryadj $targetdesc ($targetobject) $where<br>\n");
             }
 	    // move direct kills query to here
 	    if ($StatsCommand == 'do') { // generate an INSERT query 
