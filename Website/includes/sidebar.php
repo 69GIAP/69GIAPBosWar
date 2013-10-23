@@ -109,14 +109,14 @@
 												{	
 													# turn this menu on if user has loaded a campaign into the SESSION variable campaign
 													echo "	<ul id=\"sidebar\">\n";
-													echo "	    <li><a href=\"CampaignMgmtAdvcdParam.php?btn=preMsn\" class=\"campStatus\">Campaign Advanced Parameters</a></li>\n";
-													echo "	    <li><a href=\"MsnPreGenNextForPlanning.php?btn=preMsn\" class=\"campLogParser\">Generate next mission for planning</a></li>\n";
-													echo "	    <li><a href=\"MsnPreResupplyPlanes.php?btn=preMsn\" class=\"campLogParser\">Manage Resupply of Planes</a></li>\n";
-													echo "	    <li><a href=\"MsnPreResupplyVehicles.php?btn=preMsn\" class=\"campLogParser\">Manage Resupply of Vehicles</a></li>\n";
-													echo "	    <li><a href=\"MsnPreUpdtBridges.php?btn=preMsn\" class=\"campLogParser\">Update Bridge Status</a></li>\n";
-													echo "	    <li><a href=\"MsnPreGetNext.php?btn=preMsn\" class=\"campLogParser\">Receive back group files from planners</a></li>\n";
-													echo "	    <li><a href=\"MsnPreGenNextForMission.php?btn=preMsn\" class=\"campLogParser\">Generate Mission Files</a></li>\n";
-													echo "	    <li><a href=\"MsnPreGenRunMission.php?btn=preMsn\" class=\"campLogParser\">Run Mission</a></li>\n";													
+													echo "	    <li><a href=\"CampaignMgmtAdvcdParam.php?btn=preMsn\" class=\"dummy\">Campaign Advanced Parameters</a></li>\n";
+													echo "	    <li><a href=\"MsnPreGenNextForPlanning.php?btn=preMsn\" class=\"dummy\">Generate next mission for planning</a></li>\n";
+													echo "	    <li><a href=\"MsnPreResupplyPlanes.php?btn=preMsn\" class=\"dummy\">Manage Resupply of Planes</a></li>\n";
+													echo "	    <li><a href=\"MsnPreResupplyVehicles.php?btn=preMsn\" class=\"dummy\">Manage Resupply of Vehicles</a></li>\n";
+													echo "	    <li><a href=\"MsnPreUpdtBridges.php?btn=preMsn\" class=\"dummy\">Update Bridge Status</a></li>\n";
+													echo "	    <li><a href=\"MsnPreGetNext.php?btn=preMsn\" class=\"dummy\">Receive back group files from planners</a></li>\n";
+													echo "	    <li><a href=\"MsnPreGenNextForMission.php?btn=preMsn\" class=\"dummy\">Generate Mission Files</a></li>\n";
+													echo "	    <li><a href=\"MsnPreGenRunMission.php?btn=preMsn\" class=\"dummy\">Run Mission</a></li>\n";													
 													echo "  </ul>\n";
 												}
 										}
@@ -128,10 +128,10 @@
 													# turn this menu on if user has loaded a campaign into the SESSION variable campaign
 													echo "	<ul id=\"sidebar\">\n";
 													echo "	    <li><a href=\"MsnPostLogParser.php?btn=postMsn\" class=\"campLogParser\"><span></span></a></li>\n";
-													echo "	    <li><a href=\"MsnPostCorrectStats.php?btn=postMsn\" class=\"campLogParser\">Correct Stats</a></li>\n";
-													echo "	    <li><a href=\"MsnPostUpdtColumns.php?btn=postMsn\" class=\"campLogParser\">Update Columns to remove losses</a></li>\n";
-													echo "	    <li><a href=\"MsnPostUpdtStatics.php?btn=postMsn\" class=\"campLogParser\">Update Statics to remove losses</a></li>\n";
-													echo "	    <li><a href=\"MsnPostUpdtAirfields.php?btn=postMsn\" class=\"campLogParser\">Control Air losses</a></li>\n";
+													echo "	    <li><a href=\"MsnPostCorrectStats.php?btn=postMsn\" class=\"dummy\">Correct Stats</a></li>\n";
+													echo "	    <li><a href=\"MsnPostUpdtColumns.php?btn=postMsn\" class=\"dummy\">Update Columns to remove losses</a></li>\n";
+													echo "	    <li><a href=\"MsnPostUpdtStatics.php?btn=postMsn\" class=\"dummy\">Update Statics to remove losses</a></li>\n";
+													echo "	    <li><a href=\"MsnPostUpdtAirfields.php?btn=postMsn\" class=\"dummy\">Control Air losses</a></li>\n";
 													echo "  </ul>\n";
 												}
 										}
