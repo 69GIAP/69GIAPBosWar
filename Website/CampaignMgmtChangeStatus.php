@@ -67,20 +67,6 @@
 					echo "		<button type=\"submit\" name =\"createCampaign\" id=\"loginSubmit\" value =\"1\" >Change Campaign Status</button>\n";	
 					echo "	</fieldset>\n";
 
-					echo "	<fieldset id=\"inputs\">\n";
-					# MASTER AIRFIELD LIST
-					include 'includes/getMasterAirfieldInformation.php'; 
-					
-					# MASTER MODELS LIST
-					include 'includes/getMasterModelInformation.php';
-				
-					echo "	</fieldset>\n";	
-				
-					# BUTTON	
-					echo "<fieldset id=\"actions\">\n";
-					echo "		<button type=\"submit\" name =\"createCampaign\" id=\"loginSubmit\" value =\"2\" >Initialize Campaign</button>\n";	
-					echo "	</fieldset>\n";
-				
 					echo "</form>\n";          
 
                 ?>

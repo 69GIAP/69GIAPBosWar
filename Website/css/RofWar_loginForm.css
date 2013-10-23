@@ -8,6 +8,13 @@
     width: 400px;    
     padding: 30px;	  
 }
+campaignMgmtForm
+{
+    background-color: #fff;
+    height: 240px;
+    width: auto;    
+    padding: 30px;	  
+}
 #campaignForm
 {
 	background-color: #fff;
@@ -107,7 +114,7 @@ fieldset
     -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
     -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
     box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-}
+}	
 
 #inputs select, #none select
 {
@@ -172,6 +179,10 @@ fieldset
 #file
 {
     background-position: 5px -477px !important;
+}
+#map
+{
+    background-position: 5px -527px !important;
 }
 
 #inputs input:focus, #none input:focus
@@ -374,7 +385,7 @@ input[type=checkbox]:checked + label:before {
     color: #f3f3f3;  
     text-align: center;  
     line-height: 15px;  
-}  
+}
 
 #userDetails {
 	position: absolute;
