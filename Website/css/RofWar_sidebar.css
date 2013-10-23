@@ -86,6 +86,13 @@ ul#sidebar li a.campSetup {
 	height: 64px;
 	position:relative;
 }
+ul#sidebar li a.dummy {
+	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
 
 /*****  Commander Sidebar ****/
 ul#sidebar li a.modifyAirfield {

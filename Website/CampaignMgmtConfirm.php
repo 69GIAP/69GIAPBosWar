@@ -17,27 +17,30 @@
     
             <div id="content">
 				<?php
-					$newCampStatus = $_POST["newCampStatus"];
+					$bottomLeftX = $_POST["bottomLeftX"];
+					$bottomLeftZ = $_POST["bottomLeftZ"];
+					$topRightX = $_POST["topRightX"];
+					$topRightZ = $_POST["topRightZ"];
+					
+					$updateCampaignParameters = $_POST["updateCampaignParameters"];
+					
+					echo $bottomLeftX ."<br>\n";
+					echo $bottomLeftZ ."<br>\n";
+					echo $topRightX ."<br>\n";
+					echo $topRightZ ."<br>\n";
+					echo $updateCampaignParameters ."<br>\n";
+					
 						
-				if ($_POST["createCampaign"] == 1)
-					{
-					$query="UPDATE campaign_settings SET status = $newCampStatus WHERE camp_db = '$loadedCampaign'";
-					}
-				if ($_POST["createCampaign"] == 2)
+				# prepare sql based on selected aircraft
+				if ($_POST["updateCampaignParameters"] == 1)
 					{
 						echo "Not yet defined";
-						exit;
+					}
+				if ($_POST["updateCampaignParameters"] == 2)
+					{
+						echo "Not yet defined";
 					}						
 						
-				# updates
-				if(!$result = $dbc->query($query)){
-					die('There was an error running the query <br>'.$query."<br>" . mysqli_error($dbc));
-				}
-					else
-				{				
-					header ("Location: CampaignConfiguration.php?btn=campmgmt");
-				}
-	   
                 ?>					
             </div>
     
