@@ -17,7 +17,7 @@
     
             <div id="content">
 
-                <form id="loginForm" name="login" action="loginCheck.php" method="post">
+                <form id="loginForm" name="login" action="UserMgmtLoginCheck.php" method="post">
                     <h1 id="h1Form">Log In</h1>
                     <fieldset id="inputs">
                         <input id="username" type="text" name="username" placeholder="Username" autofocus required>   

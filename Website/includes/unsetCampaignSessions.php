@@ -6,5 +6,5 @@
 	unset($_SESSION['airfieldName']);
 	unset($_SESSION['userCoalId']);
 
-	header("Location:../LoggedOn.php?btn=home");
+	header("Location:../UserMgmtLoggedOn.php?btn=home");
 ?>

@@ -69,7 +69,7 @@
 					# if userRole variable is asigned forward to next section
 					if(!empty($userRole))
 						{
-							#header("Location: LoggedOn.php?btn=home");
+							#header("Location: UserMgmtLoggedOn.php?btn=home");
 							header("Location: CampaignSelect.php?btn=home");
 						}
 					exit;
@@ -82,7 +82,7 @@
 						
 				if(!isset($_SESSION["userName"])) 
 					{
-						echo "<form action=\"loginForm.php\" >\n";
+						echo "<form action=\"UserMgmtLoginForm.php\" >\n";
 						echo "<input type=\"submit\" value=\"Retry\">\n";
 						echo "</form>\n";		  
 					} 

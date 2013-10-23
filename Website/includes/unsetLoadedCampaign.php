@@ -4,6 +4,6 @@
 	unset($loadedCampaign);
 	unset($_SESSION['camp_db']);
 	
-	header("Location:../LoggedOn.php?btn=home");
+	header("Location:../UserMgmtLoggedOn.php?btn=home");
 
 ?>

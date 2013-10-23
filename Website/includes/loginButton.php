@@ -5,11 +5,11 @@
 	if(!isset($_SESSION["userName"])) 
 		{
 			# show the login button
-			echo "		<li><a href=\"loginForm.php\" class=\"login\"><span></span></a></li>\n";
+			echo "		<li><a href=\"UserMgmtLoginForm.php\" class=\"login\"><span></span></a></li>\n";
 		}
 	else
 		{
 			# show the logout button
-			echo "		<li><a href=\"logoutCheck.php\" class=\"logout\"><span></span></a></li>\n";
+			echo "		<li><a href=\"UserMgmtLogoutCheck.php\" class=\"logout\"><span></span></a></li>\n";
 		}
 ?>

@@ -29,7 +29,7 @@
 					# In case the information was feedback and a back button is created
 					echo "<p><b>Input Error!</b><br> Please fill all form fields correctly. <br></p>\n";
 					echo "<br>";
-					echo "<form action=\"registerForm.php\" >\n";
+					echo "<form action=\"UserMgmtRegisterForm.php\" >\n";
 					echo "<input type=\"submit\" value=\"Back\">\n";
 					echo "</form>\n";
 					echo "<br>";					
@@ -58,7 +58,7 @@
 							{
 							# everything was fine so we see abutton for the login
 							echo "<p>User <b>$userName</b> has been created.</p>\n";
-							echo "<form action=\"loginForm.php\" >\n";
+							echo "<form action=\"UserMgmtLoginForm.php\" >\n";
 							echo "<input type=\"submit\" value=\"Login\">\n";
 							echo "</form>\n";
 							} 
@@ -66,7 +66,7 @@
 							{ 
 							# There was a problem with the transmission so we see a back button
 							echo "<p>Error adding the user.</p>\n"; 
-							echo "<form action=\"registerForm.php\" >\n";
+							echo "<form action=\"UserMgmtRegisterForm.php\" >\n";
 							echo "<input type=\"submit\" value=\"Back\">\n";
 							echo "</form>\n";			
 							} 
@@ -75,7 +75,7 @@
 						{
 						# The username is already in use so we get feedback due to it and a back button
 						echo "<p>Username <b>$userName</b> aready used.<br>\n";
-						echo "<form action=\"registerForm.php\" >\n";
+						echo "<form action=\"UserMgmtRegisterForm.php\" >\n";
 						echo "<input type=\"submit\" value=\"Back\">\n";
 						echo "</form>\n"; 
 						}

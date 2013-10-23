@@ -16,7 +16,7 @@ session_start();
 	
 	if (empty($_SESSION['camp_db']))
 		{
-			header("Location: ../loggedOn.php?btn=home");
+			header("Location: ../UserMgmtLoggedOn.php?btn=home");
 			unset ($_SESSION['userCoalId']);			
 			exit;
 		}
