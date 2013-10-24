@@ -26,5 +26,6 @@ if ($result = mysqli_query($db_link, $query)) {
    // free result set
    mysqli_free_result($result);
    echo "</div>\n";
+   }
 }
 ?>
