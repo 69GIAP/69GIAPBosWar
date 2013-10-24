@@ -1,6 +1,6 @@
 <?php
 // Get Countries and their coalitions
-// out of boswar_db
+// from the campaign database
 // 69giapmyata and =69.GIAP=TUSHKA
 // Oct 24, 2013
 // ver 1.1
@@ -19,6 +19,8 @@ $query = "SELECT * FROM rof_coalitions";
 			$coal_name2 =($obj->Coalitionname);
 		}
 	}
+	// free result set
+	mysqli_free_result($result);
 
 	$sql = "SELECT * FROM rof_countries WHERE ckey > 1 AND ckey < 600";
 	$i = 1;
@@ -61,4 +63,3 @@ $query = "SELECT * FROM rof_coalitions";
 	// free result set
 	mysqli_free_result($result);
 ?>
-
