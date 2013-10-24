@@ -3,7 +3,8 @@
 // given country key #, get current Coalition ID
 // =69.GIAP=TUSHKA
 // Oct 22, 2013
-// version 1.0
+// revised Oct 24, 2013
+// version 1.1 
 
 // define the function 
 function get_coalition($ckey) {
@@ -17,5 +18,7 @@ global $camp_link; // link to campaign db
    } else {
       die('getCoalition query error [' . $camp_link->error . ']');
    }
+   // free result set
+   mysqli_free_result($result);
 }
 ?>
