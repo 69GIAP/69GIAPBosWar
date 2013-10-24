@@ -31,7 +31,7 @@
 													else
 														{
 															echo "	    <li><a href=\"CampaignLogParser.php?btn=campMgmt\" class=\"campLogParser\"><span></span></a></li>\n";
-															echo "		<li><a href=\"CampaignConfiguration.php?btn=campMgmt\" class=\"campStatus\"><span></span></a></li>\n";																														
+															echo "		<li><a href=\"CampaignMgmtChangeStatus.php?btn=campMgmt\" class=\"campStatus\"><span></span></a></li>\n";																														
 														}
 													echo "  </ul>\n";
 												}

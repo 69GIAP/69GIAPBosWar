@@ -36,7 +36,7 @@ $count = mysqli_query($dbc,"SELECT COUNT(*) FROM campaign_settings;");
 					echo "		<input type=\"text\" name=\"newCampaignDatabaseHost\" id=\"database\" placeholder=\"Please enter the host (localhost / IP).\" value='' size=\"24\" maxlength=\"50\" />\n";	
 					# CHOOSE CAMPAIGN MAP
 					echo "<h3>Campaign Map</h3>\n";
-					echo "		<select name=\"campaignMap\" id=\"world\">\n";
+					echo "		<select name=\"campaignMap\" id=\"map\">\n";
 					include 'includes/getCampaignMap.php';
 					echo "		</select>\n";
 				

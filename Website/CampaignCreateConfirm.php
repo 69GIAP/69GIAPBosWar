@@ -137,7 +137,7 @@ $query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaig
 					# forward to campaign configuration screen
 					$_SESSION['camp_db'] = "$newCampaignDBName";
 
-					header("Location: CampaignConfiguration.php?btn=home");
+					header("Location: CampaignMgmtSetup.php?btn=campMgmt");
 
                 ?>
             
