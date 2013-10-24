@@ -134,13 +134,7 @@
 					of the sector and note the X and Z values then the same for the top right of the sector.<br>\n";
 					echo "Return to the Campaign manager and enter the values here. </p>\n";
 					
-					echo "	<h3>Map Dimensions</h3>\n";
-					echo "	<fieldset id=\"inputs\">\n";
-					echo "		<input id=\"map\" type=\"text\" name=\"bottomLeftX\" placeholder=\"Bottom Left X value:000000000.00\" autofocus ><br>\n"; 
-					echo "		<input id=\"map\" type=\"text\" name=\"bottomLeftZ\" placeholder=\"Bottom Left Z value:000000000.00\" autofocus ><br>\n"; 
-					echo "		<input id=\"map\" type=\"text\" name=\"topRightX\" placeholder=\"Top Right X value:000000000.00\" autofocus ><br>\n"; 
-					echo "		<input id=\"map\" type=\"text\" name=\"topRightZ\" placeholder=\"Top Right Z value:000000000.00\" autofocus ><br>\n"; 
-					echo "	</fieldset>\n";
+					include ('includes/getMinMaxXZ.php');
 					
 					/*  
 					echo '<br>Bottom left X value :000000000.00:<br>';
