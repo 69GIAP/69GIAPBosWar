@@ -35,17 +35,26 @@ session_start();
 					$campaign	=($obj->campaign);
 					$camp_host	=($obj->camp_host);
 					$camp_user	=($obj->camp_user);
+					$camp_passwd=($obj->camp_passwd);
 				}
 			}
 
 			// drop the user
 			#$query	= "DROP USER '$camp_user'@'$camp_host';";
+			
 			# drop database
 			$query = "DROP DATABASE IF EXISTS `$camp_db`;";
+			
 			# delete entry in campaign_settings table
 			// this should be the last in the series
-			$query .= "DELETE FROM campaign_settings where camp_db = '$camp_db'";
-			
+			$query .= "DELETE FROM campaign_settings where camp_db = '$camp_db';";
+
+			# REVOKE CAMPAIGN DB USER RIGHTS ON NEW DB
+			$query .= "REVOKE SELECT, INSERT, UPDATE, DELETE, DROP ON `$camp_db`.* FROM '$camp_user'@'$camp_host';";
+
+			# REVOKE GLOBAL FILE PRIVILEGE to db user so can read and write group files
+			#$query .= "REVOKE FILE ON *.* FROM '$camp_user'@'$camp_host' ;";
+									
 			# execute SQL query
 
 			# DROP DB INSTANCE
@@ -66,7 +75,7 @@ session_start();
 			
 		}
 	unset ($camp_db);
-	
+
 	# redirect to campaign Management section screen with selected $loadedCampaign variable
-	header("Location: ../CampaignSelect.php?btn=home");
+	header("Location: ../CampaignDrop.php?btn=home");
 ?>
