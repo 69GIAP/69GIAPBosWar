@@ -23,9 +23,11 @@ function get_countries_from_mission_file($path,$file) {
 	$query = "UPDATE rof_countries SET CoalID = $coalid[$k] WHERE ckey = $ckey[$k]";
 //	echo "$query<br />\n";
 	if(!$result = mysqli_query($camp_link, $query)) {
-	   die('getCoalition query error [' . $camp_link->error . ']');
+	   die('getCountriesFromMissionFile query error [' . $camp_link->error . ']');
 	}
 	$k++;	 
    }
+   // free result set
+   mysqli_free_result($result);
 }
 ?>
