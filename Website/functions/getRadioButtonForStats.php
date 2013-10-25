@@ -20,7 +20,7 @@ if ($result = mysqli_query($db_link, $query)) {
       $map		=($obj->map);
       $simulation	=($obj->simulation);
       echo "	<input id=\"$i\" type=\"radio\" name=\"camp_db\" value=$camp_db>";
-      echo "	<label for=\"$i\"><b>".$campaign."</b> -  ".$camp_db." db - ".$map." map </label>  \n";
+      echo "	<label for=\"$i\"><b>".$campaign."</b> -  ".$camp_db." db - ".$map." map </label><br>  \n";
       $i++;
    }
    // free result set
