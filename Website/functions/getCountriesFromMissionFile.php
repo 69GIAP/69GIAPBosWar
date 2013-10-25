@@ -27,7 +27,5 @@ function get_countries_from_mission_file($path,$file) {
 	}
 	$k++;	 
    }
-   // free result set
-   mysqli_free_result($result);
 }
 ?>
