@@ -21,6 +21,7 @@ function get_minmaxxz_from_mission_file($path,$file) {
       if (preg_match('/^  Boundary/',$value)) {
          $bline = $i;
 	 $boundarycount++;
+//	 echo "\$bline = $bline, \$boundarycount = $boundarycount<br />\n";
 	 for ($j = $bline+2; ; $j++) {
    	    // we don't know how many boundary points there will be, so
 	    // stop the for loop when come to end of Boundary definition
@@ -40,10 +41,11 @@ function get_minmaxxz_from_mission_file($path,$file) {
 	 }
 //	 echo "\$min_x:$min_x \$min_z:$min_z \$max_x:$max_x \$max_z:$max_z<br />\n"; 
       }
-      if ($boundarycount == 0) { 
-         echo "<b><font color=\"red\">getMinMaxXZFromMissionFile reports error: $file has no Influence Areas defined.</font></b><br />\n"; 
-         return;
-      }
+   }
+//   echo "\$boundarycount: $boundarycount<br />\n";
+   if ($boundarycount == 0) { 
+      echo "<b><font color=\"red\">getMinMaxXZFromMissionFile reports error: $file has no Influence Areas defined.</font></b><br />\n"; 
+      return;
    }
 // record the results in the campaign_settings table
    $query = "UPDATE campaign_settings SET min_x=$min_x, min_z=$min_z, max_x=$max_x, max_z=$max_z;";

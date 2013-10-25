@@ -17,6 +17,7 @@ $camp_link = connect2Campaign('localhost','rofwar','rofwar','1916');
 
 $mission_file_path = 'group_files';
 $mission_file = 'test.Mission';
+//$mission_file = 'o_test.Mission';
 
 // call the function (it works silently if there are no errors)
 get_minmaxxz_from_mission_file($mission_file_path,$mission_file);
