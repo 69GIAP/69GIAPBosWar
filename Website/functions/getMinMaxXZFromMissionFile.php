@@ -15,10 +15,12 @@ function get_minmaxxz_from_mission_file($path,$file) {
    $max_z = -10000000;
    // get the mission file as an array of lines
    $line = file("$path/$file");
+   $boundarycount = 0;
    foreach ($line as $i => $value ) {
       // find Boundary (should be two or more)
       if (preg_match('/^  Boundary/',$value)) {
          $bline = $i;
+	 $boundarycount++;
 	 for ($j = $bline+2; ; $j++) {
    	    // we don't know how many boundary points there will be, so
 	    // stop the for loop when come to end of Boundary definition
@@ -37,6 +39,10 @@ function get_minmaxxz_from_mission_file($path,$file) {
 //	    echo "\$min_x:$min_x \$min_z:$min_z \$max_x:$max_x \$max_z:$max_z<br />\n"; 
 	 }
 //	 echo "\$min_x:$min_x \$min_z:$min_z \$max_x:$max_x \$max_z:$max_z<br />\n"; 
+      }
+      if ($boundarycount == 0) { 
+         echo "<b><font color=\"red\">getMinMaxXZFromMissionFile reports error: $file has no Influence Areas defined.</font></b><br />\n"; 
+         return;
       }
    }
 // record the results in the campaign_settings table
