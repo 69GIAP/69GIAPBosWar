@@ -183,7 +183,135 @@
 					delete all airfields from our template and again save the template. From this point forwards in the campaign before each mission the campaign manager
 					will populate the active airfields with the right quantity and type of aircraft, manage activation de-activation or capture and send a .Group file to the Mission Editor for the assembly of each mission.</p>\n";
 					# after this point will be added the population of bridges into the template grouping and send to the Campaign Manager 
-					# again they will be managed in the Campaign manager an sent to the Mission Editor for assembly into each mission.   
+					# again they will be managed in the Campaign manager an sent to the Mission Editor for assembly into each mission.  
+
+
+
+# TUSHKAS Proposals - please move to appropriate place at your convenience
+# reset variable in  case they are empty
+if (empty($kia_pilot)) {
+	 $kia_pilot= 0;
+}
+if (empty($mia_pilot)) {
+	 $mia_pilot= 0;
+}
+if (empty($cw_pilot)) {
+	 $cw_pilot= 0;
+}
+if (empty($sw_pilot)) {
+	 $sw_pilot= 0;
+}
+if (empty($lw_pilot)) {
+	 $lw_pilot= 0;
+}
+if (empty($kia_gunner)) {
+	 $kia_gunner= 0;
+}
+if (empty($cw_gunner)) {
+	 $cw_gunner= 0;
+}
+if (empty($sw_gunner)) {
+	 $sw_gunner= 0;
+}
+if (empty($lw_gunner)) {
+	 $lw_gunner= 0;
+}
+if (empty($dst_airActGrnd)) {
+	 $dst_airActGrnd= 0;
+}
+if (empty($dst_GndActGrnd)) {
+	 $dst_GndActGrnd= 0;
+}
+if (empty($lvl_AIAc)) {
+	 $lvl_AIAc= 2;
+}
+if (empty($lvl_AIGrnd)) {
+	 $lvl_AIGrnd= 2;
+}
+if (empty($spd_maxGrnd)) {
+	 $spd_maxGrnd= 50;
+}
+if (empty($spd_maxTrnspt)) {
+	 $spd_maxTrnspt= 10;
+}
+if (empty($sprd_suplPnts)) {
+	 $sprd_suplPnts= 5;
+}
+if (empty($time_lineup)) {
+	 $time_lineup= 30;
+}
+if (empty($time_msn)) {
+	 $time_msn= 90;
+}
+if (empty($time_actvtUnit)) {
+	 $time_actvtUnit= 15;
+}
+
+# create the input form
+echo "	<fieldset id=\"inputs\">\n";
+echo "		<h2>Player Values Settings</h2>\n";
+echo "		<h3>set kia_pilot</h3>\n";
+echo "		<input id=\"database\" type=\"text\" name=\"kia_pilot\" value='$kia_pilot' autofocus ><br>\n";
+echo "		<h3>set mia_pilot</h3>\n";
+echo "		<input id=\"database\" type=\"text\" name=\"mia_pilot\" value='$mia_pilot' autofocus ><br>\n"; 
+echo "		<h3>set critical_w_pilot</h3>\n";
+echo "		<input id=\"database\" type=\"text\" name=\"cw_pilot\" value='$cw_pilot' autofocus ><br>\n"; 
+echo "		<h3>set serious_w_pilot</h3>\n";
+echo "		<input id=\"database\" type=\"text\" name=\"sw_pilot\" value='$sw_pilot' autofocus ><br>\n";
+echo "		<h3>set light_w_pilot</h3>\n";
+echo "		<input id=\"database\" type=\"text\" name=\"lw_pilot\" value='$lw_pilot ' autofocus ><br>\n";
+echo "		<h3>set kia_gunner</h3>\n";
+echo "		<input id=\"database\" type=\"text\" name=\"kia_gunner\" value='$kia_gunner' autofocus ><br>\n";
+echo "		<h3>set critical_w_gunner</h3>\n";
+echo "		<input id=\"database\" type=\"text\" name=\"cw_gunner\" value='$cw_gunner' autofocus ><br>\n";
+echo "		<h3>set critical_w_gunner</h3>\n";
+echo "		<input id=\"database\" type=\"text\" name=\"sw_gunner\" value='$sw_gunner' autofocus ><br>\n";
+echo "		<h3>set light_w_gunner</h3>\n";
+echo "		<input id=\"database\" type=\"text\" name=\"lw_gunner\" value='$lw_gunner' autofocus ><br>\n";
+# BUTTON
+echo "<fieldset id=\"actions\">\n";	
+echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"3\" >Update Scores</button>\n"; # the value defines the action after the button was pressed
+echo "	</fieldset>\n";
+
+echo "		<h2>Mission Tuning Settings</h2>\n";
+echo "		<h3>set air_detect_distance in meters</h3>\n";
+echo "		<input id=\"database\" type=\"text\" name=\"dst_airActGrnd\" value='$dst_airActGrnd' autofocus ><br>\n";
+echo "		<h3>set ground_detect_distance in meters</h3>\n";
+echo "		<input id=\"database\" type=\"text\" name=\"dst_GndActGrnd\" value='$dst_GndActGrnd' autofocus ><br>\n";
+echo "		<h3>set AI Air level</h3>\n";
+echo "		<select name=\"lvl_AIAc\" id=\"database\">\n";
+echo "			<option value=\"$lvl_AIAc\" disabled selected>Select Air AI level</option>\n";
+echo "			<option value=\"1\">1</option>\n";
+echo "			<option value=\"2\">2</option>\n";
+echo "			<option value=\"3\">3</option>\n";
+echo "		</select><br>\n";
+echo "		<h3>set AI Ground level</h3>\n";
+echo "		<select name=\"lvl_AIGrnd\" id=\"database\">\n";
+echo "			<option value=\"$lvl_AIGrnd\" disabled selected>Select Ground AI level</option>\n";
+echo "			<option value=\"1\">1</option>\n";
+echo "			<option value=\"2\">2</option>\n";
+echo "			<option value=\"3\">3</option>\n";
+echo "		</select><br>\n";
+
+echo "		<h3>set ground_max_speed km/h</h3>\n";
+echo "		<input id=\"database\" type=\"text\" name=\"spd_maxGrnd\" value='$spd_maxGrnd' autofocus ><br>\n";
+echo "		<h3>set ground_transport_speed in km/h</h3>\n";
+echo "		<input id=\"database\" type=\"text\" name=\"spd_maxTrnspt\" value='$spd_maxTrnspt' autofocus ><br>\n";
+echo "		<h3>set ground_spacing</h3>\n";
+echo "		<input id=\"database\" type=\"text\" name=\"sprd_suplPnts\" value='$sprd_suplPnts' autofocus ><br>\n";
+echo "		<h3>set lineup_minutes</h3>\n";
+echo "		<input id=\"database\" type=\"text\" name=\"time_lineup\" value='$time_lineup' autofocus ><br>\n";
+echo "		<h3>set mission_minutes</h3>\n";
+echo "		<input id=\"database\" type=\"text\" name=\"time_msn\" value='$time_msn' autofocus ><br>\n";
+echo "		<h3>set detect_off_time</h3>\n";
+echo "		<input id=\"database\" type=\"text\" name=\"time_actvtUnit\" value='$time_actvtUnit' autofocus ><br>\n";
+echo "	</fieldset>\n"; 
+
+# BUTTON
+echo "<fieldset id=\"actions\">\n";	
+echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"4\" >Update settings</button>\n"; # the value defines the action after the button was pressed
+echo "	</fieldset>\n";
+
 					echo "</form>\n";
                 ?>
             

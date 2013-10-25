@@ -24,13 +24,6 @@
 					
 					$updateCampaignParameters = $_POST["updateCampaignParameters"];
 					
-					echo $bottomLeftX ."<br>\n";
-					echo $bottomLeftZ ."<br>\n";
-					echo $topRightX ."<br>\n";
-					echo $topRightZ ."<br>\n";
-					echo $updateCampaignParameters ."<br>\n";
-					
-						
 				# prepare sql based on selected aircraft
 				if ($_POST["updateCampaignParameters"] == 1)
 					{
