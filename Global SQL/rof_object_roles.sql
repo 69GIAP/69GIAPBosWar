@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2013 at 05:58 AM
+-- Generation Time: Oct 25, 2013 at 07:39 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `rof_object_roles` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `unit_class` (`unit_class`),
   UNIQUE KEY `role_description` (`role_description`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
 
 --
 -- Dumping data for table `rof_object_roles`
@@ -44,38 +44,40 @@ INSERT INTO `rof_object_roles` (`id`, `unit_class`, `role_description`) VALUES
 (1, 'AAA', 'Artillery:Anti-Aircraft'),
 (2, 'ART', 'Artillery'),
 (3, 'BOT', 'Bot'),
-(4, 'HUM', 'Human'),
-(5, 'IMA', 'Infantry: MG AA'),
-(6, 'IMG', 'Infantry:Machine Gun'),
-(7, 'INF', 'Infrastructure'),
-(8, 'NAA', 'Naval:Anti-Aircraft'),
-(9, 'NAR', 'Naval:Artillery'),
-(10, 'PBO', 'Plane:Bomber'),
-(11, 'PFB', 'Plane:Fighter-Bomber'),
-(12, 'PFI', 'Plane:Fighter'),
-(13, 'PRE', 'Plane:Reconnaissance'),
-(14, 'PSE', 'Plane:Seaplane'),
-(15, 'PTR', 'Plane:Transport'),
-(16, 'RAA', 'Rail:Anti-Aircraft'),
-(17, 'RCV', 'Rail:Civil Train'),
-(18, 'RLO', 'Rail:Locomotive'),
-(19, 'RWA', 'Rail:Wagon'),
-(20, 'SAA', 'Ship:Anti-Aircraft'),
-(21, 'SBA', 'Ship:Battleship'),
-(22, 'SCR', 'Ship:Cruiser'),
-(23, 'SDE', 'Ship:Destroyer'),
-(24, 'SPB', 'Ship:Patrol Boat'),
-(25, 'SSU', 'Ship:Submarine'),
-(26, 'T', 'Tank:Standard'),
-(27, 'TAA', 'Tank:Anti-Aircraft'),
-(28, 'TSP', 'Tank:Self-Propelled Gun'),
-(29, 'TTD', 'Tank:Tank Destroyer'),
-(30, 'TUR', 'Turret'),
-(31, 'VAA', 'Vehicle:Anti-Aircraft'),
-(32, 'VMI', 'Vehicle:Mech. Infantry'),
-(33, 'VRI', 'Regular Infantry'),
-(34, 'VTR', 'Vehicle:Transport'),
-(35, 'DNA', 'Intrinsic');
+(4, 'BRG', 'Bridge'),
+(5, 'DNA', 'Intrinsic'),
+(6, 'FAC', 'Factory'),
+(7, 'HUM', 'Human'),
+(8, 'IMA', 'Infantry: MG AA'),
+(9, 'IMG', 'Infantry:Machine Gun'),
+(10, 'INF', 'Infrastructure'),
+(11, 'NAA', 'Naval:Anti-Aircraft'),
+(12, 'NAR', 'Naval:Artillery'),
+(13, 'PBO', 'Plane:Bomber'),
+(14, 'PFB', 'Plane:Fighter-Bomber'),
+(15, 'PFI', 'Plane:Fighter'),
+(16, 'PRE', 'Plane:Reconnaissance'),
+(17, 'PSE', 'Plane:Seaplane'),
+(18, 'PTR', 'Plane:Transport'),
+(19, 'RAA', 'Rail:Anti-Aircraft'),
+(20, 'RCV', 'Rail:Civil Train'),
+(21, 'RLO', 'Rail:Locomotive'),
+(22, 'RWA', 'Rail:Wagon'),
+(23, 'SAA', 'Ship:Anti-Aircraft'),
+(24, 'SBA', 'Ship:Battleship'),
+(25, 'SCR', 'Ship:Cruiser'),
+(26, 'SDE', 'Ship:Destroyer'),
+(27, 'SPB', 'Ship:Patrol Boat'),
+(28, 'SSU', 'Ship:Submarine'),
+(29, 'T', 'Tank:Standard'),
+(30, 'TAA', 'Tank:Anti-Aircraft'),
+(31, 'TSP', 'Tank:Self-Propelled Gun'),
+(32, 'TTD', 'Tank:Tank Destroyer'),
+(33, 'TUR', 'Turret'),
+(34, 'VAA', 'Vehicle:Anti-Aircraft'),
+(35, 'VMI', 'Vehicle:Mech. Infantry'),
+(36, 'VRI', 'Regular Infantry'),
+(37, 'VTR', 'Vehicle:Transport');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
