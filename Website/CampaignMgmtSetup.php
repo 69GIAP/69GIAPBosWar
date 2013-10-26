@@ -136,6 +136,20 @@ include ('includes/getandsetCampaignSettings.php');
 					of the map within which to run our campaign. Note when you zoom in and zoom out in the editor down near the bottom right there is a value \"Grid(M)\".
 					This is the size in metres of the white grid squares which will give you an idea of the scale of your map on screen.<br>\n";
 echo "<p><b><font color=\"red\">NEED INSTRUCTIONS ON CONFIGURING INFLUENCE AREAS</font></b></p>\n";
+?>
+<p>Instructions on configuring influence areas from SC/JG_Oesau in the Rise of Flight forums:<br />
+- Select the Influence Area<br />
+- Right click on Influence Area and select "Selected Object Menu"<br />
+- Select "Edit Influence Area"<br />
+- you will note a yellow circle at one end of the triangle, you can then move the end of the influence area<br />
+- To select other ends to edit, double click on each end<br />
+- To end the edit, right click on Influence Area and select "Selected Object Menu"<br />
+- Select "Stop Editing Boundary"</p>
+<p>And SYN_Vander adds:<br />
+And with CTRL+mouse click you can add more points...</p>
+
+
+<?php
 					echo "To define the sector of the map we want to use we will need the bottom left and top right of a rectangle. <br>\n";
 					echo "There are three dimensions to the map X is from the bottom to the top, Y is Height and Z is left to right.<br>\n"; 
 					echo "Down near the bottom right of the editor you also have the X and Z values of the mouse position. So choose where you want the bottom left
