@@ -86,6 +86,28 @@ ul#sidebar li a.campSetup {
 	height: 64px;
 	position:relative;
 }
+ul#sidebar li a.campCreateColumns {
+	background:url(../img/RofWar-AdminCreateColumns.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.campUpdateAirfields {
+	background:url(../img/RofWar-AdminUpdateAirfields.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.campAvailAirForce {
+	background:url(../img/RofWar-AdminAvailAirforce.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+
 ul#sidebar li a.dummy {
 	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
 	display:block;
