@@ -21,7 +21,7 @@ include ( 'includes/navigation.php' );
 <div id="content">
 <?php           
 // restrict uploaded files to .Group and .Mission files
-$allowedExts = array("Group", "Mission");
+$allowedExts = array("Group", "group", "Mission", "mission");
 $temp = explode(".", $_FILES["file"]["name"]);
 $extension = end($temp);
 // limit size to 4 MB max (3 MB is a large .Mission file in RoF)
@@ -44,7 +44,11 @@ if ( $_FILES["file"]["size"] < 4000000 && in_array($extension, $allowedExts)) {
       }
    }
 } else {
-   echo "Invalid file";
+   if ($_FILES["file"]["size"] > 4000000) {
+      echo $_FILES["file"]["name"]." is > 4 MB<br />\n";
+   } else {
+      echo ".$extension is not an allowed extension";
+   }
 }
 ?> 
 </div>
