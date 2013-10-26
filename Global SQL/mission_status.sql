@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2013 at 09:05 PM
+-- Generation Time: Oct 26, 2013 at 08:41 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -41,11 +41,11 @@ INSERT INTO `mission_status` (`id`, `mission_status`) VALUES
 (1, 'created'),
 (2, 'configured'),
 (3, 'initialized'),
-(4, 'moving units'),
-(5, 'planning'),
-(6, 'built'),
-(7, 'analyzing'),
-(8, 'scored');
+(4, 'planning'),
+(5, 'built'),
+(6, 'analyzing'),
+(7, 'scored'),
+(8, 'moving units');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
