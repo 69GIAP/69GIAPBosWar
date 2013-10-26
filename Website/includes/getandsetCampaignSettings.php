@@ -5,6 +5,10 @@
 $query = "SELECT * from campaign_settings;";
 if($result = mysqli_query($camp_link, $query)) {
    while ($obj = mysqli_fetch_object($result)) {
+   $logpath=($obj->logpath);
+   $log_prefix=($obj->log_prefix);
+   $show_airfield=($obj->show_airfield);
+   $finish_flight_only_landed=($obj->finish_flight_only_landed);
    $kia_pilot=($obj->kia_pilot);
    $mia_pilot=($obj->mia_pilot);
    $cw_pilot=($obj->critical_w_pilot);
@@ -33,6 +37,40 @@ mysqli_free_result($result);
 
 # create the input form
 echo "	<fieldset id=\"inputs\">\n";
+echo "		<h2>Mission Log Settings</h2>\n";
+echo "		<h3>log files location relative to boswar home directory<br> (use / as directory separator)</h3>\n";
+echo "		<input id=\"database\" type=\"text\" name=\"logpath\" value='$logpath' autofocus ><br>\n";
+echo "		<h3>constant prefix for this campaign's log files<br />(MUST be unique - append campaign name or initials)</h3>\n";
+echo "		<input id=\"database\" type=\"text\" name=\"log_prefix\" value='$log_prefix' autofocus ><br>\n";
+# BUTTON
+echo "<fieldset id=\"actions\">\n";	
+echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"1\" >Update Mission Log Settings</button>\n"; # the value defines the action after the button was pressed
+echo "	</fieldset>\n";
+echo "		<h2>Log Parser Settings</h2>\n";
+echo "		<h3>give airfield names in reports (else 'unidentified')</h3>\n";
+echo "		<select name=\"show_airfield\" id=\"database\">\n";
+if ($show_airfield == 'true') {
+   echo "			<option value=\"true\" selected=\"selected\">true</option>\n";
+   echo "			<option value=\"false\">false</option>\n";
+} else {
+   echo "			<option value=\"true\">true</option>\n";
+   echo "			<option value=\"false\" selected=\"selected\">false</option>\n";
+}
+echo "		</select><br>\n";
+echo "		<h3>'finish flight only landed' selected on server</h3>\n";
+echo "		<select name=\"finish_flight_only_landed\" id=\"database\">\n";
+if ($finish_flight_only_landed == 'true') {
+   echo "			<option value=\"true\" selected=\"selected\">true</option>\n";
+   echo "			<option value=\"false\">false</option>\n";
+} else {
+   echo "			<option value=\"true\">true</option>\n";
+   echo "			<option value=\"false\" selected=\"selected\">false</option>\n";
+}
+echo "		</select><br>\n";
+# BUTTON
+echo "<fieldset id=\"actions\">\n";	
+echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"2\" >Update Log Parser Settings</button>\n"; # the value defines the action after the button was pressed
+echo "	</fieldset>\n";
 echo "		<h2>Player Score Settings</h2>\n";
 echo "		<h3>pilot killed</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"kia_pilot\" value='$kia_pilot' autofocus ><br>\n";
