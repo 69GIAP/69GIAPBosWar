@@ -39,7 +39,7 @@
 					}
 
 					# load map location
-					$query = "SELECT map_locations FROM maps";
+					$query = "SELECT map_locations FROM maps WHERE map = '$campaignMap';";
 					
 					if(!$result = $dbc->query($query))
 						{die('There was an error running the query [' . $dbc->error . ']');}
