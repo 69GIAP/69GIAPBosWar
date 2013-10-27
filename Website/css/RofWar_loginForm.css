@@ -136,7 +136,7 @@ fieldset
     background-position: 5px -2px !important;
 }
 
-#password
+#password1, #password2
 {
     background-position: 5px -52px !important;
 }
@@ -289,13 +289,6 @@ fieldset
     float: right;
     line-height: 35px;
     margin-left: 10px;
-}
-
-form fieldset p
-{
-	font-size: 16px;
-	margin: 0;
-	padding: 0;
 }
 
 

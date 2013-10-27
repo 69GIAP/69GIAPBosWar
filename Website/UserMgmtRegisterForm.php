@@ -13,27 +13,43 @@
 
 	<div id="wrapper">
 
-        <div id="container">
+		<div id="container">
     
-            <div id="content">
-
-                <form id="loginForm" name="login" action="UserMgmtRegister.php" method="post">
-                    <h1 id="h1Form">Register</h1>
-                    <fieldset id="inputs">
-                        <input id="username" type="text" name="username" placeholder="Choose Username" autofocus required> 
-                        <input id="email" type="text" name="email" placeholder="Email Address" autofocus required>                           
-                        <input id="password" type="password" name="password" placeholder="Choose Password" required>
-                        <input id="password" type="password" name="password2" placeholder="Repeat Password" required> 
-                        <input id="phone" type="text" name="phone" placeholder="Telephone Number" required>               
-                    </fieldset>
-                    <fieldset id="actions">
-                        <input type="submit" id="loginSubmit" value="Submit">
-                    </fieldset>
-                </form>                
-                
-            </div>
-    
-        </div>
+			<div id="content">
+                <form id="registerForm" name="login" action="UserMgmtRegister.php" method="post">
+                <h1 id="h1Form">Register</h1>
+                  <fieldset id="inputs">
+                  	<!-- test username validation-->
+                    <div>
+                    <input id="username" type="text"		name="name"			placeholder="Choose Username"	autofocus required/>
+                    <span id="nameInfo">What's your name?</span>
+                    </div>
+                    <div>
+                    <input id="email"		type="email"	name="email"		placeholder="Email Address"		required> 
+                    <span id="emailInfo">Valid E-mail please, you will need it to log in!</span> 
+                    </div> 
+                    <div>                       
+                    <input id="password1"	type="password"	name="password"		placeholder="Choose Password"	required>
+                    <span id="pass1Info">At least 5 characters: letters, numbers and '_'</span>
+                    </div>
+                    <div>
+                    <input id="password2"	type="password"	name="password2"	placeholder="Repeat Password"	required>
+                    <span id="pass2Info">Confirm password</span>
+                    </div>
+                    <div> 
+                    <input id="phone"		type="text"		name="phone"		placeholder="Telephone Number"	required>
+                    <span id="pass2Info">Please provide a phone number as contact in case of Emergency!</span>
+                    </div>
+                  </fieldset>
+                  <fieldset id="actions">
+                    <input type="submit" id="registerSubmit" value="Submit">
+                  </fieldset>
+                </form>
+                 
+				<script type="text/javascript" src="js\formValidation.js"></script>                
+			</div>
+          
+		</div>
 
 <?php
 	# Include the general sidebar
