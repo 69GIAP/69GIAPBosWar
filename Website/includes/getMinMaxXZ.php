@@ -3,12 +3,12 @@
 // Get default min and max X and Z values
 // out of campaign db
 // =69.GIAP=TUSHKA
-// Oct 24, 2013
-// ver 1.0
+// Oct 27, 2013
+// ver 1.1
 
 $query = "SELECT * FROM campaign_settings";
 	if(!$result = $camp_link->query($query)){
-		die('getMinMaxXZ: query error ' . mysqli_error($dbc));
+		die('getMinMaxXZ: query error ' . mysqli_error($camp_linkj));
 	}
 	while ($obj = mysqli_fetch_object($result)) {
 		$min_x = ($obj->min_x);
@@ -28,4 +28,3 @@ echo "	</fieldset>\n";
 // free result set
 mysqli_free_result($result);
 ?>
-
