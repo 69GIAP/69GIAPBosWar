@@ -21,7 +21,7 @@
                   <fieldset id="inputs">
                   	<!-- test username validation-->
                     <div>
-                    <input id="username" type="text"		name="name"			placeholder="Choose Username"	autofocus required/>
+                    <input id="username" type="text"		name="username"			placeholder="Choose Username"	autofocus required/>
                     <span id="nameInfo">What's your name?</span>
                     </div>
                     <div>
@@ -29,7 +29,7 @@
                     <span id="emailInfo">Valid E-mail please, you will need it to log in!</span> 
                     </div> 
                     <div>                       
-                    <input id="password1"	type="password"	name="password"		placeholder="Choose Password"	required>
+                    <input id="password1"	type="password"	name="password1"		placeholder="Choose Password"	required>
                     <span id="pass1Info">At least 5 characters: letters, numbers and '_'</span>
                     </div>
                     <div>
