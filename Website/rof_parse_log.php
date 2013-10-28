@@ -4,8 +4,8 @@
 // mission report text files
 // written by =69.GIAP=TUSHKA
 // 2011-2013
-// Version 69GIAPBoSWar 0.6
-// Oct 19, 2013
+// Version 69GIAPBoSWar 0.7
+// Oct 28, 2013
 
 // the main program 
 
@@ -43,7 +43,6 @@ if ($result = mysqli_query($camp_link, $query)) {
       define('serious_w_pilot', "$obj->serious_w_pilot");
       define('light_w_pilot', "$obj->light_w_pilot");
       define('kia_gunner', "$obj->kia_gunner");
-      define('mia_gunner', "$obj->mia_gunner");
       define('critical_w_gunner', "$obj->critical_w_gunner");
       define('serious_w_gunner', "$obj->serious_w_gunner");
       define('light_w_gunner', "$obj->light_w_gunner");
