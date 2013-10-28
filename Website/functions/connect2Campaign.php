@@ -21,7 +21,7 @@ function connect2campaign ($host,$user,$password,$db) {
 
 	// change character set to utf8, object oriented style
 	if (!$camp_link->set_charset("utf8")) {
-		printf("Error loading character set utf8: %s\n", $mysqli->error);
+		printf("Error loading character set utf8: %s\n", $camp_link->error);
 	}
 
 	// return the link
