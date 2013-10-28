@@ -3,22 +3,28 @@
 // connect to campaign db with assigned host, user, password and db 
 // =69.GIAP=TUSHKA
 // Sept 16, 2013
-// Ver 1.3
-// Oct 24, 2013
+// Ver 1.4
+// Oct 28, 2013
 	
 function connect2campaign ($host,$user,$password,$db) {	
 
-// debugging database connection
-include ( 'includes/debugging/debuggingDbConnection.php' );
+	// debugging database connection
+	include ( 'includes/debugging/debuggingDbConnection.php' );
 
-// make connection to campaign with input variables
-$camp_link = mysqli_connect ( "$host", "$user" , "$password" , "$db" )
-OR die ('Connect Error ('.mysqli_connect_errno().') '.mysqli_connect_error());
+	// make connection to campaign with input variables, object oriented style
+	$camp_link = new mysqli ( "$host", "$user" , "$password" , "$db" );
 
-// force use of utf8 character set
-mysqli_set_charset( $camp_link , 'utf8' ) ;
+	if ($camp_link->connect_error) {
+		die('Connect Error (' . $camp_link->connect_errno . ') '
+			. $camp_link->connect_error);
+	}
 
-// return the link
-return $camp_link;
+	// change character set to utf8, object oriented style
+	if (!$camp_link->set_charset("utf8")) {
+		printf("Error loading character set utf8: %s\n", $mysqli->error);
+	}
+
+	// return the link
+	return $camp_link;
 }
 ?>
