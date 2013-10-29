@@ -206,9 +206,10 @@ And with CTRL+mouse click you can add more points...</p>
 					# after this point will be added the population of bridges into the template grouping and send to the Campaign Manager 
 					# again they will be managed in the Campaign manager an sent to the Mission Editor for assembly into each mission.  
 
-
-
 					echo "</form>\n";
+
+					// close $camp_link
+					$camp_link->close();
                 ?>
             
             </div>
@@ -224,6 +225,8 @@ And with CTRL+mouse click you can add more points...</p>
 	</div>
 
 <?php
+    // close $dbc
+	$dbc->close();
 	# Include the footer
 	include ( 'includes/footer.php' );
 ?>
