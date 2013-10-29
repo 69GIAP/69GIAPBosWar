@@ -59,8 +59,8 @@
 	</div>
 
 <?php
-	# Close the dbc connection
-	mysqli_close($dbc);
+	# Close the $dbc connection, object oriented style 
+	$dbc->close();
 
 	# Include the footer
 	include ( 'includes/footer.php' );
