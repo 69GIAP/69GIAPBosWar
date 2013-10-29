@@ -41,6 +41,10 @@
 	</div>
 
 <?php
+	<?php
+	# Close the dbc connection
+	mysqli_close($dbc);
+
 	# Include the footer
 	include ( 'includes/footer.php' );
 ?>
