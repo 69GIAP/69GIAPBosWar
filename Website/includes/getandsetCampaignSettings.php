@@ -5,6 +5,7 @@
 $query = "SELECT * from campaign_settings;";
 if($result = $camp_link->query($query)) {
 	while ($obj = $result->fetch_object()) {
+	$status=($obj->status);
 	$logpath=($obj->logpath);
 	$log_prefix=($obj->log_prefix);
 	$show_airfield=($obj->show_airfield);
@@ -36,16 +37,21 @@ if($result = $camp_link->query($query)) {
 $result->close();
 
 # create the input form
+# Mission Log Settings
 echo "	<fieldset id=\"inputs\">\n";
 echo "		<h2>Mission Log Settings</h2>\n";
 echo "		<h3>log files location relative to boswar home directory<br> (use / as directory separator)</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"logpath\" value='$logpath' autofocus ><br>\n";
 echo "		<h3>constant prefix for this campaign's log files<br />(MUST be unique - append campaign name or initials)</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"log_prefix\" value='$log_prefix' autofocus ><br>\n";
+echo "	</fieldset>\n";
 # BUTTON
 echo "<fieldset id=\"actions\">\n";	
 echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"1\" >Update Mission Log Settings</button>\n"; # the value defines the action after the button was pressed
 echo "	</fieldset>\n";
+
+# Log Parser Settings
+echo "	<fieldset id=\"inputs\">\n";
 echo "		<h2>Log Parser Settings</h2>\n";
 echo "		<h3>give airfield names in reports (else 'unidentified')</h3>\n";
 echo "		<select name=\"show_airfield\" id=\"database\">\n";
@@ -67,10 +73,14 @@ if ($finish_flight_only_landed == 'true') {
    echo "			<option value=\"false\" selected=\"selected\">false</option>\n";
 }
 echo "		</select><br>\n";
+echo "	</fieldset>\n";
 # BUTTON
 echo "<fieldset id=\"actions\">\n";	
 echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"2\" >Update Log Parser Settings</button>\n"; # the value defines the action after the button was pressed
 echo "	</fieldset>\n";
+
+# Player Score Settings
+echo "	<fieldset id=\"inputs\">\n";
 echo "		<h2>Player Score Settings</h2>\n";
 echo "		<h3>pilot killed</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"kia_pilot\" value='$kia_pilot' autofocus ><br>\n";
@@ -92,9 +102,11 @@ echo "		<h3>gunner lightly wounded</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"lw_gunner\" value='$lw_gunner' autofocus ><br>\n";
 # BUTTON
 echo "<fieldset id=\"actions\">\n";	
-echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"3\" >Update Scores</button>\n"; # the value defines the action after the button was pressed
+echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"3\" >Update Player Scores</button>\n"; # the value defines the action after the button was pressed
 echo "	</fieldset>\n";
 
+# Mission Tuning Settings
+echo "	<fieldset id=\"inputs\">\n";
 echo "		<h2>Mission Tuning Settings</h2>\n";
 echo "		<h3>set aircraft detection distance (m)</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"dst_airActGrnd\" value='$dst_airActGrnd' autofocus ><br>\n";
@@ -152,6 +164,24 @@ echo "	</fieldset>\n";
 
 # BUTTON
 echo "<fieldset id=\"actions\">\n";	
-echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"4\" >Update settings</button>\n"; # the value defines the action after the button was pressed
+echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"4\" >Update Tuning Settings</button>\n"; # the value defines the action after the button was pressed
+echo "	</fieldset>\n";
+
+# Are We Done?
+echo "		<h3>Configuration Complete?</h3>\n";
+echo "		<select name=\"config_done\" id=\"database\">\n";
+if ($status > 1) {
+   echo "			<option value=\"true\" selected=\"selected\">yes</option>\n";
+   echo "			<option value=\"false\" >no</option>\n";
+} else {
+   echo "			<option value=\"true\">yes</option>\n";
+   echo "			<option value=\"false\" selected=\"selected\">no</option>\n";
+
+}
+echo "		</select><br>\n";
+echo "	</fieldset>\n";
+# BUTTON
+echo "<fieldset id=\"actions\">\n";	
+echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"5\" >Done?</button>\n"; # the value defines the action after the button was pressed
 echo "	</fieldset>\n";
 ?>
