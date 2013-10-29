@@ -10,7 +10,7 @@
 	include ( 'includes/navigation.php' );
 
 # Check whether we already have defined campaign db user(s)
-$count = mysqli_query($dbc,"SELECT COUNT(*) FROM campaign_settings;");
+$count = $dbc->query("SELECT COUNT(*) FROM campaign_settings;");
 
 ?>
 
@@ -60,23 +60,22 @@ $count = mysqli_query($dbc,"SELECT COUNT(*) FROM campaign_settings;");
 						if(!$result = $dbc->query($query)) {
 							die('There was an error running the query [' . $dbc->error . ']');
 						}
-						mysqli_free_result($result);	
 						
-						if ($result = mysqli_query($dbc, $query)) {				
+						if ($result = $dbc->query($query)) {				
 							echo "<select id = \"username\" name = \"existing\"><br>\n";
 							echo "<option value=\"\" selected>Select existing campaign user </option>\n";	
 							/* fetch result array */
-							while ($obj = mysqli_fetch_object($result)) {
+							while ($obj = $result->fetch_object()) {
 								$host = ($obj->camp_host);
 								$user = ($obj->camp_user);
 								$passwd	=($obj->camp_passwd);
+								// free result set, object oriented style
+								$result->close();
 								// note hack to pass three variables as one  :)
 								echo "<option value=\"".$host."+".$user."+".$passwd."\">".$user."</option>\n";
 							}
 							echo "</select>\n";	
 						}
-								
-						mysqli_free_result($result);
 
 					echo "	</fieldset>\n";	
 
@@ -102,6 +101,9 @@ $count = mysqli_query($dbc,"SELECT COUNT(*) FROM campaign_settings;");
 	</div>
 
 <?php
+	# Close the dbc connection
+	mysqli_close($dbc);
+
 	# Include the footer
 	include ( 'includes/footer.php' );
 ?>
