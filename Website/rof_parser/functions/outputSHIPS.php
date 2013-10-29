@@ -10,16 +10,17 @@ function SHIPS($type) {
 	global $object_desc; // object description from rof_object_properties
 
 	$query = "SELECT object_class, object_desc FROM rof_object_properties WHERE object_type = '$type'";
+	if (!$result = $camp_link->query($query)) {
+		die('SHIPS query error [' . $camp_link->error . ']');
+	}
 	if ($result = $camp_link->query($query)) {
 		// get results
-		while ($obj = $result->fetch_object($result)) {
+		while ($obj = $result->fetch_object()) {
 			$object_class	= ($obj->object_class);
 			$object_desc	= ($obj->object_desc);
 		}
 		// free result set, object oriented style
 		$result->close(); 
-	} else { 
-		die('SHIPS query error [' . $camp_link->error . ']');
 	}
 }
 ?>
