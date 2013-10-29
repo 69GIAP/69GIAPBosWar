@@ -4,7 +4,7 @@
 // mission report text files
 // written by =69.GIAP=TUSHKA
 // 2011-2013
-// Version 69GIAPBoSWar 0.7
+// Version 69GIAPBoSWar 0.8
 // Oct 28, 2013
 
 // the main program 
@@ -30,9 +30,9 @@ $query = "SELECT * FROM campaign_settings";
 if(!$result = $camp_link->query($query))
    { die('rof_parse_log: error running a query [' . $camp_link->error . ']'); }
 	
-if ($result = mysqli_query($camp_link, $query)) {
+if ($result = $camp_link->query($query)) {
    // get results
-   while ($obj = mysqli_fetch_object($result)) {
+   while ($obj = $result->fetch_object()) {
       define('SHOWAF', "$obj->show_airfield");
       define('FinishFlightOnlyLanded', "$obj->finish_flight_only_landed");
       define('map_locations', "$obj->map_locations");
@@ -48,8 +48,8 @@ if ($result = mysqli_query($camp_link, $query)) {
       define('light_w_gunner', "$obj->light_w_gunner");
       define('healthy', "$obj->healthy");
       }
-      // free result set
-      mysqli_free_result($result);
+      // free result set, object oriented style
+      $result->close();
 }
 
 // debugging
