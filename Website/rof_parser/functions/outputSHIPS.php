@@ -19,7 +19,7 @@ function SHIPS($type) {
 		// free result set, object oriented style
 		$result->close(); 
 	} else { 
-		die('There was an error running the query [' . $camp_link->error . ']');
+		die('SHIPS query error [' . $camp_link->error . ']');
 	}
 }
 ?>
