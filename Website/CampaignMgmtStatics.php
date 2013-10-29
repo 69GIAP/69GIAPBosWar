@@ -29,9 +29,9 @@
 						die('There was an error running the query [' . $dbc->error . ']');
 					}
 		
-					if ($result = mysqli_query($dbc, $query)) {
+					if ($result = $dbc->query($query)) {
 						/* fetch associative array */
-						while ($obj = mysqli_fetch_object($result)) {
+						while ($obj = $result->fetch_object()) {
 							$campaign	=($obj->campaign);
 							$camp_host	=($obj->camp_host);
 							$camp_user	=($obj->camp_user);
@@ -48,9 +48,14 @@
 							}
 						}
 					} 
+					// free result set, object oriented style
+					$result->close();
 									
 					# use this information to connect to campaign 
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
+					# useful stuff goes here.
+					# Close the dbc connection
+					mysqli_close($camp_link);
                 ?>
                 <p>We need a screen to create a static group of objects vehicles in static. 
                 One session should cope with both allied or Central Admin and planners. This is essential for Alpha</p>
@@ -68,6 +73,9 @@
 	</div>
 
 <?php
+	# Close the dbc connection
+	mysqli_close($dbc);
+
 	# Include the footer
 	include ( 'includes/footer.php' );
 ?>

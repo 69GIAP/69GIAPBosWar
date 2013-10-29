@@ -9,7 +9,6 @@
 # Include the navigation on top
 	include ( 'includes/navigation.php' );
 
-
 ?>
 
 	<div id="wrapper">
@@ -29,9 +28,9 @@
 						die('There was an error running the query [' . $dbc->error . ']');
 					}
 		
-					if ($result = mysqli_query($dbc, $query)) {
+					if ($result = $dbc->query($query)) {
 						/* fetch associative array */
-						while ($obj = mysqli_fetch_object($result)) {
+						while ($obj = $result->fetch_object()) {
 							$campaign	=($obj->campaign);
 							$camp_host	=($obj->camp_host);
 							$camp_user	=($obj->camp_user);
@@ -40,9 +39,9 @@
 							
 							# get campaign status
 							$sql="SELECT campaign_status FROM campaign_status where id = $camp_status_id";
-							if ($result = mysqli_query($dbc, $sql)) {
+							if ($result = $dbc->query($sql)) {
 							/* fetch associative array */
-							while ($obj = mysqli_fetch_object($result)) {
+							while ($obj = $result->fetch_object()) {
 								$camp_status=($obj->campaign_status);
 								}
 							}
@@ -51,7 +50,7 @@
 									
 					# use this information to connect to campaign 
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
-					
+
 					# initialise variables
 					echo "<h1>Setup of New Campaign</h1>";
 					# start form

@@ -20,12 +20,11 @@
 				<?php 
 					# empty campaign specific variables
     				unset($loadedCampaign);
-					unset($_SESSION['camp_db']);
 						
                     # show campaigns due to User role
 						if ($userRole == "administrator" or $userRole == "commander")
                             {
-								# Feedback to the user wich campaign he is connected to right now
+								# Feedback to the user which campaign he is connected to right now
 								if (!empty($loadedCampaign))
 									{	echo "<p>You are connected to the <b>$loadedCampaign</b> database</p>\n";	}
 								else
