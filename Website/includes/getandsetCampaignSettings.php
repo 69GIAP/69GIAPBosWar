@@ -3,37 +3,37 @@
 // reset variable in  case they are empty
 
 $query = "SELECT * from campaign_settings;";
-if($result = mysqli_query($camp_link, $query)) {
-   while ($obj = mysqli_fetch_object($result)) {
-   $logpath=($obj->logpath);
-   $log_prefix=($obj->log_prefix);
-   $show_airfield=($obj->show_airfield);
-   $finish_flight_only_landed=($obj->finish_flight_only_landed);
-   $kia_pilot=($obj->kia_pilot);
-   $mia_pilot=($obj->mia_pilot);
-   $cw_pilot=($obj->critical_w_pilot);
-   $sw_pilot=($obj->serious_w_pilot);
-   $lw_pilot=($obj->light_w_pilot);
-   $kia_gunner=($obj->kia_gunner);
-   $cw_gunner=($obj->critical_w_gunner);
-   $sw_gunner=($obj->serious_w_gunner);
-   $lw_gunner=($obj->light_w_gunner);
-   $dst_airActGrnd=($obj->air_detect_distance);
-   $dst_GndActGrnd=($obj->ground_detect_distance);
-   $lvl_AIAc=($obj->air_ai_level);
-   $lvl_AIGrnd=($obj->ground_ai_level);
-   $spd_maxGrnd=($obj->ground_max_speed_kmh);
-   $spd_maxTrnspt=($obj->ground_transport_speed_kmh);
-   $sprd_suplPnts=($obj->ground_spacing);
-   $time_lineup=($obj->lineup_minutes);
-   $time_msn=($obj->mission_minutes);
-   $time_actvtUnit=($obj->detect_off_time);
-   }
+if($result = $camp_link->query($query)) {
+	while ($obj = $result->fetch_object()) {
+	$logpath=($obj->logpath);
+	$log_prefix=($obj->log_prefix);
+	$show_airfield=($obj->show_airfield);
+	$finish_flight_only_landed=($obj->finish_flight_only_landed);
+	$kia_pilot=($obj->kia_pilot);
+	$mia_pilot=($obj->mia_pilot);
+	$cw_pilot=($obj->critical_w_pilot);
+	$sw_pilot=($obj->serious_w_pilot);
+	$lw_pilot=($obj->light_w_pilot);
+	$kia_gunner=($obj->kia_gunner);
+	$cw_gunner=($obj->critical_w_gunner);
+	$sw_gunner=($obj->serious_w_gunner);
+	$lw_gunner=($obj->light_w_gunner);
+	$dst_airActGrnd=($obj->air_detect_distance);
+	$dst_GndActGrnd=($obj->ground_detect_distance);
+	$lvl_AIAc=($obj->air_ai_level);
+	$lvl_AIGrnd=($obj->ground_ai_level);
+	$spd_maxGrnd=($obj->ground_max_speed_kmh);
+	$spd_maxTrnspt=($obj->ground_transport_speed_kmh);
+	$sprd_suplPnts=($obj->ground_spacing);
+	$time_lineup=($obj->lineup_minutes);
+	$time_msn=($obj->mission_minutes);
+	$time_actvtUnit=($obj->detect_off_time);
+	}
 } else {
-   die('getCoalition query error [' . $camp_link->error . ']');
+	die('getCoalition query error [' . $camp_link->error . ']');
 }
 // free result set
-mysqli_free_result($result);
+$result->close();
 
 # create the input form
 echo "	<fieldset id=\"inputs\">\n";
@@ -105,34 +105,34 @@ echo "		<select name=\"lvl_AIAc\" id=\"database\">\n";
 //echo "			<option value=\"$lvl_AIAc\" disabled selected>Select Air AI level</option>\n";
 echo "\$lvl_AIAc: $lvl_AIAc<br />\n";
 if ($lvl_AIAc == "1") {
-   echo "			<option value=\"1\" selected=\"selected\">1</option>\n";
-   echo "			<option value=\"2\">2</option>\n";
-   echo "			<option value=\"3\">3</option>\n";
+	echo "			<option value=\"1\" selected=\"selected\">1</option>\n";
+	echo "			<option value=\"2\">2</option>\n";
+	echo "			<option value=\"3\">3</option>\n";
 } elseif($lvl_AIAc == '2') {
-   echo "			<option value=\"1\">1</option>\n";
-   echo "			<option value=\"2\" selected=\"selected\">2</option>\n";
-   echo "			<option value=\"3\">3</option>\n";
+	echo "			<option value=\"1\">1</option>\n";
+	echo "			<option value=\"2\" selected=\"selected\">2</option>\n";
+	echo "			<option value=\"3\">3</option>\n";
 } else {
-   echo "			<option value=\"1\">1</option>\n";
-   echo "			<option value=\"2\">2</option>\n";
-   echo "			<option value=\"3\" selected=\"selected\">3</option>\n";
+	echo "			<option value=\"1\">1</option>\n";
+	echo "			<option value=\"2\">2</option>\n";
+	echo "			<option value=\"3\" selected=\"selected\">3</option>\n";
 }
 echo "		</select><br>\n";
 echo "		<h3>set skill level for AI ground units</h3>\n";
 echo "		<select name=\"lvl_AIGrnd\" id=\"database\">\n";
 //echo "			<option value=\"$lvl_AIGrnd\" disabled selected>Select Ground AI level</option>\n";
 if ($lvl_AIGrnd == 1) {
-   echo "			<option value=\"1\" selected>1</option>\n";
-   echo "			<option value=\"2\">2</option>\n";
-   echo "			<option value=\"3\">3</option>\n";
+	echo "			<option value=\"1\" selected>1</option>\n";
+	echo "			<option value=\"2\">2</option>\n";
+	echo "			<option value=\"3\">3</option>\n";
 } elseif($lvl_AIGrnd == 2) {
-   echo "			<option value=\"1\">1</option>\n";
-   echo "			<option value=\"2\" selected>2</option>\n";
-   echo "			<option value=\"3\">3</option>\n";
+	echo "			<option value=\"1\">1</option>\n";
+	echo "			<option value=\"2\" selected>2</option>\n";
+	echo "			<option value=\"3\">3</option>\n";
 } else {
-   echo "			<option value=\"1\">1</option>\n";
-   echo "			<option value=\"2\">2</option>\n";
-   echo "			<option value=\"3\" selected>3</option>\n";
+	echo "			<option value=\"1\">1</option>\n";
+	echo "			<option value=\"2\">2</option>\n";
+	echo "			<option value=\"3\" selected>3</option>\n";
 }
 echo "		</select><br>\n";
 
@@ -154,4 +154,4 @@ echo "	</fieldset>\n";
 echo "<fieldset id=\"actions\">\n";	
 echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"4\" >Update settings</button>\n"; # the value defines the action after the button was pressed
 echo "	</fieldset>\n";
-
+?>
