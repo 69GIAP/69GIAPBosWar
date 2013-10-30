@@ -109,7 +109,7 @@
 				if (($_POST["modify"] == 0))
 					{
 						$sql  = "DELETE FROM users WHERE	user_id = $id;";
-						$sql .= "DELETE FROM campaign_users where user_id = $id;";
+						$sql .= "DELETE FROM campaign_users WHERE user_id = $id;";
 					}
 					else
 				# if a user wants to have his password reset
@@ -127,7 +127,7 @@
 				if (($_POST["modify"] == 3))
 					{
 						# check if an entry exists
-						$sql = "SELECT user_id from campaign_users where user_id = $id and camp_db = '$campdb';";
+						$sql = "SELECT user_id from campaign_users WHERE user_id = $id and camp_db = '$campdb';";
 						
 						if(!$result = $dbc->query($sql))
 							{die('There was an error running the query [' . $dbc->error . ']');}

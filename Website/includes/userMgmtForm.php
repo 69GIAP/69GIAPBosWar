@@ -52,9 +52,9 @@
 		echo "	</fieldset>\n";
 		echo "	<fieldset id=\"actions\">";
 		# BUTTON ADD
-		echo "		<button type=\"modify\" name =\"modify\" id=\"submitHalfsize\" value =\"3\" >Assign/Update</button>\n";
+		echo "		<button type=\"modify\" name =\"modify\" id=\"submitHalfsize1\" value =\"3\" >Assign/Update</button>\n";
 		# BUTTON REMOVE
-		echo "		<button type=\"modify\" name =\"modify\" id=\"submitHalfsize\" value =\"4\" >Remove</button>\n";
+		echo "		<button type=\"modify\" name =\"modify\" id=\"submitHalfsize2\" value =\"4\" >Remove</button>\n";
 		echo "	</fieldset>\n";
 		echo "	<fieldset id=\"actions\">";
 		# BUTTON DELETE USER
