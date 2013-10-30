@@ -79,8 +79,8 @@ ul#sidebar li a.campStatus {
 	height: 64px;
 	position:relative;
 }
-ul#sidebar li a.campSetup {
-	background:url(../img/RofWar-AdminSetup.png) no-repeat scroll top left;
+ul#sidebar li a.campConfigure {
+	background:url(../img/RofWar-AdminConfigure.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;

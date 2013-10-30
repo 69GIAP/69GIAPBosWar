@@ -80,7 +80,7 @@
 													# turn this menu on if user has loaded a campaign into the SESSION variable campaign
 													echo "	<ul id=\"sidebar\">\n";
 													echo "		<li><a href=\"CampaignMgmtChangeStatus.php?btn=campMgmt\" class=\"campStatus\"><span></span></a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtSetup.php?btn=campMgmt\" class=\"campSetup\"><span></span></a></li>\n";
+													echo "	    <li><a href=\"CampaignMgmtConfigure.php?btn=campMgmt\" class=\"campConfigure\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtAdvcdParam.php?btn=campMgmt\" class=\"dummy\">Campaign Advanced Parameters</a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtPlaneset.php?btn=campMgmt\" class=\"campAvailAirForce\"></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtSupplyControlPoints.php?btn=campMgmt\" class=\"dummy\">Supply/Control Points</a></li>\n";

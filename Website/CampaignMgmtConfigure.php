@@ -20,50 +20,26 @@
 				<?php
 					# include connect2CampaignFunction.php
 					include ( 'functions/connect2Campaign.php' );
-		
-					# use it to get remaining variables
-					$query = "SELECT * from campaign_settings where camp_db = '$loadedCampaign'";  
-		 
-					if(!$result = $dbc->query($query)) {
-						die('There was an error running the query [' . $dbc->error . ']');
-					}
-		
-					if ($result = $dbc->query($query)) {
-						/* fetch associative array */
-						while ($obj = $result->fetch_object()) {
-							$campaign	=($obj->campaign);
-							$camp_host	=($obj->camp_host);
-							$camp_user	=($obj->camp_user);
-							$camp_passwd=($obj->camp_passwd);
-							$camp_status_id=($obj->status);
-							
-							# get campaign status
-							$sql="SELECT campaign_status FROM campaign_status where id = $camp_status_id";
-							if ($result = $dbc->query($sql)) {
-							/* fetch associative array */
-							while ($obj = $result->fetch_object()) {
-								$camp_status=($obj->campaign_status);
-								}
-							}
-						}
-					} 
-									
+
+					# include getCampaignVariables.php
+					include ( 'includes/getCampaignVariables.php' );
+	
 					# use this information to connect to campaign 
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
 
 					# initialise variables
-					echo "<h1>Setup of New Campaign</h1>";
+					echo "<h1>Configure $campaign Campaign</h1>";
 					# start form
 					echo "<form id=\"campaignMgmtForm\" name=\"campaignSetup\" action=\"CampaignMgmtConfirm.php?btn=campMgmt\" method=\"post\">\n";
 					
 					echo "<br>This is a job for the campaign administrator who should have basic skills in the Mission Editor.<br>\n";
 					echo "<br>By this point you have logged in with administrator rights, chosen a campaign name, created a campaign database and connected to that campaign database.<br>\n";
 					echo "<br>Now that you are connected directly to your new campaign database it is time to configure it.<br>\n";
-					echo "<br>There are two types of settings we need to configure - those that are not set in the mission editor, and those that are.  We start with those that are are not set in the editor.  These are set either here in the campaign database alone, or both here and in the game multiplayer options.<br />\n";
+					echo "<br>There are two types of settings we need to configure - those that are not set in the mission editor, and those that are.<br>  We start with those that are are not set in the editor.  These are set either here in the campaign database alone, or both here and in the game multiplayer options.<br />\n";
 					echo "<br>We have tried to provide sensible defaults, but you may tweak these to fit your campaign and setup.<br />\n";
 
-// include getandsetCampaignSettings.php
-include ('includes/getandsetCampaignSettings.php');
+					# include getandsetCampaignSettings.php
+					include ('includes/getandsetCampaignSettings.php');
 
 					echo "<br>Next we work on setting up the campaign in the mission editor.<br />\n";
 					echo "<br>You can open the Mission Editor in a separate window to help this process - OK<br>\n";
@@ -227,6 +203,7 @@ And with CTRL+mouse click you can add more points...</p>
 <?php
     // close $dbc
 	$dbc->close();
+
 	# Include the footer
 	include ( 'includes/footer.php' );
 ?>
