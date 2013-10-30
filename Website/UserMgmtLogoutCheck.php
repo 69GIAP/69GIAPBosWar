@@ -53,6 +53,9 @@
 	</div>
 
 <?php
+	# close $dbc
+	$dbc->close();
+
 	# Include the footer
 	include ( 'includes/footer.php' );
 ?>

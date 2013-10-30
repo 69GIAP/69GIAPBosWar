@@ -33,8 +33,8 @@
 							AND u.role_id = r.role_id"; 
 				
 				# execute SQL query
-				$result = mysqli_query($dbc, $query);
-				$row 	= mysqli_fetch_object($result);
+				$result = $dbc->query($query);
+				$row 	= $result->fetch_object();
 				
 				# perform some sanity checks on the data
 				if(empty($row->username))
@@ -88,9 +88,9 @@
 					} 
 				echo "\n";
 				
-				mysqli_free_result($result);
+				$result->free();
 					
-				mysqli_close($dbc);
+				$dbc->close();
 				
 				?> 
         

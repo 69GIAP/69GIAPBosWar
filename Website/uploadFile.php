@@ -62,6 +62,8 @@ include ( 'includes/sidebar.php' );
 </div>
 
 <?php
+// close $dbc
+$dbc->chose();
 // Include the footer
 include ( 'includes/footer.php' );
 ?>

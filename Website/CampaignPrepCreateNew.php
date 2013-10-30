@@ -99,8 +99,8 @@ $count = $dbc->query("SELECT COUNT(*) FROM campaign_settings;");
 	</div>
 
 <?php
-	# Close the dbc connection
-	mysqli_close($dbc);
+	# Close the $dbc connection
+	$dbc->chose();
 
 	# Include the footer
 	include ( 'includes/footer.php' );

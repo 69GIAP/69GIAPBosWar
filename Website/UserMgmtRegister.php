@@ -41,9 +41,9 @@
                     
                     # check datasets stored in the table to varify uniquness of new user
                     $query = "SELECT user_id FROM users WHERE username LIKE '$userName' ";        
-                    $result = mysqli_query($dbc, $query); 
+                    $result = $dbc->query($dbc, $query); 
                     
-                    $values = mysqli_num_rows($result); 
+                    $values = $result->num_rows($result); 
                     
                     # if user does not exists a new entry will be stored to the table
                     if($values == 0) 
@@ -51,7 +51,7 @@
                         $userRoleID = "3";
                         
                         $entry = "INSERT INTO users (username, password, email, phone, role_id) VALUES ('$userName', '$password', '$email', '$phone', '$userRoleID')"; 
-                        $entries = mysqli_query($dbc, $entry); 
+                        $entries = $dbc->query($dbc, $entry); 
                     
                     # check if user was added correctly
                         if($entries == true) 
@@ -81,9 +81,9 @@
                         }
                     }
                     
-                    mysqli_free_result($result);
+                    $result->free();
     
-                    mysqli_close($dbc);
+                    $dbc->close();
             
                 ?>
 

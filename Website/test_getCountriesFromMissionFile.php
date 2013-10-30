@@ -21,4 +21,8 @@ $mission_file = 'test.Mission';
 
 // call the function (it works silently if there are no errors)
 get_countries_from_mission_file($mission_file_path,$mission_file);
+
+// close $camp_link and$dbc
+$camp_link->close();
+$dbc->close();
 ?>
