@@ -35,8 +35,16 @@
 					$_POST['groupFilePath'] = '';
 				}
 				else {
-					$groupFilePath = $_POST['groupFilePath']."\\";
-					$groupFilePath = mysqli_real_escape_string($dbc, $groupFilePath);
+					$groupFilePath = $_POST['groupFilePath'];
+					$numchar = strlen($groupFilePath);
+					$lastchar = substr($groupFilePath,$numchar -1, 1);
+//					echo "$lastchar<br />\n";
+					if ($lastchar == '\\' || $lastchar == '/') {
+						// do nothing
+					} else { // add trailing slash (works as well as backslash)
+						$groupFilePath = "$groupFilePath/";
+					}
+					$groupFilePath = $dbc->real_escape_string($groupFilePath);
 				}
 
 				# Coalition NEW
@@ -90,7 +98,7 @@
 					$sql = "SELECT username FROM users WHERE user_id = $id";
 					
 					if(!$result = $dbc->query($sql)){
-					die('There was an error running the query ' . mysqli_error($dbc));
+					die('There was an error running the query ' . $dbc->error());
 					}
 					# load the name into a variable 
 					while($row = $result->fetch_assoc()) 
@@ -123,10 +131,10 @@
 						if(!$result = $dbc->query($sql))
 							{die('There was an error running the query [' . $dbc->error . ']');}
 							
-						if ($result = mysqli_query($dbc, $sql)) 
+						if ($result = $dbc->query($sql)) 
 						{				
 							/* fetch associative array */
-							while ($obj = mysqli_fetch_object($result)) 
+							while ($obj = $result->fetch_object()) 
 								{
 									$exists=($obj->user_id);
 								}
@@ -155,11 +163,11 @@
 				# store group file path, each single user has to do this on his own - only commanders and campaign administrators can see the form field
 				if (($_POST["modify"] == 6))
 					{	
-						$sql = "SELECT * from campaign_users WHERE user_id = '$id' and camp_db = '$campdb'"; // reqires revision to take connected db name instead of drop down db name
-						$result = mysqli_query($dbc, $sql);
-						if (mysqli_num_rows($result)!=0)
+						$sql = "SELECT * from campaign_users WHERE user_id = '$id' and camp_db = '$_SESSION[camp_db]'"; // reqires revision to take connected db name instead of drop down db name - done
+						$result = $dbc->query($sql);
+						if ($result->num_rows!=0)
 							{
-								$sql = "UPDATE campaign_users SET groupFile_path = '$groupFilePath' WHERE user_id = '$id' and camp_db = '$campdb'";
+								$sql = "UPDATE campaign_users SET groupFile_path = '$groupFilePath' WHERE user_id = '$id' and camp_db = '$_SESSION[camp_db]'";
 								$error = 0;
 							}
 						else
@@ -170,9 +178,9 @@
 					}																		
 				
 				# Feedback success or failure
-				if (!mysqli_multi_query($dbc,$sql))
+				if (!$dbc->multi_query($sql))
 					{
-						die("<br>There was an error running the query: $sql. <br>" . mysqli_error($dbc));
+						die("<br>There was an error running the query: $sql. <br>" . $dbc->error());
 					}
 				  
 				if (($_POST["modify"] == 0)) 
@@ -197,9 +205,9 @@
 							die('There was an error receiving the connnection information [' . $dbc->error . ']');
 						}
 			
-						if ($result = mysqli_query($dbc, $query)) {
+						if ($result = $dbc->query($query)) {
 							/* fetch associative array */
-							while ($row = mysqli_fetch_object($result)) {
+							while ($row = $result->fetch_object()) {
 								$userCoalitionNew =($row->Coalitionname);
 							}
 						}
@@ -215,7 +223,7 @@
 							echo "<br>The user is not assigned to the selected campaign! Please first assign the user and then retry storing the Group File path.\n";
 						}
 						else {
-							echo "<br>Your Group file path has been changed to successfully!\n";
+							echo "<br>Your Group file path has been changed successfully!\n";
 						}
 					}						
 				?>
@@ -233,6 +241,9 @@
 	</div>
 
 <?php
+	# close $dbc
+	$dbc->close();
+
 	# Include the footer
 	include ( 'includes/footer.php' );
 ?>

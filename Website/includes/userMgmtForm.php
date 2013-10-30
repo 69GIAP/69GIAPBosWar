@@ -73,7 +73,7 @@
 				echo "<p>It is not possible to change the folder path for any other user!</p>\n";
 			}
 		# get actual folder path
-		$query = "SELECT groupFileFolder from campaign_users 
+		$query = "SELECT groupFile_path from campaign_users 
 					WHERE user_id = $userId
 					AND camp_db = $loadedCampaign";
 		if ($result = mysqli_query($dbc, $query)) 
@@ -82,17 +82,17 @@
 			/* fetch associative array */
 			while ($obj = mysqli_fetch_object($result)) 
 				{
-					$groupFilePath=($obj->groupFilePath);
+					$groupFilePath=($obj->groupFile_path);
 				}
 		}
 		
 		if (empty($groupFilePath)) {
 			echo "	<fieldset id=\"inputs\">\n";
-			echo "		<input id=\"file\" type=\"text\"  name=\"groupFilePath\" placeholder=\"Please insert a folder path.\" >\n";
+			echo "		<input id=\"file\" type=\"text\"  size = \"60\" maxlength = \"100\" name=\"groupFilePath\" placeholder=\"Please insert a folder path.\" >\n";
 		}
 		else {
 			echo "	<fieldset id=\"inputs\">\n";
-			echo "		<input id=\"file\" type=\"text\"  name=\"groupFilePath\" placeholder=$groupFilePath >\n";
+			echo "		<input id=\"file\" type=\"text\" size = \"60\" maxlength = \"100\" name=\"groupFilePath\" value=\"$groupFilePath\" >\n";
 		}
 		echo "	<fieldset id=\"actions\">";
 		# BUTTON SAVE
