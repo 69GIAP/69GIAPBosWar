@@ -24,7 +24,7 @@
 					# show user administration due to User role
 					if ($userRole != "viewer")
 						{
-							include ( 'includes/userAdministration.php' );
+							include ( 'includes/userMgmtForm.php' );
 						}
 				?>
 
@@ -41,6 +41,9 @@
 	</div>
 
 <?php
+	# close $dbc
+	$dbc->close();
+
 	# Include the footer
 	include ( 'includes/footer.php' );
 ?>
