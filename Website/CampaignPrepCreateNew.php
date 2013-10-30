@@ -100,7 +100,7 @@ $count = $dbc->query("SELECT COUNT(*) FROM campaign_settings;");
 
 <?php
 	# Close the $dbc connection
-	$dbc->chose();
+	$dbc->close();
 
 	# Include the footer
 	include ( 'includes/footer.php' );
