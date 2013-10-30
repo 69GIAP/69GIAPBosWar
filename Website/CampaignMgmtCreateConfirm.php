@@ -9,7 +9,6 @@
 # Include the navigation on top
 	include ( 'includes/navigation.php' );
 
-
 ?>
 
 	<div id="wrapper">
@@ -41,16 +40,16 @@
 					# load map location
 					$query = "SELECT map_locations FROM maps WHERE map = '$campaignMap';";
 					
-					if(!$result = $dbc->query($query))
-						{die('There was an error running the query [' . $dbc->error . ']');}
+					if(!$result = $dbc->query($query)) {
+						die('CampaignMgmtCreateConfirm.php query error [' . $dbc->error . ']');
+					}
 					
-					if ($result = mysqli_query($dbc, $query)) 
-						{	
-						while ($obj = mysqli_fetch_object($result)) 
-							{
+					if ($result = $dbc->query($query)) {	
+						while ($obj = $result->fetch_object()) {
 								$campaignMapLocations	=	($obj->map_locations);
-							}
+//								echo "\$campaignMapLocations: $campaignMapLocations<br />\n";
 						}
+					}
 // Tushka has removed 49 spaces of indentation for readability's sake
 # CREATE CAMPAIGN DB
 $query = "CREATE DATABASE IF NOT EXISTS `$newCampaignDBName` ;";
@@ -98,14 +97,14 @@ $query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaig
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.col_10 LIKE boswar_db.col_10;";
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.Trains LIKE boswar_db.trains;";
 $query .= "INSERT INTO `$newCampaignDBName`.trains SELECT * FROM boswar_db.trains;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.Blocks LIKE boswar_db.blocks;";
+$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.blocks LIKE boswar_db.blocks;";
 $query .= "INSERT INTO `$newCampaignDBName`.blocks SELECT * FROM boswar_db.blocks;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.Vehicles LIKE boswar_db.vehicles;";
+$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.vehicles LIKE boswar_db.vehicles;";
 $query .= "INSERT INTO `$newCampaignDBName`.vehicles SELECT * FROM boswar_db.vehicles;";
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.static LIKE boswar_db.static;";
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.cam_param LIKE boswar_db.cam_param;";
 $query .= "INSERT INTO `$newCampaignDBName`.cam_param SELECT * FROM boswar_db.cam_param;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.Flags LIKE boswar_db.flags;";
+$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.flags LIKE boswar_db.flags;";
 $query .= "INSERT INTO `$newCampaignDBName`.flags SELECT * FROM boswar_db.flags;";
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.bridges LIKE boswar_db.bridges;";
 //$query .= "INSERT INTO `$newCampaignDBName`.bridges SELECT * FROM boswar_db.bridges;";
@@ -116,26 +115,28 @@ $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.bridges LIKE boswar_d
 $query .= "INSERT INTO campaign_settings (simulation, campaign, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
 $query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
 
-# Add user to the campagn_users table
+# Add user to the campaign_users table
 $query .="INSERT INTO campaign_users (user_id, camp_db, CoalID, groupFile_path) VALUES ($userId, '$newCampaignDBName', 0, '' );";
 
 // Tushka now returns you to your original indentation scheme
 
 					# CREATE NEW DB INSTANCE
 					/* execute multi query */
-					if (mysqli_multi_query($dbc, $query)) {
+					if ($dbc->multi_query($query)) {
 						do {
 							/* store first result set */
-							if ($result = mysqli_store_result($dbc)) {
+							if ($result = $dbc->store_result()) {
 								// do nothing as we don't expect feedback
-								mysqli_free_result($result);
+								$result->free();
 							}
-							/* print divider */
-							if (mysqli_more_results($dbc)) {
-								// not neede in this case - maybe later use will have it
-							}
-						} while (mysqli_next_result($dbc));
+						// need to include more_results to avoid strict checking warning
+						} while ($dbc->more_results() && $dbc->next_result());
 					}
+					if ($dbc->errno) { 
+						echo "CampaignMgmtCreateConfirm multi_query execution ended prematurely.\n";
+						var_dump($dbc->error); 
+					} 
+
 					
 					# forward to campaign configuration screen
 					$_SESSION['camp_db'] = "$newCampaignDBName";
