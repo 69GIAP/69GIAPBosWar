@@ -129,18 +129,28 @@ if ($_POST["updateCampaignParameters"] == 4) {
 // Section 5
 if ($_POST["updateCampaignParameters"] == 5) {
 	$config_done = $_POST["config_done"];
-	if ($config_done) {
+	if ($config_done == "true") {
 		$query = "UPDATE campaign_settings SET status = 2 ;"; 
-		echo "$query<br />\n";
+//		echo "$query<br />\n";
 		if(!$result = $camp_link->query($query)) {
 			die('CampaignMgmtConfirm #5 query error [' . $dbc->error . ']');
 		}
-		$result = $camp_link->query($query);
-		echo "$result<br />\n";
+//		$result = $camp_link->query($query);
+//		echo "$result<br />\n";
 		echo "Updated section 5";
+		header("Location: CampaignMgmtSetup.php?btn=campMgmt");
+	} else {
+		$query = "UPDATE campaign_settings SET status = 1 ;"; 
+//		echo "$query<br />\n";
+		if(!$result = $camp_link->query($query)) {
+			die('CampaignMgmtConfirm #5 query error [' . $dbc->error . ']');
+		}
+//		$result = $camp_link->query($query);
+//		echo "$result<br />\n";
+		echo "Updated section 5";
+		header("Location: CampaignMgmtConfigure.php?btn=campMgmt");
 	}
-}						
-
+} 
 ?>					
             </div>
     
