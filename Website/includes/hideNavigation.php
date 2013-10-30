@@ -13,11 +13,11 @@
 			}
 		else			
 			{
-				#DISPLAY HOME, PRE MISSION, POST MISSION, CAMPAIGN MAMANGEMENT
+				#DISPLAY HOME, CAMPAIGN MANAGEMENT, PRE MISSION, POST MISSION
 				echo "<li><a href=\"includes/unsetCampaignSessions.php?btn=home\"	class=\"home\"><span></span></a></li>\n";
+				echo "<li><a href=\"CampaignMgmt.php?btn=campMgmt\" 				class=\"campMgmt\"><span></span></a></li>\n";
 				echo "<li><a href=\"CampaignMgmt.php?btn=preMsn\" 					class=\"preMsn\"><span></span></a></li>\n";
 				echo "<li><a href=\"CampaignMgmt.php?btn=postMsn\" 					class=\"postMsn\"><span></span></a></li>\n";
-				echo "<li><a href=\"CampaignMgmt.php?btn=campMgmt\" 				class=\"campMgmt\"><span></span></a></li>\n";
 			}
 		}
 	elseif($userRole == "commander") 
