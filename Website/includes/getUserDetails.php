@@ -38,6 +38,7 @@ while($row = mysqli_fetch_array($result))
         print "<b>User Role: </b> ".$roleName." <br>\n";			
         print "<b>Email Adress: </b> ".$row['email'] . " <br>\n";
         print "<b>Telephone: </b> ".$row['phone'] . " <br>\n";
+		print "</p>\n";
   }
 
 $result = mysqli_query($dbc,$sql2);
@@ -54,7 +55,7 @@ while($row = mysqli_fetch_array($result))
 				$CoalName = $row2['Coalitionname'];
 			}
 		print "<hr noshade width=\"auto\" size=\"1\" align=\"left\">\n";
-		print "<b>Campaign DB: </b> ".$row['camp_db'] . " <b>Coalition:</b> ".$CoalName . "<br>\n";
+		print "<p><b>Campaign DB: </b> ".$row['camp_db'] . " <b>Coalition:</b> ".$CoalName . "<br>\n";
 		print "<b>Group File Path: </b>".$groupFilePath."<br>\n";
 	}
 		print "</p>\n";

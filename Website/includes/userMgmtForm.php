@@ -61,31 +61,34 @@
 		echo "		<button type=\"modify\" name =\"modify\" id=\"loginSubmit\" value =\"0\" >!! Delete User !!</button>\n";
 		echo "	</fieldset>\n";
 	}
-	// show Goup File Folder Form only if administrator is connected to a campaign
+	// show Group File Folder Form only if administrator is connected to a campaign
 	if ($loadedCampaign != '')
 	{
 		echo "<h3>Choose the default folder for your Group Files:</h3>\n";
 		
 		if ($userRole == 'administrator') {
-				echo "<p>The file path is stored for the logged on user and the connected campaign. It is not possible to change the folder path for any other user!</p>\n";
+				echo "<p>The file path is stored for the logged on user and the campaign:<br>\n";
+				echo "<b>$loadedCampaign</b><br> \n";
+				echo "You cannot change the folder path for any other user! \n";
+				echo "It is also not possible to change the folder path for any other campaign then the one actually connected to.</p>\n";
 			}
 		else {
 				echo "<p>It is not possible to change the folder path for any other user!</p>\n";
 			}
+			
 		# get actual folder path
 		$query = "SELECT groupFile_path from campaign_users 
 					WHERE user_id = $userId
-					AND camp_db = $loadedCampaign";
-		if ($result = mysqli_query($dbc, $query)) 
+					AND camp_db = '$loadedCampaign'";
+					
+		if ($result = $dbc->query($query)) 					
 		{				
-			echo "<option value=\"\" disabled selected>Select New Role</option>\n";	
 			/* fetch associative array */
 			while ($obj = mysqli_fetch_object($result)) 
 				{
 					$groupFilePath=($obj->groupFile_path);
 				}
 		}
-		
 		if (empty($groupFilePath)) {
 			echo "	<fieldset id=\"inputs\">\n";
 			echo "		<input id=\"file\" type=\"text\"  size = \"60\" maxlength = \"100\" name=\"groupFilePath\" placeholder=\"Please insert a folder path.\" >\n";

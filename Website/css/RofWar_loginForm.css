@@ -136,7 +136,7 @@ fieldset
     background-position: 5px -2px !important;
 }
 
-#password1, #password2
+#password, #password1, #password2
 {
     background-position: 5px -52px !important;
 }

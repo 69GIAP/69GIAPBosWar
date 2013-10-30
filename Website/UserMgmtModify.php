@@ -95,7 +95,7 @@
 					}
 
 				# get user name
-					$sql = "SELECT username FROM users WHERE user_id = $id";
+					$sql = "SELECT username FROM users WHERE user_id = $id;";
 					
 					if(!$result = $dbc->query($sql)){
 					die('There was an error running the query ' . $dbc->error());
@@ -108,25 +108,26 @@
 				# If a users should be deleted
 				if (($_POST["modify"] == 0))
 					{
-						$sql = "DELETE FROM users WHERE	user_id = '$id'; DELETE FROM campaign_users where user_id = '$id'";
+						$sql  = "DELETE FROM users WHERE	user_id = $id;";
+						$sql .= "DELETE FROM campaign_users where user_id = $id;";
 					}
 					else
 				# if a user wants to have his password reset
 				if (($_POST["modify"] == 1))
 					{
-						$sql = "UPDATE users SET password = '$password' WHERE user_id = '$id'";
+						$sql = "UPDATE users SET password = '$password' WHERE user_id = $id;";
 					}
 					else
 				# if a user wants to have another role
 				if (($_POST["modify"] == 2))
 					{
-						$sql = "UPDATE users SET role_id = \"$newUserRoleId\" WHERE user_id = '$id'";
+						$sql = "UPDATE users SET role_id = \"$newUserRoleId\" WHERE user_id = $id;";
 					}
 				# if a user is assigned to a campaign / update coalition
 				if (($_POST["modify"] == 3))
 					{
 						# check if an entry exists
-						$sql = "SELECT user_id from campaign_users where user_id = '$id' and camp_db = '$campdb'";
+						$sql = "SELECT user_id from campaign_users where user_id = $id and camp_db = '$campdb';";
 						
 						if(!$result = $dbc->query($sql))
 							{die('There was an error running the query [' . $dbc->error . ']');}
@@ -141,11 +142,11 @@
 							# if an entry exists we update the coalition Id, if not we create a new entry. This avoids duplicate conflicting entries
 							if (isset($exists))
 								{
-									$sql = "UPDATE campaign_users SET CoalID = '$userCoalitionIdNew' WHERE user_id = '$id' and camp_db = '$campdb'";
+									$sql = "UPDATE campaign_users SET CoalID = '$userCoalitionIdNew' WHERE user_id = $id and camp_db = '$campdb';";
 								}
 							else 
 								{
-									$sql = "INSERT INTO campaign_users (user_id, camp_db, CoalID) VALUES ('$id', '$campdb', '$userCoalitionIdNew')";
+									$sql = "INSERT INTO campaign_users (user_id, camp_db, CoalID) VALUES ($id, '$campdb', '$userCoalitionIdNew');";
 								}
 						}
 				
@@ -153,21 +154,21 @@
 				# remove a user from a campaign
 				if (($_POST["modify"] == 4))
 					{	
-						$sql = "DELETE FROM campaign_users WHERE user_id = '$id' and camp_db = '$campdb'";
+						$sql = "DELETE FROM campaign_users WHERE user_id = $id and camp_db = '$campdb';";
 					}
 				# update coalition
 				if (($_POST["modify"] == 5))
 					{	
-						$sql = "UPDATE campaign_users SET CoalID = $userCoalitionIdNew WHERE user_id = '$id' and camp_db = '$campdb'";
+						$sql = "UPDATE campaign_users SET CoalID = $userCoalitionIdNew WHERE user_id = $id and camp_db = '$campdb';";
 					}
 				# store group file path, each single user has to do this on his own - only commanders and campaign administrators can see the form field
 				if (($_POST["modify"] == 6))
 					{	
-						$sql = "SELECT * from campaign_users WHERE user_id = '$id' and camp_db = '$_SESSION[camp_db]'"; // reqires revision to take connected db name instead of drop down db name - done
+						$sql = "SELECT id from campaign_users WHERE user_id = $id and camp_db = '$loadedCampaign';";
 						$result = $dbc->query($sql);
 						if ($result->num_rows!=0)
 							{
-								$sql = "UPDATE campaign_users SET groupFile_path = '$groupFilePath' WHERE user_id = '$id' and camp_db = '$_SESSION[camp_db]'";
+								$sql = "UPDATE campaign_users SET groupFile_path = '$groupFilePath' WHERE user_id = $id and camp_db = '$loadedCampaign';";
 								$error = 0;
 							}
 						else
