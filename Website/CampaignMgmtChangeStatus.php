@@ -24,9 +24,6 @@
 					# include getCampaignVariables.php
 					include ( 'includes/getCampaignVariables.php' );
 
-					# use this information to connect to campaign 
-					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
-					
 					# start form
 					echo "<form id=\"airfieldForm\" name=\"login\" action=\"CampaignConfigureConfirm.php\" method=\"post\">\n";
 				
@@ -43,10 +40,6 @@
 					echo "	</fieldset>\n";
 
 					echo "</form>\n";          
-
-					# close $camp_link
-					$camp_link->close();
-
                 ?>
             
             </div>
