@@ -25,7 +25,7 @@
 					include ( 'includes/getCampaignVariables.php' );
 
 					# start form
-					echo "<form id=\"airfieldForm\" name=\"login\" action=\"CampaignConfigureConfirm.php\" method=\"post\">\n";
+					echo "<form id=\"airfieldForm\" name=\"login\" action=\"CampaignMgmtConfigureConfirm.php\" method=\"post\">\n";
 				
 					echo "	<fieldset id=\"inputs\">\n";
 					echo "		<p>The current status of the campaign is: <b>$camp_status</b></p>\n";

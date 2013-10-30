@@ -61,10 +61,13 @@
 		echo "		<button type=\"modify\" name =\"modify\" id=\"loginSubmit\" value =\"0\" >!! Delete User !!</button>\n";
 		echo "	</fieldset>\n";
 	}
-	
+	// show Goup File Folder Form only if administrator is connected to a campaign
+	if ($loadedCampaign != '')
+	{
 		echo "<h3>Choose the default folder for your Group Files:</h3>\n";
+		
 		if ($userRole == 'administrator') {
-				echo "<p>The file path is stored for the logged on user and the selected campaign. It is not possible to change the folder path for any other user!</p>\n";
+				echo "<p>The file path is stored for the logged on user and the connected campaign. It is not possible to change the folder path for any other user!</p>\n";
 			}
 		else {
 				echo "<p>It is not possible to change the folder path for any other user!</p>\n";
@@ -94,8 +97,8 @@
 		echo "	<fieldset id=\"actions\">";
 		# BUTTON SAVE
 		echo "		<button type=\"modify\" name =\"modify\" id=\"loginSubmit\" value =\"6\" >SAVE</button>\n";		
-
-	echo "	</fieldset>\n";
+		echo "	</fieldset>\n";
+	}
 	echo "</form>\n"; 
 	
 	# display of user deatils of selected user
