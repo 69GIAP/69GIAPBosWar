@@ -31,13 +31,12 @@
 						
 				# updates
 				if(!$result = $dbc->query($query)){
-					die('There was an error running the query <br>'.$query."<br>" . mysqli_error($dbc));
+					die('There was an error running the query <br>'.$query."<br>" . $dbc->error());
 				}
 					else
 				{				
 					header ("Location: CampaignMgmtChangeStatus.php?btn=campMgmt");
 				}
-	   
                 ?>					
             </div>
     
@@ -52,6 +51,8 @@
 	</div>
 
 <?php
+	# close $dbc
+	$dbc->close;
 	# Include the footer
 	include ( 'includes/footer.php' );
 ?>
