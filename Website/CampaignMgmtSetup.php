@@ -33,49 +33,72 @@
 					echo "<form id=\"campaignMgmtSetupForm\" name=\"campaignSetup\" action=\"CampaignMgmtSetupConfirm.php?btn=campMgmt\" method=\"post\">\n";
 					
 					echo "<br>Next we work on setting up the campaign in the mission editor.<br />\n";
-					echo "<br>You can open the Mission Editor in a separate window to help this process - OK<br>\n";
+					echo "<br>You can open the Mission Editor in a separate window to carry out this process.<br>\n";
 					
-					echo "<p>First we define the map upon which the campaign will be run in the Mission editor.</p>\n";
-					echo "<p>In the Mission Editor choose file menu, New, right click with mouse on map and select Properties. This will open the mission properties window.<br>\n";
-					echo "Enter a name for the mission, preferably the same as that you chose for the campaign. Avoid special characters, do not make it a pure numeric start with an alpha character and be consistent in use of upper and lower case.<br>\n";
-					echo "Mission type should be Deathmatch.</p>\n";
+					echo "<h3>Preliminaries</h3>\n";
+					echo "<p>To start a new mission click 'File' and 'New' in the upper left.</p>\n";
+					echo "<p>If the 'Mission Properties' window is not open, right click with your mouse on the map and select Properties. This will open the 'Mission Properties' window.</p>\n";
+ 
+					echo "<p>Enter a name for the mission, preferably the same as that you chose for the campaign ($campaign). Avoid special characters, preferably start with an alpha character and be consistent in use of upper and lower case.</p>\n";
 					
-					echo "<p>Now we must select the Map. Currently in ROF there are two main campaign maps, the <b>Western Front map</b> and the <b>Channel map</b>. 
-					Then there are also two small dogfight maps: <b>df3xlake</b> and <b>df5x5verdun</b>.<br>\n";
-					echo "For Landscape info, Height Map, Textures, Forests, GUI Map, Season you need to select an appropriate matching set in the Mission editor.<br>\n"; 
-					echo "In the Mission Editor file menu, save as giving it a name for the campaign plus\"_template\" and placing it in the /data/Multiplayer/Dogfight/ directory.<br>\n";
-					
-					
-//					echo "<p>Next we have  to tell which map was chosen to our campaign manager so select the map button you have chosen:</p>\n";	
-//								
-//					echo "	<fieldset id=\"inputs\">\n";
-//					echo "		<h3>Campaign Map</h3>\n";
-//					echo "		<select name=\"newCampStatus\" id=\"database\">\n";
-//					# the input from here will update the campaign fields in cam_param or campaign_statistics whatever
-//					# SELECT MAP
-//					include 'includes/getCampaignMap.php'; 
-//					echo "		</select>\n";
-//					echo "	</fieldset>\n";
-										
+					echo "<h3>The Campaign Map</h3>\n";
+					echo "<p>Now we must select the Map. Currently in ROF there are two main campaign maps, the <b>Western Front map (05.01.18, etc)</b> and the <b>Channel map</b>.  Then there are also two small dogfight maps: <b>df3xlake</b> and <b>df5x5verdun</b>.</p>\n";
+					echo "<p>Select whichever GUI map and season best suits your campaign.</p>\n";
+					echo "<p>Then for Landscape info, Height Map, Textures, and Forests you need to select an appropriate matching set in the Mission editor.<br>\n"; 
+					$campaign_template = "$campaign"."_template";
+					echo "<p>In the Mission Editor File menu, select 'Save As...', giving it a file name for the campaign plus\"_template\" (e.g. $campaign_template.Mission) and placing it in the /data/Multiplayer/Dogfight/ directory.</p>\n";
+					// we should be able to determine the map from the GuiMap line in the Options section of the Mission file... just a SMOP.  :)
 					/*
+					echo "<p>Next we have  to tell which map was chosen to our campaign manager so select the map button you have chosen:</p>\n";	
+								
+					echo "	<fieldset id=\"inputs\">\n";
+					echo "		<h3>Campaign Map</h3>\n";
+					echo "		<select name=\"newCampStatus\" id=\"database\">\n";
+					# the input from here will update the campaign fields in cam_param or campaign_statistics whatever
+					# SELECT MAP
+					include 'includes/getCampaignMap.php'; 
+					echo "		</select>\n";
+					echo "	</fieldset>\n";
+										
 					echo '<br>Select Campaign Map<br>';
 					echo '<br>Western Front :Button: <br>';
 					echo '<br>Channel :Button:<br>';
 					echo '<br>df3x3lake :Button:<br>';
 					echo '<br>df5x5verdun :Button:<br>';
 					*/
-					
-					
-					echo "<p>We will now populate our map with airfields. In the mission editor select Import from file, go to:<br>\n";
-					echo "<b>directory /data/Template/</b><br>\n";
-					echo "Select the base-no-trunc file that corresponds to your map. <br>\n";
-					echo "The Western front map uses Base-no-trunc the Channel map uses base-no-trunc-channel the dogfight maps have merged base files. <br>\n";
-					echo "Loading in these files can take a while, patience. </p>\n";
-					
-					echo "<p>We now need to define who is fighting who. So back in the Mission editor, Mission Properties, click on Countries.<br>\n";
-					echo "Our Campaign manager has been designed to create a war between two coalitions, Allies and Central Powers.<br>\n";
+
+					echo "<h3>The Opposing Sides</h3>\n";
+					echo "<p>We now need to define who is fighting whom. So back in the Mission editor in Mission Properties, click on Countries.</p>\n";
+					echo "<p>Our Campaign manager has been designed to create a war between two coalitions, Allies (Entente) and Central Powers.<br>\n";
 					echo "While it is possible to configure other theoretical alliances like \"War dogs\" and \"Mercenaries\"<br>\n";
-					echo "We did not design or test any options other than Allies and Central Powers so allocate the real countries to either coalition and ignore the rest.<br>\n";
+					echo "We did not design or test any options other than Allies (Entente) and Central Powers so allocate the real countries to either coalition and ignore the rest.<br>\n";
+					echo "In the Mission Editor you should use the File menu, Save before coming back here.</p>\n";
+					
+//					echo "	<fieldset id=\"inputs\">\n";
+//					# The input from this section will update the countries/coalition table for the campaign
+//					# SELECT COUNTRY - CHOOSE COALITION
+//					include 'includes/getCountriesForCoalitionSet.php';
+//					echo "	</fieldset>\n";
+					
+					/*
+					echo '<br>Coalitions....... : Allies : Central Powers<br>';
+					echo '<br>France........... : Button : Button :<br>';
+					echo '<br>Great Britain.... : Button : Button :<br>';
+					echo '<br>USA.............. : Button : Button :<br>';
+					echo '<br>Italy............ : Button : Button :<br>';
+					echo '<br>Russia........... : Button : Button :<br>';
+					echo '<br>Germany.......... : Button : Button :<br>';
+					echo '<br>Austro-Hungary... : Button : Button :<br>';
+					*/
+					
+					echo "<h3>Import the infrastructure</h3>\n";
+					echo "<p>This is the slow step.</p>\n";
+					echo "<p>We will now populate our template with all defined infrastructure (including, most importantly, the airfields).</p>\n" ;
+					echo "<p>In the mission editor 'File' menu select 'Import From File...', go to: <b>directory /data/Template/</b></p>\n";
+					echo "<p>Select the base-no-trunc file that corresponds to your map. </p>\n";
+					echo "<p>The Western front map uses Base-no-trunc the Channel map uses base-no-trunc-channel the dogfight maps have merged base files. \n";
+					echo "Loading in these files can take a while, be patient. Refresh your beverage, relieve yourself, check the forums, watch several yourtube videos, and generally wait until the 'Please wait until operation is finished' popup disappears.  This seemingly takes forever (tens of minutes on a reasonably fast system) for the large maps... and loading a mission would take as long if we left all that stuff in the map, which, of course, we will not do.  This should impress you with the detailed work that has gone into creating these maps!</p>\n";
+					
 //					echo "In the Mission Editor you should use the file menu, save before coming back here to inform your Campaign Manager of the choice.</p>\n";
 					
 //					echo "	<fieldset id=\"inputs\">\n";
