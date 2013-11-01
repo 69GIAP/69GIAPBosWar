@@ -28,7 +28,7 @@
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
 
 					# initialise variables
-					echo "<h1>Upload $campaign Campaign Files</h1>";
+					echo "<h1>Import $campaign Campaign Files</h1>";
 					$query = "SELECT * from campaign_settings;";
 					if(!$result = $dbc->query($query)) {
 						die('CampaignMgmtSetup.php query error [' . $dbc->error . ']');
@@ -42,14 +42,13 @@
 					}
 					$result->free();
 
-					
-					echo "<p>We now need to upload our template and group files to the BOSWAR campaign manager for future use.</p>\n";
-
 					$campaign_template = "$campaign"."_template";
+					
+					echo "<p>We will now use the template ($campaign_template.Mission) and group file ($campaign-template_to_airfield.Group) we recently uploaded tothe server.</p>\n";
+					echo "<p>The template file will be used to enter the combatant's countries and coalitions into the $campaign database, and to determine the minimum and maximum coordinates of your combat sector from the influence areas you have defined.</p>\n";
+					echo "<p>The airfield group file will be populated with aircraft and used in all future missions.</p>\n";
 
-					echo "<p>Start by uploading your $campaign_template.Mission file.</p>\n";
-					echo "<p>Then upload your $campaign-template_to_airfield.Group.</p>\n";
-
+/*
 					# require pickFile.php
 					require ('functions/pickFile.php');
 
@@ -58,7 +57,6 @@
 
 					# go
 					pickFile($returnpage);
-
 					# start form
 					echo "<form id=\"campaignMgmtUploadForm\" name=\"campaignSetup\" action=\"CampaignMgmtUploadDone.php?btn=campMgmt\" method=\"post\">\n";
 					echo "<p>Once you are ready to proceed, click \"Next\"</p>\n";
@@ -66,6 +64,7 @@
 					echo "<fieldset id=\"actions\">\n";	
 					echo "		<button type=\"submit\" name =\"Upload\" id=\"UploadDone\" value =\"true\" >Next</button>\n"; # the value defines the action after the button was pressed
 					echo "	</fieldset>\n";
+*/
 
 /*
 					echo "<p>We can now load this group file into our Campaign Manager by clicking on the \"Template to Airfields\" big Button.</p>\n";

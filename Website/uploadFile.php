@@ -25,6 +25,9 @@ include ( 'includes/navigation.php' );
 $SaveToDir = "C:/BOSWAR/";
 // restrict uploaded files to .Group and .Mission files
 $allowedExts = array("Group", "group", "Mission", "mission");
+// get $returnpage
+$returnpage = $_POST["returnpage"];
+//echo "\$returnpage: $returnpage<br />\n";
 
 $temp = explode(".", $_FILES["userfile"]["name"]);
 $extension = end($temp);
@@ -55,6 +58,8 @@ if ( $_FILES["userfile"]["size"] < 4000000 && in_array($extension, $allowedExts)
    }
 }
 ?> 
+<br />&nbsp;<br />
+<a href="$returnpage" onClick="history.back();return false;">Go back</a>
 </div>
 </div>
 <?php
