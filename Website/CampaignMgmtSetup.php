@@ -32,10 +32,12 @@
 					# start form
 					echo "<form id=\"campaignMgmtSetupForm\" name=\"campaignSetup\" action=\"CampaignMgmtSetupConfirm.php?btn=campMgmt\" method=\"post\">\n";
 					
-					echo "<br>Next we work on setting up the campaign in the mission editor.<br />\n";
-					echo "<br>You can open the mission editor in a separate window to carry out this process.<br>\n";
 					
 					echo "<h3>Preliminaries</h3>\n";
+					echo "<p>You should create a directory somewhere on your computer where we will place all the template and .Group files which will be exchanged between the mission editor and the BOSWAR campaign manager for this campaign.<br /> You may be running multiple campaigns in parallel so make it unique to the campaign, e.g. $campaign-groups.<br /> Otherwise there could be confusion between the campaigns.<br /> We will refer to this directory as your \"campaign groups directory\".</p>\n";
+					echo "<p>In the BOSWAR campaign manager (while connected to your campaign ($campaign), select \"User Management\" from the upper menu bar.<br /> Scroll down to \"Choose the default folder for your Group Files:\" and enter the full path and folder name there, then click \"Save\".  Ignore the trailing slash.</p>\n";
+					echo "<br>Next we work on setting up the campaign in the mission editor.<br />\n";
+					echo "<br>You can open the mission editor in a separate window to carry out this process.<br>\n";
 					echo "<p>To start a new mission click 'File' and 'New' in the upper left.</p>\n";
 					echo "<p>If the 'Mission Properties' window is not open, right click with your mouse on the map and select Properties. This will open the 'Mission Properties' window.</p>\n";
  
@@ -46,7 +48,7 @@
 					echo "<p>Select whichever GUI map and season best suits your campaign.</p>\n";
 					echo "<p>Then for Landscape info, Height Map, Textures, and Forests you need to select an appropriate matching set in the mission editor.<br>\n"; 
 					$campaign_template = "$campaign"."_template";
-					echo "<p>In the mission editor File menu, select 'Save As...', giving it a file name for the campaign plus\"_template\" (e.g. $campaign_template.Mission) and placing it in the /data/Multiplayer/Dogfight/ directory.</p>\n";
+					echo "<p>In the mission editor File menu, select 'Save As...', giving it a file name for the campaign plus\"_template\" (e.g. $campaign_template.Mission) and saving it to your campaign groups directory.</p>\n";
 					// we should be able to determine the map from the GuiMap line in the Options section of the Mission file... just a SMOP.  :)
 					/*
 					echo "<p>Next we have  to tell which map was chosen to our campaign manager so select the map button you have chosen:</p>\n";	
@@ -69,7 +71,7 @@
 
 					echo "<h3>The Opposing Sides</h3>\n";
 					echo "<p>We now need to define who is fighting whom. So back in the mission editor in 'Mission Properties', click on 'Countries'.</p>\n";
-					echo "<p>Our campaign manager has been designed to create a war between two coalitions, Allies (Entente) and Central Powers.<br>\n";
+					echo "<p>Our BOSWAR campaign manager has been designed to create a war between two coalitions, e.g. Allies (Entente) and Central Powers.<br>\n";
 					echo "While it is possible to configure other theoretical alliances like \"War dogs\" and \"Mercenaries\"<br>\n";
 					echo "We did not design or test any options other than Allies (Entente) and Central Powers so allocate the real countries to either coalition and ignore the rest.<br>\n";
 					echo "In the mission editor you should use the File menu, Save, before coming back here.</p>\n";
@@ -180,16 +182,22 @@
 //					echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"1\" >Apply Configuration</button>\n";	# the value defines the action after the button was pressed
 //					echo "	</fieldset>\n";
 					
+					echo "<p>Save the mission before continuing.</p>\n";
+
 					echo "<h3>Refine the Template</h3>\n";
 					echo "<p>Next we will start to refine our campaign template<br>";
 					# the input from here will update the campaign fields in cam_param or campaign_statistics whatever
-					echo "<p>We now want to save <b>just</b> the objects that are in our sector. On the top icon bar is a button for \"OBJ FILT\" select that and make sure to \"Select All\" then OK.
-					Using left mouse button drag from bottom left of our sector to top right of our sector. This will highlight all objects in our sector.
-					Next File, Save selection to File, select /data/Multiplayer/Dogfight/ and save the file as campaign_name-no-trunc.
-					A single left mouse click unselects. Now go to the Search and Select menu, Select All Objects in Mission and press the delete key on your keyboard. There will be a pause, patience and all the airfields etc. will dissapear.
-					We can now load back in only those objects that were in our sector with File, Import from File, select /data/Multiplayer/Dogfight/ and load the file campaign_name-no-trunc.
-					You should now have just the airfields in your sector plus some towns or stuff. File, Save to make sure we do not lose this.
-					</p>\n";
+					echo "<p>We now want to save <b>just</b> the objects that are in our sector.</p> 
+					<p>On the top icon bar is a button for the object filter abbreviated as \"OBJ FILT\".  Select that, then \"Select All\" then select \"OK\".</p>
+					<p>Click the bottom left of the influence areas and holding the left mouse button drag from bottom left of our sector to top right of our sector. This will highlight all objects in our sector.  Be sure this includes all the defined influence areas.  Better to be slightly generous than slightly stingy here.</p>";
+					echo "<p>Next in the File menu, select \"Save selection to File\", select /data/Multiplayer/Dogfight/ and save the file as campaign_name-no-trunc (e.g. $campaign-no-trunc.Group).</p>
+							<p>Left click outside the area to unselect it.</p>
+						   	<p>Now go to the \"Search and Select\" menu, select \"Select All Objects in Mission\" and press the \"Delete\" key on your keyboard. There will be a pause (have patience) and all the airfields etc. will disappear.</p>
+					<p>We can now load back in only those objects that were in our sector with File, Import from File, select /data/Multiplayer/Dogfight/ and load the file campaign_name-no-trunc (e.g. $campaign-no-trunc.Group).
+					You should now have just the airfields in your sector plus some towns or stuff.</p> 
+					<p>File, Save to make sure we do not lose this!</p>\n";
+
+					echo "<h3>Activate Select Airfields</h3>\n";
 					echo "<p>Our next step in the creation of the campaign template is to decide which Airfields will be active. Again, for performance reasons 
 					we do not want every airfield in our sector to be active. So chose 3-4 for each side.
 					Go back to the OBJ FILT button at the top, Clear all, then click on just Airfield, OK. Now on the map you see only airfields.
@@ -198,8 +206,7 @@
 					Next do the same for an Allied airfield setting the Country to one of the Allied Countries.
 					Continue till all active airfields are set.</p>\n";
 					
-					echo "<p>Next we are going to send the information  about all these airfields to our Campaign Manager. In Preparation for this you should create a directory somewhere on your computer where we will place all the .Group files which will be exchanged between the Mission Editor and the Campaign Manager for this campaign. You may be running several campaigns in parallel so make it unique to the campaign. Otherwise there will be confusion between the campaigns.
-					Once ready select all the airfields then File, Save selection to File, select our campaign directory and save to the filename \"template_to_airfield.Group\".</p>\n";
+					echo "<p>Next we are going to send the information  about all these airfields to our BOSWAR campaign manager.  Once ready select all the airfields then File, Save selection to File, select your campaign groups directory and save to the filename \"template_to_airfield.Group\" (e.g. .</p>\n";
 					
 					echo "<p>We can now load this group file into our Campaign Manager by clicking on the \"Template to Airfields\" big Button.</p>\n";
 					
@@ -209,8 +216,8 @@
 					echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"2\" >Template to Airfields</button>\n"; # the value defines the action after the button was pressed
 					echo "	</fieldset>\n";
 					
-					echo "<p>If the airfields load in to the Campaign manager has worked correctly we can now return to the Mission Editor and 
-					delete all airfields from our template and again save the template. From this point forwards in the campaign before each mission the campaign manager
+					echo "<p>If the airfields load into the BOSWAR campaign manager correctly we can now return to the mission editor and 
+					delete all airfields from our template and again save the template. From this point forwards in the campaign before each mission the BOSWAR campaign manager
 					will populate the active airfields with the right quantity and type of aircraft, manage activation de-activation or capture and send a .Group file to the Mission Editor for the assembly of each mission.</p>\n";
 					# after this point will be added the population of bridges into the template grouping and send to the Campaign Manager 
 					# again they will be managed in the Campaign manager an sent to the Mission Editor for assembly into each mission.  
