@@ -5,6 +5,7 @@
 // Oct 11, 2013
 // latest revision: Oct 26, 2013
 // BOSWAR version1.1
+// for testing see uploadFile.php
 
 // Incorporate the MySQL connection script.
 require ( '../connect_db.php' );
@@ -20,32 +21,35 @@ include ( 'includes/navigation.php' );
 <div id="container">
 <div id="content">
 <?php           
+// configuration
+$SaveToDir = "C:/BOSWAR/";
 // restrict uploaded files to .Group and .Mission files
 $allowedExts = array("Group", "group", "Mission", "mission");
-$temp = explode(".", $_FILES["file"]["name"]);
+
+$temp = explode(".", $_FILES["userfile"]["name"]);
 $extension = end($temp);
 // limit size to 4 MB max (3 MB is a large .Mission file in RoF)
 // (can tune later if needed for BoS)
 // and require extension to be in allowed list
-if ( $_FILES["file"]["size"] < 4000000 && in_array($extension, $allowedExts)) {
-   if ($_FILES["file"]["error"] > 0) {
-      echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
+if ( $_FILES["userfile"]["size"] < 4000000 && in_array($extension, $allowedExts)) {
+   if ($_FILES["userfile"]["error"] > 0) {
+      echo "Return Code: " . $_FILES["userfile"]["error"] . "<br>";
    } else {
-      echo "Upload: " . $_FILES["file"]["name"] . "<br>";
-      echo "Type: " . $_FILES["file"]["type"] . "<br>";
-      echo "Size: " . (round ($_FILES["file"]["size"] / 1024 /1024, 2)) . " MB<br>";
-      echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br>";
-      if (file_exists("C:/BOSWAR/" . $_FILES["file"]["name"])) {
-	 echo $_FILES["file"]["name"] . " already exists. ";
+      echo "Upload: " . $_FILES["userfile"]["name"] . "<br>";
+      echo "Type: " . $_FILES["userfile"]["type"] . "<br>";
+      echo "Size: " . (round ($_FILES["userfile"]["size"] / 1024 /1024, 2)) . " MB<br>";
+      echo "Temp file: " . $_FILES["userfile"]["tmp_name"] . "<br>";
+      if (file_exists("$SaveToDir" . $_FILES["userfile"]["name"])) {
+	 echo $_FILES["userfile"]["name"] . " already exists. ";
       } else {
-	 move_uploaded_file($_FILES["file"]["tmp_name"],
-	 "C:/BOSWAR/" . $_FILES["file"]["name"]);
-	 echo "Saved to: " . "C:/BOSWAR/" . $_FILES["file"]["name"];
+	 move_uploaded_file($_FILES["userfile"]["tmp_name"],
+	 "$SaveToDir" . $_FILES["userfile"]["name"]);
+	 echo "Saved to: " . "$SaveToDir" . $_FILES["userfile"]["name"];
       }
    }
 } else {
-   if ($_FILES["file"]["size"] > 4000000) {
-      echo $_FILES["file"]["name"]." is > 4 MB<br />\n";
+   if ($_FILES["userfile"]["size"] > 4000000) {
+      echo $_FILES["userfile"]["name"]." is > 4 MB<br />\n";
    } else {
       echo ".$extension is not an allowed extension";
    }
@@ -63,7 +67,7 @@ include ( 'includes/sidebar.php' );
 
 <?php
 // close $dbc
-$dbc->chose();
+$dbc->close();
 // Include the footer
 include ( 'includes/footer.php' );
 ?>

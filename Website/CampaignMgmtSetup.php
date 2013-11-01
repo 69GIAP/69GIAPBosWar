@@ -28,25 +28,56 @@
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
 
 					# initialise variables
-					echo "<h1>Setup/Initialize $campaign Campaign</h1>";
+					echo "<h1>$campaign Campaign Mission Editor Setup</h1>";
+					$query = "SELECT * from campaign_settings;";
+					if(!$result = $dbc->query($query)) {
+						die('CampaignMgmtSetup.php query error [' . $dbc->error . ']');
+					}
+		
+					if ($result = $dbc->query($query)) {
+						/* fetch associative array */
+						while ($obj = $result->fetch_object()) {
+								$map=($obj->map);
+						}
+					}
+					$result->free();
+
 					# start form
 					echo "<form id=\"campaignMgmtSetupForm\" name=\"campaignSetup\" action=\"CampaignMgmtSetupConfirm.php?btn=campMgmt\" method=\"post\">\n";
-					
+
+					echo "<p>This is a job for the campaign administrator who should have basic skills in the Mission Editor, but don't worry.  We will lead you step-by-step.</p>\n";
+
 					
 					echo "<h3>Preliminaries</h3>\n";
 					echo "<p>You should create a directory somewhere on your computer where we will place all the template and .Group files which will be exchanged between the mission editor and the BOSWAR campaign manager for this campaign.<br /> You may be running multiple campaigns in parallel so make it unique to the campaign, e.g. $campaign-groups.<br /> Otherwise there could be confusion between the campaigns.<br /> We will refer to this directory as your \"campaign groups directory\".</p>\n";
 					echo "<p>In the BOSWAR campaign manager (while connected to your campaign ($campaign), select \"User Management\" from the upper menu bar.<br /> Scroll down to \"Choose the default folder for your Group Files:\" and enter the full path and folder name there, then click \"Save\".  Ignore the trailing slash.</p>\n";
-					echo "<br>Next we work on setting up the campaign in the mission editor.<br />\n";
-					echo "<br>You can open the mission editor in a separate window to carry out this process.<br>\n";
+					echo "<p>Next we work on setting up the campaign in the mission editor.</p>\n";
+					echo "<p>You can open the mission editor in a separate window to carry out this process.<p>\n";
 					echo "<p>To start a new mission click 'File' and 'New' in the upper left.</p>\n";
 					echo "<p>If the 'Mission Properties' window is not open, right click with your mouse on the map and select Properties. This will open the 'Mission Properties' window.</p>\n";
  
-					echo "<p>Enter a name for the mission, preferably the same as that you chose for the campaign ($campaign). Avoid special characters, preferably start with an alpha character and be consistent in use of upper and lower case.</p>\n";
+					echo "<p>Enter a name for the mission, preferably the same as that you chose for the campaign ($campaign). Avoid special characters and be consistent in use of upper and lower case.</p>\n";
 					
 					echo "<h3>The Campaign Map</h3>\n";
-					echo "<p>Now we must select the Map. Currently in ROF there are two main campaign maps, the <b>Western Front map (05.01.18, etc)</b> and the <b>Channel map</b>.  Then there are also two small dogfight maps: <b>df3xlake</b> and <b>df5x5verdun</b>.</p>\n";
-					echo "<p>Select whichever GUI map and season best suits your campaign.</p>\n";
-					echo "<p>Then for Landscape info, Height Map, Textures, and Forests you need to select an appropriate matching set in the mission editor.<br>\n"; 
+					echo "<p>You selected the $map map when you configured the $campaign campaign.</p>\n";  
+					echo "<p>Now we must select this map in the mission editor.</p>\n";
+				  // 	Currently in ROF there are two main campaign maps, the <b>Western Front map (05.01.18, etc)</b> and the <b>Channel map</b>.  Then there are also two small dogfight maps: <b>df3xlake</b> and <b>df5x5verdun</b>.</p>\n";
+					if($map == 'Western Front') {
+						echo "<p>In the mission editor the 'Western Front' GUI map has three versions: winter (05.01.1918), spring/summer (15.07.1918) and autumn (19.10.1918).</p>\n";
+						echo "<p>Select one of these GUI maps and a matching season for your campaign.</p>\n";
+					} elseif($map == 'Channel') {
+						echo "<p>In the mission editor the 'Channel' GUI map has a single version: channel_summer</p>\n";
+						echo "<p>Select it and a matching season for your campaign.</p>\n";
+					} elseif($map == 'Verdun') {
+						echo "<p>In the mission editor the 'Verdun' GUI map has three versions: autumn (df5x5verdun_autumn), summer (df5x5verdun_summer) and winter (df5x5verdun_winter).</p>\n";
+						echo "<p>Select one of these GUI maps and a matching season for your campaign.</p>\n";
+					} elseif($map == 'Lake') {
+						echo "<p>In the mission editor the 'Lake' GUI map has three versions: autumn (df3x3lake_autumn), summer (df3x3lake_summer) and winter (df3x3lake_winter).</p>\n";
+						echo "<p>Select one of these GUI maps and a matching season for your campaign.</p>\n";
+					} else {
+						echo "<p>We have not yet completed a locations file for the $map map.</p>\n";
+					}
+					echo "<p>Then for Landscape info, Height Map, Textures, and Forests you need to select an appropriate matching set.</p>\n"; 
 					$campaign_template = "$campaign"."_template";
 					echo "<p>In the mission editor File menu, select 'Save As...', giving it a file name for the campaign plus\"_template\" (e.g. $campaign_template.Mission) and saving it to your campaign groups directory.</p>\n";
 					// we should be able to determine the map from the GuiMap line in the Options section of the Mission file... just a SMOP.  :)
@@ -70,7 +101,7 @@
 					*/
 
 					echo "<h3>The Opposing Sides</h3>\n";
-					echo "<p>We now need to define who is fighting whom. So back in the mission editor in 'Mission Properties', click on 'Countries'.</p>\n";
+					echo "<p>We now need to define who is fighting whom. So back in the mission editor select 'Mission Properties' and click on 'Countries'.</p>\n";
 					echo "<p>Our BOSWAR campaign manager has been designed to create a war between two coalitions, e.g. Allies (Entente) and Central Powers.<br>\n";
 					echo "While it is possible to configure other theoretical alliances like \"War dogs\" and \"Mercenaries\"<br>\n";
 					echo "We did not design or test any options other than Allies (Entente) and Central Powers so allocate the real countries to either coalition and ignore the rest.<br>\n";
@@ -198,16 +229,20 @@
 					<p>File, Save to make sure we do not lose this!</p>\n";
 
 					echo "<h3>Activate Select Airfields</h3>\n";
-					echo "<p>Our next step in the creation of the campaign template is to decide which Airfields will be active. Again, for performance reasons 
-					we do not want every airfield in our sector to be active. So chose 3-4 for each side.
-					Go back to the OBJ FILT button at the top, Clear all, then click on just Airfield, OK. Now on the map you see only airfields.
-					Left Mouse Click on or box round a Central Powers airfield to highlight it. You should now have the Airfield Properties displayed. Left mouse click \"Create Linked Entity\" to declare it as an active airfield then click the > on the right of the Name: which will give you the Airfield advanced properties.
-					Here set the Country: (Probably Germany?) and OK.
+					echo "<p>The next step in the creation of the campaign template is to decide which Airfields will be active. Again, for performance reasons we do not want every airfield in our sector to be active. So chose 3-4 for each side.</p>\n";
+					echo "<p>Go back to the object filter (OBJ FILT button) at the top, Clear all, then click on Airfield and OK.  Now on the map you should see airfields only.</p>\n";
+					echo "<p>Left Mouse Click on or box round a Central Powers airfield to highlight it. You should now have the Airfield Properties displayed. Left mouse click \"Create Linked Entity\" to declare it as an active airfield<p>\n"; 
+					echo "<p>Then click the > on the right of the Name: which will give you the Airfield advanced properties.  Here set the Country: (Probably Germany?) and OK.
 					Next do the same for an Allied airfield setting the Country to one of the Allied Countries.
 					Continue till all active airfields are set.</p>\n";
 					
-					echo "<p>Next we are going to send the information  about all these airfields to our BOSWAR campaign manager.  Once ready select all the airfields then File, Save selection to File, select your campaign groups directory and save to the filename \"template_to_airfield.Group\" (e.g. .</p>\n";
-					
+					echo "<p>Next we are going to prepare to send the information  about all these airfields to our BOSWAR campaign manager.  Once ready \"Select All Visible Objects\" (the airfields) then File, Save selection to File, select your campaign groups directory and save to the filename \"campaign-template_to_airfield.Group\" (e.g. $campaign-template_to_airfield.Group).</p>\n";
+					echo "<p>Once you are ready to proceed, click \"Next\"</p>\n";
+					# BUTTON
+					echo "<fieldset id=\"actions\">\n";	
+					echo "		<button type=\"submit\" name =\"Setup\" id=\"SetupDone\" value =\"true\" >Next</button>\n"; # the value defines the action after the button was pressed
+					echo "	</fieldset>\n";
+/*
 					echo "<p>We can now load this group file into our Campaign Manager by clicking on the \"Template to Airfields\" big Button.</p>\n";
 					
 					# This launches inbox.sql then inbox_to_airfield
@@ -221,7 +256,7 @@
 					will populate the active airfields with the right quantity and type of aircraft, manage activation de-activation or capture and send a .Group file to the Mission Editor for the assembly of each mission.</p>\n";
 					# after this point will be added the population of bridges into the template grouping and send to the Campaign Manager 
 					# again they will be managed in the Campaign manager an sent to the Mission Editor for assembly into each mission.  
-
+/*
 					echo "</form>\n";
 
 					// close $camp_link
