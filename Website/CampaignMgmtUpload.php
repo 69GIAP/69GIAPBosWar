@@ -53,9 +53,6 @@
 					# require pickFile.php
 					require ('functions/pickFile.php');
 
-					# plan to return to this page
-					$returnpage = "CampaignMgmtUpload.php";
-
 					# go
 					pickFile($returnpage);
 
