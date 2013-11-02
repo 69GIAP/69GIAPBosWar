@@ -46,6 +46,7 @@ if ($_POST["updateCampaignParameters"] == 1) {
 	$result = $camp_link->query($query);
 //	echo "$result<br />\n";
 //	echo "Updated section 1";
+	header("Location: CampaignMgmtConfigure.php?btn=campMgmt");
 }
 
 // Section 2
@@ -62,6 +63,7 @@ if ($_POST["updateCampaignParameters"] == 2) {
 	$result = $camp_link->query($query);
 //	echo "$result<br />\n";
 //	echo "Updated section 2";
+	header("Location: CampaignMgmtConfigure.php?btn=campMgmt");
 }						
 
 // Section 3
@@ -92,6 +94,7 @@ if ($_POST["updateCampaignParameters"] == 3) {
 	$result = $camp_link->query($query);
 //	echo "$result<br />\n";
 //	echo "Updated section 3";
+	header("Location: CampaignMgmtConfigure.php?btn=campMgmt");
 }						
 
 // Section 4
@@ -124,6 +127,7 @@ if ($_POST["updateCampaignParameters"] == 4) {
 	$result = $camp_link->query($query);
 //	echo "$result<br />\n";
 //	echo "Updated section 4";
+	header("Location: CampaignMgmtConfigure.php?btn=campMgmt");
 }						
 
 // Section 5

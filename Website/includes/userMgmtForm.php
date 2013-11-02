@@ -38,16 +38,12 @@
 		echo "		<button type=\"modify\" name =\"modify\" id=\"loginSubmit\" value =\"2\" >Update Role</button>\n";	
 		echo "	</fieldset>\n";
 		echo "	<fieldset id=\"inputs\">\n";
-		
-		# The following is only displayed if the administrator is not connected to a campaign
-		if (empty ($loadedCampaign)) {
-			# ASSIGN / REMOVE USER
-			echo "		<select name=\"campdb\" id=\"aircraft\">\n";
-			# include the drop down list
-			include 'includes/getActiveCampaigns.php'; 
-			echo "	</select>\n";
-		}
-		
+	
+		# ASSIGN / REMOVE USER
+		echo "		<select name=\"campdb\" id=\"aircraft\">\n";
+		# include the drop down list
+		include 'includes/getActiveCampaigns.php'; 
+		echo "	</select>\n";
 		# NEW COALITION
 		echo "		<select name=\"userCoalitionIdNew\" id=\"world\">\n";
 		# include the drop down list
