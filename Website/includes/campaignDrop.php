@@ -84,7 +84,7 @@ session_start();
 					}
 					/* print divider */
 					if (mysqli_more_results($dbc)) {
-						// not neede in this case - maybe later use will have it
+						// not need in this case - maybe later use will have it
 					}
 				} while (mysqli_next_result($dbc));
 			}
