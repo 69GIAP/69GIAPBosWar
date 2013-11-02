@@ -34,12 +34,13 @@
 					
 					echo "<br>By this point you have logged in with administrator rights, chosen a campaign name, created a campaign database and connected to that campaign database.<br>\n";
 					echo "<br>Now that you are connected directly to your new campaign database it is time to configure it.<br>\n";
-					echo "<br>There are two types of settings we need to configure - those that are not set in the mission editor, and those that are.<br>  We start with those that are are not set in the editor.  These are set either here in the campaign database alone, or both here and in the game multiplayer options.<br />\n";
+					echo "<br>There are two types of settings we need to configure - those that are not set in the mission editor, and those that are.";
+					echo "<br>We start with those that are are not set in the editor.  These are set either here in the campaign database alone, or both here and in the game multiplayer options.<br />\n";
 					echo "<br>We have tried to provide sensible defaults, but you may tweak these to fit your campaign and setup.<br />\n";
 
 					# include getandsetCampaignSettings.php
 					include ('includes/getandsetCampaignSettings.php');
-/*
+
 					echo "<br>Next we work on setting up the campaign in the mission editor.<br />\n";
 					echo "<br>You can open the Mission Editor in a separate window to help this process - OK<br>\n";
 					
@@ -64,8 +65,7 @@
 //					include 'includes/getCampaignMap.php'; 
 //					echo "		</select>\n";
 //					echo "	</fieldset>\n";
-*/	
-
+										
 					/*
 					echo '<br>Select Campaign Map<br>';
 					echo '<br>Western Front :Button: <br>';
@@ -74,7 +74,7 @@
 					echo '<br>df5x5verdun :Button:<br>';
 					*/
 					
-/*					
+					
 					echo "<p>We will now populate our map with airfields. In the mission editor select Import from file, go to:<br>\n";
 					echo "<b>directory /data/Template/</b><br>\n";
 					echo "Select the base-no-trunc file that corresponds to your map. <br>\n";
@@ -92,7 +92,7 @@
 //					# SELECT COUNTRY - CHOOSE COALITION
 //					include 'includes/getCountriesForCoalitionSet.php';
 //					echo "	</fieldset>\n";
- */
+					
 					/*
 					echo '<br>Coalitions....... : Allies : Central Powers<br>';
 					echo '<br>France........... : Button : Button :<br>';
@@ -103,8 +103,6 @@
 					echo '<br>Germany.......... : Button : Button :<br>';
 					echo '<br>Austro-Hungary... : Button : Button :<br>';
 					*/
-/*
-
 					echo "<p>Next, back to the Mission editor. Make sure you are in 2D editing mode by clicking on the Arrow down ikon key at the left hand side of 
 					the tool bar which you normally find at the top of the screen. It is in-between the ruler icon and the F icon.<br>\n";
 					echo "You can zoom in and out using the scroll on your mouse and drag the map around holding the right mouse click.<br>\n";
@@ -134,7 +132,7 @@ And with CTRL+mouse click you can add more points...</p>
 //					echo "Return to the Campaign manager and enter the values here. </p>\n";
 //					
 //					include ('includes/getMinMaxXZ.php');
-*/					
+					
 					/*  
 					echo '<br>Bottom left X value :000000000.00:<br>';
 					echo '<br>Bottom left Z value :000000000.00:<br>';
@@ -144,7 +142,7 @@ And with CTRL+mouse click you can add more points...</p>
 					echo '<br>BIG UPDATE BUTTON:<br>';
 					echo '<br>We have now created the key parameters for the campaign so if you are happy with your inputs clich the nice big Update Button<br>';
 					*/
-/*					
+					
 					# BUTTON	
 //					echo "<fieldset id=\"actions\">\n";
 //					echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"1\" >Apply Configuration</button>\n";	# the value defines the action after the button was pressed
@@ -183,7 +181,7 @@ And with CTRL+mouse click you can add more points...</p>
 					will populate the active airfields with the right quantity and type of aircraft, manage activation de-activation or capture and send a .Group file to the Mission Editor for the assembly of each mission.</p>\n";
 					# after this point will be added the population of bridges into the template grouping and send to the Campaign Manager 
 					# again they will be managed in the Campaign manager an sent to the Mission Editor for assembly into each mission.  
- */
+
 					echo "</form>\n";
 
 					// close $camp_link

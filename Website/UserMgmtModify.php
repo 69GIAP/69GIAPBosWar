@@ -40,7 +40,9 @@
 					$lastchar = substr($groupFilePath,$numchar -1, 1);
 //					echo "$lastchar<br />\n";
 					if ($lastchar == '\\' || $lastchar == '/') {
-						$groupFilePath = substr($groupFilePath,0,$numchar -1);
+						// do nothing
+					} else { // add trailing slash (works as well as backslash)
+						$groupFilePath = "$groupFilePath/";
 					}
 					$groupFilePath = $dbc->real_escape_string($groupFilePath);
 				}

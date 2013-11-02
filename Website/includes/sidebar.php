@@ -25,7 +25,6 @@
 													if (empty($loadedCampaign))
 														{
 															echo "		<li><a href=\"CampaignSelect.php?btn=home\" class=\"campConnect\"><span></span></a></li>\n";
-															#echo "		<li><a href=\"CampaignCreateNew.php?btn=home\" class=\"campCreate\"><span></span></a></li>\n";
 															echo "		<li><a href=\"CampaignDrop.php?btn=home\" class=\"campDrop\"><span></span></a></li>\n";															
 														}
 													else
@@ -82,13 +81,13 @@
 													echo "		<li><a href=\"CampaignMgmtChangeStatus.php?btn=campMgmt\" class=\"campStatus\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtConfigure.php?btn=campMgmt\" class=\"campConfigure\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtSetup.php?btn=campMgmt\" class=\"campSetup\"></a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtPlaneset.php?btn=campMgmt\" class=\"campAvailAirForce\"></a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtSupplyControlPoints.php?btn=campMgmt\" class=\"dummy\">Supply/Control Points</a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtVehicleset.php?btn=campMgmt\" class=\"dummy\">Vehicles</a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtColumns.php?btn=campMgmt\" class=\"campCreateColumns\"></a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtStatics.php?btn=campMgmt\" class=\"dummy\">Create Static</a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=campMgmt\" class=\"campUpdateAirfields\"></a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtBridges.php?btn=campMgmt\" class=\"dummy\">Update Bridge Status</a></li>\n";
+													echo "	    <li><a href=\"CampaignMgmtObjects.php?btn=campMgmt&objectClass=PFI\" class=\"campAvailAirForce\"></a></li>\n";
+													echo "	    <li><a href=\"CampaignMgmtSupplyControlPoints.php?btn=campMgmt\" class=\"campControlSupplyPoints\"><span></span></a></li>\n";
+													echo "	    <li><a href=\"CampaignMgmtObjects.php?btn=campMgmt&objectClass=VTR\" class=\"campVehicles\"><span></span></a></li>\n";
+													echo "	    <li><a href=\"CampaignMgmtColumns.php?btn=campMgmt\" class=\"campCreateColumns\"><span></span></a></li>\n";
+													echo "	    <li><a href=\"CampaignMgmtStatics.php?btn=campMgmt\" class=\"campCreateStatics\"><span></span></a></li>\n";
+													echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=campMgmt\" class=\"campUpdateAirfields\"><span></span></a></li>\n";
+													echo "	    <li><a href=\"CampaignMgmtBridges.php?btn=campMgmt\" class=\"campUpdateBridges\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtGroupFiles.php?btn=campMgmt\" class=\"dummy\">Receive Group Files</a></li>\n";	
 													echo "  </ul>\n";
 												}
