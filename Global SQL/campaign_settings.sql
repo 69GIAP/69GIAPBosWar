@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2013 at 09:36 PM
+-- Generation Time: Nov 02, 2013 at 01:43 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
   `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
   `simulation` enum('RoF','BoS') NOT NULL DEFAULT 'RoF',
   `campaign` varchar(30) NOT NULL DEFAULT 'campaign',
+  `abbrv` varchar(7) NOT NULL,
   `camp_db` varchar(30) NOT NULL DEFAULT 'campaign_database',
   `camp_host` varchar(30) NOT NULL DEFAULT 'localhost',
   `camp_user` varchar(30) NOT NULL DEFAULT 'campaign db user',
@@ -70,21 +71,22 @@ CREATE TABLE IF NOT EXISTS `campaign_settings` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `campaign` (`campaign`),
   UNIQUE KEY `camp_db` (`camp_db`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=61 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=71 ;
 
 --
 -- Dumping data for table `campaign_settings`
 --
 
-INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `logpath`, `log_prefix`, `logfile`, `kia_pilot`, `mia_pilot`, `critical_w_pilot`, `serious_w_pilot`, `light_w_pilot`, `kia_gunner`, `critical_w_gunner`, `serious_w_gunner`, `light_w_gunner`, `healthy`, `min_x`, `min_z`, `max_x`, `max_z`, `air_detect_distance`, `ground_detect_distance`, `air_ai_level`, `ground_ai_level`, `ground_max_speed_kmh`, `ground_transport_speed_kmh`, `ground_spacing`, `lineup_minutes`, `mission_minutes`, `detect_off_time`) VALUES
-(2, 'RoF', 'Flanders Eagles', 'flanders_eagles', 'localhost', 'rofwar', 'rofwar', 'Channel', 'rof_channel_locations', '2', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2', '2', 0, 0, 0, 30, 90, 15),
-(4, 'RoF', 'Skies of the Empires II', 'skies_of_the_empires_ii', '', '', '', 'Verdun', 'rof_verdun_locations', '2', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2', '2', 0, 0, 0, 30, 90, 15),
-(5, 'BoS', 'Stalingrad', 'stalingrad', '', '', '', 'Stalingrad', 'bos_stalingrad_locations', '4', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2', '2', 0, 0, 0, 30, 90, 15),
-(6, 'RoF', 'Yankee Doodle', 'yankee_doodle', '', '', '', 'Verdun', 'rof_verdun_locations', '2', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2', '2', 0, 0, 0, 30, 90, 15),
-(7, 'RoF', 'Skies of the Empires', 'skies_of_the_empires', 'localhost', 'rofwar', 'rofwar', 'Verdun', 'rof_verdun_locations', '3', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2', '2', 0, 0, 0, 30, 90, 15),
-(8, 'RoF', '1916', '1916', 'localhost', 'rofwar', 'rofwar', 'Western Front', 'rof_westernfront_locations', '3', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2', '2', 0, 0, 0, 30, 90, 15),
-(9, 'RoF', 'Bloody April', 'bloody_april', 'localhost', 'rofwar', 'rofwar', 'Western Front', 'rof_westernfront_locations', '1', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2', '2', 0, 0, 0, 30, 90, 15),
-(60, 'RoF', 'Lake', 'lake', 'localhost', 'rofwar', 'rofwar', 'Lake', 'rof_westernfront_locations', '1', 'true', 'true', 'logs', 'missionReport', 'missionReport', 100, 50, 30, 20, 10, 50, 30, 20, 10, 0, 0, 0, 100000, 100000, 5000, 500, '2', '2', 50, 10, 5, 30, 90, 15);
+INSERT INTO `campaign_settings` (`id`, `simulation`, `campaign`, `abbrv`, `camp_db`, `camp_host`, `camp_user`, `camp_passwd`, `map`, `map_locations`, `status`, `show_airfield`, `finish_flight_only_landed`, `logpath`, `log_prefix`, `logfile`, `kia_pilot`, `mia_pilot`, `critical_w_pilot`, `serious_w_pilot`, `light_w_pilot`, `kia_gunner`, `critical_w_gunner`, `serious_w_gunner`, `light_w_gunner`, `healthy`, `min_x`, `min_z`, `max_x`, `max_z`, `air_detect_distance`, `ground_detect_distance`, `air_ai_level`, `ground_ai_level`, `ground_max_speed_kmh`, `ground_transport_speed_kmh`, `ground_spacing`, `lineup_minutes`, `mission_minutes`, `detect_off_time`) VALUES
+(2, 'RoF', 'Flanders Eagles', 'FlanE', 'flanders_eagles', 'localhost', 'rofwar', 'rofwar', 'Channel', 'rof_channel_locations', '2', 'true', 'true', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2', '2', 0, 0, 0, 30, 90, 15),
+(4, 'RoF', 'Skies of the Empires II', 'SOEII', 'skies_of_the_empires_ii', '', '', '', 'Verdun', 'rof_verdun_locations', '2', 'true', 'true', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2', '2', 0, 0, 0, 30, 90, 15),
+(5, 'BoS', 'Stalingrad', 'Stagrad', 'stalingrad', '', '', '', 'Stalingrad', 'bos_stalingrad_locations', '4', 'true', 'true', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2', '2', 0, 0, 0, 30, 90, 15),
+(6, 'RoF', 'Yankee Doodle', 'YankDo', 'yankee_doodle', '', '', '', 'Verdun', 'rof_verdun_locations', '2', 'true', 'true', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2', '2', 0, 0, 0, 30, 90, 15),
+(7, 'RoF', 'Skies of the Empires', 'SoE', 'skies_of_the_empires', 'localhost', 'rofwar', 'rofwar', 'Verdun', 'rof_verdun_locations', '3', 'true', 'true', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2', '2', 0, 0, 0, 30, 90, 15),
+(8, 'RoF', '1916', '1916', '1916', 'localhost', 'rofwar', 'rofwar', 'Western Front', 'rof_westernfront_locations', '3', 'true', 'true', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2', '2', 0, 0, 0, 30, 90, 15),
+(9, 'RoF', 'Bloody April', 'BloodyA', 'bloody_april', 'localhost', 'rofwar', 'rofwar', 'Western Front', 'rof_westernfront_locations', '1', 'true', 'true', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2', '2', 0, 0, 0, 30, 90, 15),
+(64, 'RoF', 'Lake', 'Lake', 'lake', 'localhost', 'rofwar', 'rofwar', 'Lake', 'rof_lake_locations', '4', 'true', 'true', 'logs', 'missionReport', 'missionReport', 100, 50, 30, 20, 10, 50, 30, 20, 10, 0, 0, 0, 100000, 100000, 5000, 500, '2', '2', 50, 10, 5, 30, 90, 15),
+(70, 'RoF', '1942', '1942', '1942', 'localhost', 'rofwar', 'rofwar', 'Western Front', 'rof_westernfront_locations', '1', 'true', 'true', 'logs', 'missionReport', 'missionReport', 100, 50, 30, 20, 10, 50, 30, 20, 10, 0, 0, 0, 100000, 100000, 5000, 500, '2', '2', 50, 10, 5, 30, 90, 15);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
