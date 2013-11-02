@@ -256,7 +256,7 @@
 					will populate the active airfields with the right quantity and type of aircraft, manage activation de-activation or capture and send a .Group file to the Mission Editor for the assembly of each mission.</p>\n";
 					# after this point will be added the population of bridges into the template grouping and send to the Campaign Manager 
 					# again they will be managed in the Campaign manager an sent to the Mission Editor for assembly into each mission.  
-/*
+*/
 					echo "</form>\n";
 
 					// close $camp_link
