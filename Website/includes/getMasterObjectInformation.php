@@ -1,11 +1,11 @@
 <?php
 // Get Master objects information
-// out of boswar_db for initial selection
+// out of boswar_db
 // 69giapmyata
 // ver 1.0
 
 				
-	$sql = "SELECT id FROM rof_object_properties
+	$sql = "SELECT id, object_type FROM rof_object_properties
 			WHERE object_class ='$objectClass'";
 	$i = 1;
 	
@@ -21,6 +21,7 @@
 	# load results into variables 
 	while ($obj = mysqli_fetch_object($result)) {
 		$objectId		=($obj->id);
+		$objectName		=($obj->object_type);
 		
 		echo "<div class=\"checkbox\">\n";		
 		echo "		<input id=\"objectId_$i\" type=\"checkbox\" name ='$objectId' value =\"$objectId\">\n";
