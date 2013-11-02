@@ -113,7 +113,8 @@ $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.bridges LIKE boswar_d
 // this should be at the end of the creation chain
 // so it won't be created if there is an error
 
-$abbr = rtrim($newCampaignDBName,7); // create an abbreviation based on the db name and trim to 7 chars to match table definition
+$abbr = substr($newCampaignDBName,0,7); // create an abbreviation based on the db name and trim to 7 chars to match table definition
+
 $query .= "INSERT INTO campaign_settings (simulation, campaign, abbrv, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
 $query .= "VALUES ('RoF', '$newCampaignName', '$abbr', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
 
