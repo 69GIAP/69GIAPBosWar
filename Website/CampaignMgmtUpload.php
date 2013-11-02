@@ -26,7 +26,12 @@
 	
 					# use this information to connect to campaign 
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
-
+					
+					# initialize variable $returnpage if non existing
+					if (empty($returnpage)) {
+						$returnpage = '';
+					}
+					
 					# initialise variables
 					echo "<h1>Upload $campaign Campaign Files</h1>";
 					$query = "SELECT * from campaign_settings;";
