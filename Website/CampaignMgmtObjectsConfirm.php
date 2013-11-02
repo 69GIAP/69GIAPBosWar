@@ -19,7 +19,6 @@
             
 				<?php
                 
-				$idList = '';
 				$query	= '';
 				
 				# get POST variables and bind into idList variable
@@ -28,14 +27,7 @@
 					$query .= "UPDATE rof_campaign_objects SET active = 1, coalId = $param_val WHERE id = $param_name ;<br>\n";
 
 				}
-	
-				// remove leading comma
-				#$idList = ltrim($idList, ',');
-				#$idList = rtrim($idList, 4);
-				
-				# build query out of post variables
-				#$query = "UPDATE rof_campaign_objects SET active = 1 where id in ($idList);";
-				
+
 				echo $query;
                 
 				?>
