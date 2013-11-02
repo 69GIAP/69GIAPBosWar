@@ -81,9 +81,9 @@
 													echo "		<li><a href=\"CampaignMgmtChangeStatus.php?btn=campMgmt\" class=\"campStatus\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtConfigure.php?btn=campMgmt\" class=\"campConfigure\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtSetup.php?btn=campMgmt\" class=\"campSetup\"></a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtPlaneset.php?btn=campMgmt\" class=\"campAvailAirForce\"></a></li>\n";
+													echo "	    <li><a href=\"CampaignMgmtObjects.php?btn=campMgmt&objectClass=PFI\" class=\"campAvailAirForce\"></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtSupplyControlPoints.php?btn=campMgmt\" class=\"campControlSupplyPoints\"><span></span></a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtVehicleset.php?btn=campMgmt\" class=\"campVehicles\"><span></span></a></li>\n";
+													echo "	    <li><a href=\"CampaignMgmtObjects.php?btn=campMgmt&objectClass=VTR\" class=\"campVehicles\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtColumns.php?btn=campMgmt\" class=\"campCreateColumns\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtStatics.php?btn=campMgmt\" class=\"campCreateStatics\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=campMgmt\" class=\"campUpdateAirfields\"><span></span></a></li>\n";

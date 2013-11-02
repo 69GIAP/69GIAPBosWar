@@ -5,7 +5,8 @@
 // ver 1.0
 
 				
-	$sql = "SELECT model FROM rof_models";
+	$sql = "SELECT object_desc, object_type, Model FROM rof_object_properties
+			WHERE object_class ='$objectClass'";
 	$i = 1;
 	
 	#echo $sql;
@@ -14,15 +15,17 @@
 		die('There was an error running the query ' . mysqli_error($dbc));
 	}
 	
-	echo "<h3>Campaign Plane Set</h3>\n";	
+	echo "<h3>Campaign Object Set</h3>\n";	
 	echo "<div class=\"checkboxWrapper\">\n";
 
 	# load results into variables 
 	while ($obj = mysqli_fetch_object($result)) {
-		$modelName		=($obj->model);
+		$objectName		=($obj->object_type);
+		$objectModel	=($obj->Model);
+		
 		echo "<div class=\"checkbox\">\n";		
-		echo "		<input id=\"checkboxModel$i\" type=\"checkbox\" name =\"add$i\" value =\"$modelName\">\n";
-		echo "		<label for=\"checkboxModel$i\"><b>$modelName</b></label><br \>\n";
+		echo "		<input id=\"checkboxModel$i\" type=\"checkbox\" name =\"add$i\" value =\"$objectModel\">\n";
+		echo "		<label for=\"checkboxModel$i\"><b>$objectName</b></label><br \>\n";
 		echo "</div>\n";		
 		# COALITION RADIO BOX
 		echo "<div class=\"radio\">\n";  

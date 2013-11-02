@@ -19,6 +19,9 @@
             <div id="content">
             
 				<?php
+					# get the  object you want to list on this page
+					$objectClass = $_GET['objectClass'];
+					
 					# include connect2CampaignFunction.php
 					include ( 'functions/connect2Campaign.php' );
 		
@@ -51,10 +54,15 @@
 									
 					# use this information to connect to campaign 
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
-                ?>
-                <p>For a new campaign we should be able to restrict the vehicles availiable.
-                This screen will list all the availiable vehicles we will then be able to select those that are not availiable, adjust the replacement moving truck for artillery and adjust points values for those that are availiable. The update screen is not needed for Alpha or Beta test.</p>
-            
+                
+                echo "<p>For a new campaign we should be able to restrict the planes availiable. 
+                This screen will list all the availiable planes we will then be able to select those that are not availiable and adjust points values for those that are availiable.
+                The update screen is not needed for Alpha or Beta test.</p>\n";
+                
+				# get the master aircraft model list
+                include ('includes/getMasterObjectInformation.php');
+				
+            	?>
             </div>
     
         </div>
