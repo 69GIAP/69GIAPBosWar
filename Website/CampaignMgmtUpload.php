@@ -33,7 +33,7 @@
 					}
 					
 					# initialise variables
-					echo "<h1>Upload $campaign Campaign Files</h1>";
+					echo "<h2>Upload $campaign Campaign Files</h2>";
 					$query = "SELECT * from campaign_settings;";
 					if(!$result = $dbc->query($query)) {
 						die('CampaignMgmtSetup.php query error [' . $dbc->error . ']');
