@@ -10,6 +10,7 @@
 						/* fetch associative array */
 						while ($obj = $result->fetch_object()) {
 							$campaign	=($obj->campaign);
+							$abbrv	=($obj->abbrv);
 							$camp_host	=($obj->camp_host);
 							$camp_user	=($obj->camp_user);
 							$camp_passwd=($obj->camp_passwd);

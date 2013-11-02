@@ -43,6 +43,7 @@ echo "		<h2>Mission Log Settings</h2>\n";
 echo "		<h3>log files location relative to boswar home directory<br> (use / as directory separator)</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"logpath\" value='$logpath' autofocus ><br>\n";
 echo "		<h3>constant prefix for this campaign's log files<br />(MUST be unique - append campaign name or initials)</h3>\n";
+$log_prefix = $log_prefix.$abbrv;
 echo "		<input id=\"database\" type=\"text\" name=\"log_prefix\" value='$log_prefix' autofocus ><br>\n";
 echo "	</fieldset>\n";
 # BUTTON
