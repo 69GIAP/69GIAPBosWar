@@ -112,8 +112,10 @@ $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.bridges LIKE boswar_d
 # INSERT CAMPAIGN DB INFORMATION TO MASTER TABLE
 // this should be at the end of the creation chain
 // so it won't be created if there is an error
-$query .= "INSERT INTO campaign_settings (simulation, campaign, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
-$query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
+
+$abbr = rtrim($newCampaignDBName,7); // create an abbreviation based on the db name and trim to 7 chars to match table definition
+$query .= "INSERT INTO campaign_settings (simulation, campaign, abbrv, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
+$query .= "VALUES ('RoF', '$newCampaignName', '$abbr', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
 
 # Add user to the campaign_users table
 $query .="INSERT INTO campaign_users (user_id, camp_db, CoalID, groupFile_path) VALUES ($userId, '$newCampaignDBName', 0, '' );";
