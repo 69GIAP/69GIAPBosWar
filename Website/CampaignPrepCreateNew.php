@@ -27,9 +27,11 @@ $count = $dbc->query("SELECT COUNT(*) FROM campaign_settings;");
 
 					# NEW CAMPAIGN NAME
 					echo "<h3>Campaign Name</h3>\n";
-					echo "		<input type=\"text\" name=\"newCampaignName\" id=\"database\" placeholder=\"Please enter the campaigns name.\" value='' size=\"24\" maxlength=\"50\" />\n";
+					echo "		<input type=\"text\" name=\"newCampaignName\" id=\"database\" placeholder=\"Please enter the campaign's full name.\" value='' size=\"24\" maxlength=\"50\" />\n";
+					# NEW CAMPAIGN ABBREVIATION
+					echo "		<input type=\"text\" name=\"newCampaignAbbrv\" id=\"database\" placeholder=\"Please enter a unique 3-7 character abbrev. for the campaign.\" value='' size=\"7\" maxlength=\"7\" />\n";
 					# NEW CAMPAIGN DATABASE NAME
-					echo "		<input type=\"text\" name=\"newCampaignDatabaseName\" id=\"database\" placeholder=\"Please enter the campaigns database name.\" value='' size=\"24\" maxlength=\"50\" />\n";
+					echo "		<input type=\"text\" name=\"newCampaignDatabaseName\" id=\"database\" placeholder=\"Please enter the campaign's database name.\" value='' size=\"24\" maxlength=\"50\" />\n";
 					# NEW CAMPAIGN HOST
 					echo "		<input type=\"text\" name=\"newCampaignDatabaseHost\" id=\"database\" placeholder=\"Please enter the host (localhost / IP).\" value='' size=\"24\" maxlength=\"50\" />\n";	
 					# CHOOSE CAMPAIGN MAP
