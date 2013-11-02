@@ -115,6 +115,35 @@ ul#sidebar li a.campAvailAirForce {
 	position:relative;
 }
 
+ul#sidebar li a.campControlSupplyPoints {
+	background:url(../img/RofWar-AdminSupplyControlPoints.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.campCreateStatics {
+	background:url(../img/RofWar_AdminCreateStatics.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.campVehicles {
+	background:url(../img/RofWar_AdminCreateVehicles.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.campUpdateBridges {
+	background:url(../img/RofWar_AdminUpdateBridgeStatus.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+
 ul#sidebar li a.dummy {
 	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
 	display:block;

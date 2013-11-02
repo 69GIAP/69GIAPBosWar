@@ -1,3 +1,64 @@
-<p>There are numerous parameters about a campaign including: Lineup time, mission time, ground move speeds, vehicle spacing
-diameters for detection of objects, timers etc. An administrator should be able to update these before and during a campaign 
-in order to tune performance. We have set up default values for these and they can be updated by sql in the database. The update screen(s) are not needed for Alpha or Beta test.</p>
+<p>Campaign Advanced Parameters</p>
+<p>There are a number of parameters that determine how a campaign is run, scored and affect mission performance.
+these should be set at the beginning of a campaign but can be adjusted during it in order to meet requirements of the scenario or performance.
+</p>
+<p>Map selection</p>
+Strictly speaking this is not controlled within the campaign management system it is a choice that is made at the start
+of the campaign design. There are within the simulator two styles of maps. Small dogfight maps and full size campaign maps.
+A dogfight map is typically a square of 50 kilometres wheras a full campaign map will be 300 kilometers or more wide.
+Now if you have a plane flying at 300 Kmh it can cross a dogfight map in 10 minutes however if you place one vehicle in each square kilometer of a campaign map you
+end up with 90 000 vehicles. Also as you approach the edge of the map in flight you will get warning messages and if you insist
+you will zoom off into hyperspace and be out of the mission. So in practice we will select a full size campaign map but select a rectangle within that map 
+which will be where the major part of the action will be happening. It is this area that we will populate with objects.
+While mission planners need little experience in the mission editor a campaign designer will need to be 
+reasonably competent. So it suffices here to say that the map, season, time will have been selected. Now a map has three
+dimensions and three axes. X is South to North, Y is height and Z is West to East. For the campaign we will define the X Z co-ordinates of the
+bottom left and top right of the area in which the main scenario of the campaign will happen. Unless stated otherwise all measurement is in metres with three decimal places of precision.</p>
+<p> Bottom Left X : 000000.000</p>
+<p> Bottom Left Z : 000000.000</p>
+<p> Top Right X   : 000000.000</p> 
+<p> Top Right Z   : 000000.000</p> 
+<p>Within the campaign we will have Artificial Intelligence players in gunner seats in the air and for artillery on the ground.
+Competence will be Low (1), Normal (2) or High (3). The following parameters control the level for all objects that will be sent to the mission editor from the campaign manager.</p>  
+<p>Air AI Level 1-3 : 2</P>
+<p>Ground AI Level 1-3 : 2</P>
+<p>We will be planning the movement of vehicles. Each vehicle will have its own maximum speed which cannot be exceeded but
+in reality road conditions and congestion will determine an average ground transport speed.
+Vehicles will be planned to move at either this speed or their maximum, whichever is lower.</p>
+<p>Ground Transport Speed : 20 : Kmh</p>
+<p>When we are planning columns of vehicles each vehicle will be spaced apart by their ground spacing in metres plus a random factor to make them
+more realisticly untidy. This does not affect them once moving when the Mission Editor Formation Density takes over</p>
+<p>Ground Spacing : 5 : Metres</p>
+<p>We are using the 'Dogfight Deathmatch' mode of game-play to fly missions in the campaign.
+Effectively, if you have 50-100 pilots joining a mission they don't all arrive at the same time so we set a line up time for them to connect to the mission, sort out what plane they are flying and discuss
+what they will be doing. Typically this is around 30 minutes for a big mission. During this time the server will be stressed downloading to all the players. It is
+also during this period that moving vehicles will start to move towards their destinations. This is controlled
+by a random factor in order to smooth the load on the server. The objective is that at the end of this period
+both the players and server are settled down and ready to play. Note there is nothing to prevent a player from joining after
+this period or starting engines and taking off before the end of line up time. It is up to the campaign rules as to whether
+this is allowed or not.</p>
+<p>Line Up Time :30:Minutes</p>
+The duration of a mission may be as short as an hour or may run for several hours with players joining and leaving several times.
+in the second case statistics calculation is more complex and less reliable but it is down to the administrator on the game server
+to control the start and end of the mission. The Mission Time here is used to determine how far a moving vehicle will have travelled.
+Effectively we take the start position, the destination, the transport speed and mission time to calculate the position of
+the vehicle at the end of the mission if that vehicle has not been destroyed.</p>
+<p>Mission Time :90:Minutes</p>
+<p>In order for us to have significant numbers of ground objects interacting with the Pilots flying and other ground units. 
+we will enable and dis-enable objects during the mission. Take the example of an AAA vehicle. When it is dis-enabled it can not be seen, will not shoot and can not be shot, but will not be taking up
+much of the server resources. When it is enabled it will be scanning the area for enemies and the server must manage every shell and bullet that is
+both fired at it and by it. So in order to have large quantities of vehicles in our campaign we only want some of them to be enabled at any point in time.
+To do this static vehicles will be enabled when an aircraft enters a perimeter at a set radius from the object. This is the Air Detect Radius.
+</p>
+<p>Air Detect Radius :5000: Metres</p>
+<p>We also want ground objects to fight out their ground war. So we will enable our AAA vehicle if an enemy ground vehicle enters a perimeter or is stationary within that perimeter. This is controlled by the Ground Detect Radius.</p>
+<p>Ground Detect Radius :1000: Metres</p>
+<p>As long as vehicles are enabled they take up server resources so we also need to dis-enable them when they are probably not needed. We control this with the Detect Off Time. This is not a perfect solution it is a compromise. 
+The shorter you set it the more vehicles can be deployed in the campaign. Adjusting these parameters and the number of moving vehicles that you have in a mission are key factors
+in determining smooth game play. Finding out the best balance for your campaign on your server is a matter of testing, trial and error. Look for lag and warping. Also watch the 
+clock in the cockpit of your plane. If it starts running very slow the server is having a problem keeping up time.</p>
+<p>Detect Off Time :15: Minutes</p>
+  
+
+ 
+ 

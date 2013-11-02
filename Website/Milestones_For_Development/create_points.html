@@ -1,2 +1,33 @@
-<p>We must be able to create and move both supply points and control points. In the Editor we will use the Railway station object to represent a supply point and another "to be chosen" object to represent the
-control point. Positioning will be by exchange of group files. This is needed for Beta but not for Alpha</p>
+<p>Control Points and Supply points</p>
+<p>We have two types of geographic positions of significance in our campaign map</p>
+<p>A control point is a location which is used in the objectives of a campaign. For example the rules may say that
+that Central coalition wins if all three Allied control points are captured whereas the Allies win if at lest two
+of their control points are not captured at the end of 20 missions. As you can see here the rules do not need to be symetric.
+A control point is considered captured if there is one or more enemy vehicles in the Ground Detect Radius and no friendly vehicles.
+A control point is contested if there are both friendly and enemy vehicles within the Ground Detect Radius.
+We will be able to calculate its status in the campaign statistics but this is not yet implemented.</p>
+<p>Normaly control points do not move during a campaign.</p>
+<p>A supply point is a point at which resupply vehicles appear on the map. It is normaly near a road or railway and most commonly at
+the edge of the campaign sector of a map but we may place a supply point at a rail head deep within the map.
+In this case we may move the supply point if bridge damage or lack of trains make it untenable. This is done by the manual
+intervention of an administrator.</p>
+<p>We use the railway station building (Block rwstation) to represent these points on the map</p>
+<p>Current campaign X, Z positions are :</p>
+
+<p>Allied Control Point 1 :X:Z:Angle:Country</p>
+<p>Allied Control Point 2 :X:Z:Angle:Country</p>
+<p>Allied Control Point 3 :X:Z:Angle:Country</p>
+<p>Allied Supply Point 1 :X:Z:Angle:Country</p> 
+<p>Allied Supply Point 2 :X:Z:Angle:Country</p> 
+<p>Allied Supply Point 3 :X:Z:Angle:Country</p>
+<br>
+<p>Central Control Point 1 :X:Z:Angle:Country</p>
+<p>Central Control Point 2 :X:Z:Angle:Country</p>
+<p>Central Control Point 3 :X:Z:Angle:Country</p>
+<p>Central Supply Point 1 :X:Z:Angle:Country</p> 
+<p>Central Supply Point 2 :X:Z:Angle:Country</p> 
+<p>Central Supply Point 3 :X:Z:Angle:Country</p> 
+<br>
+<p>You can write them to a group file with supply_point_write.php move them in the mission editor and read them back with
+supply_point_read.php. In both cases the file name is supply_point.Group which will be placed in your default campaign directory. Remember you can also change the angle of the building to make it line up neatly beside
+a railway or road.</p>

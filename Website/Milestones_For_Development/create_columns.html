@@ -1,1 +1,30 @@
-<p>We need a screen to create a column of vehicles in col_10. One session should cope with both allied or Central Admin and planners. This is essential for Alpha</p>
+<p>Create Column</p>
+<p>A column is a group of 1-99 vehicles of the same type. 
+It must have an unique name by which we can plan its position, 
+movement, life and death in the mission planning and statistics.
+Do not use special characters and be consistent in the use of capitals.
+If in doubt use something sensible like Regiment 1 Platoon 2 or Regiment 1 Zug 1 on the Central side.
+Depending on your campaign rules certain columns may have a special function like Engineers repairing
+bridges. Your rules should deal with what quantities and types begin the campaign and can be resupplied
+in between each mission. Limit the number of columns which are moving during a mission as a moving column
+is active throughout the mission. Think about performance when you set quantities. Not only will your 
+server performance and line speed set limits but there is a finite limit to the ammount of memeory that the game adresses.
+You will have to test to establish your limits.
+
+</p>
+<p>A column will start from a supply point on the map which will normally be near a road junction at the edge of the map or a railway.</p>
+
+<p>Column name :                                 :</p>
+<p>Vehicle :                                 :dropdown list</p>
+<p>Qty 1-99:                                 :</p>
+<p>Supply Point 1-9 : :</p>
+<p>Country :  :dropdown list</p>
+<p>During a mission a column may be moving in which case it will be created with the vehicles linked together with a waypoint for its destination.
+Some 'vehicles' are artillery and can not move under their own power. These will be loaded into trucks when on the move.
+By default a column will try to follow roads where possible. When moving columns try to plan a distance that can be reasonable travelled in the mission time. 
+The system will calculate this anyway. Take care to navigate over bridges. If you send 10 trucks across a river, lake or damaged brige they will happily drive into the water and drown.</p> 
+<p> When a column is not moving during a mission it will be created with two complex triggers. The first will detect any aircraft
+arriving and enable the vehicles so they can be seen and interacted with.
+The second will detect any enemy vehicles and will enable the vehicles.
+In both cases timers will dis-enable the vehicles. The detection radius and timers can be adjusted in the advanced campaign parameters.
+The objective is to keep the minimum number of enabled objects in the mission to maintain performance.</p> 
