@@ -49,15 +49,18 @@
 
 					
 					echo "<h3>Preliminaries</h3>\n";
-					echo "<p>You should create a directory somewhere on your computer where we will place all the template and .Group files which will be exchanged between the mission editor and the BOSWAR campaign manager for this campaign.<br /> You may be running multiple campaigns in parallel so make it unique to the campaign, e.g. $campaign-groups.<br /> Otherwise there could be confusion between the campaigns.<br /> We will refer to this directory as your \"campaign groups directory\".</p>\n";
-					echo "<p>In the BOSWAR campaign manager (while connected to your campaign ($campaign), select \"User Management\" from the upper menu bar.<br /> Scroll down to \"Choose the default folder for your Group Files:\" and enter the full path and folder name there, then click \"Save\".  Ignore the trailing slash.</p>\n";
+					echo "<p>You should create a directory somewhere on your computer where we will place all the template and .Group files which will be exchanged between the mission editor and the BOSWAR campaign manager for this campaign.<br /> You may be running multiple campaigns in parallel it needs to be unique to the campaign.  We will use your chosen abbreviation ($abbrv) to accomplish this.  Otherwise there could be confusion between the campaigns.<br /> 
+							Name this directory <b>$abbrv-groups</b>.<br />
+							We will refer to this directory as your \"campaign groups directory\".</p>\n";
+//					echo "<p>Now select \"User Management\" from the upper menu bar.<br /> Scroll down to \"Choose the default folder for your Group Files:\" and enter the full path and folder name there, then click \"Save\".</p>\n";
+					echo "<h3>Start the Mission Editor</h3>\n";
 					echo "<p>Next we work on setting up the campaign in the mission editor.</p>\n";
-					echo "<p>You can open the mission editor in a separate window to carry out this process.<p>\n";
+					echo "<p>You can open the mission editor in a separate window to carry out this process.<\p>\n";
 					echo "<p>To start a new mission click 'File' and 'New' in the upper left.</p>\n";
 					echo "<p>If the 'Mission Properties' window is not open, right click with your mouse on the map and select Properties. This will open the 'Mission Properties' window.</p>\n";
  
-					echo "<p>Enter a name for the mission, preferably the same as that you chose for the campaign ($campaign). Avoid special characters and be consistent in use of upper and lower case.</p>\n";
-					
+					echo "<p>Enter a name for the mission, using the same abbreviation that you chose for the campaign ($abbrv). Avoid special characters and be consistent in use of upper and lower case.</p>\n";
+					echo "<p>Set the \"Mission Type\" to Deathmatch.</p>\n";
 					echo "<h3>The Campaign Map</h3>\n";
 					echo "<p>You selected the $map map when you configured the $campaign campaign.</p>\n";  
 					echo "<p>Now we must select this map in the mission editor.</p>\n";
@@ -68,6 +71,7 @@
 					} elseif($map == 'Channel') {
 						echo "<p>In the mission editor the 'Channel' GUI map has a single version: channel_summer</p>\n";
 						echo "<p>Select it and a matching season for your campaign.</p>\n";
+					echo "<p>Then for Landscape info, Height Map, Textures, and Forests select landscape_channel.</p>\n"; 
 					} elseif($map == 'Verdun') {
 						echo "<p>In the mission editor the 'Verdun' GUI map has three versions: autumn (df5x5verdun_autumn), summer (df5x5verdun_summer) and winter (df5x5verdun_winter).</p>\n";
 						echo "<p>Select one of these GUI maps and a matching season for your campaign.</p>\n";
@@ -78,27 +82,8 @@
 						echo "<p>We have not yet completed a locations file for the $map map.</p>\n";
 					}
 					echo "<p>Then for Landscape info, Height Map, Textures, and Forests you need to select an appropriate matching set.</p>\n"; 
-					$campaign_template = "$campaign"."_template";
-					echo "<p>In the mission editor File menu, select 'Save As...', giving it a file name for the campaign plus\"_template\" (e.g. $campaign_template.Mission) and saving it to your campaign groups directory.</p>\n";
-					// we should be able to determine the map from the GuiMap line in the Options section of the Mission file... just a SMOP.  :)
-					/*
-					echo "<p>Next we have  to tell which map was chosen to our campaign manager so select the map button you have chosen:</p>\n";	
-								
-					echo "	<fieldset id=\"inputs\">\n";
-					echo "		<h3>Campaign Map</h3>\n";
-					echo "		<select name=\"newCampStatus\" id=\"database\">\n";
-					# the input from here will update the campaign fields in cam_param or campaign_statistics whatever
-					# SELECT MAP
-					include 'includes/getCampaignMap.php'; 
-					echo "		</select>\n";
-					echo "	</fieldset>\n";
-										
-					echo '<br>Select Campaign Map<br>';
-					echo '<br>Western Front :Button: <br>';
-					echo '<br>Channel :Button:<br>';
-					echo '<br>df3x3lake :Button:<br>';
-					echo '<br>df5x5verdun :Button:<br>';
-					*/
+					echo "<p>Click \"Apply\", navigate to your $abbrv-groups directory, enter the \"File Name\" as <b>$abbrv-template.Mission</b> and \"Save as type:\" \"Mission Files (*.Misison)\".</p>\n";
+//					echo "<p>In the mission editor File menu, select 'Save As...', with the name <b>$abbrv-template.Mission</b> and saving it to your campaign groups directory, $abbrv-groups.</p>\n";
 
 					echo "<h3>The Opposing Sides</h3>\n";
 					echo "<p>We now need to define who is fighting whom. So back in the mission editor select 'Mission Properties' and click on 'Countries'.</p>\n";
@@ -129,27 +114,9 @@
 					echo "<p>In the mission editor 'File' menu select 'Import From File...', go to: <b>directory /data/Template/</b></p>\n";
 					echo "<p>Select the base-no-trunc file that corresponds to your map. </p>\n";
 					echo "<p>The Western front map uses Base-no-trunc the Channel map uses base-no-trunc-channel the dogfight maps have merged base files. \n";
-					echo "Loading in these files can take a while, be patient. Refresh your beverage, relieve yourself, check the forums, watch several yourtube videos, and generally wait until the 'Please wait until operation is finished' popup disappears. If the load hangs near the end, quit and reload the file which should now be a quick process.</p>\n";
+					echo "Loading in these files can take a while, be patient. Refresh your beverage!  Wait until the 'Please wait until operation is finished' popup disappears. If the load hangs near the end, quit and reload the file which should now be a quick process.</p>\n";
 					echo "<p>Save the mission before continuing.</p>\n";
 					
-//					echo "In the Mission Editor you should use the file menu, save before coming back here to inform your Campaign Manager of the choice.</p>\n";
-					
-//					echo "	<fieldset id=\"inputs\">\n";
-//					# The input from this section will update the countries/coalition table for the campaign
-//					# SELECT COUNTRY - CHOOSE COALITION
-//					include 'includes/getCountriesForCoalitionSet.php';
-//					echo "	</fieldset>\n";
-					
-					/*
-					echo '<br>Coalitions....... : Allies : Central Powers<br>';
-					echo '<br>France........... : Button : Button :<br>';
-					echo '<br>Great Britain.... : Button : Button :<br>';
-					echo '<br>USA.............. : Button : Button :<br>';
-					echo '<br>Italy............ : Button : Button :<br>';
-					echo '<br>Russia........... : Button : Button :<br>';
-					echo '<br>Germany.......... : Button : Button :<br>';
-					echo '<br>Austro-Hungary... : Button : Button :<br>';
-					*/
 					echo "<h3>Define the Influence Areas</h3>\n";
 					echo "<p>Next, go into 2D editing mode by clicking on the Arrow down icon key at the left hand side of 
 					the tool bar which you normally find at the top of the screen. It is in-between the ruler icon and the F icon.<br>\n";
@@ -187,76 +154,39 @@
 
 <p>Repeat this process to define the opposing side's influence area(s).</p>
 <?php
-/*
-					echo "To define the sector of the map we want to use we will need the bottom left and top right of a rectangle. <br>\n";
-					echo "There are three dimensions to the map X is from the bottom to the top, Y is Height and Z is left to right.<br>\n"; 
-					echo "Down near the bottom right of the editor you also have the X and Z values of the mouse position. So choose where you want the bottom left
-					of the sector and note the X and Z values then the same for the top right of the sector.<br>\n";
-*/
-
-//					echo "Return to the Campaign manager and enter the values here. </p>\n";
-//					
-//					include ('includes/getMinMaxXZ.php');
-					
-					/*  
-					echo '<br>Bottom left X value :000000000.00:<br>';
-					echo '<br>Bottom left Z value :000000000.00:<br>';
-					echo '<br>Top right X value :000000000.00:<br>';
-					echo '<br>Top right Z value :000000000.00:<br>';
-					
-					echo '<br>BIG UPDATE BUTTON:<br>';
-					echo '<br>We have now created the key parameters for the campaign so if you are happy with your inputs clich the nice big Update Button<br>';
-					*/
-					
-					# BUTTON	
-//					echo "<fieldset id=\"actions\">\n";
-//					echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"1\" >Apply Configuration</button>\n";	# the value defines the action after the button was pressed
-//					echo "	</fieldset>\n";
-					
 					echo "<p>Save the mission before continuing.</p>\n";
 
 					echo "<h3>Refine the Template</h3>\n";
 					echo "<p>Next we will start to refine our campaign template<br>";
-					# the input from here will update the campaign fields in cam_param or campaign_statistics whatever
 					echo "<p>We now want to save <b>just</b> the objects that are in our sector.</p> 
 					<p>On the top icon bar is a button for the object filter abbreviated as \"OBJ FILT\".  Select that, then \"Select All\" then select \"OK\".</p>
 					<p>Click the bottom left of the influence areas and holding the left mouse button drag from bottom left of our sector to top right of our sector. This will highlight all objects in our sector.  Be sure this includes all the defined influence areas.  Better to be slightly generous than slightly stingy here.</p>";
-					echo "<p>Next in the File menu, select \"Save selection to File\", select /data/Multiplayer/Dogfight/ and save the file as campaign_name-no-trunc (e.g. $campaign-no-trunc.Group).</p>
+					echo "<p>Next in the File menu, select \"Save selection to File\", navigate back to your $abbvr-groups directory, give this file the File Name $abbvr-no-trunc.Group, and as type Mission  Files, and click \"Save\".</p>
 							<p>Left click outside the area to unselect it.</p>
 						   	<p>Now go to the \"Search and Select\" menu, select \"Select All Objects in Mission\" and press the \"Delete\" key on your keyboard. There will be a pause (have patience) and all the airfields etc. will disappear.</p>
-					<p>We can now load back in only those objects that were in our sector with File, Import from File, select /data/Multiplayer/Dogfight/ and load the file campaign_name-no-trunc (e.g. $campaign-no-trunc.Group).
+					<p>We can now load back in only those objects that were in our sector with File, Import from File, select /data/Multiplayer/Dogfight/ and load the file campaign_abbreviation-no-trunc (e.g. $abbrv-no-trunc.Group).
 					You should now have just the airfields in your sector plus some towns or stuff.</p> 
 					<p>File, Save to make sure we do not lose this!</p>\n";
 
 					echo "<h3>Activate Select Airfields</h3>\n";
 					echo "<p>The next step in the creation of the campaign template is to decide which Airfields will be active. Again, for performance reasons we do not want every airfield in our sector to be active. So chose 3-4 for each side.</p>\n";
 					echo "<p>Go back to the object filter (OBJ FILT button) at the top, Clear all, then click on Airfield and OK.  Now on the map you should see airfields only.</p>\n";
-					echo "<p>Left Mouse Click on or box round a Central Powers airfield to highlight it. You should now have the Airfield Properties displayed. Left mouse click \"Create Linked Entity\" to declare it as an active airfield<p>\n"; 
-					echo "<p>Then click the > on the right of the Name: which will give you the Airfield advanced properties.  Here set the Country: (Probably Germany?) and OK.
-					Next do the same for an Allied airfield setting the Country to one of the Allied Countries.
+					echo "<p>Left Mouse Click on or box round a Central Powers airfield to highlight it. You should now have the Airfield Properties displayed. Left mouse click \"Create Linked Entity\" to declare it as an active airfield</p>\n"; 
+					echo "<p>Then click the > on the right of the Name: which will give you the Airfield advanced properties.  Here set the Country: (Probably Germany?) and click OK.<br />
+					Next do the same for an Allied airfield setting the Country to one of the Allied Countries.<br />
 					Continue till all active airfields are set.</p>\n";
 					
-					echo "<p>Next we are going to prepare to send the information  about all these airfields to our BOSWAR campaign manager.  Once ready \"Select All Visible Objects\" (the airfields) then File, Save selection to File, select your campaign groups directory and save to the filename \"campaign-template_to_airfield.Group\" (e.g. $campaign-template_to_airfield.Group).</p>\n";
+					echo "<p>Next we are going to prepare to send the information  about all these airfields to our BOSWAR campaign manager.<br />
+					Once ready \"Select All Visible Objects\" (the airfields) then \"File\", \"Save Selection to File\", select your campaign groups directory and save to the filename \"campaign_abbreviation-template_to_airfield.Group\" (e.g. $abbrv-template_to_airfield.Group).</p>\n";
+					echo "<p>We can now delete all airfields from our template.</p>\n";
+					echo "<p>\"Select All Visible Objects\", Right Click on the selected rectangle and select \"Cut\".<br />\n"; 
+					echo "<p>Save the template to your campaign groups directory, overwriting the old copy.</p>\n";		
+					echo "<p>From this point forwards in the campaign before each mission the BOSWAR campaign manager will populate the active airfields with the right quantity and type of aircraft, manage activation de-activation or capture and send a .Group file to the Mission Editor for the assembly of each mission.</p>\n";
 					echo "<p>Once you are ready to proceed, click \"Next\"</p>\n";
 					# BUTTON
 					echo "<fieldset id=\"actions\">\n";	
 					echo "		<button type=\"submit\" name =\"Setup\" id=\"SetupDone\" value =\"true\" >Next</button>\n"; # the value defines the action after the button was pressed
 					echo "	</fieldset>\n";
-/*
-					echo "<p>We can now load this group file into our Campaign Manager by clicking on the \"Template to Airfields\" big Button.</p>\n";
-					
-					# This launches inbox.sql then inbox_to_airfield
-					# BUTTON
-					echo "<fieldset id=\"actions\">\n";	
-					echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"2\" >Template to Airfields</button>\n"; # the value defines the action after the button was pressed
-					echo "	</fieldset>\n";
-					
-					echo "<p>If the airfields load into the BOSWAR campaign manager correctly we can now return to the mission editor and 
-					delete all airfields from our template and again save the template. From this point forwards in the campaign before each mission the BOSWAR campaign manager
-					will populate the active airfields with the right quantity and type of aircraft, manage activation de-activation or capture and send a .Group file to the Mission Editor for the assembly of each mission.</p>\n";
-					# after this point will be added the population of bridges into the template grouping and send to the Campaign Manager 
-					# again they will be managed in the Campaign manager an sent to the Mission Editor for assembly into each mission.  
-*/
 					echo "</form>\n";
 
 					// close $camp_link
