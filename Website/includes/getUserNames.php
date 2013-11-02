@@ -11,14 +11,14 @@
 						ON r.role_id = u.role_id
 						GROUP BY u.user_id;";
 			}
-	else {
-			# display filtered list of all users of connected campaign
-			$query = "SELECT u.user_id, u.username, u.email, u.phone, r.role from users u, campaign_users c, users_roles r
+		else {
+				# display filtered list of all users of connected campaign
+				$query = "SELECT u.user_id, u.username, u.email, u.phone, r.role from users u, campaign_users c, users_roles r
 						WHERE r.role_id = u.role_id
 						AND u.user_id = c.user_id
 						AND c.camp_db = '$loadedCampaign'
 						GROUP BY u.user_id";		
-	}
+		}
 	
 	if ($userRole == "commander")
 		{
