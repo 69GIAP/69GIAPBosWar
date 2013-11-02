@@ -5,7 +5,7 @@
 // ver 1.0
 
 				
-	$sql = "SELECT object_desc, object_type, Model FROM rof_object_properties
+	$sql = "SELECT id, object_desc, object_type FROM rof_object_properties
 			WHERE object_class ='$objectClass'";
 	$i = 1;
 	
@@ -20,18 +20,18 @@
 
 	# load results into variables 
 	while ($obj = mysqli_fetch_object($result)) {
+		$objectId		=($obj->id);
 		$objectName		=($obj->object_type);
-		$objectModel	=($obj->Model);
 		
 		echo "<div class=\"checkbox\">\n";		
-		echo "		<input id=\"checkboxModel$i\" type=\"checkbox\" name =\"add$i\" value =\"$objectModel\">\n";
-		echo "		<label for=\"checkboxModel$i\"><b>$objectName</b></label><br \>\n";
+		echo "		<input id=\"objectId_$i\" type=\"checkbox\" name ='$objectId' value =\"$objectId\">\n";
+		echo "		<label for=\"objectId_$i\"><b>$objectName</b></label><br \>\n";
 		echo "</div>\n";		
 		# COALITION RADIO BOX
 		echo "<div class=\"radio\">\n";  
-		echo "	<input id=\"ententeModel$i\" type=\"radio\" name=\"radiobox$i\" value=\"1\">  \n";
+		echo "	<input id=\"ententeModel$i\" type=\"radio\" name=\"$objectId\" value=\"1\">  \n";
 		echo "	<label for=\"ententeModel$i\">Entente</label>  \n";
-		echo "	<input id=\"centerModel$i\" type=\"radio\" name=\"radiobox$i\" value=\"2\">  \n";
+		echo "	<input id=\"centerModel$i\" type=\"radio\" name=\"$objectId\" value=\"2\">  \n";
 		echo "	<label for=\"centerModel$i\">Center</label> \n"; 
 		echo "</div>\n";
 	$i ++;
