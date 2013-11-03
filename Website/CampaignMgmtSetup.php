@@ -55,7 +55,7 @@
 //					echo "<p>Now select \"User Management\" from the upper menu bar.<br /> Scroll down to \"Choose the default folder for your Group Files:\" and enter the full path and folder name there, then click \"Save\".</p>\n";
 					echo "<h3>Start the Mission Editor</h3>\n";
 					echo "<p>Next we work on setting up the campaign in the mission editor.</p>\n";
-					echo "<p>You can open the mission editor in a separate window to carry out this process.<\p>\n";
+					echo "<p>You can open the mission editor in a separate window to carry out this process.</p>\n";
 					echo "<p>To start a new mission click 'File' and 'New' in the upper left.</p>\n";
 					echo "<p>If the 'Mission Properties' window is not open, right click with your mouse on the map and select Properties. This will open the 'Mission Properties' window.</p>\n";
  
@@ -118,7 +118,7 @@
 					echo "<p>Save the mission before continuing.</p>\n";
 					
 					echo "<h3>Define the Influence Areas</h3>\n";
-					echo "<p>Next, go into 2D editing mode by clicking on the Arrow down icon key at the left hand side of 
+					echo "<p>Next, go into 2D editing mode by hitting F9 or clicking on the Arrow down icon key at the left hand side of 
 					the tool bar which you normally find at the top of the screen. It is in-between the ruler icon and the F icon.<br>\n";
 					echo "You can zoom in and out using the scroll on your mouse and drag the map around holding the right mouse click.<br>\n";
 					echo "The campaign maps (as opposed to the dogfight maps) are very big. If you populate the complete map with objects 
