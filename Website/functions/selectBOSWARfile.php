@@ -5,8 +5,8 @@
 // =69.GIAP=TUSHKA
 // Nov 1,2013
 
-function selectBOSWARfile($campaign,$SaveToDir) {
-	// $campaign is a campaign name used as part of a filename
+function selectBOSWARfile($abbrv,$SaveToDir) {
+	// $abbrv is an abbreviation used as part of a filename
 	// $SaveToDir is the upload directory
 
 	$dhandle = opendir("$SaveToDir");
@@ -20,7 +20,7 @@ function selectBOSWARfile($campaign,$SaveToDir) {
 			// and it includes the campaign name
 			// then store it for later display
 			if (($fname != '.') && ($fname != '..') &&
-				(preg_match("/$campaign/",$fname)) &&
+				(preg_match("/$abbrv/",$fname)) &&
 				($fname != basename($_SERVER['PHP_SELF']))) {
 				// store the filename
 				$files[] = (is_dir( "./$fname" )) ? "(Dir) {$fname}" : $fname;

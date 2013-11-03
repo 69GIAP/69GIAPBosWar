@@ -48,15 +48,17 @@
 					$result->free();
 
 					
-					echo "<p>We now need to upload our template and group files to the BOSWAR campaign manager for future use.</p>\n";
+					echo "<p>We now need to upload our template file to the BOSWAR campaign manager.</p>\n";
 
-					$campaign_template = "$campaign"."_template";
 
-					echo "<p>Start by uploading your $campaign_template.Mission file.</p>\n";
-					echo "<p>Then upload your $campaign-template_to_airfield.Group.</p>\n";
+					echo "<p>Start by navigating to your $abbrv-groups directory.</p>\n";
+					echo "<p>Then upload your $abbrv-template.Mission file.</p>\n";
 
 					# require pickFile.php
 					require ('functions/pickFile.php');
+
+					# return here after choosing the file
+					$returnpage = 'CampaignMgmtUpload.php';
 
 					# go
 					pickFile($returnpage);

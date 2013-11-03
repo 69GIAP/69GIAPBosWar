@@ -42,11 +42,9 @@
 					}
 					$result->free();
 
-					$campaign_template = "$campaign"."_template";
 					
-					echo "<p>We will now use the template ($campaign_template.Mission) and group file ($campaign-template_to_airfield.Group) we recently uploaded tothe server.</p>\n";
+					echo "<p>We will now use the template ($abbrv.Mission) we recently uploaded to the server.</p>\n";
 					echo "<p>The template file will be used to determine the minimum and maximum coordinates of your combat sector from the influence areas you have defined, and to enter the combatant's countries and coalitions into the $campaign database.</p>\n";
-					echo "<p>The airfield group file will be populated with aircraft and used in all future missions.</p>\n";
 
 					// Include selectBOSWARfile.php
 					require ('functions/selectBOSWARfile.php');
@@ -61,9 +59,9 @@
 					echo "<form id=\"campaignMgmtImportForm\" name=\"campaignImport\" action=\"CampaignMgmtImportConfirm.php?btn=campMgmt\" method=\"post\">\n";
 					echo "<input type=\"hidden\" name=\"SaveToDir\" value=\"$SaveToDir\">\n";
 					echo "<input type=\"hidden\" name=\"returnpage\" value=\"$returnpage\">\n";
-					echo "<p>Select $campaign_template.Mission and click \"Update CAC&C\".</p>\n";
+					echo "<p>Select $abbrv-template.Mission and click \"Update CAC&C\".</p>\n";
 
-					selectBOSWARfile($campaign,$SaveToDir);
+					selectBOSWARfile($abbrv,$SaveToDir);
 
 					// BUTTON
 					echo "<fieldset id=\"actions\">\n";	
