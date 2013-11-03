@@ -40,10 +40,10 @@
 		}
 		else {
 			echo "		<p><b>$objectName</b></p>\n";
-			echo "		<input class =\"special\" id=\"objectIdActive_$i\" type=\"radio\" name ='$objectName' value =\"$objectId\" >\n";
+			echo "		<input class =\"special\" id=\"objectIdActive_$i\" type=\"radio\" name ='$objectName' value =\"1\" >\n";
 			echo "		<label class =\"special\" for=\"objectIdActive_$i\">active</label>\n";
 			
-			echo "		<input class =\"special\" id=\"objectIdInactive_$i\" type=\"radio\" name ='$objectName' value =\"$objectId\" checked>\n";
+			echo "		<input class =\"special\" id=\"objectIdInactive_$i\" type=\"radio\" name ='$objectName' value =\"0\" checked>\n";
 			echo "		<label class =\"special\" for=\"objectIdInactive_$i\">inactive</label><br \>\n";
 		}
 		echo "</div>\n";
