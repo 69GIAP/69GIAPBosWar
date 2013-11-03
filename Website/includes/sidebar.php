@@ -88,7 +88,6 @@
 													echo "	    <li><a href=\"CampaignMgmtStatics.php?btn=campMgmt\" class=\"campCreateStatics\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=campMgmt\" class=\"campUpdateAirfields\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtBridges.php?btn=campMgmt\" class=\"campUpdateBridges\"><span></span></a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtGroupFiles.php?btn=campMgmt\" class=\"dummy\">Receive Group Files</a></li>\n";	
 													echo "  </ul>\n";
 												}
 											if ($userRole == "commander")
