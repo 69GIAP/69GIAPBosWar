@@ -4,13 +4,13 @@
 // 69giapmyata
 // ver 1.0
 
+	# add percent to allow like query
+	$_SESSION['objectClass'] = $objectClass;
+	
 	$sql = "SELECT id, object_type, object_desc, active, coalition
 			FROM rof_object_properties
-			WHERE object_class ='$objectClass'";
+			WHERE object_class like '$objectClass%'";
 		
-	#$sql = "SELECT id, object_type FROM rof_object_properties
-	#		WHERE object_class ='$objectClass'";
-	
 	$i = 1;
 	
 	#echo $sql;
@@ -31,37 +31,58 @@
 		
 		echo "<div class=\"checkbox\">\n";
 		if	($objectStatus == 1) {
-			echo "		<input id=\"objectId_$i\" type=\"checkbox\" name ='$objectId' value =\"$objectId\" checked>\n";
-			echo "		<label for=\"objectId_$i\"><b>$objectName</b></label><br \>\n";
+			echo "		<p><b>$objectName</b></p>\n";
+			echo "		<input class =\"special\" id=\"objectIdActive_$i\" type=\"radio\" name ='$objectName' value =\"1\" checked>\n";
+			echo "		<label class =\"special\" for=\"objectIdActive_$i\">active</label>\n";
+			
+			echo "		<input class =\"special\" id=\"objectIdInactive_$i\" type=\"radio\" name ='$objectName' value =\"0\" >\n";
+			echo "		<label class =\"special\" for=\"objectIdInactive_$i\">inactive</label><br \>\n";			
 		}
 		else {
-			echo "		<input id=\"objectId_$i\" type=\"checkbox\" name ='$objectId' value =\"$objectId\" >\n";
-			echo "		<label for=\"objectId_$i\"><b>$objectName</b></label><br \>\n";
+			echo "		<p><b>$objectName</b></p>\n";
+			echo "		<input class =\"special\" id=\"objectIdActive_$i\" type=\"radio\" name ='$objectName' value =\"$objectId\" >\n";
+			echo "		<label class =\"special\" for=\"objectIdActive_$i\">active</label>\n";
+			
+			echo "		<input class =\"special\" id=\"objectIdInactive_$i\" type=\"radio\" name ='$objectName' value =\"$objectId\" checked>\n";
+			echo "		<label class =\"special\" for=\"objectIdInactive_$i\">inactive</label><br \>\n";
 		}
 		echo "</div>\n";
 				
 		# COALITION RADIO BOX
 		echo "<div class=\"radio\">\n";  
 			if ($objectCoalition == 0) {
+				echo "	<input id=\"neutralModel$i\" type=\"radio\" name=\"$objectId\" value=\"0\" checked>  \n";
+				echo "	<label for=\"neutralModel$i\">Neutral</label>  \n";
+				
 				echo "	<input id=\"ententeModel$i\" type=\"radio\" name=\"$objectId\" value=\"1\" >  \n";
 				echo "	<label for=\"ententeModel$i\">Entente</label>  \n";
+				
 				echo "	<input id=\"centerModel$i\" type=\"radio\" name=\"$objectId\" value=\"2\">  \n";
 				echo "	<label for=\"centerModel$i\">Center</label> \n";
 			}
 			elseif ($objectCoalition == 1) {
+				echo "	<input id=\"neutralModel$i\" type=\"radio\" name=\"$objectId\" value=\"0\" >  \n";
+				echo "	<label for=\"neutralModel$i\">Neutral</label>  \n";	
+							
 				echo "	<input id=\"ententeModel$i\" type=\"radio\" name=\"$objectId\" value=\"1\" checked>  \n";
 				echo "	<label for=\"ententeModel$i\">Entente</label>  \n";
+				
 				echo "	<input id=\"centerModel$i\" type=\"radio\" name=\"$objectId\" value=\"2\" >  \n";
 				echo "	<label for=\"centerModel$i\">Center</label> \n"; 
 			}
 			elseif ($objectCoalition == 2) {
+				echo "	<input id=\"neutralModel$i\" type=\"radio\" name=\"$objectId\" value=\"0\">  \n";
+				echo "	<label for=\"neutralModel$i\">Neutral</label>  \n";	
+							
 				echo "	<input id=\"ententeModel$i\" type=\"radio\" name=\"$objectId\" value=\"1\">  \n";
 				echo "	<label for=\"ententeModel$i\">Entente</label>  \n";
+				
 				echo "	<input id=\"centerModel$i\" type=\"radio\" name=\"$objectId\" value=\"2\" checked>  \n";
 				echo "	<label for=\"centerModel$i\">Center</label> \n";
 			}
-		echo "</div>\n";
 		
+		echo "</div>\n";
+		print "<hr noshade width=\"auto\" size=\"1\" >\n";
 		$i ++;
 	}
 	echo "</div>\n";

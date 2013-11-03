@@ -84,7 +84,7 @@ session_start();
 		}
 	##### DEBUGGING #####
 	include ('includes/debugging/debuggingSessionVariables.php');	
-	include ( 'includes/debugging/debuggingPostVariables.php' );
+	#include ( 'includes/debugging/debuggingPostVariables.php' ); testing the Post variables for my objects enabling this creates an error so I turned it off temporarily.
 	include ( 'includes/debugging/debuggingMySqlError.php' );	
 			
 ?>
