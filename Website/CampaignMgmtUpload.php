@@ -26,9 +26,14 @@
 	
 					# use this information to connect to campaign 
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
-
+					
+					# initialize variable $returnpage if non existing
+					if (empty($returnpage)) {
+						$returnpage = '';
+					}
+					
 					# initialise variables
-					echo "<h1>Upload $campaign Campaign Files</h1>";
+					echo "<h2>Upload $campaign Campaign Files</h2>";
 					$query = "SELECT * from campaign_settings;";
 					if(!$result = $dbc->query($query)) {
 						die('CampaignMgmtSetup.php query error [' . $dbc->error . ']');
@@ -43,15 +48,17 @@
 					$result->free();
 
 					
-					echo "<p>We now need to upload our template and group files to the BOSWAR campaign manager for future use.</p>\n";
+					echo "<p>We now need to upload our template file to the BOSWAR campaign manager.</p>\n";
 
-					$campaign_template = "$campaign"."_template";
 
-					echo "<p>Start by uploading your $campaign_template.Mission file.</p>\n";
-					echo "<p>Then upload your $campaign-template_to_airfield.Group.</p>\n";
+					echo "<p>Start by navigating to your $abbrv-groups directory.</p>\n";
+					echo "<p>Then upload your $abbrv-template.Mission file.</p>\n";
 
 					# require pickFile.php
 					require ('functions/pickFile.php');
+
+					# return here after choosing the file
+					$returnpage = 'CampaignMgmtUpload.php';
 
 					# go
 					pickFile($returnpage);

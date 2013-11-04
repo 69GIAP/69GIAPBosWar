@@ -19,6 +19,9 @@
             <div id="content">
             
 				<?php
+					# get the  object you want to list on this page
+					$objectClass = $_GET['objectClass'];
+					
 					# include connect2CampaignFunction.php
 					include ( 'functions/connect2Campaign.php' );
 		
@@ -27,24 +30,25 @@
 									
 					# use this information to connect to campaign 
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
+
+                echo "<p>For a new campaign we should be able to restrict the Objects like plane models availiable. <br>
+				This screen will list all the availiable objects based on the selection in the side menu. <br>
+				We will then be able to select those that are not availiable and adjust points values for those that are availiable.</p>
+				<p>The update screen is not needed for Alpha or Beta test.</p>\n";
                 
-                echo "<p>We need a screen to edit a bridge status to declare it as damaged or repaired, can be hit with sql for the moment not needed for Beta</p>\n";
-				
 				# start form
-				echo "<form id=\"campaignMgmtForm\" name=\"objectSetup\" action=\"CampaignMgmtBridgesConfirm.php\" method=\"post\">\n";
+				echo "<form id=\"campaignMgmtForm\" name=\"objectSetup\" action=\"CampaignMgmtObjectsConfirm.php\" method=\"post\">\n";
 				
 				# get the master aircraft model list
-                include ('includes/getBridgeStatus.php');
+                include ('includes/getMasterObjectInformation.php');
 				
 				# BUTTON
 				echo "<fieldset id=\"actions\">\n";	
-				echo "		<button type=\"submit\" id=\"loginSubmit\" value ='' >Update Bridge Status</button>\n";
+				echo "		<button type=\"submit\" id=\"loginSubmit\" value ='$objectClass' >Apply</button>\n";
 				echo "	</fieldset>\n";
 				
-				echo "</form>\n";
-				?>
-
-            
+				echo "</form>\n";				
+            	?>
             </div>
     
         </div>

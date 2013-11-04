@@ -83,7 +83,7 @@
 				if(!isset($_SESSION["userName"])) 
 					{
 						echo "<form action=\"UserMgmtLoginForm.php\" >\n";
-						echo "<input type=\"submit\" value=\"Retry\">\n";
+						echo "<input type=\"submit\" value=\"Retry\" autofocus>\n";
 						echo "</form>\n";		  
 					} 
 				echo "\n";

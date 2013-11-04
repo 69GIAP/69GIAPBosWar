@@ -5,30 +5,30 @@
 $query = "SELECT * from campaign_settings;";
 if($result = $camp_link->query($query)) {
 	while ($obj = $result->fetch_object()) {
-	$status=($obj->status);
-	$logpath=($obj->logpath);
-	$log_prefix=($obj->log_prefix);
-	$show_airfield=($obj->show_airfield);
-	$finish_flight_only_landed=($obj->finish_flight_only_landed);
-	$kia_pilot=($obj->kia_pilot);
-	$mia_pilot=($obj->mia_pilot);
-	$cw_pilot=($obj->critical_w_pilot);
-	$sw_pilot=($obj->serious_w_pilot);
-	$lw_pilot=($obj->light_w_pilot);
-	$kia_gunner=($obj->kia_gunner);
-	$cw_gunner=($obj->critical_w_gunner);
-	$sw_gunner=($obj->serious_w_gunner);
-	$lw_gunner=($obj->light_w_gunner);
-	$dst_airActGrnd=($obj->air_detect_distance);
-	$dst_GndActGrnd=($obj->ground_detect_distance);
-	$lvl_AIAc=($obj->air_ai_level);
-	$lvl_AIGrnd=($obj->ground_ai_level);
-	$spd_maxGrnd=($obj->ground_max_speed_kmh);
-	$spd_maxTrnspt=($obj->ground_transport_speed_kmh);
-	$sprd_suplPnts=($obj->ground_spacing);
-	$time_lineup=($obj->lineup_minutes);
-	$time_msn=($obj->mission_minutes);
-	$time_actvtUnit=($obj->detect_off_time);
+		$status						=($obj->status);
+		$logpath					=($obj->logpath);
+		$log_prefix					=($obj->log_prefix);
+		$show_airfield				=($obj->show_airfield);
+		$finish_flight_only_landed	=($obj->finish_flight_only_landed);
+		$kia_pilot					=($obj->kia_pilot);
+		$mia_pilot					=($obj->mia_pilot);
+		$cw_pilot					=($obj->critical_w_pilot);
+		$sw_pilot					=($obj->serious_w_pilot);
+		$lw_pilot					=($obj->light_w_pilot);
+		$kia_gunner					=($obj->kia_gunner);
+		$cw_gunner					=($obj->critical_w_gunner);
+		$sw_gunner					=($obj->serious_w_gunner);
+		$lw_gunner					=($obj->light_w_gunner);
+		$dst_airActGrnd				=($obj->air_detect_distance);
+		$dst_GndActGrnd				=($obj->ground_detect_distance);
+		$lvl_AIAc					=($obj->air_ai_level);
+		$lvl_AIGrnd					=($obj->ground_ai_level);
+		$spd_maxGrnd				=($obj->ground_max_speed_kmh);
+		$spd_maxTrnspt				=($obj->ground_transport_speed_kmh);
+		$sprd_suplPnts				=($obj->ground_spacing);
+		$time_lineup				=($obj->lineup_minutes);
+		$time_msn					=($obj->mission_minutes);
+		$time_actvtUnit				=($obj->detect_off_time);
 	}
 } else {
 	die('getCoalition query error [' . $camp_link->error . ']');
@@ -42,8 +42,10 @@ echo "	<fieldset id=\"inputs\">\n";
 echo "		<h2>Mission Log Settings</h2>\n";
 echo "		<h3>log files location relative to boswar home directory<br> (use / as directory separator)</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"logpath\" value='$logpath' autofocus ><br>\n";
-echo "		<h3>constant prefix for this campaign's log files<br />(MUST be unique - append campaign name or initials)</h3>\n";
-$log_prefix = $log_prefix.$abbrv;
+if ($log_prefix == 'missionReport') {
+	$log_prefix = $log_prefix.$abbrv;
+}
+echo "		<h3>constant prefix for this campaign's log files<br />(Recommend using default or default plus an underscore)</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"log_prefix\" value='$log_prefix' autofocus ><br>\n";
 echo "	</fieldset>\n";
 # BUTTON

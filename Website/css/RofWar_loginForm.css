@@ -363,12 +363,21 @@ div.radio label {
     border-radius: 3px;  
 }  
 
+input.special[type=radio]:checked + label.special:before {  /* secial case for objects menu: square checkbox with check symbol but radio button behavior */
+    content: "\2713";  /* check symbol */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+    font-size: 15px;  
+    color: #f3f3f3;  
+    text-align: center;  
+    line-height: 15px;
+} 
+
 input[type=radio]:checked + label:before {  
     content: "\2022"; /* bullet symbol */
     color: #f3f3f3;  
     font-size: 30px;  
     text-align: center;  
-    line-height: 10px; /* position of radio bullet once selesecte */
+    line-height: 10px; /* position of radio bullet once selected */
 }  
 
 input[type=checkbox]:checked + label:before {  

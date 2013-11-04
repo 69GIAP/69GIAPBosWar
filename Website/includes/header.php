@@ -36,10 +36,11 @@ session_start();
 		}
 		
 	# check if a navigation button was pressed and introduce SESSION variable for naviagtion button presses
-	if (empty($_GET["btn"])) {
+	
+	if (empty($_GET['btn'])) {
 		$btn = "";}
 	else {
-		$_SESSION['btn'] = $_GET["btn"];
+		$_SESSION['btn'] = $_GET['btn'];
 		$btn 			 = $_SESSION['btn'];}
 		  
 	# check if a there is already a userRole defined
@@ -83,7 +84,7 @@ session_start();
 		}
 	##### DEBUGGING #####
 	include ('includes/debugging/debuggingSessionVariables.php');	
-	include ( 'includes/debugging/debuggingPostVariables.php' );
+	include ( 'includes/debugging/debuggingPostVariables.php' ); #testing the Post variables for my objects enabling this creates an error so I turned it off temporarily.
 	include ( 'includes/debugging/debuggingMySqlError.php' );	
 			
 ?>

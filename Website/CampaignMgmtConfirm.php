@@ -46,6 +46,7 @@ if ($_POST["updateCampaignParameters"] == 1) {
 	$result = $camp_link->query($query);
 //	echo "$result<br />\n";
 //	echo "Updated section 1";
+	header("Location: CampaignMgmtConfigure.php?btn=campMgmt");
 }
 
 // Section 2

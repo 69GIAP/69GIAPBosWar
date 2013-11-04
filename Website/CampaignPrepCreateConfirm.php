@@ -20,6 +20,7 @@
 				<?php
 					
 					$newCampaignName 		= $_POST['newCampaignName'];
+					$newCampaignAbbrv		= $_POST['newCampaignAbbrv'];
 					$newCampaignDBName 		= $_POST['newCampaignDatabaseName'];
 					$newCampaignDBUser 		= $_POST['newCampaignDatabaseUser'];
 					$newCampaignDBPassword 	= $_POST['newCampaignDatabasePassword'];
@@ -64,8 +65,6 @@ $query .= "GRANT FILE ON *.* TO '$newCampaignDBUser'@'$newCampaignDBHost' ;";
 # temporarily used tables until we populate the final tables with data
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_airfields LIKE boswar_db.rof_airfields;";
 $query .= "INSERT INTO `$newCampaignDBName`.rof_airfields SELECT * FROM boswar_db.rof_airfields;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_models LIKE boswar_db.rof_models;";
-$query .= "INSERT INTO `$newCampaignDBName`.rof_models SELECT * FROM boswar_db.rof_models;";
 // Do the remainder of the empty tables that we need
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.campaign_missions LIKE boswar_db.campaign_missions;";
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.inbox LIKE boswar_db.inbox;";
@@ -91,8 +90,8 @@ $query .= "INSERT INTO `$newCampaignDBName`.rof_object_roles SELECT * FROM boswa
 // create the selected map_locations table
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.$campaignMapLocations LIKE boswar_db.$campaignMapLocations;";
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.campaign_settings LIKE boswar_db.campaign_settings;";
-$query .= "INSERT INTO `$newCampaignDBName`.campaign_settings (simulation, campaign, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
-$query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
+$query .= "INSERT INTO `$newCampaignDBName`.campaign_settings (simulation, campaign, abbrv, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
+$query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignAbbrv', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
 // create tables necessary for group files
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.col_10 LIKE boswar_db.col_10;";
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.Trains LIKE boswar_db.trains;";
@@ -112,11 +111,8 @@ $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.bridges LIKE boswar_d
 # INSERT CAMPAIGN DB INFORMATION TO MASTER TABLE
 // this should be at the end of the creation chain
 // so it won't be created if there is an error
-
-$abbr = substr($newCampaignDBName,0,7); // create an abbreviation based on the db name and trim to 7 chars to match table definition
-
 $query .= "INSERT INTO campaign_settings (simulation, campaign, abbrv, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
-$query .= "VALUES ('RoF', '$newCampaignName', '$abbr', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
+$query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignAbbrv','$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
 
 # Add user to the campaign_users table
 $query .="INSERT INTO campaign_users (user_id, camp_db, CoalID, groupFile_path) VALUES ($userId, '$newCampaignDBName', 0, '' );";
@@ -144,7 +140,7 @@ $query .="INSERT INTO campaign_users (user_id, camp_db, CoalID, groupFile_path) 
 					# forward to campaign configuration screen
 					$_SESSION['camp_db'] = "$newCampaignDBName";
 
-					header("Location: CampaignMgmtSetup.php?btn=campMgmt");
+					header("Location: CampaignMgmtConfigure.php?btn=campMgmt");
 
                 ?>
             
