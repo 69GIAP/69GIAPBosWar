@@ -130,7 +130,7 @@
 * Select "Edit Influence Area".<br />
 * This will create a blue triangle with a yellow circle at one apex which you can drag with your mouse (holding down the left mouse button).<br />
 * To select another end to edit, double click on that end.<br />
-* You will probably want at least one more corner to form a trapezoid.  (You may add as many as you need.)<br />
+* You will probably want at least one more corner to form a trapezoid.  (Try to use no more than 6-8 corners per area.  More complex areas may cause performance problems.)<br />
 * To add another point to move, use CTRL+left mouse click on a boundary line that is attacked to the yellow circle.<br />
 * Note that the boundary of an influence area should not cross itself.<br />
 * Move the ends to form a boundary around the area you want to define.<br />
@@ -150,7 +150,7 @@
 
 			echo "<h3>Refine the Template</h3>\n";
 
-			echo "<p>Next we will start to refine our campaign template<br>";
+			echo "<p>Next we will start to refine our campaign template.<br>";
 			echo "<p>We now want to save <b>just</b> the objects that are in our sector.</p> 
 			<p>On the top icon bar is a button for the object filter abbreviated as \"OBJ FILT\".  Select that, then \"Select All\" then select \"OK\".</p>
 			<p>Click the bottom left of the influence areas and holding the left mouse button drag from bottom left of our sector to top right of our sector. This will highlight all objects in our sector.  Be sure this includes all the defined influence areas.  Better to be slightly generous than slightly stingy here.</p>";
