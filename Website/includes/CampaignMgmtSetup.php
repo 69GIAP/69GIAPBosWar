@@ -173,7 +173,7 @@
 					Continue till all active airfields are set.</p>\n";
 					
 					echo "<p>Next we are going to prepare to send the information  about all these airfields to our BOSWAR campaign manager.<br />
-					Once ready \"Select All Visible Objects\" (the airfields) then \"File\", \"Save Selection to File\", select your campaign groups directory and save to the filename \"campaign_abbreviation-template_to_airfield.Group\" (e.g. $abbrv-template_to_airfield.Group).</p>\n";
+					Once ready \"Select All Visible Objects\" (the airfields) then \"File\", \"Save Selection to File\", select your campaign groups directory and save to the filename \"campaign_abbreviation-template_to_airfield.Group\" (e.g. <b>$abbrv-template_to_airfield.Group</b>).</p>\n";
 					echo "<p>We can now delete all airfields from our template.</p>\n";
 					echo "<p>\"Select All Visible Objects\", Right Click on the selected rectangle and select \"Cut\".<br />\n"; 
 					echo "<p>Save the template to your campaign groups directory, overwriting the old copy.</p>\n";		

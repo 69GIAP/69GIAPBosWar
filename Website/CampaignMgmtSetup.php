@@ -154,7 +154,7 @@
 			echo "<p>We now want to save <b>just</b> the objects that are in our sector.</p> 
 			<p>On the top icon bar is a button for the object filter abbreviated as \"OBJ FILT\".  Select that, then \"Select All\" then select \"OK\".</p>
 			<p>Click the bottom left of the influence areas and holding the left mouse button drag from bottom left of our sector to top right of our sector. This will highlight all objects in our sector.  Be sure this includes all the defined influence areas.  Better to be slightly generous than slightly stingy here.</p>";
-			echo "<p>Next in the File menu, select \"Save selection to File\", navigate back to your $abbrv-groups directory, give this file the File Name <b>$abbrv-no-trunc.Groups</b>, and as type Mission Files, and click \"Save\".</p>
+			echo "<p>Next in the File menu, select \"Save selection to File\", navigate back to your $abbrv-groups directory, give this file the File Name <b>$abbrv-no-trunc.Group</b>, and as type Mission Files, and click \"Save\".</p>
 					<p>Left click outside the area to unselect it.</p>
 					<p>Now go to the \"Search and Select\" menu, select \"Select All Objects in Mission\" and press the \"Delete\" key on your keyboard. There will be a pause (have patience) and all the airfields etc. will disappear.</p>
 			<p>We can now load back in only those objects that were in our sector with File, Import from File, select /data/Multiplayer/Dogfight/ and load the file $abbrv-no-trunc.Group.
@@ -170,7 +170,7 @@
 					Next do the same for an Allied airfield setting the Country to one of the Allied Countries.<br />
 					Continue till all active airfields are set.</p>\n";
 					
-					echo "<p>Once ready \"Select All Visible Objects\" (the airfields) then \"File\", \"Save Selection to File\", select your $abbrv-groups directory and save as $abbrv-template_to_airfield.Group.</p>\n";
+					echo "<p>Once ready \"Select All Visible Objects\" (the airfields) then \"File\", \"Save Selection to File\", select your $abbrv-groups directory and save as <b>$abbrv-template_to_airfield.Group</b>.</p>\n";
 					echo "<p>Then save the entire template mission file, which now contains activated airfields.</p>\n";
 					echo "<p>Once you are ready to proceed, click \"Next\"</p>\n";
 					# BUTTON
