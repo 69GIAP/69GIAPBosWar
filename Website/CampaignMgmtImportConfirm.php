@@ -9,8 +9,6 @@
 // Include the navigation on top
 	include ( 'includes/navigation.php' );
 
-// Include $_POST debugging
-	include ( 'includes/debugging/debuggingPostVariables.php' );
 
 ?>
 
@@ -33,10 +31,10 @@
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
 
 					// get post variables
-					$templateImport = $_POST["templateImport"];
-					$file = $_POST["file"];
-					$SaveToDir = $_POST["SaveToDir"];
-					$returnpage = $_POST["returnpage"];
+					$templateImport	= $_POST["templateImport"];
+					$file			= $_POST["file"];
+					$SaveToDir		= $_POST["SaveToDir"];
+					$returnpage		= $_POST["returnpage"];
 
 					if ($templateImport == 1) {
 						//include getMinMaxXZFromMissionFile.php
@@ -62,6 +60,9 @@
 					} elseif ($templateImport == 2) {
 						//include template_to_airfield.php
 						include ('includes/template_to_airfield.php');
+						
+						//truncate airfields_models table and copy active airfields into having 0 models assigned
+						include ('includes/copyActiveAirfields.php');
 //						header ("Location: $returnpage");
 					}
                 ?>					
