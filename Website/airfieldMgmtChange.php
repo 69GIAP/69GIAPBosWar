@@ -43,8 +43,8 @@
 					# get airfield name from selection form and use as header
 					$airfieldName = $_SESSION["airfieldName"];	
 		
-					# get data from test_airfield table
-					$sql = "SELECT * FROM test_airfields WHERE name = '$airfieldName'";
+					# get data from airfield_models table
+					$sql = "SELECT * FROM airfields_models WHERE airfield_Name = '$airfieldName'";
 		
 					if(!$result = $camp_link->query($sql)){
 						die('There was an error running the query ' . mysqli_error($camp_link));
@@ -54,18 +54,18 @@
 					$num = mysqli_num_rows($result);
 	
 					# start form
-					echo "<form id=\"airfieldForm\" name=\"login\" action=\"airfieldManagementModify.php\" method=\"post\">\n";
+					echo "<form id=\"airfieldForm\" name=\"login\" action=\"airfieldMgmtModify.php\" method=\"post\">\n";
 					echo "    <h1 id=\"h1Form\">$airfieldName</h1>\n";
 
 
 					# load results into variables and build form
 					$i = 1;
 					while ($obj = mysqli_fetch_object($result)) {
-						$airfieldName		=($obj->name);
-						$airfieldCoalitionId=($obj->coalId);
-						$airfieldModel		=($obj->model);
-						$airfieldNumber		=($obj->number);
-			
+						$airfieldName		=($obj->airfield_Name);
+						$airfieldCoalitionId=($obj->airfield_coalition);
+						$airfieldModel		=($obj->airfield_model);
+						$airfieldNumber		=($obj->airfield_Number);
+						
 					# MODEL
 					if ($airfieldModel == '')
 						{
@@ -122,7 +122,8 @@
 						
 						echo "<fieldset id=\"inputs\">\n";										
 						# get coalition name and store to variable
-						$getCoalName = "SELECT coalitionname FROM rof_coalitions WHERE coalID = '$airfieldCoalitionId'";
+						$getCoalName = "SELECT coalitionname FROM rof_coalitions 
+										WHERE coalID = '$airfieldCoalitionId' ";
 										
 						if(!$coalName = $camp_link->query($getCoalName)){
 							die('There was an error running the query ' . mysqli_error($camp_link));

@@ -64,39 +64,39 @@
 				# prepare sql based on selected aircraft
 				if ($_POST["updateAirfield"] == 1)
 					{
-					$query="UPDATE test_airfields SET number = '$airfieldModelQuantityNew1' WHERE model = '$airfieldModelLoaded1' AND name = '$airfieldName'";
+					$query="UPDATE airfields_models SET number = '$airfieldModelQuantityNew1' WHERE model = '$airfieldModelLoaded1' AND airfield_Name = '$airfieldName'";
 					}
 				if ($_POST["updateAirfield"] == 2)
 					{
-					$query="UPDATE test_airfields SET number = '$airfieldModelQuantityNew2' WHERE model = '$airfieldModelLoaded2' AND name = '$airfieldName'";
+					$query="UPDATE airfields_models SET number = '$airfieldModelQuantityNew2' WHERE model = '$airfieldModelLoaded2' AND airfield_Name = '$airfieldName'";
 					}
 				if ($_POST["updateAirfield"] == 3)
 				{
-					$query="UPDATE test_airfields SET number = '$airfieldModelQuantityNew3' WHERE model = '$airfieldModelLoaded3' AND name = '$airfieldName'";
+					$query="UPDATE airfields_models SET number = '$airfieldModelQuantityNew3' WHERE model = '$airfieldModelLoaded3' AND airfield_Name = '$airfieldName'";
 				}
 				if ($_POST["updateAirfield"] == 4)
 					{
-					$query="UPDATE test_airfields SET number = '$airfieldModelQuantityNew4' WHERE model = '$airfieldModelLoaded4' AND name = '$airfieldName'";
+					$query="UPDATE airfields_models SET number = '$airfieldModelQuantityNew4' WHERE model = '$airfieldModelLoaded4' AND airfield_Name = '$airfieldName'";
 					}
 				if ($_POST["updateAirfield"] == 5)
 					{
-					$query="UPDATE test_airfields SET number = '$airfieldModelQuantityNew4' WHERE model = '$airfieldModelLoaded4' AND name = '$airfieldName'";
+					$query="UPDATE airfields_models SET number = '$airfieldModelQuantityNew4' WHERE model = '$airfieldModelLoaded4' AND airfield_Name = '$airfieldName'";
 					}
 				if ($_POST["updateAirfield"] == 6)
 					{
-					$query="UPDATE test_airfields SET number = '$airfieldModelQuantityNew4' WHERE model = '$airfieldModelLoaded4' AND name = '$airfieldName'";
+					$query="UPDATE airfields_models SET number = '$airfieldModelQuantityNew4' WHERE model = '$airfieldModelLoaded4' AND airfield_Name = '$airfieldName'";
 					}										
 				if ($_POST["updateAirfield"] == 7)
 					{
-					$query="INSERT INTO test_airfields (name, coalId, model, number) VALUES ('$airfieldName', $airfieldCoalitionId, '$airfieldModelAdd', $airfieldModelAddQuantity)";
+					$query="INSERT INTO airfields_models (airfield_Name, airfield_coalition, model, number) VALUES ('$airfieldName', $airfieldCoalitionId, '$airfieldModelAdd', $airfieldModelAddQuantity)";
 					}
 				if ($_POST["updateAirfield"] == 8)
 					{
-					$query="DELETE from test_airfields WHERE model = '$airfieldModelAdd' AND name = '$airfieldName'";
+					$query="DELETE from airfields_models WHERE model = '$airfieldModelAdd' AND airfield_Name = '$airfieldName'";
 					}
 				if ($_POST["updateAirfield"] == 9)
 					{
-					$query="UPDATE test_airfields SET coalId = '$airfieldCoalitionIdNew' WHERE name = '$airfieldName'";
+					$query="UPDATE airfields_models SET coalId = '$airfieldCoalitionIdNew' WHERE airfield_Name = '$airfieldName'";
 					}						
 						
 # get the camp_db connection information START

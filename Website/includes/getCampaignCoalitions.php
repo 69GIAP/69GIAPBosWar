@@ -5,7 +5,8 @@
 
 	# load the campaign coalitions
 
-	$query = "SELECT * FROM rof_coalitions";
+	$query = "SELECT * FROM rof_coalitions
+		ORDER BY CoalId";
 	
 	if(!$result = $camp_link->query($query))
 		{

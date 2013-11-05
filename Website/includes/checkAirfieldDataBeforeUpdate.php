@@ -6,7 +6,7 @@
 				
 # check 1			
 			# check if if model name = ''; this means no aircraft is currently assigned to the airport
-			$check1 = "SELECT * from test_airfields where name = '$airfieldName' AND model = ''";
+			$check1 = "SELECT * from airfields where airfield_Name = '$airfieldName' AND model = ''";
 
 		
 			#execute the database checks
@@ -15,12 +15,12 @@
 			# check if maximum amount of models is reached
 			if ($num != 0)
 				{	
-					$query="UPDATE test_airfields SET model = '$airfieldModelAdd', number = '$airfieldModelAddQuantity' WHERE model = '' AND name = '$airfieldName'";
+					$query="UPDATE airfields SET model = '$airfieldModelAdd', number = '$airfieldModelAddQuantity' WHERE model = '' AND airfield_Name = '$airfieldName'";
 				}
 
 # check 2
 			# check if there are already 6 aircraft models assigned to that airfield
-			$check2 = "SELECT * from test_airfields where name = '$airfieldName' and coalId = $airfieldCoalitionId";
+			$check2 = "SELECT * from airfields where airfield_Name = '$airfieldName' and airfield_coalition = $airfieldCoalitionId";
 
 			#execute the database checks		
 			$result = mysqli_query($camp_link, $check2);
@@ -35,7 +35,7 @@
 
 # check 3
 			# check if there is a primary key violation
-			$check3 = "SELECT * from test_airfields where name = '$airfieldName' AND model = '$airfieldModelAdd'";
+			$check3 = "SELECT * from airfields where airfield_Name = '$airfieldName' AND model = '$airfieldModelAdd'";
 			
 			#execute the database checks
 			$result = mysqli_query($camp_link, $check3);
@@ -51,12 +51,12 @@
 	if ($_POST["updateAirfield"] == 8)
 		{
 			# check if airport has only one entry left
-			$check4 = "SELECT * from test_airfields where name = '$airfieldName'";
+			$check4 = "SELECT * from airfields where airfield_Name = '$airfieldName'";
 
 
 # check 4	
 			# check if airport has only one entry left
-			$check4 = "SELECT * from test_airfields where name = '$airfieldName'";
+			$check4 = "SELECT * from airfields where airfield_Name = '$airfieldName'";
 			
 			#execute the database checks
 			$result = mysqli_query($camp_link, $check4);
@@ -65,7 +65,7 @@
 			# check if model already exists
 			if ($num == 1)
 				{	
-					$query="UPDATE test_airfields SET model = '', number = '0' WHERE model = '$airfieldModelAdd' AND name = '$airfieldName'";
+					$query="UPDATE airfields SET model = '', number = '0' WHERE model = '$airfieldModelAdd' AND airfield_Name = '$airfieldName'";
 				}
 		}
 

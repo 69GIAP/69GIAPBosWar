@@ -35,7 +35,7 @@
                     # show campaigns due to User role
 						if ($userRole == "administrator" or $userRole == "commander")
                             {
-								if (!empty($GET_['succss']))
+								if (!empty($GET_['success']))
 								{echo "The database was dropped!";}
 								
                                 # get the full campaign list							

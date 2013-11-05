@@ -1,27 +1,15 @@
 <?php
-	# include connect2CampaignFunction.php (defines connect2campaign($host,$user,$password,$db))
-	 include ( 'functions/connect2Campaign.php' );
-	unset($_SESSION['airfieldName']);
-	
-	# get camp db connection information
-	$query = "SELECT * from campaign_settings where camp_db = '$loadedCampaign'";  
+	# include connect2CampaignFunction.php
+	include ( 'functions/connect2Campaign.php' );
 
-	if(!$result = $dbc->query($query)) {
-		die('There was an error running the query [' . $dbc->error . ']');
-	}
+	# include getCampaignVariables.php
+	include ( 'includes/getCampaignVariables.php' );
 
-	if ($result = mysqli_query($dbc, $query)) {
-		/* fetch associative array */
-		while ($obj = mysqli_fetch_object($result)) {
-			$campaign	=($obj->campaign);
-			$camp_host	=($obj->camp_host);
-			$camp_user	=($obj->camp_user);
-			$camp_passwd=($obj->camp_passwd);
-		}
-	} 
-	
 	# use this information to connect to campaign 
-	$camp_link = connect2Campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
+	$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
+	
+	unset($_SESSION['airfieldName']);
+
 ?>
 			<!-- form for changing information in the users table -->
                 <h3>Please select the airfield you want to modify:</h3>
@@ -36,3 +24,4 @@
                         <input type="submit" id="loginSubmit" value="Load Airfield Data">
                     </fieldset>
                 </form>
+                <p> I will add the activate deactivate airfield function here later </p>

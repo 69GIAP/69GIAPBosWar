@@ -2,7 +2,7 @@
 <?php
 
 	# load aircraft list from selected campaign database
-	$queryModel = "SELECT model FROM rof_models";
+	$queryModel = "SELECT object_type FROM rof_object_properties where object_class like 'P%'";
 	
 	if(!$resultModel = $camp_link->query($queryModel))
 		{
@@ -15,7 +15,7 @@
 			/* fetch associative array */
 			while ($objModel = mysqli_fetch_object($resultModel)) 
 				{
-					$aircraftModelPool =	($objModel->model);
+					$aircraftModelPool =	($objModel->object_type);
 					echo "<option value=\"". $aircraftModelPool. "\">". $aircraftModelPool. "</option>\n";
 				}
 		}
