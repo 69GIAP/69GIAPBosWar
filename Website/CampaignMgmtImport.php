@@ -43,21 +43,22 @@
 					$result->free();
 
 					
-					echo "<p>We will now use the template ($abbrv.Mission) we recently uploaded to the server.</p>\n";
+					echo "<p>We will now use the files we recently uploaded to the server.</p>\n";
 					echo "<p>The template file will be used to determine the minimum and maximum coordinates of your combat sector from the influence areas you have defined, and to enter the combatant's countries and coalitions into the $campaign database.</p>\n";
+					echo "<p>The template_to_airfields file will be used to define the airfields to be used in each mission.</p>\n";
 
 					// Include selectBOSWARfile.php
 					require ('functions/selectBOSWARfile.php');
 
                     // configure
 					$SaveToDir = "C:/BOSWAR";
-					$returnpage = "CampaignMgmtImport.php";
 
 					echo "<h3>Update Combat Area, Countries and Coalitions</h3>\n";
 
 					// start form
 					echo "<form id=\"campaignMgmtImportForm\" name=\"campaignImport\" action=\"CampaignMgmtImportConfirm.php?btn=campMgmt\" method=\"post\">\n";
 					echo "<input type=\"hidden\" name=\"SaveToDir\" value=\"$SaveToDir\">\n";
+					$returnpage = "CampaignMgmtImport.php";
 					echo "<input type=\"hidden\" name=\"returnpage\" value=\"$returnpage\">\n";
 					echo "<p>Select $abbrv-template.Mission and click \"Update CAC&C\".</p>\n";
 
@@ -65,25 +66,20 @@
 
 					// BUTTON
 					echo "<fieldset id=\"actions\">\n";	
-					echo "		<button type=\"submit\" name =\"templateImport\" id=\"updateCnC\" value =\"1\" >Update CAC&C</button>\n"; # the value defines the action after the button was pressed
+					echo "		<button type=\"submit\" name =\"templateImport\" id=\"updateCamp\" value =\"1\" >Update CAC&C</button>\n"; # the value defines the action after the button was pressed
 					echo "	</fieldset>\n";
-/*
-					# require pickFile.php
-					require ('functions/pickFile.php');
 
-					# plan to return to this page
-					$returnpage = "CampaignMgmtUpload.php";
+					echo "<p>Then select $abbrv-template_to_airfield.Group and click \"Update Airfields\".</p>\n";
+					$returnpage = "CampaignMgmtImport.php";
+					echo "<input type=\"hidden\" name=\"returnpage\" value=\"$returnpage\">\n";
 
-					# go
-					pickFile($returnpage);
-					# start form
-					echo "<form id=\"campaignMgmtUploadForm\" name=\"campaignSetup\" action=\"CampaignMgmtUploadDone.php?btn=campMgmt\" method=\"post\">\n";
-					echo "<p>Once you are ready to proceed, click \"Next\"</p>\n";
+					selectBOSWARfile($abbrv,$SaveToDir);
+
 					# BUTTON
 					echo "<fieldset id=\"actions\">\n";	
-					echo "		<button type=\"submit\" name =\"Upload\" id=\"UploadDone\" value =\"true\" >Next</button>\n"; # the value defines the action after the button was pressed
+					echo "		<button type=\"submit\" name =\"templateImport\" id=\"updateCamp\" value =\"2\" >Update Airfields</button>\n"; # the value defines the action after the button was pressed
 					echo "	</fieldset>\n";
-*/
+
 
 /*
 					echo "<p>We can now load this group file into our Campaign Manager by clicking on the \"Template to Airfields\" big Button.</p>\n";

@@ -49,8 +49,20 @@
 
 						get_countries_from_mission_file($SaveToDir,$file);
 
-						header ("Location: $returnpage");
+						if (file_exists($SaveToDir/$file)) {
+							// delete the file
+							unlink($SaveToDir/$file);	
+							echo "$SaveToDir/$file deleted<br />\n";
+						} else {
+							echo "$SaveToDir/$file not found or read-only<br />\n";
+						}
 
+//						header ("Location: $returnpage");
+
+					} elseif ($templateImport == 2) {
+						//include template_to_airfield.php
+						include ('includes/template_to_airfield.php');
+//						header ("Location: $returnpage");
 					}
                 ?>					
             </div>
