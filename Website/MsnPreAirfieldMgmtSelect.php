@@ -22,7 +22,7 @@
 					include ( 'includes/errorNotLoggedOn.php' );
 					
 					# show user airfields due to coalition
-					include ( 'includes/airfieldAdministration.php' );
+					include ( 'includes/airfieldMgmtForm.php' );
 					
 					if ($userRole == "viewer")
 						{
