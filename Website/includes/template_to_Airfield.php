@@ -2,7 +2,7 @@
 # V1.1
 # Stenka 21/10/13
 # Updated by =69.GIAP=TUSHKA
-# Nov 4, 2013
+# Nov 6, 2013
 # Php version of loading all airfields into our airfields table
 # $SaveToDir is the path to where the user keeps the group files
 # we import all
@@ -11,11 +11,11 @@
 # $miss = 'static_mission_'.$current_mission;
 # delete all from airfield
 $q1="DELETE FROM airfields";
-$r1= mysqli_query($camp_link,$q1);
+$r1= $camp_link->query($q1);
 if ($r1)
 	{echo '<br>All existing airfields deleted';}
 else
-	{echo'<p>'.mysqli_error($camp_link).'</p>';}
+	{echo'<p>'.$camp_link->error().'</p>';}
 $count = 0;
 $current_object = "Unknown";
 $current_Name = "Unknown";
@@ -115,23 +115,23 @@ while ( ! feof( $fp ) )
 		# find coalition
 		$coalition = 0;
 		$q99 = 'SELECT * from rof_countries where ckey = '.$Country.' LIMIT 1';
-		$r99 = mysqli_query($camp_link,$q99);
-		$r99_data = mysqli_fetch_row($r99);
+		$r99 = $camp_link->query($q99);
+		$r99_data = $r99->fetch_row();
 		if ($r99_data[0]) {
 			echo "<br> Country found is".$r99_data[3];
 			echo "<br> Coalition is".$r99_data[4];
 			$coalition = $r99_data[4];
 		}else {
-				echo'<p>'.mysqli_error($camp_link).'</p>';
+				echo'<p>'.$camp_link->error().'</p>';
 		}
 		$q2="INSERT INTO airfields (airfield_Name,airfield_Model,airfield_Country,airfield_Coalition,airfield_XPos,airfield_ZPos,airfield_YOri,airfield_Hydrodrome)
 		VALUES ('$current_Name','$Model','$Country','$coalition',$XPos,$ZPos,$YOri,$Hydrodrome)";
 		echo '<br> My select is:'.$q2;
-		$r2=mysqli_query($camp_link,$q2);
+		$r2=$camp_link->query($q2);
 		if ($r2) {
 			echo '<br> Airfield added:';
 		} else {
-			echo'<p>'.mysqli_error($camp_link).'</p>';
+			echo'<p>'.$camp_link->error().'</p>';
 		}	
 	}	
 
@@ -140,11 +140,11 @@ while ( ! feof( $fp ) )
 		# update record
 		$q2="UPDATE airfields SET airfield_enabled = ".$Enabled." WHERE airfield_Name = '".$current_airfield_Name."'";
 		echo '<br> My select is:'.$q2;
-		$r2=mysqli_query($camp_link,$q2);
+		$r2=$camp_link->query($q2);
 		if ($r2) {
 			echo '<br> airfields updated:';
 		} else {
-			echo'<p>'.mysqli_error($camp_link).'</p>';
+			echo'<p>'.$camp_link->error().'</p>';
 		}	
 	}
 }	
