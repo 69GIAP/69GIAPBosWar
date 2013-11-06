@@ -51,6 +51,19 @@
 						// Now delete the file
 						$tmpfile = "$SaveToDir/$file";
 						if (file_exists($tmpfile)) {
+
+							echo "$tmpfile exists<br />\n";
+							if (is_writable($tmpfile)) {
+								echo "$tmpfile is writable<br />\n";
+							} else {
+								echo "$tmpfile is NOT writable<br />\n";
+							}
+							if (is_uploaded_file($tmpfile)) {
+								echo "$tmpfile is an uploaded file<br />\n";
+							} else {
+								echo "$tmpfile is NOT an uploaded file<br />\n";
+							}
+
 							// delete the file
 							unlink("$tmpfile");	
 							echo "$tmpfile deleted<br />\n";
@@ -58,7 +71,12 @@
 							echo "$tmpfile not found or read-only<br />\n";
 						}
 
-						header ("Location: $returnpage?btn=1");
+?>
+						<br />&nbsp;<br />
+<a href="CampaignMgmtImport.php?btn=1">Go back</a>
+<?php
+
+//						header ("Location: $returnpage?btn=1");
 
 					} elseif ($templateImport == 2) {
 						//include template_to_airfield.php
@@ -68,11 +86,44 @@
 						include ('includes/copyActiveAirfields.php');
 
 						// Now delete the file
-						$tmpfile = "$SaveToDir/$file";
+						// test backslashes for DEL command
+						$SaveToDir = "C:\\BOSWAR";
+						$tmpfile = "$SaveToDir\\$file";
+						echo "$tmpfile<br />\n";
 						if (file_exists($tmpfile)) {
+							echo "$tmpfile exists<br />\n";
+							if (is_writable($tmpfile)) {
+								echo "$tmpfile is writable<br />\n";
+							} else {
+								echo "$tmpfile is NOT writable<br />\n";
+							}
+							if (is_uploaded_file($tmpfile)) {
+								echo "$tmpfile is an uploaded file<br />\n";
+							} else {
+								echo "$tmpfile is NOT an uploaded file<br />\n";
+							}
+
 							// delete the file
-							unlink("$tmpfile");	
-							echo "$tmpfile deleted<br />\n";
+							// this isn't working for .Group files 
+							if (unlink("$tmpfile")) {	
+								echo "$tmpfile deleted<br />\n";
+							} else {
+								$deleteError = "unlink permission denied";
+							}
+
+							$lines = array();
+							exec ("DEL /F/Q \"$tmpfile\"",$lines,$deleteError);
+							// gave error 3: path not found?
+							// this may require DOS style backslashes... try that.
+
+							if ($deleteError) {
+								echo "file delete error: $deleteError<br />\n";
+							} else {
+								echo "DEL command gave no error<br />\n";
+								if (file_exists($tmpfile)) {
+									echo "BUT $tmpfile still exists!<br />\n";
+								}
+							}
 						} else {
 							echo "$tmpfile not found or read-only<br />\n";
 						}

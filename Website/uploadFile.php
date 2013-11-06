@@ -22,7 +22,7 @@ include ( 'includes/navigation.php' );
 <div id="content">
 <?php           
 // configuration
-global $done; // result or now
+global $done; // result or not
 
 $SaveToDir = "C:/BOSWAR/";
 // restrict uploaded files to .Group and .Mission files
