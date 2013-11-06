@@ -3,30 +3,18 @@
 	$result = '';
 	$query	= '';
 	
-	$query .= "DELETE FROM airfields_models; ";
+	$query1 = "DELETE FROM airfields_models; ";
 	
-	$query .= "INSERT INTO airfields_models (airfield_Name, airfield_Coalition) SELECT airfield_Name, airfield_Coalition FROM airfields WHERE airfield_enabled = 1;";
-	#echo $query;
+	$query2 = 'INSERT INTO airfields_models (airfield_Name, airfield_Coalition) SELECT airfields.airfield_Name, airfields.airfield_Coalition FROM airfields WHERE airfields.airfield_enabled = 1;';
 	
-	if(!$result = $camp_link->query($query))
-		{
-			die('There was an error running the query [' . $camp_link->error . ']');
-		}
-	
-	/* execute multi query */
-	if ($camp_link->multi_query($query)) {
-		do {
-			/* store first result set */
-			if ($result = $camp_link->store_result()) {
-				// do nothing as we don't expect feedback
-				$result->free();
-			}
-		// need to include more_results to avoid strict checking warning
-		} while ($camp_link->more_results() && $camp_link->next_result());
+	if(!$result = $camp_link->query($query1)) {
+		echo "$query1<br>\n";
+		die('copyActiveAirfields query error [' . $camp_link->error . ']');
 	}
-	if ($camp_link->errno) { 
-		echo "Copy process from airfields to airfields_models multi_query execution ended prematurely.\n";
-		var_dump($camp_link->error);
+
+	if(!$result = $camp_link->query($query2)) {
+		echo "$query2<br>\n";
+		die('copyActiveAirfields query error [' . $camp_link->error . ']');
 	}
 ?>
 
