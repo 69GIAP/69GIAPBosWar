@@ -124,7 +124,7 @@ while ( ! feof( $fp ) )
 		}else {
 				echo'<p>'.mysqli_error($camp_link).'</p>';
 		}
-		$q2="INSERT INTO airfields (airfield_Name,airfield_Model,airfield_Country,airfield_coalition,airfield_XPos,airfield_ZPos,airfield_YOri,airfield_Hydrodrome)
+		$q2="INSERT INTO airfields (airfield_Name,airfield_Model,airfield_Country,airfield_Coalition,airfield_XPos,airfield_ZPos,airfield_YOri,airfield_Hydrodrome)
 		VALUES ('$current_Name','$Model','$Country','$coalition',$XPos,$ZPos,$YOri,$Hydrodrome)";
 		echo '<br> My select is:'.$q2;
 		$r2=mysqli_query($camp_link,$q2);

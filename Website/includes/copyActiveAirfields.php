@@ -3,12 +3,10 @@
 	$result = '';
 	$query	= '';
 	
-	$query .= "DELETE FROM airfields_models;";
+	$query .= "DELETE FROM airfields_models; ";
 	
-	$query .= "INSERT INTO airfields_models (airfield_Name, airfield_coalition, model, number)
-				SELECT airfield_Name, airfield_coalition, ' ', ' ' 
-				FROM airfields WHERE airfield_enabled = 1;";
-	echo $query;
+	$query .= "INSERT INTO airfields_models (airfield_Name, airfield_Coalition) SELECT airfield_Name, airfield_Coalition FROM airfields WHERE airfield_enabled = 1;";
+	#echo $query;
 	
 	if(!$result = $camp_link->query($query))
 		{

@@ -25,10 +25,10 @@ DROP TABLE IF EXISTS `airfields_models`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `airfields_models` (
   `airfield_Name` char(31) NOT NULL DEFAULT '',
-  `airfield_coalition` varchar(3) NOT NULL DEFAULT '0',
-  `model` varchar(30) NOT NULL DEFAULT '',
-  `number` varchar(2) DEFAULT NULL,
-  PRIMARY KEY (`airfield_Name`,`airfield_coalition`,`model`)
+  `airfield_Coalition` enum('0','1','2','3','4','5','6','7') NOT NULL DEFAULT '0',
+  `model_Name` varchar(30) NOT NULL DEFAULT '',
+  `model_Quantity` int(3) DEFAULT NULL,
+  PRIMARY KEY (`airfield_Name`,`airfield_Coalition`,`model_Name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -40,5 +40,3 @@ CREATE TABLE `airfields_models` (
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2013-11-06  0:19:39
