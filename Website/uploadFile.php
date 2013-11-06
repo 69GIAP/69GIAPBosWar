@@ -63,10 +63,12 @@ if ( $_FILES["userfile"]["size"] < 4000000 && in_array($extension, $allowedExts)
    }
 }
 ?> 
+
 <br />&nbsp;<br />
 <a href="$returnpage" onClick="history.back();return false;">Go back</a>
 </div>
 </div>
+
 <?php
 // Include the general sidebar
 include ( 'includes/sidebar.php' );

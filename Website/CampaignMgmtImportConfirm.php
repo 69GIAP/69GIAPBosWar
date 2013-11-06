@@ -26,6 +26,7 @@
 
 					// declare $camp_link to be a global variable
 					global $camp_link;
+					global $page_state;
 
 					// connect to campaign db
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
@@ -47,15 +48,17 @@
 
 						get_countries_from_mission_file($SaveToDir,$file);
 
-						if (file_exists($SaveToDir/$file)) {
+						// Now delete the file
+						$tmpfile = "$SaveToDir/$file";
+						if (file_exists($tmpfile)) {
 							// delete the file
-							unlink($SaveToDir/$file);	
-							echo "$SaveToDir/$file deleted<br />\n";
+							unlink("$tmpfile");	
+							echo "$tmpfile deleted<br />\n";
 						} else {
-							echo "$SaveToDir/$file not found or read-only<br />\n";
+							echo "$tmpfile not found or read-only<br />\n";
 						}
 
-//						header ("Location: $returnpage");
+						header ("Location: $returnpage?btn=1");
 
 					} elseif ($templateImport == 2) {
 						//include template_to_airfield.php
@@ -63,8 +66,25 @@
 						
 						//truncate airfields_models table and copy active airfields into having 0 models assigned
 						include ('includes/copyActiveAirfields.php');
-//						header ("Location: $returnpage");
+
+						// Now delete the file
+						$tmpfile = "$SaveToDir/$file";
+						if (file_exists($tmpfile)) {
+							// delete the file
+							unlink("$tmpfile");	
+							echo "$tmpfile deleted<br />\n";
+						} else {
+							echo "$tmpfile not found or read-only<br />\n";
+						}
+?>
+
+						<br />&nbsp;<br />
+<a href="$returnpage" onClick="history.back();return false;">Go back</a>
+
+<?php
+//						header ("Location: $returnpage?btn=2");
 					}
+
                 ?>					
             </div>
     
@@ -79,8 +99,10 @@
 	</div>
 
 <?php
+	# close $camp_link
+	$camp_link->close();
 	# close $dbc
-	$dbc->close;
+	$dbc->close();
 	# Include the footer
 	include ( 'includes/footer.php' );
 ?>

@@ -93,8 +93,7 @@
 
 					echo "<p>We now need to define who is fighting whom. So back in the mission editor select 'Mission Properties' and click on 'Countries'.</p>\n";
 					echo "<p>Our BOSWAR campaign manager has been designed to create a war between two coalitions, e.g. Allies (Entente) and Central Powers.<br>\n";
-					echo "While it is possible to configure other theoretical alliances like \"War dogs\" and \"Mercenaries\"<br>\n";
-					echo "We did not design or test any options other than Allies (Entente) and Central Powers so allocate the real countries to either coalition and ignore the rest.<br>\n";
+					echo "While it is possible to configure other theoretical alliances like \"War dogs\" and \"Mercenaries\" we did not design or test any options other than Allies (Entente) and Central Powers; so allocate the real countries to either coalition and ignore the rest.<br>\n";
 					echo "In the mission editor you should use the File menu, Save, before coming back here.</p>\n";
 					
 					
