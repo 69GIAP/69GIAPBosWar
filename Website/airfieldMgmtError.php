@@ -18,7 +18,8 @@
             <div id="content">
             	<?php
 					$error = $_GET['error'];
-					
+					$airfieldName = $_SESSION['airfieldName'];
+										
 					if ($error == 1)
 						{
 							echo "<p>There is already the maximum amount of aircraft models assigned to this airfield!<p>\n";
@@ -29,7 +30,7 @@
 						}
 						
 					echo "<fieldset class=\"boswar\">\n";
-					echo "	<form  name=\"airfieldModify\"  action=\"airfieldManagementChange.php\" method=\"post\">\n";
+					echo "	<form  name=\"airfieldModify\"  action=\"airfieldMgmtChange.php?btn=campMgmt&airfieldName=$airfieldName\" method=\"post\">\n";
 						
 					# BUTTON
 					echo "		<li><label for=\"submit\"></label>\n";

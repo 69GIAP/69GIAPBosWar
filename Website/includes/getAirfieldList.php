@@ -11,13 +11,14 @@
 	
 	# get only airfields having the right coalition and all neutral airfields
 	if ($userCoalId == "0")
-		{$sql = "SELECT id, airfield_Name, airfield_Coalition , airfield_Enabled
+		{$sql = "SELECT airfield_Name
 				FROM airfields
 				GROUP BY airfield_Name
 				ORDER BY airfield_Name ";}
 	else
 	# get only airfields having the right coalition and all neutral airfields
-		{$sql = "SELECT id, airfield_Name, airfield_Coalition , airfield_Enabled FROM airfields 
+		{$sql = "SELECT airfield_Name
+				FROM airfields 
 				WHERE airfield_Coalition = $userCoalId
 				GROUP BY airfield_Name 
 				ORDER BY airfield_Name";}
@@ -31,10 +32,7 @@
 	# load results into variables 
 	while ($obj = mysqli_fetch_object($result)) {
 		$airfieldName		=($obj->airfield_Name);
-		$airfieldCoalition	=($obj->airfield_Coalition);
-		$airfieldEnabled	=($obj->airfield_Enabled);
-		$airfieldId			=($obj->id);
 		# using TUSHKAS hack to provide multiple variables with one
-		echo "<option value=\"". $airfieldName."+".$airfieldCoalition."+".$airfieldEnabled."+".$airfieldId."\">". $airfieldName. "</option>\n";		
+		echo "<option value=\"". $airfieldName."\">". $airfieldName. "</option>\n";		
 	}	
 ?>
