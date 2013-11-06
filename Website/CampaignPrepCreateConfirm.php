@@ -62,9 +62,10 @@ $query .= "GRANT SELECT, INSERT, UPDATE, DELETE, DROP ON `$newCampaignDBName`.* 
 $query .= "GRANT FILE ON *.* TO '$newCampaignDBUser'@'$newCampaignDBHost' ;";
 
 # COPY INITIAL TABLESET FROM BOSWAR_DB TO NEW CAMPAIGN DB
-# temporarily used tables until we populate the final tables with data
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.airfields LIKE boswar_db.airfields;";
-$query .= "INSERT INTO `$newCampaignDBName`.rof_airfields SELECT * FROM boswar_db.rof_airfields;";
+$query .= "INSERT INTO `$newCampaignDBName`.airfields SELECT * FROM boswar_db.airfields;";
+$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.airfields_models LIKE boswar_db.airfields_models;";
+
 // Do the remainder of the empty tables that we need
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.campaign_missions LIKE boswar_db.campaign_missions;";
 $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.inbox LIKE boswar_db.inbox;";
