@@ -1,26 +1,25 @@
--- phpMyAdmin SQL Dump
--- version 4.0.4.1
--- http://www.phpmyadmin.net
+CREATE DATABASE  IF NOT EXISTS `chanclfct` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `chanclfct`;
+-- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 05, 2013 at 08:59 PM
--- Server version: 5.6.11
--- PHP Version: 5.5.3
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+-- Host: 10.0.0.57    Database: chanclfct
+-- ------------------------------------------------------
+-- Server version	5.6.13
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Database: `boswar_db`
+-- Table structure for table `airfields`
 --
-
--- --------------------------------------------------------
 
 DROP TABLE IF EXISTS `airfields`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -36,12 +35,19 @@ CREATE TABLE `airfields` (
   `airfield_ZPos` decimal(12,3) DEFAULT '0.000',
   `airfield_YOri` decimal(5,2) DEFAULT '0.00',
   `airfield_Hydrodrome` int(11) DEFAULT '0',
-  `airfield_enabled` int(11) DEFAULT '0',
-  `airfield_updated` int(11) DEFAULT '0',
+  `airfield_Enabled` int(11) DEFAULT '0',
+  `airfield_Updated` int(11) DEFAULT '0',
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=601 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-
--- Dump completed on 2013-11-06 16:23:09
+-- Dump completed on 2013-11-07  7:56:43
