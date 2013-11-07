@@ -61,12 +61,11 @@
 					var_dump($camp_link->error); 
 				}
 				
-				
 				// close $camp_link
 				$camp_link->close();
 				
 				$objectClass = $_SESSION['objectClass'];
-				
+
 				header ("Location: CampaignMgmtObjects.php?btn=campMgmt&objectClass=$objectClass");
 
                 ?>

@@ -16,7 +16,29 @@
 				<form id="loginForm" name="delete" action="airfieldMgmtChange.php" method="post">
                     <fieldset id="inputs">
                         <select id="airfield" type="text" name="airfieldName" autofocus required>
-	                        <?php include 'includes/getAirfieldList.php' ?>
+	                        <?php
+							$userCoalId = $_SESSION['userCoalId'];
+
+							# display list filtered by user role
+							if ($userRole == 'administrator') {
+								
+								# build select drop down
+								echo "<option value=\"\" disabled selected>Select Airfield</option>\n";
+								
+								$state='Active';
+								include 'includes/getAirfieldList.php' ;
+								$state='Inactive';
+								include 'includes/getAirfieldList.php' ;
+							}
+							if ($userRole == 'commander') {
+								
+								# build select drop down
+								echo "<option value=\"\" disabled selected>Select Airfield</option>\n";
+								
+								$state='Active';
+								include 'includes/getAirfieldList.php' ;
+							}
+							?>
                         </select>   
                     </fieldset>
                     

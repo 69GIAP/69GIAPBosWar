@@ -94,7 +94,7 @@
 												{
 													echo "<h3>$loadedCampaign</h3>\n";
 													echo "	<ul id=\"sidebar\">\n";
-													echo "	    <li><a href=\"MsnPreAirfieldMgmtSelect.php?btn=campMgmt\" class=\"modifyAirfield\"><span></span></a></li>\n";
+													echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=campMgmt\" class=\"modifyAirfield\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"MsnPreColumnsMgmtSelect.php?btn=campMgmt\" class=\"modifyTroops\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"MsnPreStaticsMgmtSelect.php?btn=campMgmt\" class=\"modifyTroops\"><span></span></a></li>\n";
 													echo "  </ul>\n";

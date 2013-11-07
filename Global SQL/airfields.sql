@@ -1,5 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `chanclfct` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `chanclfct`;
+
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: 10.0.0.57    Database: chanclfct
