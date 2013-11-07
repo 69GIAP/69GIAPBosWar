@@ -58,6 +58,7 @@
 
 					if ($fi == 'airfields') { // now processed first
 						echo "<p>We will now upload both our airfields group file and our template missions file to the BOSWAR campaign manager.</p>\n";
+						echo "<p>Note that this will create a directory, \"C:\\BOSWAR\" on the BOSWAR web server host if that directory does not already exist.</p>\n";
 
 						echo "<p>Start by navigating to your <b>$abbrv-groups</b> directory.</p>\n";
 						echo "<p>Choose <b>$abbrv-airfields.Group.</b><br />
@@ -73,7 +74,6 @@
 					$returnpage = 'CampaignMgmtUpload.php?btn=campMgmt';
 
 					}
-
 
 					# go
 					pickFile($returnpage);

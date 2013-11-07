@@ -24,7 +24,17 @@ include ( 'includes/navigation.php' );
 // configuration
 global $done; // result or not
 
+// make sure $SaveToDir exists
 $SaveToDir = "C:/BOSWAR/";
+if (!is_dir($SaveToDir)) {
+	if (mkdir($SaveToDir)) {
+		echo "$SaveToDir created.<br />\n"; 
+	} else {
+		echo "$SaveToDir WAS NOT created.<br />\n"; 
+		return 0;
+	}
+}
+
 // restrict uploaded files to .Group and .Mission files
 $allowedExts = array("Group", "group", "Mission", "mission");
 // get $returnpage
@@ -65,7 +75,7 @@ if ( $_FILES["userfile"]["size"] < 4000000 && in_array($extension, $allowedExts)
 if ($returnpage == 'CampaignMgmtUpload.php') {
 ?> 
 <br />&nbsp;<br />
-<a href="CampaignMgmtUpload.php?btn=campMgmt&fi=template">Go back</a>
+<a href="CampaignMgmtUpload.php?btn=campMgmt&fi=template">Next</a>
 </div>
 </div>
 <?php
