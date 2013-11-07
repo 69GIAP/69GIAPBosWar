@@ -11,7 +11,7 @@ function pickFile($returnpage) {
 	if (!isset($returnpage)) { $returnpage = '.'; }
 	echo "<form action=\"uploadFile.php\" method=\"post\" enctype=\"multipart/form-data\" />\n";
 	echo "<div>\n";
-	echo "	Choose a file to upload: <br />\n";
+//	echo "	Choose a file to upload: <br />\n";
 	echo "	<input type=\"hidden\" name=\"returnpage\" value=\"$returnpage\"/>\n";
 	echo "	<input type=\"hidden\" name=\"MAX_FILE_SIZE\" value=\"4000000\"/>\n";
 	echo "	<input type=\"file\" name=\"userfile\" id=\"userfile\" size=\"50\" />\n";

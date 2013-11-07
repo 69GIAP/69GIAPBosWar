@@ -62,14 +62,21 @@ if ( $_FILES["userfile"]["size"] < 4000000 && in_array($extension, $allowedExts)
       echo ".$extension is not an allowed extension";
    }
 }
+if ($returnpage == 'CampaignMgmtUpload.php') {
 ?> 
-
 <br />&nbsp;<br />
-<a href="$returnpage" onClick="history.back();return false;">Go back</a>
+<a href="CampaignMgmtUpload.php?btn=campMgmt&fi=template">Go back</a>
 </div>
 </div>
-
 <?php
+} else {
+?> 
+<br />&nbsp;<br />
+<a href="CampaignMgmtImport.php?btn=campMgmt">Next</a>
+</div>
+</div>
+<?php
+}		
 // Include the general sidebar
 include ( 'includes/sidebar.php' );
 ?>	

@@ -45,7 +45,7 @@ function get_minmaxxz_from_mission_file($path,$file) {
 //   echo "\$boundarycount: $boundarycount<br />\n";
    if ($boundarycount == 0) { 
       echo "<b><font color=\"red\">getMinMaxXZFromMissionFile reports error: $file has no Influence Areas defined.</font></b><br />\n"; 
-      return;
+      return 0;
    }
 // record the results in the campaign_settings table
    $query = "UPDATE campaign_settings SET min_x=$min_x, min_z=$min_z, max_x=$max_x, max_z=$max_z;";
@@ -53,5 +53,6 @@ function get_minmaxxz_from_mission_file($path,$file) {
    if(!$result = mysqli_query($camp_link, $query)) {
       die('getMinMaxXZFromMissionFile query error [' . $camp_link->error . ']');
    }
+return 1;
 }
 ?>

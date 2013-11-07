@@ -26,14 +26,15 @@
 	
 					# use this information to connect to campaign 
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
-
-					if ($_GET['btn'] == 'campMgmt') {
-						$btn = 0;
+					
+					if (!isset($_GET['fi'])) {
+						$fi = 'airfields';
 					} else {
-						$btn = $_GET['btn'];
+						$fi = $_GET['fi'];
 					}
+//					echo "\$fi: $fi<br />\n";
 
-					echo "<h1>Import $campaign Campaign Files</h1>";
+					echo "<h2>Import $campaign Campaign Files</h2>";
 					$query = "SELECT * from campaign_settings;";
 					if(!$result = $dbc->query($query)) {
 						die('CampaignMgmtSetup.php query error [' . $dbc->error . ']');
@@ -46,42 +47,21 @@
 					}
 					$result->free();
 
-					echo "<p>We will now use the files we recently uploaded to the server.</p>\n";
-
 					// require selectBOSWARfile.php
 					require ('functions/selectBOSWARfile.php');
 
                     // configure
 					$SaveToDir = "C:/BOSWAR";
 
-//					echo "\$btn: $btn<br>\n";
 
-					if ($btn == 'campMgmt') {
-						$btn = 0; // starting value
-					}
-
+					echo "<p>We will now use the files we recently uploaded to the server.</p>\n";
 					// start form
 					echo "<form id=\"campaignMgmtImportForm\" name=\"campaignImport\" action=\"CampaignMgmtImportConfirm.php?btn=campMgmt\" method=\"post\">\n";
 
-					if ($btn == 0) {
-						echo "<h3>Update Combat Area, Countries and Coalitions</h3>\n";
-						echo "<p>The template file will be used to determine the minimum and maximum coordinates of your combat sector from the influence areas you have defined, and to enter the combatant's countries and coalitions into the $campaign database.</p>\n";
-
-						echo "<input type=\"hidden\" name=\"SaveToDir\" value=\"$SaveToDir\">\n";
-						$returnpage = "CampaignMgmtImport.php";
-						echo "<input type=\"hidden\" name=\"returnpage\" value=\"$returnpage\">\n";
-						echo "<p>Select $abbrv-template.Mission and click \"Update CAC&C\".</p>\n";
-
-						selectBOSWARfile($abbrv,$SaveToDir);
-
-						// BUTTON
-						echo "<fieldset id=\"actions\">\n";	
-						echo "		<button type=\"submit\" name =\"templateImport\" id=\"updateCamp\" value =\"1\" >Update CAC&C</button>\n"; # the value defines the action after the button was pressed
-						echo "	</fieldset>\n";
-					} elseif ($btn == 1) {
+					if ($fi == 'airfields') {
 						echo "<h3>Update Active and Inactive Airfields</h3>\n";
-						echo "<p>The template_to_airfields file will be used to define the airfields to be used in each mission.</p>\n";
-						echo "<p>Then select $abbrv-template_to_airfield.Group and click \"Update Airfields\".</p>\n";
+						echo "<p>The airfields file will be used to define the airfields to be used in each mission.</p>\n";
+						echo "<p>Then select <b>$abbrv-airfields.Group</b> and click \"Update Airfields\".</p>\n";
 						$returnpage = "CampaignMgmtImport.php";
 						echo "<input type=\"hidden\" name=\"SaveToDir\" value=\"$SaveToDir\">\n";
 						echo "<input type=\"hidden\" name=\"returnpage\" value=\"$returnpage\">\n";
@@ -91,6 +71,22 @@
 						# BUTTON
 						echo "<fieldset id=\"actions\">\n";	
 						echo "		<button type=\"submit\" name =\"templateImport\" id=\"updateCamp\" value =\"2\" >Update Airfields</button>\n"; # the value defines the action after the button was pressed
+						echo "	</fieldset>\n";
+
+					} elseif ($fi == 'template') {
+						echo "<h3>Update Combat Area, Countries and Coalitions</h3>\n";
+						echo "<p>The template file will be used to determine the minimum and maximum coordinates of your combat sector from the influence areas you have defined, and to enter the combatant's countries and coalitions into the $campaign database.</p>\n";
+
+						echo "<input type=\"hidden\" name=\"SaveToDir\" value=\"$SaveToDir\">\n";
+						$returnpage = "WhateverIsNext.php";
+						echo "<input type=\"hidden\" name=\"returnpage\" value=\"$returnpage\">\n";
+						echo "<p>Select $abbrv-template.Mission and click \"Update CAC&C\".</p>\n";
+
+						selectBOSWARfile($abbrv,$SaveToDir);
+
+						// BUTTON
+						echo "<fieldset id=\"actions\">\n";	
+						echo "		<button type=\"submit\" name =\"templateImport\" id=\"updateCamp\" value =\"1\" >Update CAC&C</button>\n"; # the value defines the action after the button was pressed
 						echo "	</fieldset>\n";
 					}
 /*

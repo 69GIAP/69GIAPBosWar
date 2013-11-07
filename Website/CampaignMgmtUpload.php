@@ -26,13 +26,19 @@
 	
 					# use this information to connect to campaign 
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
-					
+
 					# initialize variable $returnpage if non existing
 					if (empty($returnpage)) {
 						$returnpage = '';
 					}
 					
-					# initialise variables
+					if (!isset($_GET['fi'])) {
+						$fi = 'airfields';
+					} else {
+						$fi = $_GET['fi'];
+					}
+//					echo "\$fi: $fi<br />\n";
+
 					echo "<h2>Upload $campaign Campaign Files</h2>";
 					$query = "SELECT * from campaign_settings;";
 					if(!$result = $dbc->query($query)) {
@@ -47,47 +53,42 @@
 					}
 					$result->free();
 
-					
-					echo "<p>We now need to upload both our template file and our airfields group nfile to the BOSWAR campaign manager.</p>\n";
-
-
-					echo "<p>Start by navigating to your $abbrv-groups directory.</p>\n";
-					echo "<p>Then upload your $abbrv-template.Mission file.</p>\n";
-					echo "<p>Once that is done, upload your $abbrv-template_to_airfield.Group the same way.</p>\n";
-
-
 					# require pickFile.php
 					require ('functions/pickFile.php');
 
-					# return here after choosing the file
+					if ($fi == 'airfields') { // now processed first
+						echo "<p>We will now upload both our airfields group file and our template missions file to the BOSWAR campaign manager.</p>\n";
+
+						echo "<p>Start by navigating to your <b>$abbrv-groups</b> directory.</p>\n";
+						echo "<p>Choose <b>$abbrv-airfields.Group.</b><br />
+						Then click \"Upload File\".</p>\n";
 					$returnpage = 'CampaignMgmtUpload.php';
+
+					} elseif ($fi == 'template') {// now processed second	
+						echo "<p>We will now upload our template mission file to the BOSWAR campaign manager.</p>\n";
+						echo "<p>Select <b>$abbrv-template.Mission</b><br />
+						Then click \"Upload File\".</p>\n";
+
+					# Done (for now) with uploads
+					$returnpage = 'CampaignMgmtUpload.php?btn=campMgmt';
+
+					}
+
 
 					# go
 					pickFile($returnpage);
 
 					# start form
 					echo "<form id=\"campaignMgmtUploadForm\" name=\"campaignSetup\" action=\"CampaignMgmtUploadDone.php?btn=campMgmt\" method=\"post\">\n";
-					echo "<p>Once you are ready to proceed, click \"Next\"</p>\n";
+
+					/*
+					echo "<p>Once both files are safely uploaded and you are ready to proceed, click \"Next\"</p>\n";
 					# BUTTON
 					echo "<fieldset id=\"actions\">\n";	
 					echo "		<button type=\"submit\" name =\"Upload\" id=\"UploadDone\" value =\"true\" >Next</button>\n"; # the value defines the action after the button was pressed
 					echo "	</fieldset>\n";
+					 */
 
-/*
-					echo "<p>We can now load this group file into our Campaign Manager by clicking on the \"Template to Airfields\" big Button.</p>\n";
-					
-					# This launches inbox.sql then inbox_to_airfield
-					# BUTTON
-					echo "<fieldset id=\"actions\">\n";	
-					echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"2\" >Template to Airfields</button>\n"; # the value defines the action after the button was pressed
-					echo "	</fieldset>\n";
-					
-					echo "<p>If the airfields load into the BOSWAR campaign manager correctly we can now return to the mission editor and 
- */
-/*
-					# after this point will be added the population of bridges into the template grouping and send to the Campaign Manager 
-					# again they will be managed in the Campaign manager an sent to the Mission Editor for assembly into each mission.  
-*/
 					echo "</form>\n";
 
 					// close $camp_link

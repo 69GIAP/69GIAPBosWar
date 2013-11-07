@@ -26,7 +26,6 @@
 
 					// declare $camp_link to be a global variable
 					global $camp_link;
-					global $page_state;
 
 					// connect to campaign db
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
@@ -35,7 +34,7 @@
 					$templateImport	= $_POST["templateImport"];
 					$file			= $_POST["file"];
 					$SaveToDir		= $_POST["SaveToDir"];
-					$returnpage		= $_POST["returnpage"];
+//					$returnpage		= $_POST["returnpage"];
 
 					if ($templateImport == 1) {
 						//include getMinMaxXZFromMissionFile.php
@@ -44,9 +43,14 @@
 						//include getCountriesFromMissonFile.php
 						require ('functions/getCountriesFromMissionFile.php');
 
-						get_minmaxxz_from_mission_file($SaveToDir,$file);
+						if (get_minmaxxz_from_mission_file($SaveToDir,$file)) {
+							echo "Min and Max X and Z values of Combat Area updated.<br />\n";
+						}
 
-						get_countries_from_mission_file($SaveToDir,$file);
+						if (get_countries_from_mission_file($SaveToDir,$file)) {
+							echo "Countries and Coalitions updated.<br />\n";
+						}
+
 						// Now delete the file
 						$filename = $SaveToDir.'/'.$file;
 						if (file_exists($filename)) {
@@ -59,7 +63,7 @@
 
 ?>
 						<br />&nbsp;<br />
-<a href="CampaignMgmtImport.php?btn=1">Go back</a>
+<a href="WhateverComesNext.php?btn=campMgmt">Next</a>
 <?php
 
 //						header ("Location: $returnpage?btn=1");
@@ -84,7 +88,7 @@
 
 ?>
 						<br />&nbsp;<br />
-<a href="CampaignMgmtImport.php?btn=1">Go back</a>
+<a href="CampaignMgmtImport.php?btn=campMgmt&fi=template">Next</a>
 <?php
 //						header ("Location: $returnpage?btn=2"); 
 					}
