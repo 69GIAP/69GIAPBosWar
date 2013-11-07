@@ -72,6 +72,8 @@
 						//require importAirfields.php
 						require ('functions/importAirfields.php');
 						import_airfields($SaveToDir,$file);
+						// ensure airfield names are unique
+						include ('includes/differentiateAirfields.php');
 						
 						//truncate airfields_models table and copy active airfields into having 0 models assigned
 						include ('includes/copyActiveAirfields.php');
