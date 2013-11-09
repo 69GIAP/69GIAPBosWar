@@ -100,6 +100,22 @@
 					}
 					$fi == '';
 					$returnpage = 'CampaignMgmtSupplyControlPoints.php'; //next page
+					echo "<h2>Delete the Tokens from Template</h2>\n";
+					echo "<p>Back to the Mission Editor!</p>\n";
+					echo "<p>If you still have the points selected, great!</p>\n";
+					echo "<p>Otherwise, go to the object filter \"OBJ FiLT\" at the top and select \"Clear All\".  Then select \"blocks\" and \"flags\".  Now go to the \"Search and Select\" menu and select \"Select All Visible Objects\".</p>\n";
+					echo "<p>To remove the selected objects press the \"Delete\" key on your keyboard.</p>\n";
+					echo "<p>Note, there is no need to save the template as we haven't changed the template.</p>\n";
+										echo "<p>Once you are ready to proceed, click \"Next\"</p>\n";
+
+					echo "<form id=\"campaignMgmtSupplyControlDone\" name=\"campaignSetup\" action=\"CampaignMgmtAirfields.php?btn=campMgmt\" method=\"post\">\n";
+					# BUTTON
+					echo "<fieldset id=\"actions\">\n";	
+					echo "		<button type=\"submit\" name =\"Setup\" id=\"SetupDone\" value =\"true\" >Next</button>\n"; # the value defines the action after the button was pressed
+					echo "	</fieldset>\n";
+					echo "</form>\n";
+
+
 				}
 				?>
             </div>

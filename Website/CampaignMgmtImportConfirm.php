@@ -63,7 +63,7 @@
 
 ?>
 						<br />&nbsp;<br />
-<a href="CampaignMgmtAirfields.php?btn=campMgmt">Next</a>
+<a href="CampaignMgmtSupplyControlPoints.php?btn=campMgmt">Next</a>
 <?php
 
 //						header ("Location: $returnpage?btn=1");
