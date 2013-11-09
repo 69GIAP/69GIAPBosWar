@@ -1,5 +1,5 @@
 <?php
-	echo "<p>This page will copy the active airfields into the airfields_models table.</p>\n";
+	//This page will copy the active airfields into the airfields_models table.
 	$result = '';
 	$query1	= '';
 	$query2	= '';
