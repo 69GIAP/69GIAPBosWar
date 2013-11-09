@@ -1,3 +1,7 @@
+# Stenka 9/11/13 updated to include newly created tables
+drop database boswar_db;
+source c:/Abyss web server/htdocs/global sql/airfields.sql;
+source c:/Abyss web server/htdocs/global sql/airfields_models.sql;
 source c:/Abyss web server/htdocs/global sql/boswar_db.sql;
 source c:/Abyss web server/htdocs/global sql/campaign_missions.sql;
 source c:/Abyss web server/htdocs/global sql/campaign_settings.sql;
@@ -30,11 +34,13 @@ source c:/Abyss web server/htdocs/global sql/tabcreate_bridges.sql;
 source c:/Abyss web server/htdocs/global sql/tabcreate_cam_param.sql;
 source c:/Abyss web server/htdocs/global sql/tabcreate_col_10.sql;
 source c:/Abyss web server/htdocs/global sql/tabcreate_Flags.sql;
+source c:/Abyss web server/htdocs/global sql/tabcreate_Planes_on_field.sql;
 source c:/Abyss web server/htdocs/global sql/tabcreate_static.sql;
 source c:/Abyss web server/htdocs/global sql/tabcreate_Trains.sql;
 source c:/Abyss web server/htdocs/global sql/tabcreate_Vehicles.sql;
 source c:/Abyss web server/htdocs/global sql/users.sql;
 source c:/Abyss web server/htdocs/global sql/users_roles.sql;
+show databases;
 
 
 
