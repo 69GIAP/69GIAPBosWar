@@ -1,65 +1,62 @@
 <?php
-$q = intval($_GET['q']);
-
-# Incorporate the MySQL connection script.
-	require ( '../../connect_db.php' );
+	$q = intval($_GET['q']);
 	
-if (!$dbc)
-  {
-  die('Could not connect: ' . mysqli_error($dbc));
-  }
-
-# get the user list
-$sql1 = "SELECT * FROM users
+	# Incorporate the MySQL connection script.
+	require ( '../../connect_db.php' );
+	# include getRolename.php
+	include ( '../functions/getRolename.php' );	
+	# include getCoalitionname.php
+	include ( '../functions/getUserCoalitionname.php' );		
+	
+	if (!$dbc) {
+		die('Could not connect: ' . mysqli_error($dbc));
+	}
+	
+	# get the user list
+	$sql1 = "SELECT * 
+			FROM users
 			WHERE user_id = '".$q."'";
-			
-# get the selected users asigned campaigns			
-$sql2 = "SELECT * FROM campaign_users
+	
+	# get the selected users asigned campaigns			
+	$sql2 = "SELECT * 
+			FROM campaign_users
 			WHERE user_id = '".$q."'		
 			ORDER BY camp_db";			
-
-$result = mysqli_query($dbc,$sql1);
-		
-while($row = mysqli_fetch_array($result))
-  {
-	  	print "<div class=\"userRecordFrame\">";
+	
+	$result = mysqli_query($dbc,$sql1);
+	
+	while($row = mysqli_fetch_array($result)) {
+		print "<div class=\"userRecordFrame\">";
 		print "<p>\n";
-  		#print "<b>User ID:</b> " . $row['user_id'] . "<br>\n";
-        print "<b>Username:</b> ".$row['username'] . " <br>\n";
-        
+		#print "<b>User ID:</b> " . $row['user_id'] . "<br>\n";
+		print "<b>Username:</b> ".$row['username'] . " <br>\n";
+	
 		# get Role Name for Display
-		$RoleID = $row['role_id'];			
-		$sql3 = "SELECT role from users_roles where role_id = $RoleID";
-			$result1 = mysqli_query($dbc,$sql3);
-			while($row1 = mysqli_fetch_array($result1))
-			{
-				$roleName = $row1['role'];
-			}
-        print "<b>User Role: </b> ".$roleName." <br>\n";			
-        print "<b>Email Adress: </b> ".$row['email'] . " <br>\n";
-        print "<b>Telephone: </b> ".$row['phone'] . " <br>\n";
+		$RoleID = $row['role_id'];
+		
+		# use function to get the Role name
+		$roleName = get_rolename("$RoleID");		
+		
+		print "<b>User Role: </b> "		.$roleName.		" <br>\n";			
+		print "<b>Email Adress: </b> "	.$row['email'].	" <br>\n";
+		print "<b>Telephone: </b> "		.$row['phone']. " <br>\n";
 		print "</p>\n";
-  }
+	}
+	
+	$result = mysqli_query($dbc,$sql2);
+	
+	while($row = mysqli_fetch_array($result)) {
+		$CoalId 		= $row['CoalID'];
+		$groupFilePath	= $row['groupFile_path'];
+	
+		# use function to get the Coalition name
+		$CoalName = get_usercoalitionname("$CoalId");
 
-$result = mysqli_query($dbc,$sql2);
-
-while($row = mysqli_fetch_array($result))
-  {
-	  $CoalId 			= $row['CoalID'];
-	  $groupFilePath	= $row['groupFile_path'];
-	  
-	  $sql4 = "SELECT Coalitionname from rof_coalitions where CoalId = $CoalId";
-			$result2 = mysqli_query($dbc,$sql4);
-			while($row2 = mysqli_fetch_array($result2))
-			{
-				$CoalName = $row2['Coalitionname'];
-			}
 		print "<hr noshade width=\"auto\" size=\"1\" align=\"left\">\n";
 		print "<p><b>Campaign DB: </b> ".$row['camp_db'] . " <b>Coalition:</b> ".$CoalName . "<br>\n";
 		print "<b>Group File Path: </b>".$groupFilePath."<br>\n";
 	}
-		print "</p>\n";
-		print "</div>\n";
-
-mysqli_close($dbc);
+	print "</div>\n</p>\n";
+	
+	mysqli_close($dbc);
 ?>

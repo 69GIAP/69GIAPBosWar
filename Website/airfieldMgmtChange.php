@@ -31,6 +31,8 @@
 
 					# include connect2CampaignFunction.php
 					include ( 'functions/connect2Campaign.php' );
+					# include getCoalitionname.php
+					include ( 'functions/getCoalitionname.php' );
 					
 					# include getCampaignVariables.php
 					include ('includes/getCampaignVariables.php');
@@ -131,18 +133,9 @@
 						echo "</fieldset>\n";
 						echo "<fieldset id=\"inputs\">\n";										
 					
-						# get coalition name and store to variable
-						$getCoalName = "SELECT coalitionname FROM rof_coalitions 
-										WHERE coalID = '$airfieldCoalitionId' ";
-										
-						if (!$coalName = $camp_link->query($getCoalName)){
-							die('There was an error running the query ' . mysqli_error($camp_link));
-							}
-						# load results into variables 
-						while ($coalObj = mysqli_fetch_object($coalName)) {
-							$airfieldCoalitionName =($coalObj->coalitionname);
-						}
-						
+						# use this information to get the coalition name
+						$airfieldCoalitionName = get_coalitionname("$airfieldCoalitionId");
+					
 						echo "<h3>Modify $airfieldName airfield</h3>\n";
 						# get the airfields details regarding status and coalition
 						include ('includes\getAirfieldStatus.php');
@@ -156,17 +149,9 @@
 					}
 					
 					if ($airfieldEnabled == 0) {
-						# get coalition name and store to variable
-						$getCoalName = "SELECT coalitionname FROM rof_coalitions 
-										WHERE coalID = '$airfieldCoalitionId' ";
-										
-						if (!$coalName = $camp_link->query($getCoalName)){
-							die('There was an error running the query ' . mysqli_error($camp_link));
-							}
-						# load results into variables 
-						while ($coalObj = mysqli_fetch_object($coalName)) {
-							$airfieldCoalitionName =($coalObj->coalitionname);
-						}
+						
+						# use function to get the coalition name
+						$airfieldCoalitionName = get_coalitionname("$airfieldCoalitionId");
 						
 						# build the small form to change coaltition and status only
 						echo "<form id=\"airfieldForm\" name=\"login\" action=\"airfieldMgmtModify.php?form=0\" method=\"post\">\n";
