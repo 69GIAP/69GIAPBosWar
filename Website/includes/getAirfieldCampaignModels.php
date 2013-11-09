@@ -1,8 +1,20 @@
 
 <?php
 
-	# load aircraft list from selected campaign database
-	$queryModel = "SELECT object_type FROM rof_object_properties where object_class like 'P%'";
+	# filter by user role
+	# this is a filter for the campaign administrator		
+	if ($userRole == 'administrator') {
+		# load aircraft list from selected campaign database
+		$queryModel = "SELECT object_type FROM rof_object_properties where object_class like 'P%'";
+	}
+	elseif ($userRole == 'commander') {
+		# load aircraft list from selected campaign database
+		$queryModel = "SELECT object_type 
+						FROM rof_object_properties 
+						WHERE object_class like 'P%'
+						AND coalition = $userCoalId
+						AND active = 1";
+	}
 	
 	if(!$resultModel = $camp_link->query($queryModel))
 		{
