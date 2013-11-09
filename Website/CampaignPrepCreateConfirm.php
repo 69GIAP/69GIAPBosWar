@@ -112,11 +112,11 @@ $query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.bridges LIKE boswar_d
 # INSERT CAMPAIGN DB INFORMATION TO MASTER TABLE
 // this should be at the end of the creation chain
 // so it won't be created if there is an error
-$query .= "INSERT INTO campaign_settings (simulation, campaign, abbrv, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
+$query .= "INSERT INTO boswar_db.campaign_settings (simulation, campaign, abbrv, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
 $query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignAbbrv','$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
 
 # Add user to the campaign_users table
-$query .="INSERT INTO campaign_users (user_id, camp_db, CoalID, groupFile_path) VALUES ($userId, '$newCampaignDBName', 0, '' );";
+$query .="INSERT INTO boswar_db.campaign_users (user_id, camp_db, CoalID, groupFile_path) VALUES ($userId, '$newCampaignDBName', 0, '' );";
 
 // Tushka now returns you to your original indentation scheme
 
@@ -132,11 +132,34 @@ $query .="INSERT INTO campaign_users (user_id, camp_db, CoalID, groupFile_path) 
 						// need to include more_results to avoid strict checking warning
 						} while ($dbc->more_results() && $dbc->next_result());
 					}
-					if ($dbc->errno) { 
-						echo "CampaignMgmtCreateConfirm multi_query execution ended prematurely.\n";
-						var_dump($dbc->error); 
-					} 
+					
+					if ($dbc->errno) {
+						# DROP database
+						$rollback  = "DROP DATABASE IF EXISTS `$newCampaignDBName`;";
+						# REVOKE CAMPAIGN DB USER RIGHTS ON NEW DB
+						$rollback .= "REVOKE DELETE, DROP, INSERT, SELECT, UPDATE ON `$newCampaignDBName`.* FROM '$newCampaignDBUser'@'$newCampaignDBHost';";
 
+						/* execute multi query for full rollback*/
+						if ($dbc->multi_query($rollback)) {
+						do {
+							/* store first result set */
+							if ($result = $dbc->store_result()) {
+								// do nothing as we don't expect feedback
+								$result->free();
+								}
+							// need to include more_results to avoid strict checking warning
+							} while ($dbc->more_results() && $dbc->next_result());
+						}
+						if ($dbc->errno) {
+							echo "<p>Campaign creation Rollback multi_query execution ended prematurely.<br>\n";
+							header("Location: CampaignMgmt.php?btn=campMgmt");
+						}
+						
+						echo "Therefor campaign creation multi_query execution also ended prematurely.<br><br>\n";
+						echo "<b>Error:</b><br></p>\n";
+						var_dump($dbc->error); 
+						
+					} 
 					
 					# forward to campaign configuration screen
 					$_SESSION['camp_db'] = "$newCampaignDBName";
