@@ -1,12 +1,18 @@
 <?php 
+// CampaignPrepCreateConfirm.php
+// create a new campaign
+// =69.GIAP=MYATA and =69.GIAP=TUSHKA
+// Oct 5, 2013
+// BOSWAR version 1.16
+// Nov 9, 2013
 
-# Incorporate the MySQL connection script.
+// Incorporate the MySQL connection script.
 	require ( '../connect_db.php' );
 
-# Include the webside header
+// Include the webside header
 	include ( 'includes/header.php' );
 	
-# Include the navigation on top
+// Include the navigation on top
 	include ( 'includes/navigation.php' );
 
 ?>
@@ -38,12 +44,10 @@
 						$newCampaignDBPassword	= $Part[2];
 					}
 
-					# load map location
+					// load map location
 					$query = "SELECT map_locations FROM maps WHERE map = '$campaignMap';";
-					
-					if(!$result = $dbc->query($query)) {
-						die('CampaignMgmtCreateConfirm.php query error [' . $dbc->error . ']');
-					}
+				    // include doit.php	
+					include ('includes/doit.php');
 					
 					if ($result = $dbc->query($query)) {	
 						while ($obj = $result->fetch_object()) {
@@ -52,79 +56,211 @@
 						}
 					}
 // Tushka has removed 49 spaces of indentation for readability's sake
-# CREATE CAMPAIGN DB
+// CREATE CAMPAIGN DB
 $query = "CREATE DATABASE IF NOT EXISTS `$newCampaignDBName` ;";
-					
-# GRANT CAMPAIGN DB USER RIGHTS ON NEW DB
-$query .= "GRANT SELECT, INSERT, UPDATE, DELETE, DROP ON `$newCampaignDBName`.* TO '$newCampaignDBUser'@'$newCampaignDBHost' IDENTIFIED BY '$newCampaignDBPassword' ;";
+include ('includes/doit.php');
+echo "$newCampaignDBName created<br />\n";
+
+// GRANT CAMPAIGN DB USER RIGHTS ON NEW DB
+$query = "GRANT SELECT, INSERT, UPDATE, DELETE, DROP ON `$newCampaignDBName`.* TO '$newCampaignDBUser'@'$newCampaignDBHost' IDENTIFIED BY '$newCampaignDBPassword' ;";
+include ('includes/doit.php');
+echo "$newCampaignDBUser granted rights on $newCampaignDBName<br />\n";
 
 // GRANT GLOBAL FILE PRIVILEGE to db user so can read and write group files
-$query .= "GRANT FILE ON *.* TO '$newCampaignDBUser'@'$newCampaignDBHost' ;";
+$query = "GRANT FILE ON *.* TO '$newCampaignDBUser'@'$newCampaignDBHost' ;";
+include ('includes/doit.php');
+echo "$newCampaignDBUser granted FILE privs<br />\n";
 
-# COPY INITIAL TABLESET FROM BOSWAR_DB TO NEW CAMPAIGN DB
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.airfields LIKE boswar_db.airfields;";
-$query .= "INSERT INTO `$newCampaignDBName`.airfields SELECT * FROM boswar_db.airfields;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.airfields_models LIKE boswar_db.airfields_models;";
+// COPY INITIAL TABLESET FROM BOSWAR_DB TO NEW CAMPAIGN DB
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.airfields LIKE airfields;";
+include ('includes/doit.php');
+echo "airfields created<br />\n";
+
+$query = "INSERT INTO `$newCampaignDBName`.airfields SELECT * FROM airfields;";
+include ('includes/doit.php');
+echo "airfields populated<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.airfields_models LIKE airfields_models;";
+include ('includes/doit.php');
+echo "airfields_models created<br />\n";
 
 // Do the remainder of the empty tables that we need
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.campaign_missions LIKE boswar_db.campaign_missions;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.inbox LIKE boswar_db.inbox;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_gunner_scores LIKE boswar_db.rof_gunner_scores;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_kills LIKE boswar_db.rof_kills;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_pilot_scores LIKE boswar_db.rof_pilot_scores;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.supply_points LIKE boswar_db.supply_points;";
-// Now do the rest of the tables that need to be populated
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.mission_status LIKE boswar_db.mission_status;";
-$query .= "INSERT INTO `$newCampaignDBName`.mission_status SELECT * FROM boswar_db.mission_status;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.player_fate LIKE boswar_db.player_fate;";
-$query .= "INSERT INTO `$newCampaignDBName`.player_fate SELECT * FROM boswar_db.player_fate;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.player_health LIKE boswar_db.player_health;";
-$query .= "INSERT INTO `$newCampaignDBName`.player_health SELECT * FROM boswar_db.player_health;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_coalitions LIKE boswar_db.rof_coalitions;";
-$query .= "INSERT INTO `$newCampaignDBName`.rof_coalitions SELECT * FROM boswar_db.rof_coalitions;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_countries LIKE boswar_db.rof_countries;";
-$query .= "INSERT INTO `$newCampaignDBName`.rof_countries SELECT * FROM boswar_db.rof_countries;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_object_properties LIKE boswar_db.rof_object_properties;";
-$query .= "INSERT INTO `$newCampaignDBName`.rof_object_properties SELECT * FROM boswar_db.rof_object_properties;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_object_roles LIKE boswar_db.rof_object_roles;";
-$query .= "INSERT INTO `$newCampaignDBName`.rof_object_roles SELECT * FROM boswar_db.rof_object_roles;";
-// create the selected map_locations table
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.$campaignMapLocations LIKE boswar_db.$campaignMapLocations;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.campaign_settings LIKE boswar_db.campaign_settings;";
-$query .= "INSERT INTO `$newCampaignDBName`.campaign_settings (simulation, campaign, abbrv, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
-$query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignAbbrv', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
-// create tables necessary for group files
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.col_10 LIKE boswar_db.col_10;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.Trains LIKE boswar_db.trains;";
-$query .= "INSERT INTO `$newCampaignDBName`.trains SELECT * FROM boswar_db.trains;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.blocks LIKE boswar_db.blocks;";
-$query .= "INSERT INTO `$newCampaignDBName`.blocks SELECT * FROM boswar_db.blocks;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.vehicles LIKE boswar_db.vehicles;";
-$query .= "INSERT INTO `$newCampaignDBName`.vehicles SELECT * FROM boswar_db.vehicles;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.static LIKE boswar_db.static;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.cam_param LIKE boswar_db.cam_param;";
-$query .= "INSERT INTO `$newCampaignDBName`.cam_param SELECT * FROM boswar_db.cam_param;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.flags LIKE boswar_db.flags;";
-$query .= "INSERT INTO `$newCampaignDBName`.flags SELECT * FROM boswar_db.flags;";
-$query .= "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.bridges LIKE boswar_db.bridges;";
-//$query .= "INSERT INTO `$newCampaignDBName`.bridges SELECT * FROM boswar_db.bridges;";
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.campaign_missions LIKE campaign_missions;";
+include ('includes/doit.php');
+echo "campaign_missions created<br />\n";
 
-# INSERT CAMPAIGN DB INFORMATION TO MASTER TABLE
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.inbox LIKE inbox;";
+include ('includes/doit.php');
+echo "inbox created<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_gunner_scores LIKE rof_gunner_scores;";
+include ('includes/doit.php');
+echo "rof_gunner_scores created<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_kills LIKE rof_kills;";
+include ('includes/doit.php');
+echo "rof_kills created<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_pilot_scores LIKE rof_pilot_scores;";
+include ('includes/doit.php');
+echo "rof_pilot_scores created<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.supply_points LIKE supply_points;";
+include ('includes/doit.php');
+echo "supply_points created<br />\n";
+
+// Now do the rest of the tables that need to be populated
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.mission_status LIKE mission_status;";
+include ('includes/doit.php');
+echo "mission_status created<br />\n";
+
+$query = "INSERT INTO `$newCampaignDBName`.mission_status SELECT * FROM mission_status;";
+include ('includes/doit.php');
+echo "mission_status populated<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.player_fate LIKE player_fate;";
+include ('includes/doit.php');
+echo "player_fate created<br />\n";
+
+$query = "INSERT INTO `$newCampaignDBName`.player_fate SELECT * FROM player_fate;";
+include ('includes/doit.php');
+echo "player_fate populated<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.player_health LIKE player_health;";
+include ('includes/doit.php');
+echo "player_health created<br />\n";
+
+$query = "INSERT INTO `$newCampaignDBName`.player_health SELECT * FROM player_health;";
+include ('includes/doit.php');
+echo "player_health populated<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_coalitions LIKE rof_coalitions;";
+include ('includes/doit.php');
+echo "rof_coalitions created<br />\n";
+
+$query = "INSERT INTO `$newCampaignDBName`.rof_coalitions SELECT * FROM rof_coalitions;";
+include ('includes/doit.php');
+echo "rof_coalitions populated<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_countries LIKE rof_countries;";
+include ('includes/doit.php');
+echo "rof_countries created<br />\n";
+
+$query = "INSERT INTO `$newCampaignDBName`.rof_countries SELECT * FROM rof_countries;";
+include ('includes/doit.php');
+echo "rof_countries populated<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_object_properties LIKE rof_object_properties;";
+include ('includes/doit.php');
+echo "rof_object_properties created<br />\n";
+
+$query = "INSERT INTO `$newCampaignDBName`.rof_object_properties SELECT * FROM rof_object_properties;";
+include ('includes/doit.php');
+echo "rof_object_properties populated<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_object_roles LIKE rof_object_roles;";
+include ('includes/doit.php');
+echo "rof_object_roles created<br />\n";
+
+$query = "INSERT INTO `$newCampaignDBName`.rof_object_roles SELECT * FROM rof_object_roles;";
+include ('includes/doit.php');
+echo "rof_object_roles populated<br />\n";
+
+// create the selected map_locations table
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.$campaignMapLocations LIKE $campaignMapLocations;";
+include ('includes/doit.php');
+echo "$campaignMapLocations created<br />\n";
+
+$query = "INSERT INTO `$newCampaignDBName`.$campaignMapLocations SELECT * FROM $campaignMapLocations;";
+include ('includes/doit.php');
+echo "$campaignMapLocations populated<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.campaign_settings LIKE campaign_settings;";
+include ('includes/doit.php');
+echo "campaign_settings created<br />\n";
+
+$query = "INSERT INTO `$newCampaignDBName`.campaign_settings (simulation, campaign, abbrv, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
+$query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignAbbrv', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
+include ('includes/doit.php');
+echo "campaign_settings created<br />\n";
+echo "campaign_settings populated";
+
+// create tables necessary for group files
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.col_10 LIKE col_10;";
+include ('includes/doit.php');
+echo "col_10 created<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.trains LIKE trains;";
+include ('includes/doit.php');
+echo "trains created<br />\n";
+
+$query = "INSERT INTO `$newCampaignDBName`.trains SELECT * FROM trains;";
+include ('includes/doit.php');
+echo "trains populated<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.blocks LIKE blocks;";
+include ('includes/doit.php');
+echo "blocks created<br />\n";
+
+$query = "INSERT INTO `$newCampaignDBName`.blocks SELECT * FROM blocks;";
+include ('includes/doit.php');
+echo "blocks populated<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.vehicles LIKE vehicles;";
+include ('includes/doit.php');
+echo "vehicles created<br />\n";
+
+$query = "INSERT INTO `$newCampaignDBName`.vehicles SELECT * FROM vehicles;";
+include ('includes/doit.php');
+echo "vehicles populated<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.static LIKE static;";
+include ('includes/doit.php');
+echo "static created<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.cam_param LIKE cam_param;";
+include ('includes/doit.php');
+echo "cam_param created<br />\n";
+
+$query = "INSERT INTO `$newCampaignDBName`.cam_param SELECT * FROM cam_param;";
+include ('includes/doit.php');
+echo "cam_param populated<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.flags LIKE flags;";
+include ('includes/doit.php');
+echo "flags created<br />\n";
+
+$query = "INSERT INTO `$newCampaignDBName`.flags SELECT * FROM flags;";
+include ('includes/doit.php');
+echo "flags populated<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.bridges LIKE bridges;";
+include ('includes/doit.php');
+echo "bridges created<br />\n";
+
+//$query .= "INSERT INTO `$newCampaignDBName`.bridges SELECT * FROM bridges;";
+
+// INSERT CAMPAIGN DB INFORMATION TO MASTER TABLE
 // this should be at the end of the creation chain
 // so it won't be created if there is an error
-$query .= "INSERT INTO boswar_db.campaign_settings (simulation, campaign, abbrv, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
+$query = "INSERT INTO campaign_settings (simulation, campaign, abbrv, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
 $query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignAbbrv','$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
+include ('includes/doit.php');
+echo "master campaign_settings updated<br />\n";
 
-# Add user to the campaign_users table
-$query .="INSERT INTO boswar_db.campaign_users (user_id, camp_db, CoalID, groupFile_path) VALUES ($userId, '$newCampaignDBName', 0, '' );";
+// Add user to the campaign_users table
+$query ="INSERT INTO campaign_users (user_id, camp_db, CoalID, groupFile_path) VALUES ($userId, '$newCampaignDBName', 0, '' );";
+include ('includes/doit.php');
+echo "master campaign_users updated<br />\n";
+echo " Done!<br />\n";
 
 // Tushka now returns you to your original indentation scheme
-
+/*
 					# CREATE NEW DB INSTANCE
-					/* execute multi query */
+					# execute multi query 
 					if ($dbc->multi_query($query)) {
 						do {
-							/* store first result set */
+							# store first result set 
 							if ($result = $dbc->store_result()) {
 								// do nothing as we don't expect feedback
 								$result->free();
@@ -139,10 +275,10 @@ $query .="INSERT INTO boswar_db.campaign_users (user_id, camp_db, CoalID, groupF
 						# REVOKE CAMPAIGN DB USER RIGHTS ON NEW DB
 						$rollback .= "REVOKE DELETE, DROP, INSERT, SELECT, UPDATE ON `$newCampaignDBName`.* FROM '$newCampaignDBUser'@'$newCampaignDBHost';";
 
-						/* execute multi query for full rollback*/
+						# execute multi query for full rollback
 						if ($dbc->multi_query($rollback)) {
 						do {
-							/* store first result set */
+							# store first result set
 							if ($result = $dbc->store_result()) {
 								// do nothing as we don't expect feedback
 								$result->free();
@@ -160,11 +296,17 @@ $query .="INSERT INTO boswar_db.campaign_users (user_id, camp_db, CoalID, groupF
 						var_dump($dbc->error); 
 						
 					} 
-					
-					# forward to campaign configuration screen
+*/					
+					// forward to campaign configuration screen
 					$_SESSION['camp_db'] = "$newCampaignDBName";
+					echo "<form id=\"campaignPrepCreateDone\" name=\"campaignSetup\" action=\"CampaignMgmtConfigure.php?btn=campMgmt\" method=\"post\">\n";
+					# BUTTON
+					echo "<fieldset id=\"actions\">\n";	
+					echo "		<button type=\"submit\" name =\"Setup\" id=\"SetupDone\" value =\"true\" >Next</button>\n"; # the value defines the action after the button was pressed
+					echo "	</fieldset>\n";
+					echo "</form>\n";
 
-					header("Location: CampaignMgmtConfigure.php?btn=campMgmt");
+//					header("Location: CampaignMgmtConfigure.php?btn=campMgmt");
 
                 ?>
             
@@ -173,7 +315,7 @@ $query .="INSERT INTO boswar_db.campaign_users (user_id, camp_db, CoalID, groupF
         </div>
 
 		<?php
-            # Include the general sidebar
+            // Include the general sidebar
             include ( 'includes/sidebar.php' );
         ?>	
 
@@ -181,6 +323,6 @@ $query .="INSERT INTO boswar_db.campaign_users (user_id, camp_db, CoalID, groupF
 	</div>
 
 <?php
-	# Include the footer
+	// Include the footer
 	include ( 'includes/footer.php' );
 ?>
