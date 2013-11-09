@@ -18,8 +18,8 @@ include ( 'includes/navigation.php' );
 
 ?>
 <div id="wrapper">
-<div id="container">
-<div id="content">
+	<div id="container">
+		<div id="content">
 <?php           
 // configuration
 global $done; // result or not
@@ -72,29 +72,24 @@ if ( $_FILES["userfile"]["size"] < 4000000 && in_array($extension, $allowedExts)
       echo ".$extension is not an allowed extension";
    }
 }
+//echo "<br />\$returnpage: $returnpage<br />\n";
 if ($returnpage == 'CampaignMgmtUpload.php') {
-?> 
-<br />&nbsp;<br />
-<a href="CampaignMgmtUpload.php?btn=campMgmt&fi=template">Next</a>
-</div>
-</div>
-<?php
+	echo "			<br />&nbsp;<br />\n";
+	echo "			<a href=\"CampaignMgmtUpload.php?btn=campMgmt&fi=template\">Next</a>\n";
+} elseif ($returnpage == 'CampaignMgmtSupplyControlPoints.php') {
+	echo "			<br />&nbsp;<br />\n";
+	echo"			<a href=\"CampaignMgmtSupplyControlPoints.php?btn=campMgmt&fi=points\">Next</a>\n";
 } else {
-?> 
-<br />&nbsp;<br />
-<a href="CampaignMgmtImport.php?btn=campMgmt">Next</a>
-</div>
-</div>
-<?php
+	echo "			<br />&nbsp;<br />\n";
+	echo "<a href=\"CampaignMgmtImport.php?btn=campMgmt\">Next</a>\n";
 }		
+echo "		</div>\n";
+echo "	</div>\n";
 // Include the general sidebar
 include ( 'includes/sidebar.php' );
-?>	
+echo "	<div id=\"clearing\"></div>\n";
+echo "</div>\n";
 
-<div id="clearing"></div>
-</div>
-
-<?php
 // close $dbc
 $dbc->close();
 // Include the footer

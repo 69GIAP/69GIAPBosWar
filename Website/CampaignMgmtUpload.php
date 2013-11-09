@@ -18,8 +18,8 @@
             <div id="content">
             
 				<?php
-					# include connect2CampaignFunction.php
-					include ( 'functions/connect2Campaign.php' );
+					# require connect2CampaignFunction.php
+					require ( 'functions/connect2Campaign.php' );
 
 					# include getCampaignVariables.php
 					include ( 'includes/getCampaignVariables.php' );
