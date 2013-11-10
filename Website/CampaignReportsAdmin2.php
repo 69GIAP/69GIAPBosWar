@@ -61,8 +61,8 @@ include ( 'functions/connect2Campaign.php' );
 					   }
 					}
 					
-					# include rof_parse_log.php for development purposes
-					include ( 'rof_parse_log.php' );
+					# include parse_log.php
+					include ( 'parse_log.php' );
 					
 										
 					# Close the camp_link connection
