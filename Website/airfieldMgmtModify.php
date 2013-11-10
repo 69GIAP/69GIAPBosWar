@@ -20,13 +20,16 @@
 					# include connect2CampaignFunction.php
 					include ( 'functions/connect2Campaign.php' );
 					
+					# include getMinCountry.php
+					include ( 'functions/getMinCountry.php' );
+					
 					# include getCampaignVariables.php
 					include ('includes/getCampaignVariables.php');
 					
 					# use this information to connect to campaign 
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
 					
-					# find out which form was used
+					# find out which form was used; form 0 is the reduced form of an icactive airfield
 					$form = $_GET['form'];
 					
 					if ($form == 1) {
@@ -204,9 +207,11 @@
 									elseif ($param_val	== 'axis') {
 											$param_val	= 2;
 										}
+									# get min(ckey) based on coalition
+									$CntryKey = get_mincountry("$param_val");
 											
 									# update new coalition in base table
-									$query1 .= "UPDATE airfields SET airfield_Coalition = '$param_val' WHERE airfield_Name like '$param_name' ;";
+									$query1 .= "UPDATE airfields SET airfield_Country = '$CntryKey', airfield_Coalition = '$param_val' WHERE airfield_Name like '$param_name' ;";
 								}
 							}
 						}	
@@ -286,9 +291,12 @@
 									elseif ($param_val	== 'axis') {
 											$param_val	= 2;
 										}
+									
+									# get min(ckey) based on coalition
+									$CntryKey = get_mincountry("$param_val");
 											
 									# update new coalition in base table
-									$query1 .= "UPDATE airfields SET airfield_Coalition = '$param_val' WHERE airfield_Name like '$param_name' ;";
+									$query1 .= "UPDATE airfields SET airfield_Country = '$CntryKey', airfield_Coalition = '$param_val' WHERE airfield_Name like '$param_name' ;";
 								}
 							}
 						}	

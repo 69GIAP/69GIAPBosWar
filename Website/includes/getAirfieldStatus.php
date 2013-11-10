@@ -3,7 +3,23 @@
 // out of boswar_db
 // 69giapmyata
 // ver 1.0
+// ver 1.1  changes based on country and not coalition
 
+	# include getCoalition.php
+	include ( 'functions/getCoalition.php' );
+						
+	$afquery = "SELECT airfield_Country
+				FROM airfields
+				WHERE id = '$airfieldId' ";
+	
+	if(!$afresult = $camp_link->query($afquery)){
+			die('There was an error running the query ' . mysqli_error($camp_link));
+		}			
+				
+	# load results into variables 
+	while ($afobj = mysqli_fetch_object($afresult)) {
+			$airfieldCountry = ($afobj->airfield_Country);	
+		}
 
 	echo "<!-- Checkboxes for airfield selection -->\n";
 	
@@ -35,9 +51,12 @@
 		echo "</div>\n";
 	}
 
+	# use function to get CoalID
+	$airfieldCoalitionId = get_coalition("$airfieldCountry");
+
 		# COALITION RADIO BOX
 		echo "<div class=\"radio\">\n";  
-			if ($airfieldCoalitionId == 0) {
+			if ($airfieldCoalitionId == 0 /* or $airfieldCoalitionId == 3 */) {
 				echo "	<input id=\"neutral$i\" type=\"radio\" name=\"$airfieldName\" value=\"neutral\" checked>  \n";
 				echo "	<label for=\"neutral$i\">Neutral</label>  \n";
 				
