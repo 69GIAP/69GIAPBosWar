@@ -52,7 +52,6 @@
 		echo "</div>\n";
 
 		# use function to get CoalID
-
 		$objectCoalition = get_coalition("$objectCountry");
 		
 # debug
