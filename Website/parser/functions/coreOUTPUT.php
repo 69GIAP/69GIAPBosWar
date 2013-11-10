@@ -1,10 +1,10 @@
 <?php
 // OUTPUT
+// output simple text report and calculate some stats for the db
 // =69.GIAP=TUSHKA
 // 2011-2013
-// output simple text report and calculate some stats for the db
 // BOSWAR version 1.2
-// Oct 22, 2013
+// Nov 9, 2013
 
 function OUTPUT() {
 // what follows is an almost complete collection of global variables
@@ -133,45 +133,45 @@ function OUTPUT() {
 
    # require the is-point-in-area borrowed CLASS
    # pointLocation
-   require ('rof_parser/classes/pointLocation.php');
+   require ('parser/classes/pointLocation.php');
 
    # require the FUNCTIONS called by OUTPUT
    # ACCURACY
-   require ('rof_parser/functions/outputACCURACY.php');
+   require ('parser/functions/outputACCURACY.php');
    # ANORA
-   require ('rof_parser/functions/outputANORA.php');
+   require ('parser/functions/outputANORA.php');
    # BOTGUNNER
-   require ('rof_parser/functions/outputBOTGUNNER.php');
+   require ('parser/functions/outputBOTGUNNER.php');
    # CLOCKTIME
-   require ('rof_parser/functions/outputCLOCKTIME.php');
+   require ('parser/functions/outputCLOCKTIME.php');
    # COALITIONNAME
-   require ('rof_parser/functions/outputCOALITIONNAME.php');
+   require ('parser/functions/outputCOALITIONNAME.php');
    # CRASHED
-   require ('rof_parser/functions/outputCRASHED.php');
+   require ('parser/functions/outputCRASHED.php');
    # DEAD
-   require ('rof_parser/functions/outputDEAD.php');
+   require ('parser/functions/outputDEAD.php');
    # FATES
-   require ('rof_parser/functions/outputFATES.php');
+   require ('parser/functions/outputFATES.php');
    # FLYING
-   require ('rof_parser/functions/outputFLYING.php');
+   require ('parser/functions/outputFLYING.php');
    # LANDINGSIDE
-   require ('rof_parser/functions/outputLANDINGSIDE.php');
+   require ('parser/functions/outputLANDINGSIDE.php');
    # LOSSES
-   require ('rof_parser/functions/outputLOSSES.php');
+   require ('parser/functions/outputLOSSES.php');
    # TOFROM
-   require ('rof_parser/functions/outputTOFROM.php');
+   require ('parser/functions/outputTOFROM.php');
    # SHIPS
-   require ('rof_parser/functions/outputSHIPS.php');
+   require ('parser/functions/outputSHIPS.php');
    # TRAINS
-   require ('rof_parser/functions/outputTRAINS.php');
+   require ('parser/functions/outputTRAINS.php');
    # TURRETGUNNER 
-   require ('rof_parser/functions/outputTURRETGUNNER.php');
+   require ('parser/functions/outputTURRETGUNNER.php');
    # WHERE
-   require ('rof_parser/functions/outputWHERE.php');
+   require ('parser/functions/outputWHERE.php');
    # WHOSEGUNNER
-   require ('rof_parser/functions/outputWHOSEGUNNER.php');
+   require ('parser/functions/outputWHOSEGUNNER.php');
    # XYZ
-   require ('rof_parser/functions/outputXYZ.php');
+   require ('parser/functions/outputXYZ.php');
 
    // all start out uncaptured
    $captured = 0;

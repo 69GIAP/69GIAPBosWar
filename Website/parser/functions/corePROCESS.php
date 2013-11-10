@@ -3,38 +3,39 @@
 // =69.GIAP=TUSHKA
 // massage the raw data from the logs into more useful (and smaller) arrays
 // of the data we need to report and score
-// BOSWAR version 1.1
-// Oct 3, 2013
+// 2011-2013
+// BOSWAR version 1.2
+// Nov 9, 2013
 
 // require the functions called by PROCESS
 // CNTRS
-require ('rof_parser/functions/processCNTRS.php');
+require ('parser/functions/processCNTRS.php');
 // COALITION
-require ('rof_parser/functions/processCOALITION.php');
+require ('parser/functions/processCOALITION.php');
 // COUNTRYNAME
-require ('rof_parser/functions/processCOUNTRYNAME.php');
+require ('parser/functions/processCOUNTRYNAME.php');
 // DEATHS
-require ('rof_parser/functions/processDEATHS.php');
+require ('parser/functions/processDEATHS.php');
 // ENDS
-require ('rof_parser/functions/processENDS.php');
+require ('parser/functions/processENDS.php');
 // HITSTATS
-require ('rof_parser/functions/processHITSTATS.php');
+require ('parser/functions/processHITSTATS.php');
 // KILLS
-require ('rof_parser/functions/processKILLS.php');
+require ('parser/functions/processKILLS.php');
 // LASTHIT
-require ('rof_parser/functions/processLASTHIT.php');
+require ('parser/functions/processLASTHIT.php');
 // OBJECTCOUNTRYNAME
-require ('rof_parser/functions/processOBJECTCOUNTRYNAME.php');
+require ('parser/functions/processOBJECTCOUNTRYNAME.php');
 // OBJECTNAME
-require ('rof_parser/functions/processOBJECTNAME.php');
+require ('parser/functions/processOBJECTNAME.php');
 # OBJECTPROPERTIES
-require ('rof_parser/functions/processOBJECTPROPERTIES.php');
+require ('parser/functions/processOBJECTPROPERTIES.php');
 // OBJECTTYPE
-require ('rof_parser/functions/processOBJECTTYPE.php');
+require ('parser/functions/processOBJECTTYPE.php');
 // PLAYERNAME
-require ('rof_parser/functions/processPLAYERNAME.php');
+require ('parser/functions/processPLAYERNAME.php');
 // WOUNDS
-require ('rof_parser/functions/processWOUNDS.php');
+require ('parser/functions/processWOUNDS.php');
 
 function PROCESS() {
    global $CNTRS; // countries and their coalitions as a string

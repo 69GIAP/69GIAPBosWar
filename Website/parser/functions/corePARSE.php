@@ -1,49 +1,52 @@
 <?php
-// =69.GIAP=TUSHKA
-// 
 // This is the parser function, as if you couldn't have guessed
 // more like a deconstructor... it breaks the lines into their core categories
 // for further deconstruction into meaningful elements
 // at the moment the data goes into in-memory arrays
 // later we'll put much of this into a DB for permanent storage of campaign missions
+// =69.GIAP=TUSHKA
+// // 2011-2013
+// BOSWAR version 1.2
+// Nov 9, 2013
+
 
 // require the functions called by PARSE
 // START
-require ('rof_parser/functions/parseSTART.php');
+require ('parser/functions/parseSTART.php');
 // HIT
-require ('rof_parser/functions/parseHIT.php');
+require ('parser/functions/parseHIT.php');
 // DAMAGE
-require ('rof_parser/functions/parseDAMAGE.php');
+require ('parser/functions/parseDAMAGE.php');
 // KILL
-require ('rof_parser/functions/parseKILL.php');
+require ('parser/functions/parseKILL.php');
 // PLAYER_MISSION_END
-require ('rof_parser/functions/parsePLAYER_MISSION_END.php');
+require ('parser/functions/parsePLAYER_MISSION_END.php');
 // TAKEOFF
-require ('rof_parser/functions/parseTAKEOFF.php');
+require ('parser/functions/parseTAKEOFF.php');
 // LANDING
-require ('rof_parser/functions/parseLANDING.php');
+require ('parser/functions/parseLANDING.php');
 // MISSION_END
-require ('rof_parser/functions/parseMISSION_END.php');
+require ('parser/functions/parseMISSION_END.php');
 // MISSION_OBJECTIVE
-require ('rof_parser/functions/parseMISSION_OBJECTIVE.php');
+require ('parser/functions/parseMISSION_OBJECTIVE.php');
 // AIRFIELD
-require ('rof_parser/functions/parseAIRFIELD.php');
+require ('parser/functions/parseAIRFIELD.php');
 // PLAYERPLANE
-require ('rof_parser/functions/parsePLAYERPLANE.php');
+require ('parser/functions/parsePLAYERPLANE.php');
 // GROUPINIT
-require ('rof_parser/functions/parseGROUPINIT.php');
+require ('parser/functions/parseGROUPINIT.php');
 // GAMEOBJECTINVOLVED
-require ('rof_parser/functions/parseGAMEOBJECTINVOLVED.php');
+require ('parser/functions/parseGAMEOBJECTINVOLVED.php');
 // INFLUENCEAREA_HEADER
-require ('rof_parser/functions/parseINFLUENCEAREA_HEADER.php');
+require ('parser/functions/parseINFLUENCEAREA_HEADER.php');
 // INFLUENCEAREA_BOUNDARY
-require ('rof_parser/functions/parseINFLUENCEAREA_BOUNDARY.php');
+require ('parser/functions/parseINFLUENCEAREA_BOUNDARY.php');
 // VERSION
-require ('rof_parser/functions/parseVERSION.php');
+require ('parser/functions/parseVERSION.php');
 // BOTID
-require ('rof_parser/functions/parseBOTID.php');
+require ('parser/functions/parseBOTID.php');
 // UNKNOWN
-require ('rof_parser/functions/parseUNKNOWN.php');
+require ('parser/functions/parseUNKNOWN.php');
 
 
 function PARSE($numlines) {
