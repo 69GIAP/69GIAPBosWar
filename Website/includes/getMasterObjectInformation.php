@@ -3,11 +3,12 @@
 // out of campaign DB
 // 69giapmyata
 // ver 1.0
+// ver 1.1 changed filter to avoid active and coalition column in table
 
 	# add percent to allow like query
 	$_SESSION['objectClass'] = $objectClass;
 	
-	$sql = "SELECT id, object_type, object_desc, active, coalition
+	$sql = "SELECT id, object_type, object_desc, default_country
 			FROM rof_object_properties
 			WHERE object_class like '$objectClass%'";
 		
@@ -26,11 +27,10 @@
 	while ($obj = mysqli_fetch_object($result)) {
 		$objectId		=($obj->id);
 		$objectName		=($obj->object_type);
-		$objectStatus	=($obj->active);
-		$objectCoalition=($obj->coalition);
+		$objectCountry	=($obj->default_country);
 		
 		echo "<div class=\"checkbox\">\n";
-		if	($objectStatus == 1) {
+		if	($objectCountry < 599) { // all countries below countryId 599 are similar to Active
 			echo "		<p><b>$objectName</b></p>\n";
 			echo "		<input class =\"special\" id=\"objectIdActive_$i\" type=\"radio\" name ='$objectName' value =\"1\" checked>\n";
 			echo "		<label class =\"special\" for=\"objectIdActive_$i\">active</label>\n";
@@ -38,7 +38,7 @@
 			echo "		<input class =\"special\" id=\"objectIdInactive_$i\" type=\"radio\" name ='$objectName' value =\"0\" >\n";
 			echo "		<label class =\"special\" for=\"objectIdInactive_$i\">inactive</label><br \>\n";			
 		}
-		else {
+		else {						// all countries greater than countryId 599 are similar to Inactive
 			echo "		<p><b>$objectName</b></p>\n";
 			echo "		<input class =\"special\" id=\"objectIdActive_$i\" type=\"radio\" name ='$objectName' value =\"1\" >\n";
 			echo "		<label class =\"special\" for=\"objectIdActive_$i\">active</label>\n";
@@ -47,7 +47,19 @@
 			echo "		<label class =\"special\" for=\"objectIdInactive_$i\">inactive</label><br \>\n";
 		}
 		echo "</div>\n";
-				
+
+		# check coalition of loaded object based on country
+		$check = "SELECT CoalID
+				FROM rof_countries
+				WHERE ckey like '$objectCountry';";
+					
+		#execute the database checks
+		$result1= mysqli_query($camp_link, $check);
+		
+		while ($ctry = mysqli_fetch_object($result1)) {
+			$objectCoalition =($ctry->CoalID);
+		}
+	
 		# COALITION RADIO BOX
 		echo "<div class=\"radio\">\n";  
 			if ($objectCoalition == 0) {
