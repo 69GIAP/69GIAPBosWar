@@ -56,7 +56,7 @@
 						# use function to get CoalID	
 						$objectCntryKey = get_mincountry("$param_val");
 						# activate and deactivate object
-						$query .= "UPDATE rof_object_properties SET default_country = $objectCntryKey WHERE object_type like '$param_name' ;";
+						$query .= "UPDATE rof_object_properties SET default_country = '$objectCntryKey' WHERE object_type like '$param_name' ;";
 						
 						// debugging
 						#echo "activate/deactivate<br>";
@@ -64,15 +64,15 @@
 					}
 					else {
 						if ($active	== 0) {
-							$objectCntryKey = 640;
+							$objectCntryKey = 600; // Future
 							# change coalition for object
-							$query .= "UPDATE rof_object_properties SET default_country = $objectCntryKey WHERE id = '$param_name' ;";
+							$query .= "UPDATE rof_object_properties SET default_country = '$objectCntryKey' WHERE id = '$param_name' ;";
 						}
 						else {
 							# use function to get CoalID
 							$objectCntryKey = get_mincountry("$param_val");
 							# change coalition for object
-							$query .= "UPDATE rof_object_properties SET default_country = $objectCntryKey WHERE id = '$param_name' ;";
+							$query .= "UPDATE rof_object_properties SET default_country = '$objectCntryKey' WHERE id = '$param_name' ;";
 						}
 						// debugging
 						#echo "change coalition<br>";

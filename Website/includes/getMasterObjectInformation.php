@@ -52,11 +52,16 @@
 		echo "</div>\n";
 
 		# use function to get CoalID
+
 		$objectCoalition = get_coalition("$objectCountry");
+		
+# debug
+# echo $objectCountry."<br>";
+# echo $objectCoalition; // due to assignment of Future Coalitions which has coalition 3 No radiobuttons are visible for Inactive objects. We can change this later
 
 		# COALITION RADIO BOX
 		echo "<div class=\"radio\">\n";  
-			if ($objectCoalition == 0) {
+			if ($objectCoalition == 0 /* or $objectCoalition == 3 */ ) {
 				echo "	<input id=\"neutralModel$i\" type=\"radio\" name=\"$objectId\" value=\"0\" checked>  \n";
 				echo "	<label for=\"neutralModel$i\">Neutral</label>  \n";
 				
