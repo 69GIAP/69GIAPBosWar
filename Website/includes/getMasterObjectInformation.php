@@ -13,7 +13,7 @@
 	
 	$sql = "SELECT id, object_type, object_desc, default_country
 			FROM rof_object_properties
-			WHERE object_class like '$objectClass%'";
+			WHERE object_class like '$objectClass%' ORDER BY default_country";
 		
 	$i = 1;
 	
@@ -30,11 +30,12 @@
 	while ($obj = mysqli_fetch_object($result)) {
 		$objectId		=($obj->id);
 		$objectName		=($obj->object_type);
+		$objectDesc		= $obj->object_desc;
 		$objectCountry	=($obj->default_country);
 		
 		echo "<div class=\"checkbox\">\n";
 		if	($objectCountry < 599) { // all countries below countryId 599 are similar to Active
-			echo "		<p><b>$objectName</b></p>\n";
+			echo "		<p><b>$objectDesc</b></p>\n";
 			echo "		<input class =\"special\" id=\"objectIdActive_$i\" type=\"radio\" name ='$objectName' value =\"1\" checked>\n";
 			echo "		<label class =\"special\" for=\"objectIdActive_$i\">active</label>\n";
 			
@@ -42,7 +43,7 @@
 			echo "		<label class =\"special\" for=\"objectIdInactive_$i\">inactive</label><br \>\n";			
 		}
 		else {						// all countries greater than countryId 599 are similar to Inactive
-			echo "		<p><b>$objectName</b></p>\n";
+			echo "		<p><b>$objectDesc</b></p>\n";
 			echo "		<input class =\"special\" id=\"objectIdActive_$i\" type=\"radio\" name ='$objectName' value =\"1\" >\n";
 			echo "		<label class =\"special\" for=\"objectIdActive_$i\">active</label>\n";
 			
@@ -60,7 +61,7 @@
 
 		# COALITION RADIO BOX
 		echo "<div class=\"radio\">\n";  
-			if ($objectCoalition == 0 /* or $objectCoalition == 3 */ ) {
+		if ($objectCoalition == 0  /* or $objectCoalition > 2 */ ) {
 				echo "	<input id=\"neutralModel$i\" type=\"radio\" name=\"$objectId\" value=\"0\" checked>  \n";
 				echo "	<label for=\"neutralModel$i\">Neutral</label>  \n";
 				
@@ -68,7 +69,7 @@
 				echo "	<label for=\"ententeModel$i\">Entente</label>  \n";
 				
 				echo "	<input id=\"centerModel$i\" type=\"radio\" name=\"$objectId\" value=\"2\">  \n";
-				echo "	<label for=\"centerModel$i\">Center</label> \n";
+				echo "	<label for=\"centerModel$i\">Central Powers</label> \n";
 			}
 			elseif ($objectCoalition == 1) {
 				echo "	<input id=\"neutralModel$i\" type=\"radio\" name=\"$objectId\" value=\"0\" >  \n";
