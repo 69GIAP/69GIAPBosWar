@@ -5,6 +5,9 @@
 // ver 1.0
 // ver 1.1 changed filter to avoid active and coalition column in table
 
+	# include function getCoalition.ph
+	include ( 'functions/getCoalition.php' );
+	
 	# add percent to allow like query
 	$_SESSION['objectClass'] = $objectClass;
 	
@@ -48,18 +51,9 @@
 		}
 		echo "</div>\n";
 
-		# check coalition of loaded object based on country
-		$check = "SELECT CoalID
-				FROM rof_countries
-				WHERE ckey like '$objectCountry';";
-					
-		#execute the database checks
-		$result1= mysqli_query($camp_link, $check);
-		
-		while ($ctry = mysqli_fetch_object($result1)) {
-			$objectCoalition =($ctry->CoalID);
-		}
-	
+		# use function to get CoalID
+		$objectCoalition = get_coalition("$objectCountry");
+
 		# COALITION RADIO BOX
 		echo "<div class=\"radio\">\n";  
 			if ($objectCoalition == 0) {

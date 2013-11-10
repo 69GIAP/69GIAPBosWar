@@ -21,30 +21,65 @@
 				# include connect2CampaignFunction.php
 				include ( 'functions/connect2Campaign.php' );
 				
+				# include getMinCountry.php
+				include ( 'functions/getMinCountry.php' );
+				
 				# include getCampaignVariables.php
 				include ('includes/getCampaignVariables.php');
 				
 				# use this information to connect to campaign 
 				$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
 												
-				$query	= "";
+				$query		= "";
+				$active		= 1;
 				
 				# get POST variables and bind into idList variable
 				foreach ($_POST as $param_name => $param_val) {
-					#echo $param_name." lenght: ".strlen($param_name)."<br>";
-					#echo $param_val."<br><br>";
 					
-					# distinguish between id variable and object_type variable to determine if object is activated by checkbox
+					// display POST information each by each for debugging purposes
+					#echo "parameter Name: "	.$param_name."<br>parameter lenght: ".strlen($param_name)."<br>";
+					#echo "parameter Value: ".$param_val."<br><br>";
+
+					# distinguish between id variable and object_type variable to determine if object was activated by checkbox
 					if (strlen($param_name)>3) {
+						
+						# I used this to prevent harcoded Country ids in case there are changes in future
+						if ($param_val == 0) {
+							$param_val	= 7; // Future
+							$active		= 0; // used as handover to next query - otherwise coalition would overwrite inactive state
+						}
+						elseif ($param_val == 1) {
+							$param_val	= 0; // Neutral
+							$active		= 1; // used as handover to next query - otherwise coalition would not be applied
+						}
+						
+						# use function to get CoalID	
+						$objectCntryKey = get_mincountry("$param_val");
 						# activate and deactivate object
-						$query .= "UPDATE rof_object_properties SET active = $param_val WHERE object_type like '$param_name' ;";
+						$query .= "UPDATE rof_object_properties SET default_country = $objectCntryKey WHERE object_type like '$param_name' ;";
+						
+						// debugging
+						#echo "activate/deactivate<br>";
+
 					}
 					else {
-						# change coalition for object
-						$query .= "UPDATE rof_object_properties SET coalition = $param_val WHERE id = '$param_name' ;";
+						if ($active	== 0) {
+							$objectCntryKey = 640;
+							# change coalition for object
+							$query .= "UPDATE rof_object_properties SET default_country = $objectCntryKey WHERE id = '$param_name' ;";
+						}
+						else {
+							# use function to get CoalID
+							$objectCntryKey = get_mincountry("$param_val");
+							# change coalition for object
+							$query .= "UPDATE rof_object_properties SET default_country = $objectCntryKey WHERE id = '$param_name' ;";
+						}
+						// debugging
+						#echo "change coalition<br>";
 					}
 				}
-				
+#echo $query."<br>";				
+#exit;			
 				/* execute multi query */
 				if ($camp_link->multi_query($query)) {
 					do {
@@ -65,7 +100,8 @@
 				$camp_link->close();
 				
 				$objectClass = $_SESSION['objectClass'];
-
+#echo $query;				
+#exit;	
 				header ("Location: CampaignMgmtObjects.php?btn=campMgmt&objectClass=$objectClass");
 
                 ?>
