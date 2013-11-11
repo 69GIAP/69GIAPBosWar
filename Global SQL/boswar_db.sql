@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `boswar_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `boswar_db`;
+
+
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: 10.0.0.57    Database: boswar_db
@@ -431,6 +431,38 @@ INSERT INTO `flags` VALUES (1,'windsock','RoF','flag',NULL);
 UNLOCK TABLES;
 
 --
+-- Table structure for table `gunner_scores`
+--
+
+DROP TABLE IF EXISTS `gunner_scores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gunner_scores` (
+  `id` int(1) NOT NULL AUTO_INCREMENT,
+  `MissionID` varchar(50) NOT NULL DEFAULT 'missionid',
+  `CoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `country` smallint(1) NOT NULL DEFAULT '0',
+  `GunnerName` varchar(40) NOT NULL DEFAULT 'gunnername',
+  `plid` mediumint(1) NOT NULL DEFAULT '0',
+  `GunningFor` varchar(40) NOT NULL DEFAULT 'pilotname',
+  `GunnerFate` tinyint(1) NOT NULL DEFAULT '0',
+  `GunnerHealth` tinyint(1) NOT NULL DEFAULT '0',
+  `GunnerNegScore` int(1) NOT NULL DEFAULT '0',
+  `GunnerPosScore` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gunner_scores`
+--
+
+LOCK TABLES `gunner_scores` WRITE;
+/*!40000 ALTER TABLE `gunner_scores` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gunner_scores` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `inbox`
 --
 
@@ -454,6 +486,42 @@ CREATE TABLE `inbox` (
 LOCK TABLES `inbox` WRITE;
 /*!40000 ALTER TABLE `inbox` DISABLE KEYS */;
 /*!40000 ALTER TABLE `inbox` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `kills`
+--
+
+DROP TABLE IF EXISTS `kills`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `kills` (
+  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
+  `MissionID` varchar(60) NOT NULL DEFAULT 'missionid',
+  `clocktime` time NOT NULL DEFAULT '00:00:00',
+  `attackerID` mediumint(1) NOT NULL DEFAULT '0',
+  `attackerName` varchar(50) NOT NULL DEFAULT 'attacker name',
+  `attackerCountryID` smallint(1) NOT NULL DEFAULT '0',
+  `attackerCoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `action` varchar(20) NOT NULL DEFAULT 'action',
+  `targetID` mediumint(1) NOT NULL DEFAULT '0',
+  `targetClass` varchar(8) NOT NULL DEFAULT 'xxx',
+  `targetType` varchar(50) NOT NULL DEFAULT 'target type',
+  `targetName` varchar(50) NOT NULL DEFAULT 'target name',
+  `targetCountryID` smallint(1) unsigned NOT NULL DEFAULT '0',
+  `targetCoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `targetValue` smallint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `kills`
+--
+
+LOCK TABLES `kills` WRITE;
+/*!40000 ALTER TABLE `kills` DISABLE KEYS */;
+/*!40000 ALTER TABLE `kills` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -506,6 +574,37 @@ LOCK TABLES `mission_status` WRITE;
 /*!40000 ALTER TABLE `mission_status` DISABLE KEYS */;
 INSERT INTO `mission_status` VALUES (1,'created'),(2,'configured'),(3,'initialized'),(4,'planning'),(5,'built'),(6,'analyzing'),(7,'scored'),(8,'moving units');
 /*!40000 ALTER TABLE `mission_status` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pilot_scores`
+--
+
+DROP TABLE IF EXISTS `pilot_scores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pilot_scores` (
+  `id` smallint(1) NOT NULL AUTO_INCREMENT,
+  `MissionID` varchar(50) NOT NULL DEFAULT 'missionid',
+  `CoalID` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `country` smallint(1) NOT NULL DEFAULT '0',
+  `PilotName` varchar(40) NOT NULL DEFAULT 'pilotname',
+  `plid` mediumint(1) NOT NULL DEFAULT '0',
+  `PilotFate` tinyint(1) NOT NULL DEFAULT '0',
+  `PilotHealth` tinyint(1) NOT NULL DEFAULT '0',
+  `PilotNegScore` int(1) NOT NULL DEFAULT '0',
+  `PilotPosScore` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pilot_scores`
+--
+
+LOCK TABLES `pilot_scores` WRITE;
+/*!40000 ALTER TABLE `pilot_scores` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pilot_scores` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -639,74 +738,6 @@ INSERT INTO `rof_countries` VALUES (1,0,'Neutral','neutral',0),(2,101,'France','
 UNLOCK TABLES;
 
 --
--- Table structure for table `rof_gunner_scores`
---
-
-DROP TABLE IF EXISTS `rof_gunner_scores`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `rof_gunner_scores` (
-  `id` int(1) NOT NULL AUTO_INCREMENT,
-  `MissionID` varchar(50) NOT NULL DEFAULT 'missionid',
-  `CoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `country` smallint(1) NOT NULL DEFAULT '0',
-  `GunnerName` varchar(40) NOT NULL DEFAULT 'gunnername',
-  `mgid` int(1) NOT NULL DEFAULT '0',
-  `GunningFor` varchar(40) NOT NULL DEFAULT 'pilotname',
-  `GunnerFate` tinyint(1) NOT NULL DEFAULT '0',
-  `GunnerHealth` tinyint(1) NOT NULL DEFAULT '0',
-  `GunnerNegScore` int(1) NOT NULL DEFAULT '0',
-  `GunnerPosScore` int(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `rof_gunner_scores`
---
-
-LOCK TABLES `rof_gunner_scores` WRITE;
-/*!40000 ALTER TABLE `rof_gunner_scores` DISABLE KEYS */;
-/*!40000 ALTER TABLE `rof_gunner_scores` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `rof_kills`
---
-
-DROP TABLE IF EXISTS `rof_kills`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `rof_kills` (
-  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
-  `MissionID` varchar(60) NOT NULL DEFAULT 'missionid',
-  `clocktime` time NOT NULL DEFAULT '00:00:00',
-  `attackerID` mediumint(1) NOT NULL DEFAULT '0',
-  `attackerName` varchar(50) NOT NULL DEFAULT 'attacker name',
-  `attackerCountryID` smallint(1) NOT NULL DEFAULT '0',
-  `attackerCoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `action` varchar(20) NOT NULL DEFAULT 'action',
-  `targetID` mediumint(1) NOT NULL DEFAULT '0',
-  `targetClass` varchar(8) NOT NULL DEFAULT 'xxx',
-  `targetType` varchar(50) NOT NULL DEFAULT 'target type',
-  `targetName` varchar(50) NOT NULL DEFAULT 'target name',
-  `targetCountryID` smallint(1) unsigned NOT NULL DEFAULT '0',
-  `targetCoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `targetValue` smallint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `rof_kills`
---
-
-LOCK TABLES `rof_kills` WRITE;
-/*!40000 ALTER TABLE `rof_kills` DISABLE KEYS */;
-/*!40000 ALTER TABLE `rof_kills` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `rof_lake_locations`
 --
 
@@ -795,37 +826,6 @@ LOCK TABLES `rof_object_roles` WRITE;
 /*!40000 ALTER TABLE `rof_object_roles` DISABLE KEYS */;
 INSERT INTO `rof_object_roles` VALUES (1,'AAA','Artillery:Anti-Aircraft'),(2,'ART','Artillery'),(3,'BOT','Bot'),(4,'BRG','Bridge'),(5,'DNA','Intrinsic'),(6,'FAC','Factory'),(7,'HUM','Human'),(8,'IMA','Infantry: MG AA'),(9,'IMG','Infantry:Machine Gun'),(10,'INF','Infrastructure'),(11,'NAA','Naval:Anti-Aircraft'),(12,'NAR','Naval:Artillery'),(13,'PBO','Plane:Bomber'),(14,'PFB','Plane:Fighter-Bomber'),(15,'PFI','Plane:Fighter'),(16,'PRE','Plane:Reconnaissance'),(17,'PSE','Plane:Seaplane'),(18,'PTR','Plane:Transport'),(19,'RAA','Rail:Anti-Aircraft'),(20,'RCV','Rail:Civil Train'),(21,'RLO','Rail:Locomotive'),(22,'RWA','Rail:Wagon'),(23,'SAA','Ship:Anti-Aircraft'),(24,'SBA','Ship:Battleship'),(25,'SCR','Ship:Cruiser'),(26,'SDE','Ship:Destroyer'),(27,'SPB','Ship:Patrol Boat'),(28,'SSU','Ship:Submarine'),(29,'T','Tank:Standard'),(30,'TAA','Tank:Anti-Aircraft'),(31,'TSP','Tank:Self-Propelled Gun'),(32,'TTD','Tank:Tank Destroyer'),(33,'TUR','Turret'),(34,'VAA','Vehicle:Anti-Aircraft'),(35,'VMI','Vehicle:Mech. Infantry'),(36,'VRI','Regular Infantry'),(37,'VTR','Vehicle:Transport');
 /*!40000 ALTER TABLE `rof_object_roles` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `rof_pilot_scores`
---
-
-DROP TABLE IF EXISTS `rof_pilot_scores`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `rof_pilot_scores` (
-  `id` smallint(1) NOT NULL AUTO_INCREMENT,
-  `MissionID` varchar(50) NOT NULL DEFAULT 'missionid',
-  `CoalID` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `country` smallint(1) NOT NULL DEFAULT '0',
-  `PilotName` varchar(40) NOT NULL DEFAULT 'pilotname',
-  `mpid` smallint(1) NOT NULL DEFAULT '0',
-  `PilotFate` tinyint(1) NOT NULL DEFAULT '0',
-  `PilotHealth` tinyint(1) NOT NULL DEFAULT '0',
-  `PilotNegScore` int(1) NOT NULL DEFAULT '0',
-  `PilotPosScore` int(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `rof_pilot_scores`
---
-
-LOCK TABLES `rof_pilot_scores` WRITE;
-/*!40000 ALTER TABLE `rof_pilot_scores` DISABLE KEYS */;
-/*!40000 ALTER TABLE `rof_pilot_scores` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1100,4 +1100,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-11-09 15:46:22
+-- Dump completed on 2013-11-11 19:36:00
