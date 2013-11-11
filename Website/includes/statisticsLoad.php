@@ -1,15 +1,20 @@
 <?php
+# statisticsLoad.php
+# =69.GIAP=MYATA
+# Oct 18, 2013
+# Version 1.1
+# Nov 10, 2013
 
 # get active campaigns
 $query = "SELECT MissionID, clocktime, attackerName, attackerCountryID, attackerCoalID, action, targetType, targetName, targetCountryID, targetCoalID, targetValue
-		FROM rof_kills
+		FROM kills
 		WHERE MissionId = '$MissionID'
 		ORDER BY attackerCountryID, attackerCoalID, clocktime asc";
 	
 if(!$result = $camp_link->query($query))
    { die('There was an error running the query [' . $camp_link->error . ']'); }
 	
-if ($result = mysqli_query($camp_link, $query)) 
+if ($result = $camp_link->query($query)) 
 	{
 		
 		# created first table line
@@ -33,7 +38,7 @@ if ($result = mysqli_query($camp_link, $query))
 		$rowcount=0;
 		
 		/* fetch associative array */
-		while ($obj = mysqli_fetch_object($result)) 
+		while ($obj = $result->fetch_object()) 
 			{
 			$clocktime			=($obj->clocktime);
 			$attackerName		=($obj->attackerName);

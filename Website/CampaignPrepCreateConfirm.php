@@ -93,17 +93,17 @@ $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.inbox LIKE inbox;";
 include ('includes/doit.php');
 echo "inbox created<br />\n";
 
-$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_gunner_scores LIKE rof_gunner_scores;";
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.gunner_scores LIKE gunner_scores;";
 include ('includes/doit.php');
-echo "rof_gunner_scores created<br />\n";
+echo "gunner_scores created<br />\n";
 
-$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_kills LIKE rof_kills;";
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.kills LIKE kills;";
 include ('includes/doit.php');
-echo "rof_kills created<br />\n";
+echo "kills created<br />\n";
 
-$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_pilot_scores LIKE rof_pilot_scores;";
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.pilot_scores LIKE pilot_scores;";
 include ('includes/doit.php');
-echo "rof_pilot_scores created<br />\n";
+echo "pilot_scores created<br />\n";
 
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.supply_points LIKE supply_points;";
 include ('includes/doit.php');
