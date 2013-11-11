@@ -5,16 +5,19 @@
 // ver 1.0
 // ver 1.1 changed filter to avoid active and coalition column in table
 
-	# require function getCoalition.ph
+	# require function getCoalition.php
 	require ( 'functions/getCoalition.php' );
 
-	# require function getCoalitionname.ph
+	# require function getCoalitionname.php
 	require ( 'functions/getCoalitionname.php' );
+
+	# require function getClassRoleDescription.php
+	require ( 'functions/getClassRoleDescription.php' );
 	
 	# add percent to allow like query
 	$_SESSION['objectClass'] = $objectClass;
 	
-	$sql = "SELECT id, object_type, object_desc, default_country
+	$sql = "SELECT id, object_type, object_class, object_desc, default_country
 			FROM rof_object_properties
 			WHERE object_class like '$objectClass%' ORDER BY default_country";
 		
@@ -23,22 +26,25 @@
 	#echo $sql;
 	echo "		<!-- Checkboxes for model selection -->\n";
 	if(!$result = $camp_link->query($sql)){
-		die('There was an error running the query ' . mysqli_error($camp_link));
+		echo "$query<br />\n";
+		die('There was an error running the query ' . $camp_link->error($camp_link));
 	}
 	
 	echo "<h3>Campaign Object Set</h3>\n";	
 	echo "<div class=\"checkboxWrapper\">\n";
 
 	# load results into variables 
-	while ($obj = mysqli_fetch_object($result)) {
+	while ($obj = $result->fetch_object()) {
 		$objectId		=($obj->id);
 		$objectName		=($obj->object_type);
+		$object_class	=($obj->object_class);
 		$objectDesc		= $obj->object_desc;
 		$objectCountry	=($obj->default_country);
 		
+		$classRoleDesc = get_class_role_description($object_class);
 		echo "<div class=\"checkbox\">\n";
 		if	($objectCountry < 599) { // all countries below countryId 599 are similar to Active
-			echo "		<p><b>$objectDesc</b></p>\n";
+			echo "		<p><b>$objectDesc<br />$classRoleDesc</b></p>\n";
 			echo "		<input class =\"special\" id=\"objectIdActive_$i\" type=\"radio\" name ='$objectName' value =\"1\" checked>\n";
 			echo "		<label class =\"special\" for=\"objectIdActive_$i\">active</label>\n";
 			
@@ -70,41 +76,42 @@
 		# COALITION RADIO BOX
 		echo "<div class=\"radio\">\n";  
 		if ($objectCoalition == 0  /* or $objectCoalition > 2 */ ) {
-				echo "	<input id=\"neutralModel$i\" type=\"radio\" name=\"$objectId\" value=\"0\" checked>  \n";
-				echo "	<label for=\"neutralModel$i\">$coalition0</label>  \n";
-				
-				echo "	<input id=\"ententeModel$i\" type=\"radio\" name=\"$objectId\" value=\"1\" >  \n";
-				echo "	<label for=\"ententeModel$i\">$coalition1</label>  \n";
-				
-				echo "	<input id=\"centerModel$i\" type=\"radio\" name=\"$objectId\" value=\"2\">  \n";
-				echo "	<label for=\"centerModel$i\">Central Powers</label> \n";
-			}
-			elseif ($objectCoalition == 1) {
-				echo "	<input id=\"neutralModel$i\" type=\"radio\" name=\"$objectId\" value=\"0\" >  \n";
-				echo "	<label for=\"neutralModel$i\">$coalition0</label>  \n";	
+			echo "	<input id=\"neutralModel$i\" type=\"radio\" name=\"$objectId\" value=\"0\" checked>  \n";
+			echo "	<label for=\"neutralModel$i\">$coalition0</label>  \n";
+
+			echo "	<input id=\"ententeModel$i\" type=\"radio\" name=\"$objectId\" value=\"1\" >  \n";
+			echo "	<label for=\"ententeModel$i\">$coalition1</label>  \n";
+
+			echo "	<input id=\"centerModel$i\" type=\"radio\" name=\"$objectId\" value=\"2\">  \n";
+			echo "	<label for=\"centerModel$i\">Central Powers</label> \n";
+		}
+		elseif ($objectCoalition == 1) {
+			echo "	<input id=\"neutralModel$i\" type=\"radio\" name=\"$objectId\" value=\"0\" >  \n";
+			echo "	<label for=\"neutralModel$i\">$coalition0</label>  \n";	
+
+			echo "	<input id=\"ententeModel$i\" type=\"radio\" name=\"$objectId\" value=\"1\" checked>  \n";
+			echo "	<label for=\"ententeModel$i\">$coalition1</label>  \n";
+
+			echo "	<input id=\"centerModel$i\" type=\"radio\" name=\"$objectId\" value=\"2\" >  \n";
+			echo "	<label for=\"centerModel$i\">$coalition2</label> \n"; 
+		}
+		elseif ($objectCoalition == 2) {
+			echo "	<input id=\"neutralModel$i\" type=\"radio\" name=\"$objectId\" value=\"0\">  \n";
+			echo "	<label for=\"neutralModel$i\">$coalition0</label>  \n";	
 							
-				echo "	<input id=\"ententeModel$i\" type=\"radio\" name=\"$objectId\" value=\"1\" checked>  \n";
-				echo "	<label for=\"ententeModel$i\">$coalition1</label>  \n";
+			echo "	<input id=\"ententeModel$i\" type=\"radio\" name=\"$objectId\" value=\"1\">  \n";
+			echo "	<label for=\"ententeModel$i\">$coalition1</label>  \n";
 				
-				echo "	<input id=\"centerModel$i\" type=\"radio\" name=\"$objectId\" value=\"2\" >  \n";
-				echo "	<label for=\"centerModel$i\">$coalition2</label> \n"; 
-			}
-			elseif ($objectCoalition == 2) {
-				echo "	<input id=\"neutralModel$i\" type=\"radio\" name=\"$objectId\" value=\"0\">  \n";
-				echo "	<label for=\"neutralModel$i\">$coalition0</label>  \n";	
-							
-				echo "	<input id=\"ententeModel$i\" type=\"radio\" name=\"$objectId\" value=\"1\">  \n";
-				echo "	<label for=\"ententeModel$i\">$coalition1</label>  \n";
-				
-				echo "	<input id=\"centerModel$i\" type=\"radio\" name=\"$objectId\" value=\"2\" checked>  \n";
-				echo "	<label for=\"centerModel$i\">$coalition2</label> \n";
-			}
+			echo "	<input id=\"centerModel$i\" type=\"radio\" name=\"$objectId\" value=\"2\" checked>  \n";
+			echo "	<label for=\"centerModel$i\">$coalition2</label> \n";
+		}
 		
 		echo "</div>\n";
 		print "<hr noshade width=\"auto\" size=\"1\" >\n";
 		$i ++;
 	}
 	echo "</div>\n";
+	$result->free();
 
 ?>
 
