@@ -18,7 +18,7 @@
 	$_SESSION['objectClass'] = $objectClass;
 	
 	$sql = "SELECT id, object_type, object_class, object_desc, default_country
-			FROM rof_object_properties
+			FROM object_properties
 			WHERE object_class like '$objectClass%' ORDER BY default_country";
 		
 	$i = 1;
@@ -27,7 +27,7 @@
 	echo "		<!-- Checkboxes for model selection -->\n";
 	if(!$result = $camp_link->query($sql)){
 		echo "$query<br />\n";
-		die('There was an error running the query ' . $camp_link->error($camp_link));
+		die('getMasterObjectInformation query error:' . $camp_link->error());
 	}
 	
 	echo "<h3>Campaign Object Set</h3>\n";	

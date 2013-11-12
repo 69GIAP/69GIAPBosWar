@@ -24,7 +24,7 @@
             <div id="content">
             
 				<?php
-					
+					$game	=	$_SESSION['game'];	
 					$newCampaignName 		= $_POST['newCampaignName'];
 					$newCampaignAbbrv		= $_POST['newCampaignAbbrv'];
 					$newCampaignDBName 		= $_POST['newCampaignDatabaseName'];
@@ -72,6 +72,62 @@ include ('includes/doit.php');
 echo "$newCampaignDBUser granted FILE privs<br />\n";
 
 // COPY INITIAL TABLESET FROM BOSWAR_DB TO NEW CAMPAIGN DB
+// Start with those that differ between RoF and BoS
+
+if ($game == 'RoF') {
+
+	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_coalitions LIKE rof_coalitions;";
+	include ('includes/doit.php');
+	echo "rof_coalitions created<br />\n";
+
+	$query = "INSERT INTO `$newCampaignDBName`.rof_coalitions SELECT * FROM rof_coalitions;";
+	include ('includes/doit.php');
+	echo "rof_coalitions populated<br />\n";
+
+	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_countries LIKE rof_countries;";
+	include ('includes/doit.php');
+	echo "rof_countries created<br />\n";
+
+	$query = "INSERT INTO `$newCampaignDBName`.rof_countries SELECT * FROM rof_countries;";
+	include ('includes/doit.php');
+	echo "rof_countries populated<br />\n";
+
+	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.object_properties LIKE rof_object_properties;";
+	include ('includes/doit.php');
+	echo "object_properties created<br />\n";
+
+	$query = "INSERT INTO `$newCampaignDBName`.object_properties SELECT * FROM rof_object_properties;";
+	include ('includes/doit.php');
+	echo "object_properties populated from rof_object_properties<br />\n";
+
+} else { // must be BoS
+
+	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.bos_coalitions LIKE bos_coalitions;";
+	include ('includes/doit.php');
+	echo "bos_coalitions created<br />\n";
+
+	$query = "INSERT INTO `$newCampaignDBName`.bos_coalitions SELECT * FROM bos_coalitions;";
+	include ('includes/doit.php');
+	echo "bos_coalitions populated<br />\n";
+
+	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.bos_countries LIKE bos_countries;";
+	include ('includes/doit.php');
+	echo "bos_countries created<br />\n";
+
+	$query = "INSERT INTO `$newCampaignDBName`.bos_countries SELECT * FROM bos_countries;";
+	include ('includes/doit.php');
+	echo "bos_countries populated<br />\n";
+
+	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.object_properties LIKE bos_object_properties;";
+	include ('includes/doit.php');
+	echo "object_properties created<br />\n";
+
+	$query = "INSERT INTO `$newCampaignDBName`.object_properties SELECT * FROM bos_object_properties;";
+	include ('includes/doit.php');
+	echo "object_properties populated from bos_object_properties<br />\n";
+
+}
+
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.airfields LIKE airfields;";
 include ('includes/doit.php');
 echo "airfields created<br />\n";
@@ -133,30 +189,6 @@ echo "player_health created<br />\n";
 $query = "INSERT INTO `$newCampaignDBName`.player_health SELECT * FROM player_health;";
 include ('includes/doit.php');
 echo "player_health populated<br />\n";
-
-$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_coalitions LIKE rof_coalitions;";
-include ('includes/doit.php');
-echo "rof_coalitions created<br />\n";
-
-$query = "INSERT INTO `$newCampaignDBName`.rof_coalitions SELECT * FROM rof_coalitions;";
-include ('includes/doit.php');
-echo "rof_coalitions populated<br />\n";
-
-$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_countries LIKE rof_countries;";
-include ('includes/doit.php');
-echo "rof_countries created<br />\n";
-
-$query = "INSERT INTO `$newCampaignDBName`.rof_countries SELECT * FROM rof_countries;";
-include ('includes/doit.php');
-echo "rof_countries populated<br />\n";
-
-$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_object_properties LIKE rof_object_properties;";
-include ('includes/doit.php');
-echo "rof_object_properties created<br />\n";
-
-$query = "INSERT INTO `$newCampaignDBName`.rof_object_properties SELECT * FROM rof_object_properties;";
-include ('includes/doit.php');
-echo "rof_object_properties populated<br />\n";
 
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.object_roles LIKE object_roles;";
 include ('includes/doit.php');

@@ -46,6 +46,7 @@ function ANORA($word) {
 		(substr($word,0,3) == "JG1") || (substr($word,0,3) == "J5_") ||
 		(substr($word,0,3) == "CaK") || (substr($word,0,4) == "Flak") ||
 		(substr($word,0,3) == "SPA") || (substr($word,0,4) == "= CA") ||
+		(substr($word,0,4) == "=FI=") ||
 		(substr($word,0,4) == "Cors") || (substr($word,0,4) == "Hans")) {
 			$anora = "";
 		// by sound
