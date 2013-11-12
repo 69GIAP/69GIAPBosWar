@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2013 at 04:51 AM
+-- Generation Time: Nov 12, 2013 at 11:15 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -275,7 +275,7 @@ INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `objec
 (223, 'TurretRolandC2a_1_WM_TwinPar', 'TUR', 0, 'Roland C.IIa gunner', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0'),
 (224, 'DaimlerAAA', 'VAA', 80, '77mm AAA on a Daimler truck', 'daimleraaa', 'daimleraaa', 'artillery', 'daimleraaa', 50, 20, NULL, '501'),
 (225, 'thornycroftaaa', 'VAA', 80, '13-pounder AAA on a Thornycraft truck', 'thornycroftaaa', 'thornycroftaaa', 'artillery', 'thornycroftaaa', 50, 20, NULL, '102'),
-(226, 'Benz Searchlight', 'VSL', 50, 'Benz Cargo truck with searchlight', 'benz_p', 'benz_p', 'vehicle', 'benz', 50, 20, NULL, '501'),
+(226, 'Benz Searchlight', 'VSL', 50, 'Benz Cargo truck with searchlight', 'benz_p', 'benz_p', 'vehicles', 'benz', 50, 20, NULL, '501'),
 (227, 'benz_open', 'VTR', 50, 'Benz Cargo open truck', 'benz_open', 'benz_open', 'vehicles', 'benz', 50, 20, NULL, '501'),
 (228, 'benz_soft', 'VTR', 50, 'Benz Cargo covered truck', 'benz_soft', 'benz_soft', 'vehicles', 'benz', 50, 20, NULL, '501'),
 (229, 'Crossley', 'VTR', 50, 'Crossley 4X2 Staff Car', 'crossley', 'crossley', 'vehicles', 'crossley', 50, 20, NULL, '102'),
