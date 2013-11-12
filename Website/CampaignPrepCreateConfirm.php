@@ -158,13 +158,13 @@ $query = "INSERT INTO `$newCampaignDBName`.rof_object_properties SELECT * FROM r
 include ('includes/doit.php');
 echo "rof_object_properties populated<br />\n";
 
-$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_object_roles LIKE rof_object_roles;";
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.object_roles LIKE object_roles;";
 include ('includes/doit.php');
-echo "rof_object_roles created<br />\n";
+echo "object_roles created<br />\n";
 
-$query = "INSERT INTO `$newCampaignDBName`.rof_object_roles SELECT * FROM rof_object_roles;";
+$query = "INSERT INTO `$newCampaignDBName`.object_roles SELECT * FROM object_roles;";
 include ('includes/doit.php');
-echo "rof_object_roles populated<br />\n";
+echo "object_roles populated<br />\n";
 
 // create the selected map_locations table
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.$campaignMapLocations LIKE $campaignMapLocations;";

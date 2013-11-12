@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2013 at 07:39 PM
+-- Generation Time: Nov 12, 2013 at 03:43 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -23,24 +23,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rof_object_roles`
+-- Table structure for table `object_roles`
 --
 
-DROP TABLE IF EXISTS `rof_object_roles`;
-CREATE TABLE IF NOT EXISTS `rof_object_roles` (
+DROP TABLE IF EXISTS `object_roles`;
+CREATE TABLE IF NOT EXISTS `object_roles` (
   `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `unit_class` varchar(8) DEFAULT NULL,
   `role_description` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unit_class` (`unit_class`),
   UNIQUE KEY `role_description` (`role_description`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=39 ;
 
 --
--- Dumping data for table `rof_object_roles`
+-- Dumping data for table `object_roles`
 --
 
-INSERT INTO `rof_object_roles` (`id`, `unit_class`, `role_description`) VALUES
+INSERT INTO `object_roles` (`id`, `unit_class`, `role_description`) VALUES
 (1, 'AAA', 'Artillery:Anti-Aircraft'),
 (2, 'ART', 'Artillery'),
 (3, 'BOT', 'Bot'),
@@ -77,7 +77,8 @@ INSERT INTO `rof_object_roles` (`id`, `unit_class`, `role_description`) VALUES
 (34, 'VAA', 'Vehicle:Anti-Aircraft'),
 (35, 'VMI', 'Vehicle:Mech. Infantry'),
 (36, 'VRI', 'Regular Infantry'),
-(37, 'VTR', 'Vehicle:Transport');
+(37, 'VSL', 'Vehicle:Searchlight'),
+(38, 'VTR', 'Vehicle:Transport');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
