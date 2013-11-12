@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2013 at 05:51 AM
+-- Generation Time: Nov 12, 2013 at 07:02 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -249,6 +249,33 @@ INSERT INTO `cam_param` (`id`, `cam_sim`, `cam_map`, `cam_bot_left_X`, `cam_bot_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `coalitions`
+--
+
+DROP TABLE IF EXISTS `coalitions`;
+CREATE TABLE IF NOT EXISTS `coalitions` (
+  `CoalID` enum('0','1','2','3','4','5','6','7') NOT NULL,
+  `Coalitionname` varchar(40) NOT NULL,
+  PRIMARY KEY (`CoalID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `coalitions`
+--
+
+INSERT INTO `coalitions` (`CoalID`, `Coalitionname`) VALUES
+('0', 'Neutral'),
+('1', 'British Commonwealth & Allied Forces'),
+('2', 'U.S.A. and Central Alliance'),
+('3', 'War Dogs'),
+('4', 'Mercenaries'),
+('5', 'Knights'),
+('6', 'Corsairs'),
+('7', 'Future');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `col_10`
 --
 
@@ -272,6 +299,44 @@ CREATE TABLE IF NOT EXISTS `col_10` (
   `col_formation` int(11) DEFAULT '4',
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `countries`
+--
+
+DROP TABLE IF EXISTS `countries`;
+CREATE TABLE IF NOT EXISTS `countries` (
+  `id` enum('1','2','3','4','5','6','7','8','9','10','11','12','13') NOT NULL,
+  `ckey` enum('0','101','102','103','104','105','501','502','600','610','620','630','640') NOT NULL,
+  `countryname` varchar(30) NOT NULL,
+  `countryadj` varchar(30) NOT NULL,
+  `CoalID` enum('0','1','2','3','4','5','6','7') NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `countryname` (`countryname`),
+  UNIQUE KEY `countryadj` (`countryadj`),
+  UNIQUE KEY `ckey` (`ckey`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `countries`
+--
+
+INSERT INTO `countries` (`id`, `ckey`, `countryname`, `countryadj`, `CoalID`) VALUES
+('1', '0', 'Neutral', 'neutral', '0'),
+('2', '101', 'France', 'French', '2'),
+('3', '102', 'Great Britain', 'British', '1'),
+('4', '103', 'USA', 'American', '2'),
+('5', '104', 'Italy', 'Italian', '1'),
+('6', '105', 'Russia', 'Russian', '1'),
+('7', '501', 'Germany', 'German', '2'),
+('8', '502', 'Austro-Hungary', 'Austro-Hungarian', '2'),
+('9', '600', 'Future Country', 'Future', '3'),
+('10', '610', 'War Dogs Country', 'War Dogs', '4'),
+('11', '620', 'Mercenaries Country', 'Mercenaries', '5'),
+('12', '630', 'Knights Country', 'Knights', '6'),
+('13', '640', 'Corsairs Country', 'Corsairs', '7');
 
 -- --------------------------------------------------------
 
@@ -300,17 +365,49 @@ INSERT INTO `flags` (`id`, `Model`, `game_name`, `modelpath2`, `modelpath3`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `inbox`
+-- Table structure for table `gunner_scores`
 --
 
-DROP TABLE IF EXISTS `inbox`;
-CREATE TABLE IF NOT EXISTS `inbox` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `lin` text,
-  `data_value` varchar(200) DEFAULT NULL,
-  `data_dec_value` decimal(20,3) DEFAULT NULL,
-  `CoalID` tinyint(3) unsigned NOT NULL,
-  UNIQUE KEY `id` (`id`)
+DROP TABLE IF EXISTS `gunner_scores`;
+CREATE TABLE IF NOT EXISTS `gunner_scores` (
+  `id` int(1) NOT NULL AUTO_INCREMENT,
+  `MissionID` varchar(50) NOT NULL DEFAULT 'missionid',
+  `CoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `country` smallint(1) NOT NULL DEFAULT '0',
+  `GunnerName` varchar(40) NOT NULL DEFAULT 'gunnername',
+  `plid` mediumint(1) NOT NULL DEFAULT '0',
+  `GunningFor` varchar(40) NOT NULL DEFAULT 'pilotname',
+  `GunnerFate` tinyint(1) NOT NULL DEFAULT '0',
+  `GunnerHealth` tinyint(1) NOT NULL DEFAULT '0',
+  `GunnerNegScore` int(1) NOT NULL DEFAULT '0',
+  `GunnerPosScore` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kills`
+--
+
+DROP TABLE IF EXISTS `kills`;
+CREATE TABLE IF NOT EXISTS `kills` (
+  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
+  `MissionID` varchar(60) NOT NULL DEFAULT 'missionid',
+  `clocktime` time NOT NULL DEFAULT '00:00:00',
+  `attackerID` mediumint(1) NOT NULL DEFAULT '0',
+  `attackerName` varchar(50) NOT NULL DEFAULT 'attacker name',
+  `attackerCountryID` smallint(1) NOT NULL DEFAULT '0',
+  `attackerCoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `action` varchar(20) NOT NULL DEFAULT 'action',
+  `targetID` mediumint(1) NOT NULL DEFAULT '0',
+  `targetClass` varchar(8) NOT NULL DEFAULT 'xxx',
+  `targetType` varchar(50) NOT NULL DEFAULT 'target type',
+  `targetName` varchar(50) NOT NULL DEFAULT 'target name',
+  `targetCountryID` smallint(1) unsigned NOT NULL DEFAULT '0',
+  `targetCoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `targetValue` smallint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -343,243 +440,11 @@ INSERT INTO `mission_status` (`id`, `mission_status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `player_fate`
+-- Table structure for table `object_properties`
 --
 
-DROP TABLE IF EXISTS `player_fate`;
-CREATE TABLE IF NOT EXISTS `player_fate` (
-  `id` tinyint(1) NOT NULL,
-  `fate` varchar(30) NOT NULL,
-  UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `player_fate`
---
-
-INSERT INTO `player_fate` (`id`, `fate`) VALUES
-(0, 'did not take off'),
-(1, 'landed'),
-(2, 'did not land'),
-(3, 'crashed'),
-(4, 'captured'),
-(5, 'killed');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `player_health`
---
-
-DROP TABLE IF EXISTS `player_health`;
-CREATE TABLE IF NOT EXISTS `player_health` (
-  `id` tinyint(4) NOT NULL,
-  `health` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `health` (`health`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `player_health`
---
-
-INSERT INTO `player_health` (`id`, `health`) VALUES
-(3, 'critical injuries'),
-(4, 'dead'),
-(0, 'fit as a fiddle'),
-(1, 'minor injuries'),
-(2, 'serious injuries');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rof_coalitions`
---
-
-DROP TABLE IF EXISTS `rof_coalitions`;
-CREATE TABLE IF NOT EXISTS `rof_coalitions` (
-  `CoalID` enum('0','1','2','3','4','5','6','7') NOT NULL,
-  `Coalitionname` varchar(40) NOT NULL,
-  PRIMARY KEY (`CoalID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `rof_coalitions`
---
-
-INSERT INTO `rof_coalitions` (`CoalID`, `Coalitionname`) VALUES
-('0', 'Neutral'),
-('1', 'British Commonwealth & Allied Forces'),
-('2', 'U.S.A. and Central Alliance'),
-('3', 'War Dogs'),
-('4', 'Mercenaries'),
-('5', 'Knights'),
-('6', 'Corsairs'),
-('7', 'Future');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rof_countries`
---
-
-DROP TABLE IF EXISTS `rof_countries`;
-CREATE TABLE IF NOT EXISTS `rof_countries` (
-  `id` enum('1','2','3','4','5','6','7','8','9','10','11','12','13') NOT NULL,
-  `ckey` enum('0','101','102','103','104','105','501','502','600','610','620','630','640') NOT NULL,
-  `countryname` varchar(30) NOT NULL,
-  `countryadj` varchar(30) NOT NULL,
-  `CoalID` enum('0','1','2','3','4','5','6','7') NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `countryname` (`countryname`),
-  UNIQUE KEY `countryadj` (`countryadj`),
-  UNIQUE KEY `ckey` (`ckey`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `rof_countries`
---
-
-INSERT INTO `rof_countries` (`id`, `ckey`, `countryname`, `countryadj`, `CoalID`) VALUES
-('1', '0', 'Neutral', 'neutral', '0'),
-('2', '101', 'France', 'French', '2'),
-('3', '102', 'Great Britain', 'British', '1'),
-('4', '103', 'USA', 'American', '2'),
-('5', '104', 'Italy', 'Italian', '1'),
-('6', '105', 'Russia', 'Russian', '1'),
-('7', '501', 'Germany', 'German', '2'),
-('8', '502', 'Austro-Hungary', 'Austro-Hungarian', '2'),
-('9', '600', 'Future Country', 'Future', '3'),
-('10', '610', 'War Dogs Country', 'War Dogs', '4'),
-('11', '620', 'Mercenaries Country', 'Mercenaries', '5'),
-('12', '630', 'Knights Country', 'Knights', '6'),
-('13', '640', 'Corsairs Country', 'Corsairs', '7');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rof_gunner_scores`
---
-
-DROP TABLE IF EXISTS `rof_gunner_scores`;
-CREATE TABLE IF NOT EXISTS `rof_gunner_scores` (
-  `id` int(1) NOT NULL AUTO_INCREMENT,
-  `MissionID` varchar(50) NOT NULL DEFAULT 'missionid',
-  `CoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `country` smallint(1) NOT NULL DEFAULT '0',
-  `GunnerName` varchar(40) NOT NULL DEFAULT 'gunnername',
-  `plid` mediumint(1) NOT NULL DEFAULT '0',
-  `GunningFor` varchar(40) NOT NULL DEFAULT 'pilotname',
-  `GunnerFate` tinyint(1) NOT NULL DEFAULT '0',
-  `GunnerHealth` tinyint(1) NOT NULL DEFAULT '0',
-  `GunnerNegScore` int(1) NOT NULL DEFAULT '0',
-  `GunnerPosScore` int(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `rof_gunner_scores`
---
-
-INSERT INTO `rof_gunner_scores` (`id`, `MissionID`, `CoalID`, `country`, `GunnerName`, `plid`, `GunningFor`, `GunnerFate`, `GunnerHealth`, `GunnerNegScore`, `GunnerPosScore`) VALUES
-(1, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 2, 103, '=CAI= Itafolgore', 318466, '=CAI= Cix', 5, 4, 50, 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rof_kills`
---
-
-DROP TABLE IF EXISTS `rof_kills`;
-CREATE TABLE IF NOT EXISTS `rof_kills` (
-  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
-  `MissionID` varchar(60) NOT NULL DEFAULT 'missionid',
-  `clocktime` time NOT NULL DEFAULT '00:00:00',
-  `attackerID` mediumint(1) NOT NULL DEFAULT '0',
-  `attackerName` varchar(50) NOT NULL DEFAULT 'attacker name',
-  `attackerCountryID` smallint(1) NOT NULL DEFAULT '0',
-  `attackerCoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `action` varchar(20) NOT NULL DEFAULT 'action',
-  `targetID` mediumint(1) NOT NULL DEFAULT '0',
-  `targetClass` varchar(8) NOT NULL DEFAULT 'xxx',
-  `targetType` varchar(50) NOT NULL DEFAULT 'target type',
-  `targetName` varchar(50) NOT NULL DEFAULT 'target name',
-  `targetCountryID` smallint(1) unsigned NOT NULL DEFAULT '0',
-  `targetCoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `targetValue` smallint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
-
---
--- Dumping data for table `rof_kills`
---
-
-INSERT INTO `rof_kills` (`id`, `MissionID`, `clocktime`, `attackerID`, `attackerName`, `attackerCountryID`, `attackerCoalID`, `action`, `targetID`, `targetClass`, `targetType`, `targetName`, `targetCountryID`, `targetCoalID`, `targetValue`) VALUES
-(1, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '06:24:46', 297986, '=CAI= Itafolgore', 103, 2, 'destroyed', 297986, 'PRE', 'Breguet 14.B2', '=CAI= Itafolgore', 103, 2, 200),
-(2, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '06:24:46', 297986, '=CAI= Itafolgore', 103, 2, 'killed', 299010, 'HUM', 'Common Bot', '=CAI= Itafolgore', 103, 2, 0),
-(3, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '06:24:46', 297986, '=CAI= Itafolgore', 103, 2, 'killed', 305154, 'BOT', 'BotGunnerBreguet14', 'gunner', 103, 2, 0),
-(4, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '06:31:17', 297986, '=CAI= Itafolgore', 103, 2, 'destroyed', 298009, 'PRE', 'Breguet 14.B2', '=CAI= Cix', 103, 2, 200),
-(5, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '06:31:19', -1, 'Intrinsic', 103, 2, 'was killed', 329730, 'BOT', 'BotGunnerBreguet14', 'gunner', 103, 2, 0),
-(6, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '06:31:23', 297986, '=CAI= Itafolgore', 103, 2, 'killed', 305177, 'BOT', 'BotGunnerBreguet14', 'gunner', 103, 2, 0),
-(7, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '06:31:47', 297986, '=CAI= Itafolgore', 103, 2, 'destroyed', 298005, 'PRE', 'Breguet 14.B2', '=CAI= Gladio', 103, 2, 200),
-(8, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '06:31:48', 297986, '=CAI= Itafolgore', 103, 2, 'killed', 305173, 'BOT', 'BotGunnerBreguet14', 'gunner', 103, 2, 0),
-(9, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '06:36:25', 802816, '77mm AAA on a Daimler truck', 501, 2, 'shot down', 298008, 'PRE', 'Bristol F2B (F.III)', '=69.GIAP=YARICK', 102, 1, 200),
-(10, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '06:36:33', 802816, '77mm AAA on a Daimler truck', 501, 2, 'killed', 299032, 'HUM', 'Common Bot', '=69.GIAP=YARICK', 102, 1, 0),
-(11, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '06:36:33', -1, 'Intrinsic', 102, 1, 'was killed', 305176, 'BOT', 'BotGunnerBreguet14', 'gunner', 102, 1, 0),
-(12, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '06:43:25', 297985, '-NW-Rossolini', 102, 1, 'shot down', 955392, 'BAL', 'Parseval', 'Dirigible USA', 103, 2, 50),
-(13, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '06:47:48', 298011, '=CAI= Alatriste', 501, 2, 'shot down', 297990, 'PFI', 'Sopwith Dolphin', 'Nightwitch', 102, 1, 100),
-(14, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '06:47:55', 298011, '=CAI= Alatriste', 501, 2, 'killed', 299014, 'HUM', 'Common Bot', 'Nightwitch', 102, 1, 0),
-(15, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '06:49:05', 298011, '=CAI= Alatriste', 501, 2, 'shot down', 298010, 'PFI', 'Sopwith Dolphin', '=69.GIAP=REZNOV', 102, 1, 100),
-(16, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '06:49:06', 298011, '=CAI= Alatriste', 501, 2, 'killed', 299034, 'HUM', 'Common Bot', '=69.GIAP=REZNOV', 102, 1, 0),
-(17, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '07:01:32', 298013, '=CAI= Torec', 501, 2, 'shot down', 297985, 'PFI', 'S.E.5a', '-NW-Rossolini', 102, 1, 100),
-(18, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '07:01:32', 298013, '=CAI= Torec', 501, 2, 'killed', 299009, 'HUM', 'Common Bot', '-NW-Rossolini', 102, 1, 0),
-(19, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '07:01:58', 298011, '=CAI= Alatriste', 501, 2, 'shot down', 298004, 'PFI', 'S.E.5a', '=69.GIAP=BOOS', 102, 1, 100),
-(20, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '07:01:58', 298011, '=CAI= Alatriste', 501, 2, 'killed', 299028, 'HUM', 'Common Bot', '=69.GIAP=BOOS', 102, 1, 0),
-(21, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '07:02:24', -1, 'Intrinsic', 105, 1, 'crashed', 298002, 'PFI', 'SPAD 7.C1 150hp', 'BSS_DrGlow', 105, 1, 100),
-(22, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '07:09:00', 297993, '242Sqn_Prof', 102, 1, 'shot down', 297997, 'PFI', 'Albatros D.III', '=CAI= Rudy', 501, 2, 100),
-(23, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '07:09:09', 297988, 'Charlie Chap', 102, 1, 'shot down', 297998, 'PFI', 'Albatros D.III', '=CAI= Roby', 501, 2, 100),
-(24, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '07:09:20', 297993, '242Sqn_Prof', 102, 1, 'killed', 299021, 'HUM', 'Common Bot', '=CAI= Rudy', 501, 2, 0),
-(25, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '07:09:33', -1, 'Intrinsic', 102, 1, 'crashed', 298000, 'PFI', 'Sopwith Camel', 'Algy Dunkersworth', 102, 1, 100),
-(26, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '07:11:22', 297988, 'Charlie Chap', 102, 1, 'shot down', 297993, 'PFI', 'Sopwith Camel', '242Sqn_Prof', 102, 1, 100),
-(27, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '07:15:51', 298006, '=CAI= Diablo85', 103, 2, 'shot down', 297999, 'PFI', 'S.E.5a', '=69.GIAP=REDVO', 102, 1, 100),
-(28, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '07:15:52', 298006, '=CAI= Diablo85', 103, 2, 'killed', 299023, 'HUM', 'Common Bot', '=69.GIAP=REDVO', 102, 1, 0),
-(29, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '07:18:20', 297988, 'Charlie Chap', 102, 1, 'shot down', 298007, 'PFI', 'SPAD 13.C1', '=CAI= Kampf', 103, 2, 100),
-(30, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '07:18:21', 297988, 'Charlie Chap', 102, 1, 'killed', 299031, 'HUM', 'Common Bot', '=CAI= Kampf', 103, 2, 0),
-(31, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '07:19:48', 298007, '=CAI= Kampf', 103, 2, 'shot down', 297991, 'PFI', 'Sopwith Camel', 'Tanker', 102, 1, 100),
-(32, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', '07:22:26', 298006, '=CAI= Diablo85', 103, 2, 'shot down', 297988, 'PFI', 'Sopwith Camel', 'Charlie Chap', 102, 1, 100);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rof_models`
---
-
-DROP TABLE IF EXISTS `rof_models`;
-CREATE TABLE IF NOT EXISTS `rof_models` (
-  `model` varchar(45) NOT NULL,
-  PRIMARY KEY (`model`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `rof_models`
---
-
-INSERT INTO `rof_models` (`model`) VALUES
-('albatrosd5'),
-('brequet14'),
-('dfc5'),
-('felixf2a'),
-('fokkerd7'),
-('gothag5');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rof_object_properties`
---
-
-DROP TABLE IF EXISTS `rof_object_properties`;
-CREATE TABLE IF NOT EXISTS `rof_object_properties` (
+DROP TABLE IF EXISTS `object_properties`;
+CREATE TABLE IF NOT EXISTS `object_properties` (
   `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
   `object_type` varchar(50) NOT NULL,
   `object_class` varchar(8) NOT NULL,
@@ -598,10 +463,10 @@ CREATE TABLE IF NOT EXISTS `rof_object_properties` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=238 ;
 
 --
--- Dumping data for table `rof_object_properties`
+-- Dumping data for table `object_properties`
 --
 
-INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `object_value`, `object_desc`, `Model`, `moving_becomes`, `modelpath2`, `modelpath3`, `max_speed_kmh`, `cruise_speed_kmh`, `range_m`, `default_country`) VALUES
+INSERT INTO `object_properties` (`id`, `object_type`, `object_class`, `object_value`, `object_desc`, `Model`, `moving_becomes`, `modelpath2`, `modelpath3`, `max_speed_kmh`, `cruise_speed_kmh`, `range_m`, `default_country`) VALUES
 (1, '13PdrAAA', 'AAA', 80, '13-pounder AAA', '13pdraaa', 'leylands', 'artillery', '13pdraaa', 0, 0, NULL, '101'),
 (2, '13PrdaaaAttached', 'AAA', 80, '13-pounder AAA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
 (3, '77mmAAA', 'AAA', 80, '77mm AAA', '77mmaaa', 'daimlermarienfeld_s', 'artillery', '77mmaaa', 0, 0, NULL, '501'),
@@ -723,12 +588,12 @@ INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `objec
 (119, 'Nieuport 28.C1', 'PFI', 100, 'Nieuport 28.C1', 'nieuport28', 'nieuport28', 'planes', 'nieuport28', NULL, NULL, NULL, '101'),
 (120, 'Pfalz D.IIIa', 'PFI', 100, 'Pfalz D.IIIa', 'pfalzd3a', 'pfalzd3a', 'planes', 'pfalzd3a', NULL, NULL, NULL, '501'),
 (121, 'Pfalz D.XII', 'PFI', 100, 'Pfalz D.XII', 'pfalzd12', 'pfalzd12', 'planes', 'pfalzd12', NULL, NULL, NULL, '501'),
-(122, 'S.E.5a', 'PFI', 100, 'S.E.5a', 'se5a', 'se5a', 'planes', 'se5a', NULL, NULL, NULL, '102'),
-(123, 'Sopwith Camel', 'PFI', 100, 'Sopwith Camel', 'sopcamel', 'sopcamel', 'planes', 'sopcamel', NULL, NULL, NULL, '102'),
-(124, 'Sopwith Dolphin', 'PFI', 100, 'Sopwith Dolphin', 'sopdolphin', 'sopdolphin', 'planes', 'sopdolphin', NULL, NULL, NULL, '102'),
+(122, 'S.E.5a', 'PFB', 100, 'S.E.5a', 'se5a', 'se5a', 'planes', 'se5a', NULL, NULL, NULL, '102'),
+(123, 'Sopwith Camel', 'PFB', 100, 'Sopwith Camel', 'sopcamel', 'sopcamel', 'planes', 'sopcamel', NULL, NULL, NULL, '102'),
+(124, 'Sopwith Dolphin', 'PFB', 100, 'Sopwith Dolphin', 'sopdolphin', 'sopdolphin', 'planes', 'sopdolphin', NULL, NULL, NULL, '102'),
 (125, 'Sopwith Pup', 'PFI', 100, 'Sopwith Pup', 'soppup', 'soppup', 'planes', 'soppup', NULL, NULL, NULL, '102'),
 (126, 'Sopwith Triplane', 'PFI', 100, 'Sopwith Triplane', 'soptriplane', 'soptriplane', 'planes', 'soptriplane', NULL, NULL, NULL, '102'),
-(127, 'SPAD 13.C1', 'PFI', 100, 'SPAD 13.C1', 'spad13', 'spad13', 'planes', 'spad13', NULL, NULL, NULL, '101'),
+(127, 'SPAD 13.C1', 'PFB', 100, 'SPAD 13.C1', 'spad13', 'spad13', 'planes', 'spad13', NULL, NULL, NULL, '101'),
 (128, 'SPAD 7.C1 150hp', 'PFI', 100, 'SPAD 7.C1 150hp', 'spad7early', 'spad7early', 'planes', 'spad7early', NULL, NULL, NULL, '101'),
 (129, 'SPAD 7.C1 180hp', 'PFI', 100, 'SPAD 7.C1 180hp', 'spad7', 'spad7', 'planes', 'spad7', NULL, NULL, NULL, '101'),
 (130, 'Airco D.H.4', 'PRE', 200, 'Airco D.H.4', 'dh4', 'dh4', 'planes', 'dh4', NULL, NULL, NULL, '102'),
@@ -827,7 +692,7 @@ INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `objec
 (223, 'TurretRolandC2a_1_WM_TwinPar', 'TUR', 0, 'Roland C.IIa gunner', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0'),
 (224, 'DaimlerAAA', 'VAA', 80, '77mm AAA on a Daimler truck', 'daimleraaa', 'daimleraaa', 'artillery', 'daimleraaa', 50, 20, NULL, '501'),
 (225, 'thornycroftaaa', 'VAA', 80, '13-pounder AAA on a Thornycraft truck', 'thornycroftaaa', 'thornycroftaaa', 'artillery', 'thornycroftaaa', 50, 20, NULL, '102'),
-(226, 'Benz Searchlight', 'VTR', 50, 'Benz Cargo truck with searchlight', 'benz_p', 'benz_p', 'vehicle', 'benz', 50, 20, NULL, '501'),
+(226, 'Benz Searchlight', 'VSL', 50, 'Benz Cargo truck with searchlight', 'benz_p', 'benz_p', 'vehicle', 'benz', 50, 20, NULL, '501'),
 (227, 'benz_open', 'VTR', 50, 'Benz Cargo open truck', 'benz_open', 'benz_open', 'vehicles', 'benz', 50, 20, NULL, '501'),
 (228, 'benz_soft', 'VTR', 50, 'Benz Cargo covered truck', 'benz_soft', 'benz_soft', 'vehicles', 'benz', 50, 20, NULL, '501'),
 (229, 'Crossley', 'VTR', 50, 'Crossley 4X2 Staff Car', 'crossley', 'crossley', 'vehicles', 'crossley', 50, 20, NULL, '102'),
@@ -837,30 +702,30 @@ INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `objec
 (233, 'LeylandS', 'VTR', 50, 'Leyland 3-tonner truck', 'leylands', 'leylands', 'vehicles', 'leyland', 50, 20, NULL, '102'),
 (234, 'Merc22', 'VTR', 50, 'Mercedes 22 Staff Car', 'merc22', 'merc22', 'vehicles', 'merc22', 50, 20, NULL, '501'),
 (235, 'Quad', 'VTR', 50, 'Jeffery Quad Portee open truck', 'quad', 'quad', 'vehicles', 'quad', 50, 20, NULL, '101'),
-(236, 'Quad Searchlight', 'VTR', 50, 'Jeffery Quad Portee with searchlight', 'quad_p', 'quad_p', 'vehicles', 'quad', 50, 20, NULL, '101'),
+(236, 'Quad Searchlight', 'VSL', 50, 'Jeffery Quad Portee with searchlight', 'quad_p', 'quad_p', 'vehicles', 'quad', 50, 20, NULL, '101'),
 (237, 'QuadA', 'VTR', -50, 'Jeffery Quad Portee closed truck', 'quada', 'quada', 'vehicles', 'quad', 50, 20, NULL, '101');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rof_object_roles`
+-- Table structure for table `object_roles`
 --
 
-DROP TABLE IF EXISTS `rof_object_roles`;
-CREATE TABLE IF NOT EXISTS `rof_object_roles` (
+DROP TABLE IF EXISTS `object_roles`;
+CREATE TABLE IF NOT EXISTS `object_roles` (
   `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `unit_class` varchar(8) DEFAULT NULL,
   `role_description` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unit_class` (`unit_class`),
   UNIQUE KEY `role_description` (`role_description`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=39 ;
 
 --
--- Dumping data for table `rof_object_roles`
+-- Dumping data for table `object_roles`
 --
 
-INSERT INTO `rof_object_roles` (`id`, `unit_class`, `role_description`) VALUES
+INSERT INTO `object_roles` (`id`, `unit_class`, `role_description`) VALUES
 (1, 'AAA', 'Artillery:Anti-Aircraft'),
 (2, 'ART', 'Artillery'),
 (3, 'BOT', 'Bot'),
@@ -897,16 +762,17 @@ INSERT INTO `rof_object_roles` (`id`, `unit_class`, `role_description`) VALUES
 (34, 'VAA', 'Vehicle:Anti-Aircraft'),
 (35, 'VMI', 'Vehicle:Mech. Infantry'),
 (36, 'VRI', 'Regular Infantry'),
-(37, 'VTR', 'Vehicle:Transport');
+(37, 'VSL', 'Vehicle:Searchlight'),
+(38, 'VTR', 'Vehicle:Transport');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rof_pilot_scores`
+-- Table structure for table `pilot_scores`
 --
 
-DROP TABLE IF EXISTS `rof_pilot_scores`;
-CREATE TABLE IF NOT EXISTS `rof_pilot_scores` (
+DROP TABLE IF EXISTS `pilot_scores`;
+CREATE TABLE IF NOT EXISTS `pilot_scores` (
   `id` smallint(1) NOT NULL AUTO_INCREMENT,
   `MissionID` varchar(50) NOT NULL DEFAULT 'missionid',
   `CoalID` tinyint(3) unsigned NOT NULL DEFAULT '0',
@@ -918,38 +784,81 @@ CREATE TABLE IF NOT EXISTS `rof_pilot_scores` (
   `PilotNegScore` int(1) NOT NULL DEFAULT '0',
   `PilotPosScore` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `rof_pilot_scores`
+-- Table structure for table `player_fate`
 --
 
-INSERT INTO `rof_pilot_scores` (`id`, `MissionID`, `CoalID`, `country`, `PilotName`, `plid`, `PilotFate`, `PilotHealth`, `PilotNegScore`, `PilotPosScore`) VALUES
-(1, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 1, 102, '=69.GIAP=REDVO', 297999, 5, 4, 100, 0),
-(2, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 1, 102, 'Nightwitch', 297990, 5, 4, 100, 0),
-(3, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 1, 102, 'Charlie Chap', 297988, 1, 0, 0, 0),
-(4, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 1, 102, '=69.GIAP=BOOS', 298004, 5, 4, 100, 0),
-(5, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 1, 102, 'Tanker', 297991, 1, 0, 0, 0),
-(6, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 1, 102, '=69.GIAP=YARICK', 298008, 5, 4, 100, 0),
-(7, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 1, 102, '=69.GIAP=REZNOV', 298010, 5, 4, 100, 0),
-(8, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 1, 102, '242Sqn_Prof', 297993, 1, 0, 0, 0),
-(9, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 1, 102, 'Algy Dunkersworth', 298000, 1, 0, 0, 0),
-(10, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 1, 105, 'BSS_DrGlow', 298002, 0, 1, 10, 0),
-(11, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 1, 102, '-NW-Rossolini', 297985, 5, 4, 100, 0),
-(12, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 1, 105, '=69GIAP=ALEXEJ', 297992, 2, 0, 0, 0),
-(13, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 2, 103, '=CAI= Kampf', 298007, 5, 4, 100, 0),
-(14, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 2, 103, '_BT_Shogun', 297995, 1, 0, 0, 0),
-(15, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 2, 103, '=CAI= Itafolgore', 297986, 5, 4, 100, 0),
-(16, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 2, 103, '=CAI= Cix', 298009, 1, 0, 0, 0),
-(17, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 2, 103, 'BT_Colosky', 297994, 1, 0, 0, 0),
-(18, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 2, 501, '=CAI= Alatriste', 298011, 1, 0, 0, 0),
-(19, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 2, 501, '=CAI= Torec', 298013, 1, 0, 0, 0),
-(20, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 2, 103, '=CAI= Gladio', 298005, 1, 0, 0, 0),
-(21, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 2, 103, '_BT_Patwar', 297996, 1, 0, 0, 0),
-(22, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 2, 103, '=CAI= Diablo85', 298006, 1, 0, 0, 0),
-(23, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 2, 501, '=CAI= Piddu', 298001, 1, 0, 0, 0),
-(24, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 2, 501, '=CAI= Rudy', 297997, 5, 4, 100, 0),
-(25, 'SKIES OF THE EMPIRES 1919.mission-1919.10.1-6:10:0', 2, 501, '=CAI= Roby', 297998, 0, 1, 10, 0);
+DROP TABLE IF EXISTS `player_fate`;
+CREATE TABLE IF NOT EXISTS `player_fate` (
+  `id` tinyint(1) NOT NULL,
+  `fate` varchar(30) NOT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `player_fate`
+--
+
+INSERT INTO `player_fate` (`id`, `fate`) VALUES
+(0, 'did not take off'),
+(1, 'landed'),
+(2, 'did not land'),
+(3, 'crashed'),
+(4, 'captured'),
+(5, 'killed');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `player_health`
+--
+
+DROP TABLE IF EXISTS `player_health`;
+CREATE TABLE IF NOT EXISTS `player_health` (
+  `id` tinyint(4) NOT NULL,
+  `health` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `health` (`health`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `player_health`
+--
+
+INSERT INTO `player_health` (`id`, `health`) VALUES
+(3, 'critical injuries'),
+(4, 'dead'),
+(0, 'fit as a fiddle'),
+(1, 'minor injuries'),
+(2, 'serious injuries');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rof_models`
+--
+
+DROP TABLE IF EXISTS `rof_models`;
+CREATE TABLE IF NOT EXISTS `rof_models` (
+  `model` varchar(45) NOT NULL,
+  PRIMARY KEY (`model`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `rof_models`
+--
+
+INSERT INTO `rof_models` (`model`) VALUES
+('albatrosd5'),
+('brequet14'),
+('dfc5'),
+('felixf2a'),
+('fokkerd7'),
+('gothag5');
 
 -- --------------------------------------------------------
 
