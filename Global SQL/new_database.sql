@@ -1,8 +1,10 @@
-# Stenka 9/11/13 updated to include newly created tables
+# Stenka 12/11/13 updated to include newly created tables
 drop database boswar_db;
+create database boswar_db;
+use boswar_db;
+source c:/Abyss web server/htdocs/global sql/boswar_db.sql;
 source c:/Abyss web server/htdocs/global sql/airfields.sql;
 source c:/Abyss web server/htdocs/global sql/airfields_models.sql;
-source c:/Abyss web server/htdocs/global sql/boswar_db.sql;
 source c:/Abyss web server/htdocs/global sql/campaign_missions.sql;
 source c:/Abyss web server/htdocs/global sql/campaign_settings.sql;
 source c:/Abyss web server/htdocs/global sql/campaign_status.sql;
@@ -19,12 +21,12 @@ source c:/Abyss web server/htdocs/global sql/rof_channel_locations.sql;
 source c:/Abyss web server/htdocs/global sql/rof_coalitions.sql;
 source c:/Abyss web server/htdocs/global sql/rof_countries.sql;
 source c:/Abyss web server/htdocs/global sql/rof_gunner_scores.sql;
-source c:/Abyss web server/htdocs/global sql/rof_kills.sql;
+source c:/Abyss web server/htdocs/global sql/kills.sql;
 source c:/Abyss web server/htdocs/global sql/rof_lake_locations.sql;
 source c:/Abyss web server/htdocs/global sql/rof_models.sql;
 source c:/Abyss web server/htdocs/global sql/rof_object_properties.sql;
 source c:/Abyss web server/htdocs/global sql/rof_object_roles.sql;
-source c:/Abyss web server/htdocs/global sql/rof_pilot_scores.sql;
+source c:/Abyss web server/htdocs/global sql/pilot_scores.sql;
 source c:/Abyss web server/htdocs/global sql/rof_verdun_locations.sql;
 source c:/Abyss web server/htdocs/global sql/rof_westernfront_locations.sql;
 source c:/Abyss web server/htdocs/global sql/statistics_test.sql;
