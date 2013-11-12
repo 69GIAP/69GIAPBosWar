@@ -1,7 +1,8 @@
 <?php 
 
-# Include the webside header
-	include ( 'includes/header.php' );
+# Make a mysqli connection to the central BOSWAR database
+	require ( 'functions/connectBOSWAR.php' );
+	$dbc = connectBOSWAR();
 	
 # Include the navigation on top
 	include ( 'includes/navigation.php' );

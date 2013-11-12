@@ -6,8 +6,9 @@
 // BOSWAR version 1.17
 // Nov 12, 2013
 
-// Incorporate the MySQL connection script.
-	require ( '../connect_db.php' );
+// Make a mysqli connection to the central BOSWAR database
+	require ( 'functions/connectBOSWAR.php' );
+	$dbc = connectBOSWAR();
 
 // Include the webside header
 	include ( 'includes/header.php' );
@@ -350,6 +351,8 @@ echo " Done!<br />\n";
 	</div>
 
 <?php
+	$dbc->close();
+
 	// Include the footer
 	include ( 'includes/footer.php' );
 ?>

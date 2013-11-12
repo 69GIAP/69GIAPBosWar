@@ -1,7 +1,7 @@
 <?PHP
 // parse_log.php 
 // a simple-minded parser/stats/events reporter for combined RoF
-// (and hopofully BoS) mission report text files
+// (and hopefully BoS) mission report text files
 // written by =69.GIAP=TUSHKA
 // 2011-2013
 // Version 69GIAPBoSWar 0.9

@@ -1,7 +1,8 @@
 <?php 
 
-# Incorporate the MySQL connection script.
-	require ( '../connect_db.php' );
+# Make a mysqli connection to the central BOSWAR database
+	require ( 'functions/connectBOSWAR.php' );
+	$dbc = connectBOSWAR();
 	
 # Include the webside header
 	include ( 'includes/header.php' );
@@ -39,7 +40,7 @@
 					$query1 = "SELECT airfield_Name FROM airfields_Models WHERE airfield_Name = '$airfieldName' ;";
 					
 					if(!$result = $camp_link->query($query1)){
-						die('There was an error running the query ' . mysqli_error($camp_link));
+						die('There was an error running the query ' . $camp_link->error);
 					}
 					if ($result->num_rows > 0) {
 						$exists = 1;
@@ -117,6 +118,8 @@
 	</div>
 
 <?php
+	$dbc->close();
+
 	# Include the footer
 	include ( 'includes/footer.php' );
 ?>

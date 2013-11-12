@@ -1,12 +1,12 @@
-
 <?php
 
 # Need to put this in here as er have no header included in this page
 session_start(); 	
 
 # as we have no regular page structure on this page we need to add some lines
-# Incorporate the MySQL connection script.
-	require ( '../../connect_db.php' );
+# Make a mysqli connection to the central BOSWAR database
+	require ( '../functions/connectBOSWAR.php' );
+	$dbc = connectBOSWAR();
 # get the userId from the SESSION		
 	$userId = $_SESSION['userId'];
 			

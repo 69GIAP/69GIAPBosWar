@@ -2,9 +2,9 @@
 # Stenka 21/10/13
 # Php version of loading all airfields into our Airfield table
 <?php
-# require is connecting user peter to stalingrad1 database
-# here
-require('../connect_db.php');
+# Make a mysqli connection to the central BOSWAR database
+require ( 'functions/connectBOSWAR.php' );
+$dbc = connectBOSWAR();
 # $path is the path to where the user keeps the group files
 $path = 'c:/BOSWAR/';
 # we inport all
@@ -13,11 +13,11 @@ $path = 'c:/BOSWAR/';
 # $miss = 'static_mission_'.$current_mission;
 # delete all from Airfield
 $q1="DELETE FROM Airfield";
-$r1= mysqli_query($dbc,$q1);
+$r1= $dbc->query($q1);
 if ($r1)
 	{echo '<br>All existing airfields deleted';}
 else
-	{echo'<p>'.mysqli_error($dbc).'</p>';}
+	{echo'<p>'.$dbc->error.'</p>';}
 $count = 0;
 $current_object = "Unknown";
 $current_Name = "Unknown";
@@ -117,8 +117,8 @@ while ( ! feof( $fp ) )
 # find coalition
 		$coalition = 0;
 		$q99 = 'SELECT * from rof_countries where ckey = '.$Country.' LIMIT 1';
-			$r99 = mysqli_query($dbc,$q99);
-			$r99_data = mysqli_fetch_row($r99);
+			$r99 = $dbc->query($q99);
+			$r99_data = $r99->fetch_row();
 			if ($r99_data[0]) 
 			{
 				echo "<br> Country found is".$r99_data[3];
@@ -126,15 +126,15 @@ while ( ! feof( $fp ) )
 				$coalition = $r99_data[4];
 			}	
 			else
-				{echo'<p>'.mysqli_error($dbc).'</p>';}
+				{echo'<p>'.$dbc->error.'</p>';}
 	$q2="INSERT INTO Airfield (airfield_Name,airfield_Model,airfield_Country,airfield_coalition,airfield_XPos,airfield_ZPos,airfield_YOri,airfield_Hydrodrome)
 	VALUES ('$current_Name','$Model','$Country','$coalition',$XPos,$ZPos,$YOri,$Hydrodrome)";
 	echo '<br> My select is:'.$q2;
-	$r2=mysqli_query($dbc,$q2);
+	$r2=$dbc->query($q2);
 	if ($r2)
 		{echo '<br> Airfield added:';}
 	else
-		{echo'<p>'.mysqli_error($dbc).'</p>';}	
+		{echo'<p>'.$dbc->error.'</p>';}	
 	}	
 	if (substr($line,0,1)=='}' AND ($current_object == 'MCU_TR_Entity'))
 	{
@@ -142,10 +142,11 @@ while ( ! feof( $fp ) )
 # update record
 	$q2="UPDATE Airfield SET airfield_enabled = ".$Enabled." WHERE airfield_Name = '".$current_airfield_Name."'";
 	echo '<br> My select is:'.$q2;
-	$r2=mysqli_query($dbc,$q2);
+	$r2=$dbc->query($q2);
 	if ($r2)
 		{echo '<br> Airfield updated:';}
 	else
-		{echo'<p>'.mysqli_error($dbc).'</p>';}	
+		{echo'<p>'.$dbc->error.'</p>';}	
 	}
+$dbc->close();
 }	

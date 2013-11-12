@@ -1,7 +1,8 @@
 <?php 
 
 # Incorporate the MySQL connection script.
-	require ( '../connect_db.php' );
+	require ( 'functions/connectBOSWAR.php' );
+	$dbc = connectBOSWAR();
 	
 # Include the webside header
 	include ( 'includes/header.php' );

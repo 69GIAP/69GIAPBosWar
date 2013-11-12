@@ -1,17 +1,26 @@
 <?php
-# Connect on '10.0.0.57:3306' for user 'manager' 
-# with password 'manager' to database 'boswar'.
-# Or as recommended, 'localhost', 'boswar' , 'boswar', 'boswar_db'
-# now using object oriented style
+// connect_db.php
+// This file should be placed OUTSIDE the web direcory for security
+// e.g. in a new directory C:/BOSWAR or one or two levels above
+// the boswar web home directory.
+// Edit functions/connectBOSWAR.php with the proper path to this file.
+// Feel free to change any of the arguments as you wish.
+// We recommend that you at least change the password
+// (both in MySQL and here).  They must match, of course.
 
-$dbc = new mysqli ( "localhost", "boswar" , "boswar" , "boswar_db" );
+function connect_db() {
+	// arguments are ( "host", "db user", "password" and "database" )
+	$dbc = new mysqli ( "localhost", "boswar" , "boswar" , "boswar_db" );
 
-if ($dbc->connect_error) {
-	die('Connect Error (' . $dbc->connect_errno . ') '
-		. $dbc->connect_error);
-}
+	if ($dbc->connect_error) {
+		die('connect_db error: (' . $dbc->connect_errno . ') '
+			. $dbc->connect_error);
+	}
 
-if (!$dbc->set_charset("utf8")) {
-	printf("Error loading character set utf8: %s\n", $dbc->error);
+	if (!$dbc->set_charset("utf8")) {
+		printf("Error loading character set utf8: %s\n", $dbc->error);
+	}
+
+	return($dbc);
 }
 ?>

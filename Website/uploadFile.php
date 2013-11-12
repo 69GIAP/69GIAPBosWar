@@ -5,10 +5,11 @@
 // Oct 11, 2013
 // latest revision: Oct 26, 2013
 // BOSWAR version1.1
-// requires $returnpage be defined
+// requires $returnpage to be defined
 
-// Incorporate the MySQL connection script.
-require ( '../connect_db.php' );
+# Make a mysqli connection to the central BOSWAR database
+	require ( 'functions/connectBOSWAR.php' );
+	$dbc = connectBOSWAR();
 	
 // Include the webside header
 include ( 'includes/header.php' );

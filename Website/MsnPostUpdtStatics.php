@@ -1,7 +1,8 @@
 <?php 
 
-# Incorporate the MySQL connection script.
-	require ( '../connect_db.php' );
+# Make a mysqli connection to the central BOSWAR database
+	require ( 'functions/connectBOSWAR.php' );
+	$dbc = connectBOSWAR();
 		
 # Include the webside header
 	include ( 'includes/header.php' );
@@ -29,9 +30,9 @@
 						die('There was an error running the query [' . $dbc->error . ']');
 					}
 		
-					if ($result = mysqli_query($dbc, $query)) {
+					if ($result = $dbc->query($dbc, $query)) {
 						/* fetch associative array */
-						while ($obj = mysqli_fetch_object($result)) {
+						while ($obj = $result->fetch_object()) {
 							$campaign	=($obj->campaign);
 							$camp_host	=($obj->camp_host);
 							$camp_user	=($obj->camp_user);
@@ -40,9 +41,9 @@
 							
 							# get campaign status
 							$sql="SELECT campaign_status FROM campaign_status where id = $camp_status_id";
-							if ($result = mysqli_query($dbc, $sql)) {
+							if ($result = $dbc->query($sql)) {
 							/* fetch associative array */
-							while ($obj = mysqli_fetch_object($result)) {
+							while ($obj = $result->fetch_object()) {
 								$camp_status=($obj->campaign_status);
 								}
 							}
@@ -67,6 +68,8 @@
 	</div>
 
 <?php
+	$dbc->close();
+
 	# Include the footer
 	include ( 'includes/footer.php' );
 ?>

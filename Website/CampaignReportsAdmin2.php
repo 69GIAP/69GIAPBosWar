@@ -1,7 +1,8 @@
 <?php 
 
-# Incorporate the MySQL connection script.
-require ( '../connect_db.php' );
+# Make a mysqli connection to the central BOSWAR database
+	require ( 'functions/connectBOSWAR.php' );
+	$dbc = connectBOSWAR();
 	
 # Include the webside header
 include ( 'includes/header.php' );
@@ -37,8 +38,8 @@ include ( 'functions/connect2Campaign.php' );
 					   die('There was an error running the query [' . $dbc->error . ']');
 					}
 					
-					if ($result = mysqli_query($dbc, $query)) { /* fetch associative array */
-					   while ($obj = mysqli_fetch_object($result)) {
+					if ($result = $dbc->query($query)) { /* fetch associative array */
+					   while ($obj = $result->fetch_object()) {
 						  $campaign	=($obj->campaign);
 						  $camp_host	=($obj->camp_host);
 						  $camp_user	=($obj->camp_user);
@@ -51,11 +52,12 @@ include ( 'functions/connect2Campaign.php' );
 					
 					# reuse query, but with camp_db
 					if(!$result = $camp_link->query($query)) {
-					   die('There was an error running the query [' . $camp_link->error . ']');
+						echo "$query<br />\n";
+					   die('CampaignReportsAdmin2 query error: [' . $camp_link->error . ']');
 					}
 					
-					if ($result = mysqli_query($camp_link, $query)) { /* fetch associative array */
-					   while ($obj = mysqli_fetch_object($result)) {
+					if ($result = $camp_link->query($query)) { /* fetch associative array */
+					   while ($obj = $result->fetch_object()) {
 						  $logpath	=($obj->logpath);
 						  $log_prefix	=($obj->log_prefix);
 					   }
@@ -66,12 +68,14 @@ include ( 'functions/connect2Campaign.php' );
 					
 										
 					# Close the camp_link connection
-					mysqli_close($camp_link);
+					$camp_link->close();
                 ?>
             </div>
     
         </div>
 <?php
+	$dbc->close();
+
 	# Include the general sidebar
 	include ( 'includes/sidebar.php' );
 ?>	

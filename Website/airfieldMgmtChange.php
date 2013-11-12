@@ -1,7 +1,8 @@
 <?php 
 
-# Incorporate the MySQL connection script.
-	require ( '../connect_db.php' );
+# Make a mysqli connection to the central BOSWAR database
+	require ( 'functions/connectBOSWAR.php' );
+	$dbc = connectBOSWAR();
 	
 # Include the webside header
 	include ( 'includes/header.php' );
@@ -56,11 +57,12 @@
 						$sql = "SELECT model_Name, model_Quantity FROM airfields_models WHERE airfield_Name = '$airfieldName'";
 		
 						if(!$result = $camp_link->query($sql)){
-							die('There was an error running the query ' . mysqli_error($camp_link));
+							echo "$query<br />\n";
+							die('airfieldMgmtChange query error:' . $camp_link->error);
 						}
 						
 						# get the rowcount
-						$num = mysqli_num_rows($result);
+						$num = $result->num_rows();
 	
 						# start form
 						echo "<form id=\"airfieldForm\" name=\"login\" action=\"airfieldMgmtModify.php?form=1\" method=\"post\">\n";
@@ -68,7 +70,7 @@
 	
 						# load results into variables and build form
 						$i = 1;
-						while ($obj = mysqli_fetch_object($result)) {
+						while ($obj = $result->fetch_object()) {
 							$modelName			 =($obj->model_Name);
 							$modelQuantity		 =($obj->model_Quantity);
 
@@ -186,6 +188,8 @@
 	</div>
 
 <?php
+	$dbc->close();
+
 	# Include the footer
 	include ( 'includes/footer.php' );
 ?>
