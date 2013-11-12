@@ -44,7 +44,7 @@
 
 <?php
 	# Close the dbc connection
-	mysqli_close($dbc);
+	$dbc->close();
 
 	# Include the footer
 	include ( 'includes/footer.php' );
