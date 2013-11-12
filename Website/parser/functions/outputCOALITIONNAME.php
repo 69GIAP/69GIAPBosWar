@@ -1,20 +1,23 @@
 <?php
+// COALITIONNAME
+// give coalition ID get coalition name
+// =69.GIAP=TUSHKA
+// Nov 12, 2013
+// Now redundant!  Could use functions/getCoalitionname.php
+
 function COALITIONNAME($CoalID) {
 // look up coalition name from Coalition ID#
-   global $camp_link;  // link to campaign db
-   global $Coalitions; // array of coalition names
-   global $Coalitionname; // this coalition name 
+	global $camp_link;  // link to campaign db
 
-   $query = "SELECT * FROM rof_coalitions WHERE CoalID = '$CoalID'";
-   // if no result report error  (could do this as an 'else' clause also)
-   if(!$result = $camp_link->query($query)) {
-      die('There was an error running the query [' . $camp_link->error . ']'); }
-   if ($result = mysqli_query($camp_link, $query)) {
-      while ($obj = mysqli_fetch_object($result)) {
-         $Coalitionname	=($obj->Coalitionname);
-      }
-      // free result set
-      mysqli_free_result($result);
-   }
+	$query = "SELECT Coalitionname FROM coalitions WHERE CoalID = '$CoalID';";
+	if($result = $camp_link->query($query)) {
+		while ($obj = $result->fetch_object()) {
+			return($obj->Coalitionname);
+		}
+	} else {
+		die('COALITIONNAME query error [' . $camp_link->error . ']');
+	}
+		// free result set
+	$result->free();
 }
 ?>

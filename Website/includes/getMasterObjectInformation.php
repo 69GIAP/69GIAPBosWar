@@ -27,7 +27,7 @@
 	echo "		<!-- Checkboxes for model selection -->\n";
 	if(!$result = $camp_link->query($sql)){
 		echo "$query<br />\n";
-		die('getMasterObjectInformation query error:' . $camp_link->error());
+		die('getMasterObjectInformation query error:' . $camp_link->error);
 	}
 	
 	echo "<h3>Campaign Object Set</h3>\n";	

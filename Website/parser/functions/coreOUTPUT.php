@@ -251,7 +251,7 @@ function OUTPUT() {
 		}
 	}
 	// first show Entente players
-	COALITIONNAME(1);
+	$Coalitionname = COALITIONNAME(1);
 	echo "$numentente $Coalitionname:<br />\n";	
 	// loop through all players using $Pline index
 	for ($i = 0; $i < $numplayers; ++$i) {
@@ -262,7 +262,7 @@ function OUTPUT() {
 		}
 	}
 	// now show Central Powers players
-	COALITIONNAME(2);
+	$Coalitionname = COALITIONNAME(2);
 	echo "<br />$numcentralpowers $Coalitionname:<br />\n";	
 	// loop through all players using $Pline index
 	for ($i = 0; $i < $numplayers; ++$i) {
@@ -277,7 +277,7 @@ function OUTPUT() {
 	echo "<br />=-=-=-=-=-= Shooting and Bombing Accuracy =-=-=-=-=-=<br />\n";
 	echo "There were $numplayers player positions.<br />&nbsp;<br />\n";
 	// first show Entente players
-	COALITIONNAME(1);
+	$Coalitionname = COALITIONNAME(1);
 	echo "$numentente $Coalitionname:<br />\n";	
 	// loop through all players using $Pline index
 	for ($i = 0; $i < $numplayers; ++$i) {
@@ -289,7 +289,7 @@ function OUTPUT() {
 	}
 
 	// now show Central Powers players
-	COALITIONNAME(2);
+	$Coalitionname = COALITIONNAME(2);
 	echo "<br />$numcentralpowers $Coalitionname:<br />\n";	
 	// loop through all players using $Pline index
 	for ($i = 0; $i < $numplayers; ++$i) {
@@ -304,7 +304,7 @@ function OUTPUT() {
 	echo "<br />=-=-=-=-=-= Losses =-=-=-=-=-=<br />\n";
 	echo "There were $numkills losses.<br />&nbsp;<br />\n";
 	// first show Entente losses
-	COALITIONNAME(1);
+	$Coalitionname = COALITIONNAME(1);
 	if ($numententelosses == 1){
 		echo "The $Coalitionname suffered a single loss:<br />\n";	
 	} else {
@@ -318,7 +318,7 @@ function OUTPUT() {
 		}
 	}
 	// then show Central Powers losses
-	COALITIONNAME(2);
+	$Coalitionname = COALITIONNAME(2);
 	if ($numcplosses == 1){
 		echo "The $Coalitionname suffered a single loss:<br />\n";	
 	} else {

@@ -3,13 +3,13 @@
 // given Coalition ID, get Coalition Name
 // =69.GIAP=TUSHKA
 // Nov 7, 2013
-// BOSWAR version 1.0 
+// BOSWAR version 1.1 
+// Nov 12, 2013
 
-// define the function 
 function get_coalitionname($CoalID) {
 global $camp_link; // link to campaign db
 
-	$query = "SELECT Coalitionname FROM rof_coalitions WHERE CoalID = '$CoalID';";
+	$query = "SELECT Coalitionname FROM coalitions WHERE CoalID = '$CoalID';";
 	if($result = $camp_link->query($query)) {
 		while ($obj = $result->fetch_object()) {
 			return($obj->Coalitionname);

@@ -1,4 +1,8 @@
 # Stenka 12/11/13 updated to include newly created tables
+# Tushka Nov 12, 2013 updated to use object_roles.sql instead of rof_object_roles.sql
+# and to add bos_coalitions.sql, bos_countries.sql, bos_object_properties.sql
+# and drop inbox.sql
+
 drop database boswar_db;
 create database boswar_db;
 use boswar_db;
@@ -11,7 +15,6 @@ source c:/Abyss web server/htdocs/global sql/campaign_status.sql;
 source c:/Abyss web server/htdocs/global sql/campaign_users.sql;
 source c:/Abyss web server/htdocs/global sql/create_boswar_hq_user.sql;
 source c:/Abyss web server/htdocs/global sql/create_rofwar_campaign_user.sql;
-source c:/Abyss web server/htdocs/global sql/inbox.sql;
 source c:/Abyss web server/htdocs/global sql/maps.sql;
 source c:/Abyss web server/htdocs/global sql/mission_status.sql;
 source c:/Abyss web server/htdocs/global sql/player_fate.sql;
@@ -19,13 +22,16 @@ source c:/Abyss web server/htdocs/global sql/player_health.sql;
 source c:/Abyss web server/htdocs/global sql/rof_airfields.sql;
 source c:/Abyss web server/htdocs/global sql/rof_channel_locations.sql;
 source c:/Abyss web server/htdocs/global sql/rof_coalitions.sql;
+source c:/Abyss web server/htdocs/global sql/bos_coalitions.sql;
 source c:/Abyss web server/htdocs/global sql/rof_countries.sql;
+source c:/Abyss web server/htdocs/global sql/bos_countries.sql;
 source c:/Abyss web server/htdocs/global sql/rof_gunner_scores.sql;
 source c:/Abyss web server/htdocs/global sql/kills.sql;
 source c:/Abyss web server/htdocs/global sql/rof_lake_locations.sql;
 source c:/Abyss web server/htdocs/global sql/rof_models.sql;
 source c:/Abyss web server/htdocs/global sql/rof_object_properties.sql;
-source c:/Abyss web server/htdocs/global sql/rof_object_roles.sql;
+source c:/Abyss web server/htdocs/global sql/bos_object_properties.sql;
+source c:/Abyss web server/htdocs/global sql/object_roles.sql;
 source c:/Abyss web server/htdocs/global sql/pilot_scores.sql;
 source c:/Abyss web server/htdocs/global sql/rof_verdun_locations.sql;
 source c:/Abyss web server/htdocs/global sql/rof_westernfront_locations.sql;

@@ -1,25 +1,31 @@
 <?php
-function COUNTRYNAME($ckey) {
-// look up country name from ID#
+// COUNTRYNAME
+// look up country name from country ID
 // and also report the adjective form
-   global $camp_link;  // link to campaign db
-   global $countryname; // country name
-   global $countryadj;  // adjective form of country name  
+// =69.GIAP=TUSHKA
+// 2011-2013
+// BOSWAR version 1.1
+// Nov 12, 2013
+
+function COUNTRYNAME($ckey) {
+	global $camp_link;  // link to campaign db
+	global $countryname; // country name
+	global $countryadj;  // adjective form of country name  
    
-   $countryname = "";
-   $countrynadj = "";
-   $query = "SELECT * FROM rof_countries WHERE ckey = '$ckey'";
-   // if no result report error  (could do this as an 'else' clause also)
-   if(!$result = $camp_link->query($query)) {
-      die('There was an error running the query [' . $camp_link->error . ']'); }
-   if ($result = mysqli_query($camp_link, $query)) {
-      while ($obj = mysqli_fetch_object($result)) {
-         $countryname	=($obj->countryname);
-         $countryadj	=($obj->countryadj);
-      }
-      // free result set
-      mysqli_free_result($result);
-   }
+	$countryname = "";
+	$countrynadj = "";
+	$query = "SELECT * FROM countries WHERE ckey = '$ckey'";
+	// if no result report error  (could do this as an 'else' clause also)
+	if(!$result = $camp_link->query($query)) {
+		echo "$query<br />\n";
+		die('COUNTRYNAME query error:[' . $camp_link->error . ']'); }
+	if ($result = $camp_link->query($query)) {
+		while ($obj = $result->fetch_object()) {
+			$countryname	=	$obj->countryname;
+			$countryadj		=	$obj->countryadj;
+		}
+		$result->free();
+	}
 
 //   echo "ckey = $ckey, countryname = $countryname, countryadj = $countryadj<br>\n";
 }

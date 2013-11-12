@@ -3,8 +3,8 @@
 // create a new campaign
 // =69.GIAP=MYATA and =69.GIAP=TUSHKA
 // Oct 5, 2013
-// BOSWAR version 1.16
-// Nov 9, 2013
+// BOSWAR version 1.17
+// Nov 12, 2013
 
 // Incorporate the MySQL connection script.
 	require ( '../connect_db.php' );
@@ -76,21 +76,21 @@ echo "$newCampaignDBUser granted FILE privs<br />\n";
 
 if ($game == 'RoF') {
 
-	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_coalitions LIKE rof_coalitions;";
+	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.coalitions LIKE rof_coalitions;";
 	include ('includes/doit.php');
-	echo "rof_coalitions created<br />\n";
+	echo "coalitions created<br />\n";
 
-	$query = "INSERT INTO `$newCampaignDBName`.rof_coalitions SELECT * FROM rof_coalitions;";
+	$query = "INSERT INTO `$newCampaignDBName`.coalitions SELECT * FROM rof_coalitions;";
 	include ('includes/doit.php');
-	echo "rof_coalitions populated<br />\n";
+	echo "coalitions populated from rof_coalitions<br />\n";
 
-	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_countries LIKE rof_countries;";
+	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.countries LIKE rof_countries;";
 	include ('includes/doit.php');
-	echo "rof_countries created<br />\n";
+	echo "countries created<br />\n";
 
-	$query = "INSERT INTO `$newCampaignDBName`.rof_countries SELECT * FROM rof_countries;";
+	$query = "INSERT INTO `$newCampaignDBName`.countries SELECT * FROM rof_countries;";
 	include ('includes/doit.php');
-	echo "rof_countries populated<br />\n";
+	echo "countries populated from rof_countries<br />\n";
 
 	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.object_properties LIKE rof_object_properties;";
 	include ('includes/doit.php');
@@ -102,21 +102,21 @@ if ($game == 'RoF') {
 
 } else { // must be BoS
 
-	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.bos_coalitions LIKE bos_coalitions;";
+	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.coalitions LIKE bos_coalitions;";
 	include ('includes/doit.php');
-	echo "bos_coalitions created<br />\n";
+	echo "coalitions created<br />\n";
 
-	$query = "INSERT INTO `$newCampaignDBName`.bos_coalitions SELECT * FROM bos_coalitions;";
+	$query = "INSERT INTO `$newCampaignDBName`.coalitions SELECT * FROM bos_coalitions;";
 	include ('includes/doit.php');
-	echo "bos_coalitions populated<br />\n";
+	echo "coalitions populated from bos_coalitions<br />\n";
 
-	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.bos_countries LIKE bos_countries;";
+	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.countries LIKE bos_countries;";
 	include ('includes/doit.php');
-	echo "bos_countries created<br />\n";
+	echo "countries created<br />\n";
 
-	$query = "INSERT INTO `$newCampaignDBName`.bos_countries SELECT * FROM bos_countries;";
+	$query = "INSERT INTO `$newCampaignDBName`.countries SELECT * FROM bos_countries;";
 	include ('includes/doit.php');
-	echo "bos_countries populated<br />\n";
+	echo "countries populated from bos_countries<br />\n";
 
 	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.object_properties LIKE bos_object_properties;";
 	include ('includes/doit.php');
@@ -144,10 +144,6 @@ echo "airfields_models created<br />\n";
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.campaign_missions LIKE campaign_missions;";
 include ('includes/doit.php');
 echo "campaign_missions created<br />\n";
-
-$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.inbox LIKE inbox;";
-include ('includes/doit.php');
-echo "inbox created<br />\n";
 
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.gunner_scores LIKE gunner_scores;";
 include ('includes/doit.php');
@@ -214,8 +210,7 @@ echo "campaign_settings created<br />\n";
 $query = "INSERT INTO `$newCampaignDBName`.campaign_settings (simulation, campaign, abbrv, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
 $query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignAbbrv', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
 include ('includes/doit.php');
-echo "campaign_settings created<br />\n";
-echo "campaign_settings populated";
+echo "campaign_settings populated<br />\n";
 
 // create tables necessary for group files
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.col_10 LIKE col_10;";

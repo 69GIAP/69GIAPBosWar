@@ -1,12 +1,11 @@
 <?php
 // getCountriesFromMissionFile
-// given mission file, update campaign rof_countries_file to match
+// given mission file, update campaign rof_countries table to match
 // =69.GIAP=TUSHKA
 // Oct 24, 2013
-// revised Nov 7, 2013
-// version 1.3
+// revised Nov 12, 2013
+// version 1.4
 
-// define the function 
 function get_countries_from_mission_file($path,$file) {
 	global $camp_link; // link to campaign db
 
@@ -32,8 +31,8 @@ function get_countries_from_mission_file($path,$file) {
 		$coalid[$k] = rtrim($part[1],"\x3B\r\n");
 		// record the results for one country at a time
 		$query = "UPDATE rof_countries SET CoalID = $coalid[$k] WHERE ckey = $ckey[$k]";
-//		echo "$query<br />\n";
 		if(!$result = mysqli_query($camp_link, $query)) {
+			echo "$query<br />\n";
 			die('getCountriesFromMissionFile query error [' . $camp_link->error . ']');
 		}
 		$k++;	 

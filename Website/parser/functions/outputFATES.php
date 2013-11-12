@@ -42,7 +42,7 @@ function FATES($i,$j) {
 	global $camp_link; // link to campaign db
 	global $StatsCommand; // do, undo, or ignore
 	global $camp_db; // campaign db
-	global $object_class; // object class from rof_object_properties
+	global $object_class; // object class from object_properties
 	global $object_desc; // object description
 
 	// PlayerFate ($fate):
