@@ -218,41 +218,9 @@ $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.col_10 LIKE col_10;";
 include ('includes/doit.php');
 echo "col_10 created<br />\n";
 
-$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.trains LIKE trains;";
-include ('includes/doit.php');
-echo "trains created<br />\n";
-
-$query = "INSERT INTO `$newCampaignDBName`.trains SELECT * FROM trains;";
-include ('includes/doit.php');
-echo "trains populated<br />\n";
-
-$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.blocks LIKE blocks;";
-include ('includes/doit.php');
-echo "blocks created<br />\n";
-
-$query = "INSERT INTO `$newCampaignDBName`.blocks SELECT * FROM blocks;";
-include ('includes/doit.php');
-echo "blocks populated<br />\n";
-
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.static LIKE static;";
 include ('includes/doit.php');
 echo "static created<br />\n";
-
-$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.cam_param LIKE cam_param;";
-include ('includes/doit.php');
-echo "cam_param created<br />\n";
-
-$query = "INSERT INTO `$newCampaignDBName`.cam_param SELECT * FROM cam_param;";
-include ('includes/doit.php');
-echo "cam_param populated<br />\n";
-
-$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.flags LIKE flags;";
-include ('includes/doit.php');
-echo "flags created<br />\n";
-
-$query = "INSERT INTO `$newCampaignDBName`.flags SELECT * FROM flags;";
-include ('includes/doit.php');
-echo "flags populated<br />\n";
 
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.bridges LIKE bridges;";
 include ('includes/doit.php');
