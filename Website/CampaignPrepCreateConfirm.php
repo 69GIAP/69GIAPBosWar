@@ -85,11 +85,11 @@ if ($game == 'RoF') {
 	include ('includes/doit.php');
 	echo "coalitions populated from rof_coalitions<br />\n";
 
-	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.countries LIKE rof_countries;";
+	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.rof_countries LIKE rof_countries;";
 	include ('includes/doit.php');
 	echo "countries created<br />\n";
 
-	$query = "INSERT INTO `$newCampaignDBName`.countries SELECT * FROM rof_countries;";
+	$query = "INSERT INTO `$newCampaignDBName`.rof_countries SELECT * FROM rof_countries;";
 	include ('includes/doit.php');
 	echo "countries populated from rof_countries<br />\n";
 
