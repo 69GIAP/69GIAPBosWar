@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2013 at 05:12 AM
+-- Generation Time: Nov 13, 2013 at 09:48 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `supply_points`;
 CREATE TABLE IF NOT EXISTS `supply_points` (
   `id` tinyint(1) unsigned NOT NULL AUTO_INCREMENT,
-  `xPos` smallint(1) NOT NULL DEFAULT '0',
-  `zPos` smallint(6) NOT NULL DEFAULT '0',
+  `xPos` mediumint(1) NOT NULL DEFAULT '0',
+  `zPos` mediumint(1) NOT NULL DEFAULT '0',
   `CoalID` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `supplypointName` varchar(40) NOT NULL DEFAULT 'supplypoint name',
   PRIMARY KEY (`id`),
