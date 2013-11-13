@@ -18,12 +18,12 @@
 	$_SESSION['objectClass'] = $objectClass;
 	
 	if ($objectClass == "V") {
-		$sql = "SELECT id, object_type, object_class, object_desc, default_country
+		$sql = "SELECT id, object_type, object_class, object_value, object_desc, default_country
 			FROM object_properties
 			WHERE modelpath2 = 'artillery' OR modelpath2 = 'vehicles' ORDER BY object_class, default_country";
 			echo "<h3>Vehicles, Artillery & Infantry</h3>\n";	
 	} else {
-		$sql = "SELECT id, object_type, object_class, object_desc, default_country
+		$sql = "SELECT id, object_type, object_class, object_value, object_desc, default_country
 			FROM object_properties
 			WHERE object_class like '$objectClass%' ORDER BY default_country";
 			echo "<h3>Available Aircraft</h3>\n";	
@@ -46,13 +46,14 @@
 		$objectId		=($obj->id);
 		$objectName		=($obj->object_type);
 		$object_class	=($obj->object_class);
+		$object_value	=($obj->object_value);
 		$objectDesc		= $obj->object_desc;
 		$objectCountry	=($obj->default_country);
 		
 		$classRoleDesc = get_class_role_description($object_class);
 		echo "<div class=\"checkbox\">\n";
 		if	($objectCountry < 599) { // all countries below countryId 599 are similar to Active
-			echo "		<p><b>$objectDesc<br />$classRoleDesc</b></p>\n";
+			echo "		<p><b>$objectDesc<br />$classRoleDesc [ $object_value ]</b></p>\n";
 			echo "		<input class =\"special\" id=\"objectIdActive_$i\" type=\"radio\" name ='$objectName' value =\"1\" checked>\n";
 			echo "		<label class =\"special\" for=\"objectIdActive_$i\">active</label>\n";
 			
