@@ -45,7 +45,6 @@ source c:/Abyss web server/htdocs/global sql/tabcreate_Flags.sql;
 source c:/Abyss web server/htdocs/global sql/tabcreate_Planes_on_field.sql;
 source c:/Abyss web server/htdocs/global sql/tabcreate_static.sql;
 source c:/Abyss web server/htdocs/global sql/tabcreate_Trains.sql;
-source c:/Abyss web server/htdocs/global sql/tabcreate_Vehicles.sql;
 source c:/Abyss web server/htdocs/global sql/users.sql;
 source c:/Abyss web server/htdocs/global sql/users_roles.sql;
 show databases;

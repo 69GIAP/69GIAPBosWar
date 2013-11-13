@@ -17,9 +17,17 @@
 	# add percent to allow like query
 	$_SESSION['objectClass'] = $objectClass;
 	
-	$sql = "SELECT id, object_type, object_class, object_desc, default_country
+	if ($objectClass == "V") {
+		$sql = "SELECT id, object_type, object_class, object_desc, default_country
+			FROM object_properties
+			WHERE modelpath2 = 'artillery' OR modelpath2 = 'vehicles' ORDER BY object_class, default_country";
+			echo "<h3>Vehicles, Artillery & Infantry</h3>\n";	
+	} else {
+		$sql = "SELECT id, object_type, object_class, object_desc, default_country
 			FROM object_properties
 			WHERE object_class like '$objectClass%' ORDER BY default_country";
+			echo "<h3>Available Aircraft</h3>\n";	
+	}
 		
 	$i = 1;
 	
@@ -30,7 +38,7 @@
 		die('getMasterObjectInformation query error:' . $camp_link->error);
 	}
 	
-	echo "<h3>Campaign Object Set</h3>\n";	
+
 	echo "<div class=\"checkboxWrapper\">\n";
 
 	# load results into variables 

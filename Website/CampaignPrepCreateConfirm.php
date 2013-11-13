@@ -234,14 +234,6 @@ $query = "INSERT INTO `$newCampaignDBName`.blocks SELECT * FROM blocks;";
 include ('includes/doit.php');
 echo "blocks populated<br />\n";
 
-$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.vehicles LIKE vehicles;";
-include ('includes/doit.php');
-echo "vehicles created<br />\n";
-
-$query = "INSERT INTO `$newCampaignDBName`.vehicles SELECT * FROM vehicles;";
-include ('includes/doit.php');
-echo "vehicles populated<br />\n";
-
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.static LIKE static;";
 include ('includes/doit.php');
 echo "static created<br />\n";

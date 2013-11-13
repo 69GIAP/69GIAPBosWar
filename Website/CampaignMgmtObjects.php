@@ -26,7 +26,7 @@
 					# include connect2CampaignFunction.php
 					include ( 'functions/connect2Campaign.php' );
 		
-					# include connect2CampaignFunction.php
+					# include getCampaignVariables.php
 					include ( 'includes/getCampaignVariables.php' ); 
 									
 					# use this information to connect to campaign 
