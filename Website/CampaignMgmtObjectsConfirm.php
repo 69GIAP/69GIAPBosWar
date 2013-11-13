@@ -38,8 +38,8 @@
 				foreach ($_POST as $param_name => $param_val) {
 					
 					// display POST information each by each for debugging purposes
-					#echo "parameter Name: "	.$param_name."<br>parameter lenght: ".strlen($param_name)."<br>";
-					#echo "parameter Value: ".$param_val."<br><br>";
+					echo "parameter Name: "	.$param_name."<br>parameter lenght: ".strlen($param_name)."<br>";
+					echo "parameter Value: ".$param_val."<br><br>";
 
 					# distinguish between id variable and object_type variable to determine if object was activated by checkbox
 					if (strlen($param_name)>3) {
@@ -57,7 +57,7 @@
 						# use function to get CoalID	
 						$objectCntryKey = get_mincountry("$param_val");
 						# activate and deactivate object
-						$query .= "UPDATE rof_object_properties SET default_country = '$objectCntryKey' WHERE object_type like '$param_name' ;";
+						$query .= "UPDATE object_properties SET default_country = '$objectCntryKey' WHERE object_type like '$param_name' ;";
 						
 						// debugging
 						#echo "activate/deactivate<br>";
@@ -67,13 +67,13 @@
 						if ($active	== 0) {
 							$objectCntryKey = 600; // Future
 							# change coalition for object
-							$query .= "UPDATE rof_object_properties SET default_country = '$objectCntryKey' WHERE id = '$param_name' ;";
+							$query .= "UPDATE object_properties SET default_country = '$objectCntryKey' WHERE id = '$param_name' ;";
 						}
 						else {
 							# use function to get CoalID
 							$objectCntryKey = get_mincountry("$param_val");
 							# change coalition for object
-							$query .= "UPDATE rof_object_properties SET default_country = '$objectCntryKey' WHERE id = '$param_name' ;";
+							$query .= "UPDATE object_properties SET default_country = '$objectCntryKey' WHERE id = '$param_name' ;";
 						}
 						// debugging
 						#echo "change coalition<br>";
