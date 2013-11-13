@@ -10,14 +10,14 @@
 	# this is a filter for the campaign administrator		
 	if ($userRole == 'administrator') {
 		# load aircraft list from selected campaign database
-		$queryModel = "SELECT object_type FROM rof_object_properties where object_class like 'P%'";
+		$queryModel = "SELECT object_type FROM object_properties where object_class like 'P%'";
 	}
 
 	elseif ($userRole == 'commander') {
 		echo 	"USER COUNTRY ".$userCntry;
 		# load aircraft list from selected campaign database
 		$queryModel = "SELECT object_type 
-						FROM rof_object_properties 
+						FROM object_properties 
 						WHERE object_class like 'P%'
 						AND default_country = '$userCntry'";
 	}

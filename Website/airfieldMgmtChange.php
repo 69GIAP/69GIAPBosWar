@@ -62,7 +62,7 @@
 						}
 						
 						# get the rowcount
-						$num = $result->num_rows();
+						#$num = $result->num_rows();
 	
 						# start form
 						echo "<form id=\"airfieldForm\" name=\"login\" action=\"airfieldMgmtModify.php?form=1\" method=\"post\">\n";
