@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2013 at 04:19 AM
+-- Generation Time: Nov 13, 2013 at 04:42 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -199,7 +199,7 @@ INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `objec
 (147, 'Wagon_GondolaNB', 'RWA', 25, 'covered gondola', 'gondolanb', 'gondolanb', 'trains', 'platform', NULL, NULL, NULL, '0'),
 (148, 'Wagon_Pass', 'RWA', 25, 'passenger railcar', 'pass', 'pass', 'trains', 'pass', NULL, NULL, NULL, '0'),
 (149, 'Wagon_PassA', 'RWA', -25, 'hospital railcar', 'passa', 'passa', 'trains', 'pass', NULL, NULL, NULL, '0'),
-(150, 'Wagon_PassAC', 'RWA', 25, 'hospital railcar', 'passac', 'passac', 'trains', 'pass', NULL, NULL, NULL, '0'),
+(150, 'Wagon_PassAC', 'RWA', -25, 'hospital railcar', 'passac', 'passac', 'trains', 'pass', NULL, NULL, NULL, '0'),
 (151, 'Wagon_PassC', 'RWA', 25, 'passenger railcar', 'passc', 'passc', 'trains', 'pass', NULL, NULL, NULL, '0'),
 (152, 'Wagon_PlatformA7V', 'RWA', 25, 'loaded flatcar', 'platforma7v', 'platforma7v', 'trains', 'platform', NULL, NULL, NULL, '0'),
 (153, 'Wagon_PlatformB', 'RWA', 25, 'loaded flatcar', 'platformb', 'platformb', 'trains', 'platform', NULL, NULL, NULL, '0'),
@@ -277,16 +277,16 @@ INSERT INTO `rof_object_properties` (`id`, `object_type`, `object_class`, `objec
 (225, 'thornycroftaaa', 'VAA', 80, '13-pounder AAA on a Thornycraft truck', 'thornycroftaaa', 'thornycroftaaa', 'artillery', 'thornycroftaaa', 50, 20, NULL, '102'),
 (226, 'Benz Searchlight', 'VSL', 50, 'Benz Cargo truck with searchlight', 'benz_p', 'benz_p', 'vehicles', 'benz', 50, 20, NULL, '501'),
 (227, 'benz_open', 'VTR', 50, 'Benz Cargo open truck', 'benz_open', 'benz_open', 'vehicles', 'benz', 50, 20, NULL, '501'),
-(228, 'benz_soft', 'VTR', 50, 'Benz Cargo covered truck', 'benz_soft', 'benz_soft', 'vehicles', 'benz', 50, 20, NULL, '501'),
+(228, 'benz_soft', 'VTR', -25, 'Benz Cargo ambulance', 'benz_soft', 'benz_soft', 'vehicles', 'benz', 50, 20, NULL, '501'),
 (229, 'Crossley', 'VTR', 50, 'Crossley 4X2 Staff Car', 'crossley', 'crossley', 'vehicles', 'crossley', 50, 20, NULL, '102'),
-(230, 'DaimlerMarienfelde', 'VTR', 50, 'Daimler Marienfelde truck', 'daimlermarienfelde', 'daimlermarienfelde', 'vehicles', 'daimlermarienfelde', 50, 20, NULL, '501'),
-(231, 'DaimlerMarienfelde_S', 'VTR', 50, 'Daimler Marienfelde truck', 'daimlermarienfelde_s', 'daimlermarienfelde_s', 'vehicles', 'daimlermarienfelde', 50, 20, NULL, '501'),
-(232, 'Leyland', 'VTR', 50, 'Leyland 3-tonner truck', 'leyland', 'leyland', 'vehicles', 'leyland', 50, 20, NULL, '102'),
-(233, 'LeylandS', 'VTR', 50, 'Leyland 3-tonner truck', 'leylands', 'leylands', 'vehicles', 'leyland', 50, 20, NULL, '102'),
+(230, 'DaimlerMarienfelde', 'VTR', 50, 'Daimler Marienfelde open truck', 'daimlermarienfelde', 'daimlermarienfelde', 'vehicles', 'daimlermarienfelde', 50, 20, NULL, '501'),
+(231, 'DaimlerMarienfelde_S', 'VTR', 50, 'Daimler Marienfelde covered truck', 'daimlermarienfelde_s', 'daimlermarienfelde_s', 'vehicles', 'daimlermarienfelde', 50, 20, NULL, '501'),
+(232, 'Leyland', 'VTR', 50, 'Leyland 3-tonner open truck', 'leyland', 'leyland', 'vehicles', 'leyland', 50, 20, NULL, '102'),
+(233, 'LeylandS', 'VTR', 50, 'Leyland 3-tonner covered truck', 'leylands', 'leylands', 'vehicles', 'leyland', 50, 20, NULL, '102'),
 (234, 'Merc22', 'VTR', 50, 'Mercedes 22 Staff Car', 'merc22', 'merc22', 'vehicles', 'merc22', 50, 20, NULL, '501'),
 (235, 'Quad', 'VTR', 50, 'Jeffery Quad Portee open truck', 'quad', 'quad', 'vehicles', 'quad', 50, 20, NULL, '101'),
 (236, 'Quad Searchlight', 'VSL', 50, 'Jeffery Quad Portee with searchlight', 'quad_p', 'quad_p', 'vehicles', 'quad', 50, 20, NULL, '101'),
-(237, 'QuadA', 'VTR', 50, 'Jeffery Quad Portee closed truck', 'quada', 'quada', 'vehicles', 'quad', 50, 20, NULL, '101');
+(237, 'QuadA', 'VTR', -25, 'Jeffery Quad Portee ambulance', 'quada', 'quada', 'vehicles', 'quad', 50, 20, NULL, '0');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
