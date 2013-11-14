@@ -53,18 +53,18 @@
 		if	($objectStatus == 1) {
 			echo "		<p><b>$bridgeName</b></p>\n";
 			echo "		<input class =\"special\" id=\"objectIdActive_$i\" type=\"radio\" name ='$bridgeName' value =\"1\" >\n";
-			echo "		<label class =\"special\" for=\"objectIdActive_$i\">operateable</label>\n";
+			echo "		<label class =\"special\" for=\"objectIdActive_$i\">passable</label>\n";
 			
 			echo "		<input class =\"special\" id=\"objectIdInactive_$i\" type=\"radio\" name ='$bridgeName' value =\"0\" checked>\n";
-			echo "		<label class =\"special\" for=\"objectIdInactive_$i\">destroyed</label><br \>\n";			
+			echo "		<label class =\"special\" for=\"objectIdInactive_$i\">impassable</label><br \>\n";			
 		}
 		else {
 			echo "		<p><b>$bridgeName</b></p>\n";
 			echo "		<input class =\"special\" id=\"objectIdActive_$i\" type=\"radio\" name ='$bridgeName' value =\"1\" checked>\n";
-			echo "		<label class =\"special\" for=\"objectIdActive_$i\">operateable</label>\n";
+			echo "		<label class =\"special\" for=\"objectIdActive_$i\">passable</label>\n";
 			
 			echo "		<input class =\"special\" id=\"objectIdInactive_$i\" type=\"radio\" name ='$bridgeName' value =\"0\" >\n";
-			echo "		<label class =\"special\" for=\"objectIdInactive_$i\">destroyed</label><br \>\n";
+			echo "		<label class =\"special\" for=\"objectIdInactive_$i\">impassable</label><br \>\n";
 		}
 		echo "</div>\n";
 		
