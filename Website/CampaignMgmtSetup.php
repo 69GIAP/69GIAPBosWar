@@ -55,10 +55,6 @@
 						Name this directory: <b>$abbrv-groups</b>.<br />
 						We will refer to this directory as your \"campaign groups directory\".</p>\n";
 
-					/*
-					echo "<p>In the BOSWAR campaign manager (while connected to your campaign ($campaign), select \"User Management\" from the upper menu bar.<br /> Scroll down to \"Choose the default folder for your Group Files:\" and enter the full path and folder name there, then click \"Save\".  Ignore the trailing slash.</p>\n";
-					 */
-
 					echo "<p>Next we work on setting up the campaign in the mission editor (RoF Editor in this case).</p>\n";
 					echo "<p>We recommend that you open the mission editor in a separate window to carry out this process.  Continue when ready.</p>\n";
 					echo "<p>Start a new mission by clicking \"File\" and \"New\" in the upper left.</p>\n";
@@ -102,13 +98,22 @@
 					echo "In the mission editor you should use \"File\", \"Save\", before coming back here.</p>\n";
 					
 					
-					echo "<h3>Import the infrastructure</h3>\n";
+					echo "<h3>Import Airfields</h3>\n";
 
-					echo "<p>We will now populate our template with all defined infrastructure (including, most importantly, the airfields).</p>\n" ;
+					echo "<p>We will now populate our template with some infrastructure (including, most importantly, the airfields).</p>\n" ;
 					echo "<p>In the mission editor \"File\" menu select \"Import From File...\" and go to: directory <b>Rise of Flight/data/Template/</b></p>\n";
-					echo "<p>Select the Base-no-trunc file that corresponds to your map. </p>\n";
-					echo "<p>The Western front map uses Base-no-trunc the Channel map uses Base-no-trunc-channel the dogfight maps have merged Base files. \n";
-					echo "Loading in these files can take a while, be patient. Refresh your beverage!  Wait until the 'Please wait until operation is finished' popup disappears. If the load hangs near the end, quit and reload the file which should now be a quick process.</p>\n";
+					if($map == 'Western Front') {
+						echo "<p>Select the Base-no-trunc.Group file.  This file holds the airfields and some other infrastructure for the Western Front map.</p>\n";
+					} elseif($map == 'Channel') {
+						echo "<p>Select the Base-no-trunc-channel.Group file.  This file holds the airfields and some other infrastructure for the Channel map.</p>\n";
+					} elseif($map == 'Verdun') {
+						echo "<p>Select the Base_DF5x5Verdun.Group file.  This file holds the airfields and all other infrastructure for the Verdun dogfight map.</p>\n";
+					} elseif($map == 'Lake') {
+						echo "<p>Select the Base_DF3x3Lake.Group file.  This file holds the airfields and all other infrastructure for the Lake dogfight map.</p>\n";
+					} else {
+						echo "<p>We have not yet created a locations file for the \"$map\" map.</p>\n";
+					}
+					echo "<p>Loading these files can take a while, be patient. Wait until the 'Please wait until operation is finished' popup disappears. If the load hangs near the end, quit and reload the file which should now be a quick process.</p>\n";
 					echo "<p>Save the (now larger) template mission before continuing.</p>\n";
 					
 					echo "<h3>Define the Influence Areas</h3>\n";
