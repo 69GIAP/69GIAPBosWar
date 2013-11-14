@@ -3,7 +3,7 @@
 // V1.2
 // Stenka 21/10/13
 // Updated by =69.GIAP=TUSHKA
-// Nov 6, 2013
+// Nov 13, 2013
 // Php version of loading all airfields into our airfields table
 // $SaveToDir is the path to where the user keeps the group files
 // $file is the name of the imported file
@@ -116,7 +116,7 @@ function import_airfields($SaveToDir,$file) {
 //			echo '<br> Updating';
 			// find coalition
 			$coalition = 0;
-			$q99 = 'SELECT * from rof_countries where ckey = '.$Country.' LIMIT 1';
+			$q99 = 'SELECT * from countries where ckey = '.$Country.' LIMIT 1';
 			$r99 = $camp_link->query($q99);
 			$r99_data = $r99->fetch_row();
 			if ($r99_data[0]) {
@@ -150,4 +150,5 @@ function import_airfields($SaveToDir,$file) {
 			}	
 		}
 	}	
+	$camp_link->close();
 }
