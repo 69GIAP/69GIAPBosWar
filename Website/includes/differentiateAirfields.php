@@ -22,7 +22,7 @@ if ($result1 = $camp_link->query($query1)) {
 				die('differentiateAirfields query error [' . $camp_link->error . ']');
 			}
 		}
-	echo "Differentiated $c $name<br />\n";
+	echo "<br />Differentiated $c $name<br />\n";
 	}
 } else {
 	die('differentiateAirfields query error [' . $camp_link->error . ']');

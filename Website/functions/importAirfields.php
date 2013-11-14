@@ -150,5 +150,5 @@ function import_airfields($SaveToDir,$file) {
 			}	
 		}
 	}	
-	$camp_link->close();
+	// do not close $camp_link... needed later in process
 }
