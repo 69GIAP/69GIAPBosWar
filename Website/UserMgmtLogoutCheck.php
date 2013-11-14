@@ -32,6 +32,7 @@
 						unset ($_SESSION['camp_db']);
 						unset ($_SESSION['airfieldName']);
 						unset ($_SESSION['userCoalId']);
+						unset ($_SESSION['objectClass']);
 						header("Location: IndexBosWarRofWar.php");
 					} 
 				else
