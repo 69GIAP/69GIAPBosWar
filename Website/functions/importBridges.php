@@ -132,5 +132,6 @@ function import_bridges($path,$file) {
 		
 		}
 	} // end main for loop
+	echo "Imported $j bridges<br />\n";
 }
 ?>
