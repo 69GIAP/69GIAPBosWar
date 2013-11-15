@@ -46,11 +46,10 @@ ul#navigation li a.userMgmt {
 	width:96px;
 	background-position:-96px 0px;
 	}
-/*ul#navigation li a.prepCamp {
-	width:95px;
-	background-position:-192px 0px;
-	}
-*/	
+ul#navigation li a.prepCamp {
+	width:96px;
+	background-position:-191px 0px;
+	}	
 ul#navigation li a span {
 	background:url(../img/BosWar_NavMenuLeftSprite.png) no-repeat scroll bottom left;
 	display:block;
@@ -82,11 +81,10 @@ ul#navigation li a.userMgmt span {
 	width:95px;
 	background-position:-96px -54px;
 	}
-/*ul#navigation li a.prepCamp span {
-	width:95px;
-	background-position:-192px -54px;
-	}
-*/	
+ul#navigation li a.prepCamp span {
+	width:96px;
+	background-position:-191px -54px;
+	}	
 ul#navigation li a span:hover {
 	cursor:pointer;
 	}
