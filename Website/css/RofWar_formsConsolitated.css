@@ -1,0 +1,461 @@
+@CHARSET "UTF-8";
+/***** GENERAL ******/
+fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+form fieldset p {
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+}
+
+#registerForm div {
+	margin-bottom: 15px;
+}
+
+#registerForm div span {
+	margin-left: 10px;
+	color: #b1b1b1;
+	font-size: 12px;
+	font-style: italic;
+}
+
+#registerForm div span.error {
+	color: #e46c6e;
+	font-size: 12px;
+}
+
+/****** FONT STYLES **********/
+#h1Form {
+    text-shadow: 0 3px 0 rgba(255, 255, 255, .4), 0px 1px 0 rgba(0, 0, 0, .4);
+    text-transform: uppercase;
+    text-align: left;
+    color: #666;
+    margin: 0 0 5px 0;
+    letter-spacing: 4px;
+    font: normal 23px/1 "Trebuchet MS", Arial, Helvetica, sans-serif;
+    position: relative;
+}
+
+#h3Form {
+	margin: 15px 0 5px 0;
+}
+
+/******* FORMS *******/
+#airfieldForm {
+    background-color: #fff;
+    height: auto;
+    width: 400px;    
+    padding: 30px;	  
+}
+#createCampForm {
+	background-color: #fff;
+    height: auto;
+    width: 400px;    
+    padding: 30px;	  
+}
+#loginForm {
+    background-color: #fff;
+    height: 240px;
+    width: 350px;    
+    padding: 30px;	  
+}
+#loginForm:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+}
+
+#campaignMgmtForm {
+    background-color: #fff;
+    height: auto;
+    width: auto;    
+    padding: 30px;	  
+}
+#campaignMgmtSetupForm {
+    background-color: #fff;
+    height: auto;
+    width: 700px;    
+    padding: 30px 0;	  
+}
+campaignMgmtUploadForm {
+    background-color: #fff;
+    height: auto;
+    width: 700px;    
+    padding: 30px 0;	  
+}
+
+#campaignForm {
+	background-color: #fff;
+    height: 240px;
+    width: 500px;    
+    padding: 30px;
+	margin: 0 0 30px 0;  
+}
+
+#registerForm
+{
+	background-color: #fff;
+    height: 240px;
+    width: 700px;    
+    padding: 30px;	
+}
+
+/********FIELDSETS **********/
+#actions {
+    margin: 2px 0 30px 0;
+}
+#actions a {
+    color: #3151A2;    
+    float: right;
+    line-height: 35px;
+    margin-left: 10px;
+}
+
+/********INPUT FORM FIELDS **********/
+#inputs input,
+#none input {
+    background: #f1f1f1 url(../img/formSprite.png) no-repeat;
+    padding: 10px 15px 10px 30px;
+    margin: 2px 0 2px 0;
+    width: 300px; /* 353 + 2 + 45 = 400 */
+    border: 1px solid #ccc;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+}
+
+#inputs select,
+#none select {
+    background: #f1f1f1 url(../img/formSprite.png) no-repeat;
+    padding: 10px 15px 10px 30px;
+    margin: 2px 0 2px 0;
+    width: 347px; /* 353 + 2 + 45 = 400 */
+    border: 1px solid #ccc;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+}
+
+#inputs select:focus,
+#inputs input:focus,
+#none select:focus,
+#none input:focus {
+    background-color: #fff;
+    border-color: #BFC8DE;
+    outline: none;
+    -moz-box-shadow: 0 0 0 1px #BFC8DE inset;
+    -webkit-box-shadow: 0 0 0 1px #BFC8DE inset;
+    box-shadow: 0 0 0 1px #BFC8DE inset;
+}
+
+/* on error style */
+#inputs input.error {
+	background: #f8dbdb url(../img/formSprite.png) no-repeat;
+	padding: 10px 15px 10px 30px;
+    margin: 2px 0 2px 0;
+	width: 300px;/* 353 + 2 + 45 = 400 */	
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+	border-radius: 0px;
+    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+	color: #949494;
+	border-color: #e77776;
+}
+#inputs input.error:focus {
+    border-color: #e77776;
+    outline: none;
+    -moz-box-shadow: 0 0 0 1px #e77776 inset;
+    -webkit-box-shadow: 0 0 0 1px #e77776E inset;
+	
+	background-color: #fff;
+    box-shadow: 0 0 0 1px #e77776 inset;
+}
+
+/********TEXT AREA FORM FIELDS **********/
+#registerForm textarea {
+	width: 550px;
+	height: 80px;
+	padding: 6px;
+	color: #adaeae;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
+	font-style: italic;
+	font-size: 12px;
+	border: 1px solid #cecece;
+}
+
+#registerForm textarea.error {
+	background: #f8dbdb;
+	border-color: #e77776;
+}
+
+/******** BUTTONS *********/
+#loginSubmit,
+#submitHalfsize1,
+#submitHalfsize2,
+#registerSubmit,
+#SetupDone,
+#updateCamp {
+	background: none;	
+    background-color: #8baac9;
+	text-shadow: 0 1px 0 rgba(0,0,0,0.4);
+	font: 23px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #E6E6E6;
+	cursor: pointer;
+	float: left;
+    height: 40px;
+    padding: 0;	
+}
+
+#registerSubmit {
+    width: 345px;
+}
+
+#loginSubmit {		
+    width: 345px;
+}
+
+#submitHalfsize1,
+#submitHalfsize2,
+#SetupDone,
+#updateCamp {		
+	margin: 0 5px 0 0;
+    width: 170px;
+	font-size: 20px;
+}
+
+#registerSubmit:hover, #registerSubmit:focus,	
+#loginSubmit:hover, #loginSubmit:focus,
+#submit:hover, #submit:focus, 
+#submitHalfsize1:hover, #submitHalfsize1:focus, 
+#submitHalfsize2:hover,#submitHalfsize2:focus,
+#SetupDone:hover, #SetupDone:focus,
+#updateCamp:hover, #updateCamp:focus {		
+    background-color: #5C85AD;
+}
+
+#registerSubmit:active,
+#loginSubmit:active {
+	background-color: #5C85AD;		
+    outline: none;
+}
+
+#registerSubmit::-moz-focus-inner,
+#loginSubmit::-moz-focus-inner {
+  	border: none;
+}
+
+/******** FEEDBACK **********/
+#error {
+	margin-bottom: 20px;
+	border: 1px solid #efefef;
+}
+
+#error ul {
+	list-style: square;
+	padding: 5px;
+	font-size: 11px;
+}
+
+#error ul li{
+	list-style-position: inside;
+	line-height: 1.6em;
+}
+
+#error ul li strong {
+	color: #e46c6d;
+}
+
+#error.valid ul li strong {
+	color: #93d72e;
+}
+
+/************* MASTER AIRFIELD CHECKBOXES *****************/
+.airfieldStatusFormCheckboxWrapper {
+	margin: 3px 0;
+	padding: 10px;
+	width: 325px;
+	background: #f1f1f1;
+	border: 1px solid #ccc;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+}
+.checkboxWrapper {
+	margin: 3px 0;
+	padding: 10px;
+	width: 335px;
+	background: #f1f1f1;
+	border: 1px solid #ccc;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+}
+
+.checkbox, .radio {
+	font: normal 18px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.checkbox {
+	margin: 5px 0 2px 0;
+}
+
+.radio {
+	margin: 0 0 0 25px;
+}
+
+label {  
+    display: inline-block;  
+    cursor: pointer;  
+    position: relative;  
+    padding-left: 25px;  
+    margin-right: 15px;  
+    font-size: 13px;  
+}
+
+input[type=radio] {  
+    display: none;
+}
+
+input[type=checkbox] {  
+    display: none;
+}
+  
+label:before {  
+    content: "";  
+    display: inline-block; 
+	 
+    width: 16px;  
+    height: 16px;
+	 
+	margin-right: 10px; 
+    position: absolute;  
+    left: 0;  
+    bottom: 1px;  
+    background-color: #aaa;  
+    box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
+} 
+
+.radio label:before {  
+    border-radius: 8px;  
+}
+
+div.radio label {
+	margin-bottom: 5px; /* vertical distance between radio buttons */
+}
+div.checkbox p {
+	font-size: 12px;	
+}
+.checkbox label:before {  
+    border-radius: 3px;  
+}  
+
+input.special[type=radio]:checked + label.special:before {  /* secial case for objects menu: square checkbox with check symbol but radio button behavior */
+    content: "\2713";  /* check symbol */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+    font-size: 15px;  
+    color: #f3f3f3;  
+    text-align: center;  
+    line-height: 15px;
+} 
+
+input[type=radio]:checked + label:before {  
+    content: "\2022"; /* bullet symbol */
+    color: #f3f3f3;  
+    font-size: 30px;  
+    text-align: center;  
+    line-height: 10px; /* position of radio bullet once selected */
+}  
+
+input[type=checkbox]:checked + label:before {  
+    content: "\2713";  /* check symbol */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+    font-size: 15px;  
+    color: #f3f3f3;  
+    text-align: center;  
+    line-height: 15px;  
+}
+
+#userDetails {
+	position: absolute;
+	top: 212px;
+	left: 750px;
+}
+
+.userRecordFrame {
+	border: solid 1px #8BAAC9;;
+	width: auto;
+	margin: 0 0 10px 0;
+	padding: 5px 15px 10px 5px;
+}
+
+/******** MINI ICONS IN INPUT FORMS *****/
+#username {
+    background-position: 5px -7px !important;
+}
+
+#password,
+#password1,
+#password2 {
+    background-position: 5px -57px !important;
+}
+
+#aircraft {
+    background-position: 5px -102px !important;
+}
+
+#none {
+    background-position: 5px -142px !important;
+}
+
+#number {
+    background-position: 5px -183px !important;
+}
+
+#world {
+    background-position: 5px -227px !important;
+}
+
+#airfield {
+    background-position: 5px -283px !important;
+}
+
+#database {
+    background-position: 5px -332px !important;
+}
+
+#email {
+    background-position: 5px -377px !important;
+}
+
+#phone {
+    background-position: 5px -432px !important;
+}
+
+#file {
+    background-position: 5px -483px !important;
+}
+#userfile {
+    background-position: 5px -480px !important;
+}
+
+#map {
+    background-position: 5px -532px !important;
+}

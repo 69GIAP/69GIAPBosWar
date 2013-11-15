@@ -9,15 +9,19 @@
 function pickFile($returnpage) {
 	// $returnpage is page to return to when done
 	if (!isset($returnpage)) { $returnpage = '.'; }
-	echo "<form action=\"uploadFile.php\" method=\"post\" enctype=\"multipart/form-data\" />\n";
-	echo "<div>\n";
+	echo "<form id=\"campaignMgmtUploadForm\" action=\"uploadFile.php\" method=\"post\" enctype=\"multipart/form-data\" />\n";
+	echo "	<div>\n";
 //	echo "	Choose a file to upload: <br />\n";
-	echo "	<input type=\"hidden\" name=\"returnpage\" value=\"$returnpage\"/>\n";
-	echo "	<input type=\"hidden\" name=\"MAX_FILE_SIZE\" value=\"4000000\"/>\n";
-	echo "	<input type=\"file\" name=\"userfile\" id=\"userfile\" size=\"50\" />\n";
-	echo "	<br />\n";
-	echo "  <input type=\"submit\" value=\"Upload File\" />\n";
-	echo "</div>\n";
+	echo "	<fieldset id=\"inputs\">\n";
+	echo "		<input type=\"hidden\" name=\"returnpage\" value=\"$returnpage\"/>\n";
+	echo "		<input type=\"hidden\" name=\"MAX_FILE_SIZE\" value=\"4000000\"/>\n";
+	echo "		<input type=\"file\" name=\"userfile\" id=\"userfile\" size=\"50\" />\n";
+	echo "	</fieldset>\n";	
+
+	echo "	<fieldset id=\"actions\">\n";	
+	echo "  	<input id=\"SetupDone\" type=\"submit\" value=\"Upload File\" />\n";
+	echo "	</fieldset>\n";	
+	echo "	</div>\n";
 	echo "</form>\n";
 }
 ?>

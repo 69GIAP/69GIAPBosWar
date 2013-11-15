@@ -1,8 +1,9 @@
 <?php
 	$q = intval($_GET['q']);
 	
-	# Incorporate the MySQL connection script.
-	require ( '../../connect_db.php' );
+# Make a mysqli connection to the central BOSWAR database
+	require ( '../functions/connectBOSWAR.php' );
+	$dbc = connectBOSWAR();
 	# include getRolename.php
 	include ( '../functions/getRolename.php' );	
 	# include getCoalitionname.php

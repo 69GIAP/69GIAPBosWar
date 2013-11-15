@@ -74,7 +74,8 @@
 						echo "		<button type=\"submit\" name =\"templateImport\" id=\"updateCamp\" value =\"2\" >Update Airfields</button>\n"; # the value defines the action after the button was pressed
 						echo "	</fieldset>\n";
 
-					} elseif ($fi == 'template') {
+						}
+					elseif ($fi == 'template') {
 						echo "<h3>Update Combat Area, Countries and Coalitions</h3>\n";
 						echo "<p>The template file will be used to determine the minimum and maximum coordinates of your combat sector from the influence areas you have defined, and to enter the combatant's countries and coalitions into the $campaign database.</p>\n";
 

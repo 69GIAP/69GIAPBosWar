@@ -28,8 +28,9 @@
 					# use this information to connect to campaign 
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
 
-					# initialise variables
 					echo "<h1>$campaign Campaign Mission Editor Setup</h1>";
+					
+					# initialise variables
 					$query = "SELECT * from campaign_settings;";
 					if(!$result = $dbc->query($query)) {
 						die('CampaignMgmtSetup.php query error [' . $dbc->error . ']');
@@ -68,23 +69,28 @@
 
 					echo "<p>You selected the \"$map\"map when you configured the $campaign campaign.</p>\n";  
 					echo "<p>Now we must select this map in the mission editor.</p>\n";
+					
 					if($map == 'Western Front') {
 						echo "<p>In the mission editor the \"Western Front\" GUI map has three versions: winter (05.01.1918), spring/summer (15.07.1918) and autumn (19.10.1918).</p>\n";
 						echo "<p>Select one of these GUI maps and a matching season for your campaign.</p>\n";
 						echo "<p>Then for Landscape info: (Height Map, Textures, and Forests) you need to select an appropriate matching set.  Make all three either \"landscape\", \"landscape_autumn\" or \"landscape_winter\", as appropriate.</p>\n"; 
-					} elseif($map == 'Channel') {
+						} 
+					elseif($map == 'Channel') {
 						echo "<p>In the mission editor the \"Channel\" GUI map has a single version: channel_summer</p>\n";
 						echo "<p>Select it and a matching season for your campaign.</p>\n";
 						echo "<p>Then for Landscape info: (Height Map, Textures, and Forests) you need to select an appropriate matching set.  Make all three \"landscape_channel\".</p>\n"; 
-					} elseif($map == 'Verdun') {
+						} 
+					elseif($map == 'Verdun') {
 						echo "<p>In the mission editor the \"Verdun\" GUI map has three versions: autumn (df5x5verdun_autumn), summer (df5x5verdun_summer) and winter (df5x5verdun_winter).</p>\n";
 						echo "<p>Select one of these GUI maps and a matching season for your campaign.</p>\n";
 						echo "<p>Then for Landscape info: (Height Map, Textures, and Forests) you need to select an appropriate matching set.  Make all three the landscape that matches your GUI map choice.</p>\n"; 
-					} elseif($map == 'Lake') {
+						} 
+					elseif($map == 'Lake') {
 						echo "<p>In the mission editor the \"Lake\" GUI map has three versions: autumn (df3x3lake_autumn), summer (df3x3lake_summer) and winter (df3x3lake_winter).</p>\n";
 						echo "<p>Select one of these GUI maps and a matching season for your campaign.</p>\n";
 						echo "<p>Then for Landscape info: (Height Map, Textures, and Forests) you need to select an appropriate matching set.  Make all three the landscape that matches your GUI map choice.</p>\n"; 
-					} else {
+						} 
+					else {
 						echo "<p>We have not yet created a locations file for the \"$map\" map.</p>\n";
 					}
 					echo "<p>In the mission editor File menu, select \"Save As...\", giving it the file name  <b>$abbrv-template.Mission</b> and saving it to your <b>$abbrv-groups</b> directory.</p>\n";
@@ -104,15 +110,20 @@
 					echo "<p>In the mission editor \"File\" menu select \"Import From File...\" and go to: directory <b>Rise of Flight/data/Template/</b></p>\n";
 					if($map == 'Western Front') {
 						echo "<p>Select the Base-no-trunc.Group file.  This file holds the airfields and some other infrastructure for the Western Front map.</p>\n";
-					} elseif($map == 'Channel') {
+						}
+					elseif($map == 'Channel') {
 						echo "<p>Select the Base-no-trunc-channel.Group file.  This file holds the airfields and some other infrastructure for the Channel map.</p>\n";
-					} elseif($map == 'Verdun') {
+						}
+					elseif($map == 'Verdun') {
 						echo "<p>Select the Base_DF5x5Verdun.Group file.  This file holds the airfields and all other infrastructure for the Verdun dogfight map.</p>\n";
-					} elseif($map == 'Lake') {
+						}
+					elseif($map == 'Lake') {
 						echo "<p>Select the Base_DF3x3Lake.Group file.  This file holds the airfields and all other infrastructure for the Lake dogfight map.</p>\n";
-					} else {
+						}
+					else {
 						echo "<p>We have not yet created a locations file for the \"$map\" map.</p>\n";
 					}
+					
 					echo "<p>Loading these files can take a while, be patient. Wait until the 'Please wait until operation is finished' popup disappears. If the load hangs near the end, quit and reload the file which should now be a quick process.</p>\n";
 					echo "<p>Save the (now larger) template mission before continuing.</p>\n";
 					
@@ -131,26 +142,30 @@
 <p>The simplest case is two influence areas... one for each opposing side, and that is what we will go through here, but we also support multiple influence areas should you wish to use them. The combat area includes all defined influence areas.  Areas that are outside of defined influence areas are deemed neutral.</p>
 
 <p>To define the first influence area:<br \>
-* select the ">>MCUs<<" box in the upper right of the mission editor.<br />
-* Scroll down the list and select "Translator:Influence Area".<br \>
-* Left click to place this on the map within the area you have choosen to be, say, German territory.<br />
-* Select the influence area icon with another left click.<br />
-* Right click on the influence area icon and select "Selected Object Menu".<br />
-* Select "Edit Influence Area".<br />
-* This will create a blue triangle with a yellow circle at one apex which you can drag with your mouse (holding down the left mouse button).<br />
-* To select another end to edit, double click on that end.<br />
-* You will probably want at least one more corner to form a trapezoid.  (Try to use no more than 6-8 corners per area.  More complex areas may cause performance problems.)<br />
-* To add another point to move, use CTRL+left mouse click on a boundary line that is attacked to the yellow circle.<br />
-* Note that the boundary of an influence area should not cross itself.<br />
-* Move the ends to form a boundary around the area you want to define.<br />
-* To stop editing, right click on the influence area and select "Selected Object Menu".<br />
-* Select "Stop Editing Boundary".</p>
+<ul class="commonList">
+	<li>select the ">>MCUs<<" box in the upper right of the mission editor.</li>
+    <li>Scroll down the list and select "Translator:Influence Area".</li>
+    <li>Left click to place this on the map within the area you have choosen to be, say, German territory.</li>
+    <li>Select the influence area icon with another left click.</li>
+    <li>Right click on the influence area icon and select "Selected Object Menu".</li>
+    <li>Select "Edit Influence Area".</li>
+    <li>This will create a blue triangle with a yellow circle at one apex which you can drag with your mouse (holding down the left mouse button).</li>
+    <li>To select another end to edit, double click on that end.</li>
+    <li>You will probably want at least one more corner to form a trapezoid.  (Try to use no more than 6-8 corners per area.  More complex areas may cause performance problems.)</li>
+    <li>To add another point to move, use CTRL+left mouse click on a boundary line that is attacked to the yellow circle.</li>
+    <li>Note that the boundary of an influence area should not cross itself.</li>
+    <li>Move the ends to form a boundary around the area you want to define.</li>
+    <li>To stop editing, right click on the influence area and select "Selected Object Menu".</li>
+    <li>Select "Stop Editing Boundary".</li>
+</ul>
 
-<p>To set ownership of the influence area:<br />
-* Right click on the influence area and select "Advanced Properties..."<br /> 
-* select the country you want to be the owner of this area (e.g. Germany)<br />
-* click "OK".
-* Left click outside the influence area icon to unselect it.</p>
+<p>To set ownership of the influence area:</p>
+<ul>
+    <li>Right click on the influence area and select "Advanced Properties..."</li> 
+    <li>select the country you want to be the owner of this area (e.g. Germany)</li>
+    <li>click "OK".</li>
+    <li>Left click outside the influence area icon to unselect it.</li>
+</ul>
 
 <p>Repeat this process to define the opposing side's influence area(s).</p>
 <?php
@@ -160,15 +175,15 @@
 			echo "<h3>Refine the Template</h3>\n";
 
 			echo "<p>Next we will start to refine our campaign template.<br>";
-			echo "<p>We now want to save <b>just</b> the objects that are in our sector.</p> 
-			<p>On the top icon bar is a button for the object filter abbreviated as \"OBJ FILT\".  Select that, then \"Select All\" then select \"OK\".</p>
-			<p>Click the bottom left of the influence areas and holding the left mouse button drag from bottom left of our sector to top right of our sector. This will highlight all objects in our sector.  Be sure this includes all the defined influence areas.  Better to be slightly generous than slightly stingy here.</p>";
-			echo "<p>Next in the File menu, select \"Save selection to File\", navigate back to your <b>$abbrv-groups</b> directory, give this file the File Name <b>$abbrv-no-trunc.Group</b>, and Save as type \"Mission Files\", then click \"Save\".</p>
-					<p>Left click outside the area to unselect it.</p>
-					<p>Now go to the \"Search and Select\" menu, select \"Select All Objects in Mission\" then press the \"Delete\" key on your keyboard. There will be a pause (have patience) and all the airfields etc. will disappear.</p>
-			<p>We can now load back in only those objects that were in our sector with File, Import from File, select your <b>$abbrv-groups</b> directory and load the file <b>$abbrv-no-trunc.Group</b>.
-			You should now have just the airfields in your sector plus some towns or stuff.</p> 
-			<p>File, Save to make sure we do not lose this!</p>\n";
+			echo "<p>We now want to save <b>just</b> the objects that are in our sector.</p>\n"; 
+			echo "<p>On the top icon bar is a button for the object filter abbreviated as \"OBJ FILT\".  Select that, then \"Select All\" then select \"OK\".</p>\n";
+			echo "<p>Click the bottom left of the influence areas and holding the left mouse button drag from bottom left of our sector to top right of our sector. This will highlight all objects in our sector.  Be sure this includes all the defined influence areas.  Better to be slightly generous than slightly stingy here.</p>\n";
+			echo "<p>Next in the File menu, select \"Save selection to File\", navigate back to your <b>$abbrv-groups</b> directory, give this file the File Name <b>$abbrv-no-trunc.Group</b>, and Save as type \"Mission Files\", then click \"Save\".</p>\n";
+			echo "<p>Left click outside the area to unselect it.</p>\n";
+			echo "<p>Now go to the \"Search and Select\" menu, select \"Select All Objects in Mission\" then press the \"Delete\" key on your keyboard. There will be a pause (have patience) and all the airfields etc. will disappear.</p>\n";
+			echo "<p>We can now load back in only those objects that were in our sector with File, Import from File, select your <b>$abbrv-groups</b> directory and load the file <b>$abbrv-no-trunc.Group</b>.
+			You should now have just the airfields in your sector plus some towns or stuff.</p>\n"; 
+			echo "<p>File, Save to make sure we do not lose this!</p>\n";
 
 			echo "<h3>Activate Select Airfields</h3>\n";
 
@@ -178,14 +193,15 @@
 			echo "<p>Then click the \">\" on the right of \"Name:\" which will give you the Airfield advanced properties.  Here set the Country: (Probably Germany?) and click OK.  Next do the same for an Allied airfield setting the Country to one of the Allied Countries.<br />
 					Continue till all active airfields are set.</p>\n";
 					
-					echo "<p>Once ready \"Select All Visible Objects\" (the airfields) then \"File\", \"Save Selection to File\", select your <b>$abbrv-groups</b> directory and save as <b>$abbrv-airfields.Group</b>.</p>\n";
-					echo "<p>Then save the entire template mission file, which now contains activated airfields.</p>\n";
-					echo "<p>Once you are ready to proceed, click \"Next\"</p>\n";
-					# BUTTON
-					echo "<fieldset id=\"actions\">\n";	
-					echo "		<button type=\"submit\" name =\"Setup\" id=\"SetupDone\" value =\"true\" >Next</button>\n"; # the value defines the action after the button was pressed
-					echo "	</fieldset>\n";
-					echo "</form>\n";
+			echo "<p>Once ready \"Select All Visible Objects\" (the airfields) then \"File\", \"Save Selection to File\", select your <b>$abbrv-groups</b> directory and save as <b>$abbrv-airfields.Group</b>.</p>\n";
+			echo "<p>Then save the entire template mission file, which now contains activated airfields.</p>\n";
+			echo "<p>Once you are ready to proceed, click \"Next\"</p>\n";
+			
+			# BUTTON
+			echo "<fieldset id=\"actions\">\n";	
+			echo "		<button type=\"submit\" name =\"Setup\" id=\"SetupDone\" value =\"true\" >Next</button>\n"; # the value defines the action after the button was pressed
+			echo "	</fieldset>\n";
+			echo "</form>\n";
 
 					// close $camp_link
 					$camp_link->close();

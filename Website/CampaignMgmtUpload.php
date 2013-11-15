@@ -35,7 +35,8 @@
 					
 					if (!isset($_GET['fi'])) {
 						$fi = 'airfields';
-					} else {
+						}
+					else {
 						$fi = $_GET['fi'];
 					}
 //					echo "\$fi: $fi<br />\n";
@@ -64,33 +65,21 @@
 						echo "<p>Start by navigating to your <b>$abbrv-groups</b> directory.</p>\n";
 						echo "<p>Choose <b>$abbrv-airfields.Group.</b><br />
 						Then click \"Upload File\".</p>\n";
-					$returnpage = 'CampaignMgmtUpload.php';
+						$returnpage = 'CampaignMgmtUpload.php';
 
-					} elseif ($fi == 'template') {// now processed second	
+						}
+					elseif ($fi == 'template') {// now processed second	
 						echo "<p>We will now upload our template mission file to the BOSWAR campaign manager.</p>\n";
 						echo "<p>Select <b>$abbrv-template.Mission</b><br />
 						Then click \"Upload File\".</p>\n";
 
-					# Done (for now) with uploads
-					$returnpage = 'CampaignMgmtUpload.php?btn=campMgmt';
+						# Done (for now) with uploads
+						$returnpage = 'CampaignMgmtUpload.php?btn=campMgmt';
 
 					}
 
 					# go
 					pickFile($returnpage);
-
-					# start form
-					echo "<form id=\"campaignMgmtUploadForm\" name=\"campaignSetup\" action=\"CampaignMgmtUploadDone.php?btn=campMgmt\" method=\"post\">\n";
-
-					/*
-					echo "<p>Once both files are safely uploaded and you are ready to proceed, click \"Next\"</p>\n";
-					# BUTTON
-					echo "<fieldset id=\"actions\">\n";	
-					echo "		<button type=\"submit\" name =\"Upload\" id=\"UploadDone\" value =\"true\" >Next</button>\n"; # the value defines the action after the button was pressed
-					echo "	</fieldset>\n";
-					 */
-
-					echo "</form>\n";
 
 					// close $camp_link
 					$camp_link->close();

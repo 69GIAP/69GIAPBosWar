@@ -40,12 +40,16 @@ $result->close();
 # Mission Log Settings
 echo "	<fieldset id=\"inputs\">\n";
 echo "		<h2>Mission Log Settings</h2>\n";
-echo "		<h3>log files location relative to boswar home directory<br> (use / as directory separator)</h3>\n";
+echo "		<h3>Log files location relative to boswar home directory</h3>\n";
+echo "		<p class=\"indent\">(use / as directory separator)</p>\n";
+
 echo "		<input id=\"database\" type=\"text\" name=\"logpath\" value='$logpath' autofocus ><br>\n";
 if ($log_prefix == 'missionReport') {
 	$log_prefix = $log_prefix.$abbrv;
 }
-echo "		<h3>constant prefix for this campaign's log files<br />(Recommend using default or default plus an underscore)</h3>\n";
+echo "		<h3>constant prefix for this campaign's log files</h3>\n";
+echo "		<p class=\"indent\">(Recommend using default or default plus an underscore)</p>\n";
+
 echo "		<input id=\"database\" type=\"text\" name=\"log_prefix\" value='$log_prefix' autofocus ><br>\n";
 echo "	</fieldset>\n";
 # BUTTON
@@ -56,7 +60,9 @@ echo "	</fieldset>\n";
 # Log Parser Settings
 echo "	<fieldset id=\"inputs\">\n";
 echo "		<h2>Log Parser Settings</h2>\n";
-echo "		<h3>give airfield names in reports (else 'unidentified')</h3>\n";
+echo "		<h3>give airfield names in reports</h3>\n";
+echo "		<p class=\"indent\">(else 'unidentified')</p>\n";
+
 echo "		<select name=\"show_airfield\" id=\"database\">\n";
 if ($show_airfield == 'true') {
    echo "			<option value=\"true\" selected=\"selected\">true</option>\n";

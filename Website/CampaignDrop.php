@@ -30,7 +30,8 @@
 						}
 					else
 						{
-							echo "<h3>Please select the campaign to be dropped - THIS CAN NOT BE UNDONE SO PLEASE BE CAREFUL!</h3>\n";		
+							echo "<h2>Please select the campaign to be dropped</h2>\n";
+							echo "<h3>!! THIS CAN NOT BE UNDONE SO PLEASE BE CAREFUL !!</h3>\n";		
 						}
 						
                     # show campaigns due to User role

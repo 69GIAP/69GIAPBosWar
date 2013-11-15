@@ -43,7 +43,7 @@
                     </div>
                   </fieldset>
                   <fieldset id="actions">
-                    <input type="submit" id="registerSubmit" value="Submit">
+                    <input id="registerSubmit" type="submit" value="Submit">
                   </fieldset>
                 </form>
                  
