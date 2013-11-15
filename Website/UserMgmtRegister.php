@@ -42,17 +42,15 @@
                     
                     # check datasets stored in the table to varify uniquness of new user
                     $query = "SELECT user_id FROM users WHERE username LIKE '$userName' ";        
-                    $result = $dbc->query($dbc, $query); 
-                    
-                    $values = $result->num_rows($result); 
+                    $result = $dbc->query($query); 
                     
                     # if user does not exists a new entry will be stored to the table
-                    if($values == 0) 
+                    if($result->num_rows == 0) 
                         {
                         $userRoleID = "3";
                         
                         $entry = "INSERT INTO users (username, password, email, phone, role_id) VALUES ('$userName', '$password', '$email', '$phone', '$userRoleID')"; 
-                        $entries = $dbc->query($dbc, $entry); 
+                        $entries = $dbc->query($entry); 
                     
                     # check if user was added correctly
                         if($entries == true) 
