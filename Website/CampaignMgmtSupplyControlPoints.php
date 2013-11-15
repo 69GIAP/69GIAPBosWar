@@ -109,7 +109,7 @@
 					echo "<p>Note, there is no need to save the template as we haven't changed the template.</p>\n";
 										echo "<p>Once you are ready to proceed, click \"Next\"</p>\n";
 
-					echo "<form id=\"campaignMgmtSupplyControlDone\" name=\"campaignSetup\" action=\"CampaignMgmtAirfields.php?btn=campMgmt\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtSupplyControlDone\" name=\"campaignSetup\" action=\"CampaignMgmtSetupBridges.php?btn=campMgmt\" method=\"post\">\n";
 					# BUTTON
 					echo "<fieldset id=\"actions\">\n";	
 					echo "		<button type=\"submit\" name =\"Setup\" id=\"SetupDone\" value =\"true\" >Next</button>\n"; # the value defines the action after the button was pressed
