@@ -6,18 +6,18 @@
 
 
 	
-	$sql = "SELECT id, bridge_Name, bridge_damage_1, bridge_damage_2, bridge_damage_3, bridge_damage_4, bridge_damage_5, bridge_damage_6, bridge_damage_7, bridge_damage_8, bridge_damage_9, bridge_damage_10
+	$sql = "SELECT id, Name, damage_1, damage_2, damage_3, damage_4, damage_5, damage_6, damage_7, damage_8, damage_9, damage_10
 			FROM bridges
-			WHERE 	bridge_damage_1 = 1 OR
-					bridge_damage_2 = 1 OR
-					bridge_damage_3 = 1 OR
-					bridge_damage_4 = 1 OR
-					bridge_damage_5 = 1 OR
-					bridge_damage_6 = 1 OR
-					bridge_damage_7 = 1 OR
-					bridge_damage_8 = 1 OR
-					bridge_damage_9 = 1 OR
-					bridge_damage_10 = 1;";
+			WHERE 	damage_1 = 1 OR
+					damage_2 = 1 OR
+					damage_3 = 1 OR
+					damage_4 = 1 OR
+					damage_5 = 1 OR
+					damage_6 = 1 OR
+					damage_7 = 1 OR
+					damage_8 = 1 OR
+					damage_9 = 1 OR
+					damage_10 = 1;";
 		
 	$i = 1;
 	
@@ -33,17 +33,17 @@
 	# load results into variables 
 	while ($obj = mysqli_fetch_object($result)) {
 		$bridgeId		=($obj->id);
-		$bridgeName		=($obj->bridge_Name);
-		$bridgeDamage1	=($obj->bridge_damage_1);
-		$bridgeDamage2	=($obj->bridge_damage_2);
-		$bridgeDamage3	=($obj->bridge_damage_3);
-		$bridgeDamage4	=($obj->bridge_damage_4);
-		$bridgeDamage5	=($obj->bridge_damage_5);
-		$bridgeDamage6	=($obj->bridge_damage_6);
-		$bridgeDamage7	=($obj->bridge_damage_7);
-		$bridgeDamage8	=($obj->bridge_damage_8);
-		$bridgeDamage9	=($obj->bridge_damage_9);
-		$bridgeDamage10	=($obj->bridge_damage_10);
+		$bridgeName		=($obj->Name);
+		$bridgeDamage1	=($obj->damage_1);
+		$bridgeDamage2	=($obj->damage_2);
+		$bridgeDamage3	=($obj->damage_3);
+		$bridgeDamage4	=($obj->damage_4);
+		$bridgeDamage5	=($obj->damage_5);
+		$bridgeDamage6	=($obj->damage_6);
+		$bridgeDamage7	=($obj->damage_7);
+		$bridgeDamage8	=($obj->damage_8);
+		$bridgeDamage9	=($obj->damage_9);
+		$bridgeDamage10	=($obj->damage_10);
 		if (   $bridgeDamage1 == 1 OR $bridgeDamage2 == 1 OR $bridgeDamage3 == 1 OR $bridgeDamage4 == 1 OR $bridgeDamage5 == 1
 			OR $bridgeDamage6 == 1 OR $bridgeDamage7 == 1 OR $bridgeDamage8 == 1 OR $bridgeDamage9 == 1 OR $bridgeDamage10 == 1) {
 			$objectStatus = 1;

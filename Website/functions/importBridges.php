@@ -116,13 +116,13 @@ function import_bridges($path,$file) {
 //		echo "$name: \$XPos=$XPos, \$ZPos=$ZPos, \$YOri=$YOri, 
 //			\$Model=$Model, \$Country=$Country, \$Coalition=$Coalition,
 //			\$Desc=$Desc<br />\n";
-		$query = "REPLACE bridges SET bridge_Name='$name', bridge_XPos='$XPos',
-			bridge_ZPos='$ZPos', bridge_YOri='$YOri', bridge_Model ='$Model', 
-			bridge_Country='$Country', bridge_coalition='$Coalition',
-			bridge_Desc='$Desc', bridge_damage_1='$d1', bridge_damage_2='$d2',
-			bridge_damage_3='$d3', bridge_damage_4='$d4', bridge_damage_5='$d5',
-			bridge_damage_6='$d6', bridge_damage_7='$d7', bridge_damage_8='$d8',
-			bridge_damage_9='$d9', bridge_damage_10='$d10'
+		$query = "REPLACE bridges SET Name='$name', XPos='$XPos',
+			ZPos='$ZPos', YOri='$YOri', Model ='$Model', 
+			Country='$Country', CoalID='$Coalition',
+		   	damage_1='$d1', damage_2='$d2',
+			damage_3='$d3', damage_4='$d4', damage_5='$d5',
+			damage_6='$d6', damage_7='$d7', damage_8='$d8',
+			damage_9='$d9', damage_10='$d10', Description='$Desc'
 			;";
 
 //		echo "$query<br />\n";

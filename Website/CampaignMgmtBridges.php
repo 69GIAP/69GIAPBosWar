@@ -34,7 +34,7 @@
 				# start form
 				echo "<form id=\"campaignMgmtForm\" name=\"objectSetup\" action=\"CampaignMgmtBridgesConfirm.php\" method=\"post\">\n";
 				
-				# get the master aircraft model list
+				# get the bridges
                 include ('includes/getBridgeStatus.php');
 				
 				# BUTTON
