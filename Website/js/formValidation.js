@@ -51,7 +51,7 @@ $(document).ready(function(){
 		//if it's NOT valid
 		else{
 			email.addClass("error");
-			emailInfo.text("Stop cowboy! Type a valid e-mail please :P");
+			emailInfo.text("Stop Airman! Type a valid e-mail please :P");
 			emailInfo.addClass("error");
 			return false;
 		}

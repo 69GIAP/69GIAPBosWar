@@ -1,0 +1,194 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	background-color: #293442;	
+}
+
+body.index {
+	background-color: #CCC;
+}
+
+html {
+	line-height: 1.5em;	
+}
+
+p {
+	padding: 5px 0px;
+	margin: 0;
+	font-family: Candara, sans-serif;
+	}
+	
+/************************************************************************
+/* Header Styles */
+#header {
+	background-color: #293442;
+	color: #E6E6E6;
+	height:165px;
+	background: url(../img/BosWar_Header_bg.png) repeat-x;
+	z-index: 10;		
+	}
+
+/********************************
+Style for Index screenform elements */
+#indexRofBosWar {
+	display:block;
+	text-align:center;
+	margin-top:150px;
+	padding: 15px;
+}
+
+.RofWarBosWarSelection form {
+	display: inline-block;
+	text-align: center;
+}
+	
+.RofWarBosWarSelection * { /* target all elements contained by the form */
+	border: 0;
+	width: 293px;
+	height: 57px;
+	cursor: pointer;
+	color:transparent; /* this hides the submitted text */
+}
+
+.RofWarBosWarSelection .BosWar {
+	background: url(../img/RofWarBosWarSelectorTitle.png) no-repeat;
+	margin: 15px;
+}
+
+.RofWarBosWarSelection .RofWar {
+	background: url(../img/RofWarBosWarSelectorTitle.png) no-repeat;
+	margin: 15px;
+}
+
+.RofWarBosWarSelection *:hover {
+	background-position: 0 -57px;
+}
+.RofWarBosWarSelection .BosWar {
+	width: 293px; /* different settings for this element */
+	background-position: -293px 0;
+}
+.RofWarBosWarSelection .BosWar:hover {
+	background-position: -293px -57px;
+}
+/************************************************************************
+/* Content Styles */
+
+#container {
+	background: url(../img/BosWar_Side_bg.gif);
+	background-position: left;
+	background-repeat: repeat-y;
+	float: right;
+	margin: 0 0 0 -260px ;
+	width: 100%;
+	}
+
+	
+/************************************************************************
+/*  Footer Styles */
+
+#footer {
+	background-color: #293442;
+	border:none;
+	color: #E6E6E6;	
+	height: 48px;	
+	}
+
+#credits {
+	position: relative;
+	right: 10px;
+	top: 10px;
+	height: auto;
+	width: auto;
+	text-align: right;
+	font-size:	11px;
+	}
+	
+div#credits p {
+	padding: 0;
+	margin: 0;
+	color: #E6E6E6;
+}	
+
+/**************************************************************************
+/* Form styles */
+	
+fieldset.boswar {
+	width: 380px;
+	border: none;	
+	}
+	
+fieldset.boswar ul, fieldset li{
+	border:0;
+	margin:0; 
+	width: 360px;
+	padding:5px; 
+	list-style:none;
+	}
+
+fieldset.boswar li{
+	clear:both;
+	list-style:none;
+	padding-bottom:10px;
+	padding-top: 5px;
+	}
+
+fieldset.boswar input{
+	float:left;
+	width: 210px;
+	}
+
+fieldset.boswar select{
+	float:left;
+	width: 215px;
+	}
+
+fieldset.boswar label{
+	width:140px;
+	float:left;
+	}
+
+fieldset.boswar button{
+	width: 150px;
+	margin-left: 160px;
+}
+/**************/
+fieldset.UserMgmt {
+	width: 400px;
+	border: 0;	
+	}
+	
+fieldset.UserMgmt ul, fieldset li {
+	border: 0;
+	margin: 0; 
+	width: 380px;
+	padding: 5px; 
+	list-style: none;
+	}
+
+fieldset.UserMgmt li{
+	clear: both;
+	list-style: none;
+	padding-bottom: 10px;
+	padding-top: 5px;
+	}
+
+fieldset.UserMgmt input{
+	float: left;
+	width: 210px;
+	}
+
+fieldset.UserMgmt select{
+	float: left;
+	width: 210px;
+	}
+
+fieldset.UserMgmt label{
+	width:140px;
+	float:left;
+	}
+
+fieldset.UserMgmt button{
+	width: 210px;
+	margin-left: 140px;
+}
+

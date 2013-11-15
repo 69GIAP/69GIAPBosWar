@@ -151,11 +151,11 @@ campaignMgmtUploadForm {
 #none select:focus,
 #none input:focus {
     background-color: #fff;
-    border-color: #BFC8DE;
+    border-color: #293442;
     outline: none;
-    -moz-box-shadow: 0 0 0 1px #BFC8DE inset;
-    -webkit-box-shadow: 0 0 0 1px #BFC8DE inset;
-    box-shadow: 0 0 0 1px #BFC8DE inset;
+    -moz-box-shadow: 0 0 0 1px #293442 inset;
+    -webkit-box-shadow: 0 0 0 1px #293442 inset;
+    box-shadow: 0 0 0 1px #293442 inset;
 }
 
 /* on error style */
@@ -167,20 +167,21 @@ campaignMgmtUploadForm {
     -moz-border-radius: 0px;
     -webkit-border-radius: 0px;
 	border-radius: 0px;
-    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+	border-width: 1px;
+    -moz-box-shadow: 0 1px 1px #a21f1f inset, 0 1px 0 #a21f1f;
+    -webkit-box-shadow: 0 1px 1px #a21f1f inset, 0 1px 0 #a21f1f;
+    box-shadow: 0 1px 1px #a21f1f inset, 0 1px 0 #a21f1f;
 	color: #949494;
-	border-color: #e77776;
+	border-color: #a21f1f;
 }
 #inputs input.error:focus {
-    border-color: #e77776;
+    border-color: #a21f1f;
     outline: none;
-    -moz-box-shadow: 0 0 0 1px #e77776 inset;
-    -webkit-box-shadow: 0 0 0 1px #e77776E inset;
+    -moz-box-shadow: 0 0 0 1px #a21f1f inset;
+    -webkit-box-shadow: 0 0 0 1px #a21f1f inset;
 	
 	background-color: #fff;
-    box-shadow: 0 0 0 1px #e77776 inset;
+    box-shadow: 0 0 0 1px #a21f1f inset;
 }
 
 /********TEXT AREA FORM FIELDS **********/
@@ -208,7 +209,7 @@ campaignMgmtUploadForm {
 #SetupDone,
 #updateCamp {
 	background: none;	
-    background-color: #494947;
+    background-color: #a21f1f;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.4);
 	font: 23px "Trebuchet MS", Arial, Helvetica, sans-serif;
     color: #E6E6E6;
@@ -242,12 +243,12 @@ campaignMgmtUploadForm {
 #submitHalfsize2:hover,#submitHalfsize2:focus,
 #SetupDone:hover, #SetupDone:focus,
 #updateCamp:hover, #updateCamp:focus {		
-    background-color: #8baac9;
+    background-color: #293442;
 }
 
 #registerSubmit:active,
 #loginSubmit:active {
-	background-color: #8baac9;		
+	background-color: #293442;		
     outline: none;
 }
 
@@ -400,7 +401,7 @@ input[type=checkbox]:checked + label:before {
 }
 
 .userRecordFrame {
-	border: solid 1px #494947;;
+	border: solid 1px #a21f1f;;
 	width: auto;
 	margin: 0 0 10px 0;
 	padding: 5px 15px 10px 5px;

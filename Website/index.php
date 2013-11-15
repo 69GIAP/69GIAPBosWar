@@ -50,8 +50,9 @@
 
 </head>
 
-<!--  Link external CSS Master file containing all other CSS files -->
-<link href="css/BosWar_styles.css" rel="stylesheet" type="text/css" />
+<!--  Link external CSS Master file containing all other CSS files 
+<link href="css/BosWar_styles.css" rel="stylesheet" type="text/css" />-->
+<link href="css/Index_styles.css" rel="stylesheet" type="text/css" />
 
     <body class="index">
     
