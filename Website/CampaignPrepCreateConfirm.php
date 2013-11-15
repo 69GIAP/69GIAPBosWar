@@ -209,7 +209,7 @@ include ('includes/doit.php');
 echo "campaign_settings created<br />\n";
 
 $query = "INSERT INTO `$newCampaignDBName`.campaign_settings (simulation, campaign, abbrv, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
-$query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignAbbrv', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
+$query .= "VALUES ('$game', '$newCampaignName', '$newCampaignAbbrv', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
 include ('includes/doit.php');
 echo "campaign_settings populated<br />\n";
 
@@ -232,7 +232,7 @@ echo "bridges created<br />\n";
 // this should be at the end of the creation chain
 // so it won't be created if there is an error
 $query = "INSERT INTO campaign_settings (simulation, campaign, abbrv, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
-$query .= "VALUES ('RoF', '$newCampaignName', '$newCampaignAbbrv','$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
+$query .= "VALUES ('$game', '$newCampaignName', '$newCampaignAbbrv','$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
 include ('includes/doit.php');
 echo "master campaign_settings updated<br />\n";
 
