@@ -11,7 +11,7 @@ ul#navigation {
 	margin:0;
 	padding:0;
 	padding-top:111px;
-	padding-left:245px;
+	padding-left:244px;
 	z-index: 999;
 	}
 
@@ -27,31 +27,30 @@ ul#navigation li a {
 	}
 
 ul#navigation li a.home {
-	width:97px;
+	width:96px;
 	/*background-position:-190px 0px;  remove to reactivate Home*/
 	}
-	
-ul#navigation li a.userMgmt {
-	width:95px;
-	background-position:-97px 0px;
+ul#navigation li a.campMgmt {
+	width:96px;
+	background-position:-479px 0px;
+	}	
+ul#navigation li a.preMsn {
+	width:98px;
+	background-position:-287px 0px;
 	}
-ul#navigation li a.prepCamp {
+ul#navigation li a.postMsn {
+	width:94px;
+	background-position:-385px 0px;
+	}		
+ul#navigation li a.userMgmt {
+	width:96px;
+	background-position:-96px 0px;
+	}
+/*ul#navigation li a.prepCamp {
 	width:95px;
 	background-position:-192px 0px;
 	}
-ul#navigation li a.preMsn {
-	width:94px;
-	background-position:-288px 0px;
-	}
-ul#navigation li a.postMsn {
-	width:96px;
-	background-position:-384px 0px;
-	}			
-ul#navigation li a.campMgmt {
-	width:96px;
-	background-position:-480px 0px;
-	}
-		
+*/
 ul#navigation li a span {
 	background:url(../img/RofWar_NavMenuLeftSprite.png) no-repeat scroll bottom left;
 	display:block;
@@ -64,30 +63,30 @@ ul#navigation li a span {
 	}
 
 ul#navigation li a.home span {
-	background-position:0px -54px;
+	width:96px;	
+	background-position: 0px -54px;
 	}
-	
+ul#navigation li a.campMgmt span {
+	width:95px;
+	background-position:-479px -54px;
+	}
+ul#navigation li a.preMsn span {
+	width:97px;
+	background-position:-287px -54px;
+	}	
+ul#navigation li a.postMsn span {
+	width:93px;
+	background-position:-385px -54px;
+	}		
 ul#navigation li a.userMgmt span {
 	width:95px;
-	background-position:-97px -54px;
+	background-position:-96px -54px;
 	}
-ul#navigation li a.prepCamp span {
+/*ul#navigation li a.prepCamp span {
 	width:95px;
 	background-position:-192px -54px;
 	}
-ul#navigation li a.preMsn span {
-	width:94px;
-	background-position:-288px -54px;
-	}
-ul#navigation li a.postMsn span {
-	width:95px;
-	background-position:-384px -54px;
-	}				
-ul#navigation li a.campMgmt span {
-	width:95px;
-	background-position:-480px -54px;
-	}
-	
+*/
 ul#navigation li a span:hover {
 	cursor:pointer;
 	}
