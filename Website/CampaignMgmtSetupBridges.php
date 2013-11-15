@@ -30,11 +30,11 @@
 				$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
 
 				$query = "SELECT * from campaign_settings;";
-				if(!$result = $dbc->query($query)) {
+				if(!$result = $camp_link->query($query)) {
 					die('CampaignMgmtSetup.php query error [' . $dbc->error . ']');
 				}
 
-				if ($result = $dbc->query($query)) {
+				if ($result = $camp_link->query($query)) {
 					while ($obj = $result->fetch_object()) {
 							$map=($obj->map);
 					}

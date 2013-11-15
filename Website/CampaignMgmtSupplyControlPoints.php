@@ -34,13 +34,28 @@
 				} else {
 					$fi = $_GET['fi'];
 				}
+                if ($fi == "airfields") {
+					echo "<h2>Delete Airfields from Template</h2>\n";
+					echo "<p>Back to the Mission Editor!</p>\n";
+					echo "<p>Go back to the object filter (\"OBJ FILT\" button) at the top, click on \"Clear All\" then click on \"Airfields\" (a checkmark will appear) and \"OK\".  Now you should see only airfields on the map.</p>\n";
+					echo "<p>\"Select All Visible Objects\" (the airfields) and remove them from the template by pressing the \"Delete\" key on your keyboard.  All the airfields will disappear.</p>\n";
+					echo "<p>Then \"File\", \"Save\" to save $abbrv-template.Mission which now has only the Influence Areas and perhaps a few cities remaining.  From now on the BOSWAR campaign manager will take care of these airfields.</p>\n";
+					echo "<form id=\"campaignMgmtSupplyAirfieldsDone\" name=\"campaignSetup\" action=\"CampaignMgmtSupplyControlPoints.php?btn=campMgmt\" method=\"post\">\n";
+					# BUTTON
+					echo "<fieldset id=\"actions\">\n";	
+					echo "		<button type=\"submit\" name =\"Setup\" id=\"SetupDone\" value =\"true\" >Next</button>\n"; # the value defines the action after the button was pressed
+					echo "	</fieldset>\n";
+					echo "</form>\n";
+
+				}
 				if ($fi == "unset") {
 				?>
+<!--
 				<p><font color='blue'>Stenka: We must be able to create and move both supply points and control points.
 				In the Editor we will use the Railway station object to represent a supply point and another "to be chosen" object to represent the control point.
 				Positioning will be by exchange of group files. This is needed for Beta but not for Alpha</font></p>
 				<p><font color='red'>Tushka: here is my suggestion.  Nothing appears on the final mission template.  If a point needs to be moved, a commander can note the original and new locations and the admin can just edit the appropriate table.</font></p>
-
+-->
 				<h1>Define Supply and Control Points</h1>
 
 				<p>We do this in the Mission Editor.  Reopen it and select <b><?php echo $abbrv ?>-template.Mission</b> if it is not already open.</p>

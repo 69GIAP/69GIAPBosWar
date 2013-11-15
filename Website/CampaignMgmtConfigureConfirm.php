@@ -31,8 +31,8 @@
 					}						
 						
 				# updates
-				if(!$result = $dbc->query($query)){
-					die('There was an error running the query <br>'.$query."<br>" . $dbc->error());
+				if(!$result = $camp_link->query($query)){
+					die('There was an error running the query <br>'.$query."<br>" . $camp_link->error());
 				}
 					else
 				{				

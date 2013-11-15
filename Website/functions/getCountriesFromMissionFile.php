@@ -37,7 +37,7 @@ function get_countries_from_mission_file($path,$file) {
 		}
 		$k++;	 
    	}
-	$camp_link->close();
+	// don't close $camp_link - now needed later in procedure
 	return 1;
 }
 ?>

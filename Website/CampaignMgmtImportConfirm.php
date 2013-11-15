@@ -38,11 +38,14 @@
 //					$returnpage		= $_POST["returnpage"];
 
 					if ($templateImport == 1) {
-						//include getMinMaxXZFromMissionFile.php
+						//require getMinMaxXZFromMissionFile.php
 						require ('functions/getMinMaxXZFromMissionFile.php');
 
-						//include getCountriesFromMissonFile.php
+						//require getCountriesFromMissonFile.php
 						require ('functions/getCountriesFromMissionFile.php');
+
+						//require importAirfields.php
+						require ('functions/importAirfields.php');
 
 						if (get_minmaxxz_from_mission_file($SaveToDir,$file)) {
 							echo "Min and Max X and Z values of Combat Area updated.<br />\n";
@@ -51,6 +54,11 @@
 						if (get_countries_from_mission_file($SaveToDir,$file)) {
 							echo "Countries and Coalitions updated.<br />\n";
 						}
+
+						import_airfields($SaveToDir,$file);
+
+						// ensure airfield names are unique
+						include ('includes/differentiateAirfields.php');
 
 						// Now delete the file
 						$filename = $SaveToDir.'/'.$file;
@@ -64,11 +72,10 @@
 
 ?>
 						<br />&nbsp;<br />
-<a href="CampaignMgmtSupplyControlPoints.php?btn=campMgmt">Next</a>
+<a href="CampaignMgmtSupplyControlPoints.php?btn=campMgmt&fi=airfields">Next</a>
 <?php
 
-//						header ("Location: $returnpage?btn=1");
-
+/*
 					} elseif ($templateImport == 2) {
 						//require importAirfields.php
 						require ('functions/importAirfields.php');
@@ -94,6 +101,7 @@
 <a href="CampaignMgmtImport.php?btn=campMgmt&fi=template">Next</a>
 <?php
 //						header ("Location: $returnpage?btn=2"); 
+*/
 					}
 ?>
 

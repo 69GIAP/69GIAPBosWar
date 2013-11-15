@@ -34,7 +34,7 @@
 					}
 					
 					if (!isset($_GET['fi'])) {
-						$fi = 'airfields';
+						$fi = 'blank';
 						}
 					else {
 						$fi = $_GET['fi'];
@@ -42,12 +42,13 @@
 //					echo "\$fi: $fi<br />\n";
 
 					echo "<h2>Upload $campaign Campaign Files</h2>";
+
 					$query = "SELECT * from campaign_settings;";
-					if(!$result = $dbc->query($query)) {
-						die('CampaignMgmtSetup.php query error [' . $dbc->error . ']');
+					if(!$result = $camp_link->query($query)) {
+						die('CampaignMgmtSetup.php query error [' . $camp_link->error . ']');
 					}
 		
-					if ($result = $dbc->query($query)) {
+					if ($result = $camp_link->query($query)) {
 						/* fetch associative array */
 						while ($obj = $result->fetch_object()) {
 								$map=($obj->map);
@@ -58,24 +59,14 @@
 					# require pickFile.php
 					require ('functions/pickFile.php');
 
-					if ($fi == 'airfields') { // now processed first
-						echo "<p>We will now upload both our airfields group file and our template missions file to the BOSWAR campaign manager.</p>\n";
+					if ($fi == 'blank') { // skip if not
+						echo "<p>We will now upload our template mission file to the BOSWAR campaign manager.</p>\n";
 						echo "<p>Note that this will create a directory, \"C:\\BOSWAR\" on the BOSWAR web server host if that directory does not already exist.</p>\n";
 
 						echo "<p>Start by navigating to your <b>$abbrv-groups</b> directory.</p>\n";
-						echo "<p>Choose <b>$abbrv-airfields.Group.</b><br />
+						echo "<p>Choose <b>$abbrv-template.Mission.</b><br />
 						Then click \"Upload File\".</p>\n";
-						$returnpage = 'CampaignMgmtUpload.php';
-
-						}
-					elseif ($fi == 'template') {// now processed second	
-						echo "<p>We will now upload our template mission file to the BOSWAR campaign manager.</p>\n";
-						echo "<p>Select <b>$abbrv-template.Mission</b><br />
-						Then click \"Upload File\".</p>\n";
-
-						# Done (for now) with uploads
 						$returnpage = 'CampaignMgmtUpload.php?btn=campMgmt';
-
 					}
 
 					# go

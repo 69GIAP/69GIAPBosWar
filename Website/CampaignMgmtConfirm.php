@@ -42,7 +42,7 @@ if ($_POST["updateCampaignParameters"] == 1) {
 	$query = "UPDATE campaign_settings SET logpath = '$logpath', log_prefix = '$log_prefix';"; 
 //	echo "$query<br />\n";
 	if(!$result = $camp_link->query($query)) {
-		die('CampaignMgmtConfirm #1 query error [' . $dbc->error . ']');
+		die('CampaignMgmtConfirm #1 query error [' . $camp_link->error . ']');
 	}
 	$result = $camp_link->query($query);
 //	echo "$result<br />\n";
@@ -59,7 +59,7 @@ if ($_POST["updateCampaignParameters"] == 2) {
 			finish_flight_only_landed = '$finish_flight_only_landed';"; 
 //	echo "$query<br />\n";
 	if(!$result = $camp_link->query($query)) {
-		die('CampaignMgmtConfirm #2 query error [' . $dbc->error . ']');
+		die('CampaignMgmtConfirm #2 query error [' . $camp_link->error . ']');
 	}
 	$result = $camp_link->query($query);
 //	echo "$result<br />\n";
@@ -89,7 +89,7 @@ if ($_POST["updateCampaignParameters"] == 3) {
 		light_w_gunner = '$lw_gunner';";
 //	echo "$query<br />\n";
 	if(!$result = $camp_link->query($query)) {
-		die('CampaignMgmtConfirm #3 query error [' . $dbc->error . ']');
+		die('CampaignMgmtConfirm #3 query error [' . $camp_link->error . ']');
 	}
 	$result = $camp_link->query($query);
 //	echo "$result<br />\n";
@@ -121,7 +121,7 @@ if ($_POST["updateCampaignParameters"] == 4) {
 			detect_off_time = '$time_actvtUnit';"; 
 //	echo "$query<br />\n";
 	if(!$result = $camp_link->query($query)) {
-		die('CampaignMgmtConfirm #4 query error [' . $dbc->error . ']');
+		die('CampaignMgmtConfirm #4 query error [' . $camp_link->error . ']');
 	}
 	$result = $camp_link->query($query);
 //	echo "$result<br />\n";
@@ -135,7 +135,7 @@ if ($_POST["updateCampaignParameters"] == 5) {
 		$query = "UPDATE campaign_settings SET status = 2 ;"; 
 //		echo "$query<br />\n";
 		if(!$result = $camp_link->query($query)) {
-			die('CampaignMgmtConfirm #5 query error [' . $dbc->error . ']');
+			die('CampaignMgmtConfirm #5 query error [' . $camp_link->error . ']');
 		}
 //		$result = $camp_link->query($query);
 //		echo "$result<br />\n";
@@ -145,7 +145,7 @@ if ($_POST["updateCampaignParameters"] == 5) {
 		$query = "UPDATE campaign_settings SET status = 1 ;"; 
 //		echo "$query<br />\n";
 		if(!$result = $camp_link->query($query)) {
-			die('CampaignMgmtConfirm #5 query error [' . $dbc->error . ']');
+			die('CampaignMgmtConfirm #5 query error [' . $camp_link->error . ']');
 		}
 //		$result = $camp_link->query($query);
 //		echo "$result<br />\n";

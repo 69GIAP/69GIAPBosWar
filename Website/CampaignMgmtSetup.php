@@ -32,11 +32,11 @@
 					
 					# initialise variables
 					$query = "SELECT * from campaign_settings;";
-					if(!$result = $dbc->query($query)) {
-						die('CampaignMgmtSetup.php query error [' . $dbc->error . ']');
+					if(!$result = $camp_link->query($query)) {
+						die('CampaignMgmtSetup.php query error [' . $camp_link->error . ']');
 					}
 		
-					if ($result = $dbc->query($query)) {
+					if ($result = $camp_link->query($query)) {
 						/* fetch associative array */
 						while ($obj = $result->fetch_object()) {
 								$map=($obj->map);
@@ -183,18 +183,17 @@
 			echo "<p>Now go to the \"Search and Select\" menu, select \"Select All Objects in Mission\" then press the \"Delete\" key on your keyboard. There will be a pause (have patience) and all the airfields etc. will disappear.</p>\n";
 			echo "<p>We can now load back in only those objects that were in our sector with File, Import from File, select your <b>$abbrv-groups</b> directory and load the file <b>$abbrv-no-trunc.Group</b>.
 			You should now have just the airfields in your sector plus some towns or stuff.</p>\n"; 
-			echo "<p>File, Save to make sure we do not lose this!</p>\n";
+			echo "<p>\"File\", \"Save\" to make sure we do not lose this!</p>\n";
 
 			echo "<h3>Activate Select Airfields</h3>\n";
 
 			echo "<p>The next step in the creation of the campaign template is to decide which Airfields will be active. Again, for performance reasons we do not want every airfield in our sector to be active. So chose 3-4 for each side.</p>\n";
 			echo "<p>Go back to the object filter (OBJ FILT button) at the top, click on \"Clear All\" then click on \"Airfield\" (a checkmark will appear) and \"OK\".  Now on the map you should see airfields only.</p>\n";
 			echo "<p>Left Mouse Click on or box round a Central Powers airfield to highlight it. You should now have the Airfield Properties displayed. Left mouse click \"Create Linked Entity\" to declare it as an active airfield.<br>(Multiple airields may be selected by using Ctrl + left click to speed this step up)</p>\n"; 
-			echo "<p>Then click the \">\" on the right of \"Name:\" which will give you the Airfield advanced properties.  Here set the Country: (Probably Germany?) and click OK.  Next do the same for an Allied airfield setting the Country to one of the Allied Countries.<br />
-					Continue till all active airfields are set.</p>\n";
+			echo "<p>Then click the \">\" on the right of \"Name:\" which will give you the Airfield advanced properties.  Here set the Country: (Probably Germany?) and click OK.  Next do the same for an Allied airfield setting the Country to one of the Allied Countries.</p>
+				<p>Continue till all active airfields are set.</p>\n";
 					
-			echo "<p>Once ready \"Select All Visible Objects\" (the airfields) then \"File\", \"Save Selection to File\", select your <b>$abbrv-groups</b> directory and save as <b>$abbrv-airfields.Group</b>.</p>\n";
-			echo "<p>Then save the entire template mission file, which now contains activated airfields.</p>\n";
+			echo "<p>Then use \"File\", \"Save\" to save the entire template mission file, which now contains activated airfields.</p>\n";
 			echo "<p>Once you are ready to proceed, click \"Next\"</p>\n";
 			
 			# BUTTON
