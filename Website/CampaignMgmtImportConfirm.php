@@ -47,6 +47,12 @@
 						//require importAirfields.php
 						require ('functions/importAirfields.php');
 
+						//require importPoints.php
+						require ('functions/importPoints.php');
+
+						// require importBridges.php
+						require ('functions/importBridges.php');
+
 						if (get_minmaxxz_from_mission_file($SaveToDir,$file)) {
 							echo "Min and Max X and Z values of Combat Area updated.<br />\n";
 						}
@@ -55,10 +61,21 @@
 							echo "Countries and Coalitions updated.<br />\n";
 						}
 
+						// import airfields
 						import_airfields($SaveToDir,$file);
 
 						// ensure airfield names are unique
 						include ('includes/differentiateAirfields.php');
+						
+						//truncate airfields_models table and 
+						// copy active airfields into having 0 models assigned
+						include ('includes/copyActiveAirfields.php');
+
+						// Import supply and control points
+						import_points($SaveToDir,$file);
+
+						// import bridges
+						import_bridges($SaveToDir,$file);
 
 						// Now delete the file
 						$filename = $SaveToDir.'/'.$file;
@@ -69,39 +86,10 @@
 						} else {
 							echo "$filename not found or read-only<br />\n";
 						}
-
 ?>
 						<br />&nbsp;<br />
 <a href="CampaignMgmtSupplyControlPoints.php?btn=campMgmt&fi=airfields">Next</a>
 <?php
-
-/*
-					} elseif ($templateImport == 2) {
-						//require importAirfields.php
-						require ('functions/importAirfields.php');
-						import_airfields($SaveToDir,$file);
-						// ensure airfield names are unique
-						include ('includes/differentiateAirfields.php');
-						
-						//truncate airfields_models table and copy active airfields into having 0 models assigned
-						include ('includes/copyActiveAirfields.php');
-
-						// Now delete the file
-						$filename = $SaveToDir.'/'.$file;
-						if (file_exists($filename)) {
-							// delete the file
-							unlink("$filename");	
-							echo "$filename deleted<br />\n";
-						} else {
-							echo "$filename not found or read-only<br />\n";
-						}
-
-?>
-						<br />&nbsp;<br />
-<a href="CampaignMgmtImport.php?btn=campMgmt&fi=template">Next</a>
-<?php
-//						header ("Location: $returnpage?btn=2"); 
-*/
 					}
 ?>
 

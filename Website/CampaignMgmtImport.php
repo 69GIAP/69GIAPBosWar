@@ -61,8 +61,8 @@
 					echo "<form id=\"campaignMgmtImportForm\" name=\"campaignImport\" action=\"CampaignMgmtImportConfirm.php?btn=campMgmt\" method=\"post\">\n";
 
 					if ($fi == 'airfields') {
-						echo "<h3>Update Combat Areas, Countries and Coalitions, Active and Inactive Airfields</h3>\n";
-						echo "<p>The template file will be used to define a rectangular combat area that includes all defined Influence Areas, and will also import your settings for countries, coalitions, and the airfields to be used in each mission.</p>\n";
+						echo "<h3>Update Combat Areas, Countries and Coalitions, Active and Inactive Airfields, Supply Points, any Control Points, and Bridges</h3>\n";
+						echo "<p>The template file will be used to define a rectangular combat area that includes all defined Influence Areas, and will also import your settings for countries, coalitions, and the airfields to be used in each mission.  Furthermore it will import all supply points and control points that you have defined, plus all bridges in the sector.</p>\n";
 						echo "<p>Select <b>$abbrv-template.Mission</b> and click \"Update\".</p>\n";
 						$returnpage = "CampaignMgmtImport.php";
 						echo "<input type=\"hidden\" name=\"SaveToDir\" value=\"$SaveToDir\">\n";

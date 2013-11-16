@@ -45,7 +45,7 @@
 					$result->free();
 
 					# start form
-					echo "<form id=\"campaignMgmtSetupForm\" name=\"campaignSetup\" action=\"CampaignMgmtSetupConfirm.php?btn=campMgmt\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtSetupForm\" name=\"campaignSetup\" action=\"CampaignMgmtUpload.php?btn=campMgmt\" method=\"post\">\n";
 
 					echo "<p>This is a job for the campaign administrator who should have basic skills in the Mission Editor, but don't worry.  We will lead you step-by-step.</p>\n";
 
@@ -95,7 +95,7 @@
 						echo "<p>We have not yet created a locations file for the \"$map\" map.</p>\n";
 					}
 					
-					echo "<p>Click 'Apply' in the Mission Properties screent, giving it the file name  <b>$abbrv-template.Mission</b> and saving it to your <b>$abbrv-groups</b> directory.</p>\n";
+					echo "<p>Click 'Apply' in the Mission Properties screen, giving it the file name  <b>$abbrv-template.Mission</b> and saving it to your <b>$abbrv-groups</b> directory.</p>\n";
 					// we should be able to determine the map from the GuiMap line in the Options section of the Mission file... just a SMOP.  :)
 
 					echo "<h3>The Opposing Sides</h3>\n";
@@ -106,31 +106,31 @@
 					echo "In the mission editor you should use \"File\", \"Save\", before coming back here.</p>\n";
 					
 					
-					echo "<h3>Import Airfields</h3>\n";
+					echo "<h3>Import Infrastructure</h3>\n";
 
-					echo "<p>We will now populate our template with some infrastructure (including, most importantly, the airfields).</p>\n" ;
+					echo "<p>We will now populate our template with infrastructure (including, most importantly, the airfields).</p>\n" ;
 					echo "<p>In the mission editor \"File\" menu select \"Import From File...\" and go to: directory <b>Rise of Flight/data/Template/</b></p>\n";
 					if($map == 'Western Front') {
-						echo "<p>Select the Base-no-trunc.Group file.  This file holds the airfields and some other infrastructure for the Western Front map.</p>\n";
-						echo "<p>Select the Base-for-trunc.Group file.  This file holds the airfields and some other infrastructure for the Western Front map.</p>\n";
+						echo "<p>Select the Base-no-trunc.Group file.  This file holds the airfields and some other infrastructure for the Western Front map.  Press \"Open\" and wait for the file to load.</p>\n";
+						echo "<p>Then select the Base-for-trunc.Group file.  This file holds the remaining infrastructure (including bridges) for the Western Front map.</p>\n";
 						
 						}
 					elseif($map == 'Channel') {
-						echo "<p>Select the Base-no-trunc-channel.Group file.  This file holds the airfields and some other infrastructure for the Channel map.</p>\n";
-						echo "<p>Select the Base-for-trunc-channel.Group file.  This file holds the airfields and some other infrastructure for the Channel map.</p>\n";
+						echo "<p>Select the Base-no-trunc-channel.Group file.  This file holds the airfields and some other infrastructure for the Channel map.  Press \"Open\" and wait for the file to load.</p>\n";
+						echo "<p>Then select the Base-for-trunc-channel.Group file.  This file holds the airfields and some other infrastructure for the Channel map.</p>\n";
 						}
 					elseif($map == 'Verdun') {
-						echo "<p>Select the Base_DF5x5Verdun.Group file.  This file holds the airfields and all other infrastructure for the Verdun dogfight map.</p>\n";
+						echo "<p>Select the Base_DF5x5Verdun.Group file.  This file holds the airfields and all other infrastructure for the Verdun dogfight map.  Press \"Open\" and wait for the file to load.</p>\n";
 						}
 					elseif($map == 'Lake') {
-						echo "<p>Select the Base_DF3x3Lake.Group file.  This file holds the airfields and all other infrastructure for the Lake dogfight map.</p>\n";
+						echo "<p>Select the Base_DF3x3Lake.Group file.  This file holds the airfields and all other infrastructure for the Lake dogfight map.  Press \"Open\" and wait for the file to load.</p>\n";
 						}
 					else {
 						echo "<p>We have not yet created a locations file for the \"$map\" map.</p>\n";
 					}
 					
-					echo "<p>Loading these files can take a while, be patient. Wait until the 'Please wait until operation is finished' popup disappears. If the load hangs near the end, quit and reload the file which should now be a quick process.</p>\n";
-					echo "<p>Save the (now larger) template mission before continuing.</p>\n";
+					echo "<p>Loading these files (especially the large \"for-trunc\" ones) can take a while, be patient. Wait until the 'Please wait until operation is finished' popup disappears. If the load hangs near the end, quit and reload the file which should now be a quick process.</p>\n";
+					echo "<p>Save your (now much larger) template mission file before continuing.</p>\n";
 					
 					echo "<h3>Define the Influence Areas</h3>\n";
 
@@ -183,11 +183,11 @@
 			echo "<p>We now want to save <b>just</b> the objects that are in our sector.</p>\n"; 
 			echo "<p>On the top icon bar is a button for the object filter abbreviated as \"OBJ FILT\".  Select that, then \"Select All\" then select \"OK\".</p>\n";
 			echo "<p>Click the bottom left of the influence areas and holding the left mouse button drag from bottom left of our sector to top right of our sector. This will highlight all objects in our sector.  Be sure this includes all the defined influence areas.  Better to be slightly generous than slightly stingy here.</p>\n";
-			echo "<p>Next in the File menu, select \"Save selection to File\", navigate back to your <b>$abbrv-groups</b> directory, give this file the File Name <b>$abbrv-no-trunc.Group</b>, and Save as type \"Mission Files\", then click \"Save\".</p>\n";
+			echo "<p>Next in the File menu, select \"Save selection to File\", navigate back to your <b>$abbrv-groups</b> directory, give this file the File Name <b>$abbrv-sector.Group</b>, and Save as type \"Group Files\", then click \"Save\".</p>\n";
 			echo "<p>Left click outside the area to unselect it.</p>\n";
 			echo "<p>Now go to the \"Search and Select\" menu, select \"Select All Objects in Mission\" then press the \"Delete\" key on your keyboard. There will be a pause (have patience) and all the airfields etc. will disappear.</p>\n";
-			echo "<p>We can now load back in only those objects that were in our sector with File, Import from File, select your <b>$abbrv-groups</b> directory and load the file <b>$abbrv-no-trunc.Group</b>.
-			You should now have just the airfields in your sector plus some towns or stuff.</p>\n"; 
+			echo "<p>We can now load back in only those objects that were in our sector with File, Import from File, select your <b>$abbrv-groups</b> directory and load the file <b>$abbrv-sector.Group</b>.
+			You should now have just the infrastructore for your sector.</p>\n"; 
 			echo "<p>\"File\", \"Save\" to make sure we do not lose this!</p>\n";
 
 			echo "<h3>Activate Select Airfields</h3>\n";
@@ -195,20 +195,21 @@
 			echo "<p>The next step in the creation of the campaign template is to decide which Airfields will be active. Again, for performance reasons we do not want every airfield in our sector to be active. So chose 3-4 for each side.</p>\n";
 			echo "<p>Go back to the object filter (OBJ FILT button) at the top, click on \"Clear All\" then click on \"Airfield\" (a checkmark will appear) and \"OK\".  Now on the map you should see airfields only.</p>\n";
 			echo "<p>Left Mouse Click on or box round a Central Powers airfield to highlight it. You should now have the Airfield Properties displayed. Left mouse click \"Create Linked Entity\" to declare it as an active airfield.<br>(Multiple airields may be selected by using Ctrl + left click to speed this step up)</p>\n"; 
-			echo "<p>Then click the \">\" on the right of \"Name:\" which will give you the Airfield advanced properties.  Here set the Country: (Probably Germany?) and click OK.  Next do the same for an Allied airfield setting the Country to one of the Allied Countries.</p>
-				<p>Continue till all active airfields are set.</p>\n";
+			echo "<p>Then click the \">\" on the right of \"Name:\" which will give you the Airfield advanced properties.  Here set the Country: (Probably Germany) and click OK.  Next do the same for an Allied airfield setting the Country to one of the Allied Countries.</p>
+				<p>Continue until all active airfields are set.</p>\n";
 # addition of supply and control points
 			echo "<h3>Supply Points</h3>\n";
-			echo "<p>When new vehicles arrive on the map they will arrive at a Supply point. This will normaly be near a road on the edge of the map or near a railway line. We will use the 'rwstation' block as a token for a supply point.
-					First in the Mission Editor go to object filter and Select All. Then select 'Blocks' on the right of the screen, rwstation and position it where you want on the map. In the Block Properties change the name to be 'Supply point 1'. This must be spelt exactly
-					correctly respecting the use of capitals. Create Linked Entity and set the Country in the advanced properties. Then continue till we have 'Supply point 1', 'Supply point 2' and 'Supply point 3' on the Allied side and similar on the Central side. We must have at minimum a Supply point 1 for each coalition.<br></p>\n";
+			echo "<p>When new vehicles arrive on the map they will arrive at a Supply point. This will normally be near a road on the edge of the map or near a railway line. We will use the \"rwstation\" block as a token for a supply point.
+					First in the Mission Editor go to object filter and \"Select All\". Then select \"Blocks\" on the right of the screen, then \"rwstation\" and position it where you want on the map.
+					\"Create Linked Entity\" and set the \"Country\" in \"Advanced Properties\". Then continue until you have enough supply points on each side. We <b>must</b> have at least one for each coalition.<br></p>\n";
 			echo "<h3>Control Points</h3>\n";
-			echo "<p>Campaigns may be purely points based or based on set objectives to be captured or held. Such an objective is signified by a 'Control point'. We will user the 'flag' Flag as a token for a Control point.
-					Select 'Flags' on the right of the screen, flag and position it where you want on the map. In the Flag Properties change the name to be 'Control point 1'. This must be spelt exactly
-					correctly respecting the use of capitals. Create Linked Entity and set the Country in the advanced properties. Then continue till we have sufficient Control Points. Note that while there will be two 'Supply point 1's on a map each Control point must be uniquely numbered.<br></p>\n";
+			echo "<p>Campaigns may be purely points based or based on set objectives to be captured or held. Such an optional objective is called a \"Control Point\". We will use the \"flag\" Flag as a token for a Control Point.
+					To set a Control Point, select \"Flags\" on the right of the screen, then \"flag\" and position it where you want on the map.
+					\"Create Linked Entity\" and set the \"Country\" in  \"Advanced Properties\".  Continue as needed.<br></p>\n";
 			
 # end addition supply control					
-			echo "<p>Then use \"File\", \"Save\" to save the entire template mission file, which now contains activated airfields, supply points and control points.</p>\n";
+			echo "<h3>Save the template Mission file</h3>\n";
+			echo "<p>Once you have defined all the \"vital points\" you need, use \"File\", \"Save\" to save the entire template mission file, which now contains Influence Areas, activated airfields, supply points, any control points, bridges, cities, towns, villages, etc.</p>\n";
 			echo "<p>Once you are ready to proceed, click \"Next\"</p>\n";
 			
 			# BUTTON

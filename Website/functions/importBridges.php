@@ -8,7 +8,7 @@ function import_bridges($path,$file) {
 	global $camp_link; // link to campaign db
 
 	// included required functions
-	require ('functions/getCoalition.php');
+//	require ('functions/getCoalition.php');
 
 	// initialize
 	$j = 0; // index for bridge number

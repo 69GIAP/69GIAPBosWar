@@ -1,9 +1,11 @@
 <?php
 function import_points($path,$file) {
-	// import supply points and control points from a group file
-	// =69.GIAP=TUSHKA
-	// Nov 8, 2013
-	// BOSWAR version 1.0
+// import supply points and control points from a group file
+// =69.GIAP=TUSHKA
+// Nov 8, 2013
+// BOSWAR version 1.1
+// Nov 16, 2013 (drop coalition name from control point names)
+	
 
 	global $camp_link; // link to campaign db
 
@@ -18,9 +20,7 @@ function import_points($path,$file) {
 	$sp0 = 0; // index for neutral supply points
 	$sp1 = 0; // index for coalition 1 supply points
 	$sp2 = 0; // index for coalition 2 supply points
-	$cp0 = 0; // index for neutral control points
-	$cp1 = 0; // index for coalition 1 control points
-	$cp2 = 0; // index for coalition 2 control points
+	$cp = 0; // index for control points
 
 	// get the mission file as an array of lines
 	$line = file("$path/$file");
@@ -81,11 +81,22 @@ function import_points($path,$file) {
 			++$sp2;	
 			$query2 = "INSERT INTO supply_points (xPos, zPos, CoalID, supplypointName) VALUES ('$XPos', '$ZPos', '$CoalID', '$Coalitionname Supply Point $sp2');";
 		}
-		echo "$query2<br />\n";
 		if(!$result = $camp_link->query($query2)) {
+			echo "$query2<br />\n";
 			die('importPoints query2 error [' . $camp_link->error . ']');
 		}
-
+	}
+	if ($sp0 > 0 ) {
+		$Coalitionname = get_coalitionname(0);
+	   	echo "$sp0 $Coalitionname supply points imported<br/>\n";
+	}
+	if ($sp1 > 0 ) {
+		$Coalitionname = get_coalitionname(1);
+	   	echo "$sp1 $Coalitionname supply points imported<br/>\n";
+	}
+	if ($sp2 > 0 ) {
+		$Coalitionname = get_coalitionname(2);
+	   	echo "$sp2 $Coalitionname supply points imported<br/>\n";
 	}
 
 	// process the control points
@@ -117,22 +128,13 @@ function import_points($path,$file) {
 		$CoalID = get_coalition($country);
 		$Coalitionname = get_coalitionname($CoalID);
 
-		if ($CoalID == 0) {
-			++$cp0;	
-			$query3 = "INSERT INTO supply_points (xPos, zPos, CoalID, supplypointName) VALUES ('$XPos', '$ZPos', '$CoalID', '$Coalitionname Control Point $cp0');";
-		} elseif ($CoalID == 1) {
-			++$cp1;	
-			$query3 = "INSERT INTO supply_points (xPos, zPos, CoalID, supplypointName) VALUES ('$XPos', '$ZPos', '$CoalID', '$Coalitionname Control Point $cp1');";
-		} elseif ($CoalID == 2) {
-			++$cp2;	
-			$query3 = "INSERT INTO supply_points (xPos, zPos, CoalID, supplypointName) VALUES ('$XPos', '$ZPos', '$CoalID', '$Coalitionname Control Point $cp2');";
-		}
-		echo "$query3<br />\n";
+		++$cp;	
+		$query3 = "INSERT INTO supply_points (xPos, zPos, CoalID, supplypointName) VALUES ('$XPos', '$ZPos', '$CoalID', 'Control Point $cp');";
 		if(!$result = $camp_link->query($query3)) {
-			die('importPoints query2 error [' . $camp_link->error . ']');
+			echo "$query3<br />\n";
+			die('importPoints query3 error [' . $camp_link->error . ']');
 		}
-
 	}
-	
+	echo "$cp control points imported<br/>\n";
 }
 ?>

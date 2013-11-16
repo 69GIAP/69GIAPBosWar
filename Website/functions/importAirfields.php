@@ -135,6 +135,7 @@ function import_airfields($SaveToDir,$file) {
 			} else {
 //				echo'<p>'.$camp_link->error().'</p>';
 			}	
+			$current_object = '';
 		}	
 
 		if (substr($line,0,1)=='}' AND ($current_object == 'MCU_TR_Entity')) {
@@ -148,6 +149,7 @@ function import_airfields($SaveToDir,$file) {
 			} else {
 				echo'<p>'.$camp_link->error().'</p>';
 			}	
+			$current_object = '';
 		}
 	}	
 	// do not close $camp_link... needed later in process
