@@ -53,7 +53,9 @@
 					# use this information to connect to campaign 
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
                 ?>
-                <p>We need a screen to create a column of vehicles in col_10. One session should cope with both allied or Central Admin and planners. This is essential for Alpha</p>
+                <p>A column is a group of 1-99 vehicles of the same type which may be moving or may be stationary. Columns of more than 10 vehicles may cause performance problems in the mission. Be cautious and test. If during the planning process a destination has been set the column will be written to the mission with all required links and waypoints.
+				It will travel at the average column speed set in the campaign parameters or the maximum vehicle speed whichever is lower. By default it will try to follow a major road. Artillery will be loaded into trucks for transit. If a column is not moving
+				it will be written to the mission with a complex trigger that activates it when aircraft or enemy ground forces are nearby. So a stationary column takes up less mission resources. If everything is moving performance will suffer.</p>
 
             
             </div>
