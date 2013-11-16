@@ -53,17 +53,18 @@
 					echo "<h3>Preliminaries</h3>\n";
 
 					echo "<p>First you should create a directory somewhere on your computer where you will save any .Mission template and .Group files which will be exchanged between the mission editor and the BOSWAR campaign manager for this campaign.  Because you may be running multiple campaigns in parallel it must be unique to the campaign.  Otherwise there could be confusion between the campaigns.<br />
-						Name this directory: <b>$abbrv-groups</b>.<br />
-						We will refer to this directory as your \"campaign groups directory\".</p>\n";
+						<br>Name this directory: <b>$abbrv-groups</b>.<br />
+						<br>We will refer to this directory as your \"campaign groups directory\".</p>\n";
 
 					echo "<p>Next we work on setting up the campaign in the mission editor (RoF Editor in this case).</p>\n";
 					echo "<p>We recommend that you open the mission editor in a separate window to carry out this process.  Continue when ready.</p>\n";
 					echo "<p>Start a new mission by clicking \"File\" and \"New\" in the upper left.</p>\n";
 					echo "<p>If the \"Mission Properties\" window is not open, right click with your mouse on the map and select \"Properties\". This will open the \"Mission Properties\" window.</p>\n";
  
-					echo "<p>Enter a name for the mission, preferably using or including your campign abbreviation ($abbrv). Avoid special characters and be consistent in use of upper and lower case.  Filenames are case-sensitive.</p>\n";
+					echo "<p>Enter a name for the mission, preferably using or including your campign abbreviation ($abbrv). Avoid special characters and be consistent in use of upper and lower case.</p>\n";
 
 					echo "<p>Select a date and time for the first mission.</p>\n";
+					echo "<p>Mission type should be 'Deathmatch'.</p>\n";
 					
 					echo "<h3>The Campaign Map</h3>\n";
 
@@ -93,7 +94,8 @@
 					else {
 						echo "<p>We have not yet created a locations file for the \"$map\" map.</p>\n";
 					}
-					echo "<p>In the mission editor File menu, select \"Save As...\", giving it the file name  <b>$abbrv-template.Mission</b> and saving it to your <b>$abbrv-groups</b> directory.</p>\n";
+					
+					echo "<p>Click 'Apply' in the Mission Properties screent, giving it the file name  <b>$abbrv-template.Mission</b> and saving it to your <b>$abbrv-groups</b> directory.</p>\n";
 					// we should be able to determine the map from the GuiMap line in the Options section of the Mission file... just a SMOP.  :)
 
 					echo "<h3>The Opposing Sides</h3>\n";
@@ -110,9 +112,12 @@
 					echo "<p>In the mission editor \"File\" menu select \"Import From File...\" and go to: directory <b>Rise of Flight/data/Template/</b></p>\n";
 					if($map == 'Western Front') {
 						echo "<p>Select the Base-no-trunc.Group file.  This file holds the airfields and some other infrastructure for the Western Front map.</p>\n";
+						echo "<p>Select the Base-for-trunc.Group file.  This file holds the airfields and some other infrastructure for the Western Front map.</p>\n";
+						
 						}
 					elseif($map == 'Channel') {
 						echo "<p>Select the Base-no-trunc-channel.Group file.  This file holds the airfields and some other infrastructure for the Channel map.</p>\n";
+						echo "<p>Select the Base-for-trunc-channel.Group file.  This file holds the airfields and some other infrastructure for the Channel map.</p>\n";
 						}
 					elseif($map == 'Verdun') {
 						echo "<p>Select the Base_DF5x5Verdun.Group file.  This file holds the airfields and all other infrastructure for the Verdun dogfight map.</p>\n";
@@ -192,8 +197,18 @@
 			echo "<p>Left Mouse Click on or box round a Central Powers airfield to highlight it. You should now have the Airfield Properties displayed. Left mouse click \"Create Linked Entity\" to declare it as an active airfield.<br>(Multiple airields may be selected by using Ctrl + left click to speed this step up)</p>\n"; 
 			echo "<p>Then click the \">\" on the right of \"Name:\" which will give you the Airfield advanced properties.  Here set the Country: (Probably Germany?) and click OK.  Next do the same for an Allied airfield setting the Country to one of the Allied Countries.</p>
 				<p>Continue till all active airfields are set.</p>\n";
-					
-			echo "<p>Then use \"File\", \"Save\" to save the entire template mission file, which now contains activated airfields.</p>\n";
+# addition of supply and control points
+			echo "<h3>Supply Points</h3>\n";
+			echo "<p>When new vehicles arrive on the map they will arrive at a Supply point. This will normaly be near a road on the edge of the map or near a railway line. We will use the 'rwstation' block as a token for a supply point.
+					First in the Mission Editor go to object filter and Select All. Then select 'Blocks' on the right of the screen, rwstation and position it where you want on the map. In the Block Properties change the name to be 'Supply point 1'. This must be spelt exactly
+					correctly respecting the use of capitals. Create Linked Entity and set the Country in the advanced properties. Then continue till we have 'Supply point 1', 'Supply point 2' and 'Supply point 3' on the Allied side and similar on the Central side. We must have at minimum a Supply point 1 for each coalition.<br></p>\n";
+			echo "<h3>Control Points</h3>\n";
+			echo "<p>Campaigns may be purely points based or based on set objectives to be captured or held. Such an objective is signified by a 'Control point'. We will user the 'flag' Flag as a token for a Control point.
+					Select 'Flags' on the right of the screen, flag and position it where you want on the map. In the Flag Properties change the name to be 'Control point 1'. This must be spelt exactly
+					correctly respecting the use of capitals. Create Linked Entity and set the Country in the advanced properties. Then continue till we have sufficient Control Points. Note that while there will be two 'Supply point 1's on a map each Control point must be uniquely numbered.<br></p>\n";
+			
+# end addition supply control					
+			echo "<p>Then use \"File\", \"Save\" to save the entire template mission file, which now contains activated airfields, supply points and control points.</p>\n";
 			echo "<p>Once you are ready to proceed, click \"Next\"</p>\n";
 			
 			# BUTTON

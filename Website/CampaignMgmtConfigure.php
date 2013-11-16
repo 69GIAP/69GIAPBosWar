@@ -1,5 +1,5 @@
 <?php 
-
+# stenka 16/11/13 cosmetic corrections
 # Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
 	$dbc = connectBOSWAR();
@@ -35,7 +35,7 @@
 					
 					echo "<br>By this point you have logged in with administrator rights, chosen a campaign name, abbreviation and map and created a new campaign database.<br>\n";
 					echo "<br>Now that you are connected directly to your new campaign database it is time to configure it.<br>\n";
-					echo "<br>There are two types of settings we need to configure - those that are not set in the mission editor, and those that are.";
+					echo "<br>There are two types of settings we need to configure - those that are not set in the mission editor, and those that are.<br>";
 					echo "<br>We start with those that are are not set in the editor.  These are set either here in the campaign database alone, or both here and in the game multiplayer options.<br />\n";
 					echo "<br>We have tried to provide sensible defaults, but you may tweak these to fit your campaign and setup.<br />\n";
 
