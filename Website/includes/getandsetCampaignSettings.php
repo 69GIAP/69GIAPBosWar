@@ -1,7 +1,7 @@
 <?php
 // getandsetCampaignSettings
 // reset variable in  case they are empty
-
+# stenka 16/11/13 Cosmetic corrections
 $query = "SELECT * from campaign_settings;";
 if($result = $camp_link->query($query)) {
 	while ($obj = $result->fetch_object()) {
@@ -47,7 +47,7 @@ echo "		<input id=\"database\" type=\"text\" name=\"logpath\" value='$logpath' a
 if ($log_prefix == 'missionReport') {
 	$log_prefix = $log_prefix.$abbrv;
 }
-echo "		<h3>constant prefix for this campaign's log files</h3>\n";
+echo "		<h3>Constant prefix for this campaign's log files</h3>\n";
 echo "		<p class=\"indent\">(Recommend using default or default plus an underscore)</p>\n";
 
 echo "		<input id=\"database\" type=\"text\" name=\"log_prefix\" value='$log_prefix' autofocus ><br>\n";
@@ -60,7 +60,7 @@ echo "	</fieldset>\n";
 # Log Parser Settings
 echo "	<fieldset id=\"inputs\">\n";
 echo "		<h2>Log Parser Settings</h2>\n";
-echo "		<h3>give airfield names in reports</h3>\n";
+echo "		<h3>Give airfield names in reports</h3>\n";
 echo "		<p class=\"indent\">(else 'unidentified')</p>\n";
 
 echo "		<select name=\"show_airfield\" id=\"database\">\n";
@@ -72,7 +72,7 @@ if ($show_airfield == 'true') {
    echo "			<option value=\"false\" selected=\"selected\">false</option>\n";
 }
 echo "		</select><br>\n";
-echo "		<h3>'finish flight only landed' selected on server</h3>\n";
+echo "		<h3>'Finish flight only landed' selected on server</h3>\n";
 echo "		<select name=\"finish_flight_only_landed\" id=\"database\">\n";
 if ($finish_flight_only_landed == 'true') {
    echo "			<option value=\"true\" selected=\"selected\">true</option>\n";
@@ -91,23 +91,23 @@ echo "	</fieldset>\n";
 # Player Score Settings
 echo "	<fieldset id=\"inputs\">\n";
 echo "		<h2>Player Score Settings</h2>\n";
-echo "		<h3>pilot killed</h3>\n";
+echo "		<h3>Pilot killed</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"kia_pilot\" value='$kia_pilot' autofocus ><br>\n";
-echo "		<h3>pilot captured</h3>\n";
+echo "		<h3>Pilot captured</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"mia_pilot\" value='$mia_pilot' autofocus ><br>\n"; 
-echo "		<h3>pilot critically wounded</h3>\n";
+echo "		<h3>Pilot critically wounded</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"cw_pilot\" value='$cw_pilot' autofocus ><br>\n"; 
-echo "		<h3>pilot seriously wounded</h3>\n";
+echo "		<h3>Pilot seriously wounded</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"sw_pilot\" value='$sw_pilot' autofocus ><br>\n";
-echo "		<h3>pilot lightly wounded</h3>\n";
+echo "		<h3>Pilot lightly wounded</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"lw_pilot\" value='$lw_pilot ' autofocus ><br>\n";
-echo "		<h3>gunner killed</h3>\n";
+echo "		<h3>Gunner killed</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"kia_gunner\" value='$kia_gunner' autofocus ><br>\n";
-echo "		<h3>gunner critically wounded</h3>\n";
+echo "		<h3>Gunner critically wounded</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"cw_gunner\" value='$cw_gunner' autofocus ><br>\n";
-echo "		<h3>gunner seriously wounded</h3>\n";
+echo "		<h3>Gunner seriously wounded</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"sw_gunner\" value='$sw_gunner' autofocus ><br>\n";
-echo "		<h3>gunner lightly wounded</h3>\n";
+echo "		<h3>Gunner lightly wounded</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"lw_gunner\" value='$lw_gunner' autofocus ><br>\n";
 # BUTTON
 echo "<fieldset id=\"actions\">\n";	
@@ -117,11 +117,11 @@ echo "	</fieldset>\n";
 # Mission Tuning Settings
 echo "	<fieldset id=\"inputs\">\n";
 echo "		<h2>Mission Tuning Settings</h2>\n";
-echo "		<h3>set aircraft detection distance (m)</h3>\n";
+echo "		<h3>Aircraft detection distance (m)</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"dst_airActGrnd\" value='$dst_airActGrnd' autofocus ><br>\n";
-echo "		<h3>set ground unit detection distance (m)</h3>\n";
+echo "		<h3>Ground unit detection distance (m)</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"dst_GndActGrnd\" value='$dst_GndActGrnd' autofocus ><br>\n";
-echo "		<h3>set skill level for AI aircraft (if used)</h3>\n";
+echo "		<h3>Skill level for AI aircraft and gunners(1=Low, 2=Medium, 3=High)</h3>\n";
 echo "		<select name=\"lvl_AIAc\" id=\"database\">\n";
 //echo "			<option value=\"$lvl_AIAc\" disabled selected>Select Air AI level</option>\n";
 echo "\$lvl_AIAc: $lvl_AIAc<br />\n";
@@ -139,7 +139,7 @@ if ($lvl_AIAc == "1") {
 	echo "			<option value=\"3\" selected=\"selected\">3</option>\n";
 }
 echo "		</select><br>\n";
-echo "		<h3>set skill level for AI ground units</h3>\n";
+echo "		<h3>Skill level for AI ground units (1=Low, 2=Medium, 3=High)</h3>\n";
 echo "		<select name=\"lvl_AIGrnd\" id=\"database\">\n";
 //echo "			<option value=\"$lvl_AIGrnd\" disabled selected>Select Ground AI level</option>\n";
 if ($lvl_AIGrnd == 1) {
@@ -157,17 +157,17 @@ if ($lvl_AIGrnd == 1) {
 }
 echo "		</select><br>\n";
 
-echo "		<h3>set maximum ground speed (km/h)</h3>\n";
+echo "		<h3>Maximum ground speed (km/h)</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"spd_maxGrnd\" value='$spd_maxGrnd' autofocus ><br>\n";
-echo "		<h3>set average column speed (km/h)</h3>\n";
+echo "		<h3>Average column speed (km/h)</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"spd_maxTrnspt\" value='$spd_maxTrnspt' autofocus ><br>\n";
-echo "		<h3>set ground spacing (m)</h3>\n";
+echo "		<h3>Ground spacing (m) between vehicles</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"sprd_suplPnts\" value='$sprd_suplPnts' autofocus ><br>\n";
-echo "		<h3>set lineup time (min)</h3>\n";
+echo "		<h3>Lineup time (min)</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"time_lineup\" value='$time_lineup' autofocus ><br>\n";
-echo "		<h3>set mission flying time (min)</h3>\n";
+echo "		<h3>Mission flying time (min)</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"time_msn\" value='$time_msn' autofocus ><br>\n";
-echo "		<h3>set detect deactivation time (min)</h3>\n";
+echo "		<h3>Detect deactivation time (min)</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"time_actvtUnit\" value='$time_actvtUnit' autofocus ><br>\n";
 echo "	</fieldset>\n"; 
 
