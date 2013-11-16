@@ -158,9 +158,9 @@ $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.pilot_scores LIKE pilo
 include ('includes/doit.php');
 echo "pilot_scores created<br />\n";
 
-$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.supply_points LIKE supply_points;";
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.key_points LIKE key_points;";
 include ('includes/doit.php');
-echo "supply_points created<br />\n";
+echo "key_points created<br />\n";
 
 // Now do the rest of the tables that need to be populated
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.mission_status LIKE mission_status;";

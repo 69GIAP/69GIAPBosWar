@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2013 at 09:48 PM
+-- Generation Time: Nov 16, 2013 at 10:07 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -23,11 +23,12 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `supply_points`
+-- Table structure for table `key_points`
 --
 
 DROP TABLE IF EXISTS `supply_points`;
-CREATE TABLE IF NOT EXISTS `supply_points` (
+DROP TABLE IF EXISTS `key_points`;
+CREATE TABLE IF NOT EXISTS `key_points` (
   `id` tinyint(1) unsigned NOT NULL AUTO_INCREMENT,
   `xPos` mediumint(1) NOT NULL DEFAULT '0',
   `zPos` mediumint(1) NOT NULL DEFAULT '0',
