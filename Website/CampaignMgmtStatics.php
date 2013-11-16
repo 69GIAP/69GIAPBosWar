@@ -34,8 +34,8 @@
 					# close $camp_link
 					$camp_link->close();
                 ?>
-                <p>We need a screen to create a static group of objects vehicles in static. 
-                One session should cope with both allied or Central Admin and planners. This is essential for Alpha</p>
+                <p>A static is a group of dissimilar objects, vehicles, trains etc. which are in a geographic location. This allows us to track their status in the statistics and to activate and deactivate vehicles during a mission via complex triggers, thus reducing performance
+				problems in mission.</p>
             
             </div>
     
