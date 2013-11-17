@@ -1,6 +1,7 @@
 	<div id="footer">
     
 		<?php
+		#Stenka 17/11/13 Referening giap website
 		# reference the username next to the navigation bar              
 		include 'includes/loggedOnInfo.php';
 
@@ -9,14 +10,14 @@
 			{
 				echo "<div id=\"credits\">\n";
 				echo "<p>An unofficial add-on for Rise of Flight</p>\n";
-				echo "<p>brought to you by =69.GIAP=</p>\n";
+				echo "<p>Brought to you by =69.GIAP= Flight simulator wargaming at it's finest visit us on www.69giap.com</p>\n";
 				echo "</div>\n";
 			}
 		if ($game == "BoS")
 			{
 				echo "<div id=\"credits\">\n";
 				echo "<p>An unofficial add-on for IL2 STURMOVIK - Battle of Stalingrad</p>\n";
-				echo "<p>brought to you by =69.GIAP=</p>\n";
+				echo "<p>Brought to you by =69.GIAP= Flight simulator wargaming at it's finest visit us on www.69giap.com<</p>\n";
 				echo "</div>\n";
 			}
         ?>

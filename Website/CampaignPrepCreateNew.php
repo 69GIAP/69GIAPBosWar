@@ -1,5 +1,5 @@
 <?php 
-
+#stenka 17/11/13 adding a bit of explanation
 # Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
 	$dbc = connectBOSWAR();
@@ -27,14 +27,16 @@ $count = $dbc->query("SELECT COUNT(*) FROM campaign_settings;");
 					echo "	<fieldset id=\"inputs\">\n";	
 
 					# NEW CAMPAIGN NAME
-					echo "<h3>Campaign Name and Database</h3>\n";
-					echo "		<input type=\"text\" name=\"newCampaignName\" id=\"database\" placeholder=\"Please enter the campaign's full name.\" value='' size=\"24\" maxlength=\"50\" />\n";
+					echo "<h3>Campaign Name</h3>\n";
+					echo "		<input type=\"text\" name=\"newCampaignName\" id=\"database\" placeholder=\"Please enter the campaign's full name\" value='' size=\"24\" maxlength=\"50\" />\n";
 					# NEW CAMPAIGN ABBREVIATION
-					echo "		<input type=\"text\" name=\"newCampaignAbbrv\" id=\"database\" placeholder=\"Enter a unique 3-7 character abbrev. for the campaign.\" value='' size=\"7\" maxlength=\"7\" />\n";
+					echo "		<input type=\"text\" name=\"newCampaignAbbrv\" id=\"database\" placeholder=\"Enter an unique 3-7 character abbreviation\" value='' size=\"7\" maxlength=\"7\" />\n";
 					# NEW CAMPAIGN DATABASE NAME
-					echo "		<input type=\"text\" name=\"newCampaignDatabaseName\" id=\"database\" placeholder=\"Enter a short name for the campaign's database (no spaces).\" value='' size=\"24\" maxlength=\"24\" />\n";
+					echo "		<input type=\"text\" name=\"newCampaignDatabaseName\" id=\"database\" placeholder=\"Campaign database name (no spaces)\" value='' size=\"24\" maxlength=\"24\" />\n";
 					# NEW CAMPAIGN HOST
-					echo "		<input type=\"text\" name=\"newCampaignDatabaseHost\" id=\"database\" placeholder=\"Please enter the DB host (localhost / IP).\" value='' size=\"24\" maxlength=\"50\" />\n";	
+					echo "<h3>Path from server to database</h3>\n";	
+					echo "		<p class=\"indent\">Note: leave this as localhost unless you know what you are doing</p>\n";					
+					echo "		<input type=\"text\" name=\"newCampaignDatabaseHost\" id=\"database\" placeholder=\"Please enter the DB host (localhost / IP).\" value='localhost' size=\"24\" maxlength=\"50\" />\n";	
 					# CHOOSE CAMPAIGN MAP
 					echo "<h3>Campaign Map</h3>\n";
 					echo "		<select name=\"campaignMap\" id=\"map\">\n";
@@ -56,7 +58,8 @@ $count = $dbc->query("SELECT COUNT(*) FROM campaign_settings;");
 						echo "		<input type=\"text\" name=\"newCampaignDatabasePassword\" id=\"password\" placeholder=\"Please enter the campaign DB user's password.\" value='' size=\"24\" maxlength=\"50\" />\n";
 						$query = "SELECT `camp_host`, `camp_user`, `camp_passwd` from `campaign_settings` WHERE `camp_user` != '' GROUP BY `camp_user` ;";
 						echo "<p><h3>OR select an existing one</h3></p>\n";
-						echo "<p>Note: existing users take precedence over new.</p>\n";
+
+						echo "		<p class=\"indent\">Note: existing users take precedence over new. Beta testers should use boswar</p>\n";
 
 						if(!$result = $dbc->query($query)) {
 							die('There was an error running the query [' . $dbc->error . ']');

@@ -1,7 +1,7 @@
 <?php
 // getandsetCampaignSettings
 // reset variable in  case they are empty
-# stenka 16/11/13 Cosmetic corrections
+# stenka 16/11/13, 17/11/13 Cosmetic and content corrections
 $query = "SELECT * from campaign_settings;";
 if($result = $camp_link->query($query)) {
 	while ($obj = $result->fetch_object()) {
@@ -118,8 +118,10 @@ echo "	</fieldset>\n";
 echo "	<fieldset id=\"inputs\">\n";
 echo "		<h2>Mission Tuning Settings</h2>\n";
 echo "		<h3>Aircraft detection distance (m)</h3>\n";
+echo "		<p class=\"indent\">The distance at which dis enabled vehicles will be enabled by the arrival of an aircraft. Do not set too large - performance!</p>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"dst_airActGrnd\" value='$dst_airActGrnd' autofocus ><br>\n";
 echo "		<h3>Ground unit detection distance (m)</h3>\n";
+echo "		<p class=\"indent\">The distance at which dis enabled vehicles will be enabled by the arrival of another vehicle. Smaller than for aircraft as they are faster.</p>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"dst_GndActGrnd\" value='$dst_GndActGrnd' autofocus ><br>\n";
 echo "		<h3>Skill level for AI aircraft and gunners(1=Low, 2=Medium, 3=High)</h3>\n";
 echo "		<select name=\"lvl_AIAc\" id=\"database\">\n";
@@ -160,14 +162,16 @@ echo "		</select><br>\n";
 echo "		<h3>Maximum ground speed (km/h)</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"spd_maxGrnd\" value='$spd_maxGrnd' autofocus ><br>\n";
 echo "		<h3>Average column speed (km/h)</h3>\n";
+echo "		<p class=\"indent\">An average road speed depending on weather and traffic.</p>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"spd_maxTrnspt\" value='$spd_maxTrnspt' autofocus ><br>\n";
-echo "		<h3>Ground spacing (m) between vehicles</h3>\n";
+echo "		<h3>Ground spacing (m) between vehicles in a column</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"sprd_suplPnts\" value='$sprd_suplPnts' autofocus ><br>\n";
 echo "		<h3>Lineup time (min)</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"time_lineup\" value='$time_lineup' autofocus ><br>\n";
 echo "		<h3>Mission flying time (min)</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"time_msn\" value='$time_msn' autofocus ><br>\n";
 echo "		<h3>Detect deactivation time (min)</h3>\n";
+echo "		<p class=\"indent\">Vehicles are dis enabled after this time. The longer you make this the more vehicles are enabled, the worse performance!</p>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"time_actvtUnit\" value='$time_actvtUnit' autofocus ><br>\n";
 echo "	</fieldset>\n"; 
 

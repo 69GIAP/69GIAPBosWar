@@ -1,4 +1,5 @@
 <?php
+#Stenka 17/11/13 add plug to giap website
 	# cleans out the session if the user visited already a subsection and loaded the index.php
 	if (!empty($_SESSION))
 		{
@@ -72,7 +73,7 @@
                    
             <div id="footer">
                 <div id="credits">
-                    <p>brought to you by =69.GIAP=</p>
+                    <p>brought to you by =69.GIAP= Flight simulator wargaming at it's finest visit us on www.69giap.com</p>
                 </div>
         </div>
     
