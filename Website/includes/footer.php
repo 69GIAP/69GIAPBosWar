@@ -9,15 +9,17 @@
 		if ($game == "RoF")
 			{
 				echo "<div id=\"credits\">\n";
-				echo "<p>An unofficial add-on for Rise of Flight</p>\n";
-				echo "<p>Brought to you by =69.GIAP= Flight simulator wargaming at it's finest visit us on www.69giap.com</p>\n";
+				echo "<p>An unofficial add-on for Rise of Flight brought to you by =69.GIAP=<br />\n";
+				echo "Flight simulator wargaming at it's finest!<br />
+                    Visit us on www.69giap.com</p>\n";
 				echo "</div>\n";
 			}
 		if ($game == "BoS")
 			{
 				echo "<div id=\"credits\">\n";
-				echo "<p>An unofficial add-on for IL2 STURMOVIK - Battle of Stalingrad</p>\n";
-				echo "<p>Brought to you by =69.GIAP= Flight simulator wargaming at it's finest visit us on www.69giap.com<</p>\n";
+				echo "<p>An unofficial add-on for IL2 STURMOVIK - Battle of Stalingrad brought to you by =69.GIAP=<br />\n";
+				echo "Flight simulator wargaming at it's finest!<br />
+                    Visit us on www.69giap.com</p>\n";
 				echo "</div>\n";
 			}
         ?>

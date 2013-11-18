@@ -39,13 +39,13 @@
 					# distinguish between id variable and object_type variable to determine if object is activated by checkbox
 					if ($param_val == 1) {
 						# activate bridge
-						$query .= "UPDATE bridges SET bridge_damage_1 = 0, bridge_damage_2 = 0, bridge_damage_3 = 0, bridge_damage_4 = 0, bridge_damage_5 = 0, 
-						bridge_damage_6 = 0, bridge_damage_7 = 0, bridge_damage_8 = 0, bridge_damage_9 = 0, bridge_damage_10 = 0 WHERE bridge_name like '$param_name' ;";
+						$query .= "UPDATE bridges SET damage_1 = 0, damage_2 = 0, damage_3 = 0, damage_4 = 0, damage_5 = 0, 
+						damage_6 = 0, damage_7 = 0, damage_8 = 0, damage_9 = 0, damage_10 = 0 WHERE name like '$param_name' ;";
 					}
 					else {
 						# change bridge status to inoperatable
-						$query .= "UPDATE bridges SET bridge_damage_1 = 1, bridge_damage_2 = 1, bridge_damage_3 = 1, bridge_damage_4 = 1, bridge_damage_5 = 1, 
-						bridge_damage_6 = 1, bridge_damage_7 = 1, bridge_damage_8 = 1, bridge_damage_9 = 1, bridge_damage_10 = 1 WHERE bridge_name like '$param_name' ;";
+						$query .= "UPDATE bridges SET damage_1 = 1, damage_2 = 1, damage_3 = 1, damage_4 = 1, damage_5 = 1, 
+						damage_6 = 1, damage_7 = 1, damage_8 = 1, damage_9 = 1, damage_10 = 1 WHERE name like '$param_name' ;";
 					}
 				}
 
