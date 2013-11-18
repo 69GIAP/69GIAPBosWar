@@ -84,7 +84,7 @@
 													echo "	    <li><a href=\"CampaignMgmtObjects.php?btn=campMgmt&objectClass=P\" class=\"campAvailAirForce\"></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtSupplyControlPoints.php?btn=campMgmt\" class=\"campControlSupplyPoints\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtObjects.php?btn=campMgmt&objectClass=V\" class=\"campVehicles\"><span></span></a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtColumns.php?btn=campMgmt\" class=\"campCreateColumns\"><span></span></a></li>\n";
+													echo "	    <li><a href=\"CampaignMgmtSetupColumns.php?btn=campMgmt\" class=\"campCreateColumns\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtStatics.php?btn=campMgmt\" class=\"campCreateStatics\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=campMgmt\" class=\"campUpdateAirfields\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtBridges.php?btn=campMgmt\" class=\"campUpdateBridges\"><span></span></a></li>\n";

@@ -4,8 +4,9 @@ function import_points($path,$file) {
 // =69.GIAP=TUSHKA
 // Nov 8, 2013
 // BOSWAR version 1.2
-// Nov 16, 2013 dropped coalition name from control point names
-// and changed table name to key_points
+// Nov 16, 2013 dropped coalition name from control point names,
+// changed table name to key_points and
+// column supplypointName to pointName
 
 	global $camp_link; // link to campaign db
 
@@ -70,13 +71,13 @@ function import_points($path,$file) {
 	
 		if ($CoalID == 0) {
 			++$sp0;	
-			$query2 = "INSERT INTO key_points (xPos, zPos, CoalID, supplypointName) VALUES ('$XPos', '$ZPos', '$CoalID', '$Coalitionname Supply Point $sp0');";
+			$query2 = "INSERT INTO key_points (xPos, zPos, CoalID, pointName) VALUES ('$XPos', '$ZPos', '$CoalID', '$Coalitionname Supply Point $sp0');";
 		} elseif ($CoalID == 1) {
 			++$sp1;	
-			$query2 = "INSERT INTO key_points (xPos, zPos, CoalID, supplypointName) VALUES ('$XPos', '$ZPos', '$CoalID', '$Coalitionname Supply Point $sp1');";
+			$query2 = "INSERT INTO key_points (xPos, zPos, CoalID, pointName) VALUES ('$XPos', '$ZPos', '$CoalID', '$Coalitionname Supply Point $sp1');";
 		} elseif ($CoalID == 2) {
 			++$sp2;	
-			$query2 = "INSERT INTO key_points (xPos, zPos, CoalID, supplypointName) VALUES ('$XPos', '$ZPos', '$CoalID', '$Coalitionname Supply Point $sp2');";
+			$query2 = "INSERT INTO key_points (xPos, zPos, CoalID, pointName) VALUES ('$XPos', '$ZPos', '$CoalID', '$Coalitionname Supply Point $sp2');";
 		}
 		if(!$result = $camp_link->query($query2)) {
 			echo "$query2<br />\n";
@@ -125,7 +126,7 @@ function import_points($path,$file) {
 		$CoalID = get_coalition($country);
 
 		++$cp;	
-		$query3 = "INSERT INTO key_points (xPos, zPos, CoalID, supplypointName) VALUES ('$XPos', '$ZPos', '$CoalID', 'Control Point $cp');";
+		$query3 = "INSERT INTO key_points (xPos, zPos, CoalID, pointName) VALUES ('$XPos', '$ZPos', '$CoalID', 'Control Point $cp');";
 		if(!$result = $camp_link->query($query3)) {
 			echo "$query3<br />\n";
 			die('importPoints query3 error [' . $camp_link->error . ']');
