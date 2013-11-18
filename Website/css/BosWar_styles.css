@@ -148,6 +148,13 @@ div.userLoggedOnInfo {
 	text-align:center;
 	padding: 15px;
 }
+
+#version {
+	position: absolute;
+	top: 5px;
+	right: 15px;
+	font-size: 10px;	
+}
 /************************************************************************
 /* Content Styles */
 #wrapper {

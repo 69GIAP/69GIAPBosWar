@@ -107,10 +107,12 @@ session_start();
 		if ($game == "RoF")
 			{
 				echo "<div id=\"titleRofWar\"></div>\n";
+				echo "<div id=\"version\">Beta Phase: Version 0.1.0</div>\n";
 			}
 		if ($game == "BoS")
 			{
 				echo "<div id=\"titleBosWar\"></div>\n";
+				echo "<div id=\"version\">Beta Phase: Version 0.1.0</div>\n";
 			}	
 	?>
         
