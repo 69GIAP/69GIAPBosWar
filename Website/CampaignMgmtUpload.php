@@ -41,7 +41,7 @@
 					}
 //					echo "\$fi: $fi<br />\n";
 
-					echo "<h2>Upload $campaign Campaign Files</h2>";
+					echo "<h2>Upload $campaign Template File</h2>";
 
 					$query = "SELECT * from campaign_settings;";
 					if(!$result = $camp_link->query($query)) {
@@ -59,21 +59,32 @@
 					# require pickFile.php
 					require ('functions/pickFile.php');
 
+					// configuration
+					$SaveToDir = "C:/BOSWAR/";
+					$FullPath ="$SaveToDir"."$abbrv-template.Mission";
+//					echo "\$FullPath: $FullPath<br />\n";
+
 					if ($fi == 'blank') { // skip if not
-						echo "<p>We will now upload our template mission file to the BOSWAR campaign manager.</p>\n";
-						echo "<p>Note that this will create a directory, \"C:\\BOSWAR\" on the BOSWAR web server host if that directory does not already exist.</p>\n";
+						if (file_exists("$FullPath")) {
+							echo "<p>You have already uploaded $FullPath, so you should </p>\n"; 
+							echo "<a href=\"CampaignMgmtImport.php?btn=campMgmt\">SKIP Upload.</a><p>(Because this file must be imported, and deleted, before you can upload another copy.)</p><p>If, for any reason, the file can not be imported, delete $FullPath and try again.</p>\n";
+							
+						} else {
+							echo "<p>We will now upload our template mission file to the BOSWAR campaign manager.</p>\n";
+							echo "<p>Note that this will create a directory, \"C:\\BOSWAR\" on the BOSWAR web server host if that directory does not already exist.</p>\n";
 
-						echo "<p>Start by navigating to your <b>$abbrv-groups</b> directory.</p>\n";
-						echo "<p>Choose <b>$abbrv-template.Mission.</b><br />
-						Then click \"Upload File\".</p>\n";
-						$returnpage = 'CampaignMgmtUpload.php?btn=campMgmt';
+							echo "<p>Start by navigating to your <b>$abbrv-groups</b> directory.</p>\n";
+							echo "<p>Choose <b>$abbrv-template.Mission.</b><br />
+							Then click \"Upload File\".</p>\n";
+							$returnpage = 'CampaignMgmtUpload.php?btn=campMgmt';
+
+							# go
+							pickFile($returnpage);
+		
+							// close $camp_link
+							$camp_link->close();
+						}
 					}
-
-					# go
-					pickFile($returnpage);
-
-					// close $camp_link
-					$camp_link->close();
                 ?>
             
             </div>
