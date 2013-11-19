@@ -24,4 +24,8 @@ echo "		</div>\n";
 
 $result->free();
 
+if ($i == 0) {
+	echo "<b><font color=\"red\">You must define at least one supply point before you can create a column.</font><br />(See \"Setup\" to the left.)</b><br />\n";
+}
+
 ?>
