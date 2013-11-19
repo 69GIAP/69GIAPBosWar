@@ -17,7 +17,7 @@ if ($result = $camp_link->query($query)) {
 	}
 } else {
 		echo "$query<br />\n";
-	die('CampaignMgmtSetupColumns.php query error [' . $dbc->error . ']');
+	die('getSupplyPoints.php query error [' . $dbc->error . ']');
 }
 
 echo "		</div>\n";
