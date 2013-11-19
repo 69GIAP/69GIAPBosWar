@@ -56,7 +56,7 @@
 					}
 
 					// create column description
-					$Description = "$objnum $objectDesc";
+					$Description = "$objnum"."x "."$objectDesc";
 
 					// record this column in the columns table	
 					
