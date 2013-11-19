@@ -7,7 +7,7 @@
 
 function TRAINS($type) {
 	global $camp_link; // link to campaign db
-	global $object_class; // object class from rof_object_properties
+	global $object_class; // object class from object_properties
 	global $object_desc; // object description
 
 	$query = "SELECT object_class, object_desc FROM object_properties WHERE object_type = '$type'";

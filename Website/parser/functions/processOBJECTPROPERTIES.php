@@ -1,6 +1,6 @@
 <?php
 // OBJECTPROPERTIES
-// get object's properties from rof_object_properties
+// get object's properties from object_properties
 // called from processLASTHIT and coreOUTPUT
 // =69.GIAP=TUSHKA
 // 2013
@@ -9,12 +9,12 @@
 
 function OBJECTPROPERTIES($objecttype) {
    global $camp_link; // link to campaign db
-   global $object_class; // object class from rof_object_properties
-   global $object_desc; // object description from rof_object_properties
-   global $object_value; // object value from rof_object_properties
+   global $object_class; // object class from object_properties
+   global $object_desc; // object description from object_properties
+   global $object_value; // object value from object_properties
    
    // our query to the campaign db
-   $query = "SELECT * from rof_object_properties where object_type = '$objecttype'";
+   $query = "SELECT * from object_properties where object_type = '$objecttype'";
 	if ($result = $camp_link->query($query)) {
 		$count = mysqli_num_rows($result);
 		// use result (should be just one)
@@ -33,7 +33,7 @@ function OBJECTPROPERTIES($objecttype) {
 		// close result set
 		$result->close();
 	} else { 
-		die('BOTGUNNER query error [' . $camp_link->error . ']');
+		die('OBJECTPROPERTIES query error [' . $camp_link->error . ']');
 	}
 }
 ?>

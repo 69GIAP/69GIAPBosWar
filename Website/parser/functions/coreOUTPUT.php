@@ -63,8 +63,8 @@ function OUTPUT() {
 	global $playername; // player name from PLID
 	global $objectname; // object name from PID/AID/TID
 	global $objecttype; // object type from PID/AID/TID
-	global $object_class; // object class from rof_object_properties
-	global $objectvalue; // object value from rof_object_properties
+	global $object_class; // object class from object_properties
+	global $objectvalue; // object value from object_properties
 	global $countryname; // country name
 	global $countryid; // country id
 	global $countryadj;  // adjective form of country name  
@@ -127,8 +127,8 @@ function OUTPUT() {
 	global $camp_link; // link to campaign db
 	global $StatsCommand; // do, undo, or ignore
 	global $camp_db; // campaign db
-	global $object_desc; // object description from rof_object_properties
-	global $object_value; // object value from rof_object_properties
+	global $object_desc; // object description from object_properties
+	global $object_value; // object value from object_properties
 	global $playerplaneid; // ID of player's plane
 
 	# require the is-point-in-area borrowed CLASS

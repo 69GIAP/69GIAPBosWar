@@ -9,8 +9,8 @@
 function TURRETGUNNER($j){
 	global $TYPE; // type of plane, object, or objective - primary or secondary
 	global $camp_link; // link to campaign db
-	global $object_class; // object class from rof_object_properties
-	global $object_desc; // object description from rof_object_properties
+	global $object_class; // object class from object_properties
+	global $object_desc; // object description from object_properties
 
 	$query = "SELECT object_class, object_desc FROM object_properties WHERE object_type = '$TYPE[$j]'";
 	if ($result = $camp_link->query($query)) {

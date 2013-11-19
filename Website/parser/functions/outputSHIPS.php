@@ -6,10 +6,10 @@
 // Oct 28, 2013
 function SHIPS($type) {
 	global $camp_link; // link to campaign db
-	global $object_class; // object class from rof_object_properties
-	global $object_desc; // object description from rof_object_properties
+	global $object_class; // object class from object_properties
+	global $object_desc; // object description from object_properties
 
-	$query = "SELECT object_class, object_desc FROM rof_object_properties WHERE object_type = '$type'";
+	$query = "SELECT object_class, object_desc FROM object_properties WHERE object_type = '$type'";
 	if (!$result = $camp_link->query($query)) {
 		die('SHIPS query error [' . $camp_link->error . ']');
 	}
