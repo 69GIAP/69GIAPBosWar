@@ -58,40 +58,54 @@
 
 					//
 					echo "<h2>Create a Column</h2>\n";
-					echo "<form id=\"createcolumn\" name=\"createcolumn\" action=\"CampaignMgmtRecordColumn.php?btn=campMgmt\" method=\"post\">\n";
+					echo "<form id=\"createColumn\" name=\"createcolumn\" action=\"CampaignMgmtRecordColumn.php?btn=campMgmt\" method=\"post\">\n";
 					
-					echo "<p>Now you need to define some columns so each side has ground forces.</p> 
-						<p>You will assign each column to its starting position in a particular Supply Point.</p>
+					echo "<p>Now you need to define some columns so each side has ground forces.</p>
+					<p>You will assign each column to its starting position in a particular Supply Point.</p>
 					<p>Each column has a unique identitity (in this case, $column_name) and consists of one to sixteen copies of a single type of \"vehicle\" which will either be the unit itself or a transport vehicle to carry the ground unit (the <i>en route</i> unit type is shown in square brackets).</p>
 					<p>Later you will add the appropriate columns to the starting template for each side.</p>\n";
 
 					echo "<h3>$countryadj ($Coalition) Column: $column_name</h3>\n";
-
-					echo "<h3>Supply Point for this Column</h3>\n";
-					echo "<input type=\"hidden\" name=\"columnID\" value=\"$columnID\">\n";
-					echo "<input type=\"hidden\" name=\"column_name\" value=\"$column_name\">\n";
-					echo "<input type=\"hidden\" name=\"ckey\" value=\"$ckey\">\n";
-					echo "<input type=\"hidden\" name=\"CoalID\" value=\"$CoalID\">\n";
+					
+					echo "<fieldset id=\"inputs\">\n";
+					echo "	<h3>Supply Point for this Column</h3>\n";
+					echo "	<input type=\"hidden\" name=\"columnID\" value=\"$columnID\">\n";
+					echo "	<input type=\"hidden\" name=\"column_name\" value=\"$column_name\">\n";
+					echo "	<input type=\"hidden\" name=\"ckey\" value=\"$ckey\">\n";
+					echo "	<input type=\"hidden\" name=\"CoalID\" value=\"$CoalID\">\n";
+					
+					echo "	<div class=\"createColumnCheckboxWrapper\">\n";
 					// select supply point
 					// include getSupplyPoints.php
 					include ('includes/getSupplyPoints.php');
+					
+					echo "	</div>\n";
+					echo "</fieldset>\n";
 
 					// select number of objects
 					echo "<h3>Number of Vehicles in this Column</h3>\n";
+				
+					echo "	<fieldset id=\"inputs\" class=\"wide\">\n";
+					
 					//$maxnum = 99;
 					$maxnum = 16;
-					echo "<select name=\"objnum\"><br />\n";
+					echo "		<select name=\"objnum\" id=\"number\">\n";
 					for ($i = 1; $i < $maxnum+1; ++$i) {
-						echo "<option value=\"$i\">$i</option><br />\n";
+						echo "		<option value=\"$i\">$i</option>\n";
 					}
-					echo "</select><br />\n";
+					echo "		</select>\n";
+					echo "	</fieldset>\n";
 
+					
 					// select vehicle
 					echo "<h3>Choose Vehicle</h3>\n";
 
+					echo "<div class=\"createColumnCheckboxWrapper\">\n";
+					
 					// include getVehicleList.php
 					include ('includes/getVehicleList.php');
-
+					
+					echo "</div>\n";
 ?>
 						<br />&nbsp;<br />
 <!--
@@ -102,6 +116,7 @@
 					echo "<fieldset id=\"actions\">\n";
 					echo "		<button type=\"submit\" name =\"createColumn\" id=\"loginSubmit\" value =\"init\" >Create Column</button>\n";	
 					echo "	</fieldset>\n";
+
 					echo "</form>\n";          
 ?>
 

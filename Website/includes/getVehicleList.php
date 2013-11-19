@@ -43,7 +43,7 @@
 
 		$i ++;
 	}
-	echo "</div>\n";
+
 	$result->free();
 
 ?>
