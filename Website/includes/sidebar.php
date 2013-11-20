@@ -78,16 +78,16 @@
 												{	
 													# turn this menu on if user has loaded a campaign into the SESSION variable campaign
 													echo "	<ul id=\"sidebar\">\n";
-													echo "		<li><a href=\"CampaignMgmtChangeStatus.php?btn=campStp\"	class=\"campStatus\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtConfigure.php?btn=campStp\"		class=\"campConfigure\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtSetup.php?btn=campStp\"			class=\"campSetup\"></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtObjects.php?btn=campStp&objectClass=P\"	class=\"campAirForces\"></a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtSupplyControlPoints.php?btn=campStp\"		class=\"campControlSupplyPoints\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtObjects.php?btn=campStp&objectClass=V\"	class=\"campGroundResupply\"><span></span></a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtSetupColumns.php?btn=campStp\"	class=\"campCreateColumns\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtStatics.php?btn=campStp\"			class=\"campCreateStatics\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=campStp\"		class=\"campAirfieldResupply\"><span></span></a></li>\n";
+													echo "	    <li><a href=\"CampaignMgmtSetupColumns.php?btn=campStp\"	class=\"campCreateColumns\"><span></span></a></li>\n";
 													echo "	    <li><a href=\"CampaignMgmtBridges.php?btn=campStp\"			class=\"campUpdateBridges\"><span></span></a></li>\n";
+													echo "	    <li><a href=\"CampaignMgmtSupplyControlPoints.php?btn=campStp\"		class=\"campControlSupplyPoints\"><span></span></a></li>\n";
+													echo "		<li><a href=\"CampaignMgmtChangeStatus.php?btn=campStp\"	class=\"campStatus\"><span></span></a></li>\n";
 													echo "  </ul>\n";
 												}
 											if ($userRole == "commander")
