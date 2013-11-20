@@ -26,7 +26,7 @@ include ( 'includes/navigation.php' );
 			global $done; // result or not
 
 			// make sure $SaveToDir exists
-			$SaveToDir = "C:/BOSWAR/";
+			$SaveToDir = "uploads/";
 			if (!is_dir($SaveToDir)) {
 				if (mkdir($SaveToDir)) {
 					echo "$SaveToDir created.<br />\n"; 
@@ -54,7 +54,7 @@ include ( 'includes/navigation.php' );
 					echo "Upload: " . $_FILES["userfile"]["name"] . "<br>";
 					echo "Type: " . $_FILES["userfile"]["type"] . "<br>";
 					echo "Size: " . (round ($_FILES["userfile"]["size"] / 1024 /1024, 2)) . " MB<br>";
-					echo "Temp file: " . $_FILES["userfile"]["tmp_name"] . "<br>";
+//					echo "Temp file: " . $_FILES["userfile"]["tmp_name"] . "<br>";
 					if (file_exists("$SaveToDir" . $_FILES["userfile"]["name"])) {
 						echo $_FILES["userfile"]["name"] . " already exists. ";
 						$done = 'exists';

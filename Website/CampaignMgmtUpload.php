@@ -60,7 +60,7 @@
 					require ('functions/pickFile.php');
 
 					// configuration
-					$SaveToDir = "C:/BOSWAR/";
+					$SaveToDir = "uploads/";
 					$FullPath ="$SaveToDir"."$abbrv-template.Mission";
 //					echo "\$FullPath: $FullPath<br />\n";
 
@@ -71,7 +71,7 @@
 							
 						} else {
 							echo "<p>We will now upload our template mission file to the BOSWAR campaign manager.</p>\n";
-							echo "<p>Note that this will create a directory, \"C:\\BOSWAR\" on the BOSWAR web server host if that directory does not already exist.</p>\n";
+							echo "<p>Note that this will create a directory, \"uploads\" on the BOSWAR web server host if that directory does not already exist.</p>\n";
 
 							echo "<p>Start by navigating to your <b>$abbrv-groups</b> directory.</p>\n";
 							echo "<p>Choose <b>$abbrv-template.Mission.</b><br />

@@ -51,8 +51,10 @@
 					// calculate col_speed (slower of transport or cruise speed)
 					if($transport_speed < $cruiseSpeed) {
 						$col_speed = $transport_speed;
-					} else {
+					} elseif($cruiseSpeed > 0) {
 						$col_speed = $cruiseSpeed;
+					} else {
+						$col_speed = $transport_speed;
 					}
 
 					// create column description

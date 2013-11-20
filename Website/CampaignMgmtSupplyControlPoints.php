@@ -52,7 +52,13 @@
 
 					echo "<h3>Save As Clean Template</h3>\n";
 					echo "<p>Then \"File\", \"Save As\" and save with the name <b>$abbrv-cleantemplate.Mission</b>.  The CLEAN template has your Influence Areas and all pre-defined infrastructure other than airfields and bridges and has no tokens for supply or control points.  From now on the BOSWAR campaign manager will take care of the airfields, bridges, supply and control points.</p><p>Note that you still have the full $abbrv-template.Mission in case you want to change your selection of active airfields, or supply or control points before initializing the campaign's first mission.  These are all now irrelevant to our $abbrv-cleantemplate.Mission.  Please do not confuse the two.\n";
-					echo "<form id=\"campaignMgmtSupplyAirfieldsDone\" name=\"campaignSetup\" action=\"CampaignMgmtSupplyControlPoints.php?btn=campMgmt\" method=\"post\">\n";
+					echo "<h3>Remove Everything but Influence Areas</h3>\n";
+					echo "<p>Click on \"Select All\" and \"OK\" in the object filter.  Now (and this is IMPORTANT) UNCHECK \"MCU Translators\" (to hide the Influence Areas).</p>\n";
+					echo "<p>\"Select All Visible Objects\" (everything but the Influence Areas) and press the \"Delete\" key on your keyboard.</p>\n";
+					echo "<form id=\"campaignMgmtBlankTemplateDone\" name=\"campaignSetup\" action=\"CampaignMgmtObjects.php?btn=campMgmt&objectClass=P\" method=\"post\">\n";
+					echo "<p>Once again click on \"Select All\" and \"OK\" in the object filter to verify that the Influence Areas are still in place.</p>\n";
+					echo "<h3>Save As Clean Template</h3>\n";
+					echo "<p>Then \"File\", \"Save As\" and save with the name <b>$abbrv-blanktemplate.Mission</b>.  The BLANK template only has your Influence Areas.  It will be used soon for defining static objects.\n";
 					# BUTTON
 					echo "<fieldset id=\"actions\">\n";	
 					echo "		<button type=\"submit\" name =\"Setup\" id=\"SetupDone\" value =\"true\" >Next</button>\n"; # the value defines the action after the button was pressed

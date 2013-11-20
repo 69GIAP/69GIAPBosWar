@@ -78,7 +78,7 @@
 						import_bridges($SaveToDir,$file);
 
 						// Now delete the file
-						$filename = $SaveToDir.'/'.$file;
+						$filename = $SaveToDir.$file;
 						if (file_exists($filename)) {
 							// delete the file
 							unlink("$filename");	

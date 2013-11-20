@@ -53,7 +53,7 @@
 					require ('functions/selectBOSWARfile.php');
 
                     // configure
-					$SaveToDir = "C:/BOSWAR";
+					$SaveToDir = "uploads/";
 
 
 					echo "<p>We will now use the template file we recently uploaded to the server.</p>\n";
