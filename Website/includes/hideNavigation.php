@@ -68,14 +68,34 @@
 		if (empty($loadedCampaign))
 			{
 				#DISPLAY HOME
-				echo "<li><a href=\"includes/unsetCampaignSessions.php\" class=\"home\"><span></span></a></li>\n";
+				if ($btn == 'home') {
+					echo "<li><a href=\"includes/unsetCampaignSessions.php?btn=home\"	class=\"homeAct\"></a></li>\n";
+					}
+				else {
+					echo "<li><a href=\"includes/unsetCampaignSessions.php?btn=home\"	class=\"home\"><span></span></a></li>\n";
+				}
 			}
 		else
 			{
 				#DISPLAY HOME, CAMPAIGN SETUP, USER MANAGEMENT		
-				echo "<li><a href=\"includes/unsetCampaignSessions.php?btn=home\"	class=\"home\"><span></span></a></li>\n";
-				echo "<li><a href=\"CampaignMgmt.php?btn=campStp\" 					class=\"campStp\"><span></span></a></li>\n"; #temporary until I include the airfield mgmt properly
-				echo "<li><a href=\"UserMgmt.php?btn=userMgmt\" 					class=\"userMgmt\"><span></span></a></li>\n";
+				if ($btn == 'home') {
+					echo "<li><a href=\"includes/unsetCampaignSessions.php?btn=home\"	class=\"homeAct\"></a></li>\n";
+					}
+				else {
+					echo "<li><a href=\"includes/unsetCampaignSessions.php?btn=home\"	class=\"home\"><span></span></a></li>\n";
+				}
+				if ($btn == 'campStp') { #temporary until I include the airfield mgmt properly
+					echo "<li><a href=\"CampaignMgmt.php?btn=campStp\" 	class=\"campStpAct\"></a></li>\n";
+					}
+				else {
+					echo "<li><a href=\"CampaignMgmt.php?btn=campStp\" 	class=\"campStp\"><span></span></a></li>\n";
+				}
+				if ($btn == 'userMgmt') {
+					echo "<li><a href=\"UserMgmt.php?btn=userMgmt\"		class=\"userMgmtAct\"></a></li>\n";
+					}
+				else {
+					echo "<li><a href=\"UserMgmt.php?btn=userMgmt\"		class=\"userMgmt\"><span></span></a></li>\n";
+				}
 			}
 		}
 	elseif($userRole == "" or $userRole == "viewer") 
