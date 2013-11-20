@@ -33,7 +33,7 @@
                     # show campaigns due to User role
 						if ($userRole == "administrator" or $userRole == "commander")
                             {	
-								header ("Location: CampaignSelect.php?btn=home&sde=connect");
+								header ("Location: CampaignSelect.php?btn=home");
                             }
                         if ($userRole == "viewer")
                             {

@@ -291,7 +291,7 @@ echo " Done!<br />\n";
 */					
 					// forward to campaign configuration screen
 					$_SESSION['camp_db'] = "$newCampaignDBName";
-					echo "<form id=\"campaignPrepCreateDone\" name=\"campaignSetup\" action=\"CampaignMgmtConfigure.php?btn=campStp\" method=\"post\">\n";
+					echo "<form id=\"campaignPrepCreateDone\" name=\"campaignSetup\" action=\"CampaignMgmtConfigure.php?btn=campStp&sde=createCamp\" method=\"post\">\n";
 					# BUTTON
 					echo "<fieldset id=\"actions\">\n";	
 					echo "		<button type=\"submit\" name =\"Setup\" id=\"SetupDone\" value =\"true\" >Next</button>\n"; # the value defines the action after the button was pressed

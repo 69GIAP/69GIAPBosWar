@@ -23,7 +23,7 @@ $count = $dbc->query("SELECT COUNT(*) FROM campaign_settings;");
             
 				<?php
 					# start form
-					echo "<form id=\"createCampForm\" name=\"login\" action=\"CampaignPrepCreateConfirm.php\" method=\"post\">\n";
+					echo "<form id=\"createCampForm\" name=\"login\" action=\"CampaignPrepCreateConfirm.php?btn=campStp&sde=campConf\" method=\"post\">\n";
 					echo "	<fieldset id=\"inputs\">\n";	
 
 					# NEW CAMPAIGN NAME

@@ -71,7 +71,7 @@
 					if(!empty($userRole))
 						{
 							#header("Location: UserMgmtLoggedOn.php?btn=home");
-							header("Location: CampaignSelect.php?btn=home");
+							header("Location: CampaignSelect.php?btn=home&sde=connect");
 						}
 					exit;
 					} 

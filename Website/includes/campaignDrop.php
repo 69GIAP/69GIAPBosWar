@@ -94,5 +94,5 @@ session_start();
 	unset ($_SESSION['camp_db']);
 
 	# redirect to campaign Management section screen with selected $loadedCampaign variable
-	header("Location: ../CampaignDrop.php?btn=home");
+	header("Location: ../CampaignDrop.php?btn=home&sde=drop");
 ?>
