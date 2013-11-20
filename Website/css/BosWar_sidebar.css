@@ -37,6 +37,13 @@ ul#sidebar li a.campLogParser {
 	height: 64px;
 	position:relative;
 }
+ul#sidebar li a.campLogParserAct {
+	background:url(../img/RofWar-AdminCampLogParserAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
 ul#sidebar li a.campConfig {
 	background:url(../img/RofWar-AdminConfigureCamp.png) no-repeat scroll top left;
 	display:block;
@@ -51,6 +58,13 @@ ul#sidebar li a.campConnect {
 	height: 64px;
 	position:relative;
 }
+ul#sidebar li a.campConnectAct {
+	background:url(../img/RofWar-AdminConnectDBAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
 ul#sidebar li a.campCreate {
 	background:url(../img/RofWar-AdminCreateDB.png) no-repeat scroll top left;
 	display:block;
@@ -58,8 +72,22 @@ ul#sidebar li a.campCreate {
 	height: 64px;
 	position:relative;
 }
+ul#sidebar li a.campCreateAct {
+	background:url(../img/RofWar-AdminCreateDBAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
 ul#sidebar li a.campDrop {
 	background:url(../img/RofWar-AdminDropDB.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.campDropAct {
+	background:url(../img/RofWar-AdminDropDBAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -79,8 +107,22 @@ ul#sidebar li a.campStatus {
 	height: 64px;
 	position:relative;
 }
+ul#sidebar li a.campStatusAct {
+	background:url(../img/RofWar-AdminChangeStatusAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
 ul#sidebar li a.campSetup {
 	background:url(../img/RofWar-AdminSetup.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.campSetupAct {
+	background:url(../img/RofWar-AdminSetupAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -93,8 +135,22 @@ ul#sidebar li a.campConfigure {
 	height: 64px;
 	position:relative;
 }
+ul#sidebar li a.campConfigureAct {
+	background:url(../img/RofWar-AdminConfigureAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
 ul#sidebar li a.campCreateColumns {
 	background:url(../img/RofWar-AdminCreateColumns.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.campCreateColumnsAct {
+	background:url(../img/RofWar-AdminCreateColumnsAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -107,6 +163,13 @@ ul#sidebar li a.campAirfieldResupply {
 	height: 64px;
 	position:relative;
 }
+ul#sidebar li a.campAirfieldResupplyAct {
+	background:url(../img/RofWar-AdminAirfieldResupplyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
 ul#sidebar li a.campAirForces {
 	background:url(../img/RofWar-AdminAirForces.png) no-repeat scroll top left;
 	display:block;
@@ -114,7 +177,13 @@ ul#sidebar li a.campAirForces {
 	height: 64px;
 	position:relative;
 }
-
+ul#sidebar li a.campAirForcesAct {
+	background:url(../img/RofWar-AdminAirForcesAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
 ul#sidebar li a.campControlSupplyPoints {
 	background:url(../img/RofWar-AdminSupplyControlPoints.png) no-repeat scroll top left;
 	display:block;
@@ -122,22 +191,64 @@ ul#sidebar li a.campControlSupplyPoints {
 	height: 64px;
 	position:relative;
 }
+ul#sidebar li a.campControlSupplyPointsAct {
+	background:url(../img/RofWar-AdminSupplyControlPointsAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
 ul#sidebar li a.campCreateStatics {
-	background:url(../img/RofWar_AdminCreateStatics.png) no-repeat scroll top left;
+	background:url(../img/RofWar-AdminCreateStatics.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.campCreateStaticsAct {
+	background:url(../img/RofWar-AdminCreateStaticsAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.campGroundResupply {
-	background:url(../img/RofWar_AdminGroundResupply.png) no-repeat scroll top left;
+	background:url(../img/RofWar-AdminGroundResupply.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.campGroundResupplyAct {
+	background:url(../img/RofWar-AdminGroundResupplyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.campGroundForces {
+	background:url(../img/RofWar-AdminGroundForces.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.campGroundForcesAct {
+	background:url(../img/RofWar-AdminGroundForcesAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.campUpdateBridges {
-	background:url(../img/RofWar_AdminUpdateBridgeStatus.png) no-repeat scroll top left;
+	background:url(../img/RofWar-AdminUpdateBridgeStatus.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.campUpdateBridgesAct {
+	background:url(../img/RofWar-AdminUpdateBridgeStatusAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;

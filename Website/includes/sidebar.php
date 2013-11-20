@@ -24,8 +24,18 @@
 													
 													if (empty($loadedCampaign))
 														{
-															echo "		<li><a href=\"CampaignSelect.php?btn=home\" class=\"campConnect\"><span></span></a></li>\n";
-															echo "		<li><a href=\"CampaignDrop.php?btn=home\"	class=\"campDrop\"><span></span></a></li>\n";															
+															if ($sde == 'connect') {
+																echo "		<li><a href=\"CampaignSelect.php?btn=home&sde=connect\" class=\"campConnectAct\"><span></span></a></li>\n";
+																}
+															else {
+																echo "		<li><a href=\"CampaignSelect.php?btn=home&sde=connect\" class=\"campConnect\"><span></span></a></li>\n";
+															}
+															if ($sde == 'drop') {
+																echo "		<li><a href=\"CampaignDrop.php?btn=home&sde=drop\"	class=\"campDropAct\"><span></span></a></li>\n";
+																}
+															else {
+																echo "		<li><a href=\"CampaignDrop.php?btn=home&sde=drop\"	class=\"campDrop\"><span></span></a></li>\n";
+															}
 														}
 													else
 														{
@@ -78,16 +88,49 @@
 												{	
 													# turn this menu on if user has loaded a campaign into the SESSION variable campaign
 													echo "	<ul id=\"sidebar\">\n";
-													echo "	    <li><a href=\"CampaignMgmtConfigure.php?btn=campStp\"		class=\"campConfigure\"><span></span></a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtSetup.php?btn=campStp\"			class=\"campSetup\"></a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtObjects.php?btn=campStp&objectClass=P\"	class=\"campAirForces\"></a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtObjects.php?btn=campStp&objectClass=V\"	class=\"campGroundResupply\"><span></span></a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtStatics.php?btn=campStp\"			class=\"campCreateStatics\"><span></span></a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=campStp\"		class=\"campAirfieldResupply\"><span></span></a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtSetupColumns.php?btn=campStp\"	class=\"campCreateColumns\"><span></span></a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtBridges.php?btn=campStp\"			class=\"campUpdateBridges\"><span></span></a></li>\n";
-													echo "	    <li><a href=\"CampaignMgmtSupplyControlPoints.php?btn=campStp\"		class=\"campControlSupplyPoints\"><span></span></a></li>\n";
-													echo "		<li><a href=\"CampaignMgmtChangeStatus.php?btn=campStp\"	class=\"campStatus\"><span></span></a></li>\n";
+													if ($sde == 'campState') {
+														echo "		<li><a href=\"CampaignMgmtChangeStatus.php?btn=campStp&sde=campState\" class=\"campStatusAct\"><span></span></a></li>\n";
+														}
+													else {
+														echo "		<li><a href=\"CampaignMgmtChangeStatus.php?btn=campStp&sde=campState\" class=\"campStatus\"><span></span></a></li>\n";
+													}
+													if ($sde == 'campConf') {
+														echo "	    <li><a href=\"CampaignMgmtConfigure.php?btn=campStp&sde=campConf\" class=\"campConfigureAct\"><span></span></a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"CampaignMgmtConfigure.php?btn=campStp&sde=campConf\" class=\"campConfigure\"><span></span></a></li>\n";
+													}
+													if ($sde == 'campSet') {
+														echo "	    <li><a href=\"CampaignMgmtSetup.php?btn=campStp&sde=campSet\" class=\"campSetupAct\"></a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"CampaignMgmtSetup.php?btn=campStp&sde=campSet\" class=\"campSetup\"></a></li>\n";
+													}
+													if ($sde == 'campP') {
+														echo "	    <li><a href=\"CampaignMgmtObjects.php?btn=campStp&sde=campP&objectClass=P\"	class=\"campAirForcesAct\"></a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"CampaignMgmtObjects.php?btn=campStp&sde=campP&objectClass=P\"	class=\"campAirForces\"></a></li>\n";
+													}
+													if ($sde == 'campV') {
+														echo "	    <li><a href=\"CampaignMgmtObjects.php?btn=campStp&sde=campV&objectClass=V\" class=\"campGroundForcesAct\"><span></span></a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"CampaignMgmtObjects.php?btn=campStp&sde=campV&objectClass=V\" class=\"campGroundForces\"><span></span></a></li>\n";
+													}
+													if ($sde == 'campCol') {
+														echo "	    <li><a href=\"CampaignMgmtSetupColumns.php?btn=campStp&sde=campCol\" class=\"campCreateColumnsAct\"><span></span></a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"CampaignMgmtSetupColumns.php?btn=campStp&sde=campCol\" class=\"campCreateColumns\"><span></span></a></li>\n";
+													}
+													if ($sde == 'campStat') {
+														echo "	    <li><a href=\"CampaignMgmtStatics.php?btn=campStp&sde=campStat\" class=\"campCreateStaticsAct\"><span></span></a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"CampaignMgmtStatics.php?btn=campStp&sde=campStat\" class=\"campCreateStatics\"><span></span></a></li>\n";
+													}
+
 													echo "  </ul>\n";
 												}
 											if ($userRole == "commander")
@@ -107,11 +150,44 @@
 												{	
 													# turn this menu on if user has loaded a campaign into the SESSION variable campaign
 													echo "	<ul id=\"sidebar\">\n";
+													if ($sde == 'campAf') {
+														echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=preMsn&sde=campAf\" class=\"campAirfieldResupplyAct\"><span></span></a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=preMsn&sde=campAf\" class=\"campAirfieldResupply\"><span></span></a></li>\n";
+													}
+													if ($sde == 'campStat') {
+														echo "	    <li><a href=\"CampaignMgmtStatics.php?btn=preMsn&sde=campStat\" class=\"campCreateStaticsAct\"><span></span></a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"CampaignMgmtStatics.php?btn=preMsn&sde=campStat\" class=\"campCreateStatics\"><span></span></a></li>\n";
+													}
+													if ($sde == 'campBrdg') {
+														echo "	    <li><a href=\"CampaignMgmtBridges.php?btn=preMsn&sde=campBrdg\" class=\"campUpdateBridgesAct\"><span></span></a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"CampaignMgmtBridges.php?btn=preMsn&sde=campBrdg\" class=\"campUpdateBridges\"><span></span></a></li>\n";
+													}
+													if ($sde == 'campCtrl') {
+														echo "	    <li><a href=\"CampaignMgmtSupplyControlPoints.php?btn=preMsn&sde=campCtrl\" class=\"campControlSupplyPointsAct\"><span></span></a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"CampaignMgmtSupplyControlPoints.php?btn=preMsn&sde=campCtrl\" class=\"campControlSupplyPoints\"><span></span></a></li>\n";
+													}
+													if ($sde == 'campCol') {
+														echo "	    <li><a href=\"CampaignMgmtSetupColumns.php?btn=preMsn&sde=campCol\" class=\"campCreateColumnsAct\"><span></span></a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"CampaignMgmtSetupColumns.php?btn=preMsn&sde=campCol\" class=\"campCreateColumns\"><span></span></a></li>\n";
+													}
+													if ($sde == 'campVRsup') {
+														echo "	    <li><a href=\"MsnPreResupplyVehicles.php?btn=preMsn&sde=campVRsup\" class=\"campGroundResupplyAct\"><span></span></a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"MsnPreResupplyVehicles.php?btn=preMsn&sde=campVRsup\" class=\"campGroundResupply\"><span></span></a></li>\n";
+													}													
 													echo "	    <li><a href=\"CampaignMgmtAdvcdParam.php?btn=preMsn\"	class=\"dummy\">Campaign Advanced Parameters</a></li>\n";
 													echo "	    <li><a href=\"MsnPreGenNextForPlanning.php?btn=preMsn\"	class=\"dummy\">Generate next mission for planning</a></li>\n";
-													echo "	    <li><a href=\"MsnPreResupplyPlanes.php?btn=preMsn\"		class=\"dummy\">Manage Resupply of Planes</a></li>\n";
-													echo "	    <li><a href=\"MsnPreResupplyVehicles.php?btn=preMsn\"	class=\"dummy\">Manage Resupply of Vehicles</a></li>\n";
-													echo "	    <li><a href=\"MsnPreUpdtBridges.php?btn=preMsn\"		class=\"dummy\">Update Bridge Status</a></li>\n";
 													echo "	    <li><a href=\"MsnPreGetNext.php?btn=preMsn\"			class=\"dummy\">Receive back group files from planners</a></li>\n";
 													echo "	    <li><a href=\"MsnPreGenNextForMission.php?btn=preMsn\"	class=\"dummy\">Generate Mission Files</a></li>\n";
 													echo "	    <li><a href=\"MsnPreGenRunMission.php?btn=preMsn\"		class=\"dummy\">Run Mission</a></li>\n";													
@@ -125,7 +201,12 @@
 												{	
 													# turn this menu on if user has loaded a campaign into the SESSION variable campaign
 													echo "	<ul id=\"sidebar\">\n";
-													echo "	    <li><a href=\"MsnPostLogParser.php?btn=postMsn\"		class=\"campLogParser\"><span></span></a></li>\n";
+													if ($sde == 'lgPrsr') {
+														echo "	    <li><a href=\"MsnPostLogParser.php?btn=postMsn&sde=lgPrsr\" class=\"campLogParserAct\"><span></span></a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"MsnPostLogParser.php?btn=postMsn&sde=lgPrsr\" class=\"campLogParser\"><span></span></a></li>\n";
+													}
 													echo "	    <li><a href=\"MsnPostCorrectStats.php?btn=postMsn\"		class=\"dummy\">Correct Stats</a></li>\n";
 													echo "	    <li><a href=\"MsnPostUpdtColumns.php?btn=postMsn\"		class=\"dummy\">Update Columns to remove losses</a></li>\n";
 													echo "	    <li><a href=\"MsnPostUpdtStatics.php?btn=postMsn\"		class=\"dummy\">Update Statics to remove losses</a></li>\n";
@@ -140,7 +221,12 @@
 												{	
 													# turn this menu on if user has loaded a campaign into the SESSION variable campaign
 													echo "	<ul id=\"sidebar\">\n";
-													echo "	    <li><a href=\"CampaignPrepCreateNew.php?btn=prepCamp\" class=\"campCreate\"><span></span></a></li>\n";
+													if ($sde == 'createCamp') {
+														echo "	    <li><a href=\"CampaignPrepCreateNew.php?btn=prepCamp&sde=createCamp\" class=\"campCreateAct\"><span></span></a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"CampaignPrepCreateNew.php?btn=prepCamp&sde=createCamp\" class=\"campCreate\"><span></span></a></li>\n";
+													}
 													echo "  </ul>\n";
 												}
 										}									

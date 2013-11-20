@@ -42,7 +42,13 @@ session_start();
 	else {
 		$_SESSION['btn'] = $_GET['btn'];
 		$btn 			 = $_SESSION['btn'];}
-		  
+	
+	if (empty($_GET['sde'])) {
+		$sde = "";}
+	else {
+		$_SESSION['sde'] = $_GET['sde'];
+		$sde 			 = $_SESSION['sde'];}
+	  
 	# check if a there is already a userRole defined
 	if (empty($_SESSION['userRole'])) {
 		$userRole = "";}
