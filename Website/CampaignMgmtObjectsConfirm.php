@@ -102,11 +102,11 @@
 				
 				$objectClass = $_SESSION['objectClass'];
 
-				echo "<a href=\"CampaignMgmtObjects.php?btn=campMgmt&objectClass=$objectClass\">Next</a>\n";
+				echo "<a href=\"CampaignMgmtObjects.php?btn=campStp&objectClass=$objectClass\">Next</a>\n";
 
 #echo $query;				
 #exit;	
-//				header ("Location: CampaignMgmtObjects.php?btn=campMgmt&objectClass=$objectClass");
+//				header ("Location: CampaignMgmtObjects.php?btn=campStp&objectClass=$objectClass");
 
                 ?>
 

@@ -47,7 +47,7 @@ if ($_POST["updateCampaignParameters"] == 1) {
 	$result = $camp_link->query($query);
 //	echo "$result<br />\n";
 //	echo "Updated section 1";
-	header("Location: CampaignMgmtConfigure.php?btn=campMgmt");
+	header("Location: CampaignMgmtConfigure.php?btn=campStp");
 }
 
 // Section 2
@@ -140,7 +140,7 @@ if ($_POST["updateCampaignParameters"] == 5) {
 //		$result = $camp_link->query($query);
 //		echo "$result<br />\n";
 		echo "Updated section 5";
-		header("Location: CampaignMgmtSetup.php?btn=campMgmt");
+		header("Location: CampaignMgmtSetup.php?btn=campStp");
 	} else {
 		$query = "UPDATE campaign_settings SET status = 1 ;"; 
 //		echo "$query<br />\n";
@@ -150,7 +150,7 @@ if ($_POST["updateCampaignParameters"] == 5) {
 //		$result = $camp_link->query($query);
 //		echo "$result<br />\n";
 		echo "Updated section 5";
-		header("Location: CampaignMgmtConfigure.php?btn=campMgmt");
+		header("Location: CampaignMgmtConfigure.php?btn=campStp");
 	}
 } 
 ?>					

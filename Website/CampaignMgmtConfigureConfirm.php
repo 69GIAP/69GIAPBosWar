@@ -36,7 +36,7 @@
 				}
 					else
 				{				
-					header ("Location: CampaignMgmtChangeStatus.php?btn=campMgmt");
+					header ("Location: CampaignMgmtChangeStatus.php?btn=campStp");
 				}
                 ?>					
             </div>

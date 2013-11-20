@@ -76,16 +76,16 @@ include ( 'includes/navigation.php' );
 			//echo "<br />\$returnpage: $returnpage<br />\n";
 			if ($returnpage == 'CampaignMgmtUpload.php') {
 				echo "			<br />&nbsp;<br />\n";
-				echo "			<a href=\"CampaignMgmtUpload.php?btn=campMgmt&fi=template\">Next</a>\n";
+				echo "			<a href=\"CampaignMgmtUpload.php?btn=campStp&fi=template\">Next</a>\n";
 			} elseif ($returnpage == 'CampaignMgmtSupplyControlPoints.php') {
 				echo "			<br />&nbsp;<br />\n";
-				echo"			<a href=\"CampaignMgmtSupplyControlPoints.php?btn=campMgmt&fi=points\">Next</a>\n";
+				echo"			<a href=\"CampaignMgmtSupplyControlPoints.php?btn=campStp&fi=points\">Next</a>\n";
 			} elseif ($returnpage == 'CampaignMgmtSetupBridges.php') {
 				echo "			<br />&nbsp;<br />\n";
-				echo"			<a href=\"CampaignMgmtSetupBridges.php?btn=campMgmt&fi=bridges\">Next</a>\n";
+				echo"			<a href=\"CampaignMgmtSetupBridges.php?btn=campStp&fi=bridges\">Next</a>\n";
             } else {
 				echo "			<br />&nbsp;<br />\n";
-				echo "<a href=\"CampaignMgmtImport.php?btn=campMgmt\">Next</a>\n";
+				echo "<a href=\"CampaignMgmtImport.php?btn=campStp\">Next</a>\n";
 			}		
 			echo "		</div>\n";
 			echo "	</div>\n";

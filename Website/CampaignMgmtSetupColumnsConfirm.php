@@ -58,7 +58,7 @@
 
 					//
 					echo "<h2>Create a Column</h2>\n";
-					echo "<form id=\"createColumn\" name=\"createcolumn\" action=\"CampaignMgmtRecordColumn.php?btn=campMgmt\" method=\"post\">\n";
+					echo "<form id=\"createColumn\" name=\"createcolumn\" action=\"CampaignMgmtRecordColumn.php?btn=campStp\" method=\"post\">\n";
 					
 					echo "<p>Now you need to define some columns so each side has ground forces.</p>
 					<p>You will assign each column to its starting position in a particular Supply Point.</p>
@@ -109,7 +109,7 @@
 ?>
 						<br />&nbsp;<br />
 <!--
-<a href="CampaignMgmtSetupColumns.php?btn=campMgmt&fi=country">Next</a>
+<a href="CampaignMgmtSetupColumns.php?btn=campStp&fi=country">Next</a>
 -->
 <?php
 					# BUTTON	

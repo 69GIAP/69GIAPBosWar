@@ -90,7 +90,7 @@
 							echo "Created\n";
 
 							echo "<br />&nbsp;<br />\n";
-							echo "<a href=\"CampaignMgmtSetupColumns.php?btn=campMgmt\">Next</a><br />\n";
+							echo "<a href=\"CampaignMgmtSetupColumns.php?btn=campStp\">Next</a><br />\n";
 						}
 ?>
 						<br />&nbsp;<br />

@@ -45,7 +45,7 @@
 					$result->free();
 
 					# start form
-					echo "<form id=\"campaignMgmtSetupForm\" name=\"campaignSetup\" action=\"CampaignMgmtUpload.php?btn=campMgmt\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtSetupForm\" name=\"campaignSetup\" action=\"CampaignMgmtUpload.php?btn=campStp\" method=\"post\">\n";
 
 					echo "<p>This is a job for the campaign administrator who should have basic skills in the Mission Editor, but don't worry.  We will lead you step-by-step.</p>\n";
 

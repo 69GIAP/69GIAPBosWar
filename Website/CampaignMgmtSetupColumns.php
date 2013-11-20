@@ -50,7 +50,7 @@
 					echo "<h1>Create a Column</h1>\n";
 
 					// start form
-					echo "<form id=\"campaignMgmtSetupColumns\" name=\"campaignSetupColumns\" action=\"CampaignMgmtSetupColumnsConfirm.php?btn=campMgmt\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtSetupColumns\" name=\"campaignSetupColumns\" action=\"CampaignMgmtSetupColumnsConfirm.php?btn=campStp\" method=\"post\">\n";
 					// include setupColumns.php
 					include ('includes/setupColumns.php');
 
@@ -92,7 +92,7 @@
 					$returnpage = 'CampaignMgmtSupplyControlPoints.php'; //next page
 										echo "<p>To proceed, click \"Next\"</p>\n";
 
-					echo "<form id=\"campaignMgmtSupplyControlDone\" name=\"campaignSetup\" action=\"CampaignMgmtAirfields.php?btn=campMgmt\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtSupplyControlDone\" name=\"campaignSetup\" action=\"CampaignMgmtAirfields.php?btn=campStp\" method=\"post\">\n";
 					# BUTTON
 					echo "<fieldset id=\"actions\">\n";	
 					echo "		<button type=\"submit\" name =\"Setup\" id=\"SetupDone\" value =\"true\" >Next</button>\n"; # the value defines the action after the button was pressed

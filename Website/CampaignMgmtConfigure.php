@@ -31,7 +31,7 @@
 					# initialise variables
 					echo "<h1>Configure $campaign Campaign Settings</h1>";
 					# start form
-					echo "<form id=\"campaignMgmtForm\" name=\"campaignSetup\" action=\"CampaignMgmtConfirm.php?btn=campMgmt\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtForm\" name=\"campaignSetup\" action=\"CampaignMgmtConfirm.php?btn=campStp\" method=\"post\">\n";
 					
 					echo "<br>By this point you have logged in with administrator rights, chosen a campaign name, abbreviation and map and created a new campaign database.<br>\n";
 					echo "<br>Now that you are connected directly to your new campaign database it is time to configure it.<br>\n";

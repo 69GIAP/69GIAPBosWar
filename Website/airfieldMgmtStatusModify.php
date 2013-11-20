@@ -101,7 +101,7 @@
 				}
 				else {
 					
-					header ("Location: airfieldMgmtChange.php?btn=campMgmt&airfieldName=$airfieldName");
+					header ("Location: airfieldMgmtChange.php?btn=campStp&airfieldName=$airfieldName");
 				}
 	   
                 ?>					

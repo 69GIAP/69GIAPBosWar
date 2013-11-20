@@ -71,7 +71,7 @@
 				
 				$objectClass = $_SESSION['objectClass'];
 				
-				header ("Location: CampaignMgmtBridges.php?btn=campMgmt");
+				header ("Location: CampaignMgmtBridges.php?btn=campStp");
 
                 ?>
 

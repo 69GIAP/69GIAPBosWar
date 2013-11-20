@@ -280,7 +280,7 @@ echo " Done!<br />\n";
 						}
 						if ($dbc->errno) {
 							echo "<p>Campaign creation Rollback multi_query execution ended prematurely.<br>\n";
-							header("Location: CampaignMgmt.php?btn=campMgmt");
+							header("Location: CampaignMgmt.php?btn=campStp");
 						}
 						
 						echo "Therefor campaign creation multi_query execution also ended prematurely.<br><br>\n";
@@ -291,14 +291,14 @@ echo " Done!<br />\n";
 */					
 					// forward to campaign configuration screen
 					$_SESSION['camp_db'] = "$newCampaignDBName";
-					echo "<form id=\"campaignPrepCreateDone\" name=\"campaignSetup\" action=\"CampaignMgmtConfigure.php?btn=campMgmt\" method=\"post\">\n";
+					echo "<form id=\"campaignPrepCreateDone\" name=\"campaignSetup\" action=\"CampaignMgmtConfigure.php?btn=campStp\" method=\"post\">\n";
 					# BUTTON
 					echo "<fieldset id=\"actions\">\n";	
 					echo "		<button type=\"submit\" name =\"Setup\" id=\"SetupDone\" value =\"true\" >Next</button>\n"; # the value defines the action after the button was pressed
 					echo "	</fieldset>\n";
 					echo "</form>\n";
 
-//					header("Location: CampaignMgmtConfigure.php?btn=campMgmt");
+//					header("Location: CampaignMgmtConfigure.php?btn=campStp");
 
                 ?>
             

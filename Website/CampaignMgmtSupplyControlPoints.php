@@ -55,7 +55,7 @@
 					echo "<h3>Remove Everything but Influence Areas</h3>\n";
 					echo "<p>Click on \"Select All\" and \"OK\" in the object filter.  Now (and this is IMPORTANT) UNCHECK \"MCU Translators\" (to hide the Influence Areas).</p>\n";
 					echo "<p>\"Select All Visible Objects\" (everything but the Influence Areas) and press the \"Delete\" key on your keyboard.</p>\n";
-					echo "<form id=\"campaignMgmtBlankTemplateDone\" name=\"campaignSetup\" action=\"CampaignMgmtObjects.php?btn=campMgmt&objectClass=P\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtBlankTemplateDone\" name=\"campaignSetup\" action=\"CampaignMgmtObjects.php?btn=campStp&objectClass=P\" method=\"post\">\n";
 					echo "<p>Once again click on \"Select All\" and \"OK\" in the object filter to verify that the Influence Areas are still in place.</p>\n";
 					echo "<h3>Save As Clean Template</h3>\n";
 					echo "<p>Then \"File\", \"Save As\" and save with the name <b>$abbrv-blanktemplate.Mission</b>.  The BLANK template only has your Influence Areas.  It will be used soon for defining static objects.\n";
@@ -134,7 +134,7 @@
 #					echo "<p>Note, there is no need to save the template as we haven't changed the template.</p>\n";
 #										echo "<p>Once you are ready to proceed, click \"Next\"</p>\n";
 #
-#					echo "<form id=\"campaignMgmtSupplyControlDone\" name=\"campaignSetup\" action=\"CampaignMgmtSetupBridges.php?btn=campMgmt\" method=\"post\">\n";
+#					echo "<form id=\"campaignMgmtSupplyControlDone\" name=\"campaignSetup\" action=\"CampaignMgmtSetupBridges.php?btn=campStp\" method=\"post\">\n";
 #					# BUTTON
 #					echo "<fieldset id=\"actions\">\n";	
 #					echo "		<button type=\"submit\" name =\"Setup\" id=\"SetupDone\" value =\"true\" >Next</button>\n"; # the value defines the action after the button was pressed

@@ -41,5 +41,5 @@
 	}	
 
 	# redirect to previous screen with selected $loadedCampaign variable
-	#header("Location: ../airfieldMgmtChange.php?btn=campMgmt");
+	#header("Location: ../airfieldMgmtChange.php?btn=campStp");
 ?>

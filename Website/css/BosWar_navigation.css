@@ -30,7 +30,7 @@ ul#navigation li a.home {
 	width:96px;
 	/*background-position:-190px 0px;  remove to reactivate Home*/
 	}
-ul#navigation li a.campMgmt {
+ul#navigation li a.campStp {
 	width:96px;
 	background-position:-479px 0px;
 	}	
@@ -49,7 +49,9 @@ ul#navigation li a.userMgmt {
 ul#navigation li a.prepCamp {
 	width:96px;
 	background-position:-191px 0px;
-	}	
+	}
+	
+		
 ul#navigation li a span {
 	background:url(../img/BosWar_NavMenuLeftSprite.png) no-repeat scroll bottom left;
 	display:block;
@@ -60,34 +62,58 @@ ul#navigation li a span {
 	width:100%;
 	z-index:100;
 	}
-
 ul#navigation li a.home span {
 	width:96px;	
 	background-position: 0px -54px;
 	}
-ul#navigation li a.campMgmt span {
+ul#navigation li a.homeAct {
+	width:96px;	
+	background-position: 0px -54px;
+	}	
+ul#navigation li a.campStp span {
 	width:95px;
 	background-position:-479px -54px;
 	}
+ul#navigation li a.campStpAct {
+	width:96px;
+	background-position:-479px -54px;
+	}	
 ul#navigation li a.preMsn span {
 	width:97px;
 	background-position:-287px -54px;
-	}	
+	}
+ul#navigation li a.preMsnAct {
+	width:98px;
+	background-position:-287px -54px;
+	}		
 ul#navigation li a.postMsn span {
 	width:93px;
 	background-position:-385px -54px;
-	}		
+	}
+ul#navigation li a.postMsnAct {
+	width:94px;
+	background-position:-385px -54px;
+	}			
 ul#navigation li a.userMgmt span {
 	width:95px;
 	background-position:-96px -54px;
 	}
+ul#navigation li a.userMgmtAct {
+	width:95px;
+	background-position:-96px -54px;
+	}	
 ul#navigation li a.prepCamp span {
 	width:96px;
 	background-position:-191px -54px;
-	}	
+	}
+ul#navigation li a.prepCampAct {
+	width:96px;
+	background-position:-191px -54px;
+	}
+
 ul#navigation li a span:hover {
 	cursor:pointer;
-	}
+	}	
 
 ul#register {
 	position: absolute;

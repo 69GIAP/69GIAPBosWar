@@ -100,15 +100,15 @@ ul#sidebar li a.campCreateColumns {
 	height: 64px;
 	position:relative;
 }
-ul#sidebar li a.campUpdateAirfields {
-	background:url(../img/RofWar-AdminUpdateAirfields.png) no-repeat scroll top left;
+ul#sidebar li a.campAirfieldResupply {
+	background:url(../img/RofWar-AdminAirfieldResupply.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
-ul#sidebar li a.campAvailAirForce {
-	background:url(../img/RofWar-AdminAvailAirforce.png) no-repeat scroll top left;
+ul#sidebar li a.campAirForces {
+	background:url(../img/RofWar-AdminAirForces.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -129,8 +129,8 @@ ul#sidebar li a.campCreateStatics {
 	height: 64px;
 	position:relative;
 }
-ul#sidebar li a.campVehicles {
-	background:url(../img/RofWar_AdminCreateVehicles.png) no-repeat scroll top left;
+ul#sidebar li a.campGroundResupply {
+	background:url(../img/RofWar_AdminGroundResupply.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;

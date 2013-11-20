@@ -31,7 +31,7 @@
 						}
 						
 					echo "<fieldset class=\"boswar\">\n";
-					echo "	<form  name=\"airfieldModify\"  action=\"airfieldMgmtChange.php?btn=campMgmt&airfieldName=$airfieldName\" method=\"post\">\n";
+					echo "	<form  name=\"airfieldModify\"  action=\"airfieldMgmtChange.php?btn=campStp&airfieldName=$airfieldName\" method=\"post\">\n";
 						
 					# BUTTON
 					echo "		<li><label for=\"submit\"></label>\n";
