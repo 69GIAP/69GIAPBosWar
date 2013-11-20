@@ -29,79 +29,35 @@
 				// use this information to connect to campaign 
 				$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
 
-				$query = "SELECT * from campaign_settings;";
-				if(!$result = $camp_link->query($query)) {
-					die('CampaignMgmtSetupColumns.php query error [' . $dbc->error . ']');
-				}
+				$sim = $_SESSION["game"];
+				echo "\$sim: $sim<br />\n";
 
-				if ($result = $camp_link->query($query)) {
-					while ($obj = $result->fetch_object()) {
-							$map=($obj->map);
-					}
-				}
-				$result->free();
-
-				if (!isset($_GET['fi'])) {
-					$fi = 'unset';
+				echo "<h1>Create a Column</h1>\n";
+					
+				echo "<p>Ground forces are supplied and resupplied by means of columns which are placed in Supply Points.</p>\n"; 
+				if ($sim == 'RoF') {
+				echo "<p>In Rise of Flight the ground forces are French or German by default.  You can, of course, edit the campaign's object_properties table to give other assignments.<p>\n"; 
 				} else {
-					$fi = $_GET['fi'];
+				echo "<p>In Battle of Stalingrad the ground forces are Russian or German by default, of course.<p>\n"; 
 				}
-				if ($fi == "unset") {
-					echo "<h1>Create a Column</h1>\n";
 
-					// start form
-					echo "<form id=\"campaignMgmtSetupColumns\" name=\"campaignSetupColumns\" action=\"CampaignMgmtSetupColumnsConfirm.php?btn=campStp\" method=\"post\">\n";
-					// include setupColumns.php
-					include ('includes/setupColumns.php');
+				// start form
+				echo "<form id=\"campaignMgmtSetupColumns\" name=\"campaignSetupColumns\" action=\"CampaignMgmtSetupColumnsConfirm.php?btn=campStp\" method=\"post\">\n";
+				// include setupColumns.php
+				include ('includes/setupColumns.php');
 
-					# BUTTON
-					echo "<fieldset id=\"actions\">\n";	
-					echo "		<button type=\"submit\" id=\"countrySubmit\" value ='' >Select Country</button>\n";
-					echo "	</fieldset>\n";
+				# BUTTON
+				echo "<fieldset id=\"actions\">\n";	
+				echo "		<button type=\"submit\" id=\"countrySubmit\" value ='' >Select Country</button>\n";
+				echo "	</fieldset>\n";
 					
-					echo "</form>\n";
-					
-                    // close $camp_link
-					$camp_link->close();
+				echo "</form>\n";
 
-					$returnpage = 'CampaignMgmtSetupColumns.php';
+				// close $camp_link
+				$camp_link->close();
 
-				} // end if (fi == unset) - points file has been uploaded
+			?>
 
-				if ($fi == 'bridges') {
-					# require importBridges.php
-					require ('functions/importBridges.php');
-
-					echo "<h2>Import The Bridges</h2>\n";
-
-					$SaveToDir = "C:/BOSWAR";
-					$file = "$abbrv-bridges.Group";
-					import_bridges($SaveToDir,$file);
-
-					// Now delete the file
-					$filename = $SaveToDir.'/'.$file;
-					if (file_exists($filename)) {
-						// delete the file
-						unlink("$filename");	
-						echo "$filename deleted<br />\n";
-					} else {
-						echo "$filename not found or read-only<br />\n";
-					}
-
-					$fi == '';
-					$returnpage = 'CampaignMgmtSupplyControlPoints.php'; //next page
-										echo "<p>To proceed, click \"Next\"</p>\n";
-
-					echo "<form id=\"campaignMgmtSupplyControlDone\" name=\"campaignSetup\" action=\"CampaignMgmtAirfields.php?btn=campStp\" method=\"post\">\n";
-					# BUTTON
-					echo "<fieldset id=\"actions\">\n";	
-					echo "		<button type=\"submit\" name =\"Setup\" id=\"SetupDone\" value =\"true\" >Next</button>\n"; # the value defines the action after the button was pressed
-					echo "	</fieldset>\n";
-					echo "</form>\n";
-
-
-				}
-				?>
             </div>
     
         </div>

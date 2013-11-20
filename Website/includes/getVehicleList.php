@@ -20,7 +20,7 @@
 
 	$countryadj = get_countryadj($ckey);
 
-	echo "<h3>$countryadj Vehicles, Artillery & Infantry</h3>\n";
+	echo "<h3>$countryadj (or neutral) Vehicles, Artillery & Infantry</h3>\n";
 
 	# load results into variables 
 	while ($obj = $result->fetch_object()) {
