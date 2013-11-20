@@ -8,7 +8,7 @@
 		}
 	else
 		{
-			$query = "SELECT camp_db FROM campaign_settings where status = 3 and simulation = '$game' ";
+			$query = "SELECT camp_db FROM campaign_settings where simulation = '$game' ";
 		}
 	
 	if(!$result = $dbc->query($query))
