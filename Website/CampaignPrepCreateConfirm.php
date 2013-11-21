@@ -241,7 +241,7 @@ include ('includes/doit.php');
 echo "master campaign_settings updated<br />\n";
 
 // Add user to the campaign_users table
-$query ="INSERT INTO campaign_users (user_id, camp_db, CoalID, groupFile_path) VALUES ($userId, '$newCampaignDBName', 0, '' );";
+$query ="INSERT INTO campaign_users (user_id, camp_db, CoalID) VALUES ($userId, '$newCampaignDBName', 0 );";
 include ('includes/doit.php');
 echo "master campaign_users updated<br />\n";
 echo " Done!<br />\n";

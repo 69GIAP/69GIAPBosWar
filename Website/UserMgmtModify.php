@@ -162,6 +162,7 @@
 					{	
 						$sql = "UPDATE campaign_users SET CoalID = $userCoalitionIdNew WHERE user_id = $id and camp_db = '$campdb';";
 					}
+/*					
 				# store group file path, each single user has to do this on his own - only commanders and campaign administrators can see the form field
 				if (($_POST["modify"] == 6))
 					{	
@@ -178,7 +179,7 @@
 								$error = 1;
 							}
 					}																		
-				
+*/				
 				# Feedback success or failure
 				if (!$dbc->multi_query($sql))
 					{

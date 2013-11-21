@@ -1,5 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `boswar_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `boswar_db`;
+
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: 10.0.0.57    Database: boswar_db
@@ -29,10 +28,19 @@ CREATE TABLE `campaign_users` (
   `user_id` smallint(1) NOT NULL DEFAULT '0',
   `camp_db` varchar(30) NOT NULL DEFAULT 'campaign_database',
   `CoalID` tinyint(1) NOT NULL DEFAULT '0',
-  `groupFile_path` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `campaign_users`
+--
+
+LOCK TABLES `campaign_users` WRITE;
+/*!40000 ALTER TABLE `campaign_users` DISABLE KEYS */;
+INSERT INTO `campaign_users` VALUES (1,1,'flanders_eagles',0),(2,1,'skies_of_the_empires',0),(3,1,'stalingrad',0),(4,2,'flanders_eagles',1),(5,2,'skies_of_the_empires',1),(6,2,'stalingrad',1);
+/*!40000 ALTER TABLE `campaign_users` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -43,4 +51,4 @@ CREATE TABLE `campaign_users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-10-13 18:58:45
+-- Dump completed on 2013-11-21  8:15:43

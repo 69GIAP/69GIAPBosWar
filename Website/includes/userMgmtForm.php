@@ -68,6 +68,7 @@
 	// show Group File Folder Form only if administrator is connected to a campaign
 	if ($loadedCampaign != '')
 	{
+/*
 		echo "<h3>Choose the default folder for your Group Files:</h3>\n";
 		
 		if ($userRole == 'administrator') {
@@ -87,7 +88,7 @@
 					
 		if ($result = $dbc->query($query)) 					
 		{				
-			/* fetch associative array */
+			// fetch associative array //
 			while ($obj = mysqli_fetch_object($result)) 
 				{
 					$groupFilePath=($obj->groupFile_path);
@@ -105,6 +106,7 @@
 		# BUTTON SAVE
 		echo "		<button type=\"modify\" name =\"modify\" id=\"loginSubmit\" value =\"6\" >SAVE</button>\n";		
 		echo "	</fieldset>\n";
+*/
 	}
 	echo "</form>\n"; 
 	

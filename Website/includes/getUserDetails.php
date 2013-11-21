@@ -48,14 +48,12 @@
 	
 	while($row = mysqli_fetch_array($result)) {
 		$CoalId 		= $row['CoalID'];
-		$groupFilePath	= $row['groupFile_path'];
 	
 		# use function to get the Coalition name
 		$CoalName = get_usercoalitionname("$CoalId");
 
 		print "<hr noshade width=\"auto\" size=\"1\" align=\"left\">\n";
 		print "<p><b>Campaign DB: </b> ".$row['camp_db'] . " <b>Coalition:</b> ".$CoalName . "<br>\n";
-		print "<b>Group File Path: </b>".$groupFilePath."<br>\n";
 	}
 	print "</div>\n</p>\n";
 	
