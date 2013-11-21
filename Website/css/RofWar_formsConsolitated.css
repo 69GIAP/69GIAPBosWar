@@ -75,6 +75,7 @@ form fieldset p {
     width: auto;    
     padding: 30px;	  
 }
+
 #campaignMgmtSetupForm {
     background-color: #fff;
     height: auto;
@@ -298,7 +299,8 @@ form fieldset p {
 .checkboxWrapper {
 	margin: 3px 0;
 	padding: 10px;
-	width: 325px;
+	width: auto;
+	max-width: 400px;
 	background: #f1f1f1;
 	border: 1px solid #ccc;
     -moz-border-radius: 0px;
