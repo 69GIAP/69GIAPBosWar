@@ -217,7 +217,8 @@ form fieldset p {
 #registerSubmit,
 #SetupDone,
 #updateCamp,
-#countrySubmit {
+#countrySubmit,
+#back {
 	background: none;	
     background-color: #a21f1f;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.4);
@@ -241,7 +242,8 @@ form fieldset p {
 #submitHalfsize2,
 #SetupDone,
 #updateCamp,
-#countrySubmit {		
+#countrySubmit,
+#back {		
 	margin: 0 5px 0 0;
     width: 170px;
 	font-size: 20px;
@@ -254,7 +256,8 @@ form fieldset p {
 #submitHalfsize2:hover,#submitHalfsize2:focus,
 #SetupDone:hover, #SetupDone:focus,
 #updateCamp:hover, #updateCamp:focus,
-#countrySubmit:hover,#countrySubmit:focus {		
+#countrySubmit:hover,#countrySubmit:focus,
+#back:hover, #back:focus {		
     background-color: #293442;
 }
 
