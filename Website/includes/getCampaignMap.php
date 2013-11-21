@@ -1,7 +1,7 @@
 
 <?php
 	# load map
-	$query = "SELECT map FROM maps where simulation = '$game'";
+	$query = "SELECT map FROM maps where simulation = '$sim'";
 	
 	if(!$result = $dbc->query($query))
 		{

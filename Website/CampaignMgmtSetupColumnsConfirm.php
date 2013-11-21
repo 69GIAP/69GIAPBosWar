@@ -57,7 +57,7 @@
 					
 
 					//
-					echo "<form id=\"createColumn\" name=\"createcolumn\" action=\"CampaignMgmtRecordColumn.php?btn=campStp\" method=\"post\">\n";
+					echo "<form id=\"createColumn\" name=\"createcolumn\" action=\"CampaignMgmtRecordColumn.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 					echo "<h2>Create a Column</h2>\n";
 					echo "<p>Here you will create a column by choosing a supply point as the starting point for the column, the number of units in the column, and the ground unit itself.</p>
 					<p>Each column has a unique identitity (in this case, $column_name) and consists of one to sixteen copies of a single type of \"vehicle\" which will either be the unit itself or a transport vehicle to carry the ground unit (the <i>en route</i> unit type is shown in square brackets).</p>

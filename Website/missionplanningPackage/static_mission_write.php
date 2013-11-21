@@ -115,7 +115,7 @@ if ($num > 0)
 			{
 				$Model = $r2_data[1];
 				$moving_becomes = $r2_data[2];
-				$game_name = $r2_data[3];
+				$sim_name = $r2_data[3];
 				$modelpath2 = $r2_data[4];
 				$modelpath3 = $r2_data[5];
 				$max_speed_kmh = $r2_data[6];

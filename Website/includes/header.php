@@ -16,23 +16,23 @@ session_start();
 <?php
 
 	# check if game variable is already set
-	if (empty($_SESSION['game']))
+	if (empty($_SESSION['sim']))
 		{
 			# check if the variable was already set
 			# get the variable from the first pages button
-			$game = $_POST['selection'];
+			$sim = $_POST['selection'];
 			
-			if(!isset($game)) {
+			if(!isset($sim)) {
 				# redirect to index if user made no choice
 				header("Location: index.php");
 			}
 				
 			# register value of $_POST["selection"] - chosen game - to Session "game"
 			# syntax: $_SESSION['name'] = "value";
-			$_SESSION['game'] = $game;}
+			$_SESSION['sim'] = $sim;}
 	else {
-			#get the variable stored into $game
-			$game = $_SESSION['game'];
+			#get the variable stored into $sim
+			$sim = $_SESSION['sim'];
 		}
 		
 	# check if a navigation button was pressed and introduce SESSION variable for naviagtion button presses
@@ -78,12 +78,12 @@ session_start();
 		$userCoalId = $_SESSION['userCoalId'];}	
 	
 	# Style management
-	if ($game == "RoF")
+	if ($sim == "RoF")
 		{
 			echo "<!--  Link external CSS Master file containing all other CSS files -->\n";
 			echo "<link href=\"css/RofWar_styles.css\" rel=\"stylesheet\" type=\"text/css\" />\n";
 		}
-	if ($game == "BoS")
+	if ($sim == "BoS")
 		{
 			echo "<!--  Link external CSS Master file containing all other CSS files -->\n";
 			echo "<link href=\"css/BosWar_styles.css\" rel=\"stylesheet\" type=\"text/css\" />\n";
@@ -109,13 +109,13 @@ session_start();
 	<?php 
 
     
-     	# create dynamic title based on variable $gameselector
-		if ($game == "RoF")
+     	# create dynamic title based on variable $simselector
+		if ($sim == "RoF")
 			{
 				echo "<div id=\"titleRofWar\"></div>\n";
 				echo "<div id=\"version\">Beta Phase: Version 0.1.0</div>\n";
 			}
-		if ($game == "BoS")
+		if ($sim == "BoS")
 			{
 				echo "<div id=\"titleBosWar\"></div>\n";
 				echo "<div id=\"version\">Beta Phase: Version 0.1.0</div>\n";

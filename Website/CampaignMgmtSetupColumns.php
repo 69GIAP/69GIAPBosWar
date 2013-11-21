@@ -29,8 +29,7 @@
 				// use this information to connect to campaign 
 				$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
 
-				$sim = $_SESSION["game"];
-				echo "\$sim: $sim<br />\n";
+				//echo "\$sim: $sim<br />\n";
 
 				echo "<h1>Create a Column</h1>\n";
 					
@@ -42,7 +41,7 @@
 				}
 
 				// start form
-				echo "<form id=\"campaignMgmtSetupColumns\" name=\"campaignSetupColumns\" action=\"CampaignMgmtSetupColumnsConfirm.php?btn=campStp\" method=\"post\">\n";
+				echo "<form id=\"campaignMgmtSetupColumns\" name=\"campaignSetupColumns\" action=\"CampaignMgmtSetupColumnsConfirm.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 				// include setupColumns.php
 				include ('includes/setupColumns.php');
 

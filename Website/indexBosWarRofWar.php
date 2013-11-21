@@ -21,7 +21,7 @@
             	<?php
 					echo "<h2>Welcome to ";
 					
-                	if ($game == 'RoF')
+                	if ($sim == 'RoF')
 						{	echo "ROFWAR";	}
 					else
 						{	echo "BOSWAR";	}

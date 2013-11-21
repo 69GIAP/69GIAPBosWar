@@ -6,7 +6,7 @@
 		include 'includes/loggedOnInfo.php';
 
 		#dynamic footer information
-		if ($game == "RoF")
+		if ($sim == "RoF")
 			{
 				echo "<div id=\"credits\">\n";
 				echo "<p>An unofficial add-on for Rise of Flight brought to you by =69.GIAP=<br />\n";
@@ -14,7 +14,7 @@
                     Visit us at <a href=\"http://www.69giap.com\">www.69giap.com</a></p>\n";
 				echo "</div>\n";
 			}
-		if ($game == "BoS")
+		if ($sim == "BoS")
 			{
 				echo "<div id=\"credits\">\n";
 				echo "<p>An unofficial add-on for IL2 STURMOVIK - Battle of Stalingrad brought to you by =69.GIAP=<br />\n";

@@ -18,29 +18,29 @@ if ($userRole == "administrator" or $userRole == "commander")
 		if ($userRole == "administrator")
 			{
 				# get proposed campaigns
-				echo "<h3 id=\"h3Form\">Proposed $game Campaigns</h3>\n";				
-				$query = "SELECT * FROM campaign_settings where status = 4 and simulation = '$game' ";
+				echo "<h3 id=\"h3Form\">Proposed $sim Campaigns</h3>\n";				
+				$query = "SELECT * FROM campaign_settings where status = 4 and simulation = '$sim' ";
 
 				# get the radio buttons
 				get_radiobutton_for_stats($dbc,$query);
 				
-				echo "<h3 id=\"h3Form\">Active $game Campaigns</h3>\n";
+				echo "<h3 id=\"h3Form\">Active $sim Campaigns</h3>\n";
 				# get active campaigns
-				$query = "SELECT * FROM campaign_settings where status = 3 and simulation = '$game' ";
+				$query = "SELECT * FROM campaign_settings where status = 3 and simulation = '$sim' ";
 
 				# get the radio buttons
 				get_radiobutton_for_stats($dbc,$query);
 				
-				echo "<h3 id=\"h3Form\">Completed $game Campaigns</h3>\n";
+				echo "<h3 id=\"h3Form\">Completed $sim Campaigns</h3>\n";
 				# get completed campaigns
-				$query = "SELECT * FROM campaign_settings where status = 2 and simulation = '$game' ";
+				$query = "SELECT * FROM campaign_settings where status = 2 and simulation = '$sim' ";
 
 				# get the radio buttons
 				get_radiobutton_for_stats($dbc,$query);
 				
-				echo "<h3 id=\"h3Form\">Hidden $game Campaigns</h3>\n";
+				echo "<h3 id=\"h3Form\">Hidden $sim Campaigns</h3>\n";
 				# get active campaigns
-				$query = "SELECT * FROM campaign_settings where status = 1 and simulation = '$game' ";
+				$query = "SELECT * FROM campaign_settings where status = 1 and simulation = '$sim' ";
 
 				# get the radio buttons
 				get_radiobutton_for_stats($dbc,$query);
@@ -54,14 +54,14 @@ if ($userRole == "administrator" or $userRole == "commander")
 			}
 		if ($userRole == "commander")
 			{
-			echo "<h3 id=\"h3Form\">Active $game Campaigns</h3>\n";
+			echo "<h3 id=\"h3Form\">Active $sim Campaigns</h3>\n";
 
 			# check if commander is assigned to any active campaign
 			$query = "SELECT * FROM campaign_settings c
 						JOIN campaign_users u
 						ON  c.camp_db = u.camp_db
 						AND c.status = 3
-						AND c.simulation = '$game'
+						AND c.simulation = '$sim'
 						AND u.user_id = '$userId'";
 	
 			# get the radio buttons
@@ -81,18 +81,18 @@ if ($userRole == "viewer" or $userRole == "")
 	{
 		echo "<form id=\"campaignForm\" name=\"input\" action=\"CampaignStatisticsMissions.php?btn=home\" method=\"post\">\n";	
 
-		echo "		<h3 id=\"h3Form\">Active $game Campaigns</h3>\n";
+		echo "		<h3 id=\"h3Form\">Active $sim Campaigns</h3>\n";
 		
 		# get active campaigns dependent on the chosen application
-		$query = "SELECT * FROM campaign_settings where status = 3 and simulation = '$game' ";
+		$query = "SELECT * FROM campaign_settings where status = 3 and simulation = '$sim' ";
 		
 		# Use the function.  Arguments are an open link and a query.
 		get_radiobutton_for_stats($dbc,$query);
 		
-		echo "		<h3 id=\"h3Form\">Completed $game Campaigns</h3>\n";
+		echo "		<h3 id=\"h3Form\">Completed $sim Campaigns</h3>\n";
 		
 		# get completed campaigns dependent on the chosen application
-		$query = "SELECT * FROM campaign_settings where status = 2  and simulation = '$game' ";
+		$query = "SELECT * FROM campaign_settings where status = 2  and simulation = '$sim' ";
 		
 		# Use the function again
 		get_radiobutton_for_stats($dbc,$query);

@@ -9,9 +9,9 @@
 	session_start();
 	
 	# clean session variables in case user simply reloades index screen and tries to access a different layout
-	if (!empty($_SESSION['game']))
+	if (!empty($_SESSION['sim']))
 		{
-			unset($_SESSION['game']); 
+			unset($_SESSION['sim']); 
 		}
 	if (!empty($_SESSION['btn']))
 		{

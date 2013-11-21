@@ -25,7 +25,7 @@
             <div id="content">
             
 				<?php
-					$game	=	$_SESSION['game'];	
+					$sim	=	$_SESSION['sim'];	
 					$newCampaignName 		= $_POST['newCampaignName'];
 					$newCampaignAbbrv		= $_POST['newCampaignAbbrv'];
 					$newCampaignDBName 		= $_POST['newCampaignDatabaseName'];
@@ -75,7 +75,7 @@ echo "$newCampaignDBUser granted FILE privs<br />\n";
 // COPY INITIAL TABLESET FROM BOSWAR_DB TO NEW CAMPAIGN DB
 // Start with those that differ between RoF and BoS
 
-if ($game == 'RoF') {
+if ($sim == 'RoF') {
 
 	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.coalitions LIKE rof_coalitions;";
 	include ('includes/doit.php');
@@ -209,7 +209,7 @@ include ('includes/doit.php');
 echo "campaign_settings created<br />\n";
 
 $query = "INSERT INTO `$newCampaignDBName`.campaign_settings (simulation, campaign, abbrv, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
-$query .= "VALUES ('$game', '$newCampaignName', '$newCampaignAbbrv', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
+$query .= "VALUES ('$sim', '$newCampaignName', '$newCampaignAbbrv', '$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
 include ('includes/doit.php');
 echo "campaign_settings populated<br />\n";
 
@@ -236,7 +236,7 @@ echo "bridges created<br />\n";
 // this should be at the end of the creation chain
 // so it won't be created if there is an error
 $query = "INSERT INTO campaign_settings (simulation, campaign, abbrv, camp_db, camp_host, camp_user, camp_passwd, map, map_locations, status) ";
-$query .= "VALUES ('$game', '$newCampaignName', '$newCampaignAbbrv','$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
+$query .= "VALUES ('$sim', '$newCampaignName', '$newCampaignAbbrv','$newCampaignDBName', '$newCampaignDBHost', '$newCampaignDBUser', '$newCampaignDBPassword', '$campaignMap', '$campaignMapLocations',1);";
 include ('includes/doit.php');
 echo "master campaign_settings updated<br />\n";
 
