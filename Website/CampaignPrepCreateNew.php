@@ -11,7 +11,7 @@
 	include ( 'includes/navigation.php' );
 
 # Check whether we already have defined campaign db user(s)
-$count = $dbc->query("SELECT COUNT(*) FROM campaign_settings;");
+$count = $dbc->query("SELECT COUNT(camp_user) FROM campaign_settings;");
 
 ?>
 
@@ -56,28 +56,32 @@ $count = $dbc->query("SELECT COUNT(*) FROM campaign_settings;");
 						echo "		<input type=\"text\" name=\"newCampaignDatabaseUser\" id=\"username\" placeholder=\"Please enter the campaign DB user.\" value='' size=\"24\" maxlength=\"50\" />\n";	
 						# NEW CAMPAIGN DATABASE PASSWORD
 						echo "		<input type=\"text\" name=\"newCampaignDatabasePassword\" id=\"password\" placeholder=\"Please enter the campaign DB user's password.\" value='' size=\"24\" maxlength=\"50\" />\n";
-						$query = "SELECT `camp_host`, `camp_user`, `camp_passwd` from `campaign_settings` WHERE `camp_user` != '' GROUP BY `camp_user` ;";
-						echo "<p><h3>OR select an existing one</h3></p>\n";
+						
+						echo "		<h3>OR select an existing one</h3>\n";
 
 						echo "		<p class=\"indent\">Note: existing users take precedence over new. Beta testers should use boswar</p>\n";
-
+						
+						$query = "SELECT `camp_host`, `camp_user`, `camp_passwd` from `campaign_settings` WHERE `camp_user` != '' GROUP BY `camp_user` ;";
+						
 						if(!$result = $dbc->query($query)) {
 							die('There was an error running the query [' . $dbc->error . ']');
 						}
 						
 						if ($result = $dbc->query($query)) {				
-							echo "<select id = \"username\" name = \"existing\"><br>\n";
+							echo "<select id = \"username\" name = \"existing\">\n";
 							echo "<option value=\"\" selected>Select existing campaign user </option>\n";	
 							/* fetch result array */
 							while ($obj = $result->fetch_object()) {
-								$host = ($obj->camp_host);
-								$user = ($obj->camp_user);
-								$passwd	=($obj->camp_passwd);
-								// free result set, object oriented style
-								$result->close();
+								$host	= ($obj->camp_host);
+								$user	= ($obj->camp_user);
+								$passwd	= ($obj->camp_passwd);
+								
 								// note hack to pass three variables as one  :)
 								echo "<option value=\"".$host."+".$user."+".$passwd."\">".$user."</option>\n";
 							}
+							// free result set, object oriented style
+							$result->close();
+							
 							echo "</select>\n";	
 						}
 
