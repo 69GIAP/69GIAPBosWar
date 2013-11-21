@@ -90,8 +90,8 @@ session_start();
 		}
 	##### DEBUGGING #####
 	include ('includes/debugging/debuggingSessionVariables.php');	
-	include ( 'includes/debugging/debuggingPostVariables.php' ); #testing the Post variables for my objects enabling this creates an error so I turned it off temporarily.
-	include ( 'includes/debugging/debuggingMySqlError.php' );	
+	include ('includes/debugging/debuggingPostVariables.php' ); #testing the Post variables for my objects enabling this creates an error so I turned it off temporarily.
+	include ('includes/debugging/debuggingMySqlError.php' );	
 			
 ?>
 
@@ -106,19 +106,19 @@ session_start();
 
 <div id="header">
     
-	<?php 
+	<?php
+		# get db version and build out of version table based on $sim
+		require ( 'functions/getDbVersion.php' );
+		get_dbversion($sim);
 
-    
-     	# create dynamic title based on variable $simselector
+     	# create dynamic title based on variable $sim
 		if ($sim == "RoF")
 			{
 				echo "<div id=\"titleRofWar\"></div>\n";
-				echo "<div id=\"version\">Beta Phase: Version 0.1.0</div>\n";
 			}
 		if ($sim == "BoS")
 			{
 				echo "<div id=\"titleBosWar\"></div>\n";
-				echo "<div id=\"version\">Beta Phase: Version 0.1.0</div>\n";
 			}	
 	?>
         

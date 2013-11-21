@@ -44,6 +44,7 @@ source c:/Abyss web server/htdocs/global sql/tabcreate_Planes_on_field.sql;
 source c:/Abyss web server/htdocs/global sql/tabcreate_static.sql;
 source c:/Abyss web server/htdocs/global sql/users.sql;
 source c:/Abyss web server/htdocs/global sql/users_roles.sql;
+source c:/Abyss web server/htdocs/global sql/version.sql;
 show databases;
 
 
