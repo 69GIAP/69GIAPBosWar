@@ -74,8 +74,8 @@
             <div id="footer">
                 <div id="credits">
                     <p>brought to you by =69.GIAP=<br />
-                    Flight simulator wargaming at it's finest!<br />
-                    Visit us on www.69giap.com</p>
+                    Flight simulator wargaming at its finest!<br />
+                    Visit us at <a href=http://www.69giap.com/>www.69giap.com</a></p>
                 </div>
         </div>
     
