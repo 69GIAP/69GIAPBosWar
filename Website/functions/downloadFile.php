@@ -3,7 +3,7 @@
 // force download of a group or mission file
 // =69.GIAP=TUSHKA
 // Nov 20, 2013
-// BOSWAR ver 0.1
+// BOSWAR ver 0.2
 
 function download_file($file) {
 	global $camp_link; 
@@ -18,7 +18,7 @@ function download_file($file) {
 			echo "$DownloadDir created.<br />\n"; 
 		} else {
 			echo "$DownloadDir WAS NOT created.<br />\n"; 
-			return 0;
+			return(false);
 		}
 	}
 
@@ -45,7 +45,7 @@ function download_file($file) {
 		    readfile($path);
 			return(true); 
 		} else {
-			echo ".$extension is not an allowed extension";
+			echo ".$extension is not an allowed extension<br />\n";
 			return(false); 
 		}
 	} else {
