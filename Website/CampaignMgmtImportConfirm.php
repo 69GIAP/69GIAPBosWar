@@ -88,7 +88,7 @@
 						}
 ?>
 						<br />&nbsp;<br />
-<a href="CampaignMgmtSupplyControlPoints.php?btn=campStp&fi=airfields">Next</a>
+<a href="CampaignMgmtSupplyControlPoints.php?btn=campStp&sde=campSet&fi=airfields">Next</a>
 <?php
 					}
 ?>

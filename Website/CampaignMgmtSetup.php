@@ -45,7 +45,7 @@
 					$result->free();
 
 					# start form
-					echo "<form id=\"campaignMgmtSetupForm\" name=\"campaignSetup\" action=\"CampaignMgmtUpload.php?btn=campStp\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtSetupForm\" name=\"campaignSetup\" action=\"CampaignMgmtUpload.php?btn=campStp&sde=campSet\" method=\"post\">\n";
 
 					echo "<p>This is a job for the campaign administrator who should have basic skills in the Mission Editor, but don't worry.  We will lead you step-by-step.</p>\n";
 
@@ -72,7 +72,13 @@
 					echo "<p>Now we must select this map in the mission editor.</p>\n";
 					
 					if($map == 'Western Front') {
-						echo "<p>In the mission editor the \"Western Front\" GUI map has three versions: winter (05.01.1918), spring/summer (15.07.1918) and autumn (19.10.1918).</p>\n";
+						echo "<p>In the mission editor the \"Western Front\" GUI map has three versions:\n";
+						echo "<ul class=\"commonList\">\n";
+						echo "	<li>winter (05.01.1918)</li>\n";
+						echo "	<li>spring/summer (15.07.1918)\n";
+						echo "	<li>autumn (19.10.1918).\n";
+						echo "</ul></p>\n";
+						
 						echo "<p>Select one of these GUI maps and a matching season for your campaign.</p>\n";
 						echo "<p>Then for Landscape info: (Height Map, Textures, and Forests) you need to select an appropriate matching set.  Make all three either \"landscape\", \"landscape_autumn\" or \"landscape_winter\", as appropriate.</p>\n"; 
 						} 
@@ -143,12 +149,12 @@
 					This is the size in metres of the white grid squares which will give you an idea of the scale of your map on screen.</p>\n";
 
 					echo "<p>We will now define the influence areas for our campaign.</p>\n";
-?>
+			?>
 <p>The simplest case is two influence areas... one for each opposing side, and that is what we will go through here, but we also support multiple influence areas should you wish to use them. The combat area includes all defined influence areas.  Areas that are outside of defined influence areas are deemed neutral.</p>
 
 <p>To define the first influence area:<br \>
 <ul class="commonList">
-	<li>select the ">>MCUs<<" box in the upper right of the mission editor.</li>
+    <li>select the ">>MCUs<<" box in the upper right of the mission editor.</li>
     <li>Scroll down the list and select "Translator:Influence Area".</li>
     <li>Left click to place this on the map within the area you have choosen to be, say, German territory.</li>
     <li>Select the influence area icon with another left click.</li>
@@ -165,7 +171,7 @@
 </ul>
 
 <p>To set ownership of the influence area:</p>
-<ul>
+<ul class="commonList">
     <li>Right click on the influence area and select "Advanced Properties..."</li> 
     <li>select the country you want to be the owner of this area (e.g. Germany)</li>
     <li>click "OK".</li>
@@ -173,7 +179,7 @@
 </ul>
 
 <p>Repeat this process to define the opposing side's influence area(s).</p>
-<?php
+			<?php
 			
 			echo "<p>Save the template mission before continuing.</p>\n";
 

@@ -67,7 +67,7 @@
 					if ($fi == 'blank') { // skip if not
 						if (file_exists("$FullPath")) {
 							echo "<p>You have already uploaded $FullPath, so you should </p>\n"; 
-							echo "<a href=\"CampaignMgmtImport.php?btn=campStp\">SKIP Upload.</a><p>(Because this file must be imported, and deleted, before you can upload another copy.)</p><p>If, for any reason, the file can not be imported, delete $FullPath and try again.</p>\n";
+							echo "<a href=\"CampaignMgmtImport.php?btn=campStp&sde=campSet\">SKIP Upload.</a><p>(Because this file must be imported, and deleted, before you can upload another copy.)</p><p>If, for any reason, the file can not be imported, delete $FullPath and try again.</p>\n";
 							
 						} else {
 							echo "<p>We will now upload our template mission file to the BOSWAR campaign manager.</p>\n";
@@ -76,7 +76,7 @@
 							echo "<p>Start by navigating to your <b>$abbrv-groups</b> directory.</p>\n";
 							echo "<p>Choose <b>$abbrv-template.Mission.</b><br />
 							Then click \"Upload File\".</p>\n";
-							$returnpage = 'CampaignMgmtUpload.php?btn=campStp';
+							$returnpage = 'CampaignMgmtUpload.php?btn=campStp&sde=campSet';
 
 							# go
 							pickFile($returnpage);

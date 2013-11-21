@@ -58,7 +58,7 @@
 
 					echo "<p>We will now use the template file we recently uploaded to the server.</p>\n";
 					// start form
-					echo "<form id=\"campaignMgmtImportForm\" name=\"campaignImport\" action=\"CampaignMgmtImportConfirm.php?btn=campStp\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtImportForm\" name=\"campaignImport\" action=\"CampaignMgmtImportConfirm.php?btn=campStp&sde=campSet\" method=\"post\">\n";
 
 					if ($fi == 'airfields') {
 						echo "<h3>Update Combat Areas, Countries and Coalitions, Active and Inactive Airfields, Supply Points, any Control Points, and Bridges</h3>\n";
