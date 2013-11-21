@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2013 at 08:00 PM
+-- Generation Time: Nov 21, 2013 at 06:39 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -30,22 +30,22 @@ DROP TABLE IF EXISTS `columns`;
 CREATE TABLE IF NOT EXISTS `columns` (
   `id` int(1) NOT NULL AUTO_INCREMENT,
   `columnID` int(1) NOT NULL,
-  `Name` char(31) DEFAULT 'REGIMENT 1 Platoon 1',
-  `Moving` enum('0','1') DEFAULT '0',
-  `Model` char(20) DEFAULT 'leyland',
-  `moving_becomes` varchar(39) NOT NULL,
+  `Name` char(31) DEFAULT NULL,
+  `Moving` enum('0','1') NOT NULL DEFAULT '0',
+  `Model` char(20) DEFAULT NULL,
+  `moving_becomes` varchar(39) DEFAULT NULL,
   `Description` varchar(80) DEFAULT NULL,
-  `ckey` enum('0','101','102','103','104','105','501','502','600','610','620','630','640') DEFAULT '105',
-  `CoalID` enum('1','2') DEFAULT '1',
-  `Supplypoint` enum('1','2','3') DEFAULT '1',
-  `Quantity` int(11) DEFAULT '1',
-  `XPos` decimal(12,3) DEFAULT '0.000',
-  `ZPos` decimal(12,3) DEFAULT '0.000',
-  `YOri` decimal(5,2) DEFAULT '0.00',
-  `dest_XPos` decimal(12,3) DEFAULT '0.000',
-  `dest_ZPos` decimal(12,3) DEFAULT '0.000',
-  `col_speed` int(11) DEFAULT '10',
-  `col_formation` int(11) DEFAULT '4',
+  `ckey` enum('0','101','102','103','104','105','501','502','600','610','620','630','640') DEFAULT NULL,
+  `CoalID` enum('1','2') DEFAULT NULL,
+  `Supplypoint` tinyint(1) DEFAULT NULL,
+  `Quantity` int(11) NOT NULL DEFAULT '1',
+  `XPos` decimal(12,3) DEFAULT NULL,
+  `ZPos` decimal(12,3) DEFAULT NULL,
+  `YOri` decimal(5,2) DEFAULT NULL,
+  `dest_XPos` decimal(12,3) DEFAULT NULL,
+  `dest_ZPos` decimal(12,3) DEFAULT NULL,
+  `col_speed` int(11) DEFAULT NULL,
+  `col_formation` int(11) NOT NULL DEFAULT '4',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
