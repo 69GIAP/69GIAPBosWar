@@ -1,5 +1,5 @@
 <?php 
-
+# Stenka 21/11/13 adding hints and text corrections
 # Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
 	$dbc = connectBOSWAR();
@@ -150,7 +150,8 @@
 
 					echo "<p>We will now define the influence areas for our campaign.</p>\n";
 			?>
-<p>The simplest case is two influence areas... one for each opposing side, and that is what we will go through here, but we also support multiple influence areas should you wish to use them. The combat area includes all defined influence areas.  Areas that are outside of defined influence areas are deemed neutral.</p>
+<p>The simplest case is two influence areas... one for each opposing side, and that is what we will go through here, but we also support multiple influence areas should you wish to use them. The combat area includes all defined influence areas.  Areas that are outside of defined influence areas are deemed neutral.
+Hint : if your screen is a bit crowded with ikons go to your object filter and switch off most stuff except for Airfields and MCU Translators.</p>
 
 <p>To define the first influence area:<br \>
 <ul class="commonList">
@@ -193,7 +194,7 @@
 			echo "<p>Left click outside the area to unselect it.</p>\n";
 			echo "<p>Now go to the \"Search and Select\" menu, select \"Select All Objects in Mission\" then press the \"Delete\" key on your keyboard. There will be a pause (have patience) and all the airfields etc. will disappear.</p>\n";
 			echo "<p>We can now load back in only those objects that were in our sector with File, Import from File, select your <b>$abbrv-groups</b> directory and load the file <b>$abbrv-sector.Group</b>.
-			You should now have just the infrastructore for your sector.</p>\n"; 
+			You should now have just the infrastructure for your sector.</p>\n"; 
 			echo "<p>\"File\", \"Save\" to make sure we do not lose this!</p>\n";
 
 			echo "<h3>Activate Select Airfields</h3>\n";
