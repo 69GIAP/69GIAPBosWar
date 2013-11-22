@@ -4,6 +4,7 @@ function import_bridges($path,$file) {
 // =69.GIAP=TUSHKA
 // Nov 15, 2013
 // BOSWAR version 1.0
+# stenka correction 22/11/13 when loading a damaged bridge convert text variable to integer
 
 	global $camp_link; // link to campaign db
 
@@ -116,6 +117,19 @@ function import_bridges($path,$file) {
 //		echo "$name: \$XPos=$XPos, \$ZPos=$ZPos, \$YOri=$YOri, 
 //			\$Model=$Model, \$Country=$Country, \$Coalition=$Coalition,
 //			\$Desc=$Desc<br />\n";
+# stenka correction 22/11/13
+		$d1 = intval($d1); 
+		$d2 = intval($d2);
+		$d3 = intval($d3);
+		$d4 = intval($d4);
+		$d5 = intval($d5);
+		$d6 = intval($d6);
+		$d7 = intval($d7);
+		$d8 = intval($d8);
+		$d9 = intval($d9);
+		$d10 = intval($d10);
+#
+
 		$query = "REPLACE bridges SET Name='$name', XPos='$XPos',
 			ZPos='$ZPos', YOri='$YOri', Model ='$Model', 
 			Country='$Country', CoalID='$Coalition',
