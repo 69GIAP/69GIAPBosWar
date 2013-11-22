@@ -88,9 +88,12 @@
 					//$maxnum = 99;
 					$maxnum = 16;
 					echo "		<select name=\"objnum\" id=\"number\">\n";
+					echo "		<option selected value=\"10\">10</option>\n";
+					/*
 					for ($i = 1; $i < $maxnum+1; ++$i) {
 						echo "		<option value=\"$i\">$i</option>\n";
 					}
+					 */
 					echo "		</select>\n";
 					echo "	</fieldset>\n";
 
