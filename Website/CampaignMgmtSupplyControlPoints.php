@@ -1,5 +1,6 @@
 <?php 
 #Stenka 16/11/13 definition of control and supply points has been moved to campaign creation
+#stenka 22/11/13 update of text
 #here we merely need a screen to update them
 # Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
@@ -39,16 +40,26 @@
 					echo "<h2>Clean Up the Template</h2>\n";
 					echo "<h3>Delete Airfields</h3>\n";
 					echo "<p>Back to the Mission Editor!</p>\n";
+					echo "<p>We have now loaded all Airfields into the campaign manager which from now on controls which country owns them and what planes will be allowed to fly from them. 
+					Before each mission the campaign manager will download all Airfields to the mission editor via a group file. So now, to avoid ending up with two airfields superimposed
+					on top of each other we will delete all airfields from the template.</p>\n";
 					echo "<p>Go back to the object filter (\"OBJ FILT\" button) at the top, click on \"Clear All\" then click on \"Airfields\" (a checkmark will appear) and \"OK\".  Now you should see only airfields on the map.</p>\n";
 					echo "<p>\"Select All Visible Objects\" (the airfields) and remove them from the template by pressing the \"Delete\" key on your keyboard.  All the airfields will disappear.</p>\n";
 					echo "<h3>Delete Bridges</h3>\n";
+					echo "<p>We have now loaded all bridges into the campaign manager which from now on controls if they are damaged or not. 
+					Before each mission the campaign manager will download all bridges to the mission editor via a group file. So now, to avoid ending up with two bridges superimposed
+					on top of each other we will delete all bridges from the template.</p>\n";
 					echo "<p>In the object filter (\"OBJ FILT\"), click on \"Bridges\" and \"OK\".  Now you should see only bridges.</p>\n";
 					echo "<p>\"Select All Visible Objects\" (the bridges) and remove them by pressing the \"Delete\" key on your keyboard.  The bridges will vanish.</p>\n";
 					echo "<h3>Delete Control Points (Flags)</h3>\n";
+					echo "<p>We have now loaded all control points into the campaign manager which from now on controls who owns them. 
+					We no longer need the flags on the map so we will delete all flags from the template.</p>\n";					
 					echo "<p>If you have defined Control Points, click on \"Flags\" and \"OK\" in the object filter.  Only flags are displayed, and these flags represent control points.  (Windsocks will be dealt with later under \"Statics\").</p>\n";
 					echo "<p>\"Select All Visible Objects\" (the flags) and press the \"Delete\" key on your keyboard.  All the flags will go away.</p>\n";
 					echo "<h3>Delete Supply Points (rwstation blocks)</h3>\n";
-					echo "<p>Now for something completely different.  Keep your fingers off the \"Delete\" key this time.  In the object filter, click on \"Blocks\" and \"OK\".  Now you will see many \"blocks\" on the map, but only the Supply Points will be red or blue (because you defined their nationalities).  One by one select each with a left click, check that it is a rwstation (Model says graphics\\blocks\\rwstation.mgm), then right click \"cut\" to remove it.</p><p>In the object filter \"Select All\" to see all that remains.</p>\n";
+					echo "<p>We have now loaded all supply into the campaign manager which now knows where they are. 
+					You may delete the rwstation blocks and economise several objects, or you may leave them there as a visual guide to the mission planners.</p>\n";					
+					echo "<p>If you choose to delete them.  Keep your fingers off the \"Delete\" key this time.  In the object filter, click on \"Blocks\" and \"OK\".  Now you will see many \"blocks\" on the map, but only the Supply Points will be red or blue (because you defined their nationalities).  One by one select each with a left click, check that it is a rwstation (Model says graphics\\blocks\\rwstation.mgm), then right click \"cut\" to remove it.</p><p>In the object filter \"Select All\" to see all that remains.</p>\n";
 
 					echo "<h3>Save As Clean Template</h3>\n";
 					echo "<p>Then \"File\", \"Save As\" and save with the name <b>$abbrv-cleantemplate.Mission</b>.  The CLEAN template has your Influence Areas and all pre-defined infrastructure other than airfields and bridges and has no tokens for supply or control points.  From now on the BOSWAR campaign manager will take care of the airfields, bridges, supply and control points.</p><p>Note that you still have the full $abbrv-template.Mission in case you want to change your selection of active airfields, or supply or control points before initializing the campaign's first mission.  These are all now irrelevant to our $abbrv-cleantemplate.Mission.  Please do not confuse the two.\n";
