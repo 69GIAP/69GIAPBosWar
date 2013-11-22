@@ -11,16 +11,7 @@ function download_file($file) {
 	// restrict downloaded files to .Group and .Mission files
 	$allowedExts = array("Group", "group", "Mission", "mission");
 
-	// make sure $DownloadDir exists
 	$DownloadDir = "downloads/";
-	if (!is_dir($DownloadDir)) {
-		if (mkdir($DownloadDir)) {
-			echo "$DownloadDir created.<br />\n"; 
-		} else {
-			echo "$DownloadDir WAS NOT created.<br />\n"; 
-			return(false);
-		}
-	}
 
 	$path = "$DownloadDir"."$file";
 //	echo "\$path: $path<br />\n";

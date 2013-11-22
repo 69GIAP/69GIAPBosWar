@@ -89,11 +89,11 @@
 					$maxnum = 16;
 					echo "		<select name=\"objnum\" id=\"number\">\n";
 					echo "		<option selected value=\"10\">10</option>\n";
-					/*
+
 					for ($i = 1; $i < $maxnum+1; ++$i) {
 						echo "		<option value=\"$i\">$i</option>\n";
 					}
-					 */
+
 					echo "		</select>\n";
 					echo "	</fieldset>\n";
 
@@ -115,9 +115,16 @@
 <a href="CampaignMgmtSetupColumns.php?btn=campStp&fi=country">Next</a>
 -->
 <?php
-					# BUTTON	
+					# CREATE COLUMN BUTTON	
 					echo "<fieldset id=\"actions\">\n";
 					echo "		<button type=\"submit\" name =\"createColumn\" id=\"loginSubmit\" value =\"init\" >Create Column</button>\n";	
+					echo "	</fieldset>\n";
+					echo "</form>\n";          
+
+					echo "<form id=\"createColumn\" name=\"createcolumn\" action=\"CampaignMgmtDownloadColumns.php?btn=campStp&sde=campCol\" method=\"post\">\n";
+					# NEXT BUTTON	
+					echo "<fieldset id=\"actions\">\n";
+					echo "		<button type=\"submit\" name =\"createColumn\" id=\"loginSubmit\" value =\"init\" >Next</button>\n";	
 					echo "	</fieldset>\n";
 
 					echo "</form>\n";          

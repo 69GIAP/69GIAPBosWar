@@ -37,6 +37,9 @@
 					echo "Warning: action not set<br />\n";
 				}
 
+				// require getAbbrv.php
+				require ('functions/getAbbrv.php');
+
 				if ($action == "export") {
 					// require getPointXPos.php
 					require ('functions/getPointXPos.php');
@@ -56,19 +59,41 @@
                 	// require exportColumns.php                
 					require ('functions/exportColumns.php');
 
+					// export columns seperately for each coalition
 					export_columns(1);
 					export_columns(2);
 
 					echo "<form id=\"campaignMgmtDLColumnsConfirm\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLColumnsConfirm.php?btn=campStp\" method=\"post\">\n";
 					// NEXT BUTTON
 					echo "<fieldset id=\"actions\">\n";	
-					echo "<input type=\"hidden\" name=\"action\" value = \"done\">\n";	
+					echo "<input type=\"hidden\" name=\"action\" value = \"next\">\n";	
 					echo "		<button type=\"submit\" id=\"downloadColumns\" value ='' >Next</button>\n";
 					echo "	</fieldset>\n";
 					echo "</form>\n";
 				} else {
 					// actually do the downloads
 					echo "OK, time to download for real!<br />\n";
+					echo "<form id=\"campaignMgmtDLFile\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLFile.php?btn=campStp\" method=\"post\">\n";
+					$DownloadDir = 'downloads/';
+					print "<select name=\"dlfile\">\n";
+					
+					// get list of files as array, removing '.' and '..' from the list
+					$files=array_diff(scandir($DownloadDir), array('.','..'));
+					
+					// sort the array in natural fashion
+					natsort($files);
+					
+					// print the list of files that contains $abbrv
+					// make each an element of a pulldown list
+					echo "<option value=\"\">Select file to download</option>\n";
+					$abbrv = get_abbrv();
+
+					while (list ($key, $value) = each ($files)) {
+					   if (preg_match("/^$abbrv/","$value")) {
+						  echo "<option value=\"$value\">$value</option>\n";
+					   }
+					}
+					echo "</p><input type=\"submit\" value=\"Go\"><br>\n";
 				}
 
 

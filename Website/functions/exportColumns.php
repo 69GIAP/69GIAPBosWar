@@ -9,8 +9,11 @@ function export_columns($CoalID) {
 
 	global $camp_link;
 
+	$abbrv = get_abbrv();
+	echo "<br />\$abbrv: $abbrv<br />\n";
+
 	$col_coalition = $CoalID;
-	echo "<br />\$col_coalition: $col_coalition<br />\n";
+	echo "\$col_coalition: $col_coalition<br />\n";
 
 	$ground_spacing = get_groundspacing();
 	echo "\$ground_spacing: $ground_spacing<br />\n";
@@ -29,11 +32,15 @@ function export_columns($CoalID) {
 
 	// make sure $DownloadDir exists
 	if (!is_dir($DownloadDir)) {
-		mkdir ($DownloadDir);
-		echo "$DownloadDir created<br />\n";
+		if (mkdir($DownloadDir)) {
+			echo "$DownloadDir created.<br />\n"; 
+		} else {
+			echo "$DownloadDir WAS NOT created.<br />\n"; 
+			return(false);
+		}
 	}
 
-	$filename = "$_coalitionname"."_columns.Group";
+	$filename = "$abbrv"."_$_coalitionname"."_columns.Group";
 	$filename = "$DownloadDir"."$filename";
 	echo "\$filename: $filename<br />\n";
 
