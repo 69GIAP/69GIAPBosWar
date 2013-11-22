@@ -31,18 +31,45 @@
 				// use this information to connect to campaign 
 				$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
 
-                // require downloadColumns.php                
-				require ('functions/downloadColumns.php');
+				if (isset($_POST['action'])) {
+					$action = $_POST['action'];
+				} else {
+					echo "Warning: action not set<br />\n";
+				}
 
-//				download_columns(1);
-				download_columns(2);
+				if ($action == "export") {
+					// require getPointXPos.php
+					require ('functions/getPointXPos.php');
 
-				// DONE BUTTON
-				echo "<fieldset id=\"actions\">\n";	
-				echo "<input type=\"hidden\" name=\"action\" value = \"done\">\n";	
-				echo "		<button type=\"submit\" id=\"downloadColumns\" value ='' >Download Done</button>\n";
-				echo "	</fieldset>\n";
-				echo "</form>\n";
+					// require getPointZPos.php
+					require ('functions/getPointZPos.php');
+
+					// require getGroundAILevel.php
+					require ('functions/getGroundAILevel.php');
+
+					// require getGroundspacing.php
+					require ('functions/getGroundspacing.php');
+
+					// require getCoalitionname.php
+					require ('functions/getCoalitionname.php');
+
+                	// require exportColumns.php                
+					require ('functions/exportColumns.php');
+
+					export_columns(1);
+					export_columns(2);
+
+					echo "<form id=\"campaignMgmtDLColumnsConfirm\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLColumnsConfirm.php?btn=campStp\" method=\"post\">\n";
+					// NEXT BUTTON
+					echo "<fieldset id=\"actions\">\n";	
+					echo "<input type=\"hidden\" name=\"action\" value = \"done\">\n";	
+					echo "		<button type=\"submit\" id=\"downloadColumns\" value ='' >Next</button>\n";
+					echo "	</fieldset>\n";
+					echo "</form>\n";
+				} else {
+					// actually do the downloads
+					echo "OK, time to download for real!<br />\n";
+				}
 
 
 				// close $camp_link
