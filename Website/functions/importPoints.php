@@ -27,7 +27,10 @@ function import_points($path,$file) {
 	foreach ($line as $i => $value ) {
 		// find an rwstation (supply point)
 		if (preg_match('/rwstation.txt/',$value)) {
-			$spline[$j++] = $i;  // save its line number
+			// filter out neutral rwstations
+			if (!preg_match('/^  Country = 0/', $line[$i+1])) {
+				$spline[$j++] = $i;  // save its line number
+			}
 		// find a flag (control point)
 		} elseif (preg_match('/flag.txt/',$value)) {
 			$cpline[$k++] = $i;  // save its line number
