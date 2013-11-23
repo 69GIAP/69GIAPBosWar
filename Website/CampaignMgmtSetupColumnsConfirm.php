@@ -55,6 +55,8 @@
 //					echo "\$columnID: $columnID<br />\n";
 //					echo "\$column_name: $column_name<br />\n";
 					
+					// require getCountriesInCoalition.php
+					require ('functions/getCountriesInCoalition.php');
 
 					//
 					echo "<form id=\"createColumn\" name=\"createcolumn\" action=\"CampaignMgmtRecordColumn.php?btn=campStp&sde=campCol\" method=\"post\">\n";

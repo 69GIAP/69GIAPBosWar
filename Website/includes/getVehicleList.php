@@ -1,15 +1,25 @@
 <?php
+// getVehicleList.php
 // get Vehicle list for a column
 // =69.GIAP=TUSHKA
-// BOSWAR ver 1.0
-// Nov 16, 2013
+// BOSWAR ver 1.1
+// Nov 23, 2013
+
+// NOTE: the calling page must require getCoalitionname, getCoalition,
+// getCountriesInCoalition, and getCountryadj
 
 	// require function getClassRoleDescription.php
 	require ( 'functions/getClassRoleDescription.php' );
 
+	$coalitionname = get_coalitionname($CoalID);
+
+	$CoalID = get_coalition($ckey);
+
+	$countries = get_countries_in_coalition($CoalID);
+
 	$query = "SELECT id, object_type, object_class, object_desc, moving_becomes, cruise_speed_kmh, default_country
 		FROM object_properties
-		WHERE ( default_country = '$ckey' OR default_country = '0') AND ( modelpath2 = 'artillery' OR modelpath2 = 'vehicles' ) ORDER BY object_class;";
+		WHERE ( modelpath2 = 'artillery' OR modelpath2 = 'vehicles' ) ORDER BY object_class;";
 	
 	$i = 1;
 	
@@ -20,7 +30,7 @@
 
 	$countryadj = get_countryadj($ckey);
 
-	echo "<h3>$countryadj (or neutral) Vehicles, Artillery & Infantry</h3>\n";
+	echo "<h3>$coalitionname (or Neutral) Vehicles, Artillery & Infantry</h3>\n";
 
 	# load results into variables 
 	while ($obj = $result->fetch_object()) {
@@ -28,20 +38,24 @@
 		$object_class	=	$obj->object_class;
 		$objectDesc		=	$obj->object_desc;
 		$moving_becomes	=	$obj->moving_becomes;
+		$default_country=	$obj->default_country;
 
 		$classRoleDesc = get_class_role_description($object_class);
 
-		echo "<div class=\"radio\">\n";
+        if (in_array($default_country, $countries) || $default_country == '0') {	
 
-		echo "<input id=\"$i\" type=\"radio\" name=\"objectType\" value=\"$objectType\">";
-		echo "<label for=\"$i\"><b>$objectDesc &nbsp; $classRoleDesc<br />
+			echo "<div class=\"radio\">\n";
+
+			echo "<input id=\"$i\" type=\"radio\" name=\"objectType\" value=\"$objectType\">";
+			echo "<label for=\"$i\"><b>$objectDesc &nbsp; $classRoleDesc<br />
 				[ $moving_becomes ]</b></label><br />\n";
 
-		echo "</div>\n";
+			echo "</div>\n";
 
-		print "<hr noshade width=\"auto\" size=\"1\" >\n";
+			print "<hr noshade width=\"auto\" size=\"1\" >\n";
 
-		$i ++;
+			$i ++;
+		}
 	}
 
 	$result->free();
