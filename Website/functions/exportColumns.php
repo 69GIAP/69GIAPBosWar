@@ -4,6 +4,7 @@
 // =69.GIAP=TUSHKA based on =69.GIAP=STENKA's poof-of-concept code
 // Nov 21, 2013
 // BOSWAR version 1.0
+#stenka 23/11/13 correction to include the description field
 
 function export_columns($CoalID) {
 
@@ -76,6 +77,7 @@ function export_columns($CoalID) {
 			$col_qty = $row['Quantity'];
 			$col_Country = $row['ckey'];
 			$Supplypoint = $row['Supplypoint'];
+			$Description = $row['Description'];			
 
 			echo "\$current_rec: $current_rec<br />\n";
 			echo "\$Supplypoint: $Supplypoint<br />\n";
@@ -157,13 +159,8 @@ function export_columns($CoalID) {
 			}
 			$writestring = '  Model = "graphics'."\\"."$modelpath2"."\\"."$modelpath3"."\\".rtrim($col_Model).'.mgm";'."\r\n";	
 			fwrite($fh,$writestring);
-			$writestring = '  Desc = "'."$coalitionname ";
-			if ($col_moving == "1") {
-				$writestring = $writestring.'moving ';
-			} else {
-				$writestring = $writestring.'static ';
-			}
-			$writestring = $writestring.$col_qty.' '.rtrim($col_Model).'";'."\r\n";
+			$writestring = '  Desc = "'."$Description ";
+						$writestring = $writestring.'";'."\r\n";
 			fwrite($fh,$writestring);		
 			$writestring = '  Country = '.$col_Country.';'."\r\n";
 			fwrite($fh,$writestring);
