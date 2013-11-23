@@ -31,14 +31,48 @@
 					// connect to campaign db
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
 
-					// get post variables
-					$columnID		= $_POST["columnID"];
-					$column_name	= $_POST["column_name"];
-					$objectType		= $_POST["objectType"];
-					$ckey			= $_POST["ckey"];
-					$CoalID			= $_POST["CoalID"];
-					$pointID		= $_POST["pointID"];
-					$objnum			= $_POST["objnum"];
+					// get required post variables
+					if (isset($_POST["columnID"])) {
+						$columnID		= $_POST["columnID"];
+					} else {
+							die ('columnID not set!');
+					}
+
+					if (isset($_POST["column_name"])) {
+						$column_name	= $_POST["column_name"];
+					} else {
+							die ('column_name not set!');
+					}
+
+					if (isset($_POST["objectType"])) {
+						$objectType		= $_POST["objectType"];
+					} else {
+							die ('objectType (vehicle) not set!');
+					}
+
+					if (isset($_POST["ckey"])) {
+						$ckey			= $_POST["ckey"];
+					} else {
+							die ('ckey (country) not set!');
+					}
+
+					if (isset($_POST["CoalID"])) {
+						$CoalID			= $_POST["CoalID"];
+					} else {
+							die ('CoalID (coalition) not set!');
+					}
+
+					if (isset($_POST["pointID"])) {
+						$pointID		= $_POST["pointID"];
+					} else {
+							die ('pointID (supply point) not set!');
+					}
+
+					if (isset($_POST["objnum"])) {
+						$objnum			= $_POST["objnum"];
+					} else {
+							die ('objnum (quantity) not set!');
+					}
 
 					// require getTransportSpeed.php
 					require ('functions/getTransportSpeed.php');
