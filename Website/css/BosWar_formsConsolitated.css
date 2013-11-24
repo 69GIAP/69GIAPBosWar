@@ -218,7 +218,8 @@ form fieldset p {
 #SetupDone,
 #updateCamp,
 #countrySubmit,
-#back {
+#back,
+#downloadColumns {
 	background: none;	
     background-color: #a21f1f;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.4);
@@ -257,7 +258,8 @@ form fieldset p {
 #SetupDone:hover, #SetupDone:focus,
 #updateCamp:hover, #updateCamp:focus,
 #countrySubmit:hover,#countrySubmit:focus,
-#back:hover, #back:focus {		
+#back:hover, #back:focus,
+#downloadColumns:hover, #downloadColumns:focues {		
     background-color: #293442;
 }
 

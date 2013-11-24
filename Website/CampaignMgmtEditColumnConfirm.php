@@ -62,7 +62,12 @@
 							echo "Updated\n";
 
 							echo "<br />&nbsp;<br />\n";
-							echo "<a href=\"CampaignMgmtDownloadColumns.php?btn=campStp\">Next</a><br />\n";
+							
+							# start form
+							echo "<form id=\"campaignMgmtForm\" name=\"objectSetup\" action=\"CampaignMgmtDownloadColumns.php?btn=campStp&sde=campCol\" method=\"post\">\n";
+							echo "<fieldset id=\"actions\">\n";	
+							echo "		<button type=\"submit\" id=\"back\" >Next</button>\n";
+							echo "	</fieldset>\n";								
 						}
 
 					} else {
@@ -77,7 +82,11 @@
 //							echo "Trying to drop a column<br />\n";
 							echo "Column dropped<br />\n";
 							echo "<br />&nbsp;<br />\n";
-							echo "<a href=\"CampaignMgmtDownloadColumns.php?btn=campStp\">Next</a><br />\n";
+							
+							echo "<form id=\"campaignMgmtForm\" name=\"objectSetup\" action=\"CampaignMgmtDownloadColumns.php?btn=campStp&sde=campCol\" method=\"post\">\n";
+							echo "<fieldset id=\"actions\">\n";	
+							echo "		<button type=\"submit\" id=\"back\" >Next</button>\n";
+							echo "	</fieldset>\n";	
 						}
 					}
 ?>

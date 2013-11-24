@@ -67,7 +67,7 @@
 					// NEXT BUTTON
 					echo "<fieldset id=\"actions\">\n";	
 					echo "<input type=\"hidden\" name=\"action\" value = \"next\">\n";	
-					echo "		<button type=\"submit\" id=\"downloadColumns\" value ='' >Next</button>\n";
+					echo "		<button type=\"submit\" id=\"submitHalfsize1\" value ='' >Next</button>\n";
 					echo "	</fieldset>\n";
 					echo "</form>\n";
 				} else {

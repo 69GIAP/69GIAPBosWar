@@ -47,7 +47,7 @@
 
 				# SELECT COUNTRY BUTTON
 				echo "<fieldset id=\"actions\">\n";	
-				echo "		<button type=\"submit\" id=\"countrySubmit\" value ='' >Select Country</button>\n";
+				echo "		<button type=\"submit\" id=\"submitHalfsize1\" value ='' >Select Country</button>\n";
 				echo "	</fieldset>\n";
 					
 				echo "</form>\n";
@@ -55,7 +55,7 @@
 				echo "<form id=\"campaignMgmtSetupColumns\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDownloadColumns.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 				# NEXT BUTTON
 				echo "<fieldset id=\"actions\">\n";	
-				echo "		<button type=\"submit\" id=\"countrySubmit\" value ='' >Next</button>\n";
+				echo "		<button type=\"submit\" id=\"submitHalfsize1\" value ='' >Next</button>\n";
 				echo "	</fieldset>\n";
 					
 				echo "</form>\n";

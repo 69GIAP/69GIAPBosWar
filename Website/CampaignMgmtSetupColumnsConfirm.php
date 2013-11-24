@@ -119,14 +119,14 @@
 <?php
 					# CREATE COLUMN BUTTON	
 					echo "<fieldset id=\"actions\">\n";
-					echo "		<button type=\"submit\" name =\"createColumn\" id=\"loginSubmit\" value =\"init\" >Create Column</button>\n";	
+					echo "		<button type=\"submit\" name =\"createColumn\" id=\"submitHalfsize1\" value =\"init\" >Create Column</button>\n";	
 					echo "	</fieldset>\n";
 					echo "</form>\n";          
 
 					echo "<form id=\"createColumn\" name=\"createcolumn\" action=\"CampaignMgmtDownloadColumns.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 					# NEXT BUTTON	
 					echo "<fieldset id=\"actions\">\n";
-					echo "		<button type=\"submit\" name =\"createColumn\" id=\"loginSubmit\" value =\"init\" >Next</button>\n";	
+					echo "		<button type=\"submit\" name =\"createColumn\" id=\"submitHalfsize1\" value =\"init\" >Next</button>\n";	
 					echo "	</fieldset>\n";
 
 					echo "</form>\n";          

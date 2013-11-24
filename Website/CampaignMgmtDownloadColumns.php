@@ -56,14 +56,16 @@
 					// include ('includes/prepareColumnsForDownload.php');
 				
 					echo "<br />&nbsp<br />\n";
+					
 					// EDIT BUTTON
 					echo "<fieldset id=\"actions\">\n";	
 					echo "<input type=\"hidden\" name=\"action\" value = \"edit\">\n";	
-					echo "		<button type=\"submit\" id=\"editColumns\" value ='' >Edit Column</button>\n";
+					echo "		<button type=\"submit\" id=\"submitHalfsize1\" value ='' >Edit Column</button>\n";
 					echo "	</fieldset>\n";
 					echo "</form>\n";
 
 					echo "<form id=\"campaignMgmtDownloadColumns\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLColumnsConfirm.php?btn=campStp\" method=\"post\">\n";
+					
 					// EXPORT BUTTON
 					echo "<fieldset id=\"actions\">\n";	
 					echo "<input type=\"hidden\" name=\"action\" value = \"export\">\n";	
@@ -75,7 +77,12 @@
 					if ($action == 'edit') { 
 						if (!isset($_POST['columnID'])) {
 							echo "<p><b><font color = \"red\">You did not select a column to edit.</font></b></p>\n";
-							echo "<a href=\"CampaignMgmtDownloadColumns.php?btn=campStp\">Continue</a>\n";
+							
+							echo "<form id=\"campaignMgmtForm\" name=\"objectSetup\" action=\"CampaignMgmtDownloadColumns.php?btn=campStp&sde=campCol\" method=\"post\">\n";
+							echo "<fieldset id=\"actions\">\n";	
+							echo "		<button type=\"submit\" id=\"submitHalfsize1\" >Continue</button>\n";
+							echo "	</fieldset>\n";	
+
 						} else {
 								$columnID = $_POST['columnID'];
 							// require editColumn.php 

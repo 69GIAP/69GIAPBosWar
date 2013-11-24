@@ -38,7 +38,7 @@ function edit_column($id) {
 	echo "<p>Currently have <b>$Description ($countryadj)</b></p>
 			<p>NEW QUANTITY:</p>\n";
 			
-	echo "<form id=\"editColumnForm\" name=\"editColumn\" action=\"CampaignMgmtEditColumnConfirm.php?btn=campStp&sde=campSet\" method=\"post\">\n";
+	echo "<form id=\"editColumnForm\" name=\"editColumn\" action=\"CampaignMgmtEditColumnConfirm.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 	
 	echo "	<fieldset id=\"inputs\">\n";
 	$maxnum = 16;
@@ -86,7 +86,7 @@ function edit_column($id) {
 	echo "<input type=\"hidden\" name=\"action\" value = \"update\">\n";	
 	echo "<input type=\"hidden\" name=\"col_id\" value = \"$id\">\n";	
 	echo "<input type=\"hidden\" name=\"model\" value = \"$Model\">\n";	
-	echo "		<button type=\"submit\" id=\"editColumns\" value ='' >Update Column</button>\n";
+	echo "		<button type=\"submit\" id=\"back\" value ='' >Update Column</button>\n";
 	echo "	</fieldset>\n";
 	echo "</form>\n";
 
@@ -95,7 +95,7 @@ function edit_column($id) {
 	echo "<fieldset id=\"actions\">\n";	
 	echo "<input type=\"hidden\" name=\"action\" value = \"delete\">\n";	
 	echo "<input type=\"hidden\" name=\"col_id\" value = \"$id\">\n";	
-	echo "		<button type=\"submit\" id=\"downloadColumns\" value ='' >Delete Column</button>\n";
+	echo "		<button type=\"submit\" id=\"back\" value ='' >Delete Column</button>\n";
 	echo "	</fieldset>\n";
 
 	echo "</form>\n";
