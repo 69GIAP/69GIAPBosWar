@@ -44,8 +44,8 @@
 							die ('column_name not set!');
 					}
 
-					if (isset($_POST["objectType"])) {
-						$objectType		= $_POST["objectType"];
+					if (isset($_POST["Model"])) {
+						$Model		= $_POST["Model"];
 					} else {
 							die ('objectType (vehicle) not set!');
 					}
@@ -102,7 +102,7 @@
 						quantity, col_speed
 						) 
 						VALUES
-						('$columnID', '$column_name', '$objectType', '$moving_becomes',
+						('$columnID', '$column_name', '$Model', '$moving_becomes',
 						'$Description', '$ckey', '$CoalID', '$pointID',
 						'$objnum', '$col_speed'
 						);";
@@ -112,9 +112,9 @@
 						} else {				
 							echo "\$columnID: $columnID<br />\n";
 							echo "\$column_name: $column_name<br />\n";
-							echo "\$objectType: $objectType<br />\n";
 							echo "\$moving_becomes: $moving_becomes<br />\n";
 							echo "\$objectDesc: $objectDesc<br />\n";
+							echo "\$Model: $Model<br />\n";
 							echo "\$Description: $Description<br />\n";
 							echo "\$ckey: $ckey<br />\n";
 							echo "\$CoalID: $CoalID<br />\n";

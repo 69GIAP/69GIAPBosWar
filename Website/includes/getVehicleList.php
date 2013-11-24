@@ -17,7 +17,7 @@
 
 	$countries = get_countries_in_coalition($CoalID);
 
-	$query = "SELECT id, object_type, object_class, object_desc, moving_becomes, cruise_speed_kmh, default_country
+	$query = "SELECT id, object_class, object_desc, Model, moving_becomes, cruise_speed_kmh, default_country
 		FROM object_properties
 		WHERE ( modelpath2 = 'artillery' OR modelpath2 = 'vehicles' ) ORDER BY object_class;";
 	
@@ -34,9 +34,9 @@
 
 	# load results into variables 
 	while ($obj = $result->fetch_object()) {
-		$objectType		=	$obj->object_type;
 		$object_class	=	$obj->object_class;
 		$objectDesc		=	$obj->object_desc;
+		$Model			=	$obj->Model;
 		$moving_becomes	=	$obj->moving_becomes;
 		$default_country=	$obj->default_country;
 
@@ -46,7 +46,7 @@
 
 			echo "<div class=\"radio\">\n";
 
-			echo "<input id=\"$i\" type=\"radio\" name=\"objectType\" value=\"$objectType\">";
+			echo "<input id=\"$i\" type=\"radio\" name=\"Model\" value=\"$Model\">";
 			echo "<label for=\"$i\"><b>$objectDesc &nbsp; $classRoleDesc<br />
 				[ $moving_becomes ]</b></label><br />\n";
 

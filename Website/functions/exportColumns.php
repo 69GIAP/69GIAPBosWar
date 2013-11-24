@@ -132,7 +132,8 @@ function export_columns($CoalID) {
 			}
 			$writestring = '  XOri = 0.00;'."\r\n";	
 			fwrite($fh,$writestring);
-			$writestring = '  YOri = '.$col_YOri.';'."\r\n";
+//			$writestring = '  YOri = '.$col_YOri.';'."\r\n";
+			$writestring = '  YOri = 0.00;'."\r\n";
 			fwrite($fh,$writestring);	
 			$writestring = '  ZOri = 0.00;'."\r\n";	
 			fwrite($fh,$writestring);
@@ -141,7 +142,7 @@ function export_columns($CoalID) {
 
 			// get model path
 			$col_Model = rtrim($col_Model);
-			$query3 = "SELECT * from object_properties where object_type = '$col_Model'LIMIT 1";
+			$query3 = "SELECT * from object_properties where Model = '$col_Model'LIMIT 1";
 			if(!$result2 = $camp_link->query($query2)) {
 				echo "$query3<br />\n";
 				die('downloadColumns query2 error [' . $camp_link->error . ']');
@@ -149,7 +150,7 @@ function export_columns($CoalID) {
 			$result3 = $camp_link->query($query3);
 			$r3_data = $result3->fetch_row();
 			if ($r3_data[0]) {
-				echo "Model found is ".$r3_data[1]."<br />\n";
+				echo "Model found is ".$r3_data[5]."<br />\n";
 				echo "modelpath2 is ".$r3_data[7]."<br />\n";
 				$modelpath2 = $r3_data[7];
 				echo "modelpath3 is ".$r3_data[8]."<br />\n";
