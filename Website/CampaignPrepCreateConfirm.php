@@ -222,6 +222,10 @@ $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.columns LIKE columns;"
 include ('includes/doit.php');
 echo "columns created<br />\n";
 
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.static_groups LIKE static_groups;";
+include ('includes/doit.php');
+echo "static_groups created<br />\n";
+
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.static LIKE static;";
 include ('includes/doit.php');
 echo "static created<br />\n";

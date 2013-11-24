@@ -3,6 +3,7 @@
 # and to add bos_coalitions.sql, bos_countries.sql, bos_object_properties.sql
 # and drop inbox.sql
 # stenka 17/11/13 rebuilt to match key points
+# tushka Nov 24, 2013 added static_groups.sql
 
 drop database boswar_db;
 create database boswar_db;
@@ -37,6 +38,7 @@ source c:/Abyss web server/htdocs/global sql/rof_lake_locations.sql;
 source c:/Abyss web server/htdocs/global sql/rof_object_properties.sql;
 source c:/Abyss web server/htdocs/global sql/rof_verdun_locations.sql;
 source c:/Abyss web server/htdocs/global sql/rof_westernfront_locations.sql;
+source c:/Abyss web server/htdocs/global sql/static_groups.sql;
 source c:/Abyss web server/htdocs/global sql/statistics_test.sql;
 source c:/Abyss web server/htdocs/global sql/tabcreate_bridges.sql;
 source c:/Abyss web server/htdocs/global sql/tabcreate_col_10.sql;
