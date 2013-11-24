@@ -22,13 +22,13 @@ function display_columns($CoalID) {
 
 	while ($obj = $result->fetch_object()) {
 		$id		=	$obj->id;
-		$Name		=	$obj->Name;
-		$Description	=	$obj->Description;
-		$ckey		=	$obj->ckey;
-		$Supplypoint	=	$obj->Supplypoint;
+		$Name	=	$obj->Name;
+		$Description =	$obj->Description;
+		$ckey		 =	$obj->ckey;
+		$Supplypoint =	$obj->Supplypoint;
 
 		$countryadj = get_countryadj($ckey);
-		$pointName = get_pointname($Supplypoint);
+		$pointName	= get_pointname($Supplypoint);
 
 //		echo "$Name: $Description ($country_name) in Supply Point $Supplypoint<br />\n";
 		echo "<div class=\"radio\">\n";

@@ -124,7 +124,13 @@
 							echo "Created\n";
 
 							echo "<br />&nbsp;<br />\n";
-							echo "<a href=\"CampaignMgmtSetupColumns.php?btn=campStp\">Next</a><br />\n";
+							
+							# start form
+							echo "<form id=\"campaignMgmtForm\" name=\"objectSetup\" action=\"CampaignMgmtSetupColumns.php?btn=campStp&sde=campCol\" method=\"post\">\n";
+							echo "<fieldset id=\"actions\">\n";	
+							echo "		<button type=\"submit\" id=\"back\" >Next</button>\n";
+							echo "	</fieldset>\n";								
+
 						}
 ?>
 						<br />&nbsp;<br />

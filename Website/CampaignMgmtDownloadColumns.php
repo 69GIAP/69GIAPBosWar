@@ -10,9 +10,6 @@
 // Include the navigation on top
 	include ( 'includes/navigation.php' );
 
-// Include Post variable debugging
-	include ( 'includes/debugging/debuggingPostVariables.php');
-
 ?>
 
 	<div id="wrapper">
@@ -56,7 +53,7 @@
 					display_columns(2);
 
 					// include prepareColumnsForDownload.php
-//					include ('includes/prepareColumnsForDownload.php');
+					// include ('includes/prepareColumnsForDownload.php');
 				
 					echo "<br />&nbsp<br />\n";
 					// EDIT BUTTON
@@ -85,7 +82,7 @@
 							require ('functions/editColumn.php');
 							edit_column($columnID);
 
-//							echo "The Edit Column pages need to be written.<br />\n";
+							// echo "The Edit Column pages need to be written.<br />\n";
 						}
 
 					} elseif ($action == 'download') {

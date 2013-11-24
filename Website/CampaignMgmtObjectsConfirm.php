@@ -38,8 +38,8 @@
 				foreach ($_POST as $param_name => $param_val) {
 					
 					// display POST information each by each for debugging purposes
-					echo "parameter Name: "	.$param_name."<br>parameter lenght: ".strlen($param_name)."<br>";
-					echo "parameter Value: ".$param_val."<br><br>";
+					#echo "parameter Name: "	.$param_name."<br>parameter lenght: ".strlen($param_name)."<br>";
+					#echo "parameter Value: ".$param_val."<br><br>";
 
 					# distinguish between id variable and object_type variable to determine if object was activated by checkbox
 					if (strlen($param_name)>3) {
@@ -101,8 +101,12 @@
 				$camp_link->close();
 				
 				$objectClass = $_SESSION['objectClass'];
+				# start form
+				echo "<form id=\"campaignMgmtForm\" name=\"objectSetup\" action=\"CampaignMgmtObjects.php?btn=campStp&sde=camp$objectClass\" method=\"post\">\n";
+				echo "<fieldset id=\"actions\">\n";	
+				echo "		<button type=\"submit\" id=\"back\" value ='$objectClass' >Next</button>\n";
+				echo "	</fieldset>\n";		
 
-				echo "<a href=\"CampaignMgmtObjects.php?btn=campStp&objectClass=$objectClass\">Next</a>\n";
 
 #echo $query;				
 #exit;	

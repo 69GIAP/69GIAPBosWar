@@ -12,7 +12,7 @@ session_start();
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <title>BosWar</title>
-</head>
+
 <?php
 
 	# check if game variable is already set
@@ -95,12 +95,13 @@ session_start();
 			
 ?>
 
-
 <!-- Include jQuery Library -->
 <script src="js/jquery-1.2.2.pack.js" type="text/javascript"></script>
 
 <!-- Let's do the animation -->
 <script type="text/javascript" src="js/animation.js"></script>
+
+</head>
 
 <body>
 

@@ -7,8 +7,9 @@
 function edit_column($id) {
 	global $camp_link;
 
-	$query1 = "SELECT Name, Model, Description, ckey, CoalID, Supplypoint,
-		Quantity FROM columns WHERE id = '$id';";
+	$query1 = "SELECT Name, Model, Description, ckey, CoalID, Supplypoint, Quantity
+				FROM columns
+				WHERE id = '$id';";
 
 	if(!$result = $camp_link->query($query1)){
 		echo "$query1<br />\n";
@@ -36,7 +37,9 @@ function edit_column($id) {
 	
 	echo "<p>Currently have <b>$Description ($countryadj)</b></p>
 			<p>NEW QUANTITY:</p>\n";
+			
 	echo "<form id=\"editColumnForm\" name=\"editColumn\" action=\"CampaignMgmtEditColumnConfirm.php?btn=campStp&sde=campSet\" method=\"post\">\n";
+	
 	echo "	<fieldset id=\"inputs\">\n";
 	$maxnum = 16;
 	echo "		<select name=\"objnum\" id=\"number\">\n";
@@ -52,20 +55,25 @@ function edit_column($id) {
 	echo "<br />&nbsp;<br /><p>This column is destined for <b>$pointName</b></p>\n";
 	echo "<p>NEW SUPPLY POINT:</p>\n";
 
-	$query2 = "SELECT id, pointName FROM key_points WHERE CoalID='$CoalID' AND pointName LIKE '% Supply %';";
+	$query2 = "SELECT id, pointName 
+			FROM key_points 
+			WHERE CoalID='$CoalID' 
+			AND pointName LIKE '% Supply %' 
+			GROUP BY pointName;";
 
 	if(!$result = $camp_link->query($query2)){
 		echo "$query2<br />\n";
 		die('editColumn query2 error:' . $camp_link->error);
 	}
 
-	echo "<form id=\"editColumnForm\" name=\"editColumn\" action=\"CampaignMgmtEditColumnConfirm.php?btn=campStp&sde=campSet\" method=\"post\">\n";
+
 	echo "	<fieldset id=\"inputs\">\n";
-	echo "		<select name=\"supplypoint\" id=\"point\">\n";
-	echo "		<option selected value=\"$Supplypoint\">$pointName</option>\n";
+	echo "		<select name=\"supplypoint\" id=\"world\">\n";
+	echo "		<option selected value=\"$Supplypoint\">Selected: $pointName</option>\n";
 	while ($obj	= $result->fetch_object()) {
 		$pointID	= $obj->id;
-		$pntName		= $obj->pointName;
+		$pntName	= $obj->pointName;
+		
 		echo "		<option value=\"$pointID\">$pntName</option>\n";
 	}
 	$result->free();

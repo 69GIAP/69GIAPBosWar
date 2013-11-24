@@ -48,7 +48,7 @@
 					}
 					
 					# start form
-					echo "<form id=\"campaignMgmtForm\" name=\"objectSetup\" action=\"CampaignMgmtObjectsConfirm.php\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtForm\" name=\"objectSetup\" action=\"CampaignMgmtObjectsConfirm.php?btn=campStp&sde=camp$objectClass\" method=\"post\">\n";
 					
 					# get the master aircraft model list
 					include ('includes/getMasterObjectInformation.php');
