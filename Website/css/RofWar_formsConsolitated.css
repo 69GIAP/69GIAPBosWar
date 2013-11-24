@@ -300,12 +300,12 @@ form fieldset p {
 }
 
 /************* MASTER AIRFIELD CHECKBOXES *****************/
+.airfieldResupplyFormCheckboxWrapper,
 .airfieldStatusFormCheckboxWrapper,
+.createColumnCheckboxWrapper,
 .checkboxWrapper {
 	margin: 3px 0;
 	padding: 10px;
-	width: auto;
-	max-width: 400px;
 	background: #f1f1f1;
 	border: 1px solid #ccc;
     -moz-border-radius: 0px;
@@ -316,18 +316,18 @@ form fieldset p {
     box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
 }
 
+.airfieldResupplyFormCheckboxWrapper {
+	width: 325px;	
+}
+
+.airfieldStatusFormCheckboxWrapper,
+.checkboxWrapper {
+	width: auto;
+	max-width: 400px;	
+}
+
 .createColumnCheckboxWrapper {
-	margin: 3px 0;
-	padding: 10px;
 	width: 500px;
-	background: #f1f1f1;
-	border: 1px solid #ccc;
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
-    border-radius: 0px;
-    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
 }
 
 .checkbox, .radio {

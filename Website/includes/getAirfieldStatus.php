@@ -25,7 +25,7 @@
 	
 	$i = 1;
 	
-	echo "<div class=\"airfieldStatusFormCheckboxWrapper\">\n";
+	echo "<div class=\"airfieldResupplyFormCheckboxWrapper\">\n";
 
 	# enable display only if user is administrator
 	if ($userRole == 'administrator') {

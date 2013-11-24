@@ -168,7 +168,7 @@
 						
 						# BUTTON
 						echo "	<fieldset id=\"actions\">";
-						echo "	<button type=\"changeCoalition\" name=\"updateAirfield\" value =\"10\" id=\"loginSubmit\">Change Status</button>\n";
+						echo "		<button type=\"changeCoalition\" name=\"updateAirfield\" value =\"10\" id=\"loginSubmit\">Change Status</button>\n";
 						echo "	</fieldset>\n";
 
 						echo "</form>\n";
