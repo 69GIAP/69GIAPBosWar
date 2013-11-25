@@ -440,6 +440,11 @@ function OUTPUT() {
 			if (preg_match('/^P/',$attackerclass) || $attackerclass == 'TUR') {
 				// if attacker is a plane or player gunner, use player's name
 				$aplayername = $playername;
+				if (preg_match('/^Turret/',$aplayername)) {
+//					echo "Pilot in turret!<br />\n";
+					WHOSEGUNNER($attackerid);
+					$aplayername = $Whosegunner;
+				}
 			} else {
 				// else use object's description 
 				$aplayername = $attackerdesc;
