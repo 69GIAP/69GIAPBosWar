@@ -74,7 +74,6 @@ include ( 'functions/connect2Campaign.php' );
     
         </div>
 <?php
-	$dbc->close();
 
 	# Include the general sidebar
 	include ( 'includes/sidebar.php' );
