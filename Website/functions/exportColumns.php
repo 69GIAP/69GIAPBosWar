@@ -5,7 +5,6 @@
 // Nov 21, 2013
 // BOSWAR version 1.0
 #stenka 23/11/13 correction to include the description field
-#myata	30/11/13 if clause to prevent exporting YOri = NULL
 
 function export_columns($CoalID) {
 
@@ -133,13 +132,8 @@ function export_columns($CoalID) {
 			}
 			$writestring = '  XOri = 0.00;'."\r\n";	
 			fwrite($fh,$writestring);
-			
-			//$writestring = '  YOri = '.$col_YOri.';'."\r\n";
-			if ($col_YOri == NULL) {
-				$col_YOri = "0.00";
-			}
-			
-			$writestring = '  YOri = '.$col_YOri.';'."\r\n";
+//			$writestring = '  YOri = '.$col_YOri.';'."\r\n";
+			$writestring = '  YOri = 0.00;'."\r\n";
 			fwrite($fh,$writestring);	
 			$writestring = '  ZOri = 0.00;'."\r\n";	
 			fwrite($fh,$writestring);
