@@ -101,16 +101,17 @@
 				$camp_link->close();
 				
 				$objectClass = $_SESSION['objectClass'];
+/*
 				# start form
 				echo "<form id=\"campaignMgmtForm\" name=\"objectSetup\" action=\"CampaignMgmtObjects.php?btn=campStp&sde=camp$objectClass\" method=\"post\">\n";
 				echo "<fieldset id=\"actions\">\n";	
 				echo "		<button type=\"submit\" id=\"back\" value ='$objectClass' >Next</button>\n";
 				echo "	</fieldset>\n";		
-
+*/
 
 #echo $query;				
 #exit;	
-//				header ("Location: CampaignMgmtObjects.php?btn=campStp&objectClass=$objectClass");
+				header ("Location: CampaignMgmtObjects.php?btn=campStp&sde=camp$objectClass");
 
                 ?>
 

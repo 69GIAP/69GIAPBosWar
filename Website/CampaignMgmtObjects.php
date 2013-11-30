@@ -21,7 +21,12 @@
             
 				<?php
 					# get the  object you want to list on this page
-					$objectClass = $_GET['objectClass'];
+					if (empty($_GET['objectClass']) ) {
+						$objectClass = substr($_GET['sde'], -1);
+					}
+					else {
+						$objectClass = $_GET['objectClass'];
+					}
 					
 					# include connect2CampaignFunction.php
 					include ( 'functions/connect2Campaign.php' );
