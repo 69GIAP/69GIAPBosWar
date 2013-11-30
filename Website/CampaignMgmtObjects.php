@@ -42,14 +42,14 @@
 						<p>(Tushka: a useful future enhancement would be a display of dates of introduction to combat service.)</p>
 						<p>To make an aircraft unavailable to either side, mark it as \"inactive\".</p>
 						<p>To make an aircraft available to both sides, mark it as \"Neutral\".</p>\n";
-					} else {
-					echo "<p>We can restrict availability of vehicles to one or other side in the campaign<br>
-					Note from Stenka : Vehicles that can not move under their own power (like Artillery) are converted to trucks for transit. The vehicle they are converted to should be stored in the objects table
-					and be editable here. Not needed for Beta test.</p>\n";
+						}
+					else {
+						echo "<p>We can restrict availability of vehicles to one or other side in the campaign<br>
+						Note from Stenka : Vehicles that can not move under their own power (like Artillery) are converted to trucks for transit. The vehicle they are converted to should be stored in the objects table
+						and be editable here. Not needed for Beta test.</p>\n";
 						echo "<p>You will now determine which ground units will be available to which side.</p>
 						<p>To make a unit unavailable to either side, mark it as \"inactive\".</p>
 						<p>To make a unit available to both sides, mark it as \"Neutral\".</p>\n";
-
 					}
 					
 					# start form
