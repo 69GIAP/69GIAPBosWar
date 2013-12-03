@@ -122,7 +122,11 @@
 					require ('functions/getCoalition.php');
 					$CoalID = get_coalition($ckey);
 //					echo "\$CoalID: $CoalID<br />\n";
+					
 	
+					// make sure new name is mysql-safe
+					$newStaticGroupName = $camp_link->real_escape_string($newStaticGroupName);
+					
 					// record new name
 					$query2 = "INSERT INTO static_groups (name, description, ckey, CoalID) VALUES ('$newStaticGroupName', '$description', '$ckey', '$CoalID');";
 					if(!$result = $camp_link->query($query2)){
@@ -132,12 +136,8 @@
 						echo "$query2<br />\n";
 						$action = 'populate';
 					}
-				// Fourth Step - populate static (new page)
-				} else {
-					header("Location: CampaignMgmtPopulateStatics.php?btn=campStp&sde=campCol");
-				}
-					echo "<form id=\"campaignMgmtSetupStatics\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtSetupStatics.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 					// NEXT BUTTON
+					echo "<form id=\"campaignMgmtSetupStatics\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtPopulateStatics.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 					echo "<fieldset id=\"actions\">\n";	
 					if(isset($_POST['ckey'])) {
 						echo "<input type=\"hidden\" name=\"ckey\" value = \"$ckey\">\n";						
@@ -145,11 +145,10 @@
 					if(isset($_POST['newStaticGroupName'])) {
 						echo "<input type=\"hidden\" name=\"newStaticGroupName\" value = \"$newStaticGroupName\">\n";						
 					}
-					if(isset($action)) {
-						echo "<input type=\"hidden\" name=\"action\" value = \"$action\">\n";						
-					}
+					echo "<input type=\"hidden\" name=\"action\" value = \"$action\">\n";						
 					echo "		<button type=\"submit\" id=\"submitHalfsize1\" value ='' >Next</button>\n";
 					echo "	</fieldset>\n";
+				}
 					
 					echo "</form>\n";
 				// close $camp_link
