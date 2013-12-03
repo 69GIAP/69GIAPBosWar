@@ -125,10 +125,10 @@
 														echo "	    <li><a href=\"CampaignMgmtSetupColumns.php?btn=campStp&sde=campCol\" class=\"campCreateColumns\"><span></span></a></li>\n";
 													}
 													if ($sde == 'campStat') {
-														echo "	    <li><a href=\"CampaignMgmtStatics.php?btn=campStp&sde=campStat\" class=\"campCreateStaticsAct\"><span></span></a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtSetupStatics.php?btn=campStp&sde=campStat\" class=\"campCreateStaticsAct\"><span></span></a></li>\n";
 														}
 													else {
-														echo "	    <li><a href=\"CampaignMgmtStatics.php?btn=campStp&sde=campStat\" class=\"campCreateStatics\"><span></span></a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtSetupStatics.php?btn=campStp&sde=campStat\" class=\"campCreateStatics\"><span></span></a></li>\n";
 													}
 
 													echo "  </ul>\n";
@@ -157,10 +157,10 @@
 														echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=preMsn&sde=campAf\" class=\"campAirfieldResupply\"><span></span></a></li>\n";
 													}
 													if ($sde == 'campStat') {
-														echo "	    <li><a href=\"CampaignMgmtStatics.php?btn=preMsn&sde=campStat\" class=\"campCreateStaticsAct\"><span></span></a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtSetupStatics.php?btn=preMsn&sde=campStat\" class=\"campCreateStaticsAct\"><span></span></a></li>\n";
 														}
 													else {
-														echo "	    <li><a href=\"CampaignMgmtStatics.php?btn=preMsn&sde=campStat\" class=\"campCreateStatics\"><span></span></a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtSetupStatics.php?btn=preMsn&sde=campStat\" class=\"campCreateStatics\"><span></span></a></li>\n";
 													}
 													if ($sde == 'campBrdg') {
 														echo "	    <li><a href=\"CampaignMgmtBridges.php?btn=preMsn&sde=campBrdg\" class=\"campUpdateBridgesAct\"><span></span></a></li>\n";
