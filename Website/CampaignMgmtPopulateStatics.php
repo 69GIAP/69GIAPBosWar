@@ -49,11 +49,11 @@
 					require ('functions/getCoalitionname.php');
 					$Coalition = get_coalitionname($CoalID);
 //					echo "\$Coalition: $Coalition<br />\n";
-		
+					
 					// require getCountriesInCoalition.php
 					require ('functions/getCountriesInCoalition.php');
-	
-					// First step: select an object to include
+		
+					// First step: select objects to include
 					echo "<form id=\"campaignMgmtSetupStatics\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtPopulateStatics.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 
 					echo "<h2>Populate $newStaticGroupName</h2>\n";
@@ -61,7 +61,7 @@
 					// include getStaticObjectsList.php
 					include ('includes/getStaticObjectsList.php');
 
-					$action = 'record';
+					$action = 'enumerate';
 				
 					// NEXT BUTTON
 					echo "<fieldset id=\"actions\">\n";	
@@ -71,9 +71,69 @@
 					echo "		<button type=\"submit\" id=\"submitHalfsize1\" value ='' >Next</button>\n";
 					echo "	</fieldset>\n";
 				
-				} else {
-						echo "Next step: record these choices in the statics table, then edit the group to set numbers of units.<br />\n";
+				} elseif($action == 'enumerate') {
+					//Second step, choose how many of each object will be in the group
+
+					// require getObjectdescription2.php
+					require ('functions/getObjectdescription2.php');
+
+					echo "<h3>How Many of Each?</h3>\n";
+					echo "<p>Next step: set numbers (1-8) of each type in group, then record group in static table.</p>\n";
+					echo "<form id=\"campaignMgmtSetupStatics\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtPopulateStatics.php?btn=campStp&sde=campCol\" method=\"post\">\n";
+					if (isset($_POST['Model'])) {
+						$Model = $_POST['Model'];
+						foreach($Model as $i => $value) {
+							$description = get_objectdescription2($value);
+
+							echo "	<fieldset id=\"inputs\" class=\"narrow\">\n";
+							$maxnum = 8;
+							echo "		<select name=\"objnum[]\" id=\"number\">\n";
+							echo "		<option selected value=\"1\">1</option>\n";
+
+							for ($j = 1; $j < $maxnum+1; ++$j) {
+								echo "		<option value=\"$j\">$j</option>\n";
+							}
+
+							echo "		</select>\n";
+							echo " <b>$description</b>\n";
+							echo "\$i: $i ";
+							echo "\$value: $value<br />\n";
+//							echo "\$description: $description<br />\n";
+							echo "	</fieldset>\n";
+							echo "	<input type=\"hidden\" name=\"Model[]\" value=\"$value\">\n";
+
+						}
+						$action = 'record';
+
+						// NEXT BUTTON
+						echo "<fieldset id=\"actions\">\n";	
+						echo "	<input type=\"hidden\" name=\"ckey\" name=\"action\" value=\"$ckey\">\n";
+						echo "	<input type=\"hidden\" name=\"newStaticGroupName\" name=\"action\" value=\"$newStaticGroupName\">\n";
+						echo "	<input type=\"hidden\" name=\"action\" value=\"$action\">\n";
+						echo "		<button type=\"submit\" id=\"submitHalfsize1\" value ='' >Next</button>\n";
+						echo "	</fieldset>\n";
+
+					}
+				} else { // record
+					if (isset($_POST['Model'])) {
+						echo "Now record this static group in the static table.<br />\n";
+						$Model = $_POST['Model'];
+						$objnum = $_POST['objnum'];
+						foreach($Model as $i => $value) {
+							echo "\$objnum[$i]: $objnum[$i] \n";	
+							echo "\$value: $value<br />\n";	
+							for ($k=0; $k <$objnum[$i]; ++$k) {
+								$query = "INSERT INTO static (static_Name, static_Model, static_Country)
+								VALUES
+							   	($newStaticGroupName, $value, $ckey)";
+
+							    echo "$query<br />\n";
+
+							}
+						}
+					}
 				}
+
 				echo "</form>\n";
 
 				// close $camp_link

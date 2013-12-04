@@ -156,6 +156,10 @@ form fieldset p {
 	width: 522px;
 }
 
+#inputs.narrow select {
+	width: 102px;
+}
+
 #inputs select:focus,
 #inputs input:focus,
 #none select:focus,
