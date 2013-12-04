@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2013 at 11:24 PM
+-- Generation Time: Dec 04, 2013 at 06:13 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `1942`
+-- Database: `boswar_db`
 --
 
 -- --------------------------------------------------------
@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `static_groups` (
   `description` varchar(80) NOT NULL,
   `ckey` enum('0','101','102','103','104','105','501','502','600','610','620','630','640') NOT NULL,
   `CoalID` enum('0','1','2') NOT NULL,
+  `Supplypoint` tinyint(1) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

@@ -71,9 +71,16 @@
 					require ('functions/getCoalitionname.php');
 					$Coalition = get_coalitionname($CoalID);
 //					echo "\$Coalition: $Coalition<br />\n";
+					
+					// require getPointname.php
+					require ('functions/getPointname.php');
 
 					echo "<h1>Create a Static Group</h1>\n";
-					echo "<h2>Name This $countryadj ($Coalition) Static Group</h1>\n";
+					echo "<h2>Create this $countryadj ($Coalition) Static Group</h1>\n";
+					echo "<p>To create this static group you will give it a name and description and select which supply point will receive this group.</p>\n";
+					echo "<p>Once this is done you will select the objects that belong to that group, and then adjust how many of each object you need.</p>
+					<p>Once you have fully defined the group you will be able to clone it with a different name.  So, for example, if you have defined one airfield group (windsock, defenses, etc.), you can make copies for each active airfield.</p> 
+					<p>Later you will add the appropriate groups to the starting template for each side.</p>\n";
 
 					echo "<p>Each static group must have a unique name (30 characters or less).</p>\n";
 
@@ -86,26 +93,35 @@
 						echo "<p>Here are the existing group names so you can avoid duplicating them.</p>\n";
 
 						while ($obj = $result->fetch_object()) {
-							$name=($obj->name);
-							echo "<b>$name</b><br />\n";
+							$name			=($obj->name);
+							$Supplypoint	=($obj->Supplypoint);
+							$pointname		= get_pointname($Supplypoint);
+							echo "<b>$name - $pointname</b><br />\n";
 						}
 					}
 					
-					echo "<p>After you choose the name you will select the objects that belong to that group</po>.
-					<p>Once you have defined a group we will allow you to clone it with a different name.  So, for example, if you have defined one airfield group (windsock, defenses, etc.), you can make copies for each active airfield.</p> 
-					<p>Later you will add the appropriate groups to the starting template for each side.</p>\n";
 
 					echo "<form id=\"campaignMgmtSetupStatics\" name=\"campaignMgmtSetupStatics\" action=\"CampaignMgmtSetupStatics.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 					echo "	<fieldset id=\"inputs\">\n";	
-
 					echo "<h3>New Static Group Name</h3>\n";
 					echo "		<input type=\"text\" name=\"newStaticGroupName\" id=\"database\" placeholder=\"Please enter a name for this static group\" value='' size=\"24\" maxlength=\"30\" />\n";
 					echo "<h3>Static Group Description</h3>\n";
 					echo "		<input type=\"text\" name=\"description\" id=\"database\" placeholder=\"Please enter a description of this static group\" value='' size=\"24\" maxlength=\"80\" />\n";
 					echo "<input type=\"hidden\" name=\"ckey\" value = \"$ckey\">\n";						
+					echo "	</fieldset>\n";
+					
+					//SELECT SUPPLY POINT 
+					echo "<h3>Supply Point for this Static Group</h3>\n";
+					echo "	<fieldset id=\"inputs\">\n";	
+					echo "	<div class=\"createColumnCheckboxWrapper\">\n";
+					// include getSupplyPoints.php
+					include ('includes/getSupplyPoints.php');
+					echo "	</div>\n";
+					echo "</fieldset>\n";
+
 					// NAME STATIC GROUP BUTTON
 					echo "<fieldset id=\"actions\">\n";	
-					echo "		<button type=\"submit\" id=\"registerSubmit\" value ='' >Name Static Group</button>\n";
+					echo "		<button type=\"submit\" id=\"registerSubmit\" value ='' >Create Static Group</button>\n";
 					echo "	</fieldset>\n";
 
 				// Third step - insert info into static_groups table
@@ -117,18 +133,21 @@
 //					echo "\$newStaticGroupName: $newStaticGroupName<br />\n";
 					$description = $_POST["description"];
 //					echo "\$description: $description<br />\n";
+					$pointID = $_POST["pointID"];
+//					echo "\$pointID: $pointID<br />\n";
 
 					// require getCoalition.php
 					require ('functions/getCoalition.php');
 					$CoalID = get_coalition($ckey);
 //					echo "\$CoalID: $CoalID<br />\n";
 					
-	
-					// make sure new name is mysql-safe
+					// make sure name and description are mysql-safe
+					// both are untrusted inputs
 					$newStaticGroupName = $camp_link->real_escape_string($newStaticGroupName);
+					$description = $camp_link->real_escape_string($description);
 					
 					// record new name
-					$query2 = "INSERT INTO static_groups (name, description, ckey, CoalID) VALUES ('$newStaticGroupName', '$description', '$ckey', '$CoalID');";
+					$query2 = "INSERT INTO static_groups (name, description, ckey, CoalID, Supplypoint) VALUES ('$newStaticGroupName', '$description', '$ckey', '$CoalID','$pointID');";
 					if(!$result = $camp_link->query($query2)){
 						echo "$query2<br />\n";
 						die('CampaignMgmtSetupStatics.php query2 error [' . $camp_link->error . ']');
