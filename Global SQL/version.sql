@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2013 at 12:12 AM
+-- Generation Time: Dec 05, 2013 at 05:16 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `version` (
 
 INSERT INTO `version` (`id`, `simulation`, `dbVersion`, `buildDate`, `description`) VALUES
 (2, 'BoS', '0.0.0.9', '2013-11-21 11:30:45', 'Pre Alpha Phase: Version '),
-(3, 'RoF', '0.1.0.7', '2013-12-04 18:11:00', 'Alpha Phase: Version ');
+(3, 'RoF', '0.1.0.8', '2013-12-04 23:15:00', 'Alpha Phase: Version ');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

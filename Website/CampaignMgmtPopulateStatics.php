@@ -31,6 +31,7 @@
 					
 				// get POST variables
 				$ckey = $_POST['ckey'];
+				$pointID = $_POST['pointID'];
 				$newStaticGroupName = $_POST['newStaticGroupName'];
 				$action = $_POST['action'];
 
@@ -59,6 +60,7 @@
 					echo "<h2>Populate $newStaticGroupName</h2>\n";
 					echo "<p>Check each object that you want to include in this group.  You will set their numbers later.</p>\n";
 					// include getStaticObjectsList.php
+					// this will create an array named Model
 					include ('includes/getStaticObjectsList.php');
 
 					$action = 'enumerate';
@@ -66,6 +68,7 @@
 					// NEXT BUTTON
 					echo "<fieldset id=\"actions\">\n";	
 					echo "	<input type=\"hidden\" name=\"ckey\" name=\"action\" value=\"$ckey\">\n";
+					echo "	<input type=\"hidden\" name=\"pointID\" name=\"action\" value=\"$pointID\">\n";
 					echo "	<input type=\"hidden\" name=\"newStaticGroupName\" name=\"action\" value=\"$newStaticGroupName\">\n";
 					echo "	<input type=\"hidden\" name=\"action\" value=\"$action\">\n";
 					echo "		<button type=\"submit\" id=\"submitHalfsize1\" value ='' >Next</button>\n";
@@ -73,6 +76,7 @@
 				
 				} elseif($action == 'enumerate') {
 					//Second step, choose how many of each object will be in the group
+					$pointID = $_POST['pointID'];
 
 					// require getObjectdescription2.php
 					require ('functions/getObjectdescription2.php');
@@ -82,6 +86,7 @@
 					echo "<form id=\"campaignMgmtSetupStatics\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtPopulateStatics.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 					if (isset($_POST['Model'])) {
 						$Model = $_POST['Model'];
+						// this will create an array named objnum
 						foreach($Model as $i => $value) {
 							$description = get_objectdescription2($value);
 
@@ -108,6 +113,7 @@
 						// NEXT BUTTON
 						echo "<fieldset id=\"actions\">\n";	
 						echo "	<input type=\"hidden\" name=\"ckey\" name=\"action\" value=\"$ckey\">\n";
+						echo "	<input type=\"hidden\" name=\"pointID\" name=\"action\" value=\"$pointID\">\n";
 						echo "	<input type=\"hidden\" name=\"newStaticGroupName\" name=\"action\" value=\"$newStaticGroupName\">\n";
 						echo "	<input type=\"hidden\" name=\"action\" value=\"$action\">\n";
 						echo "		<button type=\"submit\" id=\"submitHalfsize1\" value ='' >Next</button>\n";
@@ -116,19 +122,38 @@
 					}
 				} else { // record
 					if (isset($_POST['Model'])) {
+
+						// require getCoalition.php
+						require ('functions/getCoalition.php');
+						$CoalID = get_coalition($ckey);
+
+						// require getFamily.php
+						require ('functions/getFamily.php');
+
+						// require getObjectdescription2.php
+						require ('functions/getObjectdescription2.php');
+
 						echo "Now record this static group in the static table.<br />\n";
+						$pointID = $_POST['pointID'];
+						// get the two arrays
 						$Model = $_POST['Model'];
 						$objnum = $_POST['objnum'];
 						foreach($Model as $i => $value) {
-							echo "\$objnum[$i]: $objnum[$i] \n";	
-							echo "\$value: $value<br />\n";	
+//							echo "\$objnum[$i]: $objnum[$i] \n";	
+//							echo "\$value: $value<br />\n";	
+							$family = get_family($value);
+							$description = get_objectdescription2($value);
 							for ($k=0; $k <$objnum[$i]; ++$k) {
-								$query = "INSERT INTO static (static_Name, static_Model, static_Country)
+								$query = "INSERT INTO static (static_Name, static_Model, static_Type, static_Desc, 
+								static_Country, static_coalition, static_supplypoint)
 								VALUES
-							   	($newStaticGroupName, $value, $ckey)";
-
+								('$newStaticGroupName', '$value', '$family', '$description', 
+								'$ckey', '$CoalID', '$pointID')";
 							    echo "$query<br />\n";
-
+								if(!$result = $camp_link->query($query)){
+							    	echo "$query<br />\n";
+									die('CampaignMgmtSetupStatics.php query error [' . $camp_link->error . ']');
+								}
 							}
 						}
 					}

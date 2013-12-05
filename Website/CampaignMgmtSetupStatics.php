@@ -160,6 +160,7 @@
 					echo "<fieldset id=\"actions\">\n";	
 					if(isset($_POST['ckey'])) {
 						echo "<input type=\"hidden\" name=\"ckey\" value = \"$ckey\">\n";						
+						echo "<input type=\"hidden\" name=\"pointID\" value = \"$pointID\">\n";						
 					}
 					if(isset($_POST['newStaticGroupName'])) {
 						echo "<input type=\"hidden\" name=\"newStaticGroupName\" value = \"$newStaticGroupName\">\n";						
