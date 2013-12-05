@@ -29,28 +29,26 @@
 					
 					$newCampStatus = $_POST["newCampStatus"];
 						
-				if ($_POST["createCampaign"] == 1)
-					{
+				if ($_POST["createCampaign"] == 1) {
 					$query="UPDATE campaign_settings SET status = $newCampStatus WHERE camp_db like '$loadedCampaign'";
-					}
-				if ($_POST["createCampaign"] == 2)
-					{
-						echo "Not yet defined";
-						exit;
-					}						
+				}
 						
 				# updates
 				if(!$result = $camp_link->query($query)){
 					die('There was an error running the query <br>'.$query."<br>" . $camp_link->error());
-					// close $camp_link
-					$camp_link->close();
 				}
-					else
-				{
-					// close $camp_link
-					$camp_link->close();
+				else {
+					if(!$result = $dbc->query($query)){
+					die('There was an error running the query <br>'.$query."<br>" . $dbc->error());
+					}
+					else {
+						// close $camp_link
+						$camp_link->close();
+						# close $dbc
+						$dbc->close;
 						
-					header ("Location: CampaignMgmtChangeStatus.php?btn=campStp");
+						header ("Location: CampaignMgmtChangeStatus.php?btn=campStp");		
+					}
 				}
                 ?>					
             </div>
