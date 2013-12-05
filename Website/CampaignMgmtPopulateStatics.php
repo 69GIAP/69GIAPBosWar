@@ -55,7 +55,7 @@
 					require ('functions/getCountriesInCoalition.php');
 		
 					// First step: select objects to include
-					echo "<form id=\"campaignMgmtSetupStatics\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtPopulateStatics.php?btn=campStp&sde=campCol\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtSetupStatics\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtPopulateStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
 
 					echo "<h2>Populate $newStaticGroupName</h2>\n";
 					echo "<p>Check each object that you want to include in this group.  You will set their numbers later.</p>\n";
@@ -83,7 +83,7 @@
 
 					echo "<h3>How Many of Each?</h3>\n";
 					echo "<p>Next step: set numbers (1-8) of each type in group, then record group in static table.</p>\n";
-					echo "<form id=\"campaignMgmtSetupStatics\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtPopulateStatics.php?btn=campStp&sde=campCol\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtSetupStatics\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtPopulateStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
 					if (isset($_POST['Model'])) {
 						$Model = $_POST['Model'];
 						// this will create an array named objnum

@@ -41,7 +41,7 @@
 					}
 
 					// start form
-					echo "<form id=\"campaignMgmtSetupStatucs\" name=\"campaignSetupStatics\" action=\"CampaignMgmtSetupStatics.php?btn=campStp&sde=campCol\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtSetupStatics\" name=\"campaignSetupStatics\" action=\"CampaignMgmtSetupStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
 					// include setupColumns.php
 					include ('includes/setupColumns.php');
 
@@ -101,7 +101,7 @@
 					}
 					
 
-					echo "<form id=\"campaignMgmtSetupStatics\" name=\"campaignMgmtSetupStatics\" action=\"CampaignMgmtSetupStatics.php?btn=campStp&sde=campCol\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtSetupStatics\" name=\"campaignMgmtSetupStatics\" action=\"CampaignMgmtSetupStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
 					echo "	<fieldset id=\"inputs\">\n";	
 					echo "<h3>New Static Group Name</h3>\n";
 					echo "		<input type=\"text\" name=\"newStaticGroupName\" id=\"database\" placeholder=\"Please enter a name for this static group\" value='' size=\"24\" maxlength=\"30\" />\n";
@@ -156,7 +156,7 @@
 						$action = 'populate';
 					}
 					// NEXT BUTTON
-					echo "<form id=\"campaignMgmtSetupStatics\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtPopulateStatics.php?btn=campStp&sde=campCol\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtSetupStatics\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtPopulateStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
 					echo "<fieldset id=\"actions\">\n";	
 					if(isset($_POST['ckey'])) {
 						echo "<input type=\"hidden\" name=\"ckey\" value = \"$ckey\">\n";						
