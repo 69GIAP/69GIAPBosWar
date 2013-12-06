@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2013 at 12:07 AM
+-- Generation Time: Dec 05, 2013 at 10:36 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -26,7 +26,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `rof_object_properties`
 --
 
-DROP TABLE IF EXISTS `rof_object_properties`;
 CREATE TABLE IF NOT EXISTS `rof_object_properties` (
   `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
   `family` varchar(20) DEFAULT NULL,
@@ -46,6 +45,11 @@ CREATE TABLE IF NOT EXISTS `rof_object_properties` (
   UNIQUE KEY `object_type` (`object_type`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=238 ;
 
+--
+-- Truncate table before insert `rof_object_properties`
+--
+
+TRUNCATE TABLE `rof_object_properties`;
 --
 -- Dumping data for table `rof_object_properties`
 --
@@ -102,8 +106,8 @@ INSERT INTO `rof_object_properties` (`id`, `family`, `object_type`, `object_clas
 (49, 'Block', 'factory_06', 'FAC', 0, 'factory', 'factory_06', NULL, 'blocks', NULL, NULL, NULL, NULL, '0'),
 (50, 'Block', 'factory_07', 'FAC', 0, 'oil tanks', 'factory_07', NULL, 'blocks', NULL, NULL, NULL, NULL, '0'),
 (51, 'Block', 'factory_08', 'FAC', 0, 'storage sheds', 'factory_08', NULL, 'blocks', NULL, NULL, NULL, NULL, '0'),
-(52, 'Flag', 'Flag', 'FLG', 0, 'flag', 'flag', NULL, 'flag', 'flag', NULL, NULL, NULL, '0'),
-(53, 'Flag', 'Windsock', 'FLG', 0, 'windsock', 'windsock', NULL, 'flag', 'windsock', NULL, NULL, NULL, '0'),
+(52, 'Flag', 'Flag', 'FLG', 0, 'flag', 'flag', NULL, 'flag', '', NULL, NULL, NULL, '0'),
+(53, 'Flag', 'Windsock', 'FLG', 0, 'windsock', 'windsock', NULL, 'flag', '', NULL, NULL, NULL, '0'),
 (54, '', 'Common Bot', 'HUM', 0, 'pilot', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0'),
 (55, 'Vehicle', 'HotchkissAAA', 'IMA', 80, 'anti-aircraft Hotchkiss machine gun', 'hotchkissaaa', 'leylands', 'artillery', 'machineguns', 0, 0, NULL, '101'),
 (56, 'Vehicle', 'LMG08AAA', 'IMA', 80, 'anti-aircraft Maxim machine gun', 'lmg08aaa', 'daimlermarienfeld_s', 'artillery', 'machineguns', 0, 0, NULL, '501'),
@@ -121,7 +125,7 @@ INSERT INTO `rof_object_properties` (`id`, `family`, `object_type`, `object_clas
 (68, 'Airfield', 'ger_med', 'INF', 0, 'airfield', 'ger_med', NULL, 'airfields', NULL, NULL, NULL, NULL, '0'),
 (69, 'Vehicle', 'gunpos_g01', 'INF', 0, 'gun position g1', 'gunpos_g01', NULL, 'firingpoint', 'gunpos', NULL, NULL, NULL, '0'),
 (70, 'Vehicle', 'gunpos01', 'INF', 0, 'gun position 1', 'gunpos01', NULL, 'firingpoint', 'gunpos', NULL, NULL, NULL, '0'),
-(71, 'Block', 'gunpos02', 'INF', 0, 'gun position 2', 'gunpos02', NULL, 'battlefield', 'gunpos02', NULL, NULL, NULL, '0'),
+(71, 'Block', 'gunpos02', 'INF', 0, 'gun position 2', 'gunpos02', NULL, 'battlefield', '', NULL, NULL, NULL, '0'),
 (72, 'Vehicle', 'pillbox01', 'INF', 0, 'pillbox 1', 'pillbox01', NULL, 'firingpoint', 'pillbox', NULL, NULL, NULL, '0'),
 (73, 'Vehicle', 'pillbox02', 'INF', 0, 'pillbox 2', 'pillbox02', NULL, 'firingpoint', 'pillbox', NULL, NULL, NULL, '0'),
 (74, 'Vehicle', 'pillbox03', 'INF', 0, 'pillbox 3', 'pillbox03', NULL, 'firingpoint', 'pillbox', NULL, NULL, NULL, '0'),
@@ -213,7 +217,7 @@ INSERT INTO `rof_object_properties` (`id`, `family`, `object_type`, `object_clas
 (160, 'Ship', 'FRpenicheAAA', 'SAA', 80, 'peniche AAA barge', 'frpenicheaaa', 'frpenicheaaa', 'ships', 'frpenicheaaa', NULL, NULL, NULL, '101'),
 (161, 'Ship', 'GERpenicheAAA', 'SAA', 80, 'peniche AAA barge', 'gerpenicheaaa', 'gerpenicheaaa', 'ships', 'gerpenicheaaa', NULL, NULL, NULL, '501'),
 (162, 'Ship', 'GER light cruiser', 'SCR', 1000, 'light cruiser', 'gercruiser', 'gercruiser', 'ships', 'gerships', NULL, NULL, NULL, '501'),
-(163, 'Ship', 'HMS light cruiser', 'SCR', 1000, 'light cruiser', 'hsmcruiser', 'hmscruiser', 'ships', 'gbrships', NULL, NULL, NULL, '102'),
+(163, 'Ship', 'HMS light cruiser', 'SCR', 1000, 'light cruiser', 'hmscruiser', 'hmscruiser', 'ships', 'gbrships', NULL, NULL, NULL, '102'),
 (164, 'Ship', 'Passenger Ship', 'SPA', 300, 'passenger ship', 'ship_pass', 'ship_pass', 'ships', 'merchant', NULL, NULL, NULL, '0'),
 (165, 'Block', 'ship_stat_pass', 'SPA', 150, 'stationary passenger ship', 'ship_stat_pass', 'ship_pass', 'blocks', NULL, NULL, NULL, NULL, '0'),
 (166, 'Ship', 'GER submarine', 'SSU', 500, 'U-boat', 'gersubmarine', 'gersubmarine', 'ships', 'gerships', NULL, NULL, NULL, '501'),

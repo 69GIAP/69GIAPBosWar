@@ -25,7 +25,7 @@
        		OR modelpath2 = 'firingpoint'
        		OR modelpath2 = 'trains'
 			OR modelpath2 = 'vehicles'
-       		OR modelpath3 = 'windsock'
+       		OR Model = 'windsock'
 			OR object_class LIKE 'S%'
 		) ORDER BY object_class;";
 	

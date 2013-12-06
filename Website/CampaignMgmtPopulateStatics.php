@@ -156,6 +156,11 @@
 								}
 							}
 						}
+						echo "<form id=\"campaignMgmtSetupStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
+						// REVIEW GROUPS BUTTON
+						echo "<fieldset id=\"actions\">\n";	
+						echo "		<button type=\"submit\" id=\"submitHalfsize1\" value ='' >Review Groups</button>\n";
+						echo "	</fieldset>\n";
 					}
 				}
 
