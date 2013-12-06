@@ -49,7 +49,14 @@
 					echo "<fieldset id=\"actions\">\n";	
 					echo "		<button type=\"submit\" id=\"submitHalfsize1\" value ='' >Select Country</button>\n";
 					echo "	</fieldset>\n";
-					
+					echo "</form>\n";
+
+					echo "<form id=\"campaignMgmtSetupStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
+					// REVIEW GROUPS BUTTON
+					echo "<b>Or if you have enough groups:</b><br />\n";
+					echo "<fieldset id=\"actions\">\n";	
+					echo "		<button type=\"submit\" id=\"submitHalfsize1\" value ='' >Review Groups</button>\n";
+					echo "	</fieldset>\n";					
 					echo "</form>\n";
 
 				//Second step - name the group

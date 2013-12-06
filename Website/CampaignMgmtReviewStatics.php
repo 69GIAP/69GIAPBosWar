@@ -46,7 +46,7 @@
 					echo "<p>You have defined static groups in the BOSWAR campaign manager.  Now you will review these groups, then export them as two separate group files, one for each coalition.</p>\n"; 
 					echo "<p>If you need to edit a static group, select it and then choose \"Edit Group\".  Similarly if you want to clone a group, select it and choose \"Clone Group\"otherwise select \"Export Static Groups\"</p>\n";
 
-					echo "<form id=\"campaignMgmtReviewStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStat\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtReviewStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
 
 					// display columns for each coalition
 					display_staticgroups(1);
@@ -69,7 +69,7 @@
 					echo "	</fieldset>\n";
 					echo "</form>\n";
 
-					echo "<form id=\"campaignMgmtReviewStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStat\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtReviewStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
 					// EXPORT GROUP BUTTON
 					echo "<fieldset id=\"actions\">\n";	
 					echo "<input type=\"hidden\" name=\"action\" value = \"export\">\n";	
@@ -83,7 +83,7 @@
 /*
 							echo "<p><b><font color = \"red\">You did not select a group to edit.</font></b></p>\n";
 							
-							echo "<form id=\"campaignMgmtForm\" name=\"objectSetup\" action=\"CampaignMgmtDownloadColumns.php?btn=campStp&sde=campCol\" method=\"post\">\n";
+							echo "<form id=\"campaignMgmtReviewStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
 							echo "<fieldset id=\"actions\">\n";	
 							echo "		<button type=\"submit\" id=\"submitHalfsize1\" >Continue</button>\n";
 							echo "	</fieldset>\n";	
@@ -102,7 +102,6 @@
 					} elseif ($action == 'clone') {
 						echo "The Clone Static Group pages are not yet written.<br />\n";
 					} elseif ($action == 'export') {
-						echo "The Export Groups pages are a work in progress.<br />\n";
 
 						// require getAbbrv.php
 						require ('functions/getAbbrv.php');

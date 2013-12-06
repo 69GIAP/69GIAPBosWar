@@ -156,6 +156,14 @@
 								}
 							}
 						}
+						echo "<form id=\"campaignMgmtSetupStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtSetupStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
+						// CREATE ANOTHER BUTTON
+						echo "<fieldset id=\"actions\">\n";	
+						echo "		<button type=\"submit\" id=\"submitHalfsize1\" value ='' >Create Another</button>\n";
+						echo "	</fieldset>\n";
+						echo "</form>\n";
+
+						echo "<b>Or if you have enough groups:</b><br />\n";
 						echo "<form id=\"campaignMgmtSetupStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
 						// REVIEW GROUPS BUTTON
 						echo "<fieldset id=\"actions\">\n";	
