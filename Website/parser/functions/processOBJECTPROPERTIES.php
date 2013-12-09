@@ -21,10 +21,11 @@ function OBJECTPROPERTIES($objecttype) {
 		if ($count == 1) {
 			// get results
 			// use result or complain
-			$row = $result->fetch_row();
-			$object_class = $row[2];
-			$object_value = $row[3];
-			$object_desc = $row[4];
+			while ($obj = $result->fetch_object()) {
+				$object_class = $obj->object_class;
+				$object_value = $obj->object_value;
+				$object_desc = $obj->object_desc;
+			}
 		} elseif ($count > 1) {
 			echo "duplicate $objecttype found in rof_object_properties!<br>\n";
 		} else { // count must be zero
