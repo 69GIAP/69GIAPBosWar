@@ -47,7 +47,7 @@ include ( 'includes/navigation.php' );
 			// limit size to 4 MB max (3 MB is a large .Mission file in RoF)
 			// (can tune later if needed for BoS)
 			// and require extension to be in allowed list
-			if ( $_FILES["userfile"]["size"] < 10000000 && in_array($extension, $allowedExts)) {
+			if ( $_FILES["userfile"]["size"] < 10485760 && in_array($extension, $allowedExts)) {
 				if ($_FILES["userfile"]["error"] > 0) {
 					echo "Return Code: " . $_FILES["userfile"]["error"] . "<br>";
 				} else {
@@ -67,7 +67,7 @@ include ( 'includes/navigation.php' );
 				}
 			} else {
 				$done = 'false';
-				if ($_FILES["userfile"]["size"] > 10000000) {
+				if ($_FILES["userfile"]["size"] > 10485760) {
 					echo $_FILES["userfile"]["name"]." is > 10 MB<br />\n";
 				} else {
 					echo ".$extension is not an allowed extension";

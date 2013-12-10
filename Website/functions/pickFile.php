@@ -14,7 +14,7 @@ function pickFile($returnpage) {
 //	echo "	Choose a file to upload: <br />\n";
 	echo "	<fieldset id=\"inputs\">\n";
 	echo "		<input type=\"hidden\" name=\"returnpage\" value=\"$returnpage\"/>\n";
-	echo "		<input type=\"hidden\" name=\"MAX_FILE_SIZE\" value=\"10000000\"/>\n";
+	echo "		<input type=\"hidden\" name=\"MAX_FILE_SIZE\" value=\"10485760\"/>\n";
 	echo "		<input type=\"file\" name=\"userfile\" id=\"userfile\" size=\"50\" />\n";
 	echo "	</fieldset>\n";	
 
