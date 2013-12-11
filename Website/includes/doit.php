@@ -12,7 +12,7 @@ if(!$result = $dbc->query($query)) {
 	} else {
 		echo "DROP $newCampaignDBName<br />\n";
 	}
-	echo "$query<br />\n";
+	echo "Query: $query<br /><br />\n";
 	die('Query error: [' . $original_error . ']');
 }
 ?>

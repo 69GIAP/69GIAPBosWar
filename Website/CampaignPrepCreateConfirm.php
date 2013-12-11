@@ -25,7 +25,44 @@
             <div id="content">
             
 				<?php
-					$sim	=	$_SESSION['sim'];	
+					$sim	=	$_SESSION['sim'];
+					
+$error = 0;
+
+if (empty($_POST['newCampaignName']) ) {
+	echo "No campaign name provided!<br \><br \>\n";
+	$error = 1;	
+	}
+elseif (empty($_POST['newCampaignAbbrv']) ) {
+	echo "No campaign abbreviation name provided!<br \><br \>\n";
+	$error = 1;
+}
+elseif (empty($_POST['newCampaignDatabaseName']) ) {
+	echo "No campaign database name provided!<br \><br \>\n";
+	$error = 1;	
+}
+elseif (empty($_POST['newCampaignDatabaseUser']) AND empty($_POST['existing']) ) {
+	echo "No campaign database user name provided!<br \><br \>\n";
+	$error = 1;	
+}
+elseif (empty($_POST['newCampaignDatabasePassword']) AND empty($_POST['existing']) ) {
+	echo "No campaign password provided!<br \><br \>\n";
+	$error = 1;	
+}
+elseif (empty($_POST['newCampaignDatabaseHost']) ) {
+	echo "No satabase host name provided!<br \><br \>\n";
+	$error = 1;	
+}
+elseif (empty($_POST['campaignMap']) ) {
+	echo "No map Name provided!<br \><br \>\n";
+	$error = 1;	
+}
+
+if ($error == 1) {
+	echo"<b>Sorry, something is wrong with the provided data. Please try again.</b> \n";
+}
+else {
+
 					$newCampaignName 		= $_POST['newCampaignName'];
 					$newCampaignAbbrv		= $_POST['newCampaignAbbrv'];
 					$newCampaignDBName 		= $_POST['newCampaignDatabaseName'];
@@ -100,8 +137,8 @@ if ($sim == 'RoF') {
 	$query = "INSERT INTO `$newCampaignDBName`.object_properties SELECT * FROM rof_object_properties;";
 	include ('includes/doit.php');
 	echo "object_properties populated from rof_object_properties<br />\n";
-
-} else { // must be BoS
+	}
+else { // must be BoS
 
 	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.coalitions LIKE bos_coalitions;";
 	include ('includes/doit.php');
@@ -126,7 +163,6 @@ if ($sim == 'RoF') {
 	$query = "INSERT INTO `$newCampaignDBName`.object_properties SELECT * FROM bos_object_properties;";
 	include ('includes/doit.php');
 	echo "object_properties populated from bos_object_properties<br />\n";
-
 }
 
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.airfields LIKE airfields;";
@@ -303,7 +339,7 @@ echo " Done!<br />\n";
 					echo "</form>\n";
 
 //					header("Location: CampaignMgmtConfigure.php?btn=campStp");
-
+}
                 ?>
             
             </div>
