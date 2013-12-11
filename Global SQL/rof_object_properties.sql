@@ -1,3 +1,4 @@
+#STENKA CORRECTION 11/12/13 Always delete table and recreate to apply latest structure-
 -- phpMyAdmin SQL Dump
 -- version 4.0.4.1
 -- http://www.phpmyadmin.net
@@ -25,9 +26,9 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `rof_object_properties`
 --
-
+DROP TABLE IF EXISTS rof_object_properties;
 CREATE TABLE IF NOT EXISTS `rof_object_properties` (
-  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
+  `id` smallint(1) AUTO_INCREMENT,
   `family` varchar(20) DEFAULT NULL,
   `object_type` varchar(50) NOT NULL,
   `object_class` varchar(8) NOT NULL,
