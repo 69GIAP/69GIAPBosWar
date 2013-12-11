@@ -164,7 +164,7 @@ Hint : if your screen is a bit crowded with ikons go to your object filter and s
     <li>This will create a blue triangle with a yellow circle at one apex which you can drag with your mouse (holding down the left mouse button).</li>
     <li>To select another end to edit, double click on that end.</li>
     <li>You will probably want at least one more corner to form a trapezoid.  (Try to use no more than 6-8 corners per area.  More complex areas may cause performance problems.)</li>
-    <li>To add another point to move, use CTRL+left mouse click on a boundary line that is attacked to the yellow circle.</li>
+    <li>To add another point to move, use CTRL+left mouse click on a boundary line that is attached to the yellow circle.</li>
     <li>Note that the boundary of an influence area should not cross itself.</li>
     <li>Move the ends to form a boundary around the area you want to define.</li>
     <li>To stop editing, right click on the influence area and select "Selected Object Menu".</li>
