@@ -160,7 +160,7 @@ Hint : if your screen is a bit crowded with ikons go to your object filter and s
     <li>Left click to place this on the map within the area you have choosen to be, say, German territory.</li>
     <li>Select the influence area icon with another left click.</li>
     <li>Right click on the influence area icon and select "Selected Object Menu".</li>
-    <li>Select "Edit Influence Area".</li>
+    <li>Select "Edit Influence Area Boundary".</li>
     <li>This will create a blue triangle with a yellow circle at one apex which you can drag with your mouse (holding down the left mouse button).</li>
     <li>To select another end to edit, double click on that end.</li>
     <li>You will probably want at least one more corner to form a trapezoid.  (Try to use no more than 6-8 corners per area.  More complex areas may cause performance problems.)</li>
