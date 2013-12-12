@@ -100,7 +100,112 @@
 						}
 
 					} elseif ($action == 'clone') {
-						echo "The Clone Static Group pages are not yet written.<br />\n";
+						echo "The Clone Static Group pages are a work in progress.<br />\n";
+						if (!isset($_POST['columnID'])) {
+							echo "<p><b><font color = \"red\">You did not select a group to edit.</font></b></p>\n";
+						} else {
+						        $columnID = $_POST['columnID'];
+							$query1 = "SELECT * FROM static_groups WHERE id = '$columnID';";
+							if(!$result = $camp_link->query($query1)){
+								die('CampaignMgmtReviewStatics.php query1 error [' . $camp_link->error . ']');
+							} else {
+								echo "You have chosen to clone:<br />\n";
+								while ($obj = $result->fetch_object()) {
+									$name		= $obj->name;
+									$Supplypoint	= $obj->Supplypoint;
+									$pointname	= get_pointname($Supplypoint);
+									$description	= $obj->description;
+									$ckey		= $obj->ckey;
+									$CoalID		= $obj->CoalID;
+									echo "<b>$name - $pointname<br />$description</b><br />\n";
+								}
+								echo "<form id=\"campaignMgmtReviewStatics\" name=\"campaignMgmtReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
+								echo "	<fieldset id=\"inputs\">\n";	
+								echo "<h3>Cloned Group Name</h3>\n";
+								echo "		<input type=\"text\" name=\"ClonedGroupName\" id=\"database\" placeholder=\"Please enter a name for this cloned group\" value='' size=\"24\" maxlength=\"30\" />\n";
+								echo "<h3>Cloned Group Description</h3>\n";
+								echo "		<input type=\"text\" name=\"description\" id=\"database\"  value=\"$description\" size=\"24\" maxlength=\"80\" />\n";
+								echo "<input type=\"hidden\" name=\"oldname\" value = \"$name\">\n";						
+								echo "<input type=\"hidden\" name=\"ckey\" value = \"$ckey\">\n";						
+								echo "<input type=\"hidden\" name=\"CoalID\" value = \"$CoalID\">\n";						
+								echo "	</fieldset>\n";
+
+								//SELECT SUPPLY POINT 
+								echo "<h3>Supply Point for this Static Group</h3>\n";
+								echo "	<fieldset id=\"inputs\">\n";	
+								echo "	<div class=\"createColumnCheckboxWrapper\">\n";
+								// include getSupplyPoints.php
+								include ('includes/getSupplyPoints.php');
+								echo "	</div>\n";
+								echo "</fieldset>\n";
+
+								// CLONE STATIC GROUP BUTTON
+								echo "<fieldset id=\"actions\">\n";	
+								echo "		<button type=\"submit\" id=\"registerSubmit\" name = \"action\" value =\"writeclone\" >Clone Static Group</button>\n";
+								echo "	</fieldset>\n";
+
+							}
+						} 
+					} elseif ($action == 'writeclone') {
+					    echo "Now write the clone to static and static_groups.<br/>\n";
+					    $oldname = $_POST['oldname'];
+//					    echo "\$oldname: $oldname<br />\n";
+					    $clonename = $_POST['ClonedGroupName'];
+//					    echo "\$clonename: $clonename<br />\n";
+					    $description = $_POST['description'];
+//					    echo "\$description: $description<br />\n";
+					    $ckey = $_POST['ckey'];
+//					    echo "\$ckey: $ckey<br />\n";
+					    $CoalID = $_POST['CoalID'];
+//					    echo "\$CoalID: $CoalID<br />\n";
+					    $pointID = $_POST['pointID'];
+//					    echo "\$pointID: $pointID<br />\n";
+
+					    // clone objects in static
+					    $query2= "SELECT * FROM static where static_Name = '$oldname';";
+//					    echo "$query2<br />\n";
+
+						if(!$result = $camp_link->query($query2)){
+							die('CampaignMgmtReviewStatics.php query2 error [' . $camp_link->error . ']');
+						} else {
+							while ($obj = $result->fetch_object()) {
+								$static_Model	= $obj->static_Model;
+								$static_Type	= $obj->static_Type;
+								$static_Desc	= $obj->static_Desc;
+								$query3 = "INSERT INTO static 
+								    (static_Name, static_Model, static_Type, static_Desc,
+								    static_Country, static_coalition, static_supplypoint)
+								    VALUES
+								    ('$clonename', '$static_Model', '$static_Type', '$static_Desc',
+								    '$ckey', '$CoalID', '$pointID');";
+								if(!$result3 = $camp_link->query($query3)){
+									die('CampaignMgmtReviewStatics.php query3 error [' . $camp_link->error . ']');
+								} else {
+								    echo "$query3<br />\n";
+								}
+							}
+						}
+					    
+					    // record clone in static_groups
+					    $query4 = "INSERT INTO static_groups
+					       	(name, description, ckey, CoalID, Supplypoint)
+						VALUES
+						('$clonename', '$description', '$ckey', '$CoalID', '$pointID');";
+
+						if(!$result = $camp_link->query($query4)){
+							die('CampaignMgmtReviewStatics.php query2 error [' . $camp_link->error . ']');
+						} else {
+						    echo "$query4<br />\n";
+						}
+						// done with cloning
+						echo "<form id=\"campaignMgmtReviewStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
+						echo "<br />&nbsp<br />\n";
+						// NEXT BUTTON
+						echo "<fieldset id=\"actions\">\n";	
+						echo "		<button type=\"submit\" id=\"submitHalfsize1\" value =\"\" name=\"next\">Next</button>\n";
+						echo "	</fieldset>\n";
+						echo "</form>\n";
+
 					} elseif ($action == 'export') {
 
 						// require getAbbrv.php
@@ -118,7 +223,7 @@
 						// require getGroundspacing.php
 						require ('functions/getGroundspacing.php');
 
-               			// require exportStaticGroups.php                
+               					// require exportStaticGroups.php                
 						require ('functions/exportStaticGroups.php');
 
 						// export static groups seperately for each coalition
