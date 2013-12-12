@@ -32,7 +32,8 @@ $count = $dbc->query("SELECT COUNT(camp_user) FROM campaign_settings;");
 					# NEW CAMPAIGN ABBREVIATION
 					echo "		<input type=\"text\" name=\"newCampaignAbbrv\" id=\"database\" placeholder=\"Enter an unique 3-7 character abbreviation\" value='' size=\"7\" maxlength=\"7\" />\n";
 					# NEW CAMPAIGN DATABASE NAME
-					echo "		<input type=\"text\" name=\"newCampaignDatabaseName\" id=\"database\" placeholder=\"Campaign database name (no spaces)\" value='' size=\"24\" maxlength=\"24\" />\n";
+					echo "		<p class=\"indent\">Note: Do not put spaces or special characters in the database name</p>\n";					
+					echo "		<input type=\"text\" name=\"newCampaignDatabaseName\" id=\"database\" placeholder=\"Campaign database name \" value='' size=\"24\" maxlength=\"24\" />\n";
 					# NEW CAMPAIGN HOST
 					echo "<h3>Path from server to database</h3>\n";	
 					echo "		<p class=\"indent\">Note: leave this as localhost unless you know what you are doing</p>\n";					
