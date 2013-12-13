@@ -80,7 +80,7 @@
 					$action = $_POST['action'];
 					if ($action == 'edit') { 
 						if (!isset($_POST['columnID'])) {
-/*
+							echo "The Edit Static Group pages are under development.<br />\n";
 							echo "<p><b><font color = \"red\">You did not select a group to edit.</font></b></p>\n";
 							
 							echo "<form id=\"campaignMgmtReviewStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
@@ -91,33 +91,28 @@
 						} else {
 								$columnID = $_POST['columnID'];
 							// require editColumn.php 
-							require ('functions/editColumn.php');
-							edit_column($columnID);
-
- */
-							echo "The Edit Static Group pages will be written *after* the export is working.<br />\n";
-
+							require ('functions/editStatic.php');
+							edit_static($columnID);
 						}
 
 					} elseif ($action == 'clone') {
-						echo "The Clone Static Group pages are a work in progress.<br />\n";
+//						echo "The Clone Static Group pages are a work in progress.<br />\n";
 						if (!isset($_POST['columnID'])) {
-							echo "<p><b><font color = \"red\">You did not select a group to edit.</font></b></p>\n";
+							echo "<p><b><font color = \"red\">You did not select a group to clone.</font></b></p>\n";
 						} else {
-						        $columnID = $_POST['columnID'];
+					        $columnID = $_POST['columnID'];
 							$query1 = "SELECT * FROM static_groups WHERE id = '$columnID';";
 							if(!$result = $camp_link->query($query1)){
 								die('CampaignMgmtReviewStatics.php query1 error [' . $camp_link->error . ']');
 							} else {
 								echo "You have chosen to clone:<br />\n";
 								while ($obj = $result->fetch_object()) {
-									$name		= $obj->name;
+									$name			= $obj->name;
 									$Supplypoint	= $obj->Supplypoint;
-									$pointname	= get_pointname($Supplypoint);
+									$pointname		= get_pointname($Supplypoint);
 									$description	= $obj->description;
-									$ckey		= $obj->ckey;
-									$CoalID		= $obj->CoalID;
-									echo "<b>$name - $pointname<br />$description</b><br />\n";
+									$ckey			= $obj->ckey;
+									$CoalID			= $obj->CoalID;
 								}
 								echo "<form id=\"campaignMgmtReviewStatics\" name=\"campaignMgmtReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
 								echo "	<fieldset id=\"inputs\">\n";	
@@ -193,7 +188,7 @@
 						('$clonename', '$description', '$ckey', '$CoalID', '$pointID');";
 
 						if(!$result = $camp_link->query($query4)){
-							die('CampaignMgmtReviewStatics.php query2 error [' . $camp_link->error . ']');
+							die('CampaignMgmtReviewStatics.php query4 error [' . $camp_link->error . ']');
 						} else {
 						    echo "$query4<br />\n";
 						}
@@ -205,7 +200,87 @@
 						echo "		<button type=\"submit\" id=\"submitHalfsize1\" value =\"\" name=\"next\">Next</button>\n";
 						echo "	</fieldset>\n";
 						echo "</form>\n";
+					} elseif ($action == 'addunit') {
+						if (!isset($_POST['objectID'])) {
+							echo "<p><b><font color = \"red\">You did not select a unit to add.</font></b></p>\n";
+						} else {
+							echo "Add unit.<br />\n";
+							$objectID = $_POST['objectID'];
+							echo "\$objectID: $objectID<br />\n";
+						    $query5 = "SELECT * from static where id = '$objectID';";
+							if(!$result = $camp_link->query($query5)){
+								die('CampaignMgmtReviewStatics.php query5 error [' . $camp_link->error . ']');
+							} else {
+								while ($obj = $result->fetch_object()) {
+									$static_Name	= $obj->static_Name;
+									$static_Model	= $obj->static_Model;
+									$static_Type	= $obj->static_Type;
+									$static_Desc	= $obj->static_Desc;
+									$static_Country	= $obj->static_Country;
+									$static_coalition	= $obj->static_coalition;
+									$static_supplypoint	= $obj->static_supplypoint;
 
+									$query6 = "INSERT INTO static 
+									    (static_Name, static_Model, static_Type, static_Desc,
+									    static_Country, static_coalition, static_supplypoint)
+									    VALUES
+									    ('$static_Name', '$static_Model', '$static_Type', '$static_Desc',
+									    '$static_Country', '$static_coalition', '$static_supplypoint');";
+									if(!$result6 = $camp_link->query($query6)){
+										die('CampaignMgmtReviewStatics.php query6 error [' . $camp_link->error . ']');
+									} else {
+									    echo "$query6<br />\n";
+										$result6->free();
+									}
+								}
+							}
+						}
+						echo "<form id=\"campaignMgmtReviewStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
+						echo "<br />&nbsp<br />\n";
+						// NEXT BUTTON
+						echo "<fieldset id=\"actions\">\n";	
+						echo "		<button type=\"submit\" id=\"submitHalfsize1\" value =\"\" name=\"next\">Next</button>\n";
+						echo "	</fieldset>\n";
+						echo "</form>\n";
+					} elseif ($action == 'removeunit') {
+						if (!isset($_POST['objectID'])) {
+							echo "<p><b><font color = \"red\">You did not select a unit to remove.</font></b></p>\n";
+						} else {
+							echo "Remove unit.<br />\n";
+							$objectID = $_POST['objectID'];
+							$query7 = "DELETE FROM static WHERE id = '$objectID';";
+							if(!$result7 = $camp_link->query($query7)){
+								die('CampaignMgmtReviewStatics.php query6 error [' . $camp_link->error . ']');
+							} else {
+							    echo "$query7<br />\n";
+							}
+						}
+						echo "<form id=\"campaignMgmtReviewStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
+						echo "<br />&nbsp<br />\n";
+						// NEXT BUTTON
+						echo "<fieldset id=\"actions\">\n";	
+						echo "		<button type=\"submit\" id=\"submitHalfsize1\" value =\"\" name=\"next\">Next</button>\n";
+						echo "	</fieldset>\n";
+						echo "</form>\n";
+
+					} elseif ($action == 'updatelocation') {
+						echo "The update location function has not been written yet.<br />\n";
+						echo "<form id=\"campaignMgmtReviewStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
+						echo "<br />&nbsp<br />\n";
+						// NEXT BUTTON
+						echo "<fieldset id=\"actions\">\n";	
+						echo "		<button type=\"submit\" id=\"submitHalfsize1\" value =\"\" name=\"next\">Next</button>\n";
+						echo "	</fieldset>\n";
+						echo "</form>\n";
+					} elseif ($action == 'delete') {
+						echo "The delete static group function has not been written yet.<br />\n";
+						echo "<form id=\"campaignMgmtReviewStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
+						echo "<br />&nbsp<br />\n";
+						// NEXT BUTTON
+						echo "<fieldset id=\"actions\">\n";	
+						echo "		<button type=\"submit\" id=\"submitHalfsize1\" value =\"\" name=\"next\">Next</button>\n";
+						echo "	</fieldset>\n";
+						echo "</form>\n";
 					} elseif ($action == 'export') {
 
 						// require getAbbrv.php
