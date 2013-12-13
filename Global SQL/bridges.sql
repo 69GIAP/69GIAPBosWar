@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `bridges`;
 CREATE TABLE IF NOT EXISTS `bridges` (
   `id` int(1) NOT NULL AUTO_INCREMENT,
-  `Name` char(31) DEFAULT NULL,
+  `Name` char(31) PRIMARY KEY,
   `Model` char(20) DEFAULT NULL,
   `Description` varchar(80) DEFAULT NULL,
   `Country` enum('0','101','102','103','104','105','501','502','600','610','620','630','640') DEFAULT NULL,

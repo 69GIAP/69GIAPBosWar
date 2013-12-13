@@ -5,6 +5,7 @@ function import_bridges($path,$file) {
 // Nov 15, 2013
 // BOSWAR version 1.0
 # stenka correction 22/11/13 when loading a damaged bridge convert text variable to integer
+# stenka correction to replace statement 13/12/13
 
 	global $camp_link; // link to campaign db
 
@@ -137,7 +138,7 @@ function import_bridges($path,$file) {
 			damage_3='$d3', damage_4='$d4', damage_5='$d5',
 			damage_6='$d6', damage_7='$d7', damage_8='$d8',
 			damage_9='$d9', damage_10='$d10', Description='$Desc'
-			;";
+			";
 
 //		echo "$query<br />\n";
 		if(!$result = $camp_link->query($query)) {

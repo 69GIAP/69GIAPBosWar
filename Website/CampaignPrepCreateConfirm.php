@@ -5,6 +5,7 @@
 // Oct 5, 2013
 // BOSWAR version 1.17
 // Nov 12, 2013
+// Stenka 13/12/13 use of clean function on database name and test database name is already in use
 
 // Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
@@ -15,6 +16,10 @@
 	
 // Include the navigation on top
 	include ( 'includes/navigation.php' );
+
+// Include clean function
+	include ( 'functions/clean.php' );	
+	
 
 ?>
 
@@ -28,7 +33,17 @@
 					$sim	=	$_SESSION['sim'];
 					
 $error = 0;
-
+# Checking if database name is already in use
+$newCampaignDBName 		= $_POST['newCampaignDatabaseName'];
+$newCampaignDBName		= clean($newCampaignDBName);
+$databasename = $newCampaignDBName;
+$q = "SHOW DATABASES LIKE '$databasename'";
+$r = mysqli_query($dbc,$q);
+$num = mysqli_num_rows($r);
+if($num > 0){
+	echo "Database name is already in use!<br \><br \>\n";
+	$error = 1;}	
+# end of check that database is not in use
 if (empty($_POST['newCampaignName']) ) {
 	echo "No campaign name provided!<br \><br \>\n";
 	$error = 1;	
@@ -41,6 +56,12 @@ elseif (empty($_POST['newCampaignDatabaseName']) ) {
 	echo "No campaign database name provided!<br \><br \>\n";
 	$error = 1;	
 }
+
+
+
+
+
+
 elseif (empty($_POST['newCampaignDatabaseUser']) AND empty($_POST['existing']) ) {
 	echo "No campaign database user name provided!<br \><br \>\n";
 	$error = 1;	
@@ -50,7 +71,7 @@ elseif (empty($_POST['newCampaignDatabasePassword']) AND empty($_POST['existing'
 	$error = 1;	
 }
 elseif (empty($_POST['newCampaignDatabaseHost']) ) {
-	echo "No satabase host name provided!<br \><br \>\n";
+	echo "No database host name provided!<br \><br \>\n";
 	$error = 1;	
 }
 elseif (empty($_POST['campaignMap']) ) {
@@ -66,6 +87,7 @@ else {
 					$newCampaignName 		= $_POST['newCampaignName'];
 					$newCampaignAbbrv		= $_POST['newCampaignAbbrv'];
 					$newCampaignDBName 		= $_POST['newCampaignDatabaseName'];
+					$newCampaignDBName		= clean($newCampaignDBName);
 					$newCampaignDBUser 		= $_POST['newCampaignDatabaseUser'];
 					$newCampaignDBPassword 	= $_POST['newCampaignDatabasePassword'];
 					$newCampaignDBHost	 	= $_POST['newCampaignDatabaseHost'];					

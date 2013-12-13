@@ -1,5 +1,6 @@
 <?php 
 #stenka 17/11/13 adding a bit of explanation
+#stenka 13/12/13 correcting beta user prompt
 # Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
 	$dbc = connectBOSWAR();
@@ -60,7 +61,7 @@ $count = $dbc->query("SELECT COUNT(camp_user) FROM campaign_settings;");
 						
 						echo "		<h3>OR select an existing one</h3>\n";
 
-						echo "		<p class=\"indent\">Note: existing users take precedence over new. Beta testers should use boswar</p>\n";
+						echo "		<p class=\"indent\">Note: existing users take precedence over new. Beta testers should use rofwar</p>\n";
 						
 						$query = "SELECT `camp_host`, `camp_user`, `camp_passwd` from `campaign_settings` WHERE `camp_user` != '' GROUP BY `camp_user` ;";
 						

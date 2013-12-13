@@ -4,6 +4,7 @@
 # and drop inbox.sql
 # stenka 17/11/13 rebuilt to match key points
 # tushka Nov 24, 2013 added static_groups.sql
+# stenka 13/12/13 added columns
 
 drop database boswar_db;
 create database boswar_db;
@@ -20,6 +21,7 @@ source c:/Abyss web server/htdocs/global sql/campaign_missions.sql;
 source c:/Abyss web server/htdocs/global sql/campaign_settings.sql;
 source c:/Abyss web server/htdocs/global sql/campaign_status.sql;
 source c:/Abyss web server/htdocs/global sql/campaign_users.sql;
+source c:/Abyss web server/htdocs/global sql/columns.sql;
 source c:/Abyss web server/htdocs/global sql/create_boswar_hq_user.sql;
 source c:/Abyss web server/htdocs/global sql/create_rofwar_campaign_user.sql;
 source c:/Abyss web server/htdocs/global sql/gunner_scores.sql;
