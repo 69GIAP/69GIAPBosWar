@@ -105,7 +105,6 @@
 							if(!$result = $camp_link->query($query1)){
 								die('CampaignMgmtReviewStatics.php query1 error [' . $camp_link->error . ']');
 							} else {
-								echo "You have chosen to clone:<br />\n";
 								while ($obj = $result->fetch_object()) {
 									$name			= $obj->name;
 									$Supplypoint	= $obj->Supplypoint;
@@ -114,6 +113,7 @@
 									$ckey			= $obj->ckey;
 									$CoalID			= $obj->CoalID;
 								}
+								echo "You have chosen to clone:<br /><b>$name - $description</b><br />\n";
 								echo "<form id=\"campaignMgmtReviewStatics\" name=\"campaignMgmtReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
 								echo "	<fieldset id=\"inputs\">\n";	
 								echo "<h3>Cloned Group Name</h3>\n";
@@ -250,7 +250,7 @@
 							$objectID = $_POST['objectID'];
 							$query7 = "DELETE FROM static WHERE id = '$objectID';";
 							if(!$result7 = $camp_link->query($query7)){
-								die('CampaignMgmtReviewStatics.php query6 error [' . $camp_link->error . ']');
+								die('CampaignMgmtReviewStatics.php query7 error [' . $camp_link->error . ']');
 							} else {
 							    echo "$query7<br />\n";
 							}
@@ -264,7 +264,35 @@
 						echo "</form>\n";
 
 					} elseif ($action == 'updatelocation') {
-						echo "The update location function has not been written yet.<br />\n";
+//						echo "The update location function is a work in progress.<br />\n";
+						$supplypoint = $_POST['supplypoint'];
+						$groupID = $_POST['groupID'];
+//						echo "\$supplypoint: $supplypoint<br />\n";
+//						echo "\$groupID: $groupID<br />\n";
+						$query8 = "SELECT name from static_groups WHERE id = '$groupID';";
+						if(!$result = $camp_link->query($query8)){
+							die('CampaignMgmtReviewStatics.php query8 error [' . $camp_link->error . ']');
+						} else {
+							echo "$query8<br />\n";
+							while ($obj = $result->fetch_object()) {
+								$name = $obj->name;
+								echo "\$name: $name<br />\n";
+							}
+						}
+						$query9 = "UPDATE static SET static_supplypoint = '$supplypoint' WHERE static_Name = '$name';";
+						if(!$result = $camp_link->query($query9)){
+							die('CampaignMgmtReviewStatics.php query9 error [' . $camp_link->error . ']');
+						} else {
+							echo "$query9<br />\n";
+						}
+
+						$query10 = "UPDATE static_groups SET Supplypoint = '$supplypoint' WHERE name = '$name';";
+						if(!$result = $camp_link->query($query10)){
+							die('CampaignMgmtReviewStatics.php query10 error [' . $camp_link->error . ']');
+						} else {
+							echo "$query10<br />\n";
+						}
+
 						echo "<form id=\"campaignMgmtReviewStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
 						echo "<br />&nbsp<br />\n";
 						// NEXT BUTTON
@@ -273,8 +301,34 @@
 						echo "	</fieldset>\n";
 						echo "</form>\n";
 					} elseif ($action == 'delete') {
-						echo "The delete static group function has not been written yet.<br />\n";
+//						echo "The delete static group function is a work in progress.<br />\n";
 						echo "<form id=\"campaignMgmtReviewStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
+						$groupID = $_POST['groupID'];
+						$query11 = "SELECT name from static_groups WHERE id = '$groupID';";
+						if(!$result = $camp_link->query($query11)){
+							die('CampaignMgmtReviewStatics.php query11 error [' . $camp_link->error . ']');
+						} else {
+							echo "$query11<br />\n";
+							while ($obj = $result->fetch_object()) {
+								$name = $obj->name;
+								echo "\$name: $name<br />\n";
+							}
+						}
+
+						$query12 = "DELETE FROM static WHERE static_Name = '$name';";
+						if(!$result = $camp_link->query($query12)){
+							die('CampaignMgmtReviewStatics.php query12 error [' . $camp_link->error . ']');
+						} else {
+							echo "$query12<br />\n";
+						}
+
+						$query13 = "DELETE FROM static_groups WHERE name = '$name';";
+						if(!$result = $camp_link->query($query13)){
+							die('CampaignMgmtReviewStatics.php query13 error [' . $camp_link->error . ']');
+						} else {
+							echo "$query13<br />\n";
+						}
+
 						echo "<br />&nbsp<br />\n";
 						// NEXT BUTTON
 						echo "<fieldset id=\"actions\">\n";	
