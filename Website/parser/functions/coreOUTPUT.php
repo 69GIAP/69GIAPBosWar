@@ -3,8 +3,8 @@
 // output simple text report and calculate some stats for the db
 // =69.GIAP=TUSHKA
 // 2011-2013
-// BOSWAR version 1.3
-// Nov 10, 2013
+// BOSWAR version 1.31
+// Dec 14, 2013
 
 function OUTPUT() {
 // what follows is an almost complete collection of global variables
@@ -59,7 +59,6 @@ function OUTPUT() {
 	global $BP; // boundary points
 	global $VER; // version (of what?)
 	global $Startticks; // game start time in number of ticks since midnight
-	global $clocktime; // 24 hr time
 	global $playername; // player name from PLID
 	global $objectname; // object name from PID/AID/TID
 	global $objecttype; // object type from PID/AID/TID
@@ -73,7 +72,6 @@ function OUTPUT() {
 	global $Coalitionname; // this coalition name 
 	global $posx; // X coordinate
 	global $posz; // Z coordinate
-	global $where; // position in english
 	global $numevents; // number of mission events
 	global $EVline; // lines that define mission events
 	global $numtakeoffs; // number of takeoffs
@@ -98,7 +96,6 @@ function OUTPUT() {
 	global $Deathticks; // ticks when died
 	global $Deathpos; // position where died
 	global $dead; // true or false
-	global $crashed; // player's plane has crashed, true or false
 	global $End; // player ended (or not)
 	global $EndBUL; // unexpended bullets
 	global $EndBOMB; // undropped bombs
@@ -112,7 +109,6 @@ function OUTPUT() {
 	global $Wound; // array holding severity of wound
 	global $Woundticks; // ticks when last wounded
 	global $Woundpos; // position where last wounded
-	global $flying;  // on ground, flying, crashing, or already landed/crashed
 	global $anora; // an or a
 	global $Whosegunner; // player piloting this gunner
 	global $Kcountryid; // country id of a killed object
@@ -123,7 +119,6 @@ function OUTPUT() {
 	global $numiaheaders; // number of influence area headers
 	global $IAHline; // lines defining Influence Area Headers
 	global $Bline; // lines defining area boundaries
-	global $side; // "friendly", "enemy" or "neutral"
 	global $camp_link; // link to campaign db
 	global $StatsCommand; // do, undo, or ignore
 	global $camp_db; // campaign db
@@ -342,14 +337,14 @@ function OUTPUT() {
 	// loop through mission events using EVline index
 	for ($i = 0; $i < $numevents; ++$i) {
 		$j = $EVline[$i];
-		CLOCKTIME($Ticks[$j]);
+		$clocktime = CLOCKTIME($Ticks[$j]);
 //		for debugging missing events
 //		echo "EVENT $i, line $j, $Ticks[$j], Type $AType[$j]<br />\n";
 		if ($AType[$j] == "0") { // START
 			echo "$clocktime Mission Start<br />\n";
 		} elseif ($AType[$j] == "3") { // KILL
 //			echo "$clocktime KILL<br />\n";
-			CLOCKTIME($Ticks[$j]);
+			$clocktime = CLOCKTIME($Ticks[$j]);
 			// TARGET
 			OBJECTTYPE($TID[$j],$Ticks[$j]); // get target objecttype
 			$targettype = $objecttype;
@@ -368,7 +363,7 @@ function OUTPUT() {
 			PLAYERNAME($TID[$j],$Ticks[$j]); // get target's playername
 			$tplayername = $playername;
 			$tplayerplaneid = $playerplaneid;
-			FLYING($TID[$j],$Ticks[$j]);
+			$flying = FLYING($TID[$j],$Ticks[$j]);
 			ANORA($tcountryadj);
 			$ca = $anora;
 
@@ -454,7 +449,7 @@ function OUTPUT() {
 			// END ATTACKER PROCESSING
 	 
   			XYZ($POS[$j]);
-			WHERE($posx,$posz,0);
+			$where = WHERE($posx,$posz,0);
 
 			// BEGIN REPORTING AND SCORING
 			if ($attackerid == "-1") { // Intrinsic damage
@@ -473,8 +468,7 @@ function OUTPUT() {
 					} elseif ($targetclass == 'BOT') { // SD2:
 						// see 1916_1 for eleven examples
 						// AI gunner (currently score value of zero)
-						BOTGUNNER($targettype);
-						$tplayername = "$object_desc";
+						$tplayername = BOTGUNNER($targettype);
 						$action = "was killed";
 						echo ("$clocktime $ca $tcountryadj $tplayername ($targettype) $action $where<br />\n");
 //						echo "\$targetclass = $targetclass, \$targettype = $targettype, \$tplayername = $tplayername<br />\n";
@@ -536,8 +530,7 @@ function OUTPUT() {
 				} elseif($targetclass == 'BOT') { // BOT
 					// F3:
 					// see 1916_1 for three examples
-					BOTGUNNER($targettype);
-					$tplayername = "$object_desc";
+					$tplayername = BOTGUNNER($targettype);
 					$action = "killed";
 					echo ("$clocktime $ap $aplayername $action $ca $tcountryadj $tplayername ($targetobject) $where<br />\n");
 				} elseif(preg_match('/^R/', $targetclass)) { // Railtrain
@@ -580,7 +573,7 @@ function OUTPUT() {
 			ANORA($playername);
 			$a = $anora;
 			XYZ($POS[$j]);
-			WHERE($posx,$posz,1);
+			$where = WHERE($posx,$posz,1);
 			TOFROM($where);
 //			echo "$clocktime TAKEOFF<br />\n"; //T1:
 			echo "$clocktime $a $playername took off $where<br />\n";
@@ -588,15 +581,15 @@ function OUTPUT() {
 			// T:71580 AType:6 PID:223245 POS(243148.469, 24.424, 57384.961)
 			DEAD($PID[$j],$Ticks[$j]);
 			if (!$dead) {
-				CLOCKTIME($Ticks[$j]);
+				$clocktime = CLOCKTIME($Ticks[$j]);
 				OBJECTTYPE($PID[$j],$Ticks[$j]);
 				PLAYERNAME($PID[$j],$Ticks[$j]);
 				ANORA($playername);
 				$a = $anora;
 				XYZ($POS[$j]);
-				WHERE($posx,$posz,0);
-				CRASHED($PID[$j],$Ticks[$j]);
-				LANDINGSIDE($PID[$j],$posx,$posz);
+				$where = WHERE($posx,$posz,0);
+				$crashed = CRASHED($PID[$j],$Ticks[$j]);
+				$side = LANDINGSIDE($PID[$j],$posx,$posz);
 				if (!$crashed) { // L1:
 					echo ("$clocktime $a $playername landed $where in $side territory<br />\n");
 				} elseif ($side == 'enemy') {
@@ -632,7 +625,7 @@ function OUTPUT() {
 		Attacker Pilot, Target Type, Target Name, Target Pilot</p>\n");
 		for ($i = 0; $i < $numhits; ++$i) {
 			$j = $Hline[$i];
-			CLOCKTIME($Ticks[$j]);
+			$clocktime = CLOCKTIME($Ticks[$j]);
 			OBJECTTYPE($AID[$j],$Ticks[$j]);
 			$attackertype = $objecttype;
 			OBJECTNAME($AID[$j],$Ticks[$j]);
@@ -654,7 +647,7 @@ function OUTPUT() {
 		Attacker Name, Attacker Pilot, Target Type, Target Name, Target Pilot, Position</p>\n");
 		for ($i = 0; $i < $numdamage; ++$i) {
 			$j = $Dline[$i];
-			CLOCKTIME($Ticks[$j]);
+			$clocktime = CLOCKTIME($Ticks[$j]);
 			OBJECTTYPE($AID[$j],$Ticks[$j]);
 			$attackertype = $objecttype;
 			OBJECTNAME($AID[$j],$Ticks[$j]);
@@ -665,7 +658,7 @@ function OUTPUT() {
 			PLAYERNAME($TID[$j],$Ticks[$j]);
 			OBJECTNAME($TID[$j],$Ticks[$j]);
 			XYZ($POS[$j]);
-			WHERE($posx,$posz,0);
+			$where = WHERE($posx,$posz,0);
 			echo ("$Ticks[$j] $DMG[$j] $AID[$j] $TID[$j] $POS[$j]<br />\n");
 			echo ("$clocktime $DMG[$j] $attackertype $attackername $aplayername $objecttype $objectname $playername $where<br />\n");
 		}
@@ -677,7 +670,7 @@ function OUTPUT() {
 		Attacker Pilot, Target Type, Target Name, Target Pilot, Position</p>\n");
 		for ($i = 0; $i < $numkills; ++$i) {
 			$j = $Kline[$i];
-			CLOCKTIME($Ticks[$j]);
+			$clocktime = CLOCKTIME($Ticks[$j]);
 			OBJECTTYPE($AID[$j],$Ticks[$j]);
 			$attackertype = $objecttype;
 			OBJECTNAME($AID[$j],$Ticks[$j]);
@@ -688,7 +681,7 @@ function OUTPUT() {
 			PLAYERNAME($TID[$j],$Ticks[$j]);
 			OBJECTNAME($TID[$j],$Ticks[$j]);
 			XYZ($POS[$j]);
-			WHERE($posx,$posz,0);
+			$where = WHERE($posx,$posz,0);
 			echo ("$Ticks[$j] $AID[$j] $TID[$j] $POS[$j]<br />\n");
 			echo ("$clocktime $attackertype $attackername $aplayername $objecttype $objectname $playername $where<br />\n");
 		}
@@ -700,11 +693,11 @@ function OUTPUT() {
 		Clock Time, Plane, Pilot, Bullets left, Bombs left, Position</p>\n");
 		for ($i = 0; $i < $numends; ++$i) {
 			$j = $Eline[$i];
-			CLOCKTIME($Ticks[$j]);
+			$clocktime = CLOCKTIME($Ticks[$j]);
 			PLAYERNAME($PLID[$j],$Ticks[$j]);
 			OBJECTTYPE($PLID[$j],$Ticks[$j]);
 			XYZ($POS[$j]);
-			WHERE($posx,$posz,0);
+			$where = WHERE($posx,$posz,0);
 			echo ("$Ticks[$j] $PLID[$j] $PID[$j] $BUL[$j] $BOMB[$j] $POS[$j]<br />\n");
 			echo ("$clocktime $objecttype $playername $BUL[$j] $BOMB[$j] $where<br />\n");
 		}
@@ -716,11 +709,11 @@ function OUTPUT() {
 		Clock Time, Plane, Pilot, Position </p>\n");
 		for ($i = 0; $i < $numtakeoffs; ++$i) {
 			$j = $Tline[$i];
-			CLOCKTIME($Ticks[$j]);
+			$clocktime = CLOCKTIME($Ticks[$j]);
 			OBJECTTYPE($PID[$j],$Ticks[$j]);
 			PLAYERNAME($PID[$j],$Ticks[$j]);
 			XYZ($POS[$j]);
-			WHERE($posx,$posz,1);
+			$where = WHERE($posx,$posz,1);
 			echo ("$Ticks[$j] $PID[$j] $POS[$j]<br />\n");
 			echo ("$clocktime $objecttype $playername $where<br />\n");
 		}
@@ -732,11 +725,11 @@ function OUTPUT() {
 		Clock Time, Plane, Pilot, Position</p>\n");
 		for ($i = 0; $i < $numlandings; ++$i) {
 		$j = $Lline[$i];
-			CLOCKTIME($Ticks[$j]);
+			$clocktime = CLOCKTIME($Ticks[$j]);
 			OBJECTTYPE($PID[$j],$Ticks[$j]);
 			PLAYERNAME($PID[$j],$Ticks[$j]);
 			XYZ($POS[$j]);
-			WHERE($posx,$posz,0); // the "0" specifies airfields only
+			$where = WHERE($posx,$posz,0); // the "0" specifies airfields only
 			echo ("$Ticks[$j] $PID[$j] $POS[$j]<br />\n");
 			echo ("$clocktime $objecttype $playername $where<br />\n");
 		}
@@ -745,7 +738,7 @@ function OUTPUT() {
 	if ($DEBUG == 1 || $DEBUG == 107) {
 		// from MISSION_END AType:7
 		echo ("<p>AType:7 MISSION_END</p>\n");
-		CLOCKTIME($endticks);
+		$clocktime = CLOCKTIME($endticks);
 		echo ("endticks clocktime<br />\n");
 		echo ("$endticks $clocktime<br />\n");
 	}
@@ -756,7 +749,7 @@ function OUTPUT() {
 		for ($i = 0; $i < $numlines; ++$i) {
 			if ("$AType[$i]" == "8") {
 				XYZ($POS[$i]);
-				WHERE($posx,$posz,0);
+				$where = WHERE($posx,$posz,0);
 				echo ("$Ticks[$i] $OBJID[$i] $POS[$i] $COAL[$i] $TYPE[$i] $RES[$i]<br />\n");
 				echo ("$Ticks[$i] $OBJID[$i] $where $COAL[$i] $TYPE[$i] $RES[$i]<br />\n");
 			}
@@ -769,7 +762,7 @@ function OUTPUT() {
 		for ($i = 0; $i < $numlines; ++$i) {
 			if ("$AType[$i]" == "9") {
 				XYZ($POS[$i]);
-				WHERE($posx,$posz,0);
+				$where = WHERE($posx,$posz,0);
 				COUNTRYNAME($COUNTRY[$i]); 
 				echo ("$AID[$i] $COUNTRY[$i] $POS[$i] $IDS[$i]<br />\n");
 				echo ("$AID[$i] $tcountryname $where $IDS[$i]<br />\n");
@@ -783,7 +776,7 @@ function OUTPUT() {
 		echo ("<p>AType:10 PLAYERPLANE, # $numplayers Players<br /># Clock Time, Player Name, PLID, PID, BUL, BOMB, Plane Type, Country</p>\n");
 		for ($i = 0; $i < $numplayers; ++$i) {
 			$j = $Pline[$i];
-			CLOCKTIME($Ticks[$j]);
+			$clocktime = CLOCKTIME($Ticks[$j]);
 			COUNTRYNAME($COUNTRY[$j]); 
 //			echo ("$i $clocktime $NAME[$j] $PLID[$j] $PID[$j] $BUL[$j] $BOMB[$j] $TYPE[$j] $COUNTRY[$j]<br />\n");
 			echo ("$i $clocktime $NAME[$j] $PLID[$j] $PID[$j] $BUL[$j] $BOMB[$j] $TYPE[$j] $tcountryname<br />\n");
@@ -795,7 +788,7 @@ function OUTPUT() {
 		echo ("<p>AType:11 GROUPINIT<br /># Clock Time  GID  IDS  LID</p>\n");
 		for ($i = 0; $i < $numgroups; ++$i) {
 			$j = $Gline[$i]; 
-			CLOCKTIME($Ticks[$j]);
+			$clocktime = CLOCKTIME($Ticks[$j]);
 			echo ("<p>$i $clocktime $GID[$j] $IDS[$j] $LID[$j]</p>\n");
 		}
 	}
@@ -805,7 +798,7 @@ function OUTPUT() {
 		echo ("<p>AType:12 GAMEOBJECTINVOLVED<br /># Clock Time, ID, TYPE, NAME, Country, PID</p>\n");
 		for ($i = 0; $i < $numgobjects; ++$i) {
 			$j = $GOline[$i]; 
-			CLOCKTIME($Ticks[$j]);
+			$clocktime = CLOCKTIME($Ticks[$j]);
 			COUNTRYNAME($COUNTRY[$j]); 
 			OBJECTTYPE($ID[$j],$Ticks[$j]); 
 			OBJECTNAME($ID[$j],$Ticks[$j]);
@@ -818,7 +811,7 @@ function OUTPUT() {
 		echo ("<p>AType:13 INFLUENCEAREA_HEADER<br />Clock Time, Area ID, Country, Enabled, By Coalition Inflight Count <br />(Neutral,Entente,Central Powers,War Dogs,Mercenaries,Corsairs,Future)</p>\n");
 		for ($i = 0; $i < $numlines; ++$i) {
 			if ("$AType[$i]" == "13") {
-				CLOCKTIME($Ticks[$i]);
+				$clocktime = CLOCKTIME($Ticks[$i]);
 				echo ("$clocktime $AID[$i] $COUNTRY[$i] $ENABLED[$i] $BC[$i]<br />\n");
 			}
 		}

@@ -3,8 +3,9 @@
 // find closest named location and vaguely describe distance from it
 // if $fieldonly is 1 check airfields only
 // =69.GIAP=TUSHKA
-// BOSWAR version 1.1
-// Oct 19. 2013
+// 2011-2013
+// BOSWAR version 1.2
+// Dec 14. 2013
 function WHERE($x,$z,$fieldonly) {
    global $camp_link;  // link to campaign db
    global $Locs; // locations
@@ -14,7 +15,6 @@ function WHERE($x,$z,$fieldonly) {
    global $LX; // location X coordinate
    global $LZ; // location Z coordinate
    global $LName; // location name
-   global $where; // position in english
 
    // set starting conditions
    $mindist = 20001; // 20 km plus a meter
@@ -96,5 +96,6 @@ function WHERE($x,$z,$fieldonly) {
      $where = $desc . " " . $minname;
    }
 //   echo "$desc<br>";
+   return $where;
 }
 ?>
