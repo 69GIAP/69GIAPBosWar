@@ -3,8 +3,8 @@
 // output simple text report and calculate some stats for the db
 // =69.GIAP=TUSHKA
 // 2011-2013
-// BOSWAR version 1.31
-// Dec 14, 2013
+// BOSWAR version 1.32
+// Dec 15, 2013
 
 function OUTPUT() {
 // what follows is an almost complete collection of global variables
@@ -110,7 +110,6 @@ function OUTPUT() {
 	global $Woundticks; // ticks when last wounded
 	global $Woundpos; // position where last wounded
 	global $anora; // an or a
-	global $Whosegunner; // player piloting this gunner
 	global $Kcountryid; // country id of a killed object
 	global $numententelosses; // number of entente losses
 	global $numcplosses; // number of central powers losses
@@ -437,8 +436,7 @@ function OUTPUT() {
 				$aplayername = $playername;
 				if (preg_match('/^Turret/',$aplayername)) {
 //					echo "Pilot in turret!<br />\n";
-					WHOSEGUNNER($attackerid);
-					$aplayername = $Whosegunner;
+					$aplayername = WHOSEGUNNER($attackerid);
 				}
 			} else {
 				// else use object's description 
@@ -574,7 +572,7 @@ function OUTPUT() {
 			$a = $anora;
 			XYZ($POS[$j]);
 			$where = WHERE($posx,$posz,1);
-			TOFROM($where);
+			$where = TOFROM($where);
 //			echo "$clocktime TAKEOFF<br />\n"; //T1:
 			echo "$clocktime $a $playername took off $where<br />\n";
 		} elseif ($AType[$j] == "6") { // LANDING
