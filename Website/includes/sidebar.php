@@ -130,7 +130,12 @@
 													else {
 														echo "	    <li><a href=\"CampaignMgmtSetupStatics.php?btn=campStp&sde=campStat\" class=\"campCreateStatics\"><span></span></a></li>\n";
 													}
-
+													if ($sde == 'campBrdg') {
+														echo "	    <li><a href=\"CampaignMgmtDLBridgesConfirm.php?btn=campStp&sde=campBrdg\" class=\"MgmtDLBridgesAct\">DownloadBridgesConf</a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"CampaignMgmtDLBridgesConfirm.php?btn=campStp&sde=campBrdg\" class=\"MgmtDLBridges\">DownloadBridgesConf</a></li>\n";
+													}
 													echo "  </ul>\n";
 												}
 											if ($userRole == "commander")

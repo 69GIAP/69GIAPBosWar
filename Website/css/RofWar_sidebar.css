@@ -212,6 +212,20 @@ ul#sidebar li a.campCreateStaticsAct {
 	height: 64px;
 	position:relative;
 }
+ul#sidebar li a.MgmtDLBridges {
+	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.MgmtDLBridgesAct {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
 ul#sidebar li a.campGroundResupply {
 	background:url(../img/RofWar-AdminGroundResupply.png) no-repeat scroll top left;
 	display:block;
