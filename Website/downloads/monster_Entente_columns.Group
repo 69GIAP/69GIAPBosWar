@@ -1,0 +1,84 @@
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 1";
+  Index = 1;
+  LinkTrId = 2;
+  XPos = 77930.000;
+  YPos = 0.000;
+  ZPos = 29158.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\hotchkiss.txt";
+  Model = "graphics\artillery\machineguns\hotchkiss.mgm";
+  Desc = "5x Hotchkiss machine gun ";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 2;
+  Name = "Bat 1 Co 1 Pl 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 77930.000;
+  YPos = 0.000;
+  ZPos = 29158.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 1;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 2";
+  Index = 3;
+  LinkTrId = 4;
+  XPos = 67360.000;
+  YPos = 0.000;
+  ZPos = 29103.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\ca1.txt";
+  Model = "graphics\vehicles\ca1\ca1.mgm";
+  Desc = "10x Schneider CA1 tank ";
+  Country = 102;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 4;
+  Name = "Bat 1 Co 1 Pl 2 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 67360.000;
+  YPos = 0.000;
+  ZPos = 29103.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 3;
+}
+

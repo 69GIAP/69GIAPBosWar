@@ -6,6 +6,7 @@ function import_bridges($path,$file) {
 // BOSWAR version 1.0
 # stenka correction 22/11/13 when loading a damaged bridge convert text variable to integer
 # stenka correction to replace statement 13/12/13
+# stenka inclusion of damage_0 21/12/13
 
 	global $camp_link; // link to campaign db
 
@@ -81,6 +82,7 @@ function import_bridges($path,$file) {
 //		echo "\$Desc: $Desc<br />\n";
 
 		// if "Damaged" exists, it is 19 lines later
+		$d0 = '';
 		$d1 = ''; // initialize span 1 damage, etc
 		$d2 = '';
 		$d3 = '';
@@ -102,6 +104,7 @@ function import_bridges($path,$file) {
 					$dn = trim($part[0]);
 					// trim off semicolon and EOL and assign
 					if ($dn == '1') { $d1 = rtrim($part[1],'\x3B\r\n'); }
+					elseif ($dn == '0') { $d0 = rtrim($part[1],'\x3B\r\n'); }					
 					elseif ($dn == '2') { $d2 = rtrim($part[1],'\x3B\r\n'); }
 					elseif ($dn == '3') { $d3 = rtrim($part[1],'\x3B\r\n'); }
 					elseif ($dn == '4') { $d4 = rtrim($part[1],'\x3B\r\n'); }
@@ -119,6 +122,7 @@ function import_bridges($path,$file) {
 //			\$Model=$Model, \$Country=$Country, \$Coalition=$Coalition,
 //			\$Desc=$Desc<br />\n";
 # stenka correction 22/11/13
+		$d0 = intval($d0); 
 		$d1 = intval($d1); 
 		$d2 = intval($d2);
 		$d3 = intval($d3);
@@ -134,7 +138,7 @@ function import_bridges($path,$file) {
 		$query = "REPLACE bridges SET Name='$name', XPos='$XPos',
 			ZPos='$ZPos', YOri='$YOri', Model ='$Model', 
 			Country='$Country', CoalID='$Coalition',
-		   	damage_1='$d1', damage_2='$d2',
+		   	damage_1='$d1', damage_2='$d2', damage_0='$d0',
 			damage_3='$d3', damage_4='$d4', damage_5='$d5',
 			damage_6='$d6', damage_7='$d7', damage_8='$d8',
 			damage_9='$d9', damage_10='$d10', Description='$Desc'

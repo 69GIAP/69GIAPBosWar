@@ -5,21 +5,12 @@
 // 13/12/13
 // BOSWAR version 1.03
 
-function export_bridges($CoalID) {
+function export_bridges() {
 
 	global $camp_link;
-
+	echo "peter is here";
 	$abbrv = get_abbrv();
 	echo "<br />\$abbrv: $abbrv<br />\n";
-
-	$col_coalition = $CoalID;
-	echo "\$col_coalition: $col_coalition<br />\n";
-
-	$coalitionname = get_coalitionname($CoalID);
-	echo "\$coalitionname: $coalitionname<br />\n";
-
-    // replace any spaces in $coalitionname with underscores
-	$_coalitionname = preg_replace('/ /','_',"$coalitionname");
 
 	// define $DownloadDir
 	$DownloadDir = 'downloads/';
@@ -34,7 +25,7 @@ function export_bridges($CoalID) {
 		}
 	}
 
-	$filename = "$abbrv"."_$_coalitionname"."_bridges.Group";
+	$filename = "$abbrv"."_bridges.Group";
 	$filename = "$DownloadDir"."$filename";
 	echo "\$filename: $filename<br />\n";
 
@@ -51,7 +42,7 @@ function export_bridges($CoalID) {
 	// open file for business
 	$fh = fopen("$filename",'w') or die("Can not open $filename");
 
-	$query = "SELECT * from bridges where CoalID='$CoalID'";
+	$query = "SELECT * from bridges";
 	if(!$result = $camp_link->query($query)) {
 		echo "$query<br />\n";
 		die('exportBridges query error [' . $camp_link->error . ']');
@@ -66,7 +57,7 @@ function export_bridges($CoalID) {
 			$Model = $row['Model'];
 			$Description = $row['Description'];
 			$Country = $row['ckey'];
-			$CoalID = $row['CoalID';
+			$CoalID = $row['CoalID'];
 			$XPos = $row['XPos'];			
 			$ZPos = $row['ZPos'];				
 			$YOri = $row['YOri'];
