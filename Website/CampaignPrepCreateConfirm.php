@@ -6,6 +6,7 @@
 // BOSWAR version 1.17
 // Nov 12, 2013
 // Stenka 13/12/13 use of clean function on database name and test database name is already in use
+// Stenka 23/12/13 addition of planes_on_field table to database ceation
 
 // Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
@@ -291,6 +292,10 @@ echo "static created<br />\n";
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.bridges LIKE bridges;";
 include ('includes/doit.php');
 echo "bridges created<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.planes_on_field LIKE planes_on_field;";
+include ('includes/doit.php');
+echo "planes on field created<br />\n";
 
 //$query .= "INSERT INTO `$newCampaignDBName`.bridges SELECT * FROM bridges;";
 
