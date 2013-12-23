@@ -131,10 +131,16 @@
 														echo "	    <li><a href=\"CampaignMgmtSetupStatics.php?btn=campStp&sde=campStat\" class=\"campCreateStatics\"><span></span></a></li>\n";
 													}
 													if ($sde == 'campBrdg') {
-														echo "	    <li><a href=\"CampaignMgmtDLBridgesConfirm.php?btn=campStp&sde=campBrdg\" class=\"MgmtDLBridgesAct\">DownloadBridgesConf</a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtDLBridgesConfirm.php?btn=campStp&sde=campBrdg\" class=\"MgmtDLBridgesAct\"><span></span></a></li>\n";
 														}
 													else {
-														echo "	    <li><a href=\"CampaignMgmtDLBridgesConfirm.php?btn=campStp&sde=campBrdg\" class=\"MgmtDLBridges\">DownloadBridgesConf</a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtDLBridgesConfirm.php?btn=campStp&sde=campBrdg\" class=\"MgmtDLBridges\"><span></span></a></li>\n";
+													}
+													if ($sde == 'campAfld') {
+														echo "	    <li><a href=\"CampaignMgmtDLAirfieldsConfirm.php?btn=campStp&sde=campAfld\" class=\"MgmtDLAirfieldsAct\"><span></span></a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"CampaignMgmtDLAirfieldsConfirm.php?btn=campStp&sde=campAfld\" class=\"MgmtDLAirfields\"><span></span></a></li>\n";
 													}
 													echo "  </ul>\n";
 												}

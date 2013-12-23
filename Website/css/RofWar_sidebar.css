@@ -213,14 +213,28 @@ ul#sidebar li a.campCreateStaticsAct {
 	position:relative;
 }
 ul#sidebar li a.MgmtDLBridges {
-	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	background:url(../img/RofWar-AdminDownloadBridges.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.MgmtDLBridgesAct {
-	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	background:url(../img/RofWar-AdminDownloadBridgesAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.MgmtDLAirfields {
+	background:url(../img/RofWar-AdminDownloadAirfields.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.MgmtDLAirfieldsAct {
+	background:url(../img/RofWar-AdminDownloadAirfieldsAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
