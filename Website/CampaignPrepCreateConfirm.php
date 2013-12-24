@@ -8,6 +8,7 @@
 // Stenka 13/12/13 use of clean function on database name and test database name is already in use
 // Stenka 23/12/13 addition of planes_on_field table to database ceation
 // Stenka 23/12/13 extension of clean to campaign name
+// Tushka Christmas eve, permit apostrophy in campaign name (not db name)
 
 // Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
@@ -58,12 +59,6 @@ elseif (empty($_POST['newCampaignDatabaseName']) ) {
 	echo "No campaign database name provided!<br \><br \>\n";
 	$error = 1;	
 }
-
-
-
-
-
-
 elseif (empty($_POST['newCampaignDatabaseUser']) AND empty($_POST['existing']) ) {
 	echo "No campaign database user name provided!<br \><br \>\n";
 	$error = 1;	
@@ -87,7 +82,10 @@ if ($error == 1) {
 else {
 
 					$newCampaignName 		= $_POST['newCampaignName'];
-					$$newCampaignName = clean($newCampaignName);
+					// make it safe to insert
+					$newCampaignName = $dbc->real_escape_string($newCampaignName);
+					
+					//$$newCampaignName = clean($newCampaignName);
 					$newCampaignAbbrv		= $_POST['newCampaignAbbrv'];
 					$newCampaignDBName 		= $_POST['newCampaignDatabaseName'];
 					$newCampaignDBName		= clean($newCampaignDBName);
@@ -316,48 +314,6 @@ echo "master campaign_users updated<br />\n";
 echo " Done!<br />\n";
 
 // Tushka now returns you to your original indentation scheme
-/*
-					# CREATE NEW DB INSTANCE
-					# execute multi query 
-					if ($dbc->multi_query($query)) {
-						do {
-							# store first result set 
-							if ($result = $dbc->store_result()) {
-								// do nothing as we don't expect feedback
-								$result->free();
-							}
-						// need to include more_results to avoid strict checking warning
-						} while ($dbc->more_results() && $dbc->next_result());
-					}
-					
-					if ($dbc->errno) {
-						# DROP database
-						$rollback  = "DROP DATABASE IF EXISTS `$newCampaignDBName`;";
-						# REVOKE CAMPAIGN DB USER RIGHTS ON NEW DB
-						$rollback .= "REVOKE DELETE, DROP, INSERT, SELECT, UPDATE ON `$newCampaignDBName`.* FROM '$newCampaignDBUser'@'$newCampaignDBHost';";
-
-						# execute multi query for full rollback
-						if ($dbc->multi_query($rollback)) {
-						do {
-							# store first result set
-							if ($result = $dbc->store_result()) {
-								// do nothing as we don't expect feedback
-								$result->free();
-								}
-							// need to include more_results to avoid strict checking warning
-							} while ($dbc->more_results() && $dbc->next_result());
-						}
-						if ($dbc->errno) {
-							echo "<p>Campaign creation Rollback multi_query execution ended prematurely.<br>\n";
-							header("Location: CampaignMgmt.php?btn=campStp");
-						}
-						
-						echo "Therefor campaign creation multi_query execution also ended prematurely.<br><br>\n";
-						echo "<b>Error:</b><br></p>\n";
-						var_dump($dbc->error); 
-						
-					} 
-*/					
 					// forward to campaign configuration screen
 					$_SESSION['camp_db'] = "$newCampaignDBName";
 					echo "<form id=\"campaignPrepCreateDone\" name=\"campaignSetup\" action=\"CampaignMgmtConfigure.php?btn=campStp&sde=createCamp\" method=\"post\">\n";
