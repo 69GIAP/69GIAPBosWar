@@ -7,6 +7,7 @@
 // Nov 12, 2013
 // Stenka 13/12/13 use of clean function on database name and test database name is already in use
 // Stenka 23/12/13 addition of planes_on_field table to database ceation
+// Stenka 23/12/13 extension of clean to campaign name
 
 // Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
@@ -86,6 +87,7 @@ if ($error == 1) {
 else {
 
 					$newCampaignName 		= $_POST['newCampaignName'];
+					$$newCampaignName = clean($newCampaignName);
 					$newCampaignAbbrv		= $_POST['newCampaignAbbrv'];
 					$newCampaignDBName 		= $_POST['newCampaignDatabaseName'];
 					$newCampaignDBName		= clean($newCampaignDBName);

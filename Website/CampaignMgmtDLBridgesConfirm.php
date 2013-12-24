@@ -1,3 +1,4 @@
+# Stenka 24/12/13 completed putting planes on fields
 <?php 
 
 // Make a mysqli connection to the central BOSWAR database
@@ -47,7 +48,7 @@
 						return(false);
 					}
 				}
-				$filename = "$abbrv"."_bridges.Group";
+				$filename = "$abbrv"."_AFnBridges.Group";
 				$filename = "$DownloadDir"."$filename";
 				echo "\$filename: $filename<br />\n";
 				// remove any earlier version of this file
@@ -206,9 +207,228 @@
 					}
 				}
 				$result->free();
-				fclose($fh);
 				echo "$num Records processed<br />\n";
 				// end of exporting bridges
+				// start of exporting airfields
+				$query = "SELECT * from airfields";
+				if(!$result = $camp_link->query($query)) {
+					echo "$query<br />\n";
+					die('exportAirfields query error [' . $camp_link->error . ']');
+				}
+				$result = $camp_link->query($query);
+				$num = $result->num_rows;
+				if ($num > 0) 
+				{
+					while ($row = $result->fetch_array(MYSQLI_ASSOC)) 
+					{
+						$current_rec = $row['id'];
+						$current_Name = $row['airfield_Name'];
+						$Model = $row['airfield_Model'];
+						$Description = $row['airfield_Desc'];
+						$Country = $row['airfield_Country'];
+						$CoalID = $row['airfield_Coalition'];
+						$XPos = $row['airfield_XPos'];			
+						$ZPos = $row['airfield_ZPos'];				
+						$YOri = $row['airfield_YOri'];
+						$airfield_Hydrodrome = $row['airfield_Hydrodrome'];						
+						$airfield_Enabled = $row['airfield_Enabled'];
+						// here is where we start writing a record
+						$writestring="Airfield\r\n";
+						fwrite($fh,$writestring);
+						$writestring="{\r\n";
+						fwrite($fh,$writestring);
+						$writestring = '  Name = "'.$current_Name.'";'."\r\n";
+						fwrite($fh,$writestring);
+						$writestring = '  Index = '.$index_no.";\r\n";
+						fwrite($fh,$writestring);
+						$index_no=($index_no+1);
+						if ($airfield_Enabled == 0)
+						{
+							$writestring = '  LinkTrId = 0;'."\r\n";
+						}
+						else
+						{
+							$writestring = '  LinkTrId = '.$index_no.';'."\r\n";
+						}
+						fwrite($fh,$writestring);
+						$writestring = '  XPos = '.number_format($XPos, 3, '.', '').";\r\n";
+						fwrite($fh,$writestring);
+						$writestring = '  YPos = 0.000;'."\r\n";
+						fwrite($fh,$writestring);
+						$writestring = '  ZPos = '.number_format($ZPos, 3, '.', '').";\r\n";
+						fwrite($fh,$writestring);
+						$writestring = '  XOri = 0.00;'."\r\n";
+						fwrite($fh,$writestring);
+						$writestring = '  YOri = ' .number_format($YOri, 2, '.', '').";\r\n";
+						fwrite($fh,$writestring);
+						$writestring = '  ZOri = 0.00;'."\r\n";
+						fwrite($fh,$writestring);
+						$writestring = '  Model = "graphics'."\\".'airfields'."\\".rtrim($Model).'.mgm";'."\r\n";			
+						fwrite($fh,$writestring);
+						$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($Model).'.txt";'."\r\n";
+						fwrite($fh,$writestring);
+						$writestring = '  Country = '.$Country.';'."\r\n";
+						fwrite($fh,$writestring);
+						$writestring = '  Desc = "";'."\r\n";
+						fwrite($fh,$writestring);
+						$writestring = '  Durability = 25000;'."\r\n";
+						fwrite($fh,$writestring);
+						$writestring = '  DamageReport = 50;'."\r\n";
+						fwrite($fh,$writestring);
+						$writestring = '  DamageThreshold = 1;'."\r\n";
+						fwrite($fh,$writestring);
+						$writestring = '  DeleteAfterDeath = 1;'."\r\n";
+						fwrite($fh,$writestring);
+						// here are the planes 
+						$query2 = 'SELECT * from planes_on_field where airfield_Name = "'.$current_Name.'"';
+						if(!$result2 = $camp_link->query($query2)) 
+						{
+							echo "$query2<br />\n";
+							die('exportAirfields query error [' . $camp_link->error . ']');
+						}
+						$result2 = $camp_link->query($query2);
+						$num2 = $result2->num_rows;
+						if ($num2 > 0) 
+						{
+							$writestring = '  Planes'."\r\n";
+							fwrite($fh,$writestring);
+							$writestring = '  {'."\r\n";
+							fwrite($fh,$writestring);							
+							
+							while ($row2 = $result2->fetch_array(MYSQLI_ASSOC)) 
+							{
+								$Plane_Model = $row2['Plane_Model'];
+								$Plane_Name = $row2['Plane_Name'];
+								$Plane_Qty = $row2['Plane_Qty'];
+								$Plane_Altitude = $row2['Plane_Altitude'];
+								echo "got a plane:".$Plane_Model."<br>";
+								$writestring = '    Plane'."\r\n";
+								fwrite($fh,$writestring);
+								$writestring = '    {'."\r\n";
+								fwrite($fh,$writestring);
+								$writestring = '      SetIndex = 0;'."\r\n";
+								fwrite($fh,$writestring);
+								$writestring = '      Number = '. $Plane_Qty.';'."\r\n";
+								fwrite($fh,$writestring);
+								// air ai level needs picking out of parameters here
+								$writestring = '      AILevel = 2;'."\r\n";
+								fwrite($fh,$writestring);
+								if ($Plane_Altitude == 0)
+								{
+									$writestring = '      StartInAir = 0;'."\r\n";
+									fwrite($fh,$writestring);
+								}
+								else
+								{
+									$writestring = '      StartInAir = 1;'."\r\n";
+									fwrite($fh,$writestring);
+								}
+								$writestring = '      Engageable = 1;'."\r\n";
+								fwrite($fh,$writestring);
+								$writestring = '      Vulnerable = 1;'."\r\n";
+								fwrite($fh,$writestring);
+								$writestring = '      LimitAmmo = 1;'."\r\n";
+								fwrite($fh,$writestring);
+								$writestring = '      AIRTBDecision = 1;'."\r\n";
+								fwrite($fh,$writestring);
+								$writestring = '      Renewable = 1;'."\r\n";
+								fwrite($fh,$writestring);
+								
+								$writestring = '      PayloadId = 0;'."\r\n";
+								fwrite($fh,$writestring);
+								$writestring = '      Fuel = 1;'."\r\n";
+								fwrite($fh,$writestring);
+								$writestring = '      RouteTime = 0;'."\r\n";
+								fwrite($fh,$writestring);
+								$writestring = '      RenewTime = 1800;'."\r\n";
+								fwrite($fh,$writestring);
+								$writestring = '      Altitude = '.$Plane_Altitude.';'."\r\n";
+								fwrite($fh,$writestring);
+								$writestring = '      Model = "graphics'."\\planes\\".$Plane_Model."\\".$Plane_Model.'.mgm";'."\r\n";
+								fwrite($fh,$writestring);
+								$writestring = '      Script = "LuaScripts'."\\WorldObjects\\".$Plane_Model.'.txt";'."\r\n";
+								fwrite($fh,$writestring);
+								$writestring = '      Name = "'.$Plane_Name.'";'."\r\n";
+								fwrite($fh,$writestring);
+								$writestring = '      Skin = "";'."\r\n";
+								fwrite($fh,$writestring);
+								$writestring = '    }'."\r\n";
+								fwrite($fh,$writestring);
+							}
+							$writestring = '  }'."\r\n";
+							fwrite($fh,$writestring);
+							}
+						$writestring = '  ReturnPlanes = 0;'."\r\n";
+						fwrite($fh,$writestring);
+						if ($airfield_Hydrodrome == 0)
+						{
+							$writestring = '  Hydrodrome = 0;'."\r\n";
+						}
+						else
+						{
+							$writestring = '  Hydrodrome = 1;'."\r\n";
+						}
+						fwrite($fh,$writestring);
+						$writestring = '  RepairFriendlies = 0;'."\r\n";
+						fwrite($fh,$writestring);
+						$writestring = '  RepairTime = 0;'."\r\n";
+						fwrite($fh,$writestring);
+						$writestring = '  RearmTime = 0;'."\r\n";
+						fwrite($fh,$writestring);
+						$writestring = '  RefuelTime = 0;'."\r\n";
+						fwrite($fh,$writestring);
+						$writestring = '  MaintenanceRadius = 1000;'."\r\n";
+						fwrite($fh,$writestring);
+						$writestring = '}'."\r\n";
+						fwrite($fh,$writestring);
+						if ($airfield_Enabled == 1)
+						{
+							$writestring = ''."\r\n";
+							fwrite($fh,$writestring);
+							$writestring = 'MCU_TR_Entity'."\r\n";
+							fwrite($fh,$writestring);
+							$writestring="{\r\n";
+							fwrite($fh,$writestring);
+							$writestring = '  Index = '.$index_no.";\r\n";
+							fwrite($fh,$writestring);
+							$writestring = '  Name = "Airfield entity";'."\r\n";
+							fwrite($fh,$writestring);
+							$writestring = '  Desc = "";'."\r\n";
+							fwrite($fh,$writestring);
+							$writestring = '  Targets = [];'."\r\n";
+							fwrite($fh,$writestring);
+							$writestring = '  Objects = [];'."\r\n";
+							fwrite($fh,$writestring);
+							fwrite($fh,$writestring);
+							$writestring = '  XPos = '.number_format($XPos, 3, '.', '').";\r\n";
+							fwrite($fh,$writestring);
+							$writestring = '  YPos = 0.000;'."\r\n";
+							fwrite($fh,$writestring);
+							$writestring = '  ZPos = '.number_format($ZPos, 3, '.', '').";\r\n";
+							fwrite($fh,$writestring);
+							$writestring = '  XOri = 0.00;'."\r\n";
+							fwrite($fh,$writestring);
+							$writestring = '  YOri = ' .number_format($YOri, 2, '.', '').";\r\n";
+							fwrite($fh,$writestring);
+							$writestring = '  ZOri = 0.00;'."\r\n";
+							fwrite($fh,$writestring);
+							$writestring = '  Enabled = 1;'."\r\n";
+							fwrite($fh,$writestring);
+							$index_no=($index_no-1);
+							$writestring = '  MisObjID = '.$index_no.";\r\n";
+							fwrite($fh,$writestring);
+							$index_no=($index_no+2);
+							$writestring = '}'."\r\n";
+							fwrite($fh,$writestring);
+						}
+					}
+				}
+				$result->free();
+				fclose($fh);
+				echo "$num Records processed<br />\n";
+
+				// end of exporting airfields
+				echo "Airfields and Bridges for the campaign mission have been exported to a group file:".$filename."<br>";
 				echo "<form id=\"campaignMgmtDLBridgesConfirm\" name=\"campaignDownloadBridges\" action=\"CampaignMgmtDLBridgesConfirm.php?btn=campStp&sde=campBrdg\" method=\"post\">\n";
 				// NEXT BUTTON
 				echo "<fieldset id=\"actions\">\n";	
