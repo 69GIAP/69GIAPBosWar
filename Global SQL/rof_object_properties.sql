@@ -1,10 +1,9 @@
-#STENKA CORRECTION 11/12/13 Always delete table and recreate to apply latest structure-
 -- phpMyAdmin SQL Dump
 -- version 4.0.4.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2013 at 10:36 PM
+-- Generation Time: Dec 24, 2013 at 02:07 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -26,9 +25,10 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `rof_object_properties`
 --
-DROP TABLE IF EXISTS rof_object_properties;
+
+DROP TABLE IF EXISTS `rof_object_properties`;
 CREATE TABLE IF NOT EXISTS `rof_object_properties` (
-  `id` smallint(1) AUTO_INCREMENT,
+  `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
   `family` varchar(20) DEFAULT NULL,
   `object_type` varchar(50) NOT NULL,
   `object_class` varchar(8) NOT NULL,
@@ -46,11 +46,6 @@ CREATE TABLE IF NOT EXISTS `rof_object_properties` (
   UNIQUE KEY `object_type` (`object_type`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=238 ;
 
---
--- Truncate table before insert `rof_object_properties`
---
-
-TRUNCATE TABLE `rof_object_properties`;
 --
 -- Dumping data for table `rof_object_properties`
 --
