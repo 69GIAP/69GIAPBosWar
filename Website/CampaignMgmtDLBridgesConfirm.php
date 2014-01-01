@@ -11,9 +11,6 @@
 // Include the navigation on top
 	include ( 'includes/navigation.php' );
 
-// Include Post variable debugging
-	include ( 'includes/debugging/debuggingPostVariables.php');
-
 ?>
 
 	<div id="wrapper">

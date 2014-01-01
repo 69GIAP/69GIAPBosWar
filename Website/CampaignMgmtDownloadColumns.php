@@ -46,7 +46,7 @@
 					echo "<p>You have defined columns in the BOSWAR campaign manager.  Now you will review these columns, then download them as two separate group files, one for each coalition.</p>\n"; 
 					echo "<p>If you need to edit a column, select it and then choose \"Edit Column\", otherwise select \"Export Columns to Group Files\"</p>\n";
 
-					echo "<form id=\"campaignMgmtDownloadColumns\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDownloadColumns.php?btn=campStp\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtDownloadColumns\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDownloadColumns.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 
 					// display columns for each coalition
 					display_columns(1);
@@ -64,7 +64,7 @@
 					echo "	</fieldset>\n";
 					echo "</form>\n";
 
-					echo "<form id=\"campaignMgmtDownloadColumns\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLColumnsConfirm.php?btn=campStp\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtDownloadColumns\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLColumnsConfirm.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 					
 					// EXPORT BUTTON
 					echo "<fieldset id=\"actions\">\n";	

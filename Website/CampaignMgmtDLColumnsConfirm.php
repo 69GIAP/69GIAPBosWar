@@ -10,9 +10,6 @@
 // Include the navigation on top
 	include ( 'includes/navigation.php' );
 
-// Include Post variable debugging
-	include ( 'includes/debugging/debuggingPostVariables.php');
-
 ?>
 
 	<div id="wrapper">
@@ -63,7 +60,7 @@
 					export_columns(1);
 					export_columns(2);
 
-					echo "<form id=\"campaignMgmtDLColumnsConfirm\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLColumnsConfirm.php?btn=campStp\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtDLColumnsConfirm\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLColumnsConfirm.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 					// NEXT BUTTON
 					echo "<fieldset id=\"actions\">\n";	
 					echo "<input type=\"hidden\" name=\"action\" value = \"next\">\n";	
@@ -73,7 +70,7 @@
 				} else {
 					// actually do the downloads
 					echo "OK, time to download for real!<br />\n";
-					echo "<form id=\"campaignMgmtDLFile\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLFile.php?btn=campStp\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtDLFile\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLFile.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 					$DownloadDir = 'downloads/';
 					print "<select name=\"dlfile\">\n";
 					
