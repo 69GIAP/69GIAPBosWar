@@ -1,4 +1,4 @@
-# Stenka 24/12/13 completed putting planes on fields
+# Stenka 1/1/14 added air AI Level
 <?php 
 
 // Make a mysqli connection to the central BOSWAR database
@@ -10,6 +10,9 @@
 	
 // Include the navigation on top
 	include ( 'includes/navigation.php' );
+
+// Include Post variable debugging
+	include ( 'includes/debugging/debuggingPostVariables.php');
 
 ?>
 
@@ -30,6 +33,11 @@
 				$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
 				// require getAbbrv.php
 				require ('functions/getAbbrv.php');
+				
+				// require getGroundAILevel.php
+				require ('functions/getGroundAILevel.php');
+				$air_ai_level = get_air_ai_level();
+				
 				// export Bridges 
 				global $camp_link;
 				$abbrv = get_abbrv();
@@ -307,8 +315,7 @@
 								fwrite($fh,$writestring);
 								$writestring = '      Number = '. $Plane_Qty.';'."\r\n";
 								fwrite($fh,$writestring);
-								// air ai level needs picking out of parameters here
-								$writestring = '      AILevel = 2;'."\r\n";
+eeh								$writestring = '      AILevel = '.$air_ai_level.';'."\r\n";
 								fwrite($fh,$writestring);
 								if ($Plane_Altitude == 0)
 								{
@@ -426,7 +433,7 @@
 
 				// end of exporting airfields
 				echo "Airfields and Bridges for the campaign mission have been exported to a group file:".$filename."<br>";
-				echo "<form id=\"campaignMgmtDLBridgesConfirm\" name=\"campaignDownloadBridges\" action=\"CampaignMgmtDLBridgesConfirm.php?btn=campStp&sde=campAfldBrdg\" method=\"post\">\n";
+				echo "<form id=\"campaignMgmtDLBridgesConfirm\" name=\"campaignDownloadBridges\" action=\"CampaignMgmtDLBridgesConfirm.php?btn=campStp&sde=campBrdg\" method=\"post\">\n";
 				// NEXT BUTTON
 				echo "<fieldset id=\"actions\">\n";	
 				echo "<input type=\"hidden\" name=\"action\" value = \"next\">\n";	
@@ -435,7 +442,7 @@
 				echo "</form>\n";
 				// actually do the downloads
 				echo "OK, time to download!<br />\n";
-				echo "<form id=\"campaignMgmtDLFile\" name=\"campaignDownloadBridges\" action=\"CampaignMgmtDLFile.php?btn=campStp&sde=campAfldBrdg\" method=\"post\">\n";
+				echo "<form id=\"campaignMgmtDLFile\" name=\"campaignDownloadBridges\" action=\"CampaignMgmtDLFile.php?btn=campStp&sde=campBrdg\" method=\"post\">\n";
 				$DownloadDir = 'downloads/';
 				print "<select name=\"dlfile\">\n";
 				// get list of files as array, removing '.' and '..' from the list
