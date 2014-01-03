@@ -4,6 +4,7 @@
 -- Host: 10.0.0.57    Database: chanclfct
 -- ------------------------------------------------------
 -- Server version	5.6.13
+-- Stenka 27/12/13 addition of altitude for airstarts and flight name
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,6 +28,8 @@ CREATE TABLE `airfields_models` (
   `airfield_Name` char(31) NOT NULL DEFAULT '',
   `model_Name` varchar(30) NOT NULL DEFAULT '',
   `model_Quantity` int(3) DEFAULT NULL,
+  `model_Altitude` int(4) DEFAULT 0,
+  `model_Flight` varchar(30) DEFAULT '',
   PRIMARY KEY (`airfield_Name`,`model_Name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
