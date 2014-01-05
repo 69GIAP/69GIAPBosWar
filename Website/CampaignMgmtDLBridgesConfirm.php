@@ -31,8 +31,8 @@
 				// require getAbbrv.php
 				require ('functions/getAbbrv.php');
 				
-				// require getGroundAILevel.php
-				require ('functions/getGroundAILevel.php');
+				// require getAirAILevel.php
+				require ('functions/getAirAILevel.php');
 				$air_ai_level = get_air_ai_level();
 				
 				// export Bridges 

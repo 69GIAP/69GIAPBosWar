@@ -1,11 +1,11 @@
 <?php
 // getAirAILevel.php
-// get ground_ai_level from campaign_settings
+// get air_ai_level from campaign_settings
 // =69.GIAP=STENKA
 // Jan 1, 2014
 // BOSWAR version 1.0 
 
-function get_ground_ai_level() {
+function get_air_ai_level() {
 global $camp_link; // link to campaign db
 
 	$query = "SELECT air_ai_level FROM campaign_settings;";
