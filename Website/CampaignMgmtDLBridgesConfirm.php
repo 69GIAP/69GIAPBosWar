@@ -315,7 +315,7 @@
 								fwrite($fh,$writestring);
 								$writestring = '      Number = '. $Plane_Qty.';'."\r\n";
 								fwrite($fh,$writestring);
-eeh								$writestring = '      AILevel = '.$air_ai_level.';'."\r\n";
+								$writestring = '      AILevel = '.$air_ai_level.';'."\r\n";
 								fwrite($fh,$writestring);
 								if ($Plane_Altitude == 0)
 								{
