@@ -329,7 +329,7 @@
 #					exit;
 					unset($_POST);
 					
-					header ("Location: airfieldMgmtChange.php?btn=campStp&airfieldName=$airfieldName");
+					header ("Location: airfieldMgmtChange.php?btn=preMsn&sde=campAf&airfieldName=$airfieldName");
 					}
 	   
                 ?>					

@@ -13,7 +13,7 @@
 ?>
 			<!-- form for changing information in the users table -->
                 <h3>Please select the airfield you want to modify:</h3>
-				<form id="loginForm" name="delete" action="airfieldMgmtChange.php" method="post">
+				<form id="loginForm" name="delete" action="airfieldMgmtChange.php?btn=preMsn&sde=campAf" method="post">
                     <fieldset id="inputs">
                         <select id="airfield" type="text" name="airfieldName" autofocus required>
 	                        <?php

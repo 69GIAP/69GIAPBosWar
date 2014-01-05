@@ -65,7 +65,7 @@
 						#$num = $result->num_rows();
 	
 						# start form
-						echo "<form id=\"airfieldForm\" name=\"login\" action=\"airfieldMgmtModify.php?form=1\" method=\"post\">\n";
+						echo "<form id=\"airfieldForm\" name=\"login\" action=\"airfieldMgmtModify.php?btn=preMsn&sde=campAf&form=1\" method=\"post\">\n";
 						echo "    <h1 id=\"h1Form\">$airfieldName</h1>\n";
 	
 						# load results into variables and build form
@@ -156,7 +156,7 @@
 						$airfieldCoalitionName = get_coalitionname("$airfieldCoalitionId");
 						
 						# build the small form to change coaltition and status only
-						echo "<form id=\"airfieldForm\" name=\"login\" action=\"airfieldMgmtModify.php?form=0\" method=\"post\">\n";
+						echo "<form id=\"airfieldForm\" name=\"login\" action=\"airfieldMgmtModify.php?btn=preMsn&sde=campAf&form=0\" method=\"post\">\n";
 						
 						// hidden field to hand airfieldName over through POST
 						echo "	<input readonly=\"readonly\" type=\"hidden\" name='airfieldName' value='$airfieldName' size=\"24\" maxlength=\"50\" />\n";
