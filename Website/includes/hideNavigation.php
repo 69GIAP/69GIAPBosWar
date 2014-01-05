@@ -50,10 +50,10 @@
 					echo "<li><a href=\"CampaignMgmt.php?btn=preMsn\" class=\"preMsn\"><span></span></a></li>\n";
 				}
 				if ($btn == 'postMsn') {
-					echo "<li><a href=\"CampaignMgmt.php?btn=postMsn&sde=lgPrsr\" class=\"postMsnAct\"></a></li>\n";
+					echo "<li><a href=\"CampaignMgmt.php?btn=postMsn\" class=\"postMsnAct\"></a></li>\n";
 					}
 				else {
-					echo "<li><a href=\"CampaignMgmt.php?btn=postMsn&sde=lgPrsr\" class=\"postMsn\"><span></span></a></li>\n";
+					echo "<li><a href=\"CampaignMgmt.php?btn=postMsn\" class=\"postMsn\"><span></span></a></li>\n";
 				}
 				if ($btn == 'userMgmt') {
 					echo "<li><a href=\"UserMgmt.php?btn=userMgmt\" class=\"userMgmtAct\"></a></li>\n";
