@@ -62,7 +62,7 @@
 						}
 						
 						# get the rowcount
-						#$num = $result->num_rows();
+						#$num = $result->num_rows;
 	
 						# start form
 						echo "<form id=\"airfieldForm\" name=\"login\" action=\"airfieldMgmtModify.php?btn=preMsn&sde=campAf&form=1\" method=\"post\">\n";
@@ -71,8 +71,8 @@
 						# load results into variables and build form
 						$i = 1;
 						while ($obj = $result->fetch_object()) {
-							$modelName			 =($obj->model_Name);
-							$modelQuantity		 =($obj->model_Quantity);
+							$modelName			=($obj->model_Name);
+							$modelQuantity	=($obj->model_Quantity);
 
 							# MODEL
 							if ($modelName == '') {
@@ -106,8 +106,11 @@
 								$i ++;	
 							}
 						}
-		
-						echo "<fieldset id=\"inputs\">\n";							
+						
+						echo "<fieldset id=\"inputs\">\n";
+						
+						echo "<p>To assign a new model to the aifield select the corresponding entry from the dropdown list below and insert the quantity into the form field. The quantity of already listed models cannot be changed with this form. Please use the above listed ones to do so.</p>\n";
+												
 						// hidden field to hand airfieldName over through POST
 						echo "	<input readonly=\"readonly\" type=\"hidden\" name='airfieldName' value='$airfieldName' size=\"24\" maxlength=\"50\" />\n";
 						
@@ -139,6 +142,9 @@
 						$airfieldCoalitionName = get_coalitionname("$airfieldCoalitionId");
 					
 						echo "<h3>Modify $airfieldName airfield</h3>\n";
+						
+						echo "<p>Use this section to activate/deactivate this airfield or to change its coalition.</p>\n";
+						
 						# get the airfields details regarding status and coalition
 						include ('includes\getAirfieldStatus.php');
 						
@@ -162,6 +168,8 @@
 						echo "	<input readonly=\"readonly\" type=\"hidden\" name='airfieldName' value='$airfieldName' size=\"24\" maxlength=\"50\" />\n";
 						
 						echo "<h3>Modify $airfieldCoalitionName $airfieldName airfield.<br></h3>\n";
+						
+						echo "<p>Use this section to activate/deactivate this airfield or to change its coalition.</p>\n";						
 						
 						# get the airfields details regarding status and coalition
 						include ('includes\getAirfieldStatus.php');
