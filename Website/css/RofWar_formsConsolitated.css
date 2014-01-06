@@ -1,9 +1,9 @@
 @CHARSET "UTF-8";
 /***** GENERAL ******/
 fieldset {
-    border: 0;
-    padding: 0;
-    margin: 0;
+	border: 0;
+	padding: 0;
+	margin: 0;
 }
 
 form fieldset p {
@@ -30,14 +30,14 @@ form fieldset p {
 
 /****** FONT STYLES **********/
 #h1Form {
-    text-shadow: 0 3px 0 rgba(255, 255, 255, .4), 0px 1px 0 rgba(0, 0, 0, .4);
-    text-transform: uppercase;
-    text-align: left;
-    color: #666;
-    margin: 0 0 5px 0;
-    letter-spacing: 4px;
-    font: normal 23px/1 "Trebuchet MS", Arial, Helvetica, sans-serif;
-    position: relative;
+	text-shadow: 0 3px 0 rgba(255, 255, 255, .4), 0px 1px 0 rgba(0, 0, 0, .4);
+	text-transform: uppercase;
+	text-align: left;
+	color: #666;
+	margin: 0 0 5px 0;
+	letter-spacing: 4px;
+	font: normal 23px/1 "Trebuchet MS", Arial, Helvetica, sans-serif;
+	position: relative;
 }
 
 #h3Form {
@@ -46,110 +46,110 @@ form fieldset p {
 
 /******* FORMS *******/
 #airfieldForm {
-    background-color: #fff;
-    height: auto;
-    width: 400px;    
-    padding: 30px;	  
+	background-color: #fff;
+	height: auto;
+	width: 400px;    
+	padding: 30px;	  
 }
 #createCampForm {
 	background-color: #fff;
-    height: auto;
-    width: 400px;    
-    padding: 30px;	  
+	height: auto;
+	width: 400px;    
+	padding: 30px;	  
 }
 #loginForm {
-    background-color: #fff;
-    height: 240px;
-    width: 350px;    
-    padding: 30px;	  
+	background-color: #fff;
+	height: 240px;
+	width: 350px;    
+	padding: 30px;	  
 }
 #loginForm:before {
-    content: '';
-    position: absolute;
-    z-index: -1;
+	content: '';
+	position: absolute;
+	z-index: -1;
 }
 
 #campaignMgmtForm {
-    background-color: #fff;
-    height: auto;
-    width: auto;    
-    padding: 30px;	  
+	background-color: #fff;
+	height: auto;
+	width: auto;    
+	padding: 30px;	  
 }
 
 #campaignMgmtSetupForm {
-    background-color: #fff;
-    height: auto;
-    width: 700px;    
-    padding: 30px 0;	  
+	background-color: #fff;
+	height: auto;
+	width: 700px;    
+	padding: 30px 0;	  
 }
 #campaignMgmtUploadForm {
-    background-color: #fff;
-    height: auto;
-    width: 700px;    
-    padding: 30px 0;	  
+	background-color: #fff;
+	height: auto;
+	width: 700px;    
+	padding: 30px 0;	  
 }
 #createColumn {
-    background-color: #fff;
-    height: auto;
-    width: 700px;    
-    padding: 30px 0;	  
+	background-color: #fff;
+	height: auto;
+	width: 700px;    
+	padding: 30px 0;	  
 }
 
 #campaignForm {
 	background-color: #fff;
-    height: 240px;
-    width: 500px;    
-    padding: 30px;
+	height: 240px;
+	width: 500px;    
+	padding: 30px;
 	margin: 0 0 30px 0;  
 }
 
 #registerForm {
 	background-color: #fff;
-    height: 240px;
-    width: 700px;    
-    padding: 30px;	
+	height: 240px;
+	width: 700px;    
+	padding: 30px;	
 }
 
 /********FIELDSETS **********/
 #actions {
-    margin: 2px 0 30px 0;
+	margin: 2px 0 30px 0;
 }
 #actions a {
-    color: #3151A2;    
-    float: right;
-    line-height: 35px;
-    margin-left: 10px;
+	color: #3151A2;    
+	float: right;
+	line-height: 35px;
+	margin-left: 10px;
 }
 
 /********INPUT FORM FIELDS **********/
 #inputs input,
 #none input {
-    background: #f1f1f1 url(../img/formSprite.png) no-repeat;
-    padding: 10px 15px 10px 30px;
-    margin: 2px 0 2px 0;
-    width: 300px; /* 353 + 2 + 45 = 400 */
-    border: 1px solid #ccc;
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
-    border-radius: 0px;
-    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+	background: #f1f1f1 url(../img/formSprite.png) no-repeat;
+	padding: 10px 15px 10px 30px;
+	margin: 2px 0 2px 0;
+	width: 300px; /* 353 + 2 + 45 = 400 */
+	border: 1px solid #ccc;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+	-moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+	-webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+	box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
 }
 
 #inputs select,
 #none select {
-    background: #f1f1f1 url(../img/formSprite.png) no-repeat;
-    padding: 10px 15px 10px 30px;
-    margin: 2px 0 2px 0;
-    width: 347px; /* 353 + 2 + 45 = 400 */
-    border: 1px solid #ccc;
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
-    border-radius: 0px;
-    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+	background: #f1f1f1 url(../img/formSprite.png) no-repeat;
+	padding: 10px 15px 10px 30px;
+	margin: 2px 0 2px 0;
+	width: 347px; /* 353 + 2 + 45 = 400 */
+	border: 1px solid #ccc;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+	-moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+	-webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+	box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
 }
 
 #inputs.wide select {
@@ -164,37 +164,37 @@ form fieldset p {
 #inputs input:focus,
 #none select:focus,
 #none input:focus {
-    background-color: #fff;
-    border-color: #BFC8DE;
-    outline: none;
-    -moz-box-shadow: 0 0 0 1px #BFC8DE inset;
-    -webkit-box-shadow: 0 0 0 1px #BFC8DE inset;
-    box-shadow: 0 0 0 1px #BFC8DE inset;
+	background-color: #fff;
+	border-color: #BFC8DE;
+	outline: none;
+	-moz-box-shadow: 0 0 0 1px #BFC8DE inset;
+	-webkit-box-shadow: 0 0 0 1px #BFC8DE inset;
+	box-shadow: 0 0 0 1px #BFC8DE inset;
 }
 
 /* on error style */
 #inputs input.error {
 	background: #f8dbdb url(../img/formSprite.png) no-repeat;
 	padding: 10px 15px 10px 30px;
-    margin: 2px 0 2px 0;
+	margin: 2px 0 2px 0;
 	width: 300px;/* 353 + 2 + 45 = 400 */	
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
 	border-radius: 0px;
-    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+	-moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+	-webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+	box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
 	color: #949494;
 	border-color: #e77776;
 }
 #inputs input.error:focus {
-    border-color: #e77776;
-    outline: none;
-    -moz-box-shadow: 0 0 0 1px #e77776 inset;
-    -webkit-box-shadow: 0 0 0 1px #e77776E inset;
+	border-color: #e77776;
+	outline: none;
+	-moz-box-shadow: 0 0 0 1px #e77776 inset;
+	-webkit-box-shadow: 0 0 0 1px #e77776E inset;
 	
 	background-color: #fff;
-    box-shadow: 0 0 0 1px #e77776 inset;
+	box-shadow: 0 0 0 1px #e77776 inset;
 }
 
 /********TEXT AREA FORM FIELDS **********/
@@ -216,6 +216,7 @@ form fieldset p {
 
 /******** BUTTONS *********/
 #loginSubmit,
+#objectsSubmit,
 #submitHalfsize1,
 #submitHalfsize2,
 #registerSubmit,
@@ -225,22 +226,26 @@ form fieldset p {
 #back,
 #downloadColumns {
 	background: none;	
-    background-color: #494947;
+	background-color: #494947;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.4);
 	font: 23px "Trebuchet MS", Arial, Helvetica, sans-serif;
-    color: #E6E6E6;
+	color: #E6E6E6;
 	cursor: pointer;
 	float: left;
-    height: 40px;
-    padding: 0;	
+	height: 40px;
+	padding: 0;	
 }
 
 #registerSubmit {
-    width: 345px;
+	width: 345px;
 }
 
 #loginSubmit {		
-    width: 345px;
+	width: 345px;
+}
+
+#objectsSubmit {		
+	width: 500px;
 }
 
 #submitHalfsize1,
@@ -250,12 +255,13 @@ form fieldset p {
 #countrySubmit,
 #back {		
 	margin: 0 5px 0 0;
-    width: 170px;
+	width: 170px;
 	font-size: 20px;
 }
 
 #registerSubmit:hover, #registerSubmit:focus,	
 #loginSubmit:hover, #loginSubmit:focus,
+#objectsSubmit:hover, #objectsSubmit:focus,
 #submit:hover, #submit:focus, 
 #submitHalfsize1:hover, #submitHalfsize1:focus, 
 #submitHalfsize2:hover,#submitHalfsize2:focus,
@@ -264,18 +270,19 @@ form fieldset p {
 #countrySubmit:hover,#countrySubmit:focus,
 #back:hover, #back:focus,
 #downloadColumns:hover, #downloadColumns:focus {		
-    background-color: #8baac9;
+	background-color: #8baac9;
 }
 
 #registerSubmit:active,
-#loginSubmit:active {
+#loginSubmit:active,
+#objectsSubmit:active {
 	background-color: #8baac9;		
-    outline: none;
+	outline: none;
 }
 
 #registerSubmit::-moz-focus-inner,
 #loginSubmit::-moz-focus-inner {
-  	border: none;
+	border: none;
 }
 
 /******** FEEDBACK **********/
@@ -312,12 +319,12 @@ form fieldset p {
 	padding: 10px;
 	background: #f1f1f1;
 	border: 1px solid #ccc;
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
-    border-radius: 0px;
-    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+	-moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+	-webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+	box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
 }
 
 .airfieldResupplyFormCheckboxWrapper {
@@ -327,7 +334,8 @@ form fieldset p {
 .airfieldStatusFormCheckboxWrapper,
 .checkboxWrapper {
 	width: auto;
-	max-width: 400px;	
+	max-width: 480px;
+	min-width: 420px;	
 }
 
 .createColumnCheckboxWrapper {
@@ -342,44 +350,53 @@ form fieldset p {
 	margin: 5px 0 2px 0;
 }
 
+div.checkbox img {
+	float: right;
+	width: 90px;
+	height: 90px;
+	position: relative;
+	top: 0px;
+	right: 10px;
+}
+
 .radio {
 	margin: 0 0 0 25px;
 }
 
 label {  
-    display: inline-block;  
-    cursor: pointer;  
-    position: relative;  
-    padding-left: 25px;  
-    margin-right: 15px;  
-    font-size: 13px;  
+	display: inline-block;  
+	cursor: pointer;  
+	position: relative;  
+	padding-left: 25px;  
+	margin-right: 15px;  
+	font-size: 13px;  
 }
 
 input[type=radio] {  
-    display: none;
+	display: none;
 }
 
 input[type=checkbox] {  
-    display: none;
+	display: none;
 }
   
 label:before {  
-    content: "";  
-    display: inline-block; 
-	 
-    width: 16px;  
-    height: 16px;
-	 
+	content: "";  
+	display: inline-block; 
+	
+	width: 16px;  
+	height: 16px;
+	
 	margin-right: 10px; 
-    position: absolute;  
-    left: 0;  
-    bottom: 1px;  
-    background-color: #aaa;  
-    box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
+	position: absolute;  
+	left: 0;  
+	bottom: 1px;  
+	background-color: #aaa;  
+	box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
 } 
 
 .radio label:before {  
-    border-radius: 8px;  
+	border-radius: 8px;  
 }
 
 div.radio label {
@@ -393,29 +410,29 @@ div.checkbox p {
 }  
 
 input.special[type=radio]:checked + label.special:before {  /* secial case for objects menu: square checkbox with check symbol but radio button behavior */
-    content: "\2713";  /* check symbol */
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
-    font-size: 15px;  
-    color: #f3f3f3;  
-    text-align: center;  
-    line-height: 15px;
+	content: "\2713";  /* check symbol */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+	font-size: 15px;  
+	color: #f3f3f3;  
+	text-align: center;  
+	line-height: 15px;
 } 
 
 input[type=radio]:checked + label:before {  
-    content: "\2022"; /* bullet symbol */
-    color: #f3f3f3;  
-    font-size: 30px;  
-    text-align: center;  
-    line-height: 10px; /* position of radio bullet once selected */
+	content: "\2022"; /* bullet symbol */
+	color: #f3f3f3;  
+	font-size: 30px;  
+	text-align: center;  
+	line-height: 10px; /* position of radio bullet once selected */
 }  
 
 input[type=checkbox]:checked + label:before {  
-    content: "\2713";  /* check symbol */
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
-    font-size: 15px;  
-    color: #f3f3f3;  
-    text-align: center;  
-    line-height: 15px;  
+	content: "\2713";  /* check symbol */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+	font-size: 15px;  
+	color: #f3f3f3;  
+	text-align: center;  
+	line-height: 15px;  
 }
 
 #userDetails {
@@ -439,48 +456,48 @@ input[type=checkbox]:checked + label:before {
 #password,
 #password1,
 #password2 {
-    background-position: 5px -57px !important;
+	background-position: 5px -57px !important;
 }
 
 #aircraft {
-    background-position: 5px -102px !important;
+	background-position: 5px -102px !important;
 }
 
 #none {
-    background-position: 5px -142px !important;
+	background-position: 5px -142px !important;
 }
 
 #number {
-    background-position: 5px -181px !important;
+	background-position: 5px -181px !important;
 }
 
 #world {
-    background-position: 5px -231px !important;
+	background-position: 5px -231px !important;
 }
 
 #airfield {
-    background-position: 5px -283px !important;
+	background-position: 5px -283px !important;
 }
 
 #database {
-    background-position: 5px -332px !important;
+	background-position: 5px -332px !important;
 }
 
 #email {
-    background-position: 5px -377px !important;
+	background-position: 5px -377px !important;
 }
 
 #phone {
-    background-position: 5px -432px !important;
+	background-position: 5px -432px !important;
 }
 
 #file {
-    background-position: 5px -483px !important;
+	background-position: 5px -483px !important;
 }
 #userfile {
-    background-position: 5px -480px !important;
+	background-position: 5px -480px !important;
 }
 
 #map {
-    background-position: 5px -532px !important;
+	background-position: 5px -532px !important;
 }

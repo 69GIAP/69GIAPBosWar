@@ -44,35 +44,38 @@
 
 	# load results into variables 
 	while ($obj = $result->fetch_object()) {
-		$objectId		=($obj->id);
-		$objectName		=($obj->object_type);
-		$object_class	=($obj->object_class);
-		$object_value	=($obj->object_value);
-		$objectDesc		= $obj->object_desc;
+		$objectId				=($obj->id);
+		$objectName			=($obj->object_type);
+		$object_class		=($obj->object_class);
+		$object_value		=($obj->object_value);
+		$objectDesc			=($obj->object_desc);
 		$objectCountry	=($obj->default_country);
-		$intro_date	=($obj->intro_date);
-		$Model	=($obj->Model);
-		$objectDesc = $objectDesc.' Available from '.$intro_date;
+		$intro_date			=($obj->intro_date);
+		$model					=($obj->Model);
+		$objectDesc			=($objectDesc.' Available from '.$intro_date);
 		
 		$classRoleDesc = get_class_role_description($object_class);
 		echo "<div class=\"checkbox\">\n";
 		if	($objectCountry < 599) { // all countries below countryId 599 are similar to Active
-		echo '<img src=img/preview/'.$Model.'.jpg>';
-		echo "		<p><b>$objectDesc<br />$classRoleDesc [ $object_value ]</b></p>\n";
-			echo "		<input class =\"special\" id=\"objectIdActive_$i\" type=\"radio\" name ='$objectName' value =\"1\" checked>\n";
-			echo "		<label class =\"special\" for=\"objectIdActive_$i\">active</label>\n";
+		
+		echo "	<img src=img/preview/".$model.".jpg>\n";
+		echo "	<p><b>$objectDesc<br />
+		$classRoleDesc [ $object_value ]</b></p>\n";
+							
+		echo "	<input class =\"special\" id=\"objectIdActive_$i\" type=\"radio\" name ='$objectName' value =\"1\" checked>\n";
+		echo "	<label class =\"special\" for=\"objectIdActive_$i\">active</label>\n";
 			
-			echo "		<input class =\"special\" id=\"objectIdInactive_$i\" type=\"radio\" name ='$objectName' value =\"0\" >\n";
-			echo "		<label class =\"special\" for=\"objectIdInactive_$i\">inactive</label><br \>\n";			
+		echo "	<input class =\"special\" id=\"objectIdInactive_$i\" type=\"radio\" name ='$objectName' value =\"0\" >\n";
+		echo "	<label class =\"special\" for=\"objectIdInactive_$i\">inactive</label><br \>\n";			
 		}
-		else {						// all countries greater than countryId 599 are similar to Inactive
-			echo "		<p><b>$objectDesc</b></p>\n";
-			echo "		<input class =\"special\" id=\"objectIdActive_$i\" type=\"radio\" name ='$objectName' value =\"1\" >\n";
-			echo "		<label class =\"special\" for=\"objectIdActive_$i\">active</label>\n";
-			
-			echo "		<input class =\"special\" id=\"objectIdInactive_$i\" type=\"radio\" name ='$objectName' value =\"0\" checked>\n";
-			echo "		<label class =\"special\" for=\"objectIdInactive_$i\">inactive</label><br \>\n";
-		}
+	else {						// all countries greater than countryId 599 are similar to Inactive
+		echo "	<p><b>$objectDesc</b></p>\n";
+		echo "	<input class =\"special\" id=\"objectIdActive_$i\" type=\"radio\" name ='$objectName' value =\"1\" >\n";
+		echo "	<label class =\"special\" for=\"objectIdActive_$i\">active</label>\n";
+		
+		echo "	<input class =\"special\" id=\"objectIdInactive_$i\" type=\"radio\" name ='$objectName' value =\"0\" checked>\n";
+		echo "	<label class =\"special\" for=\"objectIdInactive_$i\">inactive</label><br \>\n";
+	}
 		echo "</div>\n";
 
 		# use function to get CoalID

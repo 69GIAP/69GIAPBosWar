@@ -60,7 +60,7 @@
 					
 					# BUTTON
 					echo "<fieldset id=\"actions\">\n";	
-					echo "		<button type=\"submit\" id=\"loginSubmit\" value ='$objectClass' >Apply</button>\n";
+					echo "		<button type=\"submit\" id=\"objectsSubmit\" value ='$objectClass' >Apply</button>\n";
 					echo "	</fieldset>\n";
 					
 					echo "</form>\n";				
