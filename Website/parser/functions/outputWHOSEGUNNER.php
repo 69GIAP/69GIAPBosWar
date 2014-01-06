@@ -3,8 +3,8 @@
 // given gunner id, find pilot player name
 // =69.GIAP=TUSHKA
 // 2011-2013
-// BOSWAR version 1.02
-// Oct 19, 2013
+// BOSWAR version 1.03
+// Jan 6, 2014
 
 function WHOSEGUNNER($gunnerid) { // input is plid of a gunner
 	global $ID; // object ID
@@ -34,7 +34,7 @@ function WHOSEGUNNER($gunnerid) { // input is plid of a gunner
 			} 
 		}
 	}
-	return $Whosegunner
+	return $Whosegunner;
 //	echo "WHOSEGUNNER: ID=$id, PID = $pid whosegunner = $Whosegunner<br>\n";
 }
 ?>

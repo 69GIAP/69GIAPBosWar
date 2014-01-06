@@ -2,9 +2,9 @@
 // FATES
 // report player fates
 // =69.GIAP=TUSHKA
-// 2011-2013
-// BOSWAR version 1.5
-// Nov 10, 2013
+// 2011-2014
+// BOSWAR version 1.06
+// Jan 6, 2014
 
 function FATES($i,$j) {
 	// $i is playernumber
@@ -19,7 +19,6 @@ function FATES($i,$j) {
 	global $Wound; // array holding severity of wound
 	global $Woundticks; // ticks when last wounded
 	global $Woundpos; // position where last wounded
-	global $clocktime; // 24 hr time
 	global $Death; // dead players numbers
 	global $Deathticks; // ticks when died
 	global $Deathpos; // position where died
@@ -27,7 +26,6 @@ function FATES($i,$j) {
 	global $numends; // number of mission ends
 	global $posx; // X coordinate
 	global $posz; // Z coordinate
-	global $where; // position in english
 	global $side; // "friendly", "enemy" or "neutral"
 	global $NAME; // player profile name
 	global $numlandings; // number of landings
@@ -87,9 +85,9 @@ function FATES($i,$j) {
 
 	// now print out the fate of the player
 	if ($Death[$i]) { // player has been killed
-		CLOCKTIME($Deathticks[$i]);
+		$clocktime = CLOCKTIME($Deathticks[$i]);
 		XYZ($Deathpos[$i]);
-		WHERE($posx,$posz,0);
+		$where = WHERE($posx,$posz,0);
 		$fate = 5;
 		$health = 4;
 		if ($object_class == 'TUR') { //G1:
@@ -98,9 +96,9 @@ function FATES($i,$j) {
 			echo "$NAME[$j] piloting $a $TYPE[$j] for $countryname was killed at $clocktime $where<br>\n";
 		}
 	} elseif ($Wound[$i]) { // player is alive but has been wounded
-		CLOCKTIME($Woundticks[$i]);
+		$clocktime = CLOCKTIME($Woundticks[$i]);
 		XYZ($Woundpos[$i]);
-		WHERE($posx,$posz,0);
+		$where = WHERE($posx,$posz,0);
 		// how seriously wounded?
 		if ($Wound[$i] > .66) {
 			$health = 3;
@@ -125,9 +123,9 @@ function FATES($i,$j) {
 		for ($k = 0; $k < $numlandings; ++$k) {
 			$l = $Lline[$k];
 			if ($PLID[$j] == $PID[$l]) {
-				CLOCKTIME($Ticks[$l]);
+				$clocktime = CLOCKTIME($Ticks[$l]);
 				XYZ($POS[$l]);
-				WHERE($posx,$posz,0);
+				$where = WHERE($posx,$posz,0);
 //				echo "PID[$j] = $PID[$j], PLID[$j] = $PLID[$j], PID[$l] = $PID[$l]<br>\n";
 				// check whether captured - but what about spy/pilot rescue?
 				// perhaps should only check if can't take off again.
@@ -148,9 +146,9 @@ function FATES($i,$j) {
 			for ($k = 0; $k < $numends; ++$k) {
 				$l = $Eline[$k]; 
 				if ($PLID[$j] == $PLID[$l]) {
-					CLOCKTIME($Ticks[$l]);
+					$clocktime = CLOCKTIME($Ticks[$l]);
 					XYZ($POS[$l]);
-					WHERE($posx,$posz,0);
+					$where = WHERE($posx,$posz,0);
 //					echo "PLID[$j] = $PLID[$j], PLID[$j] = $PLID[$j]<br>\n";
 					$fate = 1;
 					$landed = "landed at $clocktime $where";
