@@ -102,6 +102,12 @@ Style for Index screenform elements */
 	text-align: right;
 	font-size:	11px;
 	}
+
+#credits a {
+	color: #E6E6E6;
+	text-decoration: none;
+	font-weight: bold;
+}
 	
 div#credits p {
 	padding: 0;

@@ -7,9 +7,9 @@ fieldset {
 }
 
 form fieldset p {
-	font-size: 16px;
+	font-size: 13px;
 	margin: 0;
-	padding: 0;
+	padding: 10px, 0, 0, 0;
 }
 
 #registerForm div {
