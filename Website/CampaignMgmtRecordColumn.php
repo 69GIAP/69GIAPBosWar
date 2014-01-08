@@ -47,7 +47,8 @@
 					if (isset($_POST["Model"])) {
 						$Model		= $_POST["Model"];
 					} else {
-							die ('objectType (vehicle) not set!');
+						echo '<font color = red><b>objectType (vehicle) not set!</b></font><br \>&nbsp<br \>';
+						die ('Hit your back key, then reload the previous page and try again.<br \>');
 					}
 
 					if (isset($_POST["ckey"])) {
@@ -65,7 +66,8 @@
 					if (isset($_POST["pointID"])) {
 						$pointID		= $_POST["pointID"];
 					} else {
-							die ('pointID (supply point) not set!');
+						echo '<font color = red><b>pointID (supply point) not set!</b></font><br \>&nbsp<br \>';
+						die ('Hit your back key, then reload the previous page and try again.<br \>');
 					}
 
 					if (isset($_POST["objnum"])) {
