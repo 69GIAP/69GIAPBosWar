@@ -3,9 +3,9 @@
 // upload .Group and .Mission files to server
 // =69.GIAP=MYATA and =69.GIAP=TUSHKA
 // Oct 11, 2013
-// latest revision: Oct 26, 2013
-// BOSWAR version1.1
-// requires $returnpage to be defined
+// latest revision: Dec 8, 2013
+// BOSWAR version1.03
+// if old copy of file exists, delete it before moving upload
 
 # Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
@@ -44,7 +44,7 @@ include ( 'includes/navigation.php' );
 
 			$temp = explode(".", $_FILES["userfile"]["name"]);
 			$extension = end($temp);
-			// limit size to 4 MB max (3 MB is a large .Mission file in RoF)
+			// limit size to 10 MB max (3 MB is a large .Mission file in RoF)
 			// (can tune later if needed for BoS)
 			// and require extension to be in allowed list
 			if ( $_FILES["userfile"]["size"] < 10485760 && in_array($extension, $allowedExts)) {
@@ -56,14 +56,14 @@ include ( 'includes/navigation.php' );
 					echo "Size: " . (round ($_FILES["userfile"]["size"] / 1024 /1024, 2)) . " MB<br>";
 //					echo "Temp file: " . $_FILES["userfile"]["tmp_name"] . "<br>";
 					if (file_exists("$SaveToDir" . $_FILES["userfile"]["name"])) {
-						echo $_FILES["userfile"]["name"] . " already exists. ";
-						$done = 'exists';
-					} else {
-						move_uploaded_file($_FILES["userfile"]["tmp_name"],
-						"$SaveToDir" . $_FILES["userfile"]["name"]);
-						echo "Saved to: " . "$SaveToDir" . $_FILES["userfile"]["name"];
-						$done = 'true';
-					}
+						unlink("$SaveToDir". $_FILES["userfile"]["name"]);	
+						echo "An old copy of " . $_FILES["userfile"]["name"] . " existed, but was deleted.<br />\n";
+					} 
+					move_uploaded_file($_FILES["userfile"]["tmp_name"],
+					"$SaveToDir" . $_FILES["userfile"]["name"]);
+					echo "Saved to: " . "$SaveToDir" . $_FILES["userfile"]["name"];
+					$done = 'true';
+					
 				}
 			} else {
 				$done = 'false';
