@@ -1,4 +1,4 @@
-
+# Stenka 12/1/14 correction to filter only planes that are availiable this is not ideal it should filter on coalition too
 <?php
 	# include function getCoalition.ph
 	include ( 'functions/getMinCountry.php' );
@@ -10,7 +10,7 @@
 	# this is a filter for the campaign administrator		
 	if ($userRole == 'administrator') {
 		# load aircraft list from selected campaign database
-		$queryModel = "SELECT object_type FROM object_properties where object_class like 'P%'";
+		$queryModel = "SELECT object_type FROM object_properties where object_class like 'P%' and default_country < '600'";
 	}
 
 	elseif ($userRole == 'commander') {
@@ -19,7 +19,7 @@
 		$queryModel = "SELECT object_type 
 						FROM object_properties 
 						WHERE object_class like 'P%'
-						AND default_country = '$userCntry'";
+						and default_country < '600'";
 	}
 	
 	if(!$resultModel = $camp_link->query($queryModel))
