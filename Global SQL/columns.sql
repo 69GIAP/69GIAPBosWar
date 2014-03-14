@@ -6,6 +6,7 @@
 -- Generation Time: Nov 21, 2013 at 06:39 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
+# Stenka 14/3/2014 replaced null values for map coordinates with safer 0 value
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -39,9 +40,9 @@ CREATE TABLE IF NOT EXISTS `columns` (
   `CoalID` enum('1','2') DEFAULT NULL,
   `Supplypoint` tinyint(1) DEFAULT NULL,
   `Quantity` int(11) NOT NULL DEFAULT '1',
-  `XPos` decimal(12,3) DEFAULT NULL,
-  `ZPos` decimal(12,3) DEFAULT NULL,
-  `YOri` decimal(5,2) DEFAULT NULL,
+  `XPos` decimal(12,3) DEFAULT 0,
+  `ZPos` decimal(12,3) DEFAULT 0,
+  `YOri` decimal(5,2) DEFAULT 0,
   `dest_XPos` decimal(12,3) DEFAULT NULL,
   `dest_ZPos` decimal(12,3) DEFAULT NULL,
   `col_speed` int(11) DEFAULT NULL,
