@@ -4,8 +4,8 @@
 // (and hopefully BoS) mission report text files
 // written by =69.GIAP=TUSHKA
 // 2011-2013
-// Version 69GIAPBoSWar 0.9
-// Nov 9, 2013
+// Version 69GIAPBoSWar 0.91
+// Apr 4, 2013
 
 // the main program 
 
@@ -67,7 +67,6 @@ if ($DEBUG){
    print "serious_w_pilot = ".serious_w_pilot."<br>\n";
    print "light_w_pilot = ".light_w_pilot."<br>\n";
    print "kia_gunner = ".kia_gunner."<br>\n";
-   print "mia_gunner = ".mia_gunner."<br>\n";
    print "critical_w_gunner = ".critical_w_gunner."<br>\n";
    print "serious_w_gunner = ".serious_w_gunner."<br>\n";
    print "light_w_gunner = ".light_w_gunner."<br>\n";
@@ -79,9 +78,11 @@ if ($DEBUG){
 // arguments to the functions.  Lazy but effective!
 global $camp_db;  // campaign db
 global $camp_link;  // link to campaign db
+global $sim;  // simulation
 
-// get $camp_db from SESSION
+// get $camp_db and $sim from SESSION
 $camp_db =  $_SESSION['camp_db'];
+$sim = $_SESSION['sim'];
 
 // Set path to logfile relative to parser
 // $LOGFILE is a filename supplied by the calling page
