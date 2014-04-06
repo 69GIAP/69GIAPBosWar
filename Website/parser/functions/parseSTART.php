@@ -3,8 +3,8 @@
 // parse the AType:0 line 
 // =69.GIAP=TUSHKA
 // 2011-2014
-// BOSWAR version 0.12
-// Apr 4, 2014
+// BOSWAR version 0.13
+// Apr 6, 2014
 
 function START($i) { // AType:0
 	global $sim; // simulation
@@ -52,13 +52,19 @@ function START($i) { // AType:0
 		$Part=explode(" PRESET:",$Part[1],2); // split into PRESET and remainder at PRESET:
 		$MODS = ($Part[0]); 
 		$PRESET = rtrim($Part[1]); 
+		// BoS uses \ where RoF used /, and QMB has just 1 /.
+		// Probably need to revisit this when get other kinds of missions
+		// construct a mission ID from components 
+		$Part = explode('\\',$MFile,2); // split $MID into two parts at "\"
+		$Part = explode(".msnbin",$Part[1],2); // trim off the .msnbin safely
+		$MissionID = $Part[0] . "-" . $GDate . "-" . $GTime; // append date and time
 	} else {
 		$MODS = rtrim($Part[1]); 
+		// construct a mission ID from components 
+		$Part = explode("/",$MFile,3); // split $MID into three parts at "/"
+		$Part = explode(".msnbin",$Part[2],2); // trim off the .msnbin safely
+		$MissionID = $Part[0] . "-" . $GDate . "-" . $GTime; // append date and time
 	}
-	// construct a mission ID from components 
-	$Part = explode("/",$MFile,3); // split $MID into three parts at "/"
-	$Part = explode(".msnbin",$Part[2],2); // trim off the .msnbin safely
-	$MissionID = $Part[0] . "-" . $GDate . "-" . $GTime; // append date and time
 	$Sline[$numstart] = $i ;
 	++$numstart;
 	$EVline[$numevents] = $i ;

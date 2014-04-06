@@ -10,6 +10,7 @@ function OUTPUT() {
 // what follows is an almost complete collection of global variables
 // some of these variables are needed just for the debugging section
 // others may not be needed here at all
+	global $sim; // simulation
 	global $DEBUG; // are we debugging?
 	global $Log; // log lines
 	global $numlines; // number of log lines
@@ -124,6 +125,8 @@ function OUTPUT() {
 	global $object_desc; // object description from object_properties
 	global $object_value; // object value from object_properties
 	global $playerplaneid; // ID of player's plane
+	// added for BoS
+	global $PRESET; // ?
 
 	# require the is-point-in-area borrowed CLASS
 	# pointLocation
@@ -613,8 +616,13 @@ function OUTPUT() {
 
 	if ($DEBUG == 1 || $DEBUG == 100) {
 		// from START AType:0
-		echo ("<p>AType:0 START<br />Ticks, Game Date, Game Time, Mission File, MID(null),<br />Game type, Coalitions, Settings, Mods</p>\n");
-		echo ("0 $GDate $GTime $MFile $MID<br />$GType $CNTRS $SETTS $MODS<br />\n");
+	    if ($sim == 'BoS') {
+			echo ("<p>AType:0 START<br />Ticks, Game Date, Game Time, Mission File, MID(null),<br />Game type, Coalitions, Settings, Mods, Preset</p>\n");
+			echo ("0 $GDate $GTime $MFile $MID<br />$GType $CNTRS $SETTS $MODS $PRESET<br />\n");
+		} else {
+			echo ("<p>AType:0 START<br />Ticks, Game Date, Game Time, Mission File, MID(null),<br />Game type, Coalitions, Settings, Mods</p>\n");
+			echo ("0 $GDate $GTime $MFile $MID<br />$GType $CNTRS $SETTS $MODS<br />\n");
+		}
 	}
 
 	if ($DEBUG == 1 || $DEBUG == 101) {
