@@ -1,10 +1,10 @@
 <?php
-// OUTPUT
+// coreOUTPUT
 // output simple text report and calculate some stats for the db
 // =69.GIAP=TUSHKA
-// 2011-2013
-// BOSWAR version 1.32
-// Dec 15, 2013
+// 2011-2014
+// BOSWAR version 0.32
+// Apr 6, 2014
 
 function OUTPUT() {
 // what follows is an almost complete collection of global variables
@@ -127,6 +127,10 @@ function OUTPUT() {
 	global $playerplaneid; // ID of player's plane
 	// added for BoS
 	global $PRESET; // ?
+	global $numplanepos; // number of plane position reports
+	global $PPline;  // Plane Position lines
+
+
 
 	# require the is-point-in-area borrowed CLASS
 	# pointLocation

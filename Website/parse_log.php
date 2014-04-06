@@ -3,8 +3,8 @@
 // a simple-minded parser/stats/events reporter for combined RoF
 // (and hopefully BoS) mission report text files
 // written by =69.GIAP=TUSHKA
-// 2011-2013
-// Version 69GIAPBoSWar 0.91
+// 2011-2014
+// Version 69GIAPBoSWar 0.92
 // Apr 4, 2013
 
 // the main program 
@@ -107,6 +107,8 @@ $numevents = 0; // total number of events
 $numgroups = 0; // total number of groups
 $numB = 0; // number of boundary definitions
 $numiaheaders = 0; // number of influence area headers
+// added for BoS
+$numplanepos = 0; // number of plane position reports
 
 // require core functions called by the main program
 // READLOG

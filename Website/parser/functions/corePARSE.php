@@ -1,13 +1,14 @@
 <?php
+// corePARSE
+// =69.GIAP=TUSHKA
+// // 2011-2014
+// BOSWAR version 0.13
+// Apr 6, 2014
 // This is the parser function, as if you couldn't have guessed
 // more like a deconstructor... it breaks the lines into their core categories
 // for further deconstruction into meaningful elements
 // at the moment the data goes into in-memory arrays
 // later we'll put much of this into a DB for permanent storage of campaign missions
-// =69.GIAP=TUSHKA
-// // 2011-2013
-// BOSWAR version 1.2
-// Nov 9, 2013
 
 
 // require the functions called by PARSE
@@ -45,6 +46,8 @@ require ('parser/functions/parseINFLUENCEAREA_BOUNDARY.php');
 require ('parser/functions/parseVERSION.php');
 // BOTID
 require ('parser/functions/parseBOTID.php');
+// PLANEPOS
+require ('parser/functions/parsePLANEPOS.php');
 // UNKNOWN
 require ('parser/functions/parseUNKNOWN.php');
 
@@ -89,6 +92,7 @@ function PARSE($numlines) {
       elseif ("$AType[$i]" == "14") { INFLUENCEAREA_BOUNDARY($i); }
       elseif ("$AType[$i]" == "15") { VERSION($i); }
       elseif ("$AType[$i]" == "16") { BOTID($i); }
+      elseif ("$AType[$i]" == "17") { PLANEPOS($i); }
       else { UNKNOWN($i); }
    } // end of for loop
 } // end of parse function
