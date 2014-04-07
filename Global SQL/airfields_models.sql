@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `airfields_models`;
 CREATE TABLE `airfields_models` (
   `airfield_Name` char(31) NOT NULL DEFAULT '',
   `model_Name` varchar(30) NOT NULL DEFAULT '',
-  `model_Quantity` int(3) DEFAULT NULL,
+  `model_Quantity` int(3) DEFAULT 0,
   `model_Altitude` int(4) DEFAULT 0,
   `model_Flight` varchar(30) DEFAULT '',
   PRIMARY KEY (`airfield_Name`,`model_Name`)

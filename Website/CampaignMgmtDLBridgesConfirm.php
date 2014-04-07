@@ -20,6 +20,7 @@
             <div id="content">
             
 			<?php
+			echo "The purpose of this session is to output a .Group file containing the Airfields and Bridges in the active sector of a campaign. This can be used at any time in the template or mission building process.";
 				// require connect2CampaignFunction.php
 				require ( 'functions/connect2Campaign.php' );
 
@@ -282,7 +283,7 @@
 						$writestring = '  DeleteAfterDeath = 1;'."\r\n";
 						fwrite($fh,$writestring);
 						// here are the planes 
-						$query2 = 'SELECT * from planes_on_field where airfield_Name = "'.$current_Name.'"';
+						$query2 = 'SELECT * from airfields_models where airfield_Name = "'.$current_Name.' and model_Quantity <> 0"';
 						if(!$result2 = $camp_link->query($query2)) 
 						{
 							echo "$query2<br />\n";
@@ -299,10 +300,10 @@
 							
 							while ($row2 = $result2->fetch_array(MYSQLI_ASSOC)) 
 							{
-								$Plane_Model = $row2['Plane_Model'];
-								$Plane_Name = $row2['Plane_Name'];
-								$Plane_Qty = $row2['Plane_Qty'];
-								$Plane_Altitude = $row2['Plane_Altitude'];
+								$Plane_Model = $row2['model_Name'];
+								$Plane_Name = $row2['model_Flight'];
+								$Plane_Qty = $row2['model_Quantity'];
+								$Plane_Altitude = $row2['model_Altitude'];
 								echo "got a plane:".$Plane_Model."<br>";
 								$writestring = '    Plane'."\r\n";
 								fwrite($fh,$writestring);

@@ -1,32 +1,5 @@
--- phpMyAdmin SQL Dump
--- version 4.0.4.1
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: Nov 21, 2013 at 06:00 PM
--- Server version: 5.6.11
--- PHP Version: 5.5.3
--- Stenka 21/12/13 inclusion of damage_0 and removal of null
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Database: `skies_of_the_empires`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `bridges`
---
-
+# Stenka update 7/4/2014 debugging briges
+use boswar_db;
 DROP TABLE IF EXISTS `bridges`;
 CREATE TABLE IF NOT EXISTS `bridges` (
   `id` int(1) NOT NULL AUTO_INCREMENT,
@@ -52,7 +25,3 @@ CREATE TABLE IF NOT EXISTS `bridges` (
   `damage_10` tinyint(1) DEFAULT 0,
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
