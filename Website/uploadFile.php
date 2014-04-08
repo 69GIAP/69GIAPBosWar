@@ -73,7 +73,7 @@ include ( 'includes/navigation.php' );
 					echo ".$extension is not an allowed extension";
 				}
 			}
-			//echo "<br />\$returnpage: $returnpage<br />\n";
+echo "<br />\$returnpage: $returnpage<br />\n";
 			if ($returnpage == 'CampaignMgmtUpload.php') {
 				echo "			<br />&nbsp;<br />\n";
 				echo "			<a href=\"CampaignMgmtUpload.php?btn=campStp&fi=template\">Next</a>\n";
@@ -83,10 +83,19 @@ include ( 'includes/navigation.php' );
 			} elseif ($returnpage == 'CampaignMgmtSetupBridges.php') {
 				echo "			<br />&nbsp;<br />\n";
 				echo"			<a href=\"CampaignMgmtSetupBridges.php?btn=campStp&fi=bridges\">Next</a>\n";
-            } else {
+			} elseif ($returnpage == 'CampaignMgmtUpload2.php') {
+				echo "			<br />&nbsp;<br />\n";
+				echo"			<a href=\"CampaignMgmtUpload2.php?btn=campStp&fi=bridges\">Next</a>\n";
+			} elseif ($returnpage == 'CampaignMgmtImport.php') {
 				echo "			<br />&nbsp;<br />\n";
 				echo "<a href=\"CampaignMgmtImport.php?btn=campStp\">Next</a>\n";
-			}		
+			} elseif ($returnpage == 'CampaignMgmtImport2.php') {
+				echo "			<br />&nbsp;<br />\n";
+				echo "<a href=\"CampaignMgmtImport2.php?btn=campStp\">Next</a>\n";	
+			}
+			else {
+				echo "none of the returnpages were valid<br>";
+			}
 			echo "		</div>\n";
 			echo "	</div>\n";
 

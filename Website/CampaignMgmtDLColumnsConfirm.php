@@ -69,7 +69,7 @@
 					echo "</form>\n";
 				} else {
 					// actually do the downloads
-					echo "OK, time to download for real!<br />\n";
+					echo "The files have been created on the server, you now need to download them to your PC so that you can work on them with the mission editor.<br><br />\n";
 					echo "<form id=\"campaignMgmtDLFile\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLFile.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 					$DownloadDir = 'downloads/';
 					print "<select name=\"dlfile\">\n";

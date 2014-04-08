@@ -42,7 +42,7 @@
 					}
 //					echo "\$fi: $fi<br />\n";
 
-					echo "<h2>Upload $campaign Template File</h2>";
+					echo "<h2>Hello Peter Upload $campaign Template File</h2>";
 
 					$query = "SELECT * from campaign_settings;";
 					if(!$result = $camp_link->query($query)) {
@@ -77,7 +77,7 @@
 							echo "<p>Start by navigating to your <b>$abbrv-groups</b> directory.</p>\n";
 							echo "<p>Choose <b>$abbrv-template.Mission.</b><br />
 							Then click \"Upload File\".</p>\n";
-							$returnpage = 'CampaignMgmtUpload.php?btn=campStp&sde=campSet';
+							$returnpage = 'CampaignMgmtUpload2.php?btn=campStp&sde=campSet';
 
 							# go
 							pickFile($returnpage);

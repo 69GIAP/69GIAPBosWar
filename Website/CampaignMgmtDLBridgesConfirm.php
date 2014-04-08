@@ -39,7 +39,7 @@
 				// export Bridges 
 				global $camp_link;
 				$abbrv = get_abbrv();
-				echo "<br />\$abbrv: $abbrv<br />\n";
+#				echo "<br />\$abbrv: $abbrv<br />\n";
 				// define $DownloadDir
 				$DownloadDir = 'downloads/';
 				// make sure $DownloadDir exists
@@ -53,12 +53,12 @@
 				}
 				$filename = "$abbrv"."_AFnBridges.Group";
 				$filename = "$DownloadDir"."$filename";
-				echo "\$filename: $filename<br />\n";
+				echo "Filename to download: $filename<br><br />\n";
 				// remove any earlier version of this file
 				if (file_exists($filename))
 					{
 						unlink($filename);
-						echo "Old version of $filename has been deleted.<br />";
+						echo "Old version of $filename has been deleted.<br><br />";
 					}
 				// index number
 				$index_no = 1;
@@ -210,7 +210,7 @@
 					}
 				}
 				$result->free();
-				echo "$num Records processed<br />\n";
+				echo "$num Bridge records processed<br />\n";
 				// end of exporting bridges
 				// start of exporting airfields
 				$query = "SELECT * from airfields";
@@ -427,10 +427,10 @@
 				}
 				$result->free();
 				fclose($fh);
-				echo "$num Records processed<br />\n";
+				echo "$num Airfield records processed<br />\n";
 
 				// end of exporting airfields
-				echo "Airfields and Bridges for the campaign mission have been exported to a group file:".$filename."<br>";
+				echo "<br>Airfields and Bridges for the campaign mission have been exported to a group file:".$filename."<br><br>";
 				echo "<form id=\"campaignMgmtDLBridgesConfirm\" name=\"campaignDownloadBridges\" action=\"CampaignMgmtDLBridgesConfirm.php?btn=campStp&sde=campBrdg\" method=\"post\">\n";
 				// NEXT BUTTON
 				echo "<fieldset id=\"actions\">\n";	
@@ -439,7 +439,8 @@
 				echo "	</fieldset>\n";
 				echo "</form>\n";
 				// actually do the downloads
-				echo "OK, time to download!<br />\n";
+				echo "First press the NEXT button then download the file from the campaign server to your PC then you can read it in to the mission editor as a .Group file.<br><br />\n";
+				echo "Note that depending on the browser you are using you may be able to position it directly in your mission folder or it may be placed by default in a downloads folder.<br><br>";
 				echo "<form id=\"campaignMgmtDLFile\" name=\"campaignDownloadBridges\" action=\"CampaignMgmtDLFile.php?btn=campStp&sde=campBrdg\" method=\"post\">\n";
 				$DownloadDir = 'downloads/';
 				print "<select name=\"dlfile\">\n";
