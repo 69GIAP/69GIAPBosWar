@@ -73,7 +73,7 @@ include ( 'includes/navigation.php' );
 					echo ".$extension is not an allowed extension";
 				}
 			}
-echo "<br />\$returnpage: $returnpage<br />\n";
+echo "<br />Peter here \$returnpage: $returnpage<br />\n";
 			if ($returnpage == 'CampaignMgmtUpload.php') {
 				echo "			<br />&nbsp;<br />\n";
 				echo "			<a href=\"CampaignMgmtUpload.php?btn=campStp&fi=template\">Next</a>\n";

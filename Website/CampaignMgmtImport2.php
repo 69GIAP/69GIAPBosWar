@@ -63,7 +63,7 @@
 					if ($fi == 'airfields') {
 						echo "<p>This will update Z X and angle of starting positions of Static groups and columns for first mission</p>\n";
 						echo "<p>Select the file and click \"Update\".</p>\n";
-						$returnpage = "CampaignMgmtImport.php";
+						$returnpage = "CampaignMgmtImport2.php";
 						echo "<input type=\"hidden\" name=\"SaveToDir\" value=\"$SaveToDir\">\n";
 						echo "<input type=\"hidden\" name=\"returnpage\" value=\"$returnpage\">\n";
 

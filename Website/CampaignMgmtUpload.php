@@ -64,7 +64,10 @@
 					$SaveToDir = "uploads/";
 					$FullPath ="$SaveToDir"."$abbrv-template.Mission";
 //					echo "\$FullPath: $FullPath<br />\n";
-
+					if (file_exists("$FullPath")) {
+						unlink("$FullPath");
+						echo "There was already a version of this file it has been deleted<br>";
+						};
 					if ($fi == 'blank') { // skip if not
 						if (file_exists("$FullPath")) {
 							echo "<p>You have already uploaded $FullPath, so you should </p>\n"; 
@@ -77,7 +80,7 @@
 							echo "<p>Start by navigating to your <b>$abbrv-groups</b> directory.</p>\n";
 							echo "<p>Choose <b>$abbrv-template.Mission.</b><br />
 							Then click \"Upload File\".</p>\n";
-							$returnpage = 'CampaignMgmtUpload.php?btn=campStp&sde=campSet';
+							$returnpage = 'CampaignMgmtImport.php';
 
 							# go
 							pickFile($returnpage);
