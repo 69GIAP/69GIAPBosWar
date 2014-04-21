@@ -3,8 +3,8 @@
 // output simple text report and calculate some stats for the db
 // =69.GIAP=TUSHKA
 // 2011-2014
-// BOSWAR version 0.32
-// Apr 6, 2014
+// BOSWAR version 1.33
+// Apr 21, 2014
 
 function OUTPUT() {
 // what follows is an almost complete collection of global variables
@@ -303,14 +303,35 @@ function OUTPUT() {
 
 	// Losses
 	echo "<br />=-=-=-=-=-= Losses =-=-=-=-=-=<br />\n";
-	echo "There were $numkills losses.<br />&nbsp;<br />\n";
-	// first show Entente losses
-	$Coalitionname = COALITIONNAME(1);
-	if ($numententelosses == 1){
-		echo "The $Coalitionname suffered a single loss:<br />\n";	
-	} else {
-		echo "The $Coalitionname suffered $numententelosses losses:<br />\n";	
+	if ($numkills == 0) {
+		echo "There were no losses.<br />&nbsp;<br />\n";
+	} elseif ($numkills == 1) {
+		echo "There was a single loss.<br />&nbsp;<br />\n";
+	}else {
+		echo "There were $numkills losses.<br />&nbsp;<br />\n";
 	}
+	if ($sim == "RoF") {
+		// first show Entente losses
+		$Coalitionname = COALITIONNAME(1);
+		if ($numententelosses == 0){
+			echo "The $Coalitionname suffered no losses:<br />\n";	
+		} elseif ($numententelosses == 1){
+			echo "The $Coalitionname suffered a single loss:<br />\n";	
+		} else {
+			echo "The $Coalitionname suffered $numententelosses losses:<br />\n";	
+		}
+	} else {
+		// first show Russian losses
+		$Coalitionname = COALITIONNAME(1);
+		if ($numententelosses == 0){
+			echo "$Coalitionname suffered no losses:<br />\n";	
+		} elseif ($numententelosses == 1){
+			echo "$Coalitionname suffered a single loss:<br />\n";	
+		} else {
+			echo "$Coalitionname suffered $numententelosses losses:<br />\n";	
+		}
+	}
+
 	// loop through kills
 	for ($i = 0; $i < $numkills; ++$i) {
 		COALITION(@$Kcountryid[$i]); // @ suppresses notices
@@ -318,13 +339,27 @@ function OUTPUT() {
 			LOSSES($i);
 		}
 	}
-	// then show Central Powers losses
-	$Coalitionname = COALITIONNAME(2);
-	if ($numcplosses == 1){
-		echo "The $Coalitionname suffered a single loss:<br />\n";	
+
+	if ($sim == "RoF") {
+		// then show Central Powers losses
+		$Coalitionname = COALITIONNAME(2);
+		if ($numcplosses == 0){
+			echo "The $Coalitionname suffered no losses:<br />\n";	
+		} elseif ($numcplosses == 1){
+			echo "The $Coalitionname suffered a single loss:<br />\n";	
+		} else {
+			echo "<br />The $Coalitionname suffered $numcplosses losses:<br />\n";	
+		}
 	} else {
-		echo "<br />The $Coalitionname suffered $numcplosses losses:<br />\n";	
+		// then show German losses
+		$Coalitionname = COALITIONNAME(2);
+		if ($numcplosses == 1){
+			echo "$Coalitionname suffered a single loss:<br />\n";	
+		} else {
+			echo "<br />Coalitionname suffered $numcplosses losses:<br />\n";	
+		}
 	}
+
 	// loop through kills
 	for ($i = 0; $i < $numkills; ++$i) {
 		COALITION(@$Kcountryid[$i]);  // @ supresses notices
