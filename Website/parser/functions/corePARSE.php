@@ -2,8 +2,8 @@
 // corePARSE
 // =69.GIAP=TUSHKA
 // // 2011-2014
-// BOSWAR version 0.13
-// Apr 6, 2014
+// BOSWAR version 0.14
+// Apr 22, 2014
 // This is the parser function, as if you couldn't have guessed
 // more like a deconstructor... it breaks the lines into their core categories
 // for further deconstruction into meaningful elements
@@ -48,6 +48,8 @@ require ('parser/functions/parseVERSION.php');
 require ('parser/functions/parseBOTID.php');
 // PLANEPOS
 require ('parser/functions/parsePLANEPOS.php');
+// BOTKILL
+require ('parser/functions/parseBOTKILL.php');
 // UNKNOWN
 require ('parser/functions/parseUNKNOWN.php');
 
@@ -93,6 +95,7 @@ function PARSE($numlines) {
       elseif ("$AType[$i]" == "15") { VERSION($i); }
       elseif ("$AType[$i]" == "16") { BOTID($i); }
       elseif ("$AType[$i]" == "17") { PLANEPOS($i); }
+      elseif ("$AType[$i]" == "18") { BOTKILL($i); }
       else { UNKNOWN($i); }
    } // end of for loop
 } // end of parse function
