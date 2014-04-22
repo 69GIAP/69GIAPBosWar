@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2013 at 04:29 PM
+-- Generation Time: Apr 21, 2014 at 11:18 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `boswar_db`
+-- Database: `bos`
 --
 
 -- --------------------------------------------------------
@@ -42,10 +42,10 @@ CREATE TABLE IF NOT EXISTS `bos_stalingrad_locations` (
 --
 
 INSERT INTO `bos_stalingrad_locations` (`id`, `LID`, `LX`, `LZ`, `LName`) VALUES
-(1, 50, '120000', '123000', 'Stalingrad'),
-(2, 51, '100000', '180000', 'Stenkagrad'),
-(3, 51, '160000', '60000', 'Myatagrad'),
-(4, 52, '50000', '60000', 'Tushkagrad');
+(1, 10, '123350', '177370', 'Kumovka'),
+(2, 10, '112620', '185620', 'Verbovka'),
+(3, 10, '70000', '243010', 'Plodovitoye'),
+(4, 10, '62770', '231750', 'Abganerovo');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
