@@ -7,11 +7,10 @@
 // Note: calling page needs to require getAbbrv.php, getGroundspacing.php,
 // getGroundAILevel.php, getCoalitionname.php, getPointXPos.php and
 // getPointZPos.php
+# Stenka conversion from exportStaticGroups 23/4/14
 
 function export_staticgroups($CoalID) {
-
-	global $camp_link;
-
+	global $camp_link,$loadedCampaign;
 	$abbrv = get_abbrv();
 	echo "<br />\$abbrv: $abbrv<br />\n";
 
@@ -43,7 +42,7 @@ function export_staticgroups($CoalID) {
 		}
 	}
 
-	$filename = "$abbrv"."_$_coalitionname"."_statics.Group";
+	$filename = "$abbrv"."_$_coalitionname"."_statics2template.Group";
 	$filename = "$DownloadDir"."$filename";
 	echo "\$filename: $filename<br />\n";
 
@@ -60,7 +59,7 @@ function export_staticgroups($CoalID) {
 	// open file for business
 	$fh = fopen("$filename",'w') or die("Can not open $filename");
 
-	$query = "SELECT * from static where static_coalition = '$CoalID'";
+	$query = "SELECT * from statics where static_coalition = '$CoalID'";
 	if(!$result = $camp_link->query($query)) {
 		echo "$query<br />\n";
 		die('exportStaticGroups query error [' . $camp_link->error . ']');
@@ -77,6 +76,9 @@ function export_staticgroups($CoalID) {
 			$static_Desc = $row['static_Desc'];
 			$static_Country = $row['static_Country'];
 			$static_supplypoint = $row['static_supplypoint'];
+			$static_XPos = $row['static_XPos'];
+			$static_ZPos = $row['static_ZPos'];
+			$static_YOri = $row['static_YOri'];
 
 			echo "\$current_rec: $current_rec<br />\n";
 			echo "\$static_supplypoint: $static_supplypoint<br />\n";
@@ -99,20 +101,22 @@ function export_staticgroups($CoalID) {
 
 			$supply_ZPos = get_pointzpos($static_supplypoint);
 			echo "\$supply_ZPos: $supply_ZPos<br />\n";
-            
-			// check if $index_no is odd or even and treat differently to give diagonal through origin
-			if ($index_no & 1) {
-				$static_XPos = $supply_XPos - (($index_no -1) * 5 * $ground_spacing);
-				echo "\$static_XPos: $static_XPos<br />\n";
-//				$static_ZPos = $supply_ZPos + (($index_no -1) * 5 * $ground_spacing);
-				$static_ZPos = $supply_ZPos + ($current_rec * 5 * $ground_spacing);
-				echo "\$static_ZPos: $static_ZPos<br />\n";
-			} else {
-				$static_XPos = $supply_XPos + (($index_no -1) * 5 * $ground_spacing);
-				echo "\$static_XPos: $static_XPos<br />\n";
-//				$static_ZPos = $supply_ZPos - (($index_no -1) * 5 * $ground_spacing);
-				$static_ZPos = $supply_ZPos - ($current_rec * 5 * $ground_spacing);
-				echo "\$static_ZPos: $static_ZPos<br />\n";
+            if ($static_XPos == 0)
+			{
+				// check if $index_no is odd or even and treat differently to give diagonal through origin
+				if ($index_no & 1) {
+					$static_XPos = $supply_XPos - (($index_no -1) * 5 * $ground_spacing);
+					echo "\$static_XPos: $static_XPos<br />\n";
+//					$static_ZPos = $supply_ZPos + (($index_no -1) * 5 * $ground_spacing);
+					$static_ZPos = $supply_ZPos + ($current_rec * 5 * $ground_spacing);
+					echo "\$static_ZPos: $static_ZPos<br />\n";
+				} else {
+					$static_XPos = $supply_XPos + (($index_no -1) * 5 * $ground_spacing);
+					echo "\$static_XPos: $static_XPos<br />\n";
+//					$static_ZPos = $supply_ZPos - (($index_no -1) * 5 * $ground_spacing);
+					$static_ZPos = $supply_ZPos - ($current_rec * 5 * $ground_spacing);
+					echo "\$static_ZPos: $static_ZPos<br />\n";
+				}
 			}
 			$writestring = '  XPos = '.number_format($static_XPos, 3, '.', '').";\r\n";
 			fwrite($fh,$writestring);
@@ -122,7 +126,7 @@ function export_staticgroups($CoalID) {
 			fwrite($fh,$writestring);
 			
 			// update position for this object in the statics table
-			$query2 = "UPDATE static SET
+			$query2 = "UPDATE $loadedCampaign.statics SET
 				static_XPos = '$static_XPos', static_ZPos = '$static_ZPos'
 				WHERE id = '$current_rec';";
 			if(!$result2 = $camp_link->query($query2)) {

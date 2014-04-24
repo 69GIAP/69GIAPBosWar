@@ -25,7 +25,8 @@ The campaign template will contain the Z X starting positions and angle of both 
 An administrator may set this for one or both sides or may send the group files to the Allied or Central planners by E-mail.<br><br>
 Once .Group files have been loaded into the mission editor you will find the columns represented by a single vehicle and objects within the static groups positionned at the relevant supply points.
 These can be moved to their starting positions as defined by the campaign rules by selection and drag. Rotation to give a starting angle is by rotating the small red marker at the bottom right of the green object square.<br><br>
-Once positioned the objects should be output to a .Group file which planners may send by E-Mail to the administrator. The administrator will then use the appropriate
+Once positioned the objects should be output to a .Mission file which planners may send by E-Mail to the administrator. The .Mission file should be named so that it is easy to recognise
+which campaign and which coalition is concerned. The administrator will then use the appropriate
 function to load the new Z X and angle position back into the database.";
 				// require connect2CampaignFunction.php
 				require ( 'functions/connect2Campaign.php' );
@@ -35,7 +36,7 @@ function to load the new Z X and angle position back into the database.";
 		
 				// use this information to connect to campaign 
 				$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
-
+				echo " Peter database is : $loadedCampaign <br>";
 				if (isset($_POST['action'])) {
 					$action = $_POST['action'];
 				} else {

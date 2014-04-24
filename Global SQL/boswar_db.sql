@@ -951,10 +951,10 @@ UNLOCK TABLES;
 -- Table structure for table `static`
 --
 
-DROP TABLE IF EXISTS `static`;
+DROP TABLE IF EXISTS `statics`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `static` (
+CREATE TABLE `statics` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `static_Name` char(31) DEFAULT 'STATIC 1 Object 1',
   `static_Model` char(20) DEFAULT 'leyland',
@@ -975,9 +975,9 @@ CREATE TABLE `static` (
 -- Dumping data for table `static`
 --
 
-LOCK TABLES `static` WRITE;
-/*!40000 ALTER TABLE `static` DISABLE KEYS */;
-/*!40000 ALTER TABLE `static` ENABLE KEYS */;
+LOCK TABLES `statics` WRITE;
+/*!40000 ALTER TABLE `statics` DISABLE KEYS */;
+/*!40000 ALTER TABLE `statics` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

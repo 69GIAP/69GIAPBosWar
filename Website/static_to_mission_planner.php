@@ -63,9 +63,9 @@ $fh = fopen($filename,'w') or die("Can not open file");
 #
 
 if ($coalition == 'allies')
-{$q = 'SELECT * from static where static_coalition="1"';}
+{$q = 'SELECT * from statics where static_coalition="1"';}
 else
-{$q = 'SELECT * from static where static_coalition="2"';}
+{$q = 'SELECT * from statics where static_coalition="2"';}
 $r = mysqli_query($dbc,$q);
 $num = mysqli_num_rows($r);
 if ($num > 0)

@@ -283,7 +283,8 @@
 						$writestring = '  DeleteAfterDeath = 1;'."\r\n";
 						fwrite($fh,$writestring);
 						// here are the planes 
-						$query2 = 'SELECT * from airfields_models where airfield_Name = "'.$current_Name.' and model_Quantity <> 0"';
+						$query2 = 'SELECT * from airfields_models where airfield_Name = "'.$current_Name.'" and model_Quantity <> 0';
+						echo "My query2 is :".$query2."<br>";
 						if(!$result2 = $camp_link->query($query2)) 
 						{
 							echo "$query2<br />\n";
@@ -293,6 +294,7 @@
 						$num2 = $result2->num_rows;
 						if ($num2 > 0) 
 						{
+							echo "Ive found a plane on :".$current_Name;
 							$writestring = '  Planes'."\r\n";
 							fwrite($fh,$writestring);
 							$writestring = '  {'."\r\n";
@@ -301,6 +303,7 @@
 							while ($row2 = $result2->fetch_array(MYSQLI_ASSOC)) 
 							{
 								$Plane_Model = $row2['model_Name'];
+								echo "<br>This is a :".$Plane_Model."<br>";
 								$Plane_Name = $row2['model_Flight'];
 								$Plane_Qty = $row2['model_Quantity'];
 								$Plane_Altitude = $row2['model_Altitude'];

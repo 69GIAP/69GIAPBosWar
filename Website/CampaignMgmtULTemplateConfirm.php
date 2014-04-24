@@ -23,7 +23,7 @@
 			echo "This session is used in the process of creating a Template.
 The campaign template mission file(s) should now contain the Z X starting positions and angle of both static groups and columns at the start of the very first mission and we have to update the campaign database with that information.<br><br>
 We need to update the campaign database with this information in what is at minimum a two step process of uploading the files from the administrators PC to the campaign server and then launching
-the program which will read in either .Group or .Mission files.<br><br>
+the program which will read in .Mission files.<br><br>
 An administrator may have planned the starting position for one or both sides or may have received files from the Allied or Central planners by E-mail.<br><br>
 ";
 			// require connect2CampaignFunction.php

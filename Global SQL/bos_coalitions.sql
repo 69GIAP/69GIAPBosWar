@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2014 at 04:11 PM
+-- Generation Time: Nov 12, 2013 at 04:47 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `bos_coalitions`;
 CREATE TABLE IF NOT EXISTS `bos_coalitions` (
-  `CoalID` enum('0','1','2') NOT NULL,
+  `CoalID` enum('0','1','2','3','4','5','6','7') NOT NULL,
   `Coalitionname` varchar(40) NOT NULL,
   PRIMARY KEY (`CoalID`),
   UNIQUE KEY `Coalitionname` (`Coalitionname`)
@@ -39,9 +39,14 @@ CREATE TABLE IF NOT EXISTS `bos_coalitions` (
 --
 
 INSERT INTO `bos_coalitions` (`CoalID`, `Coalitionname`) VALUES
-('2', 'Germany'),
+('1', 'Allies'),
+('2', 'Axis'),
+('6', 'Corsairs'),
+('7', 'Future'),
+('5', 'Knights'),
+('4', 'Mercenaries'),
 ('0', 'Neutral'),
-('1', 'Russia');
+('3', 'War Dogs');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

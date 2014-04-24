@@ -1,0 +1,4907 @@
+Bridge
+{
+  Name = "Bridge 1";
+  Index = 1;
+  LinkTrId = 0;
+  XPos = 54697.700;
+  YPos = 0.000;
+  ZPos = 28237.500;
+  XOri = 0.00;
+  YOri = 85.10;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw150.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw150.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 10";
+  Index = 3;
+  LinkTrId = 0;
+  XPos = 57102.800;
+  YPos = 0.000;
+  ZPos = 61275.100;
+  XOri = 0.00;
+  YOri = 34.28;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_rr190.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_rr190.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 11";
+  Index = 5;
+  LinkTrId = 0;
+  XPos = 58164.900;
+  YPos = 0.000;
+  ZPos = 61954.300;
+  XOri = 0.00;
+  YOri = 28.33;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_rr150.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_rr150.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 12";
+  Index = 7;
+  LinkTrId = 0;
+  XPos = 69687.800;
+  YPos = 0.000;
+  ZPos = 76316.700;
+  XOri = 0.00;
+  YOri = 315.38;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw170.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw170.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 13";
+  Index = 9;
+  LinkTrId = 0;
+  XPos = 63012.500;
+  YPos = 0.000;
+  ZPos = 64849.700;
+  XOri = 0.00;
+  YOri = 92.60;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_rr110.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_rr110.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 14";
+  Index = 11;
+  LinkTrId = 0;
+  XPos = 62837.900;
+  YPos = 0.000;
+  ZPos = 67137.700;
+  XOri = 0.00;
+  YOri = 97.90;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_rr110.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_rr110.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 15";
+  Index = 13;
+  LinkTrId = 0;
+  XPos = 62603.400;
+  YPos = 0.000;
+  ZPos = 69217.400;
+  XOri = 0.00;
+  YOri = 94.62;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_rr150.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_rr150.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 16";
+  Index = 15;
+  LinkTrId = 0;
+  XPos = 62561.100;
+  YPos = 0.000;
+  ZPos = 70441.200;
+  XOri = 0.00;
+  YOri = 89.51;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_rr150.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_rr150.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 17";
+  Index = 17;
+  LinkTrId = 0;
+  XPos = 63909.500;
+  YPos = 0.000;
+  ZPos = 74445.400;
+  XOri = 0.00;
+  YOri = 118.93;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_rr170.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_rr170.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 18";
+  Index = 19;
+  LinkTrId = 0;
+  XPos = 54988.400;
+  YPos = 0.000;
+  ZPos = 28560.500;
+  XOri = 0.00;
+  YOri = 325.55;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_rr150.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_rr150.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 19";
+  Index = 21;
+  LinkTrId = 0;
+  XPos = 60083.300;
+  YPos = 0.000;
+  ZPos = 26890.700;
+  XOri = 0.00;
+  YOri = 5.13;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_rr190.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_rr190.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 2";
+  Index = 23;
+  LinkTrId = 0;
+  XPos = 61025.000;
+  YPos = 0.000;
+  ZPos = 53586.100;
+  XOri = 0.00;
+  YOri = 215.14;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw150.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw150.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 20";
+  Index = 25;
+  LinkTrId = 0;
+  XPos = 58671.100;
+  YPos = 0.000;
+  ZPos = 28253.600;
+  XOri = 0.00;
+  YOri = 247.53;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_rr130.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_rr130.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 21";
+  Index = 27;
+  LinkTrId = 0;
+  XPos = 59700.100;
+  YPos = 0.000;
+  ZPos = 27143.200;
+  XOri = 0.00;
+  YOri = 39.71;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw130.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw130.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 22";
+  Index = 29;
+  LinkTrId = 0;
+  XPos = 56071.300;
+  YPos = 0.000;
+  ZPos = 29240.800;
+  XOri = 0.00;
+  YOri = 39.10;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw130.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw130.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 23";
+  Index = 31;
+  LinkTrId = 0;
+  XPos = 56861.500;
+  YPos = 0.000;
+  ZPos = 35455.800;
+  XOri = 0.00;
+  YOri = 174.89;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw110.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw110.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 24";
+  Index = 33;
+  LinkTrId = 0;
+  XPos = 62250.000;
+  YPos = 0.000;
+  ZPos = 70386.500;
+  XOri = 0.00;
+  YOri = 268.37;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw170.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw170.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 25";
+  Index = 35;
+  LinkTrId = 0;
+  XPos = 62213.900;
+  YPos = 0.000;
+  ZPos = 69127.400;
+  XOri = 0.00;
+  YOri = 268.36;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw170.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw170.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 26";
+  Index = 37;
+  LinkTrId = 0;
+  XPos = 62183.800;
+  YPos = 0.000;
+  ZPos = 67332.500;
+  XOri = 0.00;
+  YOri = 271.81;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw130.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw130.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 27";
+  Index = 39;
+  LinkTrId = 0;
+  XPos = 62272.500;
+  YPos = 0.000;
+  ZPos = 64869.200;
+  XOri = 0.00;
+  YOri = 251.59;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw150.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw150.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 3";
+  Index = 41;
+  LinkTrId = 0;
+  XPos = 61108.900;
+  YPos = 0.000;
+  ZPos = 65909.800;
+  XOri = 0.00;
+  YOri = 50.52;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw190.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw190.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 4";
+  Index = 43;
+  LinkTrId = 0;
+  XPos = 63020.800;
+  YPos = 0.000;
+  ZPos = 67063.800;
+  XOri = 0.00;
+  YOri = 44.69;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw150.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw150.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 5";
+  Index = 45;
+  LinkTrId = 0;
+  XPos = 66899.800;
+  YPos = 0.000;
+  ZPos = 68473.600;
+  XOri = 0.00;
+  YOri = 51.60;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw150.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw150.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 6";
+  Index = 47;
+  LinkTrId = 0;
+  XPos = 67744.200;
+  YPos = 0.000;
+  ZPos = 69539.000;
+  XOri = 0.00;
+  YOri = 51.59;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw150.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw150.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 7";
+  Index = 49;
+  LinkTrId = 0;
+  XPos = 62384.200;
+  YPos = 0.000;
+  ZPos = 49810.200;
+  XOri = 0.00;
+  YOri = 351.85;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw150.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw150.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 8";
+  Index = 51;
+  LinkTrId = 0;
+  XPos = 56352.700;
+  YPos = 0.000;
+  ZPos = 33544.300;
+  XOri = 0.00;
+  YOri = 111.98;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_rr190.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_rr190.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 9";
+  Index = 53;
+  LinkTrId = 0;
+  XPos = 56051.600;
+  YPos = 0.000;
+  ZPos = 57277.800;
+  XOri = 0.00;
+  YOri = 68.76;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_rr150.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_rr150.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Airfield
+{
+  Name = "Chauconin";
+  Index = 55;
+  LinkTrId = 56;
+  XPos = 64245.200;
+  YPos = 0.000;
+  ZPos = 60989.300;
+  XOri = 0.00;
+  YOri = 187.35;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 501;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Planes
+  {
+    Plane
+    {
+      SetIndex = 0;
+      Number = -1;
+      AILevel = 2;
+      StartInAir = 0;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 1;
+      PayloadId = 0;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 0;
+      Model = "graphics\planes\Albatros D.Va\Albatros D.Va.mgm";
+      Script = "LuaScripts\WorldObjects\Albatros D.Va.txt";
+      Name = "";
+      Skin = "";
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = 7;
+      AILevel = 2;
+      StartInAir = 0;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 1;
+      PayloadId = 0;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 0;
+      Model = "graphics\planes\Fokker D.VII\Fokker D.VII.mgm";
+      Script = "LuaScripts\WorldObjects\Fokker D.VII.txt";
+      Name = "";
+      Skin = "";
+    }
+  }
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+
+MCU_TR_Entity
+{
+  Index = 56;
+  Name = "Airfield entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  Objects = [];
+  XPos = 64245.200;
+  YPos = 0.000;
+  ZPos = 60989.300;
+  XOri = 0.00;
+  YOri = 187.35;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 55;
+}
+Airfield
+{
+  Name = "Dagny";
+  Index = 57;
+  LinkTrId = 0;
+  XPos = 63881.700;
+  YPos = 0.000;
+  ZPos = 31880.700;
+  XOri = 0.00;
+  YOri = 356.74;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+Airfield
+{
+  Name = "Lagny le Sec";
+  Index = 58;
+  LinkTrId = 59;
+  XPos = 74713.100;
+  YPos = 0.000;
+  ZPos = 56482.200;
+  XOri = 0.00;
+  YOri = 47.63;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 502;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Planes
+  {
+    Plane
+    {
+      SetIndex = 0;
+      Number = 4;
+      AILevel = 2;
+      StartInAir = 0;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 1;
+      PayloadId = 0;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 0;
+      Model = "graphics\planes\Gotha G.V\Gotha G.V.mgm";
+      Script = "LuaScripts\WorldObjects\Gotha G.V.txt";
+      Name = "";
+      Skin = "";
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = 3;
+      AILevel = 2;
+      StartInAir = 0;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 1;
+      PayloadId = 0;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 0;
+      Model = "graphics\planes\Halberstadt D.II\Halberstadt D.II.mgm";
+      Script = "LuaScripts\WorldObjects\Halberstadt D.II.txt";
+      Name = "";
+      Skin = "";
+    }
+  }
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+
+MCU_TR_Entity
+{
+  Index = 59;
+  Name = "Airfield entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  Objects = [];
+  XPos = 74713.100;
+  YPos = 0.000;
+  ZPos = 56482.200;
+  XOri = 0.00;
+  YOri = 47.63;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 58;
+}
+Airfield
+{
+  Name = "Le Plessis Belleville";
+  Index = 60;
+  LinkTrId = 0;
+  XPos = 79155.700;
+  YPos = 0.000;
+  ZPos = 55877.300;
+  XOri = 0.00;
+  YOri = 180.67;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+Airfield
+{
+  Name = "Louvres";
+  Index = 61;
+  LinkTrId = 62;
+  XPos = 71230.900;
+  YPos = 0.000;
+  ZPos = 39319.400;
+  XOri = 0.00;
+  YOri = 155.27;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 102;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Planes
+  {
+    Plane
+    {
+      SetIndex = 0;
+      Number = 7;
+      AILevel = 2;
+      StartInAir = 0;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 1;
+      PayloadId = 0;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 0;
+      Model = "graphics\planes\Sopwith Camel\Sopwith Camel.mgm";
+      Script = "LuaScripts\WorldObjects\Sopwith Camel.txt";
+      Name = "";
+      Skin = "";
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = -1;
+      AILevel = 2;
+      StartInAir = 0;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 1;
+      PayloadId = 0;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 0;
+      Model = "graphics\planes\Sopwith Dolphin\Sopwith Dolphin.mgm";
+      Script = "LuaScripts\WorldObjects\Sopwith Dolphin.txt";
+      Name = "";
+      Skin = "";
+    }
+  }
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+
+MCU_TR_Entity
+{
+  Index = 62;
+  Name = "Airfield entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  Objects = [];
+  XPos = 71230.900;
+  YPos = 0.000;
+  ZPos = 39319.400;
+  XOri = 0.00;
+  YOri = 155.27;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 61;
+}
+Airfield
+{
+  Name = "Marly la Ville";
+  Index = 63;
+  LinkTrId = 0;
+  XPos = 75668.400;
+  YPos = 0.000;
+  ZPos = 38143.100;
+  XOri = 0.00;
+  YOri = 96.38;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+Airfield
+{
+  Name = "Meaux";
+  Index = 64;
+  LinkTrId = 0;
+  XPos = 62583.800;
+  YPos = 0.000;
+  ZPos = 66487.700;
+  XOri = 0.00;
+  YOri = 252.67;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+Airfield
+{
+  Name = "Mitry Mory";
+  Index = 65;
+  LinkTrId = 0;
+  XPos = 64525.400;
+  YPos = 0.000;
+  ZPos = 46992.400;
+  XOri = 0.00;
+  YOri = 36.57;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+Airfield
+{
+  Name = "Nanteuil le Haudoin";
+  Index = 66;
+  LinkTrId = 0;
+  XPos = 82416.600;
+  YPos = 0.000;
+  ZPos = 61303.600;
+  XOri = 0.00;
+  YOri = 69.23;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+Airfield
+{
+  Name = "Roissey en France";
+  Index = 67;
+  LinkTrId = 68;
+  XPos = 66552.900;
+  YPos = 0.000;
+  ZPos = 37977.100;
+  XOri = 0.00;
+  YOri = 56.34;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Planes
+  {
+    Plane
+    {
+      SetIndex = 0;
+      Number = 8;
+      AILevel = 2;
+      StartInAir = 0;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 1;
+      PayloadId = 0;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 0;
+      Model = "graphics\planes\Nieuport 11.C1\Nieuport 11.C1.mgm";
+      Script = "LuaScripts\WorldObjects\Nieuport 11.C1.txt";
+      Name = "";
+      Skin = "";
+    }
+  }
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+
+MCU_TR_Entity
+{
+  Index = 68;
+  Name = "Airfield entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  Objects = [];
+  XPos = 66552.900;
+  YPos = 0.000;
+  ZPos = 37977.100;
+  XOri = 0.00;
+  YOri = 56.34;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 67;
+}
+Vehicle
+{
+  Name = "British static 1";
+  Index = 69;
+  LinkTrId = 70;
+  XPos = 64135.000;
+  YPos = 0.000;
+  ZPos = 26893.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\hotchkiss.txt";
+  Model = "graphics\artillery\machineguns\hotchkiss.mgm";
+  Desc = "Hotchkiss machine gun";
+  Country = 102;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 70;
+  Name = "British static 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 64135.000;
+  YPos = 0.000;
+  ZPos = 26893.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 69;
+}
+
+Vehicle
+{
+  Name = "British static 1";
+  Index = 71;
+  LinkTrId = 72;
+  XPos = 64185.000;
+  YPos = 0.000;
+  ZPos = 26868.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\hotchkiss.txt";
+  Model = "graphics\artillery\machineguns\hotchkiss.mgm";
+  Desc = "Hotchkiss machine gun";
+  Country = 102;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 72;
+  Name = "British static 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 64185.000;
+  YPos = 0.000;
+  ZPos = 26868.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 71;
+}
+
+Vehicle
+{
+  Name = "British static 1";
+  Index = 73;
+  LinkTrId = 74;
+  XPos = 64235.000;
+  YPos = 0.000;
+  ZPos = 26843.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\hotchkiss.txt";
+  Model = "graphics\artillery\machineguns\hotchkiss.mgm";
+  Desc = "Hotchkiss machine gun";
+  Country = 102;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 74;
+  Name = "British static 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 64235.000;
+  YPos = 0.000;
+  ZPos = 26843.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 73;
+}
+
+MCU_Activate
+{
+  Index = 75;
+  Name = "Trigger Activate";
+  Desc = "";
+  Targets = [];
+  Objects = [70,72,74];
+  XPos = 64240.000;
+  YPos = 0.000;
+  ZPos = 26843.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Deactivate
+{
+  Index = 76;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [77];
+  Objects = [70,72,74];
+  XPos = 64245.000;
+  YPos = 0.000;
+  ZPos = 26843.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 77;
+  Name = "Trigger Timer";
+  Desc = "";
+  Targets = [76];
+  Objects = [];
+  XPos = 64255.000;
+  YPos = 0.000;
+  ZPos = 26848.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 900;
+}
+
+MCU_TR_ComplexTrigger
+{
+  Index = 78;
+  Name = "Translator Complex Trigger";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 64270.000;
+  YPos = 0.000;
+  ZPos = 26853.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  Enabled = 1;
+  Cylinder = 0;
+  Radius = 500;
+  DamageThreshold = 1;
+  DamageReport = 50;
+  CheckEntities = 1;
+  CheckVehicles = 1;
+  EventsFilterSpawned = 0;
+  EventsFilterEnteredSimple = 0;
+  EventsFilterEnteredAlive = 1;
+  EventsFilterLeftSimple = 0;
+  EventsFilterLeftAlive = 0;
+  EventsFilterFinishedSimple = 0;
+  EventsFilterFinishedAlive = 0;
+  EventsFilterStationaryAndAlive = 1;
+  EventsFilterFinishedStationaryAndAlive = 0;
+  EventsFilterTookOff = 0;
+  EventsFilterDamaged = 0;
+  EventsFilterCriticallyDamaged = 0;
+  EventsFilterRepaired = 0;
+  EventsFilterKilled = 0;
+  EventsFilterDropedBombs = 0;
+  EventsFilterFiredFlare = 0;
+  Country = 501;
+  Country = 502;
+  OnEvents
+  {
+    OnEvent
+    {
+      Type = 59;
+      TarId = 75;
+    }
+    OnEvent
+    {
+      Type = 64;
+      TarId = 75;
+    }
+    OnEvent
+    {
+      Type = 59;
+      TarId = 77;
+    }
+    OnEvent
+    {
+      Type = 59;
+      TarId = 77;
+    }
+  }
+}
+MCU_TR_ComplexTrigger
+{
+  Index = 79;
+  Name = "Translator Complex Trigger";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 64285.000;
+  YPos = 0.000;
+  ZPos = 26858.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  Enabled = 1;
+  Cylinder = 1;
+  Radius = 5000;
+  DamageThreshold = 1;
+  DamageReport = 50;
+  CheckEntities = 1;
+  CheckVehicles = 0;
+  EventsFilterSpawned = 0;
+  EventsFilterEnteredSimple = 0;
+  EventsFilterEnteredAlive = 1;
+  EventsFilterLeftSimple = 0;
+  EventsFilterLeftAlive = 0;
+  EventsFilterFinishedSimple = 0;
+  EventsFilterFinishedAlive = 0;
+  EventsFilterStationaryAndAlive = 0;
+  EventsFilterFinishedStationaryAndAlive = 0;
+  EventsFilterTookOff = 0;
+  EventsFilterDamaged = 0;
+  EventsFilterCriticallyDamaged = 0;
+  EventsFilterRepaired = 0;
+  EventsFilterKilled = 0;
+  EventsFilterDropedBombs = 0;
+  EventsFilterFiredFlare = 0;
+  OnEvents
+  {
+    OnEvent
+    {
+      Type = 59;
+      TarId = 75;
+    }
+    OnEvent
+    {
+      Type = 59;
+      TarId = 77;
+    }
+  }
+}
+Vehicle
+{
+  Name = "Frog 1";
+  Index = 80;
+  LinkTrId = 81;
+  XPos = 82658.000;
+  YPos = 0.000;
+  ZPos = 27502.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\75fg1897.txt";
+  Model = "graphics\artillery\75fg1897\75fg1897.mgm";
+  Desc = "75mm M1897 artillery";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 81;
+  Name = "Frog 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82658.000;
+  YPos = 0.000;
+  ZPos = 27502.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 80;
+}
+
+Vehicle
+{
+  Name = "Frog 1";
+  Index = 82;
+  LinkTrId = 83;
+  XPos = 82708.000;
+  YPos = 0.000;
+  ZPos = 27477.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\75fg1897.txt";
+  Model = "graphics\artillery\75fg1897\75fg1897.mgm";
+  Desc = "75mm M1897 artillery";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 83;
+  Name = "Frog 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82708.000;
+  YPos = 0.000;
+  ZPos = 27477.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 82;
+}
+
+Vehicle
+{
+  Name = "Frog 1";
+  Index = 84;
+  LinkTrId = 85;
+  XPos = 82758.000;
+  YPos = 0.000;
+  ZPos = 27452.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\75fg1897.txt";
+  Model = "graphics\artillery\75fg1897\75fg1897.mgm";
+  Desc = "75mm M1897 artillery";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 85;
+  Name = "Frog 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82758.000;
+  YPos = 0.000;
+  ZPos = 27452.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 84;
+}
+
+MCU_Activate
+{
+  Index = 86;
+  Name = "Trigger Activate";
+  Desc = "";
+  Targets = [];
+  Objects = [81,83,85];
+  XPos = 82763.000;
+  YPos = 0.000;
+  ZPos = 27452.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Deactivate
+{
+  Index = 87;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [88];
+  Objects = [81,83,85];
+  XPos = 82768.000;
+  YPos = 0.000;
+  ZPos = 27452.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 88;
+  Name = "Trigger Timer";
+  Desc = "";
+  Targets = [87];
+  Objects = [];
+  XPos = 82778.000;
+  YPos = 0.000;
+  ZPos = 27457.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 900;
+}
+
+MCU_TR_ComplexTrigger
+{
+  Index = 89;
+  Name = "Translator Complex Trigger";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82793.000;
+  YPos = 0.000;
+  ZPos = 27462.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  Enabled = 1;
+  Cylinder = 0;
+  Radius = 500;
+  DamageThreshold = 1;
+  DamageReport = 50;
+  CheckEntities = 1;
+  CheckVehicles = 1;
+  EventsFilterSpawned = 0;
+  EventsFilterEnteredSimple = 0;
+  EventsFilterEnteredAlive = 1;
+  EventsFilterLeftSimple = 0;
+  EventsFilterLeftAlive = 0;
+  EventsFilterFinishedSimple = 0;
+  EventsFilterFinishedAlive = 0;
+  EventsFilterStationaryAndAlive = 1;
+  EventsFilterFinishedStationaryAndAlive = 0;
+  EventsFilterTookOff = 0;
+  EventsFilterDamaged = 0;
+  EventsFilterCriticallyDamaged = 0;
+  EventsFilterRepaired = 0;
+  EventsFilterKilled = 0;
+  EventsFilterDropedBombs = 0;
+  EventsFilterFiredFlare = 0;
+  Country = 501;
+  Country = 502;
+  OnEvents
+  {
+    OnEvent
+    {
+      Type = 59;
+      TarId = 86;
+    }
+    OnEvent
+    {
+      Type = 64;
+      TarId = 86;
+    }
+    OnEvent
+    {
+      Type = 59;
+      TarId = 88;
+    }
+    OnEvent
+    {
+      Type = 59;
+      TarId = 88;
+    }
+  }
+}
+MCU_TR_ComplexTrigger
+{
+  Index = 90;
+  Name = "Translator Complex Trigger";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82808.000;
+  YPos = 0.000;
+  ZPos = 27467.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  Enabled = 1;
+  Cylinder = 1;
+  Radius = 5000;
+  DamageThreshold = 1;
+  DamageReport = 50;
+  CheckEntities = 1;
+  CheckVehicles = 0;
+  EventsFilterSpawned = 0;
+  EventsFilterEnteredSimple = 0;
+  EventsFilterEnteredAlive = 1;
+  EventsFilterLeftSimple = 0;
+  EventsFilterLeftAlive = 0;
+  EventsFilterFinishedSimple = 0;
+  EventsFilterFinishedAlive = 0;
+  EventsFilterStationaryAndAlive = 0;
+  EventsFilterFinishedStationaryAndAlive = 0;
+  EventsFilterTookOff = 0;
+  EventsFilterDamaged = 0;
+  EventsFilterCriticallyDamaged = 0;
+  EventsFilterRepaired = 0;
+  EventsFilterKilled = 0;
+  EventsFilterDropedBombs = 0;
+  EventsFilterFiredFlare = 0;
+  OnEvents
+  {
+    OnEvent
+    {
+      Type = 59;
+      TarId = 86;
+    }
+    OnEvent
+    {
+      Type = 59;
+      TarId = 88;
+    }
+  }
+}
+Vehicle
+{
+  Name = "Kraut 1";
+  Index = 91;
+  LinkTrId = 92;
+  XPos = 81890.259;
+  YPos = 0.000;
+  ZPos = 67098.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "Feldkanone 96 77mm artillery";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 92;
+  Name = "Kraut 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 81890.259;
+  YPos = 0.000;
+  ZPos = 67098.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 91;
+}
+
+Vehicle
+{
+  Name = "Kraut 1";
+  Index = 93;
+  LinkTrId = 94;
+  XPos = 82395.740;
+  YPos = 0.000;
+  ZPos = 67233.153;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "Feldkanone 96 77mm artillery";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 94;
+  Name = "Kraut 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82395.740;
+  YPos = 0.000;
+  ZPos = 67233.153;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 93;
+}
+
+Vehicle
+{
+  Name = "Kraut 1";
+  Index = 95;
+  LinkTrId = 96;
+  XPos = 81990.259;
+  YPos = 0.000;
+  ZPos = 67048.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\lmg08.txt";
+  Model = "graphics\artillery\machineguns\lmg08.mgm";
+  Desc = "Maxim machine gun";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 96;
+  Name = "Kraut 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 81990.259;
+  YPos = 0.000;
+  ZPos = 67048.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 95;
+}
+
+Vehicle
+{
+  Name = "Kraut 1";
+  Index = 97;
+  LinkTrId = 98;
+  XPos = 82248.671;
+  YPos = 0.000;
+  ZPos = 67420.138;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\lmg08.txt";
+  Model = "graphics\artillery\machineguns\lmg08.mgm";
+  Desc = "Maxim machine gun";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 98;
+  Name = "Kraut 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82248.671;
+  YPos = 0.000;
+  ZPos = 67420.138;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 97;
+}
+
+Vehicle
+{
+  Name = "Kraut 1";
+  Index = 99;
+  LinkTrId = 100;
+  XPos = 82090.259;
+  YPos = 0.000;
+  ZPos = 66998.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\lmg08.txt";
+  Model = "graphics\artillery\machineguns\lmg08.mgm";
+  Desc = "Maxim machine gun";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 100;
+  Name = "Kraut 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82090.259;
+  YPos = 0.000;
+  ZPos = 66998.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 99;
+}
+
+MCU_Activate
+{
+  Index = 101;
+  Name = "Trigger Activate";
+  Desc = "";
+  Targets = [];
+  Objects = [92,94,96,98,100];
+  XPos = 82095.259;
+  YPos = 0.000;
+  ZPos = 66998.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Deactivate
+{
+  Index = 102;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [103];
+  Objects = [92,94,96,98,100];
+  XPos = 82100.259;
+  YPos = 0.000;
+  ZPos = 66998.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 103;
+  Name = "Trigger Timer";
+  Desc = "";
+  Targets = [102];
+  Objects = [];
+  XPos = 82110.259;
+  YPos = 0.000;
+  ZPos = 67003.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 900;
+}
+
+MCU_TR_ComplexTrigger
+{
+  Index = 104;
+  Name = "Translator Complex Trigger";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82125.259;
+  YPos = 0.000;
+  ZPos = 67008.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  Enabled = 1;
+  Cylinder = 0;
+  Radius = 500;
+  DamageThreshold = 1;
+  DamageReport = 50;
+  CheckEntities = 1;
+  CheckVehicles = 1;
+  EventsFilterSpawned = 0;
+  EventsFilterEnteredSimple = 0;
+  EventsFilterEnteredAlive = 1;
+  EventsFilterLeftSimple = 0;
+  EventsFilterLeftAlive = 0;
+  EventsFilterFinishedSimple = 0;
+  EventsFilterFinishedAlive = 0;
+  EventsFilterStationaryAndAlive = 1;
+  EventsFilterFinishedStationaryAndAlive = 0;
+  EventsFilterTookOff = 0;
+  EventsFilterDamaged = 0;
+  EventsFilterCriticallyDamaged = 0;
+  EventsFilterRepaired = 0;
+  EventsFilterKilled = 0;
+  EventsFilterDropedBombs = 0;
+  EventsFilterFiredFlare = 0;
+  Country = 101;
+  Country = 102;
+  Country = 103;
+  Country = 104;
+  Country = 105;
+  OnEvents
+  {
+    OnEvent
+    {
+      Type = 59;
+      TarId = 101;
+    }
+    OnEvent
+    {
+      Type = 64;
+      TarId = 101;
+    }
+    OnEvent
+    {
+      Type = 59;
+      TarId = 103;
+    }
+    OnEvent
+    {
+      Type = 59;
+      TarId = 103;
+    }
+  }
+}
+MCU_TR_ComplexTrigger
+{
+  Index = 105;
+  Name = "Translator Complex Trigger";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82140.259;
+  YPos = 0.000;
+  ZPos = 67013.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  Enabled = 1;
+  Cylinder = 1;
+  Radius = 5000;
+  DamageThreshold = 1;
+  DamageReport = 50;
+  CheckEntities = 1;
+  CheckVehicles = 0;
+  EventsFilterSpawned = 0;
+  EventsFilterEnteredSimple = 0;
+  EventsFilterEnteredAlive = 1;
+  EventsFilterLeftSimple = 0;
+  EventsFilterLeftAlive = 0;
+  EventsFilterFinishedSimple = 0;
+  EventsFilterFinishedAlive = 0;
+  EventsFilterStationaryAndAlive = 0;
+  EventsFilterFinishedStationaryAndAlive = 0;
+  EventsFilterTookOff = 0;
+  EventsFilterDamaged = 0;
+  EventsFilterCriticallyDamaged = 0;
+  EventsFilterRepaired = 0;
+  EventsFilterKilled = 0;
+  EventsFilterDropedBombs = 0;
+  EventsFilterFiredFlare = 0;
+  OnEvents
+  {
+    OnEvent
+    {
+      Type = 59;
+      TarId = 101;
+    }
+    OnEvent
+    {
+      Type = 59;
+      TarId = 103;
+    }
+  }
+}
+Vehicle
+{
+  Name = "Roeten 1";
+  Index = 106;
+  LinkTrId = 107;
+  XPos = 82190.259;
+  YPos = 0.000;
+  ZPos = 66948.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\lmg08.txt";
+  Model = "graphics\artillery\machineguns\lmg08.mgm";
+  Desc = "Maxim machine gun";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 107;
+  Name = "Roeten 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82190.259;
+  YPos = 0.000;
+  ZPos = 66948.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 106;
+}
+
+Vehicle
+{
+  Name = "Roeten 1";
+  Index = 108;
+  LinkTrId = 109;
+  XPos = 82240.259;
+  YPos = 0.000;
+  ZPos = 66923.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\lmg08.txt";
+  Model = "graphics\artillery\machineguns\lmg08.mgm";
+  Desc = "Maxim machine gun";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 109;
+  Name = "Roeten 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82240.259;
+  YPos = 0.000;
+  ZPos = 66923.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 108;
+}
+
+MCU_Activate
+{
+  Index = 110;
+  Name = "Trigger Activate";
+  Desc = "";
+  Targets = [];
+  Objects = [107,109];
+  XPos = 82245.259;
+  YPos = 0.000;
+  ZPos = 66923.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Deactivate
+{
+  Index = 111;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [112];
+  Objects = [107,109];
+  XPos = 82250.259;
+  YPos = 0.000;
+  ZPos = 66923.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 112;
+  Name = "Trigger Timer";
+  Desc = "";
+  Targets = [111];
+  Objects = [];
+  XPos = 82260.259;
+  YPos = 0.000;
+  ZPos = 66928.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 900;
+}
+
+MCU_TR_ComplexTrigger
+{
+  Index = 113;
+  Name = "Translator Complex Trigger";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82275.259;
+  YPos = 0.000;
+  ZPos = 66933.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  Enabled = 1;
+  Cylinder = 0;
+  Radius = 500;
+  DamageThreshold = 1;
+  DamageReport = 50;
+  CheckEntities = 1;
+  CheckVehicles = 1;
+  EventsFilterSpawned = 0;
+  EventsFilterEnteredSimple = 0;
+  EventsFilterEnteredAlive = 1;
+  EventsFilterLeftSimple = 0;
+  EventsFilterLeftAlive = 0;
+  EventsFilterFinishedSimple = 0;
+  EventsFilterFinishedAlive = 0;
+  EventsFilterStationaryAndAlive = 1;
+  EventsFilterFinishedStationaryAndAlive = 0;
+  EventsFilterTookOff = 0;
+  EventsFilterDamaged = 0;
+  EventsFilterCriticallyDamaged = 0;
+  EventsFilterRepaired = 0;
+  EventsFilterKilled = 0;
+  EventsFilterDropedBombs = 0;
+  EventsFilterFiredFlare = 0;
+  Country = 101;
+  Country = 102;
+  Country = 103;
+  Country = 104;
+  Country = 105;
+  OnEvents
+  {
+    OnEvent
+    {
+      Type = 59;
+      TarId = 110;
+    }
+    OnEvent
+    {
+      Type = 64;
+      TarId = 110;
+    }
+    OnEvent
+    {
+      Type = 59;
+      TarId = 112;
+    }
+    OnEvent
+    {
+      Type = 59;
+      TarId = 112;
+    }
+  }
+}
+MCU_TR_ComplexTrigger
+{
+  Index = 114;
+  Name = "Translator Complex Trigger";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82290.259;
+  YPos = 0.000;
+  ZPos = 66938.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  Enabled = 1;
+  Cylinder = 1;
+  Radius = 5000;
+  DamageThreshold = 1;
+  DamageReport = 50;
+  CheckEntities = 1;
+  CheckVehicles = 0;
+  EventsFilterSpawned = 0;
+  EventsFilterEnteredSimple = 0;
+  EventsFilterEnteredAlive = 1;
+  EventsFilterLeftSimple = 0;
+  EventsFilterLeftAlive = 0;
+  EventsFilterFinishedSimple = 0;
+  EventsFilterFinishedAlive = 0;
+  EventsFilterStationaryAndAlive = 0;
+  EventsFilterFinishedStationaryAndAlive = 0;
+  EventsFilterTookOff = 0;
+  EventsFilterDamaged = 0;
+  EventsFilterCriticallyDamaged = 0;
+  EventsFilterRepaired = 0;
+  EventsFilterKilled = 0;
+  EventsFilterDropedBombs = 0;
+  EventsFilterFiredFlare = 0;
+  OnEvents
+  {
+    OnEvent
+    {
+      Type = 59;
+      TarId = 110;
+    }
+    OnEvent
+    {
+      Type = 59;
+      TarId = 112;
+    }
+  }
+}
+Block
+{
+  Name = "British static 1";
+  Index = 115;
+  LinkTrId = 116;
+  XPos = 64285.000;
+  YPos = 0.000;
+  ZPos = 26818.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\tent01.txt";
+  Model = "graphics\battlefield\tent01.mgm";
+  Desc = "HQ tent";
+  Country = 102;
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 116;
+  Name = "British static 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 64285.000;
+  YPos = 0.000;
+  ZPos = 26818.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 115;
+}
+
+Flag
+{
+  Name = "Frog 1";
+  Index = 117;
+  LinkTrId = 118;
+  XPos = 82808.000;
+  YPos = 0.000;
+  ZPos = 27427.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\windsock.txt";
+  Model = "graphics\flag\windsock.mgm";
+  Desc = "windsock";
+  Country = 101;
+  StartHeight = 0;
+  SpeedFactor = 1;
+  BlockThreshold = 1;
+  Radius = 1;
+  Type = 0;
+  CountPlanes = 0;
+  CountVehicles = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 118;
+  Name = "Frog 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82808.000;
+  YPos = 0.000;
+  ZPos = 27427.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 117;
+}
+
+Flag
+{
+  Name = "Roeten 1";
+  Index = 119;
+  LinkTrId = 120;
+  XPos = 82140.259;
+  YPos = 0.000;
+  ZPos = 66973.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\windsock.txt";
+  Model = "graphics\flag\windsock.mgm";
+  Desc = "windsock";
+  Country = 501;
+  StartHeight = 0;
+  SpeedFactor = 1;
+  BlockThreshold = 1;
+  Radius = 1;
+  Type = 0;
+  CountPlanes = 0;
+  CountVehicles = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 120;
+  Name = "Roeten 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82140.259;
+  YPos = 0.000;
+  ZPos = 66973.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 119;
+}
+
+Block
+{
+  Name = "Roeten 1";
+  Index = 121;
+  LinkTrId = 122;
+  XPos = 82125.546;
+  YPos = 0.000;
+  ZPos = 66399.303;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\tent01.txt";
+  Model = "graphics\battlefield\tent01.mgm";
+  Desc = "HQ tent";
+  Country = 501;
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 122;
+  Name = "Roeten 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82125.546;
+  YPos = 0.000;
+  ZPos = 66399.303;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 121;
+}
+
+Block
+{
+  Name = "Roeten 1";
+  Index = 123;
+  LinkTrId = 124;
+  XPos = 82340.259;
+  YPos = 0.000;
+  ZPos = 66873.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\tent01.txt";
+  Model = "graphics\battlefield\tent01.mgm";
+  Desc = "HQ tent";
+  Country = 501;
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 124;
+  Name = "Roeten 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82340.259;
+  YPos = 0.000;
+  ZPos = 66873.483;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 123;
+}
+
+Block
+{
+  Name = "Roeten 1";
+  Index = 125;
+  LinkTrId = 126;
+  XPos = 81928.055;
+  YPos = 0.000;
+  ZPos = 66809.826;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\tent01.txt";
+  Model = "graphics\battlefield\tent01.mgm";
+  Desc = "HQ tent";
+  Country = 501;
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 126;
+  Name = "Roeten 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 81928.055;
+  YPos = 0.000;
+  ZPos = 66809.826;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 125;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 1";
+  Index = 127;
+  LinkTrId = 128;
+  XPos = 82608.000;
+  YPos = 0.000;
+  ZPos = 27552.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\ca1.txt";
+  Model = "graphics\vehicles\ca1\ca1.mgm";
+  Desc = "Allied moving  10 ca1";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 128;
+  Name = "Bat 1 Co 1 Pl 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82608.000;
+  YPos = 0.000;
+  ZPos = 27552.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 127;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 1";
+  Index = 129;
+  LinkTrId = 130;
+  XPos = 82613.000;
+  YPos = 0.000;
+  ZPos = 27547.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\ca1.txt";
+  Model = "graphics\vehicles\ca1\ca1.mgm";
+  Desc = "Allied moving  9 ca1";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 130;
+  Name = "Bat 1 Co 1 Pl 1 entity";
+  Desc = "";
+  Targets = [128];
+  Objects = [];
+  XPos = 82613.000;
+  YPos = 0.000;
+  ZPos = 27547.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 129;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 1";
+  Index = 131;
+  LinkTrId = 132;
+  XPos = 82618.000;
+  YPos = 0.000;
+  ZPos = 27542.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\ca1.txt";
+  Model = "graphics\vehicles\ca1\ca1.mgm";
+  Desc = "Allied moving  8 ca1";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 132;
+  Name = "Bat 1 Co 1 Pl 1 entity";
+  Desc = "";
+  Targets = [128];
+  Objects = [];
+  XPos = 82618.000;
+  YPos = 0.000;
+  ZPos = 27542.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 131;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 1";
+  Index = 133;
+  LinkTrId = 134;
+  XPos = 82623.000;
+  YPos = 0.000;
+  ZPos = 27537.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\ca1.txt";
+  Model = "graphics\vehicles\ca1\ca1.mgm";
+  Desc = "Allied moving  7 ca1";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 134;
+  Name = "Bat 1 Co 1 Pl 1 entity";
+  Desc = "";
+  Targets = [128];
+  Objects = [];
+  XPos = 82623.000;
+  YPos = 0.000;
+  ZPos = 27537.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 133;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 1";
+  Index = 135;
+  LinkTrId = 136;
+  XPos = 82628.000;
+  YPos = 0.000;
+  ZPos = 27532.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\ca1.txt";
+  Model = "graphics\vehicles\ca1\ca1.mgm";
+  Desc = "Allied moving  6 ca1";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 136;
+  Name = "Bat 1 Co 1 Pl 1 entity";
+  Desc = "";
+  Targets = [128];
+  Objects = [];
+  XPos = 82628.000;
+  YPos = 0.000;
+  ZPos = 27532.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 135;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 1";
+  Index = 137;
+  LinkTrId = 138;
+  XPos = 82633.000;
+  YPos = 0.000;
+  ZPos = 27527.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\ca1.txt";
+  Model = "graphics\vehicles\ca1\ca1.mgm";
+  Desc = "Allied moving  5 ca1";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 138;
+  Name = "Bat 1 Co 1 Pl 1 entity";
+  Desc = "";
+  Targets = [128];
+  Objects = [];
+  XPos = 82633.000;
+  YPos = 0.000;
+  ZPos = 27527.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 137;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 1";
+  Index = 139;
+  LinkTrId = 140;
+  XPos = 82638.000;
+  YPos = 0.000;
+  ZPos = 27522.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\ca1.txt";
+  Model = "graphics\vehicles\ca1\ca1.mgm";
+  Desc = "Allied moving  4 ca1";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 140;
+  Name = "Bat 1 Co 1 Pl 1 entity";
+  Desc = "";
+  Targets = [128];
+  Objects = [];
+  XPos = 82638.000;
+  YPos = 0.000;
+  ZPos = 27522.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 139;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 1";
+  Index = 141;
+  LinkTrId = 142;
+  XPos = 82643.000;
+  YPos = 0.000;
+  ZPos = 27517.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\ca1.txt";
+  Model = "graphics\vehicles\ca1\ca1.mgm";
+  Desc = "Allied moving  3 ca1";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 142;
+  Name = "Bat 1 Co 1 Pl 1 entity";
+  Desc = "";
+  Targets = [128];
+  Objects = [];
+  XPos = 82643.000;
+  YPos = 0.000;
+  ZPos = 27517.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 141;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 1";
+  Index = 143;
+  LinkTrId = 144;
+  XPos = 82648.000;
+  YPos = 0.000;
+  ZPos = 27512.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\ca1.txt";
+  Model = "graphics\vehicles\ca1\ca1.mgm";
+  Desc = "Allied moving  2 ca1";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 144;
+  Name = "Bat 1 Co 1 Pl 1 entity";
+  Desc = "";
+  Targets = [128];
+  Objects = [];
+  XPos = 82648.000;
+  YPos = 0.000;
+  ZPos = 27512.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 143;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 1";
+  Index = 145;
+  LinkTrId = 146;
+  XPos = 82653.000;
+  YPos = 0.000;
+  ZPos = 27507.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\ca1.txt";
+  Model = "graphics\vehicles\ca1\ca1.mgm";
+  Desc = "Allied moving  1 ca1";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 146;
+  Name = "Bat 1 Co 1 Pl 1 entity";
+  Desc = "";
+  Targets = [128];
+  Objects = [];
+  XPos = 82653.000;
+  YPos = 0.000;
+  ZPos = 27507.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 145;
+}
+
+MCU_Waypoint
+{
+  Index = 147;
+  Name = "Trigger Waypoint";
+  Desc = "";
+  Targets = [];
+  Objects = [128];
+  XPos = 76951.146;
+  YPos = 0.000;
+  ZPos = 21895.146;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Area = 20;
+  Speed = 4;
+  Priority = 1;
+  GoalType = 0;
+}
+
+MCU_TR_MissionBegin
+{
+  Index = 148;
+  Name = "Translator Mission Begin";
+  Desc = "";
+  Targets = [149];
+  Objects = [];
+  XPos = 76956.146;
+  YPos = 0.000;
+  ZPos = 21900.146;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_Timer
+{
+  Index = 149;
+  Name = "Trigger Timer";
+  Desc = "";
+  Targets = [147,150];
+  Objects = [];
+  XPos = 76961.146;
+  YPos = 0.000;
+  ZPos = 21900.146;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 386;
+}
+
+MCU_CMD_Formation
+{
+  Index = 150;
+  Name = "Command Formation";
+  Desc = "";
+  Targets = [];
+  Objects = [128];
+  XPos = 76966.146;
+  YPos = 0.000;
+  ZPos = 21900.146;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  FormationType = 4;
+  FormationDensity = 0;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 2";
+  Index = 151;
+  LinkTrId = 152;
+  XPos = 82558.000;
+  YPos = 0.000;
+  ZPos = 27602.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leylands.txt";
+  Model = "graphics\vehicles\leyland\leylands.mgm";
+  Desc = "Allied moving  10 13pdraaa";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 152;
+  Name = "Bat 1 Co 1 Pl 2 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 82558.000;
+  YPos = 0.000;
+  ZPos = 27602.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 151;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 2";
+  Index = 153;
+  LinkTrId = 154;
+  XPos = 82563.000;
+  YPos = 0.000;
+  ZPos = 27597.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leylands.txt";
+  Model = "graphics\vehicles\leyland\leylands.mgm";
+  Desc = "Allied moving  9 13pdraaa";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 154;
+  Name = "Bat 1 Co 1 Pl 2 entity";
+  Desc = "";
+  Targets = [152];
+  Objects = [];
+  XPos = 82563.000;
+  YPos = 0.000;
+  ZPos = 27597.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 153;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 2";
+  Index = 155;
+  LinkTrId = 156;
+  XPos = 82568.000;
+  YPos = 0.000;
+  ZPos = 27592.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leylands.txt";
+  Model = "graphics\vehicles\leyland\leylands.mgm";
+  Desc = "Allied moving  8 13pdraaa";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 156;
+  Name = "Bat 1 Co 1 Pl 2 entity";
+  Desc = "";
+  Targets = [152];
+  Objects = [];
+  XPos = 82568.000;
+  YPos = 0.000;
+  ZPos = 27592.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 155;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 2";
+  Index = 157;
+  LinkTrId = 158;
+  XPos = 82573.000;
+  YPos = 0.000;
+  ZPos = 27587.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leylands.txt";
+  Model = "graphics\vehicles\leyland\leylands.mgm";
+  Desc = "Allied moving  7 13pdraaa";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 158;
+  Name = "Bat 1 Co 1 Pl 2 entity";
+  Desc = "";
+  Targets = [152];
+  Objects = [];
+  XPos = 82573.000;
+  YPos = 0.000;
+  ZPos = 27587.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 157;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 2";
+  Index = 159;
+  LinkTrId = 160;
+  XPos = 82578.000;
+  YPos = 0.000;
+  ZPos = 27582.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leylands.txt";
+  Model = "graphics\vehicles\leyland\leylands.mgm";
+  Desc = "Allied moving  6 13pdraaa";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 160;
+  Name = "Bat 1 Co 1 Pl 2 entity";
+  Desc = "";
+  Targets = [152];
+  Objects = [];
+  XPos = 82578.000;
+  YPos = 0.000;
+  ZPos = 27582.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 159;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 2";
+  Index = 161;
+  LinkTrId = 162;
+  XPos = 82583.000;
+  YPos = 0.000;
+  ZPos = 27577.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leylands.txt";
+  Model = "graphics\vehicles\leyland\leylands.mgm";
+  Desc = "Allied moving  5 13pdraaa";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 162;
+  Name = "Bat 1 Co 1 Pl 2 entity";
+  Desc = "";
+  Targets = [152];
+  Objects = [];
+  XPos = 82583.000;
+  YPos = 0.000;
+  ZPos = 27577.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 161;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 2";
+  Index = 163;
+  LinkTrId = 164;
+  XPos = 82588.000;
+  YPos = 0.000;
+  ZPos = 27572.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leylands.txt";
+  Model = "graphics\vehicles\leyland\leylands.mgm";
+  Desc = "Allied moving  4 13pdraaa";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 164;
+  Name = "Bat 1 Co 1 Pl 2 entity";
+  Desc = "";
+  Targets = [152];
+  Objects = [];
+  XPos = 82588.000;
+  YPos = 0.000;
+  ZPos = 27572.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 163;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 2";
+  Index = 165;
+  LinkTrId = 166;
+  XPos = 82593.000;
+  YPos = 0.000;
+  ZPos = 27567.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leylands.txt";
+  Model = "graphics\vehicles\leyland\leylands.mgm";
+  Desc = "Allied moving  3 13pdraaa";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 166;
+  Name = "Bat 1 Co 1 Pl 2 entity";
+  Desc = "";
+  Targets = [152];
+  Objects = [];
+  XPos = 82593.000;
+  YPos = 0.000;
+  ZPos = 27567.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 165;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 2";
+  Index = 167;
+  LinkTrId = 168;
+  XPos = 82598.000;
+  YPos = 0.000;
+  ZPos = 27562.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leylands.txt";
+  Model = "graphics\vehicles\leyland\leylands.mgm";
+  Desc = "Allied moving  2 13pdraaa";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 168;
+  Name = "Bat 1 Co 1 Pl 2 entity";
+  Desc = "";
+  Targets = [152];
+  Objects = [];
+  XPos = 82598.000;
+  YPos = 0.000;
+  ZPos = 27562.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 167;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 2";
+  Index = 169;
+  LinkTrId = 170;
+  XPos = 82603.000;
+  YPos = 0.000;
+  ZPos = 27557.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\leylands.txt";
+  Model = "graphics\vehicles\leyland\leylands.mgm";
+  Desc = "Allied moving  1 13pdraaa";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 170;
+  Name = "Bat 1 Co 1 Pl 2 entity";
+  Desc = "";
+  Targets = [152];
+  Objects = [];
+  XPos = 82603.000;
+  YPos = 0.000;
+  ZPos = 27557.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 169;
+}
+
+MCU_Waypoint
+{
+  Index = 171;
+  Name = "Trigger Waypoint";
+  Desc = "";
+  Targets = [];
+  Objects = [152];
+  XPos = 68415.864;
+  YPos = 0.000;
+  ZPos = 13459.864;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Area = 20;
+  Speed = 10;
+  Priority = 1;
+  GoalType = 0;
+}
+
+MCU_TR_MissionBegin
+{
+  Index = 172;
+  Name = "Translator Mission Begin";
+  Desc = "";
+  Targets = [173];
+  Objects = [];
+  XPos = 68420.864;
+  YPos = 0.000;
+  ZPos = 13464.864;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_Timer
+{
+  Index = 173;
+  Name = "Trigger Timer";
+  Desc = "";
+  Targets = [171,174];
+  Objects = [];
+  XPos = 68425.864;
+  YPos = 0.000;
+  ZPos = 13464.864;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 682;
+}
+
+MCU_CMD_Formation
+{
+  Index = 174;
+  Name = "Command Formation";
+  Desc = "";
+  Targets = [];
+  Objects = [152];
+  XPos = 68430.864;
+  YPos = 0.000;
+  ZPos = 13464.864;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  FormationType = 4;
+  FormationDensity = 0;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 3";
+  Index = 175;
+  LinkTrId = 176;
+  XPos = 63785.000;
+  YPos = 0.000;
+  ZPos = 27143.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\mk5f.txt";
+  Model = "graphics\vehicles\mk5\mk5f.mgm";
+  Desc = "Allied moving  10 mk5f";
+  Country = 102;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 176;
+  Name = "Bat 1 Co 1 Pl 3 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 63785.000;
+  YPos = 0.000;
+  ZPos = 27143.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 175;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 3";
+  Index = 177;
+  LinkTrId = 178;
+  XPos = 63790.000;
+  YPos = 0.000;
+  ZPos = 27138.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\mk5f.txt";
+  Model = "graphics\vehicles\mk5\mk5f.mgm";
+  Desc = "Allied moving  9 mk5f";
+  Country = 102;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 178;
+  Name = "Bat 1 Co 1 Pl 3 entity";
+  Desc = "";
+  Targets = [176];
+  Objects = [];
+  XPos = 63790.000;
+  YPos = 0.000;
+  ZPos = 27138.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 177;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 3";
+  Index = 179;
+  LinkTrId = 180;
+  XPos = 63795.000;
+  YPos = 0.000;
+  ZPos = 27133.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\mk5f.txt";
+  Model = "graphics\vehicles\mk5\mk5f.mgm";
+  Desc = "Allied moving  8 mk5f";
+  Country = 102;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 180;
+  Name = "Bat 1 Co 1 Pl 3 entity";
+  Desc = "";
+  Targets = [176];
+  Objects = [];
+  XPos = 63795.000;
+  YPos = 0.000;
+  ZPos = 27133.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 179;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 3";
+  Index = 181;
+  LinkTrId = 182;
+  XPos = 63800.000;
+  YPos = 0.000;
+  ZPos = 27128.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\mk5f.txt";
+  Model = "graphics\vehicles\mk5\mk5f.mgm";
+  Desc = "Allied moving  7 mk5f";
+  Country = 102;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 182;
+  Name = "Bat 1 Co 1 Pl 3 entity";
+  Desc = "";
+  Targets = [176];
+  Objects = [];
+  XPos = 63800.000;
+  YPos = 0.000;
+  ZPos = 27128.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 181;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 3";
+  Index = 183;
+  LinkTrId = 184;
+  XPos = 63805.000;
+  YPos = 0.000;
+  ZPos = 27123.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\mk5f.txt";
+  Model = "graphics\vehicles\mk5\mk5f.mgm";
+  Desc = "Allied moving  6 mk5f";
+  Country = 102;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 184;
+  Name = "Bat 1 Co 1 Pl 3 entity";
+  Desc = "";
+  Targets = [176];
+  Objects = [];
+  XPos = 63805.000;
+  YPos = 0.000;
+  ZPos = 27123.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 183;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 3";
+  Index = 185;
+  LinkTrId = 186;
+  XPos = 63810.000;
+  YPos = 0.000;
+  ZPos = 27118.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\mk5f.txt";
+  Model = "graphics\vehicles\mk5\mk5f.mgm";
+  Desc = "Allied moving  5 mk5f";
+  Country = 102;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 186;
+  Name = "Bat 1 Co 1 Pl 3 entity";
+  Desc = "";
+  Targets = [176];
+  Objects = [];
+  XPos = 63810.000;
+  YPos = 0.000;
+  ZPos = 27118.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 185;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 3";
+  Index = 187;
+  LinkTrId = 188;
+  XPos = 63815.000;
+  YPos = 0.000;
+  ZPos = 27113.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\mk5f.txt";
+  Model = "graphics\vehicles\mk5\mk5f.mgm";
+  Desc = "Allied moving  4 mk5f";
+  Country = 102;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 188;
+  Name = "Bat 1 Co 1 Pl 3 entity";
+  Desc = "";
+  Targets = [176];
+  Objects = [];
+  XPos = 63815.000;
+  YPos = 0.000;
+  ZPos = 27113.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 187;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 3";
+  Index = 189;
+  LinkTrId = 190;
+  XPos = 63820.000;
+  YPos = 0.000;
+  ZPos = 27108.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\mk5f.txt";
+  Model = "graphics\vehicles\mk5\mk5f.mgm";
+  Desc = "Allied moving  3 mk5f";
+  Country = 102;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 190;
+  Name = "Bat 1 Co 1 Pl 3 entity";
+  Desc = "";
+  Targets = [176];
+  Objects = [];
+  XPos = 63820.000;
+  YPos = 0.000;
+  ZPos = 27108.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 189;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 3";
+  Index = 191;
+  LinkTrId = 192;
+  XPos = 63825.000;
+  YPos = 0.000;
+  ZPos = 27103.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\mk5f.txt";
+  Model = "graphics\vehicles\mk5\mk5f.mgm";
+  Desc = "Allied moving  2 mk5f";
+  Country = 102;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 192;
+  Name = "Bat 1 Co 1 Pl 3 entity";
+  Desc = "";
+  Targets = [176];
+  Objects = [];
+  XPos = 63825.000;
+  YPos = 0.000;
+  ZPos = 27103.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 191;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 3";
+  Index = 193;
+  LinkTrId = 194;
+  XPos = 63830.000;
+  YPos = 0.000;
+  ZPos = 27098.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\mk5f.txt";
+  Model = "graphics\vehicles\mk5\mk5f.mgm";
+  Desc = "Allied moving  1 mk5f";
+  Country = 102;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 194;
+  Name = "Bat 1 Co 1 Pl 3 entity";
+  Desc = "";
+  Targets = [176];
+  Objects = [];
+  XPos = 63830.000;
+  YPos = 0.000;
+  ZPos = 27098.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 193;
+}
+
+MCU_Waypoint
+{
+  Index = 195;
+  Name = "Trigger Waypoint";
+  Desc = "";
+  Targets = [];
+  Objects = [176];
+  XPos = 58128.146;
+  YPos = 0.000;
+  ZPos = 21486.146;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Area = 20;
+  Speed = 4;
+  Priority = 1;
+  GoalType = 0;
+}
+
+MCU_TR_MissionBegin
+{
+  Index = 196;
+  Name = "Translator Mission Begin";
+  Desc = "";
+  Targets = [197];
+  Objects = [];
+  XPos = 58133.146;
+  YPos = 0.000;
+  ZPos = 21491.146;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_Timer
+{
+  Index = 197;
+  Name = "Trigger Timer";
+  Desc = "";
+  Targets = [195,198];
+  Objects = [];
+  XPos = 58138.146;
+  YPos = 0.000;
+  ZPos = 21491.146;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 409;
+}
+
+MCU_CMD_Formation
+{
+  Index = 198;
+  Name = "Command Formation";
+  Desc = "";
+  Targets = [];
+  Objects = [176];
+  XPos = 58143.146;
+  YPos = 0.000;
+  ZPos = 21491.146;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  FormationType = 4;
+  FormationDensity = 0;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 1";
+  Index = 199;
+  LinkTrId = 200;
+  XPos = 79360.773;
+  YPos = 0.000;
+  ZPos = 67256.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "Central moving  10 fk96";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 200;
+  Name = "Abt 1 Ko 1 Zug 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 79360.773;
+  YPos = 0.000;
+  ZPos = 67256.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 199;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 1";
+  Index = 201;
+  LinkTrId = 202;
+  XPos = 79365.773;
+  YPos = 0.000;
+  ZPos = 67251.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "Central moving  9 fk96";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 202;
+  Name = "Abt 1 Ko 1 Zug 1 entity";
+  Desc = "";
+  Targets = [200];
+  Objects = [];
+  XPos = 79365.773;
+  YPos = 0.000;
+  ZPos = 67251.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 201;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 1";
+  Index = 203;
+  LinkTrId = 204;
+  XPos = 79370.773;
+  YPos = 0.000;
+  ZPos = 67246.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "Central moving  8 fk96";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 204;
+  Name = "Abt 1 Ko 1 Zug 1 entity";
+  Desc = "";
+  Targets = [200];
+  Objects = [];
+  XPos = 79370.773;
+  YPos = 0.000;
+  ZPos = 67246.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 203;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 1";
+  Index = 205;
+  LinkTrId = 206;
+  XPos = 79375.773;
+  YPos = 0.000;
+  ZPos = 67241.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "Central moving  7 fk96";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 206;
+  Name = "Abt 1 Ko 1 Zug 1 entity";
+  Desc = "";
+  Targets = [200];
+  Objects = [];
+  XPos = 79375.773;
+  YPos = 0.000;
+  ZPos = 67241.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 205;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 1";
+  Index = 207;
+  LinkTrId = 208;
+  XPos = 79380.773;
+  YPos = 0.000;
+  ZPos = 67236.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "Central moving  6 fk96";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 208;
+  Name = "Abt 1 Ko 1 Zug 1 entity";
+  Desc = "";
+  Targets = [200];
+  Objects = [];
+  XPos = 79380.773;
+  YPos = 0.000;
+  ZPos = 67236.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 207;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 1";
+  Index = 209;
+  LinkTrId = 210;
+  XPos = 79385.773;
+  YPos = 0.000;
+  ZPos = 67231.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "Central moving  5 fk96";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 210;
+  Name = "Abt 1 Ko 1 Zug 1 entity";
+  Desc = "";
+  Targets = [200];
+  Objects = [];
+  XPos = 79385.773;
+  YPos = 0.000;
+  ZPos = 67231.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 209;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 1";
+  Index = 211;
+  LinkTrId = 212;
+  XPos = 79390.773;
+  YPos = 0.000;
+  ZPos = 67226.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "Central moving  4 fk96";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 212;
+  Name = "Abt 1 Ko 1 Zug 1 entity";
+  Desc = "";
+  Targets = [200];
+  Objects = [];
+  XPos = 79390.773;
+  YPos = 0.000;
+  ZPos = 67226.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 211;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 1";
+  Index = 213;
+  LinkTrId = 214;
+  XPos = 79395.773;
+  YPos = 0.000;
+  ZPos = 67221.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "Central moving  3 fk96";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 214;
+  Name = "Abt 1 Ko 1 Zug 1 entity";
+  Desc = "";
+  Targets = [200];
+  Objects = [];
+  XPos = 79395.773;
+  YPos = 0.000;
+  ZPos = 67221.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 213;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 1";
+  Index = 215;
+  LinkTrId = 216;
+  XPos = 79400.773;
+  YPos = 0.000;
+  ZPos = 67216.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "Central moving  2 fk96";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 216;
+  Name = "Abt 1 Ko 1 Zug 1 entity";
+  Desc = "";
+  Targets = [200];
+  Objects = [];
+  XPos = 79400.773;
+  YPos = 0.000;
+  ZPos = 67216.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 215;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 1";
+  Index = 217;
+  LinkTrId = 218;
+  XPos = 79405.773;
+  YPos = 0.000;
+  ZPos = 67211.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "Central moving  1 fk96";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 218;
+  Name = "Abt 1 Ko 1 Zug 1 entity";
+  Desc = "";
+  Targets = [200];
+  Objects = [];
+  XPos = 79405.773;
+  YPos = 0.000;
+  ZPos = 67211.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 217;
+}
+
+MCU_Waypoint
+{
+  Index = 219;
+  Name = "Trigger Waypoint";
+  Desc = "";
+  Targets = [];
+  Objects = [200];
+  XPos = 81579.032;
+  YPos = 0.000;
+  ZPos = 60579.279;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Area = 20;
+  Speed = 0;
+  Priority = 1;
+  GoalType = 0;
+}
+
+MCU_TR_MissionBegin
+{
+  Index = 220;
+  Name = "Translator Mission Begin";
+  Desc = "";
+  Targets = [221];
+  Objects = [];
+  XPos = 81584.032;
+  YPos = 0.000;
+  ZPos = 60584.279;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_Timer
+{
+  Index = 221;
+  Name = "Trigger Timer";
+  Desc = "";
+  Targets = [219,222];
+  Objects = [];
+  XPos = 81589.032;
+  YPos = 0.000;
+  ZPos = 60584.279;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 245;
+}
+
+MCU_CMD_Formation
+{
+  Index = 222;
+  Name = "Command Formation";
+  Desc = "";
+  Targets = [];
+  Objects = [200];
+  XPos = 81594.032;
+  YPos = 0.000;
+  ZPos = 60584.279;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  FormationType = 4;
+  FormationDensity = 0;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 2";
+  Index = 223;
+  LinkTrId = 224;
+  XPos = 59521.834;
+  YPos = 0.000;
+  ZPos = 63449.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\m13.txt";
+  Model = "graphics\artillery\m13\m13.mgm";
+  Desc = "Central moving  10 m13";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 224;
+  Name = "Abt 1 Ko 1 Zug 2 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 59521.834;
+  YPos = 0.000;
+  ZPos = 63449.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 223;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 2";
+  Index = 225;
+  LinkTrId = 226;
+  XPos = 59526.834;
+  YPos = 0.000;
+  ZPos = 63444.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\m13.txt";
+  Model = "graphics\artillery\m13\m13.mgm";
+  Desc = "Central moving  9 m13";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 226;
+  Name = "Abt 1 Ko 1 Zug 2 entity";
+  Desc = "";
+  Targets = [224];
+  Objects = [];
+  XPos = 59526.834;
+  YPos = 0.000;
+  ZPos = 63444.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 225;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 2";
+  Index = 227;
+  LinkTrId = 228;
+  XPos = 59531.834;
+  YPos = 0.000;
+  ZPos = 63439.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\m13.txt";
+  Model = "graphics\artillery\m13\m13.mgm";
+  Desc = "Central moving  8 m13";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 228;
+  Name = "Abt 1 Ko 1 Zug 2 entity";
+  Desc = "";
+  Targets = [224];
+  Objects = [];
+  XPos = 59531.834;
+  YPos = 0.000;
+  ZPos = 63439.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 227;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 2";
+  Index = 229;
+  LinkTrId = 230;
+  XPos = 59536.834;
+  YPos = 0.000;
+  ZPos = 63434.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\m13.txt";
+  Model = "graphics\artillery\m13\m13.mgm";
+  Desc = "Central moving  7 m13";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 230;
+  Name = "Abt 1 Ko 1 Zug 2 entity";
+  Desc = "";
+  Targets = [224];
+  Objects = [];
+  XPos = 59536.834;
+  YPos = 0.000;
+  ZPos = 63434.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 229;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 2";
+  Index = 231;
+  LinkTrId = 232;
+  XPos = 59541.834;
+  YPos = 0.000;
+  ZPos = 63429.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\m13.txt";
+  Model = "graphics\artillery\m13\m13.mgm";
+  Desc = "Central moving  6 m13";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 232;
+  Name = "Abt 1 Ko 1 Zug 2 entity";
+  Desc = "";
+  Targets = [224];
+  Objects = [];
+  XPos = 59541.834;
+  YPos = 0.000;
+  ZPos = 63429.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 231;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 2";
+  Index = 233;
+  LinkTrId = 234;
+  XPos = 59546.834;
+  YPos = 0.000;
+  ZPos = 63424.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\m13.txt";
+  Model = "graphics\artillery\m13\m13.mgm";
+  Desc = "Central moving  5 m13";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 234;
+  Name = "Abt 1 Ko 1 Zug 2 entity";
+  Desc = "";
+  Targets = [224];
+  Objects = [];
+  XPos = 59546.834;
+  YPos = 0.000;
+  ZPos = 63424.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 233;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 2";
+  Index = 235;
+  LinkTrId = 236;
+  XPos = 59551.834;
+  YPos = 0.000;
+  ZPos = 63419.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\m13.txt";
+  Model = "graphics\artillery\m13\m13.mgm";
+  Desc = "Central moving  4 m13";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 236;
+  Name = "Abt 1 Ko 1 Zug 2 entity";
+  Desc = "";
+  Targets = [224];
+  Objects = [];
+  XPos = 59551.834;
+  YPos = 0.000;
+  ZPos = 63419.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 235;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 2";
+  Index = 237;
+  LinkTrId = 238;
+  XPos = 59556.834;
+  YPos = 0.000;
+  ZPos = 63414.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\m13.txt";
+  Model = "graphics\artillery\m13\m13.mgm";
+  Desc = "Central moving  3 m13";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 238;
+  Name = "Abt 1 Ko 1 Zug 2 entity";
+  Desc = "";
+  Targets = [224];
+  Objects = [];
+  XPos = 59556.834;
+  YPos = 0.000;
+  ZPos = 63414.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 237;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 2";
+  Index = 239;
+  LinkTrId = 240;
+  XPos = 59561.834;
+  YPos = 0.000;
+  ZPos = 63409.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\m13.txt";
+  Model = "graphics\artillery\m13\m13.mgm";
+  Desc = "Central moving  2 m13";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 240;
+  Name = "Abt 1 Ko 1 Zug 2 entity";
+  Desc = "";
+  Targets = [224];
+  Objects = [];
+  XPos = 59561.834;
+  YPos = 0.000;
+  ZPos = 63409.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 239;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 2";
+  Index = 241;
+  LinkTrId = 242;
+  XPos = 59566.834;
+  YPos = 0.000;
+  ZPos = 63404.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\m13.txt";
+  Model = "graphics\artillery\m13\m13.mgm";
+  Desc = "Central moving  1 m13";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 242;
+  Name = "Abt 1 Ko 1 Zug 2 entity";
+  Desc = "";
+  Targets = [224];
+  Objects = [];
+  XPos = 59566.834;
+  YPos = 0.000;
+  ZPos = 63404.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 241;
+}
+
+MCU_Waypoint
+{
+  Index = 243;
+  Name = "Trigger Waypoint";
+  Desc = "";
+  Targets = [];
+  Objects = [224];
+  XPos = 61050.583;
+  YPos = 0.000;
+  ZPos = 59691.531;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Area = 20;
+  Speed = 0;
+  Priority = 1;
+  GoalType = 0;
+}
+
+MCU_TR_MissionBegin
+{
+  Index = 244;
+  Name = "Translator Mission Begin";
+  Desc = "";
+  Targets = [245];
+  Objects = [];
+  XPos = 61055.583;
+  YPos = 0.000;
+  ZPos = 59696.531;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_Timer
+{
+  Index = 245;
+  Name = "Trigger Timer";
+  Desc = "";
+  Targets = [243,246];
+  Objects = [];
+  XPos = 61060.583;
+  YPos = 0.000;
+  ZPos = 59696.531;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1794;
+}
+
+MCU_CMD_Formation
+{
+  Index = 246;
+  Name = "Command Formation";
+  Desc = "";
+  Targets = [];
+  Objects = [224];
+  XPos = 61065.583;
+  YPos = 0.000;
+  ZPos = 59696.531;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  FormationType = 4;
+  FormationDensity = 0;
+}
+

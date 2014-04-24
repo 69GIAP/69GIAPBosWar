@@ -141,37 +141,39 @@
 														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn1\" class=\"NewBtn1Act\">New Btn 1</a></li>\n";
 														}
 													else {
-														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn1\" class=\"NewBtn1\">New Btn 1</a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtDLTemplateConfirm.php?btn=campStp&sde=campNewBtn1\" class=\"NewBtn1\">Download Columns and Statics to Template</a></li>\n";
 													}
 													if ($sde == 'NewBtn2') {
 														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn2\" class=\"NewBtn2Act\">New Btn 2</a></li>\n";
 														}
 													else {
-														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn2\" class=\"NewBtn2\">New Btn 2</a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtULTemplateConfirm.php?btn=campStp&sde=campNewBtn2\" class=\"NewBtn2\">Upload Columns and Statics from Template</a></li>\n";
 													}
 													if ($sde == 'NewBtn3') {
 														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn3\" class=\"NewBtn3Act\">New Btn 3</a></li>\n";
 														}
 													else {
-														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn3\" class=\"NewBtn3\">New Btn 3</a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtDLPlanningConfirm.php?btn=campStp&sde=campNewBtn3\" class=\"NewBtn3\">Download to Mission Planners</a></li>\n";
 													}
 													if ($sde == 'NewBtn4') {
 														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn4\" class=\"NewBtn4Act\">New Btn 4</a></li>\n";
 														}
 													else {
-														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn4\" class=\"NewBtn4\">New Btn 4</a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtULPlannedConfirm.php?btn=campStp&sde=campNewBtn4\" class=\"NewBtn4\">Upload from Mission Planners</a></li>\n";
 													}
 													if ($sde == 'NewBtn5') {
-														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn5\" class=\"NewBtn5Act\">New Btn 5</a></li>\n";
+#														echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=preMsn&sde=campAf\" class=\"campAirfieldResupplyAct\"><span></span></a></li>\n";
+													echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn5\" class=\"NewBtn5Act\">New Btn 5</a></li>\n";
 														}
 													else {
-														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn5\" class=\"NewBtn5\">New Btn 5</a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=preMsn&sde=campAf\" class=\"campAirfieldResupply\"><span></span></a></li>\n";
+#														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn5\" class=\"NewBtn5\">Allocate Planes to Airfields</a></li>\n";
 													}
 													if ($sde == 'NewBtn6') {
 														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn6\" class=\"NewBtn6Act\">New Btn 6</a></li>\n";
 														}
 													else {
-														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn6\" class=\"NewBtn6\">New Btn 6</a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtDLBuildingConfirm.php?btn=campStp&sde=campNewBtn6\" class=\"NewBtn6\">Download to Mission Building</a></li>\n";
 													}
 													echo "  </ul>\n";
 												}

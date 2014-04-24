@@ -1,0 +1,122 @@
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 1";
+  Index = 1;
+  LinkTrId = 2;
+  XPos = 79360.773;
+  YPos = 0.000;
+  ZPos = 67256.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "10x Feldkanone 96 77mm artillery ";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 2;
+  Name = "Abt 1 Ko 1 Zug 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 79360.773;
+  YPos = 0.000;
+  ZPos = 67256.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 1;
+}
+
+MCU_Waypoint
+{
+  Index = 3;
+  Name = "Abt 1 Ko 1 Zug 1";
+  Desc = "";
+  Targets = [];
+  Objects = [2];
+  XPos = 79410.773;
+  YPos = 0.000;
+  ZPos = 67306.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Area = 20;
+  Speed = 10;
+  Priority = 1;
+  GoalType = 0;
+}
+
+Vehicle
+{
+  Name = "Abt 1 Ko 1 Zug 2";
+  Index = 4;
+  LinkTrId = 5;
+  XPos = 59521.834;
+  YPos = 0.000;
+  ZPos = 63449.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\m13.txt";
+  Model = "graphics\artillery\m13\m13.mgm";
+  Desc = "10x 15cm schweres Feldhaubitze M13 Lang ";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 5;
+  Name = "Abt 1 Ko 1 Zug 2 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 59521.834;
+  YPos = 0.000;
+  ZPos = 63449.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 4;
+}
+
+MCU_Waypoint
+{
+  Index = 6;
+  Name = "Abt 1 Ko 1 Zug 2";
+  Desc = "";
+  Targets = [];
+  Objects = [5];
+  XPos = 59571.834;
+  YPos = 0.000;
+  ZPos = 63499.448;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Area = 20;
+  Speed = 10;
+  Priority = 1;
+  GoalType = 0;
+}
+

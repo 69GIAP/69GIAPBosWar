@@ -42,8 +42,8 @@
 
 				// action determines what we do next
 				if (!isset($_POST['action'])) {
-					echo "<h1>Download Columns</h1>\n";
-					echo "<p>You have defined columns in the BOSWAR campaign manager.  Now you will review these columns, then download them as two separate group files, one for each coalition.</p>\n"; 
+					echo "<h1>Edit Columns</h1>\n";
+					echo "<p>You have defined columns in the BOSWAR campaign manager.  Now you will review these columns.</p>\n"; 
 					echo "<p>If you need to edit a column, select it and then choose \"Edit Column\", otherwise select \"Export Columns to Group Files\"</p>\n";
 
 					echo "<form id=\"campaignMgmtDownloadColumns\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDownloadColumns.php?btn=campStp&sde=campCol\" method=\"post\">\n";
@@ -64,14 +64,14 @@
 					echo "	</fieldset>\n";
 					echo "</form>\n";
 
-					echo "<form id=\"campaignMgmtDownloadColumns\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLColumnsConfirm.php?btn=campStp&sde=campCol\" method=\"post\">\n";
-					
-					// EXPORT BUTTON
-					echo "<fieldset id=\"actions\">\n";	
-					echo "<input type=\"hidden\" name=\"action\" value = \"export\">\n";	
-					echo "		<button type=\"submit\" id=\"downloadColumns\" value ='' >Export Columns to Group Files</button>\n";
-					echo "	</fieldset>\n";
-					echo "</form>\n";
+#					echo "<form id=\"campaignMgmtDownloadColumns\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLColumnsConfirm.php?btn=campStp&sde=campCol\" method=\"post\">\n";
+#					
+#					// EXPORT BUTTON
+#					echo "<fieldset id=\"actions\">\n";	
+#					echo "<input type=\"hidden\" name=\"action\" value = \"export\">\n";	
+#					echo "		<button type=\"submit\" id=\"downloadColumns\" value ='' >Export Columns to Group Files</button>\n";
+#					echo "	</fieldset>\n";
+#					echo "</form>\n";
 				} else {
 					$action = $_POST['action'];
 					if ($action == 'edit') { 

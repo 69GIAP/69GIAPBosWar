@@ -92,6 +92,9 @@ echo "<br />Peter here \$returnpage: $returnpage<br />\n";
 			} elseif ($returnpage == 'CampaignMgmtImport2.php') {
 				echo "			<br />&nbsp;<br />\n";
 				echo "<a href=\"CampaignMgmtImport2.php?btn=campStp\">Next</a>\n";	
+			} elseif ($returnpage == 'CampaignMgmtImport3.php') {
+				echo "			<br />&nbsp;<br />\n";
+				echo "<a href=\"CampaignMgmtImport3.php?btn=campStp\">Next</a>\n";	
 			}
 			else {
 				echo "none of the returnpages were valid<br>";

@@ -38,14 +38,14 @@ CREATE TABLE IF NOT EXISTS `columns` (
   `Description` varchar(80) DEFAULT NULL,
   `ckey` enum('0','101','102','103','104','105','501','502','600','610','620','630','640') DEFAULT NULL,
   `CoalID` enum('1','2') DEFAULT NULL,
-  `Supplypoint` tinyint(1) DEFAULT NULL,
+  `Supplypoint` tinyint(1) DEFAULT 1,
   `Quantity` int(11) NOT NULL DEFAULT '1',
   `XPos` decimal(12,3) DEFAULT 0,
   `ZPos` decimal(12,3) DEFAULT 0,
   `YOri` decimal(5,2) DEFAULT 0,
-  `dest_XPos` decimal(12,3) DEFAULT NULL,
-  `dest_ZPos` decimal(12,3) DEFAULT NULL,
-  `col_speed` int(11) DEFAULT NULL,
+  `dest_XPos` decimal(12,3) DEFAULT 0,
+  `dest_ZPos` decimal(12,3) DEFAULT 0,
+  `col_speed` int(11) DEFAULT 0,
   `col_formation` int(11) NOT NULL DEFAULT '4',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

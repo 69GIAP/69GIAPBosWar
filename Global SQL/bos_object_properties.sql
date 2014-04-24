@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2014 at 11:18 PM
+-- Generation Time: Nov 12, 2013 at 04:47 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `bos`
+-- Database: `boswar_db`
 --
 
 -- --------------------------------------------------------
@@ -40,31 +40,17 @@ CREATE TABLE IF NOT EXISTS `bos_object_properties` (
   `max_speed_kmh` tinyint(3) unsigned DEFAULT NULL,
   `cruise_speed_kmh` tinyint(3) unsigned DEFAULT NULL,
   `range_m` smallint(5) unsigned DEFAULT NULL,
-  `default_country` enum('0','101','201') DEFAULT NULL,
+  `default_country` enum('0','101','102','103','104','105','501','502','600','610','620','630','640') DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `object_type` (`object_type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `bos_object_properties`
 --
 
 INSERT INTO `bos_object_properties` (`id`, `object_type`, `object_class`, `object_value`, `object_desc`, `Model`, `moving_becomes`, `modelpath2`, `modelpath3`, `max_speed_kmh`, `cruise_speed_kmh`, `range_m`, `default_country`) VALUES
-(1, 'Intrinsic', 'DNA', 0, 'Intrinsic', NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(2, 'LaGG-3 ser.29 ', 'PFI', 100, 'LaGG-3 ser.29', 'lagg3s29', NULL, 'planes', 'lagg3s29', NULL, NULL, NULL, ''),
-(3, 'Il-2 mod.1942', 'PFB', 100, 'IL-2 AM 38 (1942)', 'il2m42', NULL, 'planes', 'il2m42', NULL, NULL, NULL, ''),
-(4, 'BotPilot_LaGG3', 'BOT', 0, 'LaGG-3 bot pilot', NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(5, 'Ju 87 D-3', 'PFB', 100, 'Ju 87 D-3', 'ju87d3', NULL, 'planes', 'ju87d3', NULL, NULL, NULL, ''),
-(6, 'Horch 830 ', 'VTR', 50, 'Horch 830 ', NULL, 'horch830', 'vehicles', 'horch830', NULL, NULL, NULL, ''),
-(7, 'BotPilot_Bf109 ', 'BOT', 0, 'Bf109 bot pilot', NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(8, 'BotGunner_Ju87D3 ', 'BOT', 0, 'Ju 87 D-3 bot gunner', NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(9, 'Bf 109 F-4 ', 'PFI', 100, 'Bf 109 F-4 ', 'bf109f4', NULL, 'planes', 'bf109f4', NULL, NULL, NULL, ''),
-(10, 'Turret_Il2m42 ', 'TUR', 0, 'Il-2 mod. 1942 gunner', NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(11, 'Turret_Ju87D3 ', 'TUR', 0, 'Ju 87 D-3 gunner', NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(12, 'BA-64 ', 'T ', 100, 'BA-64', 'BA64', 'BA64', 'vehicles', 'BA64', NULL, NULL, NULL, ''),
-(13, 'Pe-2 ser.87', 'PFI', 100, 'Pe-2 ser. 87', 'pe2s87', NULL, 'planes', 'pe2s87', NULL, NULL, NULL, ''),
-(14, 'Turret_Pe2s87_1 ', 'TUR', 0, 'Pe-2 gunner', NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(15, 'Turret_Pe2s87_2 ', 'TUR', 0, 'Pe-2 gunner', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '');
+(1, 'lagg3', 'PFI', 100, 'LaGG 3 place-holder', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '105');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

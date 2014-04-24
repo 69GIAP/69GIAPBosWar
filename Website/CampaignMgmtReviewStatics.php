@@ -43,7 +43,7 @@
 				// action determines what we do next
 				if (!isset($_POST['action'])) {
 					echo "<h1>Review Static Groups</h1>\n";
-					echo "<p>You have defined static groups in the BOSWAR campaign manager.  Now you will review these groups, then export them as two separate group files, one for each coalition.</p>\n"; 
+					echo "<p>You have defined static groups in the BOSWAR campaign manager.  Now you will review these groups.</p>\n"; 
 					echo "<p>If you need to edit a static group, select it and then choose \"Edit Group\".  Similarly if you want to clone a group, select it and choose \"Clone Group\"otherwise select \"Export Static Groups\"</p>\n";
 
 					echo "<form id=\"campaignMgmtReviewStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
@@ -70,12 +70,12 @@
 					echo "</form>\n";
 
 					echo "<form id=\"campaignMgmtReviewStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
-					// EXPORT GROUP BUTTON
-					echo "<fieldset id=\"actions\">\n";	
-					echo "<input type=\"hidden\" name=\"action\" value = \"export\">\n";	
-					echo "		<button type=\"submit\" id=\"registerSubmit\" value ='' >Export Static Groups</button>\n";
-					echo "	</fieldset>\n";
-					echo "</form>\n";
+#					// EXPORT GROUP BUTTON
+#					echo "<fieldset id=\"actions\">\n";	
+#					echo "<input type=\"hidden\" name=\"action\" value = \"export\">\n";	
+#					echo "		<button type=\"submit\" id=\"registerSubmit\" value ='' >Export Static Groups</button>\n";
+#					echo "	</fieldset>\n";
+#					echo "</form>\n";
 				} else {
 					$action = $_POST['action'];
 					if ($action == 'edit') { 
@@ -157,7 +157,7 @@
 //					    echo "\$pointID: $pointID<br />\n";
 
 					    // clone objects in static
-					    $query2= "SELECT * FROM static where static_Name = '$oldname';";
+					    $query2= "SELECT * FROM statics where static_Name = '$oldname';";
 //					    echo "$query2<br />\n";
 
 						if(!$result = $camp_link->query($query2)){
@@ -167,7 +167,7 @@
 								$static_Model	= $obj->static_Model;
 								$static_Type	= $obj->static_Type;
 								$static_Desc	= $obj->static_Desc;
-								$query3 = "INSERT INTO static 
+								$query3 = "INSERT INTO statics 
 								    (static_Name, static_Model, static_Type, static_Desc,
 								    static_Country, static_coalition, static_supplypoint)
 								    VALUES
@@ -220,7 +220,7 @@
 									$static_coalition	= $obj->static_coalition;
 									$static_supplypoint	= $obj->static_supplypoint;
 
-									$query6 = "INSERT INTO static 
+									$query6 = "INSERT INTO statics 
 									    (static_Name, static_Model, static_Type, static_Desc,
 									    static_Country, static_coalition, static_supplypoint)
 									    VALUES
@@ -279,7 +279,7 @@
 								echo "\$name: $name<br />\n";
 							}
 						}
-						$query9 = "UPDATE static SET static_supplypoint = '$supplypoint' WHERE static_Name = '$name';";
+						$query9 = "UPDATE statics SET static_supplypoint = '$supplypoint' WHERE static_Name = '$name';";
 						if(!$result = $camp_link->query($query9)){
 							die('CampaignMgmtReviewStatics.php query9 error [' . $camp_link->error . ']');
 						} else {
@@ -315,7 +315,7 @@
 							}
 						}
 
-						$query12 = "DELETE FROM static WHERE static_Name = '$name';";
+						$query12 = "DELETE FROM statics WHERE static_Name = '$name';";
 						if(!$result = $camp_link->query($query12)){
 							die('CampaignMgmtReviewStatics.php query12 error [' . $camp_link->error . ']');
 						} else {

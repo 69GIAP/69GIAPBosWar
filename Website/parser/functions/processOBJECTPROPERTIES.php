@@ -3,9 +3,9 @@
 // get object's properties from object_properties
 // called from processLASTHIT and coreOUTPUT
 // =69.GIAP=TUSHKA
-// 2013-2014
-// BOSWAR ver 1.03
-// Apr 21, 2014
+// 2013
+// ver 1.2
+// Oct 28, 2013
 
 function OBJECTPROPERTIES($objecttype) {
    global $camp_link; // link to campaign db
@@ -27,9 +27,9 @@ function OBJECTPROPERTIES($objecttype) {
 				$object_desc = $obj->object_desc;
 			}
 		} elseif ($count > 1) {
-			echo "duplicate $objecttype found in object_properties!<br>\n";
+			echo "duplicate $objecttype found in rof_object_properties!<br>\n";
 		} else { // count must be zero
-			echo "$objecttype not found in object_properties!<br>\n";
+			echo "$objecttype not found in rof_object_properties!<br>\n";
 		}
 		// close result set
 		$result->close();

@@ -43,7 +43,7 @@ function export_columns($CoalID) {
 		}
 	}
 
-	$filename = "$abbrv"."_$_coalitionname"."_columns.Group";
+	$filename = "$abbrv"."_$_coalitionname"."_columns2template.Group";
 	$filename = "$DownloadDir"."$filename";
 	echo "\$filename: $filename<br />\n";
 

@@ -63,9 +63,9 @@ $fh = fopen($filename,'w') or die("Can not open file");
 #
 
 if ($coalition == 'allies')
-{$q = 'SELECT * from static where static_coalition="1"';}
+{$q = 'SELECT * from statics where static_coalition="1"';}
 else
-{$q = 'SELECT * from static where static_coalition="2"';}
+{$q = 'SELECT * from statics where static_coalition="2"';}
 $r = mysqli_query($dbc,$q);
 $num = mysqli_num_rows($r);
 if ($num > 0)
@@ -151,7 +151,7 @@ if ($num > 0)
 	$writestring = '  ZPos = '.number_format($static_ZPos, 3, '.', '').";\r\n";	
 	fwrite($fh,$writestring);
 # here I will write back the x & z to  static	
-	$q1="UPDATE static set static_XPos = $static_XPos where id = $current_rec";
+	$q1="UPDATE statics set static_XPos = $static_XPos where id = $current_rec";
 	$r1= mysqli_query($dbc,$q1);
 	if ($r1)
 	{
@@ -159,7 +159,7 @@ if ($num > 0)
 	}
 	else
 		{echo'<p>'.mysqli_error($dbc).'</p>';} 	
-	$q1="UPDATE static set static_ZPos = $static_ZPos where id = $current_rec";
+	$q1="UPDATE statics set static_ZPos = $static_ZPos where id = $current_rec";
 	$r1= mysqli_query($dbc,$q1);
 	if ($r1)
 	{

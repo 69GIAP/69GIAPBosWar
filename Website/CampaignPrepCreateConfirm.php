@@ -286,7 +286,7 @@ $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.static_groups LIKE sta
 include ('includes/doit.php');
 echo "static_groups created<br />\n";
 
-$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.static LIKE static;";
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.statics LIKE statics;";
 include ('includes/doit.php');
 echo "static created<br />\n";
 

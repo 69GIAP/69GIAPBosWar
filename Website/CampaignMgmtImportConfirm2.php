@@ -35,16 +35,8 @@
 					$file			= 'uploads/'.$_POST["file"];
 					$SaveToDir		= $_POST["SaveToDir"];
 //					$returnpage		= $_POST["returnpage"];
+echo "database is : $loadedCampaign";
 echo "Hello Peter im here in campaign management import confirm 2 about to start reading columns";
-echo '<br>Starting update of static objects flag';
-$q1="UPDATE static set static_updated = 0";
-$r1= mysqli_query($dbc,$q1);
-if ($r1)
-	{echo '<br> update flag updated';}
-else
-	{echo'<p>'.mysqli_error($dbc).'</p>';}
-
-
 # here we go loading columns updates
 
 $count = 0;
@@ -113,7 +105,7 @@ while ( ! feof( $fp ) ) {
 	if ($to_update == 1)
 		{
 		echo '<br> Updating Vehicle or Artillery';
-		$q1="UPDATE columns set YOri = 99 where Name = 'Abt 1 Ko 1 Zug 1'";
+		$q1="UPDATE $loadedCampaign.columns set YOri = $YOri, XPos = $XPos, ZPos = $ZPos where Name = '$current_Name'";
         echo "<br> $q1";
 		$r1= mysqli_query($dbc,$q1);
 		if ($r1)
@@ -130,10 +122,11 @@ fclose($fp);
 # now we update our statics
 # set updated flag to 0 throughout
 echo '<br>Starting update of static objects';
-$q1="UPDATE static set static_updated = 0";
+echo '<br>Starting update of static_updated flag';
+$q1="UPDATE $loadedCampaign.statics set static_updated = 0";
 $r1= mysqli_query($dbc,$q1);
 if ($r1)
-	{echo '<br> update flag updated';}
+	{echo '<br> static flag updated';}
 else
 	{echo'<p>'.mysqli_error($dbc).'</p>';}
 
@@ -182,7 +175,7 @@ while ( ! feof( $fp ) )
 	$current_Name = substr($current_Name,0,-2);
 #	echo '<br> Name is :'.$current_Name.':';
 	}
-	if (($current_Name == "Block") OR ($current_Name == "") OR ($current_Name == "Flag"))
+	if ($current_Name == "") 
 		{
 		$to_update = 0;
 		}
@@ -219,8 +212,8 @@ while ( ! feof( $fp ) )
 	}
 	if ((substr($line,0,1)=='}') && ($to_update == 1))
 	{
-#	echo '<br> Trying to do an update to static';
-			$q1="UPDATE static SET static_XPos = $XPos,static_ZPos = $ZPos,static_YOri = $YOri,static_updated = 1 where static_Name = '$current_Name' AND static_Model = '$Model' AND static_updated = 0 LIMIT 1";
+	echo '<br> Trying to do an update to static';
+			$q1="UPDATE $loadedCampaign.statics SET static_XPos = $XPos,static_ZPos = $ZPos,static_YOri = $YOri,static_updated = 1 where static_Name = '$current_Name' AND static_Model = '$Model' AND static_updated = 0 LIMIT 1";
 			echo '<br> My update select is:'.$q1;
 			$r1= mysqli_query($dbc,$q1);
 			if ($r1)
@@ -250,7 +243,7 @@ fclose($fp);
 						}
 ?>
 						<br />&nbsp;<br />
-<a href="test.php?btn=campStp&sde=campSet&fi=airfields">Next</a>
+<a href="CampaignMgmt.php?btn=campStp">Next</a>
 <?php
 					}
 ?>

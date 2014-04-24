@@ -144,7 +144,7 @@
 							$family = get_family($value);
 							$description = get_objectdescription2($value);
 							for ($k=0; $k <$objnum[$i]; ++$k) {
-								$query = "INSERT INTO static (static_Name, static_Model, static_Type, static_Desc, 
+								$query = "INSERT INTO statics (static_Name, static_Model, static_Type, static_Desc, 
 								static_Country, static_coalition, static_supplypoint)
 								VALUES
 								('$newStaticGroupName', '$value', '$family', '$description', 

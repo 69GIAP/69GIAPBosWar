@@ -5,6 +5,7 @@
 # stenka 17/11/13 rebuilt to match key points
 # tushka Nov 24, 2013 added static_groups.sql
 # stenka 13/12/13 added columns
+# stenka 22/4/14 change of ststic table to statics
 
 drop database boswar_db;
 create database boswar_db;
@@ -42,10 +43,9 @@ source c:/Abyss web server/htdocs/global sql/rof_verdun_locations.sql;
 source c:/Abyss web server/htdocs/global sql/rof_westernfront_locations.sql;
 source c:/Abyss web server/htdocs/global sql/static_groups.sql;
 source c:/Abyss web server/htdocs/global sql/statistics_test.sql;
-source c:/Abyss web server/htdocs/global sql/tabcreate_bridges.sql;
 source c:/Abyss web server/htdocs/global sql/tabcreate_col_10.sql;
 source c:/Abyss web server/htdocs/global sql/tabcreate_Planes_on_field.sql;
-source c:/Abyss web server/htdocs/global sql/tabcreate_static.sql;
+source c:/Abyss web server/htdocs/global sql/tabcreate_statics.sql;
 source c:/Abyss web server/htdocs/global sql/users.sql;
 source c:/Abyss web server/htdocs/global sql/users_roles.sql;
 source c:/Abyss web server/htdocs/global sql/version.sql;

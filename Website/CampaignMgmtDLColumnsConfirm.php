@@ -69,7 +69,9 @@
 					echo "</form>\n";
 				} else {
 					// actually do the downloads
-					echo "The files have been created on the server, you now need to download them to your PC so that you can work on them with the mission editor.<br><br />\n";
+					echo "The files have been created on the server, they will have the abbreviated name for the campaign the coalition and 2template tags. You now need to download them to your PC so that you can work on them with the mission editor or send them by E-Mail. Download destination on your PC may vary depending on what browser you use, it may be in a default download directory or in the last place you saved files to.
+					So have a look and move them if needed to the campaign directory.
+					<br><br />\n";
 					echo "<form id=\"campaignMgmtDLFile\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLFile.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 					$DownloadDir = 'downloads/';
 					print "<select name=\"dlfile\">\n";
