@@ -1,6 +1,7 @@
 
 <?php 
 #Stenka 23/4/14
+#Stenka 26/4/14 debug z position of column
 // Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
 	$dbc = connectBOSWAR();
@@ -140,7 +141,7 @@ else
 	{
 		$fractiontraveled = ($time_availiable/$triptime_min);
 		$dest_XPos = $XPos + ($deltax * $fractiontraveled);
-		$dest_ZPos = $ZPos + ($deltax * $fractiontraveled);
+		$dest_ZPos = $ZPos + ($deltaz * $fractiontraveled);
 	}
 # if vehicle destination is not greater than ground spacing *20  set to static and Destination = start
 	if ($tripdistance < ($ground_spacing*20))
