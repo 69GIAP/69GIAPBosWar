@@ -121,7 +121,7 @@ else
 		echo '<br>Speed of column is : '.$cruise_speed_kmh;
 # for a train make sure indicated waypoint is not changed
 if ($modelpath2 == "trains")
-	{$speed_of_column = 9999);}
+	{$speed_of_column = 9999;}
 	#end of working out speed
 	$col_moving = $row['Moving'];
 	$col_qty = $row['Quantity'];
@@ -1309,7 +1309,7 @@ if ($num > 0)
 	}
 }
 # this is the end of the do while loop
-$result->free();
+#$result->free();
 // end export of statics
 
 // start download of moving columns
@@ -1434,8 +1434,9 @@ if ($num > 0)
 			fwrite($fh,$writestring);		
 			$writestring = '  Country = '.$col_Country.';'."\r\n";
 			fwrite($fh,$writestring);
-			$writestring = '  NumberInFormation = 0;'."\r\n";
-			fwrite($fh,$writestring);
+			if ($modelpath2 != 'trains')
+			{$writestring = '  NumberInFormation = 0;'."\r\n";
+			fwrite($fh,$writestring);}
 			$writestring = '  Vulnerable = 1;'."\r\n";
 			fwrite($fh,$writestring);
 			$writestring = '  Engageable = 1;'."\r\n";
@@ -1740,7 +1741,10 @@ $list_of_mcus ="";
 # start a while loop that will carry on till qty of vehicles is 0
 	while ($col_qty > 0)
 		{
-		$writestring="Vehicle\r\n";
+		if ($modelpath2 == "trains")
+		{$writestring="Train\r\n";}
+		else
+		{$writestring="Vehicle\r\n";}
 		fwrite($fh,$writestring);		
 		$writestring="{\r\n";
 		fwrite($fh,$writestring);
@@ -1785,8 +1789,9 @@ $list_of_mcus ="";
 		fwrite($fh,$writestring);		
 		$writestring = '  Country = '.$col_Country.';'."\r\n";
 		fwrite($fh,$writestring);
-		$writestring = '  NumberInFormation = 0;'."\r\n";
-		fwrite($fh,$writestring);
+		if ($modelpath2 != 'trains')
+		{$writestring = '  NumberInFormation = 0;'."\r\n";
+		fwrite($fh,$writestring);}
 		$writestring = '  Vulnerable = 1;'."\r\n";
 		fwrite($fh,$writestring);
 		$writestring = '  Engageable = 1;'."\r\n";
@@ -1800,7 +1805,34 @@ $list_of_mcus ="";
 		$writestring = '  DamageThreshold = 1;'."\r\n";				
 		fwrite($fh,$writestring);			
 		$writestring = '  DeleteAfterDeath = 1;'."\r\n";				
-		fwrite($fh,$writestring);	
+		fwrite($fh,$writestring);
+			# carriages write sequence
+			if ($modelpath2 == 'trains')
+			{
+				# make sure train column is only one train
+				$col_qty = 0;
+				# need to find if carriages exist	
+				$q9 = 'SELECT * from trains where Name = "standard"';
+				$r9 = mysqli_query($camp_link,$q9);
+				$num9 = mysqli_num_rows($r);
+				if ($num9 > 0)
+				{
+					# this one has carriages
+					$writestring = '  Carriages'."\r\n";
+					fwrite($fh,$writestring);
+					$writestring = '  {'."\r\n";
+					fwrite($fh,$writestring);
+					while ($row = mysqli_fetch_array($r9,MYSQLI_ASSOC))
+					{
+						$carriage = $row['Model'];
+						$writestring = '    "LuaScripts\\WorldObjects\\Trains\\'.$carriage.'.txt"'."\r\n";
+						fwrite($fh,$writestring);
+					}
+					$writestring = '  }'."\r\n";				
+					fwrite($fh,$writestring);
+				}
+			}
+		
 		$writestring = '}'."\r\n";	
 		fwrite($fh,$writestring);
 		$writestring = ''."\r\n";	
