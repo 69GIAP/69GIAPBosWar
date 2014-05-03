@@ -10,6 +10,7 @@
 // Stenka 23/12/13 extension of clean to campaign name
 // Tushka Christmas eve, permit apostrophy in campaign name (not db name)
 // Stenka 6/1/14 removal of planes_on_field table superceded by airfields_model
+// Stenka 1/5/14 addition of trains table which manages adding carriages to a moving train type column
 
 // Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
@@ -293,6 +294,16 @@ echo "static created<br />\n";
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.bridges LIKE bridges;";
 include ('includes/doit.php');
 echo "bridges created<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.trains LIKE trains;";
+include ('includes/doit.php');
+echo "bridges created<br />\n";
+# addition of a standard train configuration
+$query = "INSERT INTO `$newCampaignDBName`.trains(Name, Model) ";
+$query .= "VALUES ('standard', 'g8t'),('standard', 'pass'),('standard', 'pass'),('standard', 'pass'),('standard', 'tankb'),('standard', 'tankb'),('standard', 'tankb'),('standard', 'boxnb'),('standard', 'boxnb'),('standard', 'boxnb'),('standard', 'boxb');";
+include ('includes/doit.php');
+echo "master campaign_settings updated<br />\n";
+
 
 #$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.planes_on_field LIKE planes_on_field;";
 #include ('includes/doit.php');

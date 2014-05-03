@@ -6,6 +6,7 @@
 # tushka Nov 24, 2013 added static_groups.sql
 # stenka 13/12/13 added columns
 # stenka 22/4/14 change of ststic table to statics
+# stenka 27/4/14 add trains
 
 drop database boswar_db;
 create database boswar_db;
@@ -49,6 +50,7 @@ source c:/Abyss web server/htdocs/global sql/tabcreate_statics.sql;
 source c:/Abyss web server/htdocs/global sql/users.sql;
 source c:/Abyss web server/htdocs/global sql/users_roles.sql;
 source c:/Abyss web server/htdocs/global sql/version.sql;
+source c:/Abyss web server/htdocs/global sql/trains.sql;
 show databases;
 
 

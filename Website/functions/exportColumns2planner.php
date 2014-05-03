@@ -6,6 +6,7 @@
 // BOSWAR version 1.03
 // Dec 5, 2013
 #stenka 23/4/14 conversion of export_columns code
+#stenka 1/5/14 addition of trains
 function export_columns2planner($CoalID) {
 
 	global $camp_link;
@@ -81,12 +82,36 @@ function export_columns2planner($CoalID) {
 			$col_ZPos = $row['ZPos'];
 			$col_XPos = $row['XPos'];
 			$col_speed = $row['col_speed'];
-
+			// get model path
+			$col_Model = rtrim($col_Model);
+			$query3 = "SELECT * from object_properties where Model = '$col_Model'LIMIT 1";
+			if(!$result3 = $camp_link->query($query3)) {
+				echo "$query3<br />\n";
+				die('exportColumns query2 error [' . $camp_link->error . ']');
+			}
+			$result3 = $camp_link->query($query3);
+			$r3_data = $result3->fetch_row();
+			if ($r3_data[0]) {
+				echo "Model found is ".$r3_data[6]."<br />\n";
+				echo "modelpath2 is ".$r3_data[8]."<br />\n";
+				$modelpath2 = $r3_data[8];
+				echo "modelpath3 is ".$r3_data[9]."<br />\n";
+				$modelpath3 = $r3_data[9];
+			} else {
+				echo'<p>'.mysqli_error($camp_link).'</p>';
+			}
 			echo "\$current_rec: $current_rec<br />\n";
 			echo "\$Supplypoint: $Supplypoint<br />\n";
 
 			// here is where we start writing a record
+			if ($modelpath2 == "trains")
+			{
+			$writestring="Train\r\n";
+			}
+			else
+			{
 			$writestring="Vehicle\r\n";
+			}
 			fwrite($fh,$writestring);
 			$writestring="{\r\n";
 			fwrite($fh,$writestring);
@@ -143,24 +168,7 @@ function export_columns2planner($CoalID) {
 			$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($col_Model).'.txt";'."\r\n";
 			fwrite($fh,$writestring);
 
-			// get model path
-			$col_Model = rtrim($col_Model);
-			$query3 = "SELECT * from object_properties where Model = '$col_Model'LIMIT 1";
-			if(!$result3 = $camp_link->query($query3)) {
-				echo "$query3<br />\n";
-				die('exportColumns query2 error [' . $camp_link->error . ']');
-			}
-			$result3 = $camp_link->query($query3);
-			$r3_data = $result3->fetch_row();
-			if ($r3_data[0]) {
-				echo "Model found is ".$r3_data[6]."<br />\n";
-				echo "modelpath2 is ".$r3_data[8]."<br />\n";
-				$modelpath2 = $r3_data[8];
-				echo "modelpath3 is ".$r3_data[9]."<br />\n";
-				$modelpath3 = $r3_data[9];
-			} else {
-				echo'<p>'.mysqli_error($camp_link).'</p>';
-			}
+
 			$writestring = '  Model = "graphics'."\\"."$modelpath2"."\\"."$modelpath3"."\\".rtrim($col_Model).'.mgm";'."\r\n";
 			fwrite($fh,$writestring);
 			$writestring = '  Desc = "'."$Description ";
@@ -168,9 +176,11 @@ function export_columns2planner($CoalID) {
 			fwrite($fh,$writestring);
 			$writestring = '  Country = '.$col_Country.';'."\r\n";
 			fwrite($fh,$writestring);
+			if ($modelpath2 != "trains")
+			{
 			$writestring = '  NumberInFormation = 0;'."\r\n";
 			fwrite($fh,$writestring);
-
+			}
 			$writestring = '  Vulnerable = 1;'."\r\n";
 			fwrite($fh,$writestring);
 			$writestring = '  Engageable = 1;'."\r\n";

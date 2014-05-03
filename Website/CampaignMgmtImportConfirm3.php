@@ -43,11 +43,49 @@ $count = 0;
 $current_object = "Unknown";
 $current_Name = "Unknown";
 $to_update = 0;
+$XPos = "";
+$ZPos = "";
+$YOri = "";
+$trainXPos = "";
+$trainZPos = "";
+$trainYOri = "";
+
 echo '<br>Filename is :'.$file;
 $fp = fopen( $file, "r" ) or die("Couldn't open $file");
 while ( ! feof( $fp ) ) {
 	$line = fgets( $fp, 1024 );
 #	print "$line<br>";
+# sequence added to handle setting start position of train on tracks
+	if (substr($line,0,5) == 'Train')
+	{
+	$current_object = 'Train';
+	$to_update = 1;
+if ((substr($line,0,9)=="  XPos = ") and ($current_object == 'Train'))
+	{
+	$trainXPos = substr($line,9,50);
+	$trainXPos = rtrim(train$XPos);
+	$trainXPos = substr($trainXPos,0,-1);
+	$trainXPos = floatval($trainXPos);
+
+	#	echo '<br> Xpos is :'.$XPos;
+	}
+	if ((substr($line,0,9)=="  ZPos = ") and ($current_object == 'Train'))
+	{
+	$trainZPos = substr($line,9,50);
+	$trainZPos = rtrim($trainZPos);
+	$trainZPos = substr($trainZPos,0,-1);
+	$trainZPos = floatval($trainZPos);
+#	echo '<br> ZPos is :'.$ZPos;
+	}
+	if ((substr($line,0,9)=="  YOri = ") and ($current_object == 'Train'))
+	{
+	$trainYOri = substr($line,9,50);
+	$trainYOri = rtrim($trainYOri);
+	$trainYOri = substr($trainYOri,0,-1);
+	$trainYOri = floatval($trainYOri);
+	}
+
+#
 	if (substr($line,0,12) == 'MCU_Waypoint')
 	{
 	$to_update = 1;
@@ -87,7 +125,14 @@ while ( ! feof( $fp ) ) {
 	if ($to_update == 1)
 		{
 		echo '<br> Column destination';
+		if ($current_object == 'Train')
+		{
+		$q1="UPDATE $loadedCampaign.columns set XPos = $trainXPos, ZPos = $trainZPos, YOri = $trainYOri where Name = '$current_Name' LIMIT 1";
+		}
+		else
+		{
 		$q1="UPDATE $loadedCampaign.columns set dest_XPos = $XPos, dest_ZPos = $ZPos where Name = '$current_Name' LIMIT 1";
+		}
         echo "<br> $q1";
 		$r1= mysqli_query($dbc,$q1);
 		if ($r1)

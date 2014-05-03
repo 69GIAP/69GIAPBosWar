@@ -33,7 +33,13 @@
 
 				echo "<h1>Create a Column</h1>\n";
 					
-				echo "<p>Ground forces are supplied and resupplied by means of columns which are placed in Supply Points.</p>\n"; 
+				echo "<p>Ground forces are supplied and resupplied by means of columns which are placed in Supply Points.</p>\n";
+				echo "<p>A column will be made up of either vehicles which have their own motive power, 
+				artillery which when it is moving is loaded into trucks or trains which have their own motive power.</p>\n";
+				echo "<p>Special note on trains: A train is in effect a special column in its own right made up of carriages. For this reason the quantity 
+				of a train column should always be 1. If you set the quantity higher it will be ignored. At the moment we allocate a train a standard set of carriages 
+				you will in the future be able to define a different set of carriages for each train. Planning movement of a train is slightly different from other vehicles 
+				in that you must carefully position the train on the railway tracks and place the destination waypoint on the tracks at a point that can be reached across the railway junctions inbetween.</p>\n";
 				if ($sim == 'RoF') {
 				echo "<p>In Rise of Flight the ground forces are French or German by default.  You can, of course, edit the campaign's object_properties table to give other assignments.<p>\n"; 
 				} else {

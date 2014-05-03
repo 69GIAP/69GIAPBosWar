@@ -119,6 +119,9 @@ if ($speed > $cruise_speed_kmh)
 else
 	{$speed_of_column = $speed;}
 		echo '<br>Speed of column is : '.$cruise_speed_kmh;
+# for a train make sure indicated waypoint is not changed
+if ($modelpath2 == "trains")
+	{$speed_of_column = 9999);}
 	#end of working out speed
 	$col_moving = $row['Moving'];
 	$col_qty = $row['Quantity'];
@@ -568,6 +571,7 @@ if ($num > 0)
 $result->free();
 echo "$num Airfield records processed<br />\n";
 // end of exporting airfields
+
 // start of export of statics
 # now we write the static vehicles
 # set update flags to 0
@@ -1305,9 +1309,11 @@ if ($num > 0)
 	}
 }
 # this is the end of the do while loop
-#$result->free();
+$result->free();
 // end export of statics
+
 // start download of moving columns
+###########################################################################################
 $q = 'SELECT * from columns where Moving = "1"';
 $r = mysqli_query($camp_link,$q);
 $num = mysqli_num_rows($r);
@@ -1316,31 +1322,30 @@ if ($num > 0)
 	echo '<br>Moving columns in mission table';
 	while ($row = mysqli_fetch_array($r,MYSQLI_ASSOC))
 	{
-	echo '<br>'.$row['id'].'|'.$row['Name'].$row['ckey'];
-	$current_rec = $row['id'];
-	$current_Name = $row['Name'];
-	$col_coalition = $row['CoalID'];
-	$col_YOri = $row['YOri'];
-	$col_Model = $row['Model'];
-	$col_moving = $row['Moving'];
-	$col_qty = $row['Quantity'];
-	$col_Country = $row['ckey'];
-	$col_XPos = $row['XPos'];
-	$col_ZPos = $row['ZPos'];	
-	$col_dest_XPos = $row['dest_XPos'];
-	$col_dest_ZPos = $row['dest_ZPos'];
-	$col_formation = $row['col_formation'];
-# need to save lead vehicle index number here
-	$lead_veh_indexno = $index_no;
-	$lead_mcu= ($index_no+1);
-	$lead=1;
-#	
-	echo '<br>col moving is '.$col_moving;
-# we need to collect the Vehicle information from the Vehicle Table
-	$q2="SELECT * from object_properties WHERE Model = ('$col_Model')";
-	$r2=mysqli_query($camp_link,$q2);
-	$r2_data = mysqli_fetch_row($r2);
-	if ($r2_data[0]) 
+		echo '<br>'.$row['id'].'|'.$row['Name'].$row['ckey'];
+		$current_rec = $row['id'];
+		$current_Name = $row['Name'];
+		$col_coalition = $row['CoalID'];
+		$col_YOri = $row['YOri'];
+		$col_Model = $row['Model'];
+		$col_moving = $row['Moving'];
+		$col_qty = $row['Quantity'];
+		$col_Country = $row['ckey'];
+		$col_XPos = $row['XPos'];
+		$col_ZPos = $row['ZPos'];	
+		$col_dest_XPos = $row['dest_XPos'];
+		$col_dest_ZPos = $row['dest_ZPos'];
+		$col_formation = $row['col_formation'];
+		# need to save lead vehicle index number here
+		$lead_veh_indexno = $index_no;
+		$lead_mcu= ($index_no+1);
+		$lead=1;
+		echo '<br>col moving is '.$col_moving;
+		# we need to collect the Vehicle information from the Vehicle Table
+		$q2="SELECT * from object_properties WHERE Model = ('$col_Model')";
+		$r2=mysqli_query($camp_link,$q2);
+		$r2_data = mysqli_fetch_row($r2);
+		if ($r2_data[0]) 
 		{
 			$Model = $r2_data[6];
 			$moving_becomes = $r2_data[7];
@@ -1350,94 +1355,128 @@ if ($num > 0)
 			$cruise_speed_kmh = $r2_data[11];
 			$range_m = $r2_data[12];			
 		}	
-	else
-		{echo'<p>'.mysqli_error($dbc).'</p>';}
-	if ($Model == $moving_becomes)
-	{
-	echo '<br>This is a vehicle capable of moving';
-	}
-	else
-	{	
-	echo '<br>This is artillery must be loaded into vehicle';
-	$q3="SELECT * from object_properties WHERE Model = ('$moving_becomes')";
-	$r3=mysqli_query($camp_link,$q3);
-	$r3_data = mysqli_fetch_row($r3);
-	if ($r3_data[0]) 
-		{
-			$Model = $r3_data[6];
-			$modelpath2 = $r3_data[8];
-			$modelpath3 = $r3_data[9];
-			$max_speed_kmh = $r3_data[10];
-			$cruise_speed_kmh = $r3_data[11];
-			$range_m = $r3_data[12];			
-		}	
-	else
-		{echo'<p>'.mysqli_error($dbc).'</p>';}
-	}
-# here is where we start writing a record to group file
-# start a while loop that will carry on till qty of vehicles is 0
-	while ($col_qty > 0)
-		{
-		$writestring="Vehicle\r\n";
-		fwrite($fh,$writestring);		
-		$writestring="{\r\n";
-		fwrite($fh,$writestring);
-		$writestring = '  Name = "'.$current_Name.'";'."\r\n";
-		fwrite($fh,$writestring);	
-		$writestring = '  Index = '.$index_no.";\r\n";	
-		fwrite($fh,$writestring);
-		$index_no=($index_no+1);
-		$writestring = '  LinkTrId = '.($index_no).";\r\n";	
-		fwrite($fh,$writestring);
-		$writestring = '  XPos = '.number_format($col_XPos, 3, '.', '').";\r\n";	
-		fwrite($fh,$writestring);
-		$writestring = '  YPos = 0.000;'."\r\n";	
-		fwrite($fh,$writestring);
-		$writestring = '  ZPos = '.number_format($col_ZPos, 3, '.', '').";\r\n";	
-		fwrite($fh,$writestring);
-		$writestring = '  XOri = 0.00;'."\r\n";	
-		fwrite($fh,$writestring);
-		$writestring = '  YOri = '.$col_YOri.';'."\r\n";
-		fwrite($fh,$writestring);	
-		$writestring = '  ZOri = 0.00;'."\r\n";	
-		fwrite($fh,$writestring);
-		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($Model).'.txt";'."\r\n";	
-		fwrite($fh,$writestring);
-		$writestring = '  Model = "graphics'."\\"."$modelpath2\\"."$modelpath3"."\\"."$Model".'.mgm";'."\r\n";	
-		fwrite($fh,$writestring);
-		$writestring = '  Desc = "';
-		if ($col_coalition == '1')
-			{$writestring = $writestring.'Allied ';}
 		else
-			{$writestring = $writestring.'Central ';}
-		IF ($col_moving == "1")
+		{echo'<p>'.mysqli_error($dbc).'</p>';}
+		if ($Model == $moving_becomes)
 		{
-			$writestring = $writestring.'moving  ';
+			echo '<br>This is a vehicle capable of moving';
 		}
 		else
-		{
-			$writestring = $writestring.'static ';
+		{	
+			echo '<br>This is artillery must be loaded into vehicle';
+			$q3="SELECT * from object_properties WHERE Model = ('$moving_becomes')";
+			$r3=mysqli_query($camp_link,$q3);
+			$r3_data = mysqli_fetch_row($r3);
+			if ($r3_data[0]) 
+			{
+				$Model = $r3_data[6];
+				$modelpath2 = $r3_data[8];
+				$modelpath3 = $r3_data[9];
+				$max_speed_kmh = $r3_data[10];
+				$cruise_speed_kmh = $r3_data[11];
+				$range_m = $r3_data[12];			
+			}	
+			else
+			{echo'<p>'.mysqli_error($dbc).'</p>';}
 		}
-		$writestring = $writestring.$col_qty.' '.rtrim($col_Model).'";'."\r\n";
-		fwrite($fh,$writestring);		
-		$writestring = '  Country = '.$col_Country.';'."\r\n";
-		fwrite($fh,$writestring);
-		$writestring = '  NumberInFormation = 0;'."\r\n";
-		fwrite($fh,$writestring);
-		$writestring = '  Vulnerable = 1;'."\r\n";
-		fwrite($fh,$writestring);
-		$writestring = '  Engageable = 1;'."\r\n";
-		fwrite($fh,$writestring);
-		$writestring = '  LimitAmmo = 1;'."\r\n";
-		fwrite($fh,$writestring);
-		$writestring = '  AILevel = '.$ground_ai_level.';'."\r\n";		
-		fwrite($fh,$writestring);	
-		$writestring = '  DamageReport = 50;'."\r\n";		
-		fwrite($fh,$writestring);
-		$writestring = '  DamageThreshold = 1;'."\r\n";				
-		fwrite($fh,$writestring);			
-		$writestring = '  DeleteAfterDeath = 1;'."\r\n";				
-		fwrite($fh,$writestring);	
+		# here is where we start writing a record to group file
+		# start a while loop that will carry on till qty of vehicles is 0
+		while ($col_qty > 0)
+		{
+			if ($modelpath2 == 'trains')
+			{
+				$writestring="Train\r\n";		
+			}
+			else
+			{
+				$writestring="Vehicle\r\n";
+			}
+			fwrite($fh,$writestring);		
+			$writestring="{\r\n";
+			fwrite($fh,$writestring);
+			$writestring = '  Name = "'.$current_Name.'";'."\r\n";
+			fwrite($fh,$writestring);	
+			$writestring = '  Index = '.$index_no.";\r\n";	
+			fwrite($fh,$writestring);
+			$index_no=($index_no+1);
+			$writestring = '  LinkTrId = '.($index_no).";\r\n";	
+			fwrite($fh,$writestring);
+			$writestring = '  XPos = '.number_format($col_XPos, 3, '.', '').";\r\n";	
+			fwrite($fh,$writestring);
+			$writestring = '  YPos = 0.000;'."\r\n";	
+			fwrite($fh,$writestring);
+			$writestring = '  ZPos = '.number_format($col_ZPos, 3, '.', '').";\r\n";	
+			fwrite($fh,$writestring);
+			$writestring = '  XOri = 0.00;'."\r\n";	
+			fwrite($fh,$writestring);
+			$writestring = '  YOri = '.$col_YOri.';'."\r\n";
+			fwrite($fh,$writestring);	
+			$writestring = '  ZOri = 0.00;'."\r\n";	
+			fwrite($fh,$writestring);
+			$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($Model).'.txt";'."\r\n";	
+			fwrite($fh,$writestring);
+			$writestring = '  Model = "graphics'."\\"."$modelpath2\\"."$modelpath3"."\\"."$Model".'.mgm";'."\r\n";	
+			fwrite($fh,$writestring);
+			$writestring = '  Desc = "';
+			if ($col_coalition == '1')
+				{$writestring = $writestring.'Allied ';}
+			else
+				{$writestring = $writestring.'Central ';}
+			IF ($col_moving == "1")
+			{
+				$writestring = $writestring.'moving  ';
+			}
+			else
+			{
+				$writestring = $writestring.'static ';
+			}
+			$writestring = $writestring.$col_qty.' '.rtrim($col_Model).'";'."\r\n";
+			fwrite($fh,$writestring);		
+			$writestring = '  Country = '.$col_Country.';'."\r\n";
+			fwrite($fh,$writestring);
+			$writestring = '  NumberInFormation = 0;'."\r\n";
+			fwrite($fh,$writestring);
+			$writestring = '  Vulnerable = 1;'."\r\n";
+			fwrite($fh,$writestring);
+			$writestring = '  Engageable = 1;'."\r\n";
+			fwrite($fh,$writestring);
+			$writestring = '  LimitAmmo = 1;'."\r\n";
+			fwrite($fh,$writestring);
+			$writestring = '  AILevel = '.$ground_ai_level.';'."\r\n";		
+			fwrite($fh,$writestring);	
+			$writestring = '  DamageReport = 50;'."\r\n";		
+			fwrite($fh,$writestring);
+			$writestring = '  DamageThreshold = 1;'."\r\n";				
+			fwrite($fh,$writestring);			
+			$writestring = '  DeleteAfterDeath = 1;'."\r\n";				
+			fwrite($fh,$writestring);
+			# carriages write sequence
+			if ($modelpath2 == 'trains')
+			{
+				# make sure train column is only one train
+				$col_qty = 0;
+				# need to find if carriages exist	
+				$q9 = 'SELECT * from trains where Name = "standard"';
+				$r9 = mysqli_query($camp_link,$q9);
+				$num9 = mysqli_num_rows($r);
+				if ($num9 > 0)
+				{
+					# this one has carriages
+					$writestring = '  Carriages'."\r\n";
+					fwrite($fh,$writestring);
+					$writestring = '  {'."\r\n";
+					fwrite($fh,$writestring);
+					while ($row = mysqli_fetch_array($r9,MYSQLI_ASSOC))
+					{
+						$carriage = $row['Model'];
+						$writestring = '    "LuaScripts\\WorldObjects\\Trains\\'.$carriage.'.txt"'."\r\n";
+						fwrite($fh,$writestring);
+					}
+					$writestring = '  }'."\r\n";				
+					fwrite($fh,$writestring);
+				}
+			}
+
 		$writestring = '}'."\r\n";	
 		fwrite($fh,$writestring);
 		$writestring = ''."\r\n";	
@@ -1605,7 +1644,9 @@ if ($num > 0)
 	$writestring = ''."\r\n";	
 	fwrite($fh,$writestring);
 	$index_no=($index_no+1);
-# end of timer start of formation
+# end of timer start of formation (not needeed if  a train)
+	if ($modelpath2 != 'trains')
+	{
 	$writestring = 'MCU_CMD_Formation'."\r\n";	
 	fwrite($fh,$writestring);
 	$writestring = '{'."\r\n";	
@@ -1644,9 +1685,11 @@ if ($num > 0)
 	fwrite($fh,$writestring);
 	$index_no=($index_no+1);
 	}
+	}
 }
 # this is the end of the do while loop	
 // end download of moving columns
+RETURN;
 // start download of static columns
 $q = 'SELECT * from columns where Moving = "0"';
 $r = mysqli_query($camp_link,$q);

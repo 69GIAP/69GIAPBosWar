@@ -2933,7 +2933,7 @@ MCU_Timer
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
-  Time = 386;
+  Time = 1332;
 }
 
 MCU_CMD_Formation
@@ -3421,7 +3421,7 @@ MCU_Timer
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
-  Time = 682;
+  Time = 1747;
 }
 
 MCU_CMD_Formation
@@ -3909,7 +3909,7 @@ MCU_Timer
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
-  Time = 409;
+  Time = 279;
 }
 
 MCU_CMD_Formation
@@ -4397,7 +4397,7 @@ MCU_Timer
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
-  Time = 245;
+  Time = 695;
 }
 
 MCU_CMD_Formation
@@ -4885,7 +4885,7 @@ MCU_Timer
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
-  Time = 1794;
+  Time = 850;
 }
 
 MCU_CMD_Formation
@@ -4905,3 +4905,205 @@ MCU_CMD_Formation
   FormationDensity = 0;
 }
 
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 4";
+  Index = 247;
+  LinkTrId = 248;
+  XPos = 0.000;
+  YPos = 0.000;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\g8.txt";
+  Model = "graphics\trains\g8\g8.mgm";
+  Desc = "Allied static 1 g8";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 248;
+  Name = "Bat 1 Co 1 Pl 4 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 0.000;
+  YPos = 0.000;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 247;
+}
+
+MCU_Activate
+{
+  Index = 249;
+  Name = "Trigger Activate";
+  Desc = "";
+  Targets = [250];
+  Objects = [248];
+  XPos = 13.000;
+  YPos = 0.000;
+  ZPos = -13.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Deactivate
+{
+  Index = 250;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [251];
+  Objects = [248];
+  XPos = 18.000;
+  YPos = 0.000;
+  ZPos = -13.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 251;
+  Name = "Trigger Timer";
+  Desc = "";
+  Targets = [250];
+  Objects = [];
+  XPos = 10.000;
+  YPos = 0.000;
+  ZPos = 5.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 900;
+}
+
+MCU_TR_ComplexTrigger
+{
+  Index = 252;
+  Name = "Translator Complex Trigger";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 15.000;
+  YPos = 0.000;
+  ZPos = 5.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  Enabled = 1;
+  Cylinder = 0;
+  Radius = 500;
+  DamageThreshold = 1;
+  DamageReport = 50;
+  CheckEntities = 1;
+  CheckVehicles = 1;
+  EventsFilterSpawned = 0;
+  EventsFilterEnteredSimple = 0;
+  EventsFilterEnteredAlive = 1;
+  EventsFilterLeftSimple = 0;
+  EventsFilterLeftAlive = 0;
+  EventsFilterFinishedSimple = 0;
+  EventsFilterFinishedAlive = 0;
+  EventsFilterStationaryAndAlive = 1;
+  EventsFilterFinishedStationaryAndAlive = 0;
+  EventsFilterTookOff = 0;
+  EventsFilterDamaged = 0;
+  EventsFilterCriticallyDamaged = 0;
+  EventsFilterRepaired = 0;
+  EventsFilterKilled = 0;
+  EventsFilterDropedBombs = 0;
+  EventsFilterFiredFlare = 0;
+  Country = 501;
+  Country = 502;
+  OnEvents
+  {
+    OnEvent
+    {
+      Type = 59;
+      TarId = 249;
+    }
+    OnEvent
+    {
+      Type = 64;
+      TarId = 249;
+    }
+    OnEvent
+    {
+      Type = 59;
+      TarId = 251;
+    }
+    OnEvent
+    {
+      Type = 59;
+      TarId = 251;
+    }
+  }
+}
+MCU_TR_ComplexTrigger
+{
+  Index = 253;
+  Name = "Translator Complex Trigger";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 15.000;
+  YPos = 0.000;
+  ZPos = 5.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  Enabled = 1;
+  Cylinder = 1;
+  Radius = 5000;
+  DamageThreshold = 1;
+  DamageReport = 50;
+  CheckEntities = 1;
+  CheckVehicles = 0;
+  EventsFilterSpawned = 0;
+  EventsFilterEnteredSimple = 0;
+  EventsFilterEnteredAlive = 1;
+  EventsFilterLeftSimple = 0;
+  EventsFilterLeftAlive = 0;
+  EventsFilterFinishedSimple = 0;
+  EventsFilterFinishedAlive = 0;
+  EventsFilterStationaryAndAlive = 0;
+  EventsFilterFinishedStationaryAndAlive = 0;
+  EventsFilterTookOff = 0;
+  EventsFilterDamaged = 0;
+  EventsFilterCriticallyDamaged = 0;
+  EventsFilterRepaired = 0;
+  EventsFilterKilled = 0;
+  EventsFilterDropedBombs = 0;
+  EventsFilterFiredFlare = 0;
+  OnEvents
+  {
+    OnEvent
+    {
+      Type = 59;
+      TarId = 249;
+    }
+    OnEvent
+    {
+      Type = 59;
+      TarId = 251;
+    }
+  }
+}

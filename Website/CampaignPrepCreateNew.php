@@ -53,7 +53,7 @@ $count = $dbc->query("SELECT COUNT(camp_user) FROM campaign_settings;");
 						echo "		<input type=\"text\" name=\"newCampaignDatabasePassword\" id=\"password\" placeholder=\"Please enter the campaign users password.\" value='' size=\"24\" maxlength=\"50\" />\n";
 					}
 					else {
-						echo "<h3>Either Create New Campaign User</h3>\n";
+						echo "<h3>Either Create New Database User</h3>\n";
 						# NEW CAMPAIGN DATABASE USER
 						echo "		<input type=\"text\" name=\"newCampaignDatabaseUser\" id=\"username\" placeholder=\"Please enter the campaign DB user.\" value='' size=\"24\" maxlength=\"50\" />\n";	
 						# NEW CAMPAIGN DATABASE PASSWORD
@@ -71,7 +71,7 @@ $count = $dbc->query("SELECT COUNT(camp_user) FROM campaign_settings;");
 						
 						if ($result = $dbc->query($query)) {				
 							echo "<select id = \"username\" name = \"existing\">\n";
-							echo "<option value=\"\" selected>Select existing campaign user </option>\n";	
+							echo "<option value=\"\" selected>Select existing database user </option>\n";	
 							/* fetch result array */
 							while ($obj = $result->fetch_object()) {
 								$host	= ($obj->camp_host);

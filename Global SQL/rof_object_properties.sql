@@ -6,6 +6,7 @@
 -- Generation Time: Jan 08, 2014 at 02:59 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
+-- Stenka 27/4/14 added speed to g8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -195,7 +196,7 @@ INSERT INTO `rof_object_properties` (`id`, `family`, `object_type`, `object_clas
 (141, 'Plane', 'Sopwith Strutter B', 'PRE', 100, 'Sopwith Strutter B', 'sopstrb', 'sopstrb', 'planes', 'sopstrb', NULL, NULL, NULL, '102', '0000-00-00'),
 (142, 'Plane', 'Brandenburg W12', 'PSE', 200, 'Brandenburg W12', 'brandw12', 'brandw12', 'planes', 'brandw12', NULL, NULL, NULL, '501', '0000-00-00'),
 (143, 'Plane', 'Felixstowe F2A', 'PSE', 200, 'Felixstowe F2A', 'felixf2a', 'felixf2a', 'planes', 'felixf2a', NULL, NULL, NULL, '102', '0000-00-00'),
-(144, 'Train', 'G8', 'RLO', 50, 'locomotive', 'g8', 'g8', 'trains', 'g8', NULL, NULL, NULL, '0', '0000-00-00'),
+(144, 'Train', 'G8', 'RLO', 50, 'locomotive', 'g8', 'g8', 'trains', 'g8', 50, 50, NULL, '0', '0000-00-00'),
 (145, 'Train', 'Wagon_BoxB', 'RWA', 25, 'boxcar', 'boxb', 'boxb', 'trains', 'box', NULL, NULL, NULL, '0', '0000-00-00'),
 (146, 'Train', 'Wagon_BoxNB', 'RWA', 25, 'boxcar', 'boxnb', 'boxnb', 'trains', 'box', NULL, NULL, NULL, '0', '0000-00-00'),
 (147, 'Train', 'Wagon_G8T', 'RWA', 25, 'tender', 'g8t', 'g8t', 'trains', 'g8', NULL, NULL, NULL, '0', '0000-00-00'),

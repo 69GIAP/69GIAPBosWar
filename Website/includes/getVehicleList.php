@@ -19,7 +19,7 @@
 
 	$query = "SELECT id, object_class, object_desc, Model, moving_becomes, cruise_speed_kmh, default_country
 		FROM object_properties
-		WHERE ( modelpath2 = 'artillery' OR modelpath2 = 'vehicles' ) ORDER BY object_class;";
+		WHERE ( modelpath2 = 'artillery' OR modelpath2 = 'vehicles' OR modelpath2 = 'trains') ORDER BY object_class;";
 	
 	$i = 1;
 	
