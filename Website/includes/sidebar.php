@@ -137,19 +137,19 @@
 														echo "	    <li><a href=\"CampaignMgmtDLBridgesConfirm.php?btn=campStp&sde=campAfldBrdg\" class=\"MgmtDLAfldsBrdgs\"><span></span></a></li>\n";
 													}
 													
-													if ($sde == 'NewBtn1') {
-														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn1\" class=\"NewBtn1Act\">New Btn 1</a></li>\n";
+													if ($sde == 'MgmtDlClmsStcs') {
+														echo "	    <li><a href=\"CampaignMgmtDLTemplateConfirm.php?btn=campStp&sde=MgmtDlClmsStcs\" class=\"MgmtDlClmsStcsAct\"><span></span></a></li>\n";
 														}
 													else {
-														echo "	    <li><a href=\"CampaignMgmtDLTemplateConfirm.php?btn=campStp&sde=campNewBtn1\" class=\"NewBtn1\">Download Columns and Statics to Template</a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtDLTemplateConfirm.php?btn=campStp&sde=MgmtDlClmsStcs\" class=\"MgmtDlClmsStcs\"><span></span></a></li>\n";
 													}
-													if ($sde == 'NewBtn2') {
-														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn2\" class=\"NewBtn2Act\">New Btn 2</a></li>\n";
+													if ($sde == 'MgmtUlClmsStcs') {
+														echo "	    <li><a href=\"CampaignMgmtULTemplateConfirm.php?btn=campStp&sde=MgmtUlClmsStcs\" class=\"MgmtUlClmsStcsAct\"><span></span></a></li>\n";
 														}
 													else {
-														echo "	    <li><a href=\"CampaignMgmtULTemplateConfirm.php?btn=campStp&sde=campNewBtn2\" class=\"NewBtn2\">Upload Columns and Statics from Template</a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtULTemplateConfirm.php?btn=campStp&sde=MgmtUlClmsStcs\" class=\"MgmtUlClmsStcs\"><span></span></a></li>\n";
 													}
-													if ($sde == 'NewBtn3') {
+													if ($sde == 'NewBtn3Act') {
 														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn3\" class=\"NewBtn3Act\">New Btn 3</a></li>\n";
 														}
 													else {

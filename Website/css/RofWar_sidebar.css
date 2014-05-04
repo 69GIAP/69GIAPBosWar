@@ -268,29 +268,29 @@ ul#sidebar li a.campUpdateBridgesAct {
 	height: 64px;
 	position:relative;
 }
-ul#sidebar li a.NewBtn1 {
-	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+ul#sidebar li a.MgmtDlClmsStcs {
+	background:url(../img/RofWar-AdminDownloadColumnsStatics.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
-ul#sidebar li a.NewBtn1Act {
-	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+ul#sidebar li a.MgmtDlClmsStcsAct {
+	background:url(../img/RofWar-AdminDownloadColumnsStaticsAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
-ul#sidebar li a.NewBtn2 {
-	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+ul#sidebar li a.MgmtUlClmsStcs {
+	background:url(../img/RofWar-AdminUploadColumnsStatics.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
-ul#sidebar li a.NewBtn2Act {
-	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+ul#sidebar li a.MgmtUlClmsStcsAct {
+	background:url(../img/RofWar-AdminUploadColumnsStaticsAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
