@@ -21,7 +21,7 @@
 	if ($objectClass == "V") {
 		$sql = "SELECT id, object_type, object_class, object_value, object_desc, default_country, intro_date, Model
 			FROM object_properties
-			WHERE modelpath2 = 'artillery' OR modelpath2 = 'vehicles' ORDER BY object_class, default_country";
+			WHERE modelpath2 = 'artillery' OR modelpath2 = 'vehicles' ORDER BY default_country, object_class";
 			echo "<h3>Vehicles, Artillery & Infantry</h3>\n";	
 	} else {
 		$sql = "SELECT id, object_type, object_class, object_value, object_desc, default_country, intro_date, Model
