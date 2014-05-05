@@ -64,7 +64,7 @@ An administrator may have planned the starting position for one or both sides or
 					if ($fi == 'blank') { // skip if not
 						if (file_exists("$FullPath")) {
 							echo "<p>You have already uploaded $FullPath, so you should </p>\n"; 
-							echo "<a href=\"CampaignMgmtImport2.php?btn=campStp&sde=campSet\">SKIP Upload.</a><p>(Because this file must be imported, and deleted, before you can upload another copy.)</p><p>If, for any reason, the file can not be imported, delete $FullPath and try again.</p>\n";
+							echo "<a href=\"CampaignMgmtImport2.php?btn=campStp&sde=MgmtUlClmsStcs\">SKIP Upload.</a><p>(Because this file must be imported, and deleted, before you can upload another copy.)</p><p>If, for any reason, the file can not be imported, delete $FullPath and try again.</p>\n";
 							
 						} else {
 							echo "<p>We will now upload our template .Mission or .Group file(s) from your PC to the campaign server.</p>\n";
@@ -74,7 +74,7 @@ An administrator may have planned the starting position for one or both sides or
 							echo "<p>Choose the .Mission our .Group file(s) that have returned from planning start positions for columns or statics in the template.</p>";
 							echo "<p>Then click \"Upload File\".</p>\n";
 							$returnpage = 'CampaignMgmtImport2.php';
-#							$returnpage = 'CampaignMgmtULTemplateConfirm.php?btn=campStp&sde=campSet';
+#							$returnpage = 'CampaignMgmtULTemplateConfirm.php?btn=campStp&sde=MgmtUlClmsStcs';
 							# go
 							pickFile($returnpage);
 						}

@@ -79,7 +79,7 @@ function to load the new Z X and angle position back into the database.";
 					echo "<br>Allied Statics output to group file<br>";					
 					export_staticgroups(2);					
 					echo "<br>Central Statics output to group file<br>";
-					echo "<form id=\"campaignMgmtDLColumnsConfirm\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLColumnsConfirm.php?btn=campStp&sde=campCol\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtDLColumnsConfirm\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLColumnsConfirm.php?btn=campStp&sde=MgmtDlClmsStcs\" method=\"post\">\n";
 					// NEXT BUTTON
 					echo "<fieldset id=\"actions\">\n";	
 					echo "<input type=\"hidden\" name=\"action\" value = \"next\">\n";	
@@ -89,7 +89,7 @@ function to load the new Z X and angle position back into the database.";
 				} else {
 					// actually do the downloads
 					echo "OK, time to download for real!<br />\n";
-					echo "<form id=\"campaignMgmtDLFile\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLFile.php?btn=campStp&sde=campCol\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtDLFile\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLFile.php?btn=campStp&sde=MgmtDlClmsStcs\" method=\"post\">\n";
 					$DownloadDir = 'downloads/';
 					print "<select name=\"dlfile\">\n";
 					

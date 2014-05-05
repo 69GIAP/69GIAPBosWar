@@ -434,7 +434,7 @@
 
 				// end of exporting airfields
 				echo "<br>Airfields and Bridges for the campaign mission have been exported to a group file:".$filename."<br><br>";
-				echo "<form id=\"campaignMgmtDLBridgesConfirm\" name=\"campaignDownloadBridges\" action=\"CampaignMgmtDLBridgesConfirm.php?btn=campStp&sde=campBrdg\" method=\"post\">\n";
+				echo "<form id=\"campaignMgmtDLBridgesConfirm\" name=\"campaignDownloadBridges\" action=\"CampaignMgmtDLBridgesConfirm.php?btn=campStp&sde=campAfldBrdg\" method=\"post\">\n";
 				// NEXT BUTTON
 				echo "<fieldset id=\"actions\">\n";	
 				echo "<input type=\"hidden\" name=\"action\" value = \"next\">\n";	
@@ -444,7 +444,7 @@
 				// actually do the downloads
 				echo "First press the NEXT button then download the file from the campaign server to your PC then you can read it in to the mission editor as a .Group file.<br><br />\n";
 				echo "Note that depending on the browser you are using you may be able to position it directly in your mission folder or it may be placed by default in a downloads folder.<br><br>";
-				echo "<form id=\"campaignMgmtDLFile\" name=\"campaignDownloadBridges\" action=\"CampaignMgmtDLFile.php?btn=campStp&sde=campBrdg\" method=\"post\">\n";
+				echo "<form id=\"campaignMgmtDLFile\" name=\"campaignDownloadBridges\" action=\"CampaignMgmtDLFile.php?btn=campStp&sde=campAfldBrdg\" method=\"post\">\n";
 				$DownloadDir = 'downloads/';
 				print "<select name=\"dlfile\">\n";
 				// get list of files as array, removing '.' and '..' from the list
