@@ -1,0 +1,126 @@
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 1";
+  Index = 1;
+  LinkTrId = 2;
+  XPos = 116946.000;
+  YPos = 0.000;
+  ZPos = 26836.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\75fg1897.txt";
+  Model = "graphics\artillery\75fg1897\75fg1897.mgm";
+  Desc = "3x 75mm M1897 artillery ";
+  Country = 102;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 2;
+  Name = "Bat 1 Co 1 Pl 1 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 116946.000;
+  YPos = 0.000;
+  ZPos = 26836.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 1;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 2";
+  Index = 3;
+  LinkTrId = 4;
+  XPos = 116896.000;
+  YPos = 0.000;
+  ZPos = 26886.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\g8.txt";
+  Model = "graphics\trains\g8\g8.mgm";
+  Desc = "10x locomotive ";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 4;
+  Name = "Bat 1 Co 1 Pl 2 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 116896.000;
+  YPos = 0.000;
+  ZPos = 26886.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 3;
+}
+
+Vehicle
+{
+  Name = "Bat 1 Co 1 Pl 3";
+  Index = 5;
+  LinkTrId = 6;
+  XPos = 87599.000;
+  YPos = 0.000;
+  ZPos = 27252.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\ft17c.txt";
+  Model = "graphics\vehicles\ft17\ft17c.mgm";
+  Desc = "10x Renault FT17 cannon tank ";
+  Country = 102;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 6;
+  Name = "Bat 1 Co 1 Pl 3 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 87599.000;
+  YPos = 0.000;
+  ZPos = 27252.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 5;
+}
+

@@ -36,7 +36,7 @@
 					$SaveToDir		= $_POST["SaveToDir"];
 //					$returnpage		= $_POST["returnpage"];
 echo "database is : $loadedCampaign";
-echo "Hello Peter im here in campaign management import confirm 3 about to start reading columns";
+echo "Hello im here in campaign management import confirm 3 about to start reading columns";
 # here we go loading columns updates
 
 $count = 0;
@@ -63,7 +63,7 @@ while ( ! feof( $fp ) ) {
 if ((substr($line,0,9)=="  XPos = ") and ($current_object == 'Train'))
 	{
 	$trainXPos = substr($line,9,50);
-	$trainXPos = rtrim(train$XPos);
+	$trainXPos = rtrim($trainXPos);
 	$trainXPos = substr($trainXPos,0,-1);
 	$trainXPos = floatval($trainXPos);
 
@@ -268,13 +268,14 @@ fclose($fp);
 						} else {
 							echo "$file not found or read-only<br />\n";
 						}
-?>
+return;
+						?>
 						<br />&nbsp;<br />
 <a href="CampaignMgmt.php?btn=campStp">Next</a>
-<?php
+#<?php
 					}
-?>
-
+#?>
+#
             </div>
     
         </div>

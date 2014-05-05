@@ -1690,7 +1690,6 @@ if ($num > 0)
 }
 # this is the end of the do while loop	
 // end download of moving columns
-RETURN;
 // start download of static columns
 $q = 'SELECT * from columns where Moving = "0"';
 $r = mysqli_query($camp_link,$q);
@@ -2253,7 +2252,7 @@ $list_of_mcus ="";
 fclose($fh);
 # here ends the groupfile sequence
 // actually do the downloads
-echo "We are now ready to download the new mission group file to your PC, then import it into the mission editor!<br><br />\n";
+echo "We are now ready to download the New_Mission group file to your PC, then import it into a clean template in the mission editor!<br><br />\n";
 echo "<form id=\"campaignMgmtDLFile\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLFile.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 $DownloadDir = 'downloads/';
 print "<select name=\"dlfile\">\n";

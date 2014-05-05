@@ -442,7 +442,7 @@
 				echo "	</fieldset>\n";
 				echo "</form>\n";
 				// actually do the downloads
-				echo "First press the NEXT button then download the file from the campaign server to your PC then you can read it in to the mission editor as a .Group file.<br><br />\n";
+				echo "Select Next then download the file from the campaign server to your PC then you can read it in to the mission editor as a .Group file.<br><br />\n";
 				echo "Note that depending on the browser you are using you may be able to position it directly in your mission folder or it may be placed by default in a downloads folder.<br><br>";
 				echo "<form id=\"campaignMgmtDLFile\" name=\"campaignDownloadBridges\" action=\"CampaignMgmtDLFile.php?btn=campStp&sde=campAfldBrdg\" method=\"post\">\n";
 				$DownloadDir = 'downloads/';

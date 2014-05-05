@@ -1,0 +1,730 @@
+Bridge
+{
+  Name = "Bridge 1";
+  Index = 1;
+  LinkTrId = 0;
+  XPos = 103526.000;
+  YPos = 0.000;
+  ZPos = 25566.500;
+  XOri = 0.00;
+  YOri = 240.46;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw130.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw130.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 10";
+  Index = 3;
+  LinkTrId = 0;
+  XPos = 114043.000;
+  YPos = 0.000;
+  ZPos = 62647.200;
+  XOri = 0.00;
+  YOri = 268.78;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_rr190.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_rr190.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 11";
+  Index = 5;
+  LinkTrId = 0;
+  XPos = 95241.300;
+  YPos = 0.000;
+  ZPos = 35046.300;
+  XOri = 0.00;
+  YOri = 213.98;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_rr110.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_rr110.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 12";
+  Index = 7;
+  LinkTrId = 0;
+  XPos = 92975.600;
+  YPos = 0.000;
+  ZPos = 34260.300;
+  XOri = 0.00;
+  YOri = 166.07;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_rr190.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_rr190.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 13";
+  Index = 9;
+  LinkTrId = 0;
+  XPos = 103410.000;
+  YPos = 0.000;
+  ZPos = 55503.500;
+  XOri = 0.00;
+  YOri = 145.87;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_rr190.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_rr190.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 14";
+  Index = 11;
+  LinkTrId = 0;
+  XPos = 89247.400;
+  YPos = 0.000;
+  ZPos = 35242.900;
+  XOri = 0.00;
+  YOri = 173.04;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_rr110.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_rr110.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 2";
+  Index = 13;
+  LinkTrId = 0;
+  XPos = 111289.000;
+  YPos = 0.000;
+  ZPos = 83154.700;
+  XOri = 0.00;
+  YOri = 5.17;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw190.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw190.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 3";
+  Index = 15;
+  LinkTrId = 0;
+  XPos = 86464.300;
+  YPos = 0.000;
+  ZPos = 84260.100;
+  XOri = 0.00;
+  YOri = 105.60;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw130.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw130.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 4";
+  Index = 17;
+  LinkTrId = 0;
+  XPos = 82081.000;
+  YPos = 0.000;
+  ZPos = 80463.500;
+  XOri = 0.00;
+  YOri = 279.40;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw130.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw130.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 5";
+  Index = 19;
+  LinkTrId = 0;
+  XPos = 113572.000;
+  YPos = 0.000;
+  ZPos = 62103.400;
+  XOri = 0.00;
+  YOri = 151.13;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw130.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw130.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 6";
+  Index = 21;
+  LinkTrId = 0;
+  XPos = 100863.000;
+  YPos = 0.000;
+  ZPos = 46025.700;
+  XOri = 0.00;
+  YOri = 0.52;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw130.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw130.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 7";
+  Index = 23;
+  LinkTrId = 0;
+  XPos = 89298.400;
+  YPos = 0.000;
+  ZPos = 35632.500;
+  XOri = 0.00;
+  YOri = 351.92;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw110.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw110.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 8";
+  Index = 25;
+  LinkTrId = 0;
+  XPos = 96457.500;
+  YPos = 0.000;
+  ZPos = 36684.600;
+  XOri = 0.00;
+  YOri = 157.42;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw170.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw170.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Bridge
+{
+  Name = "Bridge 9";
+  Index = 27;
+  LinkTrId = 0;
+  XPos = 83717.600;
+  YPos = 0.000;
+  ZPos = 22611.100;
+  XOri = 0.00;
+  YOri = 325.00;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_hw130.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_hw130.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+Airfield
+{
+  Name = "Breuil le Sec";
+  Index = 29;
+  LinkTrId = 0;
+  XPos = 110397.000;
+  YPos = 0.000;
+  ZPos = 35096.100;
+  XOri = 0.00;
+  YOri = 32.00;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+Airfield
+{
+  Name = "Ferme de Corbeaulieu";
+  Index = 30;
+  LinkTrId = 31;
+  XPos = 114841.000;
+  YPos = 0.000;
+  ZPos = 58725.900;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 501;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+
+MCU_TR_Entity
+{
+  Index = 31;
+  Name = "Airfield entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  Objects = [];
+  XPos = 114841.000;
+  YPos = 0.000;
+  ZPos = 58725.900;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 30;
+}
+Airfield
+{
+  Name = "Montgobert";
+  Index = 32;
+  LinkTrId = 0;
+  XPos = 102037.000;
+  YPos = 0.000;
+  ZPos = 81229.000;
+  XOri = 0.00;
+  YOri = 41.29;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+Airfield
+{
+  Name = "Nanteuil le Haudoin";
+  Index = 33;
+  LinkTrId = 0;
+  XPos = 82416.600;
+  YPos = 0.000;
+  ZPos = 61303.600;
+  XOri = 0.00;
+  YOri = 69.23;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+Airfield
+{
+  Name = "Pierrefonds";
+  Index = 34;
+  LinkTrId = 0;
+  XPos = 104430.000;
+  YPos = 0.000;
+  ZPos = 74540.100;
+  XOri = 0.00;
+  YOri = 356.90;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+Airfield
+{
+  Name = "Raray";
+  Index = 35;
+  LinkTrId = 0;
+  XPos = 96545.000;
+  YPos = 0.000;
+  ZPos = 54993.600;
+  XOri = 0.00;
+  YOri = 37.05;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+Airfield
+{
+  Name = "Ravenel";
+  Index = 36;
+  LinkTrId = 0;
+  XPos = 125044.000;
+  YPos = 0.000;
+  ZPos = 39402.800;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+Airfield
+{
+  Name = "Sacy le Grand";
+  Index = 37;
+  LinkTrId = 38;
+  XPos = 106915.000;
+  YPos = 0.000;
+  ZPos = 42673.600;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+
+MCU_TR_Entity
+{
+  Index = 38;
+  Name = "Airfield entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  Objects = [];
+  XPos = 106915.000;
+  YPos = 0.000;
+  ZPos = 42673.600;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 37;
+}
+Airfield
+{
+  Name = "Vauciennes";
+  Index = 39;
+  LinkTrId = 0;
+  XPos = 95224.100;
+  YPos = 0.000;
+  ZPos = 75496.100;
+  XOri = 0.00;
+  YOri = 175.32;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+Airfield
+{
+  Name = "Vez";
+  Index = 40;
+  LinkTrId = 0;
+  XPos = 97511.100;
+  YPos = 0.000;
+  ZPos = 74480.000;
+  XOri = 0.00;
+  YOri = 132.74;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+Airfield
+{
+  Name = "Crapy en Valois";
+  Index = 41;
+  LinkTrId = 42;
+  XPos = 94352.800;
+  YPos = 0.000;
+  ZPos = 67634.700;
+  XOri = 0.00;
+  YOri = 339.59;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 502;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+
+MCU_TR_Entity
+{
+  Index = 42;
+  Name = "Airfield entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  Objects = [];
+  XPos = 94352.800;
+  YPos = 0.000;
+  ZPos = 67634.700;
+  XOri = 0.00;
+  YOri = 339.59;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 41;
+}
+Airfield
+{
+  Name = "Mont L_Eveque";
+  Index = 43;
+  LinkTrId = 0;
+  XPos = 89627.300;
+  YPos = 0.000;
+  ZPos = 48932.300;
+  XOri = 0.00;
+  YOri = 37.62;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+Airfield
+{
+  Name = "Monchy les Chateau";
+  Index = 44;
+  LinkTrId = 45;
+  XPos = 95145.700;
+  YPos = 0.000;
+  ZPos = 39893.200;
+  XOri = 0.00;
+  YOri = 207.03;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 102;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+
+MCU_TR_Entity
+{
+  Index = 45;
+  Name = "Airfield entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  Objects = [];
+  XPos = 95145.700;
+  YPos = 0.000;
+  ZPos = 39893.200;
+  XOri = 0.00;
+  YOri = 207.03;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 44;
+}
+Airfield
+{
+  Name = "Senlis";
+  Index = 46;
+  LinkTrId = 0;
+  XPos = 88771.500;
+  YPos = 0.000;
+  ZPos = 44473.700;
+  XOri = 0.00;
+  YOri = 355.73;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fr_med.mgm";
+  Script = "LuaScripts\WorldObjects\fr_med.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
