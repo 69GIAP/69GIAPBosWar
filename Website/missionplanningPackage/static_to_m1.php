@@ -11,13 +11,13 @@ $q1="DROP TABLE IF EXISTS static_mission_1";
 			{echo '<br> table dropped ';}
 	else
 			{echo'<p>'.mysqli_error($camp_link).'</p>';}
-$q1="CREATE TABLE static_mission_1 LIKE static";
+$q1="CREATE TABLE static_mission_1 LIKE statics";
 	$r1= mysqli_query($camp_link,$q1);
 	if ($r1)
 			{echo '<br> table created ';}
 	else
 			{echo'<p>'.mysqli_error($camp_link).'</p>';}
-$q1="INSERT static_mission_1 SELECT * FROM static";
+$q1="INSERT static_mission_1 SELECT * FROM statics";
 	$r1= mysqli_query($camp_link,$q1);
 	if ($r1)
 			{echo '<br> data copied ';}

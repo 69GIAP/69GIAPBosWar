@@ -21,9 +21,9 @@ $coalition="allies";
 # end coalition select
 # set update flags to zero
 if ($coalition == "allies")
-{$q1="UPDATE static set static_updated = 0 where static_coalition = '1'";}
+{$q1="UPDATE statics set static_updated = 0 where static_coalition = '1'";}
 else
-{$q1="UPDATE static set static_updated = 0 where static_coalition = '2'";}
+{$q1="UPDATE statics set static_updated = 0 where static_coalition = '2'";}
 $r1= mysqli_query($camp_link,$q1);
 if ($r1)
 	{echo '<br> update flag updated';}
@@ -113,7 +113,7 @@ while ( ! feof( $fp ) )
 	echo '<br> Updating';
 # check if corresponding record exists in static
 	$id = 0;
-	$q2="SELECT * from static where static_Name = '$current_Name' AND static_Model = '$Model' AND static_updated = 0 LIMIT 1";
+	$q2="SELECT * from statics where static_Name = '$current_Name' AND static_Model = '$Model' AND static_updated = 0 LIMIT 1";
 #	echo '<br> My select is:'.$q2;
 	$r2=mysqli_query($camp_link,$q2);
 	$r2_data = mysqli_fetch_row($r2);
@@ -121,7 +121,7 @@ while ( ! feof( $fp ) )
 		{
 			$id = $r2_data[0];
 			echo '<br>I found record no:'.$id;
-			$q1="UPDATE static set static_XPos = $XPos,static_ZPos = $ZPos,static_YOri = $YOri,static_updated=1 where id = $id";
+			$q1="UPDATE statics set static_XPos = $XPos,static_ZPos = $ZPos,static_YOri = $YOri,static_updated=1 where id = $id";
 #			echo '<br> My update select is:'.$q1;
 			$r1= mysqli_query($camp_link,$q1);
 			if ($r1)

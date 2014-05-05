@@ -207,7 +207,7 @@
 							echo "Add unit.<br />\n";
 							$objectID = $_POST['objectID'];
 							echo "\$objectID: $objectID<br />\n";
-						    $query5 = "SELECT * from static where id = '$objectID';";
+						    $query5 = "SELECT * from statics where id = '$objectID';";
 							if(!$result = $camp_link->query($query5)){
 								die('CampaignMgmtReviewStatics.php query5 error [' . $camp_link->error . ']');
 							} else {
@@ -248,7 +248,7 @@
 						} else {
 							echo "Remove unit.<br />\n";
 							$objectID = $_POST['objectID'];
-							$query7 = "DELETE FROM static WHERE id = '$objectID';";
+							$query7 = "DELETE FROM statics WHERE id = '$objectID';";
 							if(!$result7 = $camp_link->query($query7)){
 								die('CampaignMgmtReviewStatics.php query7 error [' . $camp_link->error . ']');
 							} else {

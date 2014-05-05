@@ -33,7 +33,7 @@ function edit_static($id) {
 
 	echo "<form id=\"campaignMgmtReviewStatics\" name=\"ReviewStatics\" action=\"CampaignMgmtReviewStatics.php?btn=campStp&sde=campStat\" method=\"post\">\n";
 	echo "<p><b>$name - $description</b></p>\n";
-	$query2 = "SELECT id, static_Desc FROM static WHERE static_Name = '$name';";
+	$query2 = "SELECT id, static_Desc FROM statics WHERE static_Name = '$name';";
 
 	if(!$result = $camp_link->query($query2)){
 		echo "$query2<br />\n";
