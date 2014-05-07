@@ -1,0 +1,294 @@
+Vehicle
+{
+  Name = "Peter 2";
+  Index = 1;
+  LinkTrId = 2;
+  XPos = 222185.000;
+  YPos = 0.000;
+  ZPos = 84537.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "Feldkanone 96 77mm artillery Central Powers static";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 2;
+  Name = "Peter 2 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 222185.000;
+  YPos = 0.000;
+  ZPos = 84537.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 1;
+}
+
+Vehicle
+{
+  Name = "Peter 2";
+  Index = 3;
+  LinkTrId = 4;
+  XPos = 222235.000;
+  YPos = 0.000;
+  ZPos = 84512.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "Feldkanone 96 77mm artillery Central Powers static";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 4;
+  Name = "Peter 2 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 222235.000;
+  YPos = 0.000;
+  ZPos = 84512.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 3;
+}
+
+Vehicle
+{
+  Name = "Peter 2";
+  Index = 5;
+  LinkTrId = 6;
+  XPos = 222285.000;
+  YPos = 0.000;
+  ZPos = 84487.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "Feldkanone 96 77mm artillery Central Powers static";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 6;
+  Name = "Peter 2 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 222285.000;
+  YPos = 0.000;
+  ZPos = 84487.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 5;
+}
+
+Vehicle
+{
+  Name = "Peter 2";
+  Index = 7;
+  LinkTrId = 8;
+  XPos = 222335.000;
+  YPos = 0.000;
+  ZPos = 84462.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "Feldkanone 96 77mm artillery Central Powers static";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 8;
+  Name = "Peter 2 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 222335.000;
+  YPos = 0.000;
+  ZPos = 84462.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 7;
+}
+
+Vehicle
+{
+  Name = "Peter 2";
+  Index = 9;
+  LinkTrId = 10;
+  XPos = 222385.000;
+  YPos = 0.000;
+  ZPos = 84437.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "Feldkanone 96 77mm artillery Central Powers static";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 10;
+  Name = "Peter 2 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 222385.000;
+  YPos = 0.000;
+  ZPos = 84437.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 9;
+}
+
+Vehicle
+{
+  Name = "Peter 2";
+  Index = 11;
+  LinkTrId = 12;
+  XPos = 222435.000;
+  YPos = 0.000;
+  ZPos = 84412.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "Feldkanone 96 77mm artillery Central Powers static";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 12;
+  Name = "Peter 2 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 222435.000;
+  YPos = 0.000;
+  ZPos = 84412.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 11;
+}
+
+Vehicle
+{
+  Name = "Peter 2";
+  Index = 13;
+  LinkTrId = 14;
+  XPos = 222485.000;
+  YPos = 0.000;
+  ZPos = 84387.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\fk96.txt";
+  Model = "graphics\artillery\fk96\fk96.mgm";
+  Desc = "Feldkanone 96 77mm artillery Central Powers static";
+  Country = 501;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_TR_Entity
+{
+  Index = 14;
+  Name = "Peter 2 entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 222485.000;
+  YPos = 0.000;
+  ZPos = 84387.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 13;
+}
+

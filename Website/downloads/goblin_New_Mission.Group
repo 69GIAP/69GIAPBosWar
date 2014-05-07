@@ -1685,7 +1685,7 @@ MCU_Timer
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
-  Time = 845;
+  Time = 1567;
 }
 
 MCU_CMD_Formation
@@ -1808,7 +1808,7 @@ MCU_Timer
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
-  Time = 1190;
+  Time = 1410;
 }
 
 Vehicle
@@ -2279,7 +2279,7 @@ MCU_Timer
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
-  Time = 881;
+  Time = 126;
 }
 
 MCU_CMD_Formation
