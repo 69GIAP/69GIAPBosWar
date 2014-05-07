@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2013 at 04:47 AM
+-- Generation Time: Apr 02, 2014 at 04:08 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `bos_countries`;
 CREATE TABLE IF NOT EXISTS `bos_countries` (
-  `id` enum('1','2','3','4','5','6','7','8','9','10','11','12','13') NOT NULL,
-  `ckey` enum('0','101','102','103','104','105','501','502','600','610','620','630','640') NOT NULL,
+  `id` enum('1','2','3') NOT NULL,
+  `ckey` enum('0','101','201') NOT NULL,
   `countryname` varchar(30) NOT NULL,
   `countryadj` varchar(30) NOT NULL,
-  `CoalID` enum('0','1','2','3','4','5','6','7') NOT NULL,
+  `CoalID` enum('0','1','2') NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `countryname` (`countryname`),
   UNIQUE KEY `countryadj` (`countryadj`),
@@ -45,18 +45,8 @@ CREATE TABLE IF NOT EXISTS `bos_countries` (
 
 INSERT INTO `bos_countries` (`id`, `ckey`, `countryname`, `countryadj`, `CoalID`) VALUES
 ('1', '0', 'Neutral', 'neutral', '0'),
-('2', '101', 'France', 'French', '1'),
-('3', '102', 'Great Britain', 'British', '1'),
-('4', '103', 'USA', 'American', '1'),
-('5', '104', 'Italy', 'Italian', '2'),
-('6', '105', 'Russia', 'Russian', '1'),
-('7', '501', 'Germany', 'German', '2'),
-('8', '502', 'Japan', 'Japanese', '2'),
-('9', '600', 'Future Country', 'Future', '3'),
-('10', '610', 'War Dogs Country', 'War Dogs', '4'),
-('11', '620', 'Mercenaries Country', 'Mercenaries', '5'),
-('12', '630', 'Knights Country', 'Knights', '6'),
-('13', '640', 'Corsairs Country', 'Corsairs', '7');
+('2', '101', 'Russia', 'Russian', '1'),
+('3', '', 'Germany', 'German', '2');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
