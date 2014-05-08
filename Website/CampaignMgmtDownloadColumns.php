@@ -44,7 +44,7 @@
 				if (!isset($_POST['action'])) {
 					echo "<h1>Edit Columns</h1>\n";
 					echo "<p>You have defined columns in the BOSWAR campaign manager.  Now you will review these columns.</p>\n"; 
-					echo "<p>If you need to edit a column, select it and then choose \"Edit Column\", otherwise select \"Export Columns to Group Files\"</p>\n";
+					echo "<p>If you need to edit a column, select it and then choose \"Edit Column\", otherwise proceed with \"Create Statics\" or \"Download Columns & Statics to Template\" in the side menu</p>\n";
 
 					echo "<form id=\"campaignMgmtDownloadColumns\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDownloadColumns.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 
