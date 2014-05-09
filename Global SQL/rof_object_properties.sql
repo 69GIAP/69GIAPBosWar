@@ -3,10 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 08, 2014 at 02:59 PM
+-- Generation Time: May 09, 2014 at 02:40 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
--- Stenka 27/4/14 added speed to g8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -46,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `rof_object_properties` (
   `intro_date` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `object_type` (`object_type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=242 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=243 ;
 
 --
 -- Dumping data for table `rof_object_properties`
@@ -132,7 +131,7 @@ INSERT INTO `rof_object_properties` (`id`, `family`, `object_type`, `object_clas
 (77, 'Block', 'railwaystation_4', 'INF', 0, 'railway station', 'railwaystation_04', NULL, 'blocks', NULL, NULL, NULL, NULL, '0', '0000-00-00'),
 (78, 'Block', 'railwaystation_5', 'INF', 0, 'railway station', 'railwaystation_05', NULL, 'blocks', NULL, NULL, NULL, NULL, '0', '0000-00-00'),
 (79, 'Block', 'rwstation', 'INF', 0, 'railway station', 'rwstation', NULL, 'blocks', NULL, NULL, NULL, NULL, '0', '0000-00-00'),
-(80, 'Block', 'tent_camp 1', 'INF', 0, 'tent camp 1', 'tent_camp01', NULL, 'battlefield', NULL, NULL, NULL, NULL, '0', '0000-00-00'),
+(80, 'Block', 'tent_camp01', 'INF', 0, 'tent camp 1', 'tent_camp01', NULL, 'battlefield', NULL, NULL, NULL, NULL, '0', '0000-00-00'),
 (81, 'Block', 'tent_camp02', 'INF', 0, 'tent camp 2', 'tent_camp02', NULL, 'battlefield', NULL, NULL, NULL, NULL, '0', '0000-00-00'),
 (82, 'Block', 'tent_camp03', 'INF', 0, 'tent camp 3', 'tent_camp03', NULL, 'battlefield', NULL, NULL, NULL, NULL, '0', '0000-00-00'),
 (83, 'Block', 'tent_camp04', 'INF', 0, 'tent camp 4', 'tent_camp04', NULL, 'battlefield', NULL, NULL, NULL, NULL, '0', '0000-00-00'),
