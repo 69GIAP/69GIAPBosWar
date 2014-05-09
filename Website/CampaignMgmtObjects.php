@@ -39,7 +39,6 @@
 
 					if ($objectClass == 'P') {
 						echo "<p>You will now determine which aircraft will be available to which side.</p>
-						<p>(Tushka: a useful future enhancement would be a display of dates of introduction to combat service.)</p>
 						<p>To make an aircraft unavailable to either side, mark it as \"inactive\".</p>
 						<p>To make an aircraft available to both sides, mark it as \"Neutral\".</p>\n";
 					} else {
