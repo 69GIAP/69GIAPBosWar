@@ -18,28 +18,30 @@
     
             <div id="content">
             	<?php
-					$error = $_GET['error'];
-					$airfieldName = $_SESSION['airfieldName'];
-										
-					if ($error == 1)
-						{
-							echo "<p>There is already the maximum amount of aircraft models assigned to this airfield!<p>\n";
-						}
-					if ($error == 2)
-						{
-							echo "<p>There is already an aircraft model of this type assigned to the airfield!<p>\n";
-						}
-						
-					echo "<fieldset class=\"boswar\">\n";
-					echo "	<form  name=\"airfieldModify\"  action=\"airfieldMgmtChange.php?btn=campStp&airfieldName=$airfieldName\" method=\"post\">\n";
-						
-					# BUTTON
-					echo "		<li><label for=\"submit\"></label>\n";
-					echo "		<button type=\"changeCoalition\" name=\"updateAirfield\" value =\"6\" id=\"submit\">Back</button>\n";
-					echo "		</li>\n";	
-									
-					echo "</fieldset>\n";					
-					echo "	</form>\n";						
+								$error = $_GET['error'];
+								$airfieldName = $_SESSION['airfieldName'];
+								$modelNameAdd	= $_GET['model'];
+								
+								echo "<form  id=\"airfieldForm\" name=\"login\"  action=\"airfieldMgmtChange.php?btn=campStp&airfieldName=$airfieldName#addRemove\" method=\"post\">\n";	
+								echo "	<fieldset class=\"actions\">\n";	
+								echo "  <h1 id=\"h1Form\">Error!</h1>\n";
+													
+								if ($error == 1)
+									{
+										echo "<p>There is already the maximum amount of aircraft models assigned to the airfield <b>$airfieldName</b>!<p>\n";
+									}
+								if ($error == 2)
+									{
+										echo "<p>There is already an aircraft model type <b>$modelNameAdd</b> assigned to the airfield <b>$airfieldName</b>!<p>\n";
+									}
+	
+								# BUTTON
+								echo "		<li>";
+								echo "		<button type=\"submit\" name=\"updateAirfield\" id=\"submitHalfsize1\" value =\"6\" id=\"submit\">Back</button>\n";
+								echo "		</li>\n";	
+												
+								echo "	</fieldset>\n";					
+								echo "</form>\n";						
             	?>	
             </div>
     
