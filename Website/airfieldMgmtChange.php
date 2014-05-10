@@ -24,7 +24,7 @@
 					}
 					else {
 						$_SESSION['airfieldName']	= $_POST["airfieldName"];
-						$airfieldName 				= $_SESSION['airfieldName'];
+						$airfieldName				= $_SESSION['airfieldName'];
 					}
 			
 					# initialize $error variable
@@ -76,7 +76,7 @@
 
 							# MODEL
 							if ($modelName == '') {
-								echo "<fieldset id=\"none\">\n";							
+								echo "<fieldset id=\"none\"> \n";							
 								# MODEL
 								echo "	<input readonly=\"readonly\" type=\"text\" name='' id=\"none\" placeholder=\"No Aircraft Assigned To Airfield\" value='' size=\"24\" maxlength=\"50\" />\n";
 								echo "</fieldset>";						
@@ -96,20 +96,23 @@
 								# NEW QUANTITY
 								// dynamically create name variable for automatically created fields
 								$modelNameQuantityNew = "modelNameQuantityNew".$i;
-								echo "	<input type=\"text\" name='$modelNameQuantityNew' id=\"number\" placeholder=\"New Quantitiy\" value='' size=\"24\" maxlength=\"50\" />\n";
+								echo "	<input type=\"text\" name='$modelNameQuantityNew' id=\"number\" placeholder=\"Change Quantitiy for $modelName\" value='' size=\"24\" maxlength=\"50\" />\n";
 								echo "</fieldset>";
 								echo "<fieldset id=\"actions\">";
 								
 								# BUTTON
-								echo "	<button type=\"submit\" name =\"updateAirfield\" id=\"loginSubmit\" value =\"$i\" >Update Aircraft $i</button>\n";	
+								echo "	<button type=\"submit\" name =\"updateAirfield\" id=\"acModelForm\" value =\"$i\" >Approve changed quantity for $modelName</button>\n";	
 								echo "</fieldset>\n";				
 								$i ++;	
 							}
 						}
 						
+						# Navigation helper in case of redirect from erro page
+						echo '<div id="addRemove"></div>';
+						
 						echo "<fieldset id=\"inputs\">\n";
 						
-						echo "<p>To assign a new model to the aifield select the corresponding entry from the dropdown list below and insert the quantity into the form field. The quantity of already listed models cannot be changed with this form. Please use the above listed ones to do so.</p>\n";
+						echo "<p>To assign a new model to the aifield select the corresponding entry from the dropdown list below and insert the quantity into the form field.</p>\n";
 												
 						// hidden field to hand airfieldName over through POST
 						echo "	<input readonly=\"readonly\" type=\"hidden\" name='airfieldName' value='$airfieldName' size=\"24\" maxlength=\"50\" />\n";
@@ -117,11 +120,11 @@
 						# NEW MODEL SELECT
 						echo "	<select name=\"modelNameAdd\" id=\"aircraft\">\n";
 						# include the drop down list
-						include 'includes/getAirfieldCampaignModels.php'; 
+						include 'includes/getUnusedAirfieldCampaignModels.php'; 
 						echo "	</select>\n";
 						
 						# NEW MODEL QUANTITY
-						echo "	<input type=\"text\" name=\"modelNameAddQuantity\" id=\"number\" placeholder=\"Quantitiy To Add\" value='' size=\"24\" maxlength=\"50\" />\n";
+						echo "	<input type=\"text\" name=\"modelNameAddQuantity\" id=\"number\" placeholder=\"Desired Quantitiy of selected model\" value='' size=\"24\" maxlength=\"50\" />\n";
 						
 						// hidden field to hand airfieldCoalitionId over through POST
 						echo "	<input readonly=\"readonly\" type=\"hidden\" name='airfieldCoalitionId' value='$airfieldCoalitionId'/>\n";	
@@ -133,7 +136,7 @@
 						echo "	<button type=\"submit\" name =\"updateAirfield\" id=\"submitHalfsize1\" value =\"7\" >Add</button>\n";
 						
 						# BUTTON REMOVE
-						echo "	<button type=\"submit\" name =\"updateAirfield\" id=\"submitHalfsize2\" value =\"8\" >Remove</button>\n";
+						echo "	<button type=\"submit\" name =\"updateAirfield\" id=\"submitHalfsize2\" value =\"8\" >Remove Model</button>\n";
 						
 						echo "</fieldset>\n";
 						echo "<fieldset id=\"inputs\">\n";										

@@ -29,13 +29,13 @@
 					
 					# use this information to connect to campaign 
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
-					
+				
 					# find out which form was used; form 0 is the reduced form of an icactive airfield
 					$form = $_GET['form'];
 					
 					if ($form == 1) {
 						$airfieldName = $_POST["airfieldName"];
-		
+	
 						if (!empty($_POST["modelNameLoaded1"]))
 							{
 								$modelNameLoaded1 		= $_POST["modelNameLoaded1"];
@@ -97,29 +97,59 @@
 						}
 								
 						# prepare sql based on selected aircraft
-						if ($_POST["updateAirfield"] == 1) //model 1
+						if ($_POST["updateAirfield"] == 1) //model 1 - update count or remove if value 0 was submitted
 							{
-							$query1="UPDATE airfields_models SET model_Quantity = '$modelNameQuantityNew1' WHERE model_Name like '$modelNameLoaded1' AND airfield_Name like '$airfieldName' ;";
+								if ($modelNameQuantityNew1 == 0) {
+
+									$query1="DELETE from airfields_models WHERE model_Name like '$modelNameLoaded1' AND airfield_Name like '$airfieldName' ;";
+								} else {
+									$query1="UPDATE airfields_models SET model_Quantity = '$modelNameQuantityNew1' WHERE model_Name like '$modelNameLoaded1' AND airfield_Name like '$airfieldName' ;";
+								}
 							}
-						if ($_POST["updateAirfield"] == 2) //model 2
+						if ($_POST["updateAirfield"] == 2) //model 2 - update count or remove if value 0 was submitted
 							{
-							$query1="UPDATE airfields_models SET model_Quantity = '$modelNameQuantityNew2' WHERE model_Name like '$modelNameLoaded2' AND airfield_Name like '$airfieldName' ;";
+								if ($modelNameQuantityNew2 == 0) {
+
+									$query1="DELETE from airfields_models WHERE model_Name like '$modelNameLoaded2' AND airfield_Name like '$airfieldName' ;";
+								} else {
+									$query1="UPDATE airfields_models SET model_Quantity = '$modelNameQuantityNew2' WHERE model_Name like '$modelNameLoaded2' AND airfield_Name like '$airfieldName' ;";
+								}
 							}
-						if ($_POST["updateAirfield"] == 3) //model 3
+						if ($_POST["updateAirfield"] == 3) //model 3 - update count or remove if value 0 was submitted
 						{
-							$query1="UPDATE airfields_models SET model_Quantity = '$modelNameQuantityNew3' WHERE model_Name like '$modelNameLoaded3' AND airfield_Name like '$airfieldName' ;";
+							if ($modelNameQuantityNew3 == 0) {
+
+									$query1="DELETE from airfields_models WHERE model_Name like '$modelNameLoaded3' AND airfield_Name like '$airfieldName' ;";
+								} else {
+									$query1="UPDATE airfields_models SET model_Quantity = '$modelNameQuantityNew3' WHERE model_Name like '$modelNameLoaded3' AND airfield_Name like '$airfieldName' ;";
+								}
 						}
-						if ($_POST["updateAirfield"] == 4) //model 4
+						if ($_POST["updateAirfield"] == 4) //model 4 - update count or remove if value 0 was submitted
 							{
-							$query1="UPDATE airfields_models SET model_Quantity = '$modelNameQuantityNew4' WHERE model_Name like '$modelNameLoaded4' AND airfield_Name like '$airfieldName' ;";
+								if ($modelNameQuantityNew4 == 0) {
+
+									$query1="DELETE from airfields_models WHERE model_Name like '$modelNameLoaded4' AND airfield_Name like '$airfieldName' ;";
+								} else {
+									$query1="UPDATE airfields_models SET model_Quantity = '$modelNameQuantityNew4' WHERE model_Name like '$modelNameLoaded4' AND airfield_Name like '$airfieldName' ;";
+								}
 							}
-						if ($_POST["updateAirfield"] == 5) //model 5
+						if ($_POST["updateAirfield"] == 5) //model 5 - update count or remove if value 0 was submitted
 							{
-							$query1="UPDATE airfields_models SET model_Quantity = '$modelNameQuantityNew4' WHERE model_Name like '$modelNameLoaded4' AND airfield_Name like '$airfieldName' ;";
+								if ($modelNameQuantityNew5 == 0) {
+
+									$query1="DELETE from airfields_models WHERE model_Name like '$modelNameLoaded5' AND airfield_Name like '$airfieldName' ;";
+								} else {
+									$query1="UPDATE airfields_models SET model_Quantity = '$modelNameQuantityNew5' WHERE model_Name like '$modelNameLoaded5' AND airfield_Name like '$airfieldName' ;";
+								}
 							}
-						if ($_POST["updateAirfield"] == 6) //model 6
+						if ($_POST["updateAirfield"] == 6) //model 6 - update count or remove if value 0 was submitted
 							{
-							$query1="UPDATE airfields_models SET model_Quantity = '$modelNameQuantityNew4' WHERE model_Name like '$modelNameLoaded4' AND airfield_Name like '$airfieldName' ;";
+								if ($modelNameQuantityNew6 == 0) {
+
+									$query1="DELETE from airfields_models WHERE model_Name like '$modelNameLoaded6' AND airfield_Name like '$airfieldName' ;";
+								} else {
+									$query1="UPDATE airfields_models SET model_Quantity = '$modelNameQuantityNew6' WHERE model_Name like '$modelNameLoaded6' AND airfield_Name like '$airfieldName' ;";
+								}
 							}										
 						if ($_POST["updateAirfield"] == 7) // model add
 							{

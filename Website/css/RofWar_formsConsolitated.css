@@ -224,7 +224,8 @@ form fieldset p {
 #updateCamp,
 #countrySubmit,
 #back,
-#downloadColumns {
+#downloadColumns,
+#acModelForm {
 	background: none;	
 	background-color: #494947;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.4);
@@ -242,6 +243,10 @@ form fieldset p {
 
 #loginSubmit {		
 	width: 345px;
+}
+#acModelForm {
+	width: 345px;	
+	font: 16px "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
 #objectsSubmit {		
@@ -261,6 +266,7 @@ form fieldset p {
 
 #registerSubmit:hover, #registerSubmit:focus,	
 #loginSubmit:hover, #loginSubmit:focus,
+#acModelForm:hover, #acModelForm:focus,
 #objectsSubmit:hover, #objectsSubmit:focus,
 #submit:hover, #submit:focus, 
 #submitHalfsize1:hover, #submitHalfsize1:focus, 
@@ -275,13 +281,15 @@ form fieldset p {
 
 #registerSubmit:active,
 #loginSubmit:active,
+#acModelForm:active,
 #objectsSubmit:active {
 	background-color: #8baac9;		
 	outline: none;
 }
 
 #registerSubmit::-moz-focus-inner,
-#loginSubmit::-moz-focus-inner {
+#loginSubmit::-moz-focus-inner, 
+#acModelForm::-moz-focus-inner {
 	border: none;
 }
 

@@ -1,5 +1,8 @@
 
 <?php
+echo '------------------------------------------- <br>';
+echo 'Info from checkAirfieldDataBeforeUpdate.php <br>';
+echo '------------------------------------------- <br>';
 
 	if ($_POST["updateAirfield"] == 7)
 		{
@@ -33,7 +36,7 @@ echo "new query: ".$query1."<br>";
 			if ($num >= 6)
 				{
 					echo "rows: ".$num."<br>";
-					header ("Location: airfieldMgmtError.php?error=1");
+					header ("Location: airfieldMgmtError.php?error=1&model=$modelNameAdd");
 					# without the exit the script would just ignore the result and check the $check2 which results in a green light - no error
 					exit;
 				}
@@ -52,7 +55,7 @@ echo "new query: ".$query1."<br>";
 			if ($num >= 1)
 				{
 					echo "rows: ".$num."<br>";
-					header ("Location: airfieldMgmtError.php?error=2");
+					header ("Location: airfieldMgmtError.php?error=2&model=$modelNameAdd");
 					exit;
 				}
 		}
