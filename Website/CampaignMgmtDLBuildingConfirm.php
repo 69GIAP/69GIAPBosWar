@@ -2,6 +2,7 @@
 <?php 
 #Stenka 23/4/14
 #Stenka 26/4/14 debug z position of column
+#Stenka 9/5/14 bugfix on carriages
 // Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
 	$dbc = connectBOSWAR();
@@ -1470,7 +1471,7 @@ if ($num > 0)
 					while ($row = mysqli_fetch_array($r9,MYSQLI_ASSOC))
 					{
 						$carriage = $row['Model'];
-						$writestring = '    "LuaScripts\\WorldObjects\\Trains\\'.$carriage.'.txt"'."\r\n";
+						$writestring = '    "LuaScripts\\WorldObjects\\Trains\\'.$carriage.'.txt"'.";\r\n";
 						fwrite($fh,$writestring);
 					}
 					$writestring = '  }'."\r\n";				
@@ -1562,7 +1563,12 @@ if ($num > 0)
 		{$speed_of_column = $cruise_speed_kmh;}
 	else
 		{$speed_of_column = $tranport_speed;}
+#temporary hardcoding of train speed Stenka needs tracing back for more elegant fix
+		if ($modelpath2 == 'trains')	
+	{$speed_of_column = 50;}	
+#----------------------------------	
 	$writestring = '  Speed = '.$speed_of_column.';'."\r\n";	
+
 	fwrite($fh,$writestring);
 	$writestring = '  Priority = 1;'."\r\n";	
 	fwrite($fh,$writestring);	
@@ -1620,7 +1626,14 @@ if ($num > 0)
 	fwrite($fh,$writestring);
 	$writestring = '  Desc = "";'."\r\n";		
 	fwrite($fh,$writestring);
-	$writestring = '  Targets = ['.($index_no-2).','. ($index_no+1).'];'."\r\n";		
+	if ($modelpath2 == 'trains')
+	{
+	$writestring = '  Targets = ['.($index_no-2).'];'."\r\n";		
+	}
+	else
+	{
+	$writestring = '  Targets = ['.($index_no-2).','. ($index_no+1).'];'."\r\n";	
+	}
 	fwrite($fh,$writestring);
 	$writestring = '  Objects = [];'."\r\n";		
 	fwrite($fh,$writestring);
@@ -1824,7 +1837,7 @@ $list_of_mcus ="";
 					while ($row = mysqli_fetch_array($r9,MYSQLI_ASSOC))
 					{
 						$carriage = $row['Model'];
-						$writestring = '    "LuaScripts\\WorldObjects\\Trains\\'.$carriage.'.txt"'."\r\n";
+						$writestring = '    "LuaScripts\\WorldObjects\\Trains\\'.$carriage.'.txt"'.";\r\n";
 						fwrite($fh,$writestring);
 					}
 					$writestring = '  }'."\r\n";				

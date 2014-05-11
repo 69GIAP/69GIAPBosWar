@@ -4,6 +4,7 @@
 // =69.GIAP=TUSHKA
 // BOSWAR ver 1.1
 // Nov 23, 2013
+// Stenka 10/5 adding train
 
 // NOTE: the calling page must require getCoalitionname, getCoalition,
 // getCountriesInCoalition, and getCountryadj
@@ -19,7 +20,7 @@
 
 	$query = "SELECT id, object_class, object_desc, Model, moving_becomes, cruise_speed_kmh, default_country
 		FROM object_properties
-		WHERE ( modelpath2 = 'artillery' OR modelpath2 = 'vehicles' OR modelpath2 = 'trains') ORDER BY object_class;";
+		WHERE ( modelpath2 = 'artillery' OR modelpath2 = 'vehicles' OR Model = 'g8') ORDER BY object_class;";
 	
 	$i = 1;
 	

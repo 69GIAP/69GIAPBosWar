@@ -36,7 +36,7 @@
 					$SaveToDir		= $_POST["SaveToDir"];
 //					$returnpage		= $_POST["returnpage"];
 echo "database is : $loadedCampaign";
-echo "Hello im here in campaign management import confirm 3 about to start reading columns";
+#echo "Hello im here in campaign management import confirm 3 about to start reading columns";
 # here we go loading columns updates
 
 $count = 0;
@@ -52,100 +52,139 @@ $trainYOri = "";
 
 echo '<br>Filename is :'.$file;
 $fp = fopen( $file, "r" ) or die("Couldn't open $file");
-while ( ! feof( $fp ) ) {
+while ( ! feof( $fp ) ) 
+{
 	$line = fgets( $fp, 1024 );
-#	print "$line<br>";
-# sequence added to handle setting start position of train on tracks
+	#	print "$line<br>";
+	# sequence added to handle setting start position of train on tracks
 	if (substr($line,0,5) == 'Train')
 	{
-	$current_object = 'Train';
-	$to_update = 1;
-if ((substr($line,0,9)=="  XPos = ") and ($current_object == 'Train'))
+		$current_object = 'Train';
+		$to_update = 1;
+	}
+	if ((substr($line,0,9)=="  XPos = ") and ($current_object == 'Train'))
 	{
-	$trainXPos = substr($line,9,50);
-	$trainXPos = rtrim($trainXPos);
-	$trainXPos = substr($trainXPos,0,-1);
-	$trainXPos = floatval($trainXPos);
-
-	#	echo '<br> Xpos is :'.$XPos;
+		$trainXPos = substr($line,9,50);
+		$trainXPos = rtrim($trainXPos);
+		$trainXPos = substr($trainXPos,0,-1);
+		$trainXPos = floatval($trainXPos);
+		#	echo '<br> Xpos is :'.$XPos;
 	}
 	if ((substr($line,0,9)=="  ZPos = ") and ($current_object == 'Train'))
 	{
-	$trainZPos = substr($line,9,50);
-	$trainZPos = rtrim($trainZPos);
-	$trainZPos = substr($trainZPos,0,-1);
-	$trainZPos = floatval($trainZPos);
-#	echo '<br> ZPos is :'.$ZPos;
+		$trainZPos = substr($line,9,50);
+		$trainZPos = rtrim($trainZPos);
+		$trainZPos = substr($trainZPos,0,-1);
+		$trainZPos = floatval($trainZPos);
+		#	echo '<br> ZPos is :'.$ZPos;
 	}
 	if ((substr($line,0,9)=="  YOri = ") and ($current_object == 'Train'))
 	{
-	$trainYOri = substr($line,9,50);
-	$trainYOri = rtrim($trainYOri);
-	$trainYOri = substr($trainYOri,0,-1);
-	$trainYOri = floatval($trainYOri);
-	}
-
-#
-	if (substr($line,0,12) == 'MCU_Waypoint')
-	{
-	$to_update = 1;
-	$current_object = 'MCU_Waypoint';
-	echo '<br> Found a :'.$current_object;
-	$count = 0;
+		$trainYOri = substr($line,9,50);
+		$trainYOri = rtrim($trainYOri);
+		$trainYOri = substr($trainYOri,0,-1);
+		$trainYOri = floatval($trainYOri);
 	}
 	if ((substr($line,0,9)=="  Name = " ) && ($to_update == 1)) 
 	{
-	$current_Name = substr($line,10,50);
-	$current_Name = rtrim($current_Name);
-	$current_Name = substr($current_Name,0,-2);
-	echo '<br> Name is :'.$current_Name;
+		$current_Name = substr($line,10,50);
+		$current_Name = rtrim($current_Name);
+		$current_Name = substr($current_Name,0,-2);
+		echo '<br> Name is :'.$current_Name;
 		if ($current_Name == '')
 		{
 		$to_update = 0;
 		}
 	}
-	if ((substr($line,0,9)=="  XPos = ") && ($to_update == 1))
+	if ((substr($line,0,1)=='}') && ($to_update == 1))
 	{
-	$XPos = substr($line,9,50);
-	$XPos = rtrim($XPos);
-	$XPos = substr($XPos,0,-1);
-	$XPos = floatval($XPos);
-	echo '<br> Xpos is :'.$XPos;
-	}
-	if ((substr($line,0,9)=="  ZPos = ") && ($to_update == 1))
-	{
-	$ZPos = substr($line,9,50);
-	$ZPos = rtrim($ZPos);
-	$ZPos = substr($ZPos,0,-1);
-	$ZPos = floatval($ZPos);
-	echo '<br> ZPos is :'.$ZPos;
-	}
-	if (substr($line,0,1)=='}')
-	{
-	if ($to_update == 1)
-		{
-		echo '<br> Column destination';
 		if ($current_object == 'Train')
 		{
-		$q1="UPDATE $loadedCampaign.columns set XPos = $trainXPos, ZPos = $trainZPos, YOri = $trainYOri where Name = '$current_Name' LIMIT 1";
+			$q1="UPDATE columns set XPos = $trainXPos, ZPos = $trainZPos, YOri = $trainYOri where Name = '$current_Name' LIMIT 1";
 		}
-		else
-		{
-		$q1="UPDATE $loadedCampaign.columns set dest_XPos = $XPos, dest_ZPos = $ZPos where Name = '$current_Name' LIMIT 1";
-		}
-        echo "<br> $q1";
-		$r1= mysqli_query($dbc,$q1);
+		echo "<br> $q1";
+		$r1= mysqli_query($camp_link,$q1);
 		if ($r1)
 				{echo '<br> update attempted';}
-		else
-			{echo'<p>'.mysqli_error($dbc).'</p>';}
-		$to_update = 0;
-		}
+			else
+				{echo'<p>'.mysqli_error($dbc).'</p>';}
+			$to_update = 0;
 	}
 	$count = 1+$count;
 }
 fclose($fp);
-
+echo '<br>Filename is :'.$file;
+$to_update = 0;
+$fp = fopen( $file, "r" ) or die("Couldn't open $file");
+while ( ! feof( $fp ) ) 
+{
+	$line = fgets( $fp, 1024 );
+	#	print "$line<br>";
+	# Now we do the run to set destination waypoints  on columns
+	if (substr($line,0,5) == 'Train')
+	{
+		$current_object = 'Train';
+		$to_update = 1;
+	}
+	if (substr($line,0,7) == 'Vehicle')
+	{
+		$current_object = 'Vehicle';
+		$to_update = 1;
+	}
+	if (substr($line,0,12) == 'MCU_Waypoint')
+	{
+		$current_object = 'Waypoint';
+		$to_update = 1;
+	}
+	
+	if ((substr($line,0,9)=="  XPos = ") && ($current_object == 'Waypoint'))
+	{
+		$XPos = substr($line,9,50);
+		$XPos = rtrim($XPos);
+		$XPos = substr($XPos,0,-1);
+		$XPos = floatval($XPos);
+		#	echo '<br> Xpos is :'.$XPos;
+	}
+	if ((substr($line,0,9)=="  ZPos = ") && ($current_object == 'Waypoint'))
+	{
+		$ZPos = substr($line,9,50);
+		$ZPos = rtrim($ZPos);
+		$ZPos = substr($ZPos,0,-1);
+		$ZPos = floatval($ZPos);
+		#	echo '<br> ZPos is :'.$ZPos;
+	}
+	if ((substr($line,0,9)=="  YOri = ") && ($current_object == 'Waypoint'))
+	{
+		$YOri = substr($line,9,50);
+		$YOri = rtrim($YOri);
+		$YOri = substr($YOri,0,-1);
+		$YOri = floatval($YOri);
+	}
+	if (substr($line,0,9)=="  Name = " )
+	{
+			$current_Name = substr($line,10,50);
+			$current_Name = rtrim($current_Name);
+			$current_Name = substr($current_Name,0,-2);
+			echo '<br> Name is :'.$current_Name;
+			if ($current_Name == '')
+			{
+				$to_update = 0;
+			}
+	}
+	if ((substr($line,0,1)=='}') && ($to_update == 1) && ($current_object == 'Waypoint'))
+	{
+		$q1="UPDATE columns set dest_XPos = $XPos, dest_ZPos = $ZPos where Name = '$current_Name' LIMIT 1";
+		echo "<br> $q1";
+		$r1= mysqli_query($camp_link,$q1);
+		if ($r1)
+			{echo '<br> update attempted';}
+		else
+			{echo'<p>'.mysqli_error($dbc).'</p>';}
+		$to_update = 0;
+		$count = 1+$count;
+	}
+}
+fclose($fp);
 # now we update our statics
 # set updated flag to 0 throughout
 echo '<br>Starting update of static objects';
@@ -240,9 +279,9 @@ while ( ! feof( $fp ) )
 	if ((substr($line,0,1)=='}') && ($to_update == 1))
 	{
 	echo '<br> Trying to do an update to static';
-			$q1="UPDATE $loadedCampaign.statics SET static_XPos = $XPos,static_ZPos = $ZPos,static_YOri = $YOri,static_updated = 1 where static_Name = '$current_Name' AND static_Model = '$Model' AND static_updated = 0 LIMIT 1";
+			$q1="UPDATE statics SET static_XPos = $XPos,static_ZPos = $ZPos,static_YOri = $YOri,static_updated = 1 where static_Name = '$current_Name' AND static_Model = '$Model' AND static_updated = 0 LIMIT 1";
 			echo '<br> My update select is:'.$q1;
-			$r1= mysqli_query($dbc,$q1);
+			$r1= mysqli_query($camp_link,$q1);
 			if ($r1)
 				{
 				echo '<br> updated record';
@@ -255,7 +294,7 @@ while ( ! feof( $fp ) )
 	}
 
 }
-
+return;
 # end of static update
 #updates
 fclose($fp);
@@ -268,7 +307,6 @@ fclose($fp);
 						} else {
 							echo "$file not found or read-only<br />\n";
 						}
-return;
 						?>
 						<br />&nbsp;<br />
 <a href="CampaignMgmt.php?btn=campStp">Next</a>
