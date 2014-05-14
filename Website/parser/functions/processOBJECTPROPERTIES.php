@@ -5,7 +5,7 @@
 // =69.GIAP=TUSHKA
 // 2013-2014
 // ver 1.13
-// May 9 2014
+// May 13, 2014
 
 function OBJECTPROPERTIES($objecttype) {
    global $camp_link; // link to campaign db
