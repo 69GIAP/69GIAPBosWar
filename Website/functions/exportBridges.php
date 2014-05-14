@@ -98,7 +98,14 @@ function export_bridges() {
 			fwrite($fh,$writestring);
 			$writestring = '  Model = "graphics'."\\".'bridges'."\\".rtrim($Model).'.mgm";'."\r\n";			
 			fwrite($fh,$writestring);
+			if ($sim == "RoF")
+			{
 			$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($Model).'.txt";'."\r\n";
+			}
+			else
+			{
+			$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Bridges\\".rtrim($Model).'.txt";'."\r\n";			
+			}
 			fwrite($fh,$writestring);
 			$writestring = '  Country = '.$Country.';'."\r\n";
 			fwrite($fh,$writestring);

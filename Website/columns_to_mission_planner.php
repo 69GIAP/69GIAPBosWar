@@ -104,7 +104,14 @@ if ($num > 0)
 		{echo'<p>'.mysqli_error($dbc).'</p>';}
 # end of recovery of path	
 	# here is where we start writing a record
-	$writestring="Vehicle\r\n";
+	if ($modelpath2 == "trains")
+	{
+	$writestring="Train\r\n";
+	}
+	else
+	{
+	$writestring="Vehicle\r\n";	
+	}
 	fwrite($fh,$writestring);		
 	$writestring="{\r\n";
 	fwrite($fh,$writestring);
@@ -127,7 +134,22 @@ if ($num > 0)
 	fwrite($fh,$writestring);	
 	$writestring = '  ZOri = 0.00;'."\r\n";	
 	fwrite($fh,$writestring);
-	$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($Model).'.txt";'."\r\n";	
+	if ($sim == "RoF")
+	{
+		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($Model).'.txt";'."\r\n";	
+	}
+	else
+	{
+		if ($modelpath2 == "trains")
+		{
+		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Trains\\".rtrim($Model).'.txt";'."\r\n";	
+		}
+		else
+		{
+		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Vehicles\\".rtrim($Model).'.txt";'."\r\n";			
+		}
+		}
+	
 	fwrite($fh,$writestring);
 	$writestring = '  Model = "graphics'."\\"."$modelpath2"."\\"."$modelpath3"."\\".rtrim($Model).'.mgm";'."\r\n";
 	fwrite($fh,$writestring);
@@ -165,6 +187,17 @@ if ($num > 0)
 	fwrite($fh,$writestring);			
 	$writestring = '  DeleteAfterDeath = 1;'."\r\n";				
 	fwrite($fh,$writestring);	
+	if ($sim = "BoS")
+		{
+		$writestring = '  CoopStart = 0;'."\r\n";				
+		fwrite($fh,$writestring);	
+		$writestring = '  Spotter = -1;'."\r\n";				
+		fwrite($fh,$writestring);
+		$writestring = '  BeaconChannel = 0;'."\r\n";				
+		fwrite($fh,$writestring);		
+		$writestring = '  Callsign = 0;'."\r\n";				
+		fwrite($fh,$writestring);
+		}
 	$writestring = '}'."\r\n";	
 	fwrite($fh,$writestring);
 	$writestring = ''."\r\n";	

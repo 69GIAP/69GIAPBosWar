@@ -10,7 +10,7 @@
 # Stenka conversion from exportStaticGroups
 
 function export_staticgroups2planner($CoalID) {
-
+	global $sim;
 	global $camp_link,$loadedCampaign;
 
 	$abbrv = get_abbrv();
@@ -143,7 +143,37 @@ function export_staticgroups2planner($CoalID) {
 			fwrite($fh,$writestring);
 			$writestring = '  ZOri = 0.00;'."\r\n";
 			fwrite($fh,$writestring);
-			$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($static_Model).'.txt";'."\r\n";
+			if ($sim == "RoF")
+			{
+				$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($static_Model).'.txt";'."\r\n";
+			}
+			else
+			{
+				if ($static_Type == "Aerostat")
+				{
+				$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Aerostats\\".rtrim($static_Model).'.txt";'."\r\n";			
+				}
+				if ($static_Type == "Block")
+				{
+				$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Blocks\\".rtrim($static_Model).'.txt";'."\r\n";			
+				}				
+				if ($static_Type == "Flag")
+				{
+				$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Flags\\".rtrim($static_Model).'.txt";'."\r\n";			
+				}								
+				if ($static_Type == "Ship")
+				{
+				$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Ships\\".rtrim($static_Model).'.txt";'."\r\n";			
+				}												
+				if ($static_Type == "Train")
+				{
+				$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Trains\\".rtrim($static_Model).'.txt";'."\r\n";			
+				}				
+				if ($static_Type == "Vehicles")
+				{
+				$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Vehicles\\".rtrim($static_Model).'.txt";'."\r\n";			
+				}
+			}
 			fwrite($fh,$writestring);
 
 			// get model path
@@ -192,6 +222,17 @@ function export_staticgroups2planner($CoalID) {
 				fwrite($fh,$writestring);
 				$writestring = '  DeleteAfterDeath = 1;'."\r\n";
 				fwrite($fh,$writestring);
+				if ($sim = "BoS")
+				{
+				$writestring = '  CoopStart = 0;'."\r\n";				
+				fwrite($fh,$writestring);	
+				$writestring = '  Spotter = -1;'."\r\n";				
+				fwrite($fh,$writestring);
+				$writestring = '  BeaconChannel = 0;'."\r\n";				
+				fwrite($fh,$writestring);		
+				$writestring = '  Callsign = 0;'."\r\n";				
+				fwrite($fh,$writestring);
+				}
 			} 
 			elseif ($static_Type == "Block")
 			{
@@ -238,6 +279,18 @@ function export_staticgroups2planner($CoalID) {
 				$writestring = '  DamageThreshold = 1;'."\r\n";
 				fwrite($fh,$writestring);
 				$writestring = '  DeleteAfterDeath = 1;'."\r\n";
+				fwrite($fh,$writestring);				
+				if ($sim = "BoS")
+				{
+				$writestring = '  CoopStart = 0;'."\r\n";				
+				fwrite($fh,$writestring);	
+				$writestring = '  Spotter = -1;'."\r\n";				
+				fwrite($fh,$writestring);
+				$writestring = '  BeaconChannel = 0;'."\r\n";				
+				fwrite($fh,$writestring);		
+				$writestring = '  Callsign = 0;'."\r\n";				
+				fwrite($fh,$writestring);
+				}
 			}
 			elseif ($static_Type == 'Aerostat') 
 			{

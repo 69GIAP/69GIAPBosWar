@@ -9,7 +9,7 @@
 #myata	30/11/13 if clause to prevent exporting YOri = NULL
 
 function export_columns($CoalID) {
-
+	global $sim;
 	global $camp_link;
 
 	$abbrv = get_abbrv();
@@ -83,9 +83,34 @@ function export_columns($CoalID) {
 
 			echo "\$current_rec: $current_rec<br />\n";
 			echo "\$Supplypoint: $Supplypoint<br />\n";
-
+			// get model path
+			$col_Model = rtrim($col_Model);
+			$query3 = "SELECT * from object_properties where Model = '$col_Model'LIMIT 1";
+			if(!$result3 = $camp_link->query($query3)) {
+				echo "$query3<br />\n";
+				die('exportColumns query2 error [' . $camp_link->error . ']');
+			}
+			$result3 = $camp_link->query($query3);
+			$r3_data = $result3->fetch_row();
+			if ($r3_data[0]) {
+				echo "Model found is ".$r3_data[6]."<br />\n";
+				echo "modelpath2 is ".$r3_data[8]."<br />\n";
+				$modelpath2 = $r3_data[8];
+				echo "modelpath3 is ".$r3_data[9]."<br />\n";
+				$modelpath3 = $r3_data[9];
+			} else {
+				echo'<p>'.mysqli_error($camp_link).'</p>';
+			}
+			
 			// here is where we start writing a record
+			if ($modelpath2 == "trains")
+			{
+			$writestring="Train\r\n";
+			}
+			else
+			{
 			$writestring="Vehicle\r\n";
+			}
 			fwrite($fh,$writestring);
 			$writestring="{\r\n";
 			fwrite($fh,$writestring);
@@ -138,27 +163,23 @@ function export_columns($CoalID) {
 			fwrite($fh,$writestring);
 			$writestring = '  ZOri = 0.00;'."\r\n";
 			fwrite($fh,$writestring);
+			if ($sim == "RoF")
+			{
 			$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($col_Model).'.txt";'."\r\n";
+			}
+			else
+			{
+				if ($modelpath2 == "trains")
+				{
+					$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Trains\\".rtrim($col_Model).'.txt";'."\r\n";
+				}
+				else
+				{
+					$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Vehicles\\".rtrim($col_Model).'.txt";'."\r\n";			
+				}
+			}
 			fwrite($fh,$writestring);
 
-			// get model path
-			$col_Model = rtrim($col_Model);
-			$query3 = "SELECT * from object_properties where Model = '$col_Model'LIMIT 1";
-			if(!$result3 = $camp_link->query($query3)) {
-				echo "$query3<br />\n";
-				die('exportColumns query2 error [' . $camp_link->error . ']');
-			}
-			$result3 = $camp_link->query($query3);
-			$r3_data = $result3->fetch_row();
-			if ($r3_data[0]) {
-				echo "Model found is ".$r3_data[6]."<br />\n";
-				echo "modelpath2 is ".$r3_data[8]."<br />\n";
-				$modelpath2 = $r3_data[8];
-				echo "modelpath3 is ".$r3_data[9]."<br />\n";
-				$modelpath3 = $r3_data[9];
-			} else {
-				echo'<p>'.mysqli_error($camp_link).'</p>';
-			}
 			$writestring = '  Model = "graphics'."\\"."$modelpath2"."\\"."$modelpath3"."\\".rtrim($col_Model).'.mgm";'."\r\n";
 			fwrite($fh,$writestring);
 			$writestring = '  Desc = "'."$Description ";
@@ -182,6 +203,17 @@ function export_columns($CoalID) {
 			$writestring = '  DamageThreshold = 1;'."\r\n";
 			fwrite($fh,$writestring);
 			$writestring = '  DeleteAfterDeath = 1;'."\r\n";
+			if ($sim == "BoS")
+			{
+			$writestring = '  CoopStart = 0;'."\r\n";				
+			fwrite($fh,$writestring);	
+			$writestring = '  Spotter = -1;'."\r\n";				
+			fwrite($fh,$writestring);
+			$writestring = '  BeaconChannel = 0;'."\r\n";				
+			fwrite($fh,$writestring);		
+			$writestring = '  Callsign = 0;'."\r\n";				
+			fwrite($fh,$writestring);
+			}
 			fwrite($fh,$writestring);
 			$writestring = '}'."\r\n";
 			fwrite($fh,$writestring);

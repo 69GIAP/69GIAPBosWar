@@ -8,7 +8,7 @@
 #stenka 23/4/14 conversion of export_columns code
 #stenka 1/5/14 addition of trains
 function export_columns2planner($CoalID) {
-
+	global $sim;
 	global $camp_link;
 
 	$abbrv = get_abbrv();
@@ -165,10 +165,22 @@ function export_columns2planner($CoalID) {
 			fwrite($fh,$writestring);
 			$writestring = '  ZOri = 0.00;'."\r\n";
 			fwrite($fh,$writestring);
+			if ($sim == "RoF")
+			{
 			$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($col_Model).'.txt";'."\r\n";
+			}
+			else
+			{
+				if ($modelpath2 = "trains")
+				{
+				$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Trains\\".rtrim($col_Model).'.txt";'."\r\n";
+				}
+				else
+				{
+				$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Vehicles\\".rtrim($col_Model).'.txt";'."\r\n";
+				}			
+			}
 			fwrite($fh,$writestring);
-
-
 			$writestring = '  Model = "graphics'."\\"."$modelpath2"."\\"."$modelpath3"."\\".rtrim($col_Model).'.mgm";'."\r\n";
 			fwrite($fh,$writestring);
 			$writestring = '  Desc = "'."$Description ";
@@ -195,6 +207,17 @@ function export_columns2planner($CoalID) {
 			fwrite($fh,$writestring);
 			$writestring = '  DeleteAfterDeath = 1;'."\r\n";
 			fwrite($fh,$writestring);
+			if ($sim = "BoS")
+			{
+			$writestring = '  CoopStart = 0;'."\r\n";				
+			fwrite($fh,$writestring);	
+			$writestring = '  Spotter = -1;'."\r\n";				
+			fwrite($fh,$writestring);
+			$writestring = '  BeaconChannel = 0;'."\r\n";				
+			fwrite($fh,$writestring);		
+			$writestring = '  Callsign = 0;'."\r\n";				
+			fwrite($fh,$writestring);
+			}			
 			$writestring = '}'."\r\n";
 			fwrite($fh,$writestring);
 			$writestring = ''."\r\n";

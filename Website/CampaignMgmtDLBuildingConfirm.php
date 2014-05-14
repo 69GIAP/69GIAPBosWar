@@ -2,7 +2,6 @@
 <?php 
 #Stenka 23/4/14
 #Stenka 26/4/14 debug z position of column
-#Stenka 9/5/14 bugfix on carriages
 // Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
 	$dbc = connectBOSWAR();
@@ -50,6 +49,8 @@ require ('functions/getGroundAILevel.php');
 require ('functions/getGroundspacing.php');
 // require getCoalitionname.php
 require ('functions/getCoalitionname.php');
+// require getObjectModel.php
+require ( 'functions/getObjectModel.php' );
 # here starts the groupfile sequence
 echo "<br><br>Hello Peter im in the groupfile sequence<br><br>";
 # pre mission generation check
@@ -272,7 +273,15 @@ if ($num > 0)
 		fwrite($fh,$writestring);
 		$writestring = '  Model = "graphics'."\\".'bridges'."\\".rtrim($Model).'.mgm";'."\r\n";			
 		fwrite($fh,$writestring);
+		if ($sim == "RoF")
+		{
 		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($Model).'.txt";'."\r\n";
+		}
+		else
+		{
+		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Bridges\\".rtrim($Model).'.txt";'."\r\n";
+		}		
+		
 		fwrite($fh,$writestring);
 		$writestring = '  Country = '.$Country.';'."\r\n";
 		fwrite($fh,$writestring);
@@ -414,7 +423,15 @@ if ($num > 0)
 		fwrite($fh,$writestring);
 		$writestring = '  Model = "graphics'."\\".'airfields'."\\".rtrim($Model).'.mgm";'."\r\n";			
 		fwrite($fh,$writestring);
+		if ($sim == "RoF")
+		{
 		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($Model).'.txt";'."\r\n";
+		}
+		else
+		{
+		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Airfields\\".rtrim($Model).'.txt";'."\r\n";
+		}		
+		
 		fwrite($fh,$writestring);
 		$writestring = '  Country = '.$Country.';'."\r\n";
 		fwrite($fh,$writestring);
@@ -476,6 +493,11 @@ if ($num > 0)
 				fwrite($fh,$writestring);
 				$writestring = '      LimitAmmo = 1;'."\r\n";
 				fwrite($fh,$writestring);
+				if ($sim == "BoS")
+				{
+				$writestring = '      WMMask = 1;'."\r\n";
+				fwrite($fh,$writestring);
+				}
 				$writestring = '      AIRTBDecision = 1;'."\r\n";
 				fwrite($fh,$writestring);
 				$writestring = '      Renewable = 1;'."\r\n";
@@ -490,9 +512,19 @@ if ($num > 0)
 				fwrite($fh,$writestring);
 				$writestring = '      Altitude = '.$Plane_Altitude.';'."\r\n";
 				fwrite($fh,$writestring);
-				$writestring = '      Model = "graphics'."\\planes\\".$Plane_Model."\\".$Plane_Model.'.mgm";'."\r\n";
+# pick out model variable from object propertries
+				$objectModel = get_ObjectModel($Plane_Model);
+###
+				$writestring = '      Model = "graphics'."\\planes\\".$objectModel."\\".$objectModel.'.mgm";'."\r\n";
 				fwrite($fh,$writestring);
-				$writestring = '      Script = "LuaScripts'."\\WorldObjects\\".$Plane_Model.'.txt";'."\r\n";
+				if ($sim == "RoF")
+				{
+				$writestring = '      Script = "LuaScripts'."\\WorldObjects\\".$objectModel.'.txt";'."\r\n";
+				}
+				else
+				{
+				$writestring = '      Script = "LuaScripts'."\\WorldObjects\\Planes\\".$objectModel.'.txt";'."\r\n";
+				}				
 				fwrite($fh,$writestring);
 				$writestring = '      Name = "'.$Plane_Name.'";'."\r\n";
 				fwrite($fh,$writestring);
@@ -503,6 +535,13 @@ if ($num > 0)
 				}
 			$writestring = '  }'."\r\n";
 			fwrite($fh,$writestring);
+			}
+			if ($sim == "BoS")
+			{
+			$writestring = '    Callsign = 0;'."\r\n";
+			fwrite($fh,$writestring);			
+			$writestring = '    Callnum = 0;'."\r\n";
+			fwrite($fh,$writestring);						
 			}
 			$writestring = '  ReturnPlanes = 0;'."\r\n";
 			fwrite($fh,$writestring);
@@ -656,7 +695,15 @@ if ($num > 0)
 			fwrite($fh,$writestring);	
 			$writestring = '  ZOri = 0.00;'."\r\n";	
 			fwrite($fh,$writestring);
+			if ($sim == "RoF")
+			{
 			$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($Model).'.txt";'."\r\n";	
+			}
+			else
+			{
+			$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Vehicles\\".rtrim($Model).'.txt";'."\r\n";	
+			}			
+			
 			fwrite($fh,$writestring);
 			$writestring = '  Model = "graphics'."\\"."$modelpath2\\"."$modelpath3"."\\"."$Model".'.mgm";'."\r\n";	
 			fwrite($fh,$writestring);
@@ -680,6 +727,17 @@ if ($num > 0)
 			fwrite($fh,$writestring);			
 			$writestring = '  DeleteAfterDeath = 1;'."\r\n";				
 			fwrite($fh,$writestring);	
+			if ($sim == "BoS")
+			{
+			$writestring = '  CoopStart = 0;'."\r\n";				
+			fwrite($fh,$writestring);	
+			$writestring = '  Spotter = -1;'."\r\n";				
+			fwrite($fh,$writestring);
+			$writestring = '  BeaconChannel = 0;'."\r\n";				
+			fwrite($fh,$writestring);		
+			$writestring = '  Callsign = 0;'."\r\n";				
+			fwrite($fh,$writestring);
+			}
 			$writestring = '}'."\r\n";	
 			fwrite($fh,$writestring);
 			$writestring = ''."\r\n";	
@@ -1203,7 +1261,29 @@ if ($num > 0)
 	fwrite($fh,$writestring);	
 	$writestring = '  ZOri = 0.00;'."\r\n";	
 	fwrite($fh,$writestring);
+	if ($sim == "RoF")
+	{
 	$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($static_Model).'.txt";'."\r\n";	
+	}
+	else
+	{
+		if ($static_Type == 'Block')
+		{
+		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Blocks\\".rtrim($static_Model).'.txt";'."\r\n";	
+		}
+		if ($static_Type == 'Train')
+		{
+		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Trains\\".rtrim($static_Model).'.txt";'."\r\n";	
+		}
+		if ($static_Type == 'Flag')
+		{
+		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Flags\\".rtrim($static_Model).'.txt";'."\r\n";	
+		}
+		if ($static_Type == 'Vehicle')
+		{
+		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Vehicles\\".rtrim($static_Model).'.txt";'."\r\n";	
+		}
+	}
 	fwrite($fh,$writestring);
 	if ($static_Type == 'Block')
 	{
@@ -1414,7 +1494,21 @@ if ($num > 0)
 			fwrite($fh,$writestring);	
 			$writestring = '  ZOri = 0.00;'."\r\n";	
 			fwrite($fh,$writestring);
+			if ($sim == "RoF")
+			{
 			$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($Model).'.txt";'."\r\n";	
+			}
+			else
+			{
+				if ($modelpath2 == 'trains')
+				{
+				$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Trains\\".rtrim($Model).'.txt";'."\r\n";	
+				}
+				else
+				{
+				$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Vehicles\\".rtrim($Model).'.txt";'."\r\n";	
+				}
+			}
 			fwrite($fh,$writestring);
 			$writestring = '  Model = "graphics'."\\"."$modelpath2\\"."$modelpath3"."\\"."$Model".'.mgm";'."\r\n";	
 			fwrite($fh,$writestring);
@@ -1452,6 +1546,17 @@ if ($num > 0)
 			fwrite($fh,$writestring);			
 			$writestring = '  DeleteAfterDeath = 1;'."\r\n";				
 			fwrite($fh,$writestring);
+			if ($sim == "BoS")
+			{
+			$writestring = '  CoopStart = 0;'."\r\n";				
+			fwrite($fh,$writestring);	
+			$writestring = '  Spotter = -1;'."\r\n";				
+			fwrite($fh,$writestring);
+			$writestring = '  BeaconChannel = 0;'."\r\n";				
+			fwrite($fh,$writestring);		
+			$writestring = '  Callsign = 0;'."\r\n";				
+			fwrite($fh,$writestring);
+			}
 			# carriages write sequence
 			if ($modelpath2 == 'trains')
 			{
@@ -1471,7 +1576,7 @@ if ($num > 0)
 					while ($row = mysqli_fetch_array($r9,MYSQLI_ASSOC))
 					{
 						$carriage = $row['Model'];
-						$writestring = '    "LuaScripts\\WorldObjects\\Trains\\'.$carriage.'.txt"'.";\r\n";
+						$writestring = '    "LuaScripts\\WorldObjects\\Trains\\'.$carriage.'.txt"'."\r\n";
 						fwrite($fh,$writestring);
 					}
 					$writestring = '  }'."\r\n";				
@@ -1563,12 +1668,7 @@ if ($num > 0)
 		{$speed_of_column = $cruise_speed_kmh;}
 	else
 		{$speed_of_column = $tranport_speed;}
-#temporary hardcoding of train speed Stenka needs tracing back for more elegant fix
-		if ($modelpath2 == 'trains')	
-	{$speed_of_column = 50;}	
-#----------------------------------	
 	$writestring = '  Speed = '.$speed_of_column.';'."\r\n";	
-
 	fwrite($fh,$writestring);
 	$writestring = '  Priority = 1;'."\r\n";	
 	fwrite($fh,$writestring);	
@@ -1626,14 +1726,7 @@ if ($num > 0)
 	fwrite($fh,$writestring);
 	$writestring = '  Desc = "";'."\r\n";		
 	fwrite($fh,$writestring);
-	if ($modelpath2 == 'trains')
-	{
-	$writestring = '  Targets = ['.($index_no-2).'];'."\r\n";		
-	}
-	else
-	{
-	$writestring = '  Targets = ['.($index_no-2).','. ($index_no+1).'];'."\r\n";	
-	}
+	$writestring = '  Targets = ['.($index_no-2).','. ($index_no+1).'];'."\r\n";		
 	fwrite($fh,$writestring);
 	$writestring = '  Objects = [];'."\r\n";		
 	fwrite($fh,$writestring);
@@ -1780,7 +1873,21 @@ $list_of_mcus ="";
 		fwrite($fh,$writestring);	
 		$writestring = '  ZOri = 0.00;'."\r\n";	
 		fwrite($fh,$writestring);
-		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($Model).'.txt";'."\r\n";	
+		if ($sim == "RoF")
+		{
+			$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($Model).'.txt";'."\r\n";	
+		}
+		else
+		{
+			if ($modelpath2 == "trains")
+			{
+			$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Trains\\".rtrim($Model).'.txt";'."\r\n";
+			}
+			else
+			{
+			$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Vehicles\\".rtrim($Model).'.txt";'."\r\n";
+			}
+		}
 		fwrite($fh,$writestring);
 		$writestring = '  Model = "graphics'."\\"."$modelpath2\\"."$modelpath3"."\\"."$Model".'.mgm";'."\r\n";	
 		fwrite($fh,$writestring);
@@ -1818,6 +1925,17 @@ $list_of_mcus ="";
 		fwrite($fh,$writestring);			
 		$writestring = '  DeleteAfterDeath = 1;'."\r\n";				
 		fwrite($fh,$writestring);
+		if ($sim == "BoS")
+		{
+		$writestring = '  CoopStart = 0;'."\r\n";				
+		fwrite($fh,$writestring);	
+		$writestring = '  Spotter = -1;'."\r\n";				
+		fwrite($fh,$writestring);
+		$writestring = '  BeaconChannel = 0;'."\r\n";				
+		fwrite($fh,$writestring);		
+		$writestring = '  Callsign = 0;'."\r\n";				
+		fwrite($fh,$writestring);
+		}
 			# carriages write sequence
 			if ($modelpath2 == 'trains')
 			{
@@ -1837,7 +1955,7 @@ $list_of_mcus ="";
 					while ($row = mysqli_fetch_array($r9,MYSQLI_ASSOC))
 					{
 						$carriage = $row['Model'];
-						$writestring = '    "LuaScripts\\WorldObjects\\Trains\\'.$carriage.'.txt"'.";\r\n";
+						$writestring = '    "LuaScripts\\WorldObjects\\Trains\\'.$carriage.'.txt"'."\r\n";
 						fwrite($fh,$writestring);
 					}
 					$writestring = '  }'."\r\n";				

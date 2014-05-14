@@ -1,5 +1,6 @@
 <?php 
 # Stenka 21/11/13 adding hints and text corrections
+# Stenka 14/5/14 change or rwststion for BOS
 # Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
 	$dbc = connectBOSWAR();
@@ -206,10 +207,19 @@ Hint : if your screen is a bit crowded with ikons go to your object filter and s
 				<p>Continue until all active airfields are set.</p>\n";
 # addition of supply and control points
 			echo "<h3>Supply Points</h3>\n";
+			if ($sim == "RoF")
+			{
 			echo "<p>When new vehicles arrive on the map they will arrive at a Supply point. This will normally be near a road on the edge of the map or near a railway line. We will use the \"rwstation\" block as a token for a supply point.
 					First in the Mission Editor go to object filter and \"Select All\". Then select \"Blocks\" on the right of the screen, then \"rwstation\" and position it where you want on the map.
 					\"Create Linked Entity\" and set the \"Country\" in \"Advanced Properties\". Then continue until you have enough supply points on each side. We <b>must</b> have at least one for each coalition.<br></p>\n";
-			echo "<h3>Control Points</h3>\n";
+			}
+			else
+			{
+			echo "<p>When new vehicles arrive on the map they will arrive at a Supply point. This will normally be near a road on the edge of the map or near a railway line. We will use the \"rwstation\" block as a token for a supply point.
+					First in the Mission Editor go to object filter and \"Select All\". Then select \"Blocks\" on the right of the screen, then \"rwstation_s2\" and position it where you want on the map.
+					\"Create Linked Entity\" and set the \"Country\" in \"Advanced Properties\". Then continue until you have enough supply points on each side. We <b>must</b> have at least one for each coalition.<br></p>\n";
+			}			
+					echo "<h3>Control Points</h3>\n";
 			echo "<p>Campaigns may be purely points based or based on set objectives to be captured or held. Such an optional objective is called a \"Control Point\". We will use the \"flag\" Flag as a token for a Control Point.
 					To set a Control Point, select \"Flags\" on the right of the screen, then \"flag\" and position it where you want on the map.
 					\"Create Linked Entity\" and set the \"Country\" in  \"Advanced Properties\".  Continue as needed.<br></p>\n";

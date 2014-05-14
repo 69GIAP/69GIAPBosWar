@@ -1,5 +1,5 @@
 <?php 
-
+# WIP Stenka 7/5/14
 # Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
 	$dbc = connectBOSWAR();
@@ -52,6 +52,34 @@
 									
 					# use this information to connect to campaign 
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
+					# mission 1 has been run we are preparing for mission 2
+					# we need entry of mission number in screen - here I am hardcoding it
+					$mission_no = 1;
+					# here I will open post_mortem and read where mission_no matches and processed = 0
+					$q1 = "select * from post_mortem where mission_no = $mission_no and processed = 0";
+					$r1 = mysqli_query($camp_link,$q1);
+					$num = mysqli_num_rows($r1);
+					if ($num > 0)
+					{
+						echo '<br>Records in post_mortem';
+						# start a loop till end of selection							
+						while ($row = mysqli_fetch_array($r1,MYSQLI_ASSOC))
+						{
+							echo '<br>'.$row['id'].'|'.$row['Name'].$row['Model'];
+							# load id name and model to variables
+							$current_rec = $row['id'];
+							$current_Name = $row['Name'];
+							$coalition = $row['coalition'];
+							$Model = $row['Model'];
+							# reduce quantity -1 in columns for model and name limit 1
+							$q2 = "update columns set Quantity = (Quantity -1) where Model = ".'"'.$Model.'" and Name = "'.$current_Name.'" and CoalID = "'.$coalition.'" LIMIT 1';
+							echo "<br>".$q2;
+							# if successful set processed = 1 in post_mortem for id
+							# else delete in statics for model and name limit 1
+							# if successful set processed = 1 in post_mortem for id					
+							# end loop from post mortem
+						}
+					}
                 ?>
                 <p>Draft Menu</p>
             

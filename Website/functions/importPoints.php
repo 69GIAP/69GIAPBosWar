@@ -7,6 +7,7 @@ function import_points($path,$file) {
 // Nov 16, 2013 dropped coalition name from control point names,
 // changed table name to key_points and
 // column supplypointName to pointName
+// Stenka 14/5/14 updating rwstation for BoS
 
 	global $camp_link; // link to campaign db
 
@@ -26,11 +27,28 @@ function import_points($path,$file) {
 	$line = file("$path/$file");
 	foreach ($line as $i => $value ) {
 		// find an rwstation (supply point)
-		if (preg_match('/rwstation.txt/',$value)) {
+		if ($sim == "RoF")
+		{
+			if (preg_match('/rwstation.txt/',$value)) 
+			{
 			// filter out neutral rwstations
-			if (!preg_match('/^  Country = 0/', $line[$i+1])) {
-				$spline[$j++] = $i;  // save its line number
+				if (!preg_match('/^  Country = 0/', $line[$i+1])) 
+				{
+					$spline[$j++] = $i;  // save its line number
+				}
 			}
+		}
+		else
+		{
+			if (preg_match('/rwstation_s2.txt/',$value)) 
+			{
+			// filter out neutral rwstations
+				if (!preg_match('/^  Country = 0/', $line[$i+1])) 
+				{
+					$spline[$j++] = $i;  // save its line number
+				}
+			}
+		}
 		// find a flag (control point)
 		} elseif (preg_match('/flag.txt/',$value)) {
 			$cpline[$k++] = $i;  // save its line number

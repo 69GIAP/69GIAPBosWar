@@ -107,7 +107,37 @@ if ($num > 0)
 	fwrite($fh,$writestring);	
 	$writestring = '  ZOri = 0.00;'."\r\n";	
 	fwrite($fh,$writestring);
-	$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($static_Model).'.txt";'."\r\n";	
+	if ($sim == "RoF")
+	{
+		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($static_Model).'.txt";'."\r\n";	
+	}
+	else
+	{
+		if ($static_Type == "Block")
+		{
+		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Blocks\\".rtrim($static_Model).'.txt";'."\r\n";	
+		}
+		if ($static_Type == "Flag")
+		{
+		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Flags\\".rtrim($static_Model).'.txt";'."\r\n";	
+		}	
+		if ($static_Type == "Aerostat")
+		{
+		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Aerostats\\".rtrim($static_Model).'.txt";'."\r\n";	
+		}
+		if ($static_Type == "Vehicle")
+		{
+		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Vehicles\\".rtrim($static_Model).'.txt";'."\r\n";	
+		}		
+		if ($static_Type == "Train")
+		{
+		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Trains\\".rtrim($static_Model).'.txt";'."\r\n";	
+		}		
+		if ($static_Type == "Ship")
+		{
+		$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\Ships\\".rtrim($static_Model).'.txt";'."\r\n";	
+		}		
+	}
 	fwrite($fh,$writestring);
 # must get path for vehicle
 	if ($static_Type == "Vehicle")
@@ -221,7 +251,18 @@ if ($num > 0)
 		$writestring = '  DamageThreshold = 1;'."\r\n";				
 		fwrite($fh,$writestring);			
 		$writestring = '  DeleteAfterDeath = 1;'."\r\n";				
+		fwrite($fh,$writestring);
+		if ($sim == "BoS")
+		{
+		$writestring = '  CoopStart = 0;'."\r\n";				
 		fwrite($fh,$writestring);	
+		$writestring = '  Spotter = -1;'."\r\n";				
+		fwrite($fh,$writestring);
+		$writestring = '  BeaconChannel = 0;'."\r\n";				
+		fwrite($fh,$writestring);		
+		$writestring = '  Callsign = 0;'."\r\n";				
+		fwrite($fh,$writestring);
+		}
 	}
 	if ($static_Type == "Block")
 	{
@@ -269,6 +310,17 @@ if ($num > 0)
 		fwrite($fh,$writestring);			
 		$writestring = '  DeleteAfterDeath = 1;'."\r\n";				
 		fwrite($fh,$writestring);	
+		if ($sim == "BoS")
+		{
+		$writestring = '  CoopStart = 0;'."\r\n";				
+		fwrite($fh,$writestring);	
+		$writestring = '  Spotter = -1;'."\r\n";				
+		fwrite($fh,$writestring);
+		$writestring = '  BeaconChannel = 0;'."\r\n";				
+		fwrite($fh,$writestring);		
+		$writestring = '  Callsign = 0;'."\r\n";				
+		fwrite($fh,$writestring);
+		}
 	}
 	$writestring = '}'."\r\n";	
 	fwrite($fh,$writestring);

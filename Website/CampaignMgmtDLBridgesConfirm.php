@@ -1,4 +1,5 @@
 # Stenka 1/1/14 added air AI Level
+# Stenka 14/5/14 update for BOS
 <?php 
 
 // Make a mysqli connection to the central BOSWAR database
@@ -35,6 +36,8 @@
 				// require getAirAILevel.php
 				require ('functions/getAirAILevel.php');
 				$air_ai_level = get_air_ai_level();
+				// require getObjectModel.php
+				require ( 'functions/getObjectModel.php' );
 				
 				// export Bridges 
 				global $camp_link;
@@ -126,7 +129,14 @@
 						fwrite($fh,$writestring);
 						$writestring = '  Model = "graphics'."\\".'bridges'."\\".rtrim($Model).'.mgm";'."\r\n";			
 						fwrite($fh,$writestring);
+						if ($sim == "RoF") 
+						{
 						$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($Model).'.txt";'."\r\n";
+						}
+						else
+						{
+						$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\"."Bridges"."\\".rtrim($Model).'.txt";'."\r\n";
+						}						
 						fwrite($fh,$writestring);
 						$writestring = '  Country = '.$Country.';'."\r\n";
 						fwrite($fh,$writestring);
@@ -213,7 +223,7 @@
 				echo "$num Bridge records processed<br />\n";
 				// end of exporting bridges
 				// start of exporting airfields
-				$query = "SELECT * from airfields where airfield_enabled = 1";
+				$query = "SELECT * from airfields";
 				if(!$result = $camp_link->query($query)) {
 					echo "$query<br />\n";
 					die('exportAirfields query error [' . $camp_link->error . ']');
@@ -234,7 +244,7 @@
 						$ZPos = $row['airfield_ZPos'];				
 						$YOri = $row['airfield_YOri'];
 						$airfield_Hydrodrome = $row['airfield_Hydrodrome'];						
-						$airfield_Enabled = $row['airfield_enabled'];
+						$airfield_Enabled = $row['airfield_Enabled'];
 						// here is where we start writing a record
 						$writestring="Airfield\r\n";
 						fwrite($fh,$writestring);
@@ -268,7 +278,14 @@
 						fwrite($fh,$writestring);
 						$writestring = '  Model = "graphics'."\\".'airfields'."\\".rtrim($Model).'.mgm";'."\r\n";			
 						fwrite($fh,$writestring);
-						$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($Model).'.txt";'."\r\n";
+						if ($sim == "RoF")
+						{
+							$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\".rtrim($Model).'.txt";'."\r\n";
+						}
+						else
+						{
+							$writestring = '  Script = "LuaScripts'."\\".'WorldObjects'."\\"."Airfields"."\\".rtrim($Model).'.txt";'."\r\n";
+						}
 						fwrite($fh,$writestring);
 						$writestring = '  Country = '.$Country.';'."\r\n";
 						fwrite($fh,$writestring);
@@ -349,9 +366,20 @@
 								fwrite($fh,$writestring);
 								$writestring = '      Altitude = '.$Plane_Altitude.';'."\r\n";
 								fwrite($fh,$writestring);
-								$writestring = '      Model = "graphics'."\\planes\\".$Plane_Model."\\".$Plane_Model.'.mgm";'."\r\n";
+								# pick out model variable from object propertries
+								$objectModel = get_ObjectModel($Plane_Model);
+								###
+								
+								$writestring = '      Model = "graphics'."\\planes\\".$objectModel."\\".$objectModel.'.mgm";'."\r\n";
 								fwrite($fh,$writestring);
-								$writestring = '      Script = "LuaScripts'."\\WorldObjects\\".$Plane_Model.'.txt";'."\r\n";
+								if ($sim == "RoF")
+								{
+									$writestring = '      Script = "LuaScripts'."\\WorldObjects\\".$objectModel.'.txt";'."\r\n";
+								}
+								else
+								{
+									$writestring = '      Script = "LuaScripts'."\\WorldObjects\\"."Planes\\".$objectModel.'.txt";'."\r\n";
+								}								
 								fwrite($fh,$writestring);
 								$writestring = '      Name = "'.$Plane_Name.'";'."\r\n";
 								fwrite($fh,$writestring);
@@ -363,6 +391,13 @@
 							$writestring = '  }'."\r\n";
 							fwrite($fh,$writestring);
 							}
+						if ($sim == "BoS")
+						{
+							$writestring = '  Callsign = 0;'."\r\n";
+							fwrite($fh,$writestring);						
+							$writestring = '  Callnum = 0;'."\r\n";
+							fwrite($fh,$writestring);						
+						}
 						$writestring = '  ReturnPlanes = 0;'."\r\n";
 						fwrite($fh,$writestring);
 						if ($airfield_Hydrodrome == 0)
