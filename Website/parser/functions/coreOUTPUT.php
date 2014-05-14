@@ -1,15 +1,16 @@
 <?php
-// OUTPUT
+// coreOUTPUT
 // output simple text report and calculate some stats for the db
 // =69.GIAP=TUSHKA
-// 2011-2013
-// BOSWAR version 1.32
-// Dec 15, 2013
+// 2011-2014
+// BOSWAR version 1.34
+// Apr 22, 2014
 
 function OUTPUT() {
 // what follows is an almost complete collection of global variables
 // some of these variables are needed just for the debugging section
 // others may not be needed here at all
+	global $sim; // simulation
 	global $DEBUG; // are we debugging?
 	global $Log; // log lines
 	global $numlines; // number of log lines
@@ -124,6 +125,16 @@ function OUTPUT() {
 	global $object_desc; // object description from object_properties
 	global $object_value; // object value from object_properties
 	global $playerplaneid; // ID of player's plane
+	// added for BoS
+	global $PRESET; // ?
+	global $numplanepos; // number of plane position reports
+	global $PPline;  // Plane Position lines
+	global $PARENTID; // Parent of Bot ID
+	global $numbotkills; // number of bot kill position reports
+	global $BKline;  // Bot Kill lines
+
+
+
 
 	# require the is-point-in-area borrowed CLASS
 	# pointLocation
@@ -188,36 +199,68 @@ function OUTPUT() {
 	if ($numstart != 1) {
 		echo "WARNING: Have $numstart start lines!<br />\n";
 	}
-	// present in same order as in current version settings page
+	// present in same order as in current version RoF settings page
 	// updated and verified correct as of version 1.030b
+	// Correspondence with BoS not yet known.
+	
 	$anyon = 0; // are any settings ON?
-	echo "SETTINGS:<br />\n";
-	if (substr($SETTS,0,1)) { echo "Show Objects icons: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,1,1)) { echo "Navigation icons: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,2,1)) { echo "Far objects icons on map: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,4,1)) { echo "Aiming Help: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,5,1)) { echo "Padlock: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,3,1)) { echo "Simple gauges: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,23,1)) { echo "Allow Spectators: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,24,1)) { echo "Subtitles: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,19,1)) { echo "Simplified physics: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,20,1)) { echo "No wind: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,18,1)) { echo "No misfire: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,17,1)) { echo "Safety collisions: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,16,1)) { echo "Invulnerability against weapons: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,22,1)) { echo "Unlimited fuel: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,21,1)) { echo "Unlimited ammo: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,14,1)) { echo "No engine overflow: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,15,1)) { echo "Warmed up engine: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,13,1)) { echo "Easy piloting: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,6,1)) { echo "Autorudder: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,11,1)) { echo "Cruise control: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,8,1)) { echo "Autopilot: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,12,1)) { echo "Automatic RPM limiter: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,7,1)) { echo "Automatic mixture: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,9,1)) { echo "Automatic radiator: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,10,1)) { echo "Automatic engine start: ON<br />\n"; $anyon = 1; } 
-	if (substr($SETTS,25,1)) { echo "UNKNOWN SETTING: ON<br />\n"; $anyon = 1; } 
+	if ($sim == "RoF") {
+		echo "SETTINGS:<br />\n";
+		if (substr($SETTS,0,1)) { echo "Show Objects icons: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,1,1)) { echo "Navigation icons: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,2,1)) { echo "Far objects icons on map: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,4,1)) { echo "Aiming Help: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,5,1)) { echo "Padlock: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,3,1)) { echo "Simple gauges: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,23,1)) { echo "Allow Spectators: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,24,1)) { echo "Subtitles: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,19,1)) { echo "Simplified physics: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,20,1)) { echo "No wind: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,18,1)) { echo "No misfire: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,17,1)) { echo "Safety collisions: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,16,1)) { echo "Invulnerability against weapons: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,22,1)) { echo "Unlimited fuel: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,21,1)) { echo "Unlimited ammo: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,14,1)) { echo "No engine overflow: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,15,1)) { echo "Warmed up engine: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,13,1)) { echo "Easy piloting: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,6,1)) { echo "Autorudder: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,11,1)) { echo "Cruise control: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,8,1)) { echo "Autopilot: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,12,1)) { echo "Automatic RPM limiter: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,7,1)) { echo "Automatic mixture: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,9,1)) { echo "Automatic radiator: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,10,1)) { echo "Automatic engine start: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,25,1)) { echo "UNKNOWN SETTING: ON<br />\n"; $anyon = 1; } 
+	} else {
+		echo "SETTINGS (partially confirmed for BoS):<br />\n";
+		if (substr($SETTS,0,1)) { echo "Object markers: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,1,1)) { echo "Navigation markers: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,2,1)) { echo "Distant object markers: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,4,1)) { echo "Aiming assist: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,5,1)) { echo "Padlock: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,3,1)) { echo "Instrument panel: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,23,1)) { echo "Allow spectators: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,24,1)) { echo "Subtitles: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,19,1)) { echo "Simplified physics: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,20,1)) { echo "No wind: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,18,1)) { echo "No misfires: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,17,1)) { echo "Unbreakable: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,16,1)) { echo "Invulnerability: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,22,1)) { echo "Unlimited fuel: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,21,1)) { echo "Unlimited ammo: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,14,1)) { echo "No engine overflow?: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,15,1)) { echo "Warmed up engine: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,13,1)) { echo "Simplified controls: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,6,1)) { echo "Rudder assist: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,11,1)) { echo "Cruise control: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,8,1)) { echo "Autopilot: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,12,1)) { echo "Throttle auto limit: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,7,1)) { echo "Engine auto control: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,9,1)) { echo "Radiator assist: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,10,1)) { echo "Engine auto start: ON<br />\n"; $anyon = 1; } 
+		if (substr($SETTS,25,1)) { echo "UNKNOWN SETTING: ON<br />\n"; $anyon = 1; } 
+	}
 
 	if ($anyon == 0) { echo "All settings reported in log: OFF<br />&nbsp;<br />\n";
 	} else { echo "All other settings reported in log: OFF<br />&nbsp<br />\n"; }
@@ -296,14 +339,35 @@ function OUTPUT() {
 
 	// Losses
 	echo "<br />=-=-=-=-=-= Losses =-=-=-=-=-=<br />\n";
-	echo "There were $numkills losses.<br />&nbsp;<br />\n";
-	// first show Entente losses
-	$Coalitionname = COALITIONNAME(1);
-	if ($numententelosses == 1){
-		echo "The $Coalitionname suffered a single loss:<br />\n";	
-	} else {
-		echo "The $Coalitionname suffered $numententelosses losses:<br />\n";	
+	if ($numkills == 0) {
+		echo "There were no losses.<br />&nbsp;<br />\n";
+	} elseif ($numkills == 1) {
+		echo "There was a single loss.<br />&nbsp;<br />\n";
+	}else {
+		echo "There were $numkills losses.<br />&nbsp;<br />\n";
 	}
+	if ($sim == "RoF") {
+		// first show Entente losses
+		$Coalitionname = COALITIONNAME(1);
+		if ($numententelosses == 0){
+			echo "The $Coalitionname suffered no losses:<br />\n";	
+		} elseif ($numententelosses == 1){
+			echo "The $Coalitionname suffered a single loss:<br />\n";	
+		} else {
+			echo "The $Coalitionname suffered $numententelosses losses:<br />\n";	
+		}
+	} else {
+		// first show Russian losses
+		$Coalitionname = COALITIONNAME(1);
+		if ($numententelosses == 0){
+			echo "$Coalitionname suffered no losses:<br />\n";	
+		} elseif ($numententelosses == 1){
+			echo "$Coalitionname suffered a single loss:<br />\n";	
+		} else {
+			echo "$Coalitionname suffered $numententelosses losses:<br />\n";	
+		}
+	}
+
 	// loop through kills
 	for ($i = 0; $i < $numkills; ++$i) {
 		COALITION(@$Kcountryid[$i]); // @ suppresses notices
@@ -311,13 +375,27 @@ function OUTPUT() {
 			LOSSES($i);
 		}
 	}
-	// then show Central Powers losses
-	$Coalitionname = COALITIONNAME(2);
-	if ($numcplosses == 1){
-		echo "The $Coalitionname suffered a single loss:<br />\n";	
+
+	if ($sim == "RoF") {
+		// then show Central Powers losses
+		$Coalitionname = COALITIONNAME(2);
+		if ($numcplosses == 0){
+			echo "The $Coalitionname suffered no losses:<br />\n";	
+		} elseif ($numcplosses == 1){
+			echo "The $Coalitionname suffered a single loss:<br />\n";	
+		} else {
+			echo "<br />The $Coalitionname suffered $numcplosses losses:<br />\n";	
+		}
 	} else {
-		echo "<br />The $Coalitionname suffered $numcplosses losses:<br />\n";	
+		// then show German losses
+		$Coalitionname = COALITIONNAME(2);
+		if ($numcplosses == 1){
+			echo "$Coalitionname suffered a single loss:<br />\n";	
+		} else {
+			echo "<br />$Coalitionname suffered $numcplosses losses:<br />\n";	
+		}
 	}
+
 	// loop through kills
 	for ($i = 0; $i < $numkills; ++$i) {
 		COALITION(@$Kcountryid[$i]);  // @ supresses notices
@@ -613,8 +691,13 @@ function OUTPUT() {
 
 	if ($DEBUG == 1 || $DEBUG == 100) {
 		// from START AType:0
-		echo ("<p>AType:0 START<br />Ticks, Game Date, Game Time, Mission File, MID(null),<br />Game type, Coalitions, Settings, Mods</p>\n");
-		echo ("0 $GDate $GTime $MFile $MID<br />$GType $CNTRS $SETTS $MODS<br />\n");
+	    if ($sim == 'BoS') {
+			echo ("<p>AType:0 START<br />Ticks, Game Date, Game Time, Mission File, MID(null),<br />Game type, Coalitions, Settings, Mods, Preset</p>\n");
+			echo ("0 $GDate $GTime $MFile $MID<br />$GType $CNTRS $SETTS $MODS $PRESET<br />\n");
+		} else {
+			echo ("<p>AType:0 START<br />Ticks, Game Date, Game Time, Mission File, MID(null),<br />Game type, Coalitions, Settings, Mods</p>\n");
+			echo ("0 $GDate $GTime $MFile $MID<br />$GType $CNTRS $SETTS $MODS<br />\n");
+		}
 	}
 
 	if ($DEBUG == 1 || $DEBUG == 101) {
@@ -833,6 +916,7 @@ function OUTPUT() {
 //				echo ("$Ticks[$i] $VER[$i]<br />\n");
 //			}
 //		}
-	} // final $DEBUG ... haven't found a use for AType 15 or 16.
+	} // final $DEBUG ... haven't found a use for ATypes 15 (VERSION),
+	// 16 (BOTID), 17 (PLANEPOS) or 18 (BOTKILL).
 }
 ?>

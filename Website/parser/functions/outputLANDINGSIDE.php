@@ -2,9 +2,9 @@
 function LANDINGSIDE($pid,$posx,$posz){
 // determine if player landed on friendly, enemy or neutral territory
 // =69.GIAP=TUSHKA
-// 2011-2013
-// BOSWAR version 1.01
-// Dec 14, 2013
+// 2011-2014
+// BOSWAR version 1.02
+// Apr 21, 2014
 
 	global $PLID; // player plane id 
 	global $numplayers; // number of players
@@ -17,6 +17,11 @@ function LANDINGSIDE($pid,$posx,$posz){
 	global $Bline; // lines defining area boundaries
 	global $AID; // area ID in this context
 	global $BoundaryArray; // array of point pairs defining a boundary
+
+	if ($numiaheaders < 2 ) { // don't have two sides
+		$side = "neutral";
+		return $side;
+	}
 
 	// format location the way the pointLocation class needs
 	$location = "$posx $posz";
@@ -92,3 +97,4 @@ function LANDINGSIDE($pid,$posx,$posz){
 	return $side;
 }
 ?>
+>
