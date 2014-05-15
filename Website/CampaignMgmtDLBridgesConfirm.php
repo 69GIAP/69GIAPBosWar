@@ -223,7 +223,7 @@
 				echo "$num Bridge records processed<br />\n";
 				// end of exporting bridges
 				// start of exporting airfields
-				$query = "SELECT * from airfields";
+				$query = "SELECT * from airfields where airfield_enabled =1";
 				if(!$result = $camp_link->query($query)) {
 					echo "$query<br />\n";
 					die('exportAirfields query error [' . $camp_link->error . ']');
@@ -244,7 +244,7 @@
 						$ZPos = $row['airfield_ZPos'];				
 						$YOri = $row['airfield_YOri'];
 						$airfield_Hydrodrome = $row['airfield_Hydrodrome'];						
-						$airfield_Enabled = $row['airfield_Enabled'];
+						$airfield_Enabled = $row['airfield_enabled'];
 						// here is where we start writing a record
 						$writestring="Airfield\r\n";
 						fwrite($fh,$writestring);
