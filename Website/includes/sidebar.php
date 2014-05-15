@@ -252,8 +252,8 @@
 														echo "	    <li><a href=\"MsnPostLogParser.php?btn=postMsn&sde=lgPrsr\" class=\"campLogParser\"><span></span></a></li>\n";
 													}
 													echo "	    <li><a href=\"MsnPostCorrectStats.php?btn=postMsn\"		class=\"dummy\">Correct Stats</a></li>\n";
-													echo "	    <li><a href=\"MsnPostUpdtColumns.php?btn=postMsn\"		class=\"dummy\">Update Columns to remove losses</a></li>\n";
-													echo "	    <li><a href=\"MsnPostUpdtStatics.php?btn=postMsn\"		class=\"dummy\">Update Statics to remove losses</a></li>\n";
+													echo "	    <li><a href=\"MsnPostUpdtColumns.php?btn=postMsn\"		class=\"dummy\">Update Columns and Statics to remove losses</a></li>\n";
+													echo "	    <li><a href=\"MsnPostUpdtStatics.php?btn=postMsn\"		class=\"dummy\">Spare button</a></li>\n";
 													echo "	    <li><a href=\"MsnPostUpdtAirfields.php?btn=postMsn\"	class=\"dummy\">Control Air losses</a></li>\n";
 													echo "  </ul>\n";
 												}

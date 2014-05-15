@@ -65,6 +65,7 @@
 						# start a loop till end of selection							
 						while ($row = mysqli_fetch_array($r1,MYSQLI_ASSOC))
 						{
+							$deleted = 0;
 							echo '<br>'.$row['id'].'|'.$row['Name'].$row['Model'];
 							# load id name and model to variables
 							$current_rec = $row['id'];
@@ -74,8 +75,34 @@
 							# reduce quantity -1 in columns for model and name limit 1
 							$q2 = "update columns set Quantity = (Quantity -1) where Model = ".'"'.$Model.'" and Name = "'.$current_Name.'" and CoalID = "'.$coalition.'" LIMIT 1';
 							echo "<br>".$q2;
+							$r2 = mysqli_query($camp_link,$q2);
+							$deleted = (mysqli_affected_rows($camp_link));
+							echo "<br>Killed ".$deleted;
+							if ($deleted == 1)
 							# if successful set processed = 1 in post_mortem for id
+							{
+							$q3 = "update post_mortem set processed = 1 where id = $current_rec";
+							$r3 = mysqli_query($camp_link,$q3);
+							$processed = (mysqli_affected_rows($camp_link));
+							echo "<br>Processed ".$processed;
+							}
 							# else delete in statics for model and name limit 1
+							else
+							{
+								$q4 = "delete from statics where static_model = ".'"'.$Model.'" and static_Name ="'.$current_Name.'" and static_coalition ="'.$coalition.'" LIMIT 1';
+								echo "<br>".$q4;
+								$r4 = mysqli_query($camp_link,$q4);
+								$deleted = (mysqli_affected_rows($camp_link));
+								echo "<br>Killed ".$deleted;
+								if ($deleted == 1)
+								# if successful set processed = 1 in post_mortem for id
+								{
+								$q5 = "update post_mortem set processed = 1 where id = $current_rec";
+								$r5 = mysqli_query($camp_link,$q5);
+								$processed = (mysqli_affected_rows($camp_link));
+								echo "<br>Processed ".$processed;
+								}
+							}
 							# if successful set processed = 1 in post_mortem for id					
 							# end loop from post mortem
 						}
