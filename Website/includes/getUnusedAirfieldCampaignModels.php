@@ -13,10 +13,10 @@
 	if ($userRole == 'administrator') {
 		# load aircraft list from selected campaign database
 		$queryModel = "SELECT object_type 
-										FROM object_properties 
-										WHERE object_class like 'P%' 
-										AND default_country < '600' 
-										AND object_type not in (SELECT model_Name FROM airfields_models where airfield_Name = '$airfieldName');";
+						FROM object_properties 
+						WHERE object_class like 'P%' 
+						AND default_country < '600' 
+						AND object_type not in (SELECT model_Name FROM airfields_models where airfield_Name = '$airfieldName');";
 	}
 
 	elseif ($userRole == 'commander') {

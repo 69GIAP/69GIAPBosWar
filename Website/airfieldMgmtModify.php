@@ -26,6 +26,9 @@
 					
 					# include getCampaignVariables.php
 					include ('includes/getCampaignVariables.php');
+
+					# include getCoalitionname.php
+					include ( 'functions/getObjectModel.php' );					
 					
 					# use this information to connect to campaign 
 					$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
@@ -78,6 +81,10 @@
 						}
 						else {
 							$modelNameAdd = $_POST["modelNameAdd"];
+
+							# use this information to get the objects Model
+							$modelModelAdd = get_objectModel("$modelNameAdd");
+												
 						}
 							
 						if (empty($_POST["modelNameAddQuantity"]) ){
@@ -153,7 +160,7 @@
 							}										
 						if ($_POST["updateAirfield"] == 7) // model add
 							{
-							$query1="INSERT INTO airfields_models (airfield_Name, model_Name, model_Quantity) VALUES ('$airfieldName', '$modelNameAdd', $modelNameAddQuantity) ;";
+							$query1="INSERT INTO airfields_models (airfield_Name, model_Name, model_Model, model_Quantity) VALUES ('$airfieldName', '$modelNameAdd', '$modelModelAdd', $modelNameAddQuantity) ;";
 							}
 						if ($_POST["updateAirfield"] == 8) // model remove
 							{

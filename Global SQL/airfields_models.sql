@@ -1,10 +1,10 @@
-
+CREATE DATABASE  IF NOT EXISTS `boswar_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `boswar_db`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
--- Host: 10.0.0.57    Database: chanclfct
+-- Host: 10.0.0.27    Database: boswar_db
 -- ------------------------------------------------------
--- Server version	5.6.13
--- Stenka 27/12/13 addition of altitude for airstarts and flight name
+-- Server version	5.6.15
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,8 +27,9 @@ DROP TABLE IF EXISTS `airfields_models`;
 CREATE TABLE `airfields_models` (
   `airfield_Name` char(31) NOT NULL DEFAULT '',
   `model_Name` varchar(30) NOT NULL DEFAULT '',
-  `model_Quantity` int(3) DEFAULT 0,
-  `model_Altitude` int(4) DEFAULT 0,
+  `model_Model` varchar(30) DEFAULT NULL,
+  `model_Quantity` int(3) DEFAULT '0',
+  `model_Altitude` int(4) DEFAULT '0',
   `model_Flight` varchar(30) DEFAULT '',
   PRIMARY KEY (`airfield_Name`,`model_Name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -43,4 +44,4 @@ CREATE TABLE `airfields_models` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-11-07 14:51:16
+-- Dump completed on 2014-05-15  7:49:36
