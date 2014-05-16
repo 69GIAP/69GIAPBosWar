@@ -191,7 +191,7 @@ else { // must be BoS
 
 	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.airfields_points LIKE airfields_points;";
 	include ('includes/doit.php');
-	echo "airfields created<br />\n";
+	echo "airfields_points created<br />\n";
 }
 
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.airfields LIKE airfields;";
