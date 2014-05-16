@@ -3,7 +3,8 @@
 // get ground transport speed from campaign_settings
 // =69.GIAP=TUSHKA
 // Nov 17, 2013
-// BOSWAR version 1.0 
+// BOSWAR version 1.01 
+// May 16, 2014
 
 function get_transportspeed() {
 global $camp_link; // link to campaign db
@@ -14,7 +15,7 @@ global $camp_link; // link to campaign db
 			return($obj->ground_transport_speed_kmh);
 		}
 	} else {
-		echo "$query<br .?\n";
+		echo "$query<br />\n";
 		die('getTransportSpeed query error [' . $camp_link->error . ']');
 	}
 		// free result set

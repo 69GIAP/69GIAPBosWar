@@ -3,7 +3,8 @@
 // given point ID, get point Name
 // =69.GIAP=TUSHKA
 // Nov 21, 2013
-// BOSWAR version 1.0 
+// BOSWAR version 1.01 
+// May 16, 2014
 
 function get_pointname($id) {
 global $camp_link; // link to campaign db

@@ -3,7 +3,8 @@
 // given point ID, get point XPox
 // =69.GIAP=TUSHKA
 // Nov 21, 2013
-// BOSWAR version 1.0 
+// BOSWAR version 1.01 
+// May 16, 2014
 
 function get_pointzpos($id) {
 global $camp_link; // link to campaign db
@@ -14,7 +15,7 @@ global $camp_link; // link to campaign db
 			return($obj->ZPos);
 		}
 	} else {
-		echo "$query<br .?\n";
+		echo "$query<br />\n";
 		die('getPointZPos query error [' . $camp_link->error . ']');
 	}
 		// free result set

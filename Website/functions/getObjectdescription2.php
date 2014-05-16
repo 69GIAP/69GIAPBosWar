@@ -3,7 +3,8 @@
 // given Model, get object_desc 
 // =69.GIAP=TUSHKA
 // Dec 4, 2013
-// BOSWAR version 1.1 
+// BOSWAR version 1.02
+// May 16, 2014
 
 function get_objectdescription2($Model) {
 global $camp_link; // link to campaign db
@@ -14,7 +15,7 @@ global $camp_link; // link to campaign db
 			return($obj->object_desc);
 		}
 	} else {
-		echo "$query<br .?\n";
+		echo "$query<br />\n";
 		die('getObjectdescription2 query error [' . $camp_link->error . ']');
 	}
 		// free result set

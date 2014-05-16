@@ -1,6 +1,9 @@
 <?php
 // getAbbrv.php
 // get campaign's abbreviation
+// =69.GIAP=TUSHKA
+// Nov 11, 2014
+// BOSWAR version 1.0
 
 function get_abbrv() {
 	global $camp_link;
@@ -11,7 +14,7 @@ function get_abbrv() {
 			return($obj->abbrv);
 		}
 	} else {
-		echo "$query<br .?\n";
+		echo "$query<br />\n";
 		die('getAbbrv query error [' . $camp_link->error . ']');
 	}
 		// free result set
