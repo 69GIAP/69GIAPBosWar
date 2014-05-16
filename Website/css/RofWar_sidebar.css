@@ -282,15 +282,72 @@ ul#sidebar li a.MgmtDlClmsStcsAct {
 	height: 64px;
 	position:relative;
 }
-ul#sidebar li a.MgmtUlClmsStcs {
-	background:url(../img/RofWar-AdminUploadColumnsStatics.png) no-repeat scroll top left;
+ul#sidebar li a.crrSts {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
-ul#sidebar li a.MgmtUlClmsStcsAct {
-	background:url(../img/RofWar-AdminUploadColumnsStaticsAct.png) no-repeat scroll top left;
+ul#sidebar li a.crrStsAct {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.updtColStcs {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.updtColStcsAct {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.ctrlArLss {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.ctrlArLssAct {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+
+ul#sidebar li a.NewBtn1 {
+	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.NewBtn1Act {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.NewBtn2 {
+	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.NewBtn2Act {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -355,6 +412,13 @@ ul#sidebar li a.NewBtn6Act {
 
 ul#sidebar li a.dummy {
 	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.dummyAct {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;

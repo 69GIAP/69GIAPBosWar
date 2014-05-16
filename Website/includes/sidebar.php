@@ -15,7 +15,7 @@
 								# load the information into the varibale
 								$btn = $_SESSION['btn'];
 								
-									# was the pressed button Home?
+# was the pressed button Home?
 									if ($btn == "home")
 										{	
 											if ($userRole == "administrator")
@@ -56,8 +56,9 @@
 													echo "	    <li><a href=\"IndexBosWarRofWar.php?btn=home\" class=\"statistics\"><span></span></a></li>\n";
 													echo "  </ul>\n";
 												}
-										}	
-									# was the pressed button User Management?
+										}
+										
+# was the pressed button User Management?
 									if ($btn == "userMgmt")
 										{
 											# define what a administrator sees in the sidebar
@@ -81,7 +82,8 @@
 													echo "  </ul>\n";
 												}
 											}
-									# was the pressed button Campaign Setup?
+											
+# was the pressed button Campaign Setup?
 									if ($btn == "campStp")
 										{	
 											if ($userRole == "administrator")
@@ -135,8 +137,7 @@
 														}
 													else {
 														echo "	    <li><a href=\"CampaignMgmtDLBridgesConfirm.php?btn=campStp&sde=campAfldBrdg\" class=\"MgmtDLAfldsBrdgs\"><span></span></a></li>\n";
-													}
-													
+													}													
 													if ($sde == 'MgmtDlClmsStcs') {
 														echo "	    <li><a href=\"CampaignMgmtDLTemplateConfirm.php?btn=campStp&sde=MgmtDlClmsStcs\" class=\"MgmtDlClmsStcsAct\"><span></span></a></li>\n";
 														}
@@ -149,31 +150,31 @@
 													else {
 														echo "	    <li><a href=\"CampaignMgmtULTemplateConfirm.php?btn=campStp&sde=MgmtUlClmsStcs\" class=\"MgmtUlClmsStcs\"><span></span></a></li>\n";
 													}
-													if ($sde == 'NewBtn3Act') {
-														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn3\" class=\"NewBtn3Act\">New Btn 3</a></li>\n";
+													if ($sde == 'NewBtn1') {
+														echo "	    <li><a href=\"CampaignMgmtDLPlanningConfirm.php?btn=campStp&sde=NewBtn1\" class=\"NewBtn1Act\">Download to Mission Planners</a></li>\n";
 														}
 													else {
-														echo "	    <li><a href=\"CampaignMgmtDLPlanningConfirm.php?btn=campStp&sde=campNewBtn3\" class=\"NewBtn3\">Download to Mission Planners</a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtDLPlanningConfirm.php?btn=campStp&sde=NewBtn1\" class=\"NewBtn1\">Download to Mission Planners</a></li>\n";
+													}
+													if ($sde == 'NewBtn2') {
+														echo "	    <li><a href=\"CampaignMgmtULPlannedConfirm.php?btn=campStp&sde=NewBtn2\" class=\"NewBtn2Act\">Upload from Mission Planners</a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"CampaignMgmtULPlannedConfirm.php?btn=campStp&sde=NewBtn2\" class=\"NewBtn2\">Upload from Mission Planners</a></li>\n";
+													}
+													if ($sde == 'campAf') {
+#														echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=preMsn&sde=campAf\" class=\"campAirfieldResupplyAct\"><span></span></a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=btn=campStp&sde=campAf\" class=\"campAirfieldResupplyAct\"><span></span></a></li>\n";
+														}
+													else {
+#														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn5\" class=\"NewBtn5\">Allocate Planes to Airfields</a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=campStp&sde=campAf\" class=\"campAirfieldResupply\"><span></span></a></li>\n";
 													}
 													if ($sde == 'NewBtn4') {
-														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn4\" class=\"NewBtn4Act\">New Btn 4</a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtDLBuildingConfirm.php?btn=campStp&sde=NewBtn4\" class=\"NewBtn4Act\">Download to Mission Building</a></li>\n";
 														}
 													else {
-														echo "	    <li><a href=\"CampaignMgmtULPlannedConfirm.php?btn=campStp&sde=campNewBtn4\" class=\"NewBtn4\">Upload from Mission Planners</a></li>\n";
-													}
-													if ($sde == 'NewBtn5') {
-#														echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=preMsn&sde=campAf\" class=\"campAirfieldResupplyAct\"><span></span></a></li>\n";
-													echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn5\" class=\"NewBtn5Act\">New Btn 5</a></li>\n";
-														}
-													else {
-														echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=preMsn&sde=campAf\" class=\"campAirfieldResupply\"><span></span></a></li>\n";
-#														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn5\" class=\"NewBtn5\">Allocate Planes to Airfields</a></li>\n";
-													}
-													if ($sde == 'NewBtn6') {
-														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn6\" class=\"NewBtn6Act\">New Btn 6</a></li>\n";
-														}
-													else {
-														echo "	    <li><a href=\"CampaignMgmtDLBuildingConfirm.php?btn=campStp&sde=campNewBtn6\" class=\"NewBtn6\">Download to Mission Building</a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtDLBuildingConfirm.php?btn=campStp&sde=NewBtn4\" class=\"NewBtn4\">Download to Mission Building</a></li>\n";
 													}
 													echo "  </ul>\n";
 												}
@@ -187,7 +188,8 @@
 													echo "  </ul>\n";
 												}
 										}
-									# was the pressed button Prepare Mission?
+										
+# was the pressed button Prepare Mission?
 									if ($btn == "preMsn")
 										{	
 											if ($userRole == "administrator" Or $userRole == "commander")
@@ -229,16 +231,42 @@
 														}
 													else {
 														echo "	    <li><a href=\"MsnPreResupplyVehicles.php?btn=preMsn&sde=campVRsup\" class=\"campGroundResupply\"><span></span></a></li>\n";
-													}													
-													echo "	    <li><a href=\"CampaignMgmtAdvcdParam.php?btn=preMsn\"	class=\"dummy\">Campaign Advanced Parameters</a></li>\n";
-													echo "	    <li><a href=\"MsnPreGenNextForPlanning.php?btn=preMsn\"	class=\"dummy\">Generate next mission for planning</a></li>\n";
-													echo "	    <li><a href=\"MsnPreGetNext.php?btn=preMsn\"			class=\"dummy\">Receive back group files from planners</a></li>\n";
-													echo "	    <li><a href=\"MsnPreGenNextForMission.php?btn=preMsn\"	class=\"dummy\">Generate Mission Files</a></li>\n";
-													echo "	    <li><a href=\"MsnPreGenRunMission.php?btn=preMsn\"		class=\"dummy\">Run Mission</a></li>\n";													
+													}
+													if ($sde == 'NewBtn1') {
+														echo "	    <li><a href=\"CampaignMgmtAdvcdParam.php?btn=preMsn&sde=NewBtn1\" class=\"dummyAct\">Campaign Advanced Parameters</a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"CampaignMgmtAdvcdParam.php?btn=preMsn&sde=NewBtn1\" class=\"dummy\">Campaign Advanced Parameters</a></li>\n";
+													}
+													if ($sde == 'NewBtn2') {
+														echo "	    <li><a href=\"MsnPreGenNextForPlanning.php?btn=preMsn&sde=NewBtn2\"	class=\"dummyAct\">Generate next mission for planning</a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"MsnPreGenNextForPlanning.php?btn=preMsn&sde=NewBtn2\"	class=\"dummy\">Generate next mission for planning</a></li>\n";
+													}
+													if ($sde == 'NewBtn3') {
+														echo "	    <li><a href=\"MsnPreGetNext.php?btn=preMsn&sde=NewBtn3\" class=\"dummyAct\">Receive back group files from planners</a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"MsnPreGetNext.php?btn=preMsn&sde=NewBtn3Act\" class=\"dummy\">Receive back group files from planners</a></li>\n";
+													}
+													if ($sde == 'NewBtn4') {
+														echo "	    <li><a href=\"MsnPreGenNextForMission.php?btn=preMsn&sde=NewBtn4\" class=\"dummyAct\">Generate Mission Files</a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"MsnPreGenNextForMission.php?btn=preMsn&sde=NewBtn4Act\" class=\"dummy\">Generate Mission Files</a></li>\n";
+													}
+													if ($sde == 'NewBtn5') {
+														echo "	    <li><a href=\"MsnPreGenRunMission.php?btn=preMsn&sde=NewBtn5\" class=\"dummyAct\">Run Mission</a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"MsnPreGenRunMission.php?btn=preMsn&sde=NewBtn5Act\" class=\"dummy\">Run Mission</a></li>\n";
+													}
 													echo "  </ul>\n";
 												}
 										}
-									# was the pressed button Post Mission?
+										
+# was the pressed button Post Mission?
 									if ($btn == "postMsn")
 										{	
 											if ($userRole == "administrator" OR $userRole == "commander")
@@ -251,14 +279,35 @@
 													else {
 														echo "	    <li><a href=\"MsnPostLogParser.php?btn=postMsn&sde=lgPrsr\" class=\"campLogParser\"><span></span></a></li>\n";
 													}
-													echo "	    <li><a href=\"MsnPostCorrectStats.php?btn=postMsn\"		class=\"dummy\">Correct Stats</a></li>\n";
-													echo "	    <li><a href=\"MsnPostUpdtColumns.php?btn=postMsn\"		class=\"dummy\">Update Columns and Statics to remove losses</a></li>\n";
-													echo "	    <li><a href=\"MsnPostUpdtStatics.php?btn=postMsn\"		class=\"dummy\">Spare button</a></li>\n";
-													echo "	    <li><a href=\"MsnPostUpdtAirfields.php?btn=postMsn\"	class=\"dummy\">Control Air losses</a></li>\n";
+													if ($sde == 'crrSts') {
+														echo "	    <li><a href=\"MsnPostCorrectStats.php?btn=postMsn&sde=crrSts\" class=\"dummyAct\">Correct Stats</a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"MsnPostCorrectStats.php?btn=postMsn&sde=crrSts\" class=\"dummy\">Correct Stats</a></li>\n";
+													}
+													if ($sde == 'updtColStcs') {
+														echo "	    <li><a href=\"MsnPostUpdtColumns.php?btn=postMsn&sde=updtColStcs\" class=\"dummyAct\">Update Columns and Statics to remove losses</a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"MsnPostUpdtColumns.php?btn=postMsn&sde=updtColStcs\" class=\"dummy\">Update Columns and Statics to remove losses</a></li>\n";
+													}
+#													if ($sde == 'dummy') {
+#														echo "	    <li><a href=\"MsnPostUpdtStatics.php?btn=postMsn&sde=dummy\" class=\"dummyAct\">Spare button</a></li>\n";
+#														}
+#													else {
+#														echo "	    <li><a href=\"MsnPostUpdtStatics.php?btn=postMsn&sde=dummy\" class=\"dummy\">Spare button</a></li>\n";
+#													}
+													if ($sde == 'ctrlArLss') {
+														echo "	    <li><a href=\"MsnPostUpdtAirfields.php?btn=postMsn&sde=ctrlArLss\" class=\"dummyAct\">Control Air losses</a></li>\n";
+														}
+													else {
+														echo "	    <li><a href=\"MsnPostUpdtAirfields.php?btn=postMsn&sde=ctrlArLss\" class=\"dummy\">Control Air losses</a></li>\n";
+													}
 													echo "  </ul>\n";
 												}
 										}
-									# was the pressed button Prepare Campaign? - This button is only displayes to Administrators
+										
+# was the pressed button Prepare Campaign? - This button is only displayes to Administrators
 									if ($btn == "prepCamp")
 										{	
 											if ($userRole == "administrator")
@@ -275,15 +324,15 @@
 												}
 										}									
 								}
-							else
-								{
-									# there is a user logged on but no button was pressed so this is the default view
+							else {
+
+# there is a user logged on but no button was pressed so this is the default view
 									echo "<h3>Choose:</h3>\n";	
 								}
 						}
-				else
-					{
-						# there is no user logged on and no button was pressed so this is the default view
+				else {
+
+# there is no user logged on and no button was pressed so this is the default view
 						echo "<h3>Info:</h3>\n";
 						echo "	<ul id=\"sidebar\">\n";
 						echo "	    <li><a href=\"IndexBosWarRofWar.php?btn=home\" class=\"statistics\"><span></span></a></li>\n";

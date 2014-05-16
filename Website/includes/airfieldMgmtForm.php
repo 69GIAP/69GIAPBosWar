@@ -9,14 +9,22 @@
 	$camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
 	
 	unset($_SESSION['airfieldName']);
-
+	
 ?>
 			<!-- form for changing information in the users table -->
-                <h3>Please select the airfield you want to modify:</h3>
-				<form id="loginForm" name="delete" action="airfieldMgmtChange.php?btn=preMsn&sde=campAf" method="post">
-                    <fieldset id="inputs">
-                        <select id="airfield" type="text" name="airfieldName" autofocus required>
-	                        <?php
+                <h3>Please select the airfield you want to modify:</h3>                
+                    <?php
+						  # we need the if because this page is used from 2 main menu loactions and the look of the side menu would change
+                    if ($btn == 'campStp') {
+							 echo " <form id=\"loginForm\" name=\"delete\" action=\"airfieldMgmtChange.php?btn=campStp&sde=campAf\" method=\"post\">\n";
+						  }
+						  if ($btn == 'preMsn') {
+							  echo "<form id=\"loginForm\" name=\"delete\" action=\"airfieldMgmtChange.php?btn=preMsn&sde=campAf\" method=\"post\">\n";
+						  }
+						  echo "	<fieldset id=\"inputs\">\n";
+
+                    echo "	    <select id=\"airfield\" type=\"text\" name=\"airfieldName\" autofocus required>\n";
+
 							$userCoalId = $_SESSION['userCoalId'];
 
 							# display list filtered by user role

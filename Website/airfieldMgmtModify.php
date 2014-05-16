@@ -365,8 +365,14 @@
 #					echo $query1;
 #					exit;
 					unset($_POST);
-					
-					header ("Location: airfieldMgmtChange.php?btn=preMsn&sde=campAf&airfieldName=$airfieldName");
+
+#we need the if because this page is used from 2 main menu loactions and the look of the side menu would change
+                    if ($btn == 'campStp') {
+							 header ("Location: airfieldMgmtChange.php?btn=campStp&sde=campAf&airfieldName=$airfieldName");
+						  }
+						  if ($btn == 'preMsn') {
+							  header ("Location: airfieldMgmtChange.php?btn=preMsn&sde=campAf&airfieldName=$airfieldName");
+						  }					
 					}
 	   
                 ?>					
