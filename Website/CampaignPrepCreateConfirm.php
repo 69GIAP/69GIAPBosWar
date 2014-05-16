@@ -188,6 +188,10 @@ else { // must be BoS
 	$query = "INSERT INTO `$newCampaignDBName`.object_properties SELECT * FROM bos_object_properties;";
 	include ('includes/doit.php');
 	echo "object_properties populated from bos_object_properties<br />\n";
+
+	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.airfields_points LIKE airfields_points;";
+	include ('includes/doit.php');
+	echo "airfields created<br />\n";
 }
 
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.airfields LIKE airfields;";
@@ -222,6 +226,10 @@ echo "pilot_scores created<br />\n";
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.key_points LIKE key_points;";
 include ('includes/doit.php');
 echo "key_points created<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.post_mortem LIKE post_mortem;";
+include ('includes/doit.php');
+echo "post_mortem created<br />\n";
 
 // Now do the rest of the tables that need to be populated
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.mission_status LIKE mission_status;";
