@@ -6,10 +6,12 @@
 // BOSWAR version 1.34
 // Apr 22, 2014
 
-function OUTPUT() {
+function OUTPUT($logfilename) {
 // what follows is an almost complete collection of global variables
 // some of these variables are needed just for the debugging section
 // others may not be needed here at all
+	global $logfilename;  // filename of the log being parsed
+	global $mission_number;  // current mission number
 	global $sim; // simulation
 	global $DEBUG; // are we debugging?
 	global $Log; // log lines
@@ -134,13 +136,14 @@ function OUTPUT() {
 	global $BKline;  // Bot Kill lines
 
 
-
-
-	# require the is-point-in-area borrowed CLASS
-	# pointLocation
+	# require the is-point-in-area borrowed CLASS, pointLocation
 	require ('parser/classes/pointLocation.php');
 
+    # require get_ObjectModel
+    require ('functions/getObjectModel.php');
 	# require the FUNCTIONS called by OUTPUT
+	# get_missionnumberfromlogname
+	require ('functions/getMissionNumberfromLogName.php');
 	# ACCURACY
 	require ('parser/functions/outputACCURACY.php');
 	# ANORA
@@ -178,18 +181,20 @@ function OUTPUT() {
 	# XYZ
 	require ('parser/functions/outputXYZ.php');
 
-	// all start out uncaptured
+	// get mission number
+	$mission_number = get_missionnumberfromlogname($logfilename);
+
+	// all pilots start out uncaptured
 	$captured = 0;
 
 //if (true){
-//if ($DEBUG){
-//	print "DEBUG OUTPUT configuration:<br />\n";
-//	print "FinishFlightOnlyLanded = ".FinishFlightOnlyLanded."<br />\n";
+//	print "\$logfilename: $logfilename <br />\n";
 //	print "map_locations = ".map_locations."<br />\n";
-//   print "critical_w_gunner = ".critical_w_gunner."<br />\n";
+//	print "critical_w_gunner = ".critical_w_gunner."<br />\n";
 //}
 
 	echo "<p><b>REPORT OF SELECTED RESULTS:</b></p>\n"; 
+	echo ("<p>Mission Number $mission_number</p>\n");
 
 	echo ("<p>Mission ID = $MissionID</p>\n");
 

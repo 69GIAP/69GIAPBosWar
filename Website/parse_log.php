@@ -79,13 +79,16 @@ if ($DEBUG){
 global $camp_db;  // campaign db
 global $camp_link;  // link to campaign db
 global $sim;  // simulation
+global $logfilename;  // file name of the mission log
 
 // get $camp_db and $sim from SESSION
 $camp_db =  $_SESSION['camp_db'];
 $sim = $_SESSION['sim'];
 
-// Set path to logfile relative to parser
 // $LOGFILE is a filename supplied by the calling page
+$logfilename = $LOGFILE;
+
+// Set path to logfile relative to parser
 $LOGFILE = LOGPATH."/".$LOGFILE;
 
 // End individual variables
@@ -126,7 +129,7 @@ if (file_exists("$LOGFILE")) {
    READLOG($LOGFILE); // read the logfile
    PARSE($numlines); // parse the logfile 
    PROCESS($numlines); // manipulate the data to extract the stats we want
-   OUTPUT(); // display a mission report
+   OUTPUT($logfilename); // display a mission report
 } else {
    echo("Could not open $LOGFILE");
 }
