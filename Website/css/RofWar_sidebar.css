@@ -117,7 +117,9 @@ ul#sidebar li a.campStatusAct {
 	position:relative;
 }
 ul#sidebar li a.campStatus span,
-ul#sidebar li a.campStatusAct span {
+ul#sidebar li a.campStatusAct span,
+ul#sidebar li a.campConfigure span,
+ul#sidebar li a.campConfigureAct span {
 	color: #F0F0F0;
 	position:relative;
 	top: 30px;
@@ -126,6 +128,7 @@ ul#sidebar li a.campStatusAct span {
 
 ul#sidebar li a.campSetup {
 	background:url(../img/RofWar-AdminSetup.png) no-repeat scroll top left;
+	text-decoration: none;	
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -133,6 +136,7 @@ ul#sidebar li a.campSetup {
 }
 ul#sidebar li a.campSetupAct {
 	background:url(../img/RofWar-AdminSetupAct.png) no-repeat scroll top left;
+	text-decoration: none;	
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -140,6 +144,7 @@ ul#sidebar li a.campSetupAct {
 }
 ul#sidebar li a.campConfigure {
 	background:url(../img/RofWar-AdminConfigure.png) no-repeat scroll top left;
+	text-decoration: none;	
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -147,6 +152,7 @@ ul#sidebar li a.campConfigure {
 }
 ul#sidebar li a.campConfigureAct {
 	background:url(../img/RofWar-AdminConfigureAct.png) no-repeat scroll top left;
+	text-decoration: none;	
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;

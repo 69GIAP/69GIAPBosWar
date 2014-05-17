@@ -99,10 +99,20 @@
 														echo "		<li class=\"campStatus\"><a href=\"CampaignMgmtChangeStatus.php?btn=campStp&sde=campState\" class=\"campStatus\"><span>$camp_status</span></a></li>\n";
 													}
 													if ($sde == 'campConf') {
-														echo "	    <li><a href=\"CampaignMgmtConfigure.php?btn=campStp&sde=campConf\" class=\"campConfigureAct\"><span></span></a></li>\n";
+														if ($camp_status == 'Hidden') {
+															$conf_status = 'Not Completed';
+														} else {
+															$conf_status = 'Completed';
+														}
+														echo "	    <li class=\"campStatus\"><a href=\"CampaignMgmtConfigure.php?btn=campStp&sde=campConf\" class=\"campConfigureAct\"><span>$conf_status</span></a></li>\n";
 														}
 													else {
-														echo "	    <li><a href=\"CampaignMgmtConfigure.php?btn=campStp&sde=campConf\" class=\"campConfigure\"><span></span></a></li>\n";
+														if ($camp_status == 'Hidden') {
+															$conf_status = 'Not Completed';
+														} else {
+															$conf_status = 'Completed';
+														}
+														echo "	    <li class=\"campStatus\"><a href=\"CampaignMgmtConfigure.php?btn=campStp&sde=campConf\" class=\"campConfigure\"><span>$conf_status</span></a></li>\n";
 													}
 													if ($sde == 'campSet') {
 														echo "	    <li><a href=\"CampaignMgmtSetup.php?btn=campStp&sde=campSet\" class=\"campSetupAct\"></a></li>\n";
