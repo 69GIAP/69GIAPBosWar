@@ -336,6 +336,9 @@ echo " Done!<br />\n";
 // Tushka now returns you to your original indentation scheme
 					// forward to campaign configuration screen
 					$_SESSION['camp_db'] = "$newCampaignDBName";
+					// initialize the $loadedCampaign variable for some sidebar GUI functions
+					$loadedCampaign = $_SESSION['camp_db'];
+					
 					echo "<form id=\"campaignPrepCreateDone\" name=\"campaignSetup\" action=\"CampaignMgmtConfigure.php?btn=campStp&sde=createCamp\" method=\"post\">\n";
 					# BUTTON
 					echo "<fieldset id=\"actions\">\n";	
