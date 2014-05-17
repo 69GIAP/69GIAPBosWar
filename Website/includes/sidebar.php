@@ -100,17 +100,17 @@
 													}
 													if ($sde == 'campConf') {
 														if ($camp_status == 'Hidden') {
-															$conf_status = 'Not Completed';
+															$conf_status = 'Config not completed';
 														} else {
-															$conf_status = 'Completed';
+															$conf_status = 'Config completed';
 														}
 														echo "	    <li class=\"campStatus\"><a href=\"CampaignMgmtConfigure.php?btn=campStp&sde=campConf\" class=\"campConfigureAct\"><span>$conf_status</span></a></li>\n";
 														}
 													else {
 														if ($camp_status == 'Hidden') {
-															$conf_status = 'Not Completed';
+															$conf_status = 'Config not completed';
 														} else {
-															$conf_status = 'Completed';
+															$conf_status = 'Config completed';
 														}
 														echo "	    <li class=\"campStatus\"><a href=\"CampaignMgmtConfigure.php?btn=campStp&sde=campConf\" class=\"campConfigure\"><span>$conf_status</span></a></li>\n";
 													}

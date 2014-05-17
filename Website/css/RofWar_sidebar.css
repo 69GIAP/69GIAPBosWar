@@ -116,6 +116,7 @@ ul#sidebar li a.campStatusAct {
 	height: 64px;
 	position:relative;
 }
+/* this setting defines the position and color of the additional information displayed on the button */
 ul#sidebar li a.campStatus span,
 ul#sidebar li a.campStatusAct span,
 ul#sidebar li a.campConfigure span,
