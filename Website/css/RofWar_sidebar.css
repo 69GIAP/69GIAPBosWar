@@ -102,6 +102,7 @@ ul#sidebar li a.campPlanning {
 }
 ul#sidebar li a.campStatus {
 	background:url(../img/RofWar-AdminChangeStatus.png) no-repeat scroll top left;
+	text-decoration: none;	
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -109,11 +110,20 @@ ul#sidebar li a.campStatus {
 }
 ul#sidebar li a.campStatusAct {
 	background:url(../img/RofWar-AdminChangeStatusAct.png) no-repeat scroll top left;
+	text-decoration: none;	
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
+ul#sidebar li a.campStatus span,
+ul#sidebar li a.campStatusAct span {
+	color: #F0F0F0;
+	position:relative;
+	top: 30px;
+	left: 77px;
+}
+
 ul#sidebar li a.campSetup {
 	background:url(../img/RofWar-AdminSetup.png) no-repeat scroll top left;
 	display:block;

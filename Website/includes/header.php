@@ -36,7 +36,6 @@ session_start();
 		}
 		
 	# check if a navigation button was pressed and introduce SESSION variable for naviagtion button presses
-	
 	if (empty($_GET['btn'])) {
 		$btn = "";}
 	else {
@@ -63,8 +62,8 @@ session_start();
 	if (empty($_SESSION['camp_db'])) {
 		$loadedCampaign = "";}
 	else {
-		$loadedCampaign = $_SESSION['camp_db'];}	
-	
+		$loadedCampaign = $_SESSION['camp_db'];}
+
 	# check if there is already a user_id assigned
 	if (empty($_SESSION['userId'])) {
 		$userId = "";}

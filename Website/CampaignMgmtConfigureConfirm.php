@@ -47,7 +47,7 @@
 						# close $dbc
 						$dbc->close;
 						
-						header ("Location: CampaignMgmtChangeStatus.php?btn=campStp");		
+						header ("Location: CampaignMgmtChangeStatus.php?btn=campStp&sde=campState");		
 					}
 				}
                 ?>					

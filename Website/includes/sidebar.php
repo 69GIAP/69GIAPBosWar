@@ -1,7 +1,9 @@
         <div id="side">
 
 			<?php
-
+				# include getCampaignVariables.php
+				include ( 'includes/getCampaignVariables.php' );
+				
 				# check if there is a user logged on
 				if (!empty($_SESSION["userName"]))
 					{		
@@ -39,7 +41,7 @@
 														}
 													else
 														{
-															echo "	    <li><a href=\"CampaignLogParser.php?btn=campStp\"			class=\"campLogParser\"><span></span></a></li>\n";
+															echo "		<li><a href=\"CampaignLogParser.php?btn=campStp\"			class=\"campLogParser\"><span></span></a></li>\n";
 															echo "		<li><a href=\"CampaignMgmtChangeStatus.php?btn=campStp\"	class=\"campStatus\"><span></span></a></li>\n";																														
 														}
 													echo "  </ul>\n";
@@ -91,10 +93,10 @@
 													# turn this menu on if user has loaded a campaign into the SESSION variable campaign
 													echo "	<ul id=\"sidebar\">\n";
 													if ($sde == 'campState') {
-														echo "		<li><a href=\"CampaignMgmtChangeStatus.php?btn=campStp&sde=campState\" class=\"campStatusAct\"><span></span></a></li>\n";
+														echo "		<li class=\"campStatus\"><a href=\"CampaignMgmtChangeStatus.php?btn=campStp&sde=campState\" class=\"campStatusAct\"><span>$camp_status</span></a>\n</li>\n";
 														}
 													else {
-														echo "		<li><a href=\"CampaignMgmtChangeStatus.php?btn=campStp&sde=campState\" class=\"campStatus\"><span></span></a></li>\n";
+														echo "		<li class=\"campStatus\"><a href=\"CampaignMgmtChangeStatus.php?btn=campStp&sde=campState\" class=\"campStatus\"><span>$camp_status</span></a></li>\n";
 													}
 													if ($sde == 'campConf') {
 														echo "	    <li><a href=\"CampaignMgmtConfigure.php?btn=campStp&sde=campConf\" class=\"campConfigureAct\"><span></span></a></li>\n";
