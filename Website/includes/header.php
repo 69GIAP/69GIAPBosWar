@@ -88,9 +88,9 @@ session_start();
 			echo "<link href=\"css/BosWar_styles.css\" rel=\"stylesheet\" type=\"text/css\" />\n";
 		}
 	##### DEBUGGING #####
-	include ('includes/debugging/debuggingSessionVariables.php');	
+#	include ('includes/debugging/debuggingSessionVariables.php');	
 # 	include ('includes/debugging/debuggingPostVariables.php' ); #testing the Post variables for my objects enabling this creates an error so I turned it off temporarily.
-	include ('includes/debugging/debuggingMySqlError.php' );	
+#	include ('includes/debugging/debuggingMySqlError.php' );	
 			
 ?>
 

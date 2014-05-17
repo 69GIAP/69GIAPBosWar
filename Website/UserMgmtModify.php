@@ -203,7 +203,8 @@
 					}
 				if (($_POST["modify"] == 3))
 					{
-						$query="SELECT Coalitionname from rof_coalitions where CoalID = $userCoalitionIdNew";
+						$query="SELECT Coalitionname from rof_coalitions where CoalID = '$userCoalitionIdNew'";
+
 						if(!$result = $dbc->query($query)) {
 							die('There was an error receiving the connnection information [' . $dbc->error . ']');
 						}
