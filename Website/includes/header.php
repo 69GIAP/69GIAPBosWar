@@ -36,7 +36,6 @@ session_start();
 		}
 		
 	# check if a navigation button was pressed and introduce SESSION variable for naviagtion button presses
-	
 	if (empty($_GET['btn'])) {
 		$btn = "";}
 	else {
@@ -63,8 +62,8 @@ session_start();
 	if (empty($_SESSION['camp_db'])) {
 		$loadedCampaign = "";}
 	else {
-		$loadedCampaign = $_SESSION['camp_db'];}	
-	
+		$loadedCampaign = $_SESSION['camp_db'];}
+
 	# check if there is already a user_id assigned
 	if (empty($_SESSION['userId'])) {
 		$userId = "";}
@@ -89,9 +88,9 @@ session_start();
 			echo "<link href=\"css/BosWar_styles.css\" rel=\"stylesheet\" type=\"text/css\" />\n";
 		}
 	##### DEBUGGING #####
-	include ('includes/debugging/debuggingSessionVariables.php');	
+#	include ('includes/debugging/debuggingSessionVariables.php');	
 # 	include ('includes/debugging/debuggingPostVariables.php' ); #testing the Post variables for my objects enabling this creates an error so I turned it off temporarily.
-	include ('includes/debugging/debuggingMySqlError.php' );	
+#	include ('includes/debugging/debuggingMySqlError.php' );	
 			
 ?>
 

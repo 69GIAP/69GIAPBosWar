@@ -6,7 +6,7 @@ $query = "SELECT * from campaign_settings;";
 if($result = $camp_link->query($query)) {
 	while ($obj = $result->fetch_object()) {
 		$status						=($obj->status);
-		$logpath					=($obj->logpath);
+		$logpath						=($obj->logpath);
 		$log_prefix					=($obj->log_prefix);
 		$show_airfield				=($obj->show_airfield);
 		$finish_flight_only_landed	=($obj->finish_flight_only_landed);
@@ -19,8 +19,8 @@ if($result = $camp_link->query($query)) {
 		$cw_gunner					=($obj->critical_w_gunner);
 		$sw_gunner					=($obj->serious_w_gunner);
 		$lw_gunner					=($obj->light_w_gunner);
-		$dst_airActGrnd				=($obj->air_detect_distance);
-		$dst_GndActGrnd				=($obj->ground_detect_distance);
+		$dst_airActGrnd			=($obj->air_detect_distance);
+		$dst_GndActGrnd			=($obj->ground_detect_distance);
 		$lvl_AIAc					=($obj->air_ai_level);
 		$lvl_AIGrnd					=($obj->ground_ai_level);
 		$spd_maxGrnd				=($obj->ground_max_speed_kmh);
@@ -28,7 +28,7 @@ if($result = $camp_link->query($query)) {
 		$sprd_suplPnts				=($obj->ground_spacing);
 		$time_lineup				=($obj->lineup_minutes);
 		$time_msn					=($obj->mission_minutes);
-		$time_actvtUnit				=($obj->detect_off_time);
+		$time_actvtUnit			=($obj->detect_off_time);
 	}
 } else {
 	die('getCoalition query error [' . $camp_link->error . ']');
@@ -64,6 +64,7 @@ echo "		<h3>Give airfield names in reports</h3>\n";
 echo "		<p class=\"indent\">(else 'unidentified')</p>\n";
 
 echo "		<select name=\"show_airfield\" id=\"database\">\n";
+
 if ($show_airfield == 'true') {
    echo "			<option value=\"true\" selected=\"selected\">true</option>\n";
    echo "			<option value=\"false\">false</option>\n";
@@ -74,6 +75,7 @@ if ($show_airfield == 'true') {
 echo "		</select><br>\n";
 echo "		<h3>'Finish flight only landed' selected on server</h3>\n";
 echo "		<select name=\"finish_flight_only_landed\" id=\"database\">\n";
+
 if ($finish_flight_only_landed == 'true') {
    echo "			<option value=\"true\" selected=\"selected\">true</option>\n";
    echo "			<option value=\"false\">false</option>\n";
@@ -83,6 +85,7 @@ if ($finish_flight_only_landed == 'true') {
 }
 echo "		</select><br>\n";
 echo "	</fieldset>\n";
+
 # BUTTON
 echo "<fieldset id=\"actions\">\n";	
 echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"2\" >Update Log Parser Settings</button>\n"; # the value defines the action after the button was pressed
@@ -109,6 +112,7 @@ echo "		<h3>Gunner seriously wounded</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"sw_gunner\" value='$sw_gunner' autofocus ><br>\n";
 echo "		<h3>Gunner lightly wounded</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"lw_gunner\" value='$lw_gunner' autofocus ><br>\n";
+
 # BUTTON
 echo "<fieldset id=\"actions\">\n";	
 echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"3\" >Update Player Scores</button>\n"; # the value defines the action after the button was pressed
@@ -125,6 +129,7 @@ echo "		<p class=\"indent\">The distance at which dis enabled vehicles will be e
 echo "		<input id=\"database\" type=\"text\" name=\"dst_GndActGrnd\" value='$dst_GndActGrnd' autofocus ><br>\n";
 echo "		<h3>Skill level for AI aircraft and gunners(1=Low, 2=Medium, 3=High)</h3>\n";
 echo "		<select name=\"lvl_AIAc\" id=\"database\">\n";
+
 //echo "			<option value=\"$lvl_AIAc\" disabled selected>Select Air AI level</option>\n";
 echo "\$lvl_AIAc: $lvl_AIAc<br />\n";
 if ($lvl_AIAc == "1") {
@@ -143,6 +148,7 @@ if ($lvl_AIAc == "1") {
 echo "		</select><br>\n";
 echo "		<h3>Skill level for AI ground units (1=Low, 2=Medium, 3=High)</h3>\n";
 echo "		<select name=\"lvl_AIGrnd\" id=\"database\">\n";
+
 //echo "			<option value=\"$lvl_AIGrnd\" disabled selected>Select Ground AI level</option>\n";
 if ($lvl_AIGrnd == 1) {
 	echo "			<option value=\"1\" selected>1</option>\n";
@@ -158,7 +164,6 @@ if ($lvl_AIGrnd == 1) {
 	echo "			<option value=\"3\" selected>3</option>\n";
 }
 echo "		</select><br>\n";
-
 echo "		<h3>Maximum ground speed (km/h)</h3>\n";
 echo "		<input id=\"database\" type=\"text\" name=\"spd_maxGrnd\" value='$spd_maxGrnd' autofocus ><br>\n";
 echo "		<h3>Average column speed (km/h)</h3>\n";
@@ -193,6 +198,7 @@ if ($status > 1) {
 }
 echo "		</select><br>\n";
 echo "	</fieldset>\n";
+
 # BUTTON
 echo "<fieldset id=\"actions\">\n";	
 echo "		<button type=\"submit\" name =\"updateCampaignParameters\" id=\"loginSubmit\" value =\"5\" >Done?</button>\n"; # the value defines the action after the button was pressed

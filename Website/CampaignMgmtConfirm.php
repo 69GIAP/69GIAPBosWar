@@ -135,14 +135,36 @@ if ($_POST["updateCampaignParameters"] == 4) {
 if ($_POST["updateCampaignParameters"] == 5) {
 	$config_done = $_POST["config_done"];
 	if ($config_done == "true") {
-		$query = "UPDATE campaign_settings SET status = 2 ;"; 
+		$query = "UPDATE campaign_settings SET status = 5 ;"; 
 //		echo "$query<br />\n";
 		if(!$result = $camp_link->query($query)) {
 			die('CampaignMgmtConfirm #5 query error [' . $camp_link->error . ']');
 		}
-//		$result = $camp_link->query($query);
-//		echo "$result<br />\n";
-		echo "Updated section 5";
+/*		
+		$result = $camp_link->query($query);
+		echo "$query<br />\n";
+		echo "$result<br />\n";
+		echo "Updated section 5 on campaign DB<br />\n";
+		return;
+*/	
+
+
+		
+// sync boswar_db with campaign db with campaign status
+$query = "UPDATE campaign_settings SET status = 5 where camp_db = '$loadedCampaign';"; 
+//		echo "$query<br />\n";
+		if(!$result = $dbc->query($query)) {
+			die('CampaignMgmtConfirm #5 query error [' . $dbc->error . ']');
+		}
+/*		
+		$result = $camp_link->query($query);
+		echo "$query<br />\n";
+		echo "$result<br />\n";
+		echo "Updated section 5 on core DB<br />\n";
+		return;
+*/		
+
+
 		header("Location: CampaignMgmtSetup.php?btn=campStp&sde=campSet");
 	} else {
 		$query = "UPDATE campaign_settings SET status = 1 ;"; 
@@ -153,6 +175,14 @@ if ($_POST["updateCampaignParameters"] == 5) {
 //		$result = $camp_link->query($query);
 //		echo "$result<br />\n";
 //		echo "Updated section 5";
+
+
+// sync boswar_db with campaign status
+$query = "UPDATE campaign_settings SET status = 1 where camp_db = '$loadedCampaign';"; 
+//		echo "$query<br />\n";
+		if(!$result = $dbc->query($query)) {
+			die('CampaignMgmtConfirm #5 query error [' . $dbc->error . ']');
+		}
 		header("Location: CampaignMgmtConfigure.php?btn=campStp&sde=campConf");
 	}
 } 

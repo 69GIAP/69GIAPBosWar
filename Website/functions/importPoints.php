@@ -12,6 +12,9 @@ function import_points($path,$file) {
 	global $camp_link; // link to campaign db
 	global $sim;
 
+	#get the variable stored into $sim
+	$sim = $_SESSION['sim'];	
+
 	// included required functions
 	require ('functions/getCoalition.php');
 	require ('functions/getCoalitionname.php');
@@ -28,34 +31,31 @@ function import_points($path,$file) {
 	$line = file("$path/$file");
 	foreach ($line as $i => $value ) {
 		// find an rwstation (supply point)
-		if ($sim == "RoF")
-		{
-			if (preg_match('/rwstation.txt/',$value)) 
-			{
-			// filter out neutral rwstations
-				if (!preg_match('/^  Country = 0/', $line[$i+1])) 
-				{
+		if ($sim == "RoF") {
+			if (preg_match('/rwstation.txt/',$value)) {
+				// filter out neutral rwstations
+				if (!preg_match('/^  Country = 0/', $line[$i+1])) {
 					$spline[$j++] = $i;  // save its line number
 				}
 			}
 		}
-		else
-		{
-			if (preg_match('/rwstation_s2.txt/',$value)) 
-			{
-			// filter out neutral rwstations
-				if (!preg_match('/^  Country = 0/', $line[$i+1])) 
-				{
+		else {
+			if (preg_match('/rwstation_s2.txt/',$value)) {
+				// filter out neutral rwstations
+				if (!preg_match('/^  Country = 0/', $line[$i+1])) {
 					$spline[$j++] = $i;  // save its line number
 				}
 			}
-		}
 		// find a flag (control point)
+<<<<<<< HEAD
 		if (preg_match('/flag.txt/',$value)) {
+=======
+		elseif (preg_match('/flag.txt/',$value)) {
+>>>>>>> d8cc0ece36f45f55c953f566fd739f93868e1b97
 			$cpline[$k++] = $i;  // save its line number
+			}
 		}
 	}
-
 	// start with clean table
 	$query1 = "TRUNCATE key_points;";
 	if(!$result = $camp_link->query($query1)) {

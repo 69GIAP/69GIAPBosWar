@@ -14,7 +14,7 @@ global $camp_link; // link to campaign db
 			return($obj->ground_spacing);
 		}
 	} else {
-		echo "$query<br .?\n";
+		echo "$query<br />\n";
 		die('getGroundspacing query error [' . $camp_link->error . ']');
 	}
 		// free result set

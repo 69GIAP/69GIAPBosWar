@@ -3,8 +3,8 @@
 // given object_type, get Model 
 // =69.GIAP=STENKA
 // Nov 21, 2013
-// BOSWAR version 1.1 
-// 14/5/14
+// BOSWAR version 1.02
+// May 16, 2014
 
 function get_objectModel($object_type) {
 global $camp_link; // link to campaign db
@@ -15,7 +15,7 @@ global $camp_link; // link to campaign db
 			return($obj->Model);
 		}
 	} else {
-		echo "$query<br .?\n";
+		echo "$query<br />\n";
 		die('getObjectModel query error [' . $camp_link->error . ']');
 	}
 		// free result set

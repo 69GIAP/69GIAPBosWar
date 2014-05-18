@@ -188,6 +188,10 @@ else { // must be BoS
 	$query = "INSERT INTO `$newCampaignDBName`.object_properties SELECT * FROM bos_object_properties;";
 	include ('includes/doit.php');
 	echo "object_properties populated from bos_object_properties<br />\n";
+
+	$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.airfields_points LIKE airfields_points;";
+	include ('includes/doit.php');
+	echo "airfields_points created<br />\n";
 }
 
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.airfields LIKE airfields;";
@@ -225,6 +229,10 @@ echo "pilot_scores created<br />\n";
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.key_points LIKE key_points;";
 include ('includes/doit.php');
 echo "key_points created<br />\n";
+
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.post_mortem LIKE post_mortem;";
+include ('includes/doit.php');
+echo "post_mortem created<br />\n";
 
 // Now do the rest of the tables that need to be populated
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.mission_status LIKE mission_status;";
@@ -331,7 +339,10 @@ echo " Done!<br />\n";
 // Tushka now returns you to your original indentation scheme
 					// forward to campaign configuration screen
 					$_SESSION['camp_db'] = "$newCampaignDBName";
-					echo "<form id=\"campaignPrepCreateDone\" name=\"campaignSetup\" action=\"CampaignMgmtConfigure.php?btn=campStp&sde=createCamp\" method=\"post\">\n";
+					// initialize the $loadedCampaign variable for some sidebar GUI functions
+					$loadedCampaign = $_SESSION['camp_db'];
+					
+					echo "<form id=\"campaignPrepCreateDone\" name=\"campaignSetup\" action=\"CampaignMgmtConfigure.php?btn=campStp&sde=campConf\" method=\"post\">\n";
 					# BUTTON
 					echo "<fieldset id=\"actions\">\n";	
 					echo "		<button type=\"submit\" name =\"Setup\" id=\"SetupDone\" value =\"true\" >Next</button>\n"; # the value defines the action after the button was pressed

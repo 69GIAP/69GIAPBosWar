@@ -3,8 +3,8 @@ function LANDINGSIDE($pid,$posx,$posz){
 // determine if player landed on friendly, enemy or neutral territory
 // =69.GIAP=TUSHKA
 // 2011-2014
-// BOSWAR version 1.02
-// Apr 21, 2014
+// BOSWAR version 1.03
+// May 16, 2014
 
 	global $PLID; // player plane id 
 	global $numplayers; // number of players
@@ -97,4 +97,3 @@ function LANDINGSIDE($pid,$posx,$posz){
 	return $side;
 }
 ?>
->

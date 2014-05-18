@@ -102,6 +102,7 @@ ul#sidebar li a.campPlanning {
 }
 ul#sidebar li a.campStatus {
 	background:url(../img/RofWar-AdminChangeStatus.png) no-repeat scroll top left;
+	text-decoration: none;	
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -109,13 +110,26 @@ ul#sidebar li a.campStatus {
 }
 ul#sidebar li a.campStatusAct {
 	background:url(../img/RofWar-AdminChangeStatusAct.png) no-repeat scroll top left;
+	text-decoration: none;	
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
+/* this setting defines the position and color of the additional information displayed on the button */
+ul#sidebar li a.campStatus span,
+ul#sidebar li a.campStatusAct span,
+ul#sidebar li a.campConfigure span,
+ul#sidebar li a.campConfigureAct span {
+	color: #F0F0F0;
+	position:relative;
+	top: 30px;
+	left: 77px;
+}
+
 ul#sidebar li a.campSetup {
 	background:url(../img/RofWar-AdminSetup.png) no-repeat scroll top left;
+	text-decoration: none;	
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -123,6 +137,7 @@ ul#sidebar li a.campSetup {
 }
 ul#sidebar li a.campSetupAct {
 	background:url(../img/RofWar-AdminSetupAct.png) no-repeat scroll top left;
+	text-decoration: none;	
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -130,6 +145,7 @@ ul#sidebar li a.campSetupAct {
 }
 ul#sidebar li a.campConfigure {
 	background:url(../img/RofWar-AdminConfigure.png) no-repeat scroll top left;
+	text-decoration: none;	
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -137,6 +153,7 @@ ul#sidebar li a.campConfigure {
 }
 ul#sidebar li a.campConfigureAct {
 	background:url(../img/RofWar-AdminConfigureAct.png) no-repeat scroll top left;
+	text-decoration: none;	
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -212,6 +229,20 @@ ul#sidebar li a.campCreateStaticsAct {
 	height: 64px;
 	position:relative;
 }
+ul#sidebar li a.MgmtDLAfldsBrdgs {
+	background:url(../img/RofWar-AdminDownloadAirfieldsBridges.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.MgmtDLAfldsBrdgsAct {
+	background:url(../img/RofWar-AdminDownloadAirfieldsBridgesAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
 ul#sidebar li a.campGroundResupply {
 	background:url(../img/RofWar-AdminGroundResupply.png) no-repeat scroll top left;
 	display:block;
@@ -254,9 +285,157 @@ ul#sidebar li a.campUpdateBridgesAct {
 	height: 64px;
 	position:relative;
 }
+ul#sidebar li a.MgmtDlClmsStcs {
+	background:url(../img/RofWar-AdminDownloadColumnsStatics.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.MgmtDlClmsStcsAct {
+	background:url(../img/RofWar-AdminDownloadColumnsStaticsAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.crrSts {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.crrStsAct {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.updtColStcs {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.updtColStcsAct {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.ctrlArLss {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.ctrlArLssAct {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+
+ul#sidebar li a.NewBtn1 {
+	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.NewBtn1Act {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.NewBtn2 {
+	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.NewBtn2Act {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.NewBtn3 {
+	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.NewBtn3Act {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.NewBtn4 {
+	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.NewBtn4Act {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.NewBtn5 {
+	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.NewBtn5Act {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.NewBtn6 {
+	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.NewBtn6Act {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
 
 ul#sidebar li a.dummy {
 	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.dummyAct {
+	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
