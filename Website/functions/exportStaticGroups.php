@@ -10,6 +10,9 @@
 # Stenka conversion from exportStaticGroups 23/4/14
 
 function export_staticgroups($CoalID) {
+	#get the variable stored into $sim
+	$sim = $_SESSION['sim'];
+	
 	global $camp_link,$loadedCampaign;
 	$abbrv = get_abbrv();
 	echo "<br />\$abbrv: $abbrv<br />\n";
