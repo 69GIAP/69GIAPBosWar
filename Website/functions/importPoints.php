@@ -10,6 +10,7 @@ function import_points($path,$file) {
 // Stenka 14/5/14 updating rwstation for BoS
 
 	global $camp_link; // link to campaign db
+	global $sim;
 
 	// included required functions
 	require ('functions/getCoalition.php');
@@ -50,7 +51,7 @@ function import_points($path,$file) {
 			}
 		}
 		// find a flag (control point)
-		} elseif (preg_match('/flag.txt/',$value)) {
+		if (preg_match('/flag.txt/',$value)) {
 			$cpline[$k++] = $i;  // save its line number
 		}
 	}

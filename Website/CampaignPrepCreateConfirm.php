@@ -202,6 +202,9 @@ $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.airfields_models LIKE 
 include ('includes/doit.php');
 echo "airfields_models created<br />\n";
 
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.airfields_points LIKE airfields_points;";
+include ('includes/doit.php');
+echo "airfields_points created<br />\n";
 // Do the remainder of the empty tables that we need
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.campaign_missions LIKE campaign_missions;";
 include ('includes/doit.php');

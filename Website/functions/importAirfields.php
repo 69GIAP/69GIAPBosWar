@@ -8,15 +8,24 @@
 // Php version of loading all airfields into our airfields table
 // $SaveToDir is the path to where the user keeps the group files
 // $file is the name of the imported file
+# 17/5/14 Stenka adding airfield points to make it compatible to BoS
 
 function import_airfields($SaveToDir,$file) {
 
 	global $camp_link;
+	global $sim;
 
 	$q1="DELETE FROM airfields";
 	$r1= $camp_link->query($q1);
 	if ($r1) {
-//		echo '<br>All existing airfields deleted';
+		echo '<br>All existing airfields deleted';
+	} else {
+		echo'<p>'.$camp_link->error().'</p>';
+	}
+	$q2="DELETE FROM airfields_points";
+	$r2= $camp_link->query($q2);
+	if ($r2) {
+		echo '<br>All existing airfield points deleted';
 	} else {
 		echo'<p>'.$camp_link->error().'</p>';
 	}
@@ -28,6 +37,10 @@ function import_airfields($SaveToDir,$file) {
 	$coalition = 0;
 	$Hydrodrome = 0;
 	$Enabled = 0;
+	$points = 0;
+	$Type = 0;
+	$X = 0;
+	$Y = 0;
 	$filename = $SaveToDir.'/'.$file;
 //	echo '<br>Filename is :'.$filename;
 	$fp = fopen( $filename, "r" ) or die("Couldn't open $filename");
@@ -40,12 +53,70 @@ function import_airfields($SaveToDir,$file) {
 
 			$count = 0;
 		}
-
-
+// sequence to save airfield runways
+if ($points == 1)
+{
+		if (substr($line,0,13)=="      Type = ") {
+			$current_Type = substr($line,14,1);
+			$Type = floatval($current_Type);
+			echo '<br> Type is :'.$Type;
+		}
+		if (substr($line,2,13)=="      Type = ") {
+			$current_Type = substr($line,16,1);
+			$Type = floatval($current_Type);
+			echo '<br> Type is :'.$Type;
+		}		
+		if (substr($line,0,10)=="      X = ") {
+			$current_X = substr($line,11,30);
+			$current_X = rtrim($current_X);
+			$current_X = substr($current_X,0,-1);
+			$X = floatval($current_X);
+			echo '<br> X is :'.$X;
+		}
+		if (substr($line,2,10)=="      X = ") {
+			$current_X = substr($line,13,30);
+			$current_X = rtrim($current_X);
+			$current_X = substr($current_X,0,-1);
+			$X = floatval($current_X);
+			echo '<br> X is :'.$X;
+		}
+		if (substr($line,0,10)=="      Y = ") {
+			$current_Y = substr($line,11,30);
+			$current_Y = rtrim($current_Y);
+			$current_Y = substr($current_Y,0,-1);
+			$Y = floatval($current_Y);
+			echo '<br> Y is :'.$Y;
+		}
+		if (substr($line,2,10)=="      Y = ") {
+			$current_Y = substr($line,13,30);
+			$current_Y = rtrim($current_Y);
+			$current_Y = substr($current_Y,0,-1);
+			$Y = floatval($current_Y);
+			echo '<br> Y is :'.$Y;
+		}
+		if ((substr($line,0,10)=="      Y = ") or (substr($line,2,10)=="      Y = "))
+		{
+		// here we save to airfields_points
+				$q7="INSERT INTO airfields_points (airfield_Name,Type,X,Y)
+				VALUES ('$current_Name','$current_Type','$current_X','$current_Y')";
+				echo '<br> My select is:'.$q7;
+				$r7=$camp_link->query($q7);
+				if ($r7) 
+				{
+					echo '<br> Airfield Points added:';
+				} 
+				else 
+				{
+					echo'<p>'.$camp_link->error().'</p>';
+				}	
+		}
+}
+// end of sequence to save airfield runways
 		if (substr($line,0,9)=="  Name = ") {
 			$current_Name = substr($line,10,50);
 			$current_Name = rtrim($current_Name);
 			$current_Name = substr($current_Name,0,-2);
+			$points = 0;
 			if ($current_object == 'Airfield') {
 				$current_airfield_Name = $current_Name;
 			}
@@ -55,6 +126,7 @@ function import_airfields($SaveToDir,$file) {
 			$current_Name = substr($line,12,50);
 			$current_Name = rtrim($current_Name);
 			$current_Name = substr($current_Name,0,-2);
+			$points = 0;
 			if ($current_object == 'Airfield') {
 				$current_airfield_Name = $current_Name;
 			}
@@ -134,6 +206,20 @@ function import_airfields($SaveToDir,$file) {
 //			echo '<br> Country is :'.$Country;
 		}	
 
+		
+		if (substr($line,0,7)=="  Chart") {
+			$points = 1;
+//			echo '<br> There are runways';
+		}	
+		if (substr($line,2,7)=="  Chart") {
+			$points = 1;
+//			echo '<br> There are runways';
+		}	
+// 		This ends the runway points sequence
+		if ((substr($line,0,14)=="  ReturnPlanes") or (substr($line,2,14)=="  ReturnPlanes"))
+		{
+			$points = 0;
+		}
 		if (substr($line,0,15)=="  Hydrodrome = ") {
 			$Hydrodrome = substr($line,15,50);
 			$Hydrodrome = rtrim($Hydrodrome);
@@ -142,7 +228,6 @@ function import_airfields($SaveToDir,$file) {
 //			echo '<br> Hydrodrome is :'.$Hydrodrome;
 		}	
 		if (substr($line,2,15)=="  Hydrodrome = ") {
-			$Hydrodrome = substr($line,17,50);
 			$Hydrodrome = rtrim($Hydrodrome);
 			$Hydrodrome = substr($Hydrodrome,0,-1);
 			$Hydrodrome = floatval($Hydrodrome);
