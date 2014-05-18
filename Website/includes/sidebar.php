@@ -99,18 +99,18 @@
 														echo "		<li class=\"campStatus\"><a href=\"CampaignMgmtChangeStatus.php?btn=campStp&sde=campState\" class=\"campStatus\"><span>$camp_status</span></a></li>\n";
 													}
 													if ($sde == 'campConf') {
-														if ($camp_status == 'Hidden') {
-															$conf_status = 'Config not completed';
-														} else {
+														if ($camp_status_id > '0') { #this is not a good way as it doesn't really track if a user finished configuration
 															$conf_status = 'Config completed';
+														} else {
+															$conf_status = 'Config not completed';
 														}
 														echo "	    <li class=\"campStatus\"><a href=\"CampaignMgmtConfigure.php?btn=campStp&sde=campConf\" class=\"campConfigureAct\"><span>$conf_status</span></a></li>\n";
 														}
 													else {
-														if ($camp_status == 'Hidden') {
-															$conf_status = 'Config not completed';
-														} else {
+														if ($camp_status_id > '0') { #this is not a good way as it doesn't really track if a user finished configuration
 															$conf_status = 'Config completed';
+														} else {
+															$conf_status = 'Config not completed';
 														}
 														echo "	    <li class=\"campStatus\"><a href=\"CampaignMgmtConfigure.php?btn=campStp&sde=campConf\" class=\"campConfigure\"><span>$conf_status</span></a></li>\n";
 													}
