@@ -1,6 +1,6 @@
+<?php 
 # Stenka 1/1/14 added air AI Level
 # Stenka 14/5/14 update for BOS
-<?php 
 
 // Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
@@ -244,7 +244,7 @@
 						$ZPos = $row['airfield_ZPos'];				
 						$YOri = $row['airfield_YOri'];
 						$airfield_Hydrodrome = $row['airfield_Hydrodrome'];						
-						$airfield_Enabled = $row['airfield_enabled'];
+						$airfield_Enabled = $row['airfield_Enabled'];
 						// here is where we start writing a record
 						$writestring="Airfield\r\n";
 						fwrite($fh,$writestring);
