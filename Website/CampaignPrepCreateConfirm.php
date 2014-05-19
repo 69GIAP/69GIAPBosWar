@@ -3,7 +3,7 @@
 // create a new campaign
 // =69.GIAP=MYATA and =69.GIAP=TUSHKA
 // Oct 5, 2013
-// BOSWAR version 1.17
+// BOSWAR version 1.23
 // Nov 12, 2013
 // Stenka 13/12/13 use of clean function on database name and test database name is already in use
 // Stenka 23/12/13 addition of planes_on_field table to database ceation
@@ -11,6 +11,7 @@
 // Tushka Christmas eve, permit apostrophy in campaign name (not db name)
 // Stenka 6/1/14 removal of planes_on_field table superceded by airfields_model
 // Stenka 1/5/14 addition of trains table which manages adding carriages to a moving train type column
+// Tushka May 18, 1914 commented out the col_10 creation lines.  
 
 // Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
@@ -206,9 +207,6 @@ $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.airfields_models LIKE 
 include ('includes/doit.php');
 echo "airfields_models created<br />\n";
 
-$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.airfields_points LIKE airfields_points;";
-include ('includes/doit.php');
-echo "airfields_points created<br />\n";
 // Do the remainder of the empty tables that we need
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.campaign_missions LIKE campaign_missions;";
 include ('includes/doit.php');
@@ -286,9 +284,9 @@ include ('includes/doit.php');
 echo "campaign_settings populated<br />\n";
 
 // create tables necessary for group files
-$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.col_10 LIKE col_10;";
-include ('includes/doit.php');
-echo "col_10 created<br />\n";
+//$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.col_10 LIKE col_10;";
+//include ('includes/doit.php');
+//echo "col_10 created<br />\n";
 
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.columns LIKE columns;";
 include ('includes/doit.php');
@@ -314,11 +312,6 @@ $query = "INSERT INTO `$newCampaignDBName`.trains(Name, Model) ";
 $query .= "VALUES ('standard', 'g8t'),('standard', 'pass'),('standard', 'pass'),('standard', 'pass'),('standard', 'tankb'),('standard', 'tankb'),('standard', 'tankb'),('standard', 'boxnb'),('standard', 'boxnb'),('standard', 'boxnb'),('standard', 'boxb');";
 include ('includes/doit.php');
 echo "master campaign_settings updated<br />\n";
-
-
-#$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.planes_on_field LIKE planes_on_field;";
-#include ('includes/doit.php');
-#echo "planes on field created<br />\n";
 
 //$query .= "INSERT INTO `$newCampaignDBName`.bridges SELECT * FROM bridges;";
 
