@@ -47,11 +47,11 @@ function import_points($path,$file) {
 				}
 			}
 		// find a flag (control point)
-<<<<<<< HEAD
-		if (preg_match('/flag.txt/',$value)) {
-=======
+//<<<<<<< HEAD
+#		if (preg_match('/flag.txt/',$value)) {
+//=======
 		elseif (preg_match('/flag.txt/',$value)) {
->>>>>>> d8cc0ece36f45f55c953f566fd739f93868e1b97
+//>>>>>>> d8cc0ece36f45f55c953f566fd739f93868e1b97
 			$cpline[$k++] = $i;  // save its line number
 			}
 		}
