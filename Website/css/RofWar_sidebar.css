@@ -371,12 +371,27 @@ ul#sidebar li a.MgmtUlFrmMsnPlnrsAct {
 	height: 64px;
 	position:relative;
 }
-
+ul#sidebar li a.MgmtDlFnlMsn {
+	background:url(../img/RofWar-AdminFinalMission.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.MgmtDlFnlMsnAct {
+	background:url(../img/RofWar-AdminFinalMissionAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	left: -10px;	
+	position:relative;
+}
 ul#sidebar li a.NewBtn1 {
 	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
+	left: -10px;
 	position:relative;
 }
 ul#sidebar li a.NewBtn1Act {

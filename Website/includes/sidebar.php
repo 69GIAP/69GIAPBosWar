@@ -175,18 +175,16 @@
 														echo "	    <li><a href=\"CampaignMgmtULPlannedConfirm.php?btn=campStp&sde=MgmtUlFrmMsnPlnrs\" class=\"MgmtUlFrmMsnPlnrs\"><span></span></a></li>\n";
 													}
 													if ($sde == 'campAf') {
-#														echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=preMsn&sde=campAf\" class=\"campAirfieldResupplyAct\"><span></span></a></li>\n";
 														echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=btn=campStp&sde=campAf\" class=\"campAirfieldResupplyAct\"><span></span></a></li>\n";
 														}
 													else {
-#														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn5\" class=\"NewBtn5\">Allocate Planes to Airfields</a></li>\n";
 														echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=campStp&sde=campAf\" class=\"campAirfieldResupply\"><span></span></a></li>\n";
 													}
-													if ($sde == 'NewBtn1') {
-														echo "	    <li><a href=\"CampaignMgmtDLBuildingConfirm.php?btn=campStp&sde=NewBtn1\" class=\"NewBtn1Act\">Download to Mission Building</a></li>\n";
+													if ($sde == 'MgmtDlFnlMsn') {
+														echo "	    <li><a href=\"CampaignMgmtDLBuildingConfirm.php?btn=campStp&sde=MgmtDlFnlMsn\" class=\"MgmtDlFnlMsnAct\"><span></span></a></li>\n";
 														}
 													else {
-														echo "	    <li><a href=\"CampaignMgmtDLBuildingConfirm.php?btn=campStp&sde=NewBtn1\" class=\"NewBtn1\">Download to Mission Building</a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtDLBuildingConfirm.php?btn=campStp&sde=MgmtDlFnlMsn\" class=\"MgmtDlFnlMsn\"><span></span></a></li>\n";
 													}
 													echo "  </ul>\n";
 												}
