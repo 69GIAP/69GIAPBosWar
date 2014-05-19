@@ -5,7 +5,7 @@
 
 	# load the query into a variable dependent on the role the user owns
 
-	$query = "SELECT * FROM campaign_status ORDER BY id desc";
+	$query = "SELECT * FROM campaign_status ORDER BY id asc";
 	
 	if(!$result = $dbc->query($query))
 		{
