@@ -54,8 +54,10 @@
 
                     // configure
 					$SaveToDir = "uploads/";
-
-
+					# get success msg from POST
+					$message = $_GET['msg'];
+					echo "<p>$message</p>\n";
+										
 					echo "<p>We will now use the template file we recently uploaded to the server.</p>\n";
 					// start form
 					echo "<form id=\"campaignMgmtImportForm\" name=\"campaignImport\" action=\"CampaignMgmtImportConfirm.php?btn=campStp&sde=campSet\" method=\"post\">\n";

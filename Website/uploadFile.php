@@ -8,8 +8,8 @@
 // if old copy of file exists, delete it before moving upload
 
 # Make a mysqli connection to the central BOSWAR database
-	require ( 'functions/connectBOSWAR.php' );
-	$dbc = connectBOSWAR();
+require ( 'functions/connectBOSWAR.php' );
+$dbc = connectBOSWAR();
 	
 // Include the webside header
 include ( 'includes/header.php' );
@@ -73,28 +73,49 @@ include ( 'includes/navigation.php' );
 					echo ".$extension is not an allowed extension";
 				}
 			}
-echo "<br />Peter here \$returnpage: $returnpage<br />\n";
+			echo "<br />Peter here \$returnpage: $returnpage<br />\n";
 			if ($returnpage == 'CampaignMgmtUpload.php') {
 				echo "			<br />&nbsp;<br />\n";
-				echo "			<a href=\"CampaignMgmtUpload.php?btn=campStp&fi=template\">Next</a>\n";
+				# Message to be displayed on next page
+				$feedback = 'File succesfully uploaded!';
+				# Button
+				echo "			<a href=\"CampaignMgmtUpload.php?btn=campStp&sde=campSet&fi=template&msg=$feedback\">Next</a>\n";
 			} elseif ($returnpage == 'CampaignMgmtSupplyControlPoints.php') {
 				echo "			<br />&nbsp;<br />\n";
-				echo"			<a href=\"CampaignMgmtSupplyControlPoints.php?btn=campStp&fi=points\">Next</a>\n";
+				# Message to be displayed on next page
+				$feedback = 'File succesfully uploaded!';
+				# Button
+				echo"			<a href=\"CampaignMgmtSupplyControlPoints.php?btn=campStp&sde=campSet&fi=points&msg=$feedback\">Next</a>\n";
 			} elseif ($returnpage == 'CampaignMgmtSetupBridges.php') {
 				echo "			<br />&nbsp;<br />\n";
-				echo"			<a href=\"CampaignMgmtSetupBridges.php?btn=campStp&fi=bridges\">Next</a>\n";
+				# Message to be displayed on next page
+				$feedback = 'File succesfully uploaded!';
+				# Button
+				echo"			<a href=\"CampaignMgmtSetupBridges.php?btn=campStp&sde=campSet&fi=bridges&msg=$feedback\">Next</a>\n";
 			} elseif ($returnpage == 'CampaignMgmtUpload2.php') {
 				echo "			<br />&nbsp;<br />\n";
-				echo"			<a href=\"CampaignMgmtUpload2.php?btn=campStp&fi=bridges\">Next</a>\n";
+				# Message to be displayed on next page
+				$feedback = 'File succesfully uploaded!';
+				# Button
+				echo"			<a href=\"CampaignMgmtUpload2.php?btn=campStp&sde=campSet&fi=bridges&msg=$feedback\">Next</a>\n";
 			} elseif ($returnpage == 'CampaignMgmtImport.php') {
 				echo "			<br />&nbsp;<br />\n";
-				echo "<a href=\"CampaignMgmtImport.php?btn=campStp\">Next</a>\n";
+				# Message to be displayed on next page
+				$feedback = 'File succesfully uploaded!';
+				# Button
+				echo "<a href=\"CampaignMgmtImport.php?btn=campStp&sde=campSet&msg=$feedback\">Next</a>\n";
 			} elseif ($returnpage == 'CampaignMgmtImport2.php') {
 				echo "			<br />&nbsp;<br />\n";
-				echo "<a href=\"CampaignMgmtImport2.php?btn=campStp\">Next</a>\n";	
+				# Message to be displayed on next page
+				$feedback = 'File succesfully uploaded!';
+				# Button
+				echo "<a href=\"CampaignMgmtImport2.php?btn=campStp&sde=campSet&msg=$feedback\">Next</a>\n";	
 			} elseif ($returnpage == 'CampaignMgmtImport3.php') {
 				echo "			<br />&nbsp;<br />\n";
-				echo "<a href=\"CampaignMgmtImport3.php?btn=campStp\">Next</a>\n";	
+				# Message to be displayed on next page
+				$feedback = 'File succesfully uploaded!';
+				# Button
+				echo "<a href=\"CampaignMgmtImport3.php?btn=campStp&sde=campSet&msg=$feedback\">Next</a>\n";	
 			}
 			else {
 				echo "none of the returnpages were valid<br>";

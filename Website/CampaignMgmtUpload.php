@@ -71,7 +71,8 @@
 					if ($fi == 'blank') { // skip if not
 						if (file_exists("$FullPath")) {
 							echo "<p>You have already uploaded $FullPath, so you should </p>\n"; 
-							echo "<a href=\"CampaignMgmtImport.php?btn=campStp&sde=campSet\">SKIP Upload.</a><p>(Because this file must be imported, and deleted, before you can upload another copy.)</p><p>If, for any reason, the file can not be imported, delete $FullPath and try again.</p>\n";
+							echo "<a href=\"CampaignMgmtImport.php?btn=campStp&sde=campSet\">SKIP Upload.</a><p>(Because this file must be imported, and deleted, before you can upload another copy.)</p>\n";
+							echo "<p>If, for any reason, the file can not be imported, delete $FullPath and try again.</p>\n";
 							
 						} else {
 							echo "<p>We will now upload our template mission file from your PC to the campaign server.</p>\n";
