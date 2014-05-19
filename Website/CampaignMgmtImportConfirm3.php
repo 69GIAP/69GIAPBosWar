@@ -35,7 +35,7 @@
 					$file			= 'uploads/'.$_POST["file"];
 					$SaveToDir		= $_POST["SaveToDir"];
 //					$returnpage		= $_POST["returnpage"];
-echo "database is : $loadedCampaign";
+echo "<p>database is: $loadedCampaign<br>\n";
 #echo "Hello im here in campaign management import confirm 3 about to start reading columns";
 # here we go loading columns updates
 
@@ -50,7 +50,8 @@ $trainXPos = "";
 $trainZPos = "";
 $trainYOri = "";
 
-echo '<br>Filename is :'.$file;
+echo "Filename is: $file<br>\n";
+
 $fp = fopen( $file, "r" ) or die("Couldn't open $file");
 while ( ! feof( $fp ) ) 
 {
@@ -90,7 +91,8 @@ while ( ! feof( $fp ) )
 		$current_Name = substr($line,10,50);
 		$current_Name = rtrim($current_Name);
 		$current_Name = substr($current_Name,0,-2);
-		echo '<br> Name is :'.$current_Name;
+		echo "Name is: $current_Name<br>\n";
+
 		if ($current_Name == '')
 		{
 		$to_update = 0;
@@ -102,10 +104,11 @@ while ( ! feof( $fp ) )
 		{
 			$q1="UPDATE columns set XPos = $trainXPos, ZPos = $trainZPos, YOri = $trainYOri where Name = '$current_Name' LIMIT 1";
 		}
-		echo "<br> $q1";
+		echo '<br>'.$q1.'<br>';
+		echo "\n";
 		$r1= mysqli_query($camp_link,$q1);
 		if ($r1)
-				{echo '<br> update attempted';}
+				{echo "update attempted\n";}
 			else
 				{echo'<p>'.mysqli_error($dbc).'</p>';}
 			$to_update = 0;
@@ -113,7 +116,8 @@ while ( ! feof( $fp ) )
 	$count = 1+$count;
 }
 fclose($fp);
-echo '<br>Filename is :'.$file;
+echo "Filename is: $file <br>\n";
+
 $to_update = 0;
 $fp = fopen( $file, "r" ) or die("Couldn't open $file");
 while ( ! feof( $fp ) ) 
@@ -165,7 +169,7 @@ while ( ! feof( $fp ) )
 			$current_Name = substr($line,10,50);
 			$current_Name = rtrim($current_Name);
 			$current_Name = substr($current_Name,0,-2);
-			echo '<br> Name is :'.$current_Name;
+			echo "Name is: $current_Name<br>\n";
 			if ($current_Name == '')
 			{
 				$to_update = 0;
@@ -174,12 +178,12 @@ while ( ! feof( $fp ) )
 	if ((substr($line,0,1)=='}') && ($to_update == 1) && ($current_object == 'Waypoint'))
 	{
 		$q1="UPDATE columns set dest_XPos = $XPos, dest_ZPos = $ZPos where Name = '$current_Name' LIMIT 1";
-		echo "<br> $q1";
+		echo "<br>$q1<br>\n";
 		$r1= mysqli_query($camp_link,$q1);
 		if ($r1)
-			{echo '<br> update attempted';}
+			{echo 'update attempted<b>\n';}
 		else
-			{echo'<p>'.mysqli_error($dbc).'</p>';}
+			{echo '<p>'.mysqli_error($dbc).'</p>';}
 		$to_update = 0;
 		$count = 1+$count;
 	}
@@ -187,21 +191,24 @@ while ( ! feof( $fp ) )
 fclose($fp);
 # now we update our statics
 # set updated flag to 0 throughout
-echo '<br>Starting update of static objects';
-echo '<br>Starting update of static_updated flag';
+echo "Starting update of static objects<br>\n";
+echo "Starting update of static_updated flag<br>\n";
+
 $q1="UPDATE $loadedCampaign.statics set static_updated = 0";
 $r1= mysqli_query($dbc,$q1);
 if ($r1)
-	{echo '<br> static flag updated';}
+	{echo "static flag updated<br>\n";}
 else
-	{echo'<p>'.mysqli_error($dbc).'</p>';}
+	{echo '<p>'.mysqli_error($dbc).'</p>';}
 
 $to_update = 0;
 $count = 0;
 $current_object = "Unknown";
 $current_Name = "";
 $Model = "Unknown";
-echo '<br>Filename is :'.$file;
+
+echo "Filename is: $file<br>\n";
+
 $fp = fopen( $file, "r" ) or die("Couldn't open $file");
 while ( ! feof( $fp ) ) 
 {
@@ -210,7 +217,7 @@ while ( ! feof( $fp ) )
 	if (substr($line,0,7) == 'Vehicle')
 	{
 	$current_object = 'Vehicle';
-	echo '<br> Found a :'.$current_object;
+	echo "Found a: $current_object <br>\n";
 	$count = 0;
 	$to_update = 1;
 	}
@@ -278,22 +285,24 @@ while ( ! feof( $fp ) )
 	}
 	if ((substr($line,0,1)=='}') && ($to_update == 1))
 	{
-	echo '<br> Trying to do an update to static';
+	echo "Trying to do an update to static.<br>\n";
+	
 			$q1="UPDATE statics SET static_XPos = $XPos,static_ZPos = $ZPos,static_YOri = $YOri,static_updated = 1 where static_Name = '$current_Name' AND static_Model = '$Model' AND static_updated = 0 LIMIT 1";
-			echo '<br> My update select is:'.$q1;
+			echo "My update select is: $q1 <br>\n";
+			
 			$r1= mysqli_query($camp_link,$q1);
 			if ($r1)
 				{
-				echo '<br> updated record';
+				echo "<br>updated record.\n";
 				}
 			else
 				{
-				echo'<p> update failed'.mysqli_error($dbc).'</p>';
+				echo'<p>update failed '.mysqli_error($dbc).'</p>';
 				}
 	$to_update = 0;
 	}
-
 }
+echo "</p>\n";
 return;
 # end of static update
 #updates

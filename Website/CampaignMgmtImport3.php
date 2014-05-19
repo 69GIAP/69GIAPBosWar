@@ -58,7 +58,7 @@
 
 					echo "<p>We will now use the mission file we recently uploaded to the server.</p>\n";
 					// start form
-					echo "<form id=\"campaignMgmtImportForm\" name=\"campaignImport\" action=\"CampaignMgmtImportConfirm3.php?btn=campStp&sde=campSet\" method=\"post\">\n";
+					echo "<form id=\"campaignMgmtImportForm\" name=\"campaignImport\" action=\"CampaignMgmtImportConfirm3.php?btn=campStp&sde=MgmtUlFrmMsnPlnrs\" method=\"post\">\n";
 
 					if ($fi == 'airfields') {
 						echo "<p>This will update Z X destination of columns and the position of Static groups for the mission</p>\n";

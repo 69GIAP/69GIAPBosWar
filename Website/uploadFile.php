@@ -115,7 +115,7 @@ include ( 'includes/navigation.php' );
 				# Message to be displayed on next page
 				$feedback = 'File succesfully uploaded!';
 				# Button
-				echo "<a href=\"CampaignMgmtImport3.php?btn=campStp&sde=campSet&msg=$feedback\">Next</a>\n";	
+				echo "<a href=\"CampaignMgmtImport3.php?btn=campStp&sde=MgmtUlFrmMsnPlnrs&msg=$feedback\">Next</a>\n";	
 			}
 			else {
 				echo "none of the returnpages were valid<br>";

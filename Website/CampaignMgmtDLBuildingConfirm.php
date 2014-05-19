@@ -20,23 +20,27 @@
     
             <div id="content">
             
-			<?php
-			echo "We will now generate all the files with which to generate the next Mission.
-The database contains the Z X starting positions and angle of both static groups and columns at the start of the next mission and the destination Z X positions for columns. 
-The destination values will now be validated against the length of the mission and transit speeds then corrected. Columns that have a significant destination will be
+<?php
+			echo "<h2>Final Mission preparation</h2>\n";
+			echo "<p>We will now generate all the files with which to generate the next Mission.<br>\n
+			The database contains the Z X starting positions and angle of both static groups and columns. Additionally the start of the next mission and the destination Z X positions for columns are stored as well.</p>\n";
+			echo "<p>The destination values will now be validated against the length of the mission and transit speeds then corrected. Columns that have a significant destination will be
 determined to be moving and generated with waypoints. If the destination was not significant they will be created with complex triggers which wake them up if players or enemy vehicles approach.
-Artillery which is not self propelled will be loaded into trucks for transit so will not be able to fire.
-Static groups will be generated with complex triggers.<br><br>
-The administrator that will assemble the mission should start in the mission editor with a clean template mission containing the latest influence areas, buildings, villages towns etc. but no 
-airfields or bridges. He will need to set the date, weather and time to suit the mission then Import from file the group file(s) which we will generate here and download from the server to this PC.
-<br><br>";
+Artillery which is not self propelled will be loaded into trucks for transit so will not be able to fire.<p>\n";
+			echo "<p>Static groups will be generated with complex triggers.</p>\n";
+			
+			echo "<p>The administrator that will assemble the mission should start in the mission editor with a clean template mission containing the latest influence areas, buildings, villages towns etc. but no 
+airfields or bridges. He will need to set the date, weather and time to suit the mission then Import from file the group file(s) which we will generate here and download from the server to this PC.</p>\n";
 
 // require connect2CampaignFunction.php
 require ( 'functions/connect2Campaign.php' );
+
 // include getCampaignVariables.php
 include ( 'includes/getCampaignVariables.php' );
+
 // use this information to connect to campaign 
 $camp_link = connect2campaign("$camp_host","$camp_user","$camp_passwd","$loadedCampaign");
+
 // require getAbbrv.php
 require ('functions/getAbbrv.php');
 // require getPointXPos.php
@@ -2383,7 +2387,7 @@ $list_of_mcus ="";
 fclose($fh);
 # here ends the groupfile sequence
 // actually do the downloads
-echo "We are now ready to download the New_Mission group file to your PC, then import it into a clean template in the mission editor!<br><br />\n";
+echo "We are now ready to download the <b>" .$abbrv. "_New_Mission.Group</b> file to your PC, then import it into a clean template in the mission editor!<br><br />\n";
 echo "<form id=\"campaignMgmtDLFile\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLFile.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 $DownloadDir = 'downloads/';
 print "<select name=\"dlfile\">\n";

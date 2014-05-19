@@ -69,9 +69,16 @@
 					echo "</form>\n";
 				} else {
 					// actually do the downloads
-					echo "The files have been created on the server, they will have the abbreviated name for the campaign the coalition and 2planner tags. You now need to download them to your PC so that you can work on them with the mission editor or send them by E-Mail. Download destination on your PC may vary depending on what browser you use, it may be in a default download directory or in the last place you saved files to.
-					So have a look and move them if needed to the campaign directory.
-					<br><br />\n";
+					echo "<h2>Download the columns2planner and statics2planner files</h2>\n";
+					
+					echo "<p>The files have been created on the server, they will have the abbreviated name for the <b>campaign</b>, the <b>coalition</b> and <b>2planner</b> tags.<br>
+					You now need to download them to your PC so that you can work on them with the mission editor or send them by E-Mail.</p>\n";
+					
+					echo "<p>Download destination on your PC may vary depending on what browser you use. It may be in a default download directory, in the last place you saved files to or prompt for destination.</p>\n";
+					echo "<p>Remember the folder and once downloaded move the <b>*.2planner.Group</b> files to the campaign directory.</p>\n";
+					
+					echo "<p>After you finished this WE NEED INSTRUCTIONS HERE !!!!!</p>\n";
+					
 					echo "<form id=\"campaignMgmtDLFile\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLFile.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 					$DownloadDir = 'downloads/';
 					print "<select name=\"dlfile\">\n";
@@ -92,7 +99,7 @@
 						  echo "<option value=\"$value\">$value</option>\n";
 					   }
 					}
-					echo "</p><input type=\"submit\" value=\"Go\"><br>\n";
+					echo "<p><input type=\"submit\" value=\"Go\"></p>\n";
 				}
 
 

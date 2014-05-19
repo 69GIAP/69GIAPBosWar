@@ -99,7 +99,7 @@
 														echo "		<li class=\"campStatus\"><a href=\"CampaignMgmtChangeStatus.php?btn=campStp&sde=campState\" class=\"campStatus\"><span>$camp_status</span></a></li>\n";
 													}
 													if ($sde == 'campConf') {
-														if ($camp_status_id > '0') { #this is not a good way as it doesn't really track if a user finished configuration
+														if ($camp_status_id > '0') { # [MYATA] this is not a good way as it doesn't really track if a user finished configuration
 															$conf_status = 'Config completed';
 														} else {
 															$conf_status = 'Config not completed';
@@ -107,7 +107,7 @@
 														echo "	    <li class=\"campStatus\"><a href=\"CampaignMgmtConfigure.php?btn=campStp&sde=campConf\" class=\"campConfigureAct\"><span>$conf_status</span></a></li>\n";
 														}
 													else {
-														if ($camp_status_id > '0') { #this is not a good way as it doesn't really track if a user finished configuration
+														if ($camp_status_id > '0') { # [MYATA] this is not a good way as it doesn't really track if a user finished configuration
 															$conf_status = 'Config completed';
 														} else {
 															$conf_status = 'Config not completed';
@@ -162,17 +162,17 @@
 													else {
 														echo "	    <li><a href=\"CampaignMgmtULTemplateConfirm.php?btn=campStp&sde=MgmtUlClmsStcs\" class=\"MgmtUlClmsStcs\"><span></span></a></li>\n";
 													}
-													if ($sde == 'NewBtn1') {
-														echo "	    <li><a href=\"CampaignMgmtDLPlanningConfirm.php?btn=campStp&sde=NewBtn1\" class=\"NewBtn1Act\">Download to Mission Planners</a></li>\n";
+													if ($sde == 'MgmtDl2Plnrs') {
+														echo "	    <li><a href=\"CampaignMgmtDLPlanningConfirm.php?btn=campStp&sde=MgmtDl2Plnrs\" class=\"MgmtDl2PlnrsAct\"><span></span></a></li>\n";
 														}
 													else {
-														echo "	    <li><a href=\"CampaignMgmtDLPlanningConfirm.php?btn=campStp&sde=NewBtn1\" class=\"NewBtn1\">Download to Mission Planners</a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtDLPlanningConfirm.php?btn=campStp&sde=MgmtDl2Plnrs\" class=\"MgmtDl2Plnrs\"><span></span></a></li>\n";
 													}
-													if ($sde == 'NewBtn2') {
-														echo "	    <li><a href=\"CampaignMgmtULPlannedConfirm.php?btn=campStp&sde=NewBtn2\" class=\"NewBtn2Act\">Upload from Mission Planners</a></li>\n";
+													if ($sde == 'MgmtUlFrmMsnPlnrs') {
+														echo "	    <li><a href=\"CampaignMgmtULPlannedConfirm.php?btn=campStp&sde=MgmtUlFrmMsnPlnrs\" class=\"MgmtUlFrmMsnPlnrsAct\"><span></span></a></li>\n";
 														}
 													else {
-														echo "	    <li><a href=\"CampaignMgmtULPlannedConfirm.php?btn=campStp&sde=NewBtn2\" class=\"NewBtn2\">Upload from Mission Planners</a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtULPlannedConfirm.php?btn=campStp&sde=MgmtUlFrmMsnPlnrs\" class=\"MgmtUlFrmMsnPlnrs\"><span></span></a></li>\n";
 													}
 													if ($sde == 'campAf') {
 #														echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=preMsn&sde=campAf\" class=\"campAirfieldResupplyAct\"><span></span></a></li>\n";
@@ -182,11 +182,11 @@
 #														echo "	    <li><a href=\"dummy.php?btn=campStp&sde=campNewBtn5\" class=\"NewBtn5\">Allocate Planes to Airfields</a></li>\n";
 														echo "	    <li><a href=\"CampaignMgmtAirfields.php?btn=campStp&sde=campAf\" class=\"campAirfieldResupply\"><span></span></a></li>\n";
 													}
-													if ($sde == 'NewBtn4') {
-														echo "	    <li><a href=\"CampaignMgmtDLBuildingConfirm.php?btn=campStp&sde=NewBtn4\" class=\"NewBtn4Act\">Download to Mission Building</a></li>\n";
+													if ($sde == 'NewBtn1') {
+														echo "	    <li><a href=\"CampaignMgmtDLBuildingConfirm.php?btn=campStp&sde=NewBtn1\" class=\"NewBtn1Act\">Download to Mission Building</a></li>\n";
 														}
 													else {
-														echo "	    <li><a href=\"CampaignMgmtDLBuildingConfirm.php?btn=campStp&sde=NewBtn4\" class=\"NewBtn4\">Download to Mission Building</a></li>\n";
+														echo "	    <li><a href=\"CampaignMgmtDLBuildingConfirm.php?btn=campStp&sde=NewBtn1\" class=\"NewBtn1\">Download to Mission Building</a></li>\n";
 													}
 													echo "  </ul>\n";
 												}
