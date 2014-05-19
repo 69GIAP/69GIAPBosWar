@@ -20,14 +20,14 @@ function import_airfields($SaveToDir,$file) {
 	if ($r1) {
 		echo '<br>All existing airfields deleted';
 	} else {
-		echo'<p>'.$camp_link->error().'</p>';
+		echo '<p>'.$camp_link->error.'</p>';
 	}
 	$q2="DELETE FROM airfields_points";
 	$r2= $camp_link->query($q2);
 	if ($r2) {
 		echo '<br>All existing airfield points deleted';
 	} else {
-		echo'<p>'.$camp_link->error().'</p>';
+		echo '<p>'.$camp_link->error.'</p>';
 	}
 	$count = 0;
 	$current_object = "Unknown";
@@ -107,7 +107,7 @@ if ($points == 1)
 				} 
 				else 
 				{
-					echo'<p>'.$camp_link->error().'</p>';
+					echo'<p>'.$camp_link->error.'</p>';
 				}	
 		}
 }
