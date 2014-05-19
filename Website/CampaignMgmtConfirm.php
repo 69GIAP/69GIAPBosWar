@@ -135,7 +135,7 @@ if ($_POST["updateCampaignParameters"] == 4) {
 if ($_POST["updateCampaignParameters"] == 5) {
 	$config_done = $_POST["config_done"];
 	if ($config_done == "true") {
-		$query = "UPDATE campaign_settings SET status = 5 ;"; 
+		$query = "UPDATE campaign_settings SET status = 3 ;"; 
 //		echo "$query<br />\n";
 		if(!$result = $camp_link->query($query)) {
 			die('CampaignMgmtConfirm #5 query error [' . $camp_link->error . ']');
@@ -151,7 +151,7 @@ if ($_POST["updateCampaignParameters"] == 5) {
 
 		
 // sync boswar_db with campaign db with campaign status
-$query = "UPDATE campaign_settings SET status = 5 where camp_db = '$loadedCampaign';"; 
+$query = "UPDATE campaign_settings SET status = 3 where camp_db = '$loadedCampaign';"; 
 //		echo "$query<br />\n";
 		if(!$result = $dbc->query($query)) {
 			die('CampaignMgmtConfirm #5 query error [' . $dbc->error . ']');
