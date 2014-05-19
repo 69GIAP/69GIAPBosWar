@@ -376,6 +376,7 @@ ul#sidebar li a.MgmtDlFnlMsn {
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
+	left: -12px;
 	position:relative;
 }
 ul#sidebar li a.MgmtDlFnlMsnAct {
@@ -383,7 +384,7 @@ ul#sidebar li a.MgmtDlFnlMsnAct {
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
-	left: -10px;	
+	left: -12px;	
 	position:relative;
 }
 ul#sidebar li a.NewBtn1 {
@@ -391,7 +392,6 @@ ul#sidebar li a.NewBtn1 {
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
-	left: -10px;
 	position:relative;
 }
 ul#sidebar li a.NewBtn1Act {
