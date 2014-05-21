@@ -23,7 +23,14 @@ ul#sidebar {
 }
 /*****  Viewer Sidebar ****/
 ul#sidebar li a.statistics {
-	background:url(../img/RofWar_Statistics.png) no-repeat scroll top left;
+	background:url(../img/BosWar_Statistics.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.statisticsAct {
+	background:url(../img/BosWar_StatisticsAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -52,14 +59,14 @@ ul#sidebar li a.campConfig {
 	position:relative;
 }
 ul#sidebar li a.campConnect {
-	background:url(../img/RofWar-AdminConnectDB.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminConnectDB.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.campConnectAct {
-	background:url(../img/RofWar-AdminConnectDBAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminConnectDBAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -73,21 +80,21 @@ ul#sidebar li a.campCreate {
 	position:relative;
 }
 ul#sidebar li a.campCreateAct {
-	background:url(../img/RofWar-AdminCreateDBAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminCreateDBAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.campDrop {
-	background:url(../img/RofWar-AdminDropDB.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminDropDB.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.campDropAct {
-	background:url(../img/RofWar-AdminDropDBAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminDropDBAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -342,6 +349,51 @@ ul#sidebar li a.ctrlArLssAct {
 	position:relative;
 }
 
+ul#sidebar li a.MgmtDl2Plnrs {
+	background:url(../img/RofWar-AdminDownload2Planners.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.MgmtDl2PlnrsAct {
+	background:url(../img/RofWar-AdminDownload2PlannersAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+
+ul#sidebar li a.MgmtUlFrmMsnPlnrs {
+	background:url(../img/RofWar-AdminUploadFromMissionPlanners.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.MgmtUlFrmMsnPlnrsAct {
+	background:url(../img/RofWar-AdminUploadFromMissionPlannersAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.MgmtDlFnlMsn {
+	background:url(../img/RofWar-AdminFinalMission.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	left: -12px;
+	position:relative;
+}
+ul#sidebar li a.MgmtDlFnlMsnAct {
+	background:url(../img/RofWar-AdminFinalMissionAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	left: -12px;	
+	position:relative;
+}
 ul#sidebar li a.NewBtn1 {
 	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
 	display:block;
