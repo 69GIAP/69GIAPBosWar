@@ -3,8 +3,8 @@
 // parse the AType:0 line 
 // =69.GIAP=TUSHKA
 // 2011-2014
-// BOSWAR version 0.13
-// Apr 6, 2014
+// BOSWAR version 0.14
+// May 27, 2014
 
 function START($i) { // AType:0
 	global $sim; // simulation
@@ -28,8 +28,10 @@ function START($i) { // AType:0
 
 	// RoF example:
 // T:0 AType:0 GDate:1917.9.23 GTime:6:30:0 MFile:Multiplayer/Cooperative/September-storm-1v2.msnbin MID: GType:1 CNTRS:0:0,101:1,102:1,103:1,104:1,105:1,501:2,502:2,600:7,610:3,620:4,630:5,640:6 SETTS:00000001000000000100000000 MODS:0
-	// BoS (QMB) example:
+	// BoS (QMB) examples: (first is QMB, second is MB)
 //T:0 AType:0 GDate:1942.12.24 GTime:12:0:0 MFile:Missions\_gen.msnbin MID: GType:703 CNTRS:0:0,101:1,201:2 SETTS:1101000111101001000000011 MODS:0 PRESET:1
+//T:0 AType:0 GDate:1942.11.19 GTime:9:30:0 MFile:missions/test fmb/dmg_all_V3.msnbin MID: GType:0 CNTRS:0:0,101:1,201:2 SETTS:0000000000000001000000011 MODS:0 PRESET:0
+	//
 
 	$Startticks = $Ticks[$i];
 	// nibble away from the left end of the line, extracting data as we go
@@ -48,11 +50,12 @@ function START($i) { // AType:0
 	$CNTRS = $Part[0];
 	$Part=explode(" MODS:",$Part[1],2); // split into SETTS and remainder at " MODS:
 	$SETTS = $Part[0];
-	if ($sim == 'BoS') {
+	// if remainder has a single \ else
+	if (substr_count($Part[1],'\\') == 1) {
 		$Part=explode(" PRESET:",$Part[1],2); // split into PRESET and remainder at PRESET:
 		$MODS = ($Part[0]); 
 		$PRESET = rtrim($Part[1]); 
-		// BoS uses \ where RoF used /, and QMB has just 1 /.
+		// BoS QMB uses \ where RoF used /, and QMB has just 1 /.
 		// Probably need to revisit this when get other kinds of missions
 		// construct a mission ID from components 
 		$Part = explode('\\',$MFile,2); // split $MID into two parts at "\"
@@ -65,6 +68,8 @@ function START($i) { // AType:0
 		$Part = explode(".msnbin",$Part[2],2); // trim off the .msnbin safely
 		$MissionID = $Part[0] . "-" . $GDate . "-" . $GTime; // append date and time
 	}
+	//if ($sim == 'BoS') { // there will be more to parse
+    //}
 	$Sline[$numstart] = $i ;
 	++$numstart;
 	$EVline[$numevents] = $i ;
