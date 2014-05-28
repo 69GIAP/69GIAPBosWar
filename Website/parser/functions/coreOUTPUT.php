@@ -3,8 +3,8 @@
 // output simple text report and calculate some stats for the db
 // =69.GIAP=TUSHKA
 // 2011-2014
-// BOSWAR version 1.34
-// Apr 22, 2014
+// BOSWAR version 1.35
+// Apr 28, 2014
 
 function OUTPUT($logfilename) {
 // what follows is an almost complete collection of global variables
@@ -194,7 +194,7 @@ function OUTPUT($logfilename) {
 //}
 
 	echo "<p><b>REPORT OF SELECTED RESULTS:</b></p>\n"; 
-	echo ("<p>Mission Number $mission_number</p>\n");
+//	echo ("<p>Mission Number $mission_number</p>\n");
 
 	echo ("<p>Mission ID = $MissionID</p>\n");
 
