@@ -38,21 +38,28 @@ ul#sidebar li a.statisticsAct {
 }
 /*****  Admin Sidebar ****/
 ul#sidebar li a.campLogParser {
-	background:url(../img/RofWar-AdminCampLogParser.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminCampLogParser.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.campLogParserAct {
-	background:url(../img/RofWar-AdminCampLogParserAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminCampLogParserAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.campConfig {
-	background:url(../img/RofWar-AdminConfigureCamp.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminConfigureCamp.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.campConfigAct {
+	background:url(../img/BosWar-AdminConfigureCampAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -73,7 +80,7 @@ ul#sidebar li a.campConnectAct {
 	position:relative;
 }
 ul#sidebar li a.campCreate {
-	background:url(../img/RofWar-AdminCreateDB.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminCreateDB.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -108,7 +115,7 @@ ul#sidebar li a.campPlanning {
 	position:relative;
 }
 ul#sidebar li a.campStatus {
-	background:url(../img/RofWar-AdminChangeStatus.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminChangeStatus.png) no-repeat scroll top left;
 	text-decoration: none;	
 	display:block;
 	margin-bottom: 10px;
@@ -116,7 +123,7 @@ ul#sidebar li a.campStatus {
 	position:relative;
 }
 ul#sidebar li a.campStatusAct {
-	background:url(../img/RofWar-AdminChangeStatusAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminChangeStatusAct.png) no-repeat scroll top left;
 	text-decoration: none;	
 	display:block;
 	margin-bottom: 10px;
@@ -135,7 +142,7 @@ ul#sidebar li a.campConfigureAct span {
 }
 
 ul#sidebar li a.campSetup {
-	background:url(../img/RofWar-AdminSetup.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminSetup.png) no-repeat scroll top left;
 	text-decoration: none;	
 	display:block;
 	margin-bottom: 10px;
@@ -143,7 +150,7 @@ ul#sidebar li a.campSetup {
 	position:relative;
 }
 ul#sidebar li a.campSetupAct {
-	background:url(../img/RofWar-AdminSetupAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminSetupAct.png) no-repeat scroll top left;
 	text-decoration: none;	
 	display:block;
 	margin-bottom: 10px;
@@ -151,7 +158,7 @@ ul#sidebar li a.campSetupAct {
 	position:relative;
 }
 ul#sidebar li a.campConfigure {
-	background:url(../img/RofWar-AdminConfigure.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminConfigure.png) no-repeat scroll top left;
 	text-decoration: none;	
 	display:block;
 	margin-bottom: 10px;
@@ -159,7 +166,7 @@ ul#sidebar li a.campConfigure {
 	position:relative;
 }
 ul#sidebar li a.campConfigureAct {
-	background:url(../img/RofWar-AdminConfigureAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminConfigureAct.png) no-repeat scroll top left;
 	text-decoration: none;	
 	display:block;
 	margin-bottom: 10px;
@@ -195,14 +202,14 @@ ul#sidebar li a.campAirfieldResupplyAct {
 	position:relative;
 }
 ul#sidebar li a.campAirForces {
-	background:url(../img/RofWar-AdminAirForces.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminAirForces.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.campAirForcesAct {
-	background:url(../img/RofWar-AdminAirForcesAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminAirForcesAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -265,14 +272,14 @@ ul#sidebar li a.campGroundResupplyAct {
 	position:relative;
 }
 ul#sidebar li a.campGroundForces {
-	background:url(../img/RofWar-AdminGroundForces.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminGroundForces.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.campGroundForcesAct {
-	background:url(../img/RofWar-AdminGroundForcesAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminGroundForcesAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
