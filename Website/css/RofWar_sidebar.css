@@ -23,7 +23,14 @@ ul#sidebar {
 }
 /*****  Viewer Sidebar ****/
 ul#sidebar li a.statistics {
-	background:url(../img/RofWar_Statistics.png) no-repeat scroll top left;
+	background:url(../img/RofWar-Statistics.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.statisticsAct {
+	background:url(../img/RofWar-StatisticsAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -489,14 +496,14 @@ ul#sidebar li a.dummyAct {
 
 /*****  Commander Sidebar ****/
 ul#sidebar li a.modifyAirfield {
-	background:url(../img/RofWar_EntenteAirfields.png) no-repeat scroll top left;
+	background:url(../img/RofWar-EntenteAirfields.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.modifyTroops {
-	background:url(../img/RofWar_EntenteTroops.png) no-repeat scroll top left;
+	background:url(../img/RofWar-EntenteTroops.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;

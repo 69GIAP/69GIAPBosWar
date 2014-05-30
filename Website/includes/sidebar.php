@@ -41,7 +41,12 @@
 														}
 													else
 														{
-															echo "		<li><a href=\"CampaignLogParser.php?btn=campStp\"			class=\"campLogParser\"><span></span></a></li>\n";
+															if ($sde == 'ststcs') {
+															echo "		<li><a href=\"IndexBosWarRofWar.php?btn=home&sde=ststcs\" class=\"statisticsAct\"><span></span></a></li>\n";
+															}
+															else {
+																echo "		<li><a href=\"IndexBosWarRofWar.php?btn=home&sde=ststcs\" class=\"statistics\"><span></span></a></li>\n";
+															}
 															echo "		<li><a href=\"CampaignMgmtChangeStatus.php?btn=campStp\"	class=\"campStatus\"><span></span></a></li>\n";																														
 														}
 													echo "  </ul>\n";
@@ -55,8 +60,13 @@
 											if ($userRole == "viewer")
 												{
 													echo "	<ul id=\"sidebar\">\n";
-													echo "	    <li><a href=\"IndexBosWarRofWar.php?btn=home\" class=\"statistics\"><span></span></a></li>\n";
-													echo "  </ul>\n";
+													if ($sde == 'ststcs') {
+														echo "		<li><a href=\"IndexBosWarRofWar.php?btn=home&sde=ststcs\" class=\"statisticsAct\"><span></span></a></li>\n";
+														}
+													else {
+														echo "		<li><a href=\"IndexBosWarRofWar.php?btn=home&sde=ststcs\" class=\"statistics\"><span></span></a></li>\n";
+													}
+												echo "  </ul>\n";
 												}
 										}
 										
@@ -80,7 +90,12 @@
 											else if ($userRole == "viewer")
 												{
 													echo "	<ul id=\"sidebar\">\n";
-													echo "	    <li><a href=\"#\" class=\"statistics\"><span></span></a></li>\n";
+													if ($sde == 'ststcs') {
+														echo "		<li><a href=\"IndexBosWarRofWar.php?btn=home&sde=ststcs\" class=\"statisticsAct\"><span></span></a></li>\n";
+														}
+													else {
+														echo "		<li><a href=\"IndexBosWarRofWar.php?btn=home&sde=ststcs\" class=\"statistics\"><span></span></a></li>\n";
+													}
 													echo "  </ul>\n";
 												}
 											}
@@ -345,7 +360,12 @@
 # there is no user logged on and no button was pressed so this is the default view
 						echo "<h3>Info:</h3>\n";
 						echo "	<ul id=\"sidebar\">\n";
-						echo "	    <li><a href=\"IndexBosWarRofWar.php?btn=home\" class=\"statistics\"><span></span></a></li>\n";
+							if ($sde == 'ststcs') {
+									echo "		<li><a href=\"IndexBosWarRofWar.php?btn=home&sde=ststcs\" class=\"statisticsAct\"><span></span></a></li>\n";
+									}
+								else {
+									echo "		<li><a href=\"IndexBosWarRofWar.php?btn=home&sde=ststcs\" class=\"statistics\"><span></span></a></li>\n";
+								}
 						echo "  </ul>\n";
 					}
             ?>
