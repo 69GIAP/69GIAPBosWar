@@ -203,9 +203,14 @@ div.userLoggedOnInfo {
 	text-align: right;
 	font-size:	11px;
 	}
+#credits a {
+	color: #E6E6E6;
+	text-decoration: none;
+	font-weight: bold;	
+}
 	
 div#credits p {
-	padding: 0;
+	padding: 0, 0, 25px, 0;
 	margin: 0;
 	color: #E6E6E6;
 }	
@@ -245,8 +250,8 @@ fieldset.boswar select{
 	}
 
 fieldset.boswar label{
-	width:140px;
 	float:left;
+	width:140px;
 	}
 
 fieldset.boswar button{

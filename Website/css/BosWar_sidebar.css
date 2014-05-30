@@ -108,7 +108,7 @@ ul#sidebar li a.campDropAct {
 	position:relative;
 }
 ul#sidebar li a.campPlanning {
-	background:url(../img/RofWar-AdminPlanning.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminPlanning.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -174,28 +174,28 @@ ul#sidebar li a.campConfigureAct {
 	position:relative;
 }
 ul#sidebar li a.campCreateColumns {
-	background:url(../img/RofWar-AdminCreateColumns.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminCreateColumns.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.campCreateColumnsAct {
-	background:url(../img/RofWar-AdminCreateColumnsAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminCreateColumnsAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.campAirfieldResupply {
-	background:url(../img/RofWar-AdminAirfieldResupply.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminAirfieldResupply.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.campAirfieldResupplyAct {
-	background:url(../img/RofWar-AdminAirfieldResupplyAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminAirfieldResupplyAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -216,56 +216,56 @@ ul#sidebar li a.campAirForcesAct {
 	position:relative;
 }
 ul#sidebar li a.campControlSupplyPoints {
-	background:url(../img/RofWar-AdminSupplyControlPoints.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminSupplyControlPoints.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.campControlSupplyPointsAct {
-	background:url(../img/RofWar-AdminSupplyControlPointsAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminSupplyControlPointsAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.campCreateStatics {
-	background:url(../img/RofWar-AdminCreateStatics.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminCreateStatics.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.campCreateStaticsAct {
-	background:url(../img/RofWar-AdminCreateStaticsAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminCreateStaticsAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.MgmtDLAfldsBrdgs {
-	background:url(../img/RofWar-AdminDownloadAirfieldsBridges.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminDownloadAirfieldsBridges.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.MgmtDLAfldsBrdgsAct {
-	background:url(../img/RofWar-AdminDownloadAirfieldsBridgesAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminDownloadAirfieldsBridgesAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.campGroundResupply {
-	background:url(../img/RofWar-AdminGroundResupply.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminGroundResupply.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.campGroundResupplyAct {
-	background:url(../img/RofWar-AdminGroundResupplyAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminGroundResupplyAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -286,70 +286,70 @@ ul#sidebar li a.campGroundForcesAct {
 	position:relative;
 }
 ul#sidebar li a.campUpdateBridges {
-	background:url(../img/RofWar-AdminUpdateBridgeStatus.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminUpdateBridgeStatus.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.campUpdateBridgesAct {
-	background:url(../img/RofWar-AdminUpdateBridgeStatusAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminUpdateBridgeStatusAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.MgmtDlClmsStcs {
-	background:url(../img/RofWar-AdminDownloadColumnsStatics.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminDownloadColumnsStatics.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.MgmtDlClmsStcsAct {
-	background:url(../img/RofWar-AdminDownloadColumnsStaticsAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminDownloadColumnsStaticsAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.crrSts {
-	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-DummyAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.crrStsAct {
-	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-DummyAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.updtColStcs {
-	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-DummyAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.updtColStcsAct {
-	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-DummyAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.ctrlArLss {
-	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-DummyAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.ctrlArLssAct {
-	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-DummyAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -357,14 +357,14 @@ ul#sidebar li a.ctrlArLssAct {
 }
 
 ul#sidebar li a.MgmtDl2Plnrs {
-	background:url(../img/RofWar-AdminDownload2Planners.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminDownload2Planners.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.MgmtDl2PlnrsAct {
-	background:url(../img/RofWar-AdminDownload2PlannersAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminDownload2PlannersAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -372,114 +372,114 @@ ul#sidebar li a.MgmtDl2PlnrsAct {
 }
 
 ul#sidebar li a.MgmtUlFrmMsnPlnrs {
-	background:url(../img/RofWar-AdminUploadFromMissionPlanners.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminUploadFromMissionPlanners.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.MgmtUlFrmMsnPlnrsAct {
-	background:url(../img/RofWar-AdminUploadFromMissionPlannersAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminUploadFromMissionPlannersAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.MgmtDlFnlMsn {
-	background:url(../img/RofWar-AdminFinalMission.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminFinalMission.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
-	left: -12px;
+	/*left: -12px;*/
 	position:relative;
 }
 ul#sidebar li a.MgmtDlFnlMsnAct {
-	background:url(../img/RofWar-AdminFinalMissionAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-AdminFinalMissionAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
-	left: -12px;	
+	/*left: -12px;	*/
 	position:relative;
 }
 ul#sidebar li a.NewBtn1 {
-	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	background:url(../img/BosWar-Dummy.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.NewBtn1Act {
-	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-DummyAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.NewBtn2 {
-	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	background:url(../img/BosWar-Dummy.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.NewBtn2Act {
-	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-DummyAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.NewBtn3 {
-	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	background:url(../img/BosWar-Dummy.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.NewBtn3Act {
-	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-DummyAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.NewBtn4 {
-	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	background:url(../img/BosWar-Dummy.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.NewBtn4Act {
-	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-DummyAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.NewBtn5 {
-	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	background:url(../img/BosWar-Dummy.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.NewBtn5Act {
-	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-DummyAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.NewBtn6 {
-	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	background:url(../img/BosWar-Dummy.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.NewBtn6Act {
-	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-DummyAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -487,14 +487,14 @@ ul#sidebar li a.NewBtn6Act {
 }
 
 ul#sidebar li a.dummy {
-	background:url(../img/RofWar-Dummy.png) no-repeat scroll top left;
+	background:url(../img/BosWar-Dummy.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.dummyAct {
-	background:url(../img/RofWar-DummyAct.png) no-repeat scroll top left;
+	background:url(../img/BosWar-DummyAct.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
@@ -503,14 +503,14 @@ ul#sidebar li a.dummyAct {
 
 /*****  Commander Sidebar ****/
 ul#sidebar li a.modifyAirfield {
-	background:url(../img/RofWar-EntenteAirfields.png) no-repeat scroll top left;
+	background:url(../img/BosWar-EntenteAirfields.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;
 	position:relative;
 }
 ul#sidebar li a.modifyTroops {
-	background:url(../img/RofWar-EntenteTroops.png) no-repeat scroll top left;
+	background:url(../img/BosWar-EntenteTroops.png) no-repeat scroll top left;
 	display:block;
 	margin-bottom: 10px;
 	height: 64px;

@@ -58,6 +58,13 @@ ul#sidebar li a.campConfig {
 	height: 64px;
 	position:relative;
 }
+ul#sidebar li a.campConfigAct {
+	background:url(../img/RofWar-AdminConfigureCampAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
 ul#sidebar li a.campConnect {
 	background:url(../img/RofWar-AdminConnectDB.png) no-repeat scroll top left;
 	display:block;

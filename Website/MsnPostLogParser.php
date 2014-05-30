@@ -21,7 +21,7 @@
 	    
         	<div id="content">
         		
-				<h2>Campaign Reports Administration</h2>
+				<h1>Campaign Reports Administration</h1>
 				<?php
 					# This redirects the user to the Login screen if he gets here and is not logged on
 					include ( 'includes/errorNotLoggedOn.php' );
@@ -59,7 +59,7 @@
 					   }
 					}
 					
-					print "<form action = \"CampaignReportsAdmin2.php\", method=post>\n";
+					print "<form action = \"CampaignReportsAdmin2.php?btn=postMsn&sde=lgPrsr\", method=post>\n";
 					echo "<h2>Managing reports and statistics for $campaign</h2><br>\n";
                 ?>
 

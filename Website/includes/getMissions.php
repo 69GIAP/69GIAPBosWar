@@ -9,7 +9,7 @@
 // Nov 10, 2013
 
 # load Missions	
-echo "<form id=\"campaignForm\" name=\"input\" action=\"CampaignStatistics.php?btn=home\" method=\"post\">\n";	
+echo "<form id=\"campaignForm\" name=\"input\" action=\"CampaignStatistics.php?btn=home&sde=ststcs\" method=\"post\">\n";	
 
 echo "	<h3 id=\"h3Form\">Flown Missions</h3>\n";
 echo "	<fieldset id=\"inputs\">\n";
