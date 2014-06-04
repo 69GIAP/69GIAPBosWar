@@ -98,10 +98,16 @@
 						echo "<p>Select one of these GUI maps and a matching season for your campaign.</p>\n";
 						echo "<p>Then for Landscape info: (Height Map, Textures, and Forests) you need to select an appropriate matching set.  Make all three the landscape that matches your GUI map choice.</p>\n"; 
 						} 
+					elseif($map == 'Lapino') {
+						echo "<p>In the mission editor the \"Lapino\" GUI map has no name (so leave it blank), but the files that define it are found in the graphics/LANDSCAPE sub-directory.</p>\n";
+						echo "<p>For Landscape info: (Height Map, Textures, and Forests) you need to select the LANDSCAPE files height.hini, textures.tini and trees\woods.wds respectively.</p>\n"; 
+						echo "<p>Set the Season to \"winter\".</p>\n"; 
+					}
 					elseif($map == 'Stalingrad') {
-						echo "<p>In the mission editor the \"Stalingrad\" GUI map has no name (so leave it blank), but the files that define it are found in the graphics/stalin_w sub-directory.</p>\n";
-						echo "<p>For Landscape info: (Height Map, Textures, and Forests) you need to select the stalin_w files height.hini, textures.tini and trees\woods.wds respectively.</p>\n"; 
-						} 
+						echo "<p>In the mission editor the \"Stalingrad\" GUI map has no name (so leave it blank), but the files that define it are found in the graphics/LANDSCAPE_Stalin_w sub-directory.</p>\n";
+						echo "<p>For Landscape info: (Height Map, Textures, and Forests) you need to select the LANDSCAPE_Stalin_w files height.hini, textures.tini and trees\woods.wds respectively.</p>\n"; 
+						echo "<p>Set the Season to \"winter\".</p>\n"; 
+					} 
 					else {
 						echo "<p>We have not yet created a locations file for the \"$map\" map.</p>\n";
 					}
@@ -116,35 +122,51 @@
 						echo "<p>Our BOSWAR campaign manager has been designed to create a war between two coalitions, e.g. Allies (Entente) and Central Powers.<br>\n";
 						echo "While it is possible to configure other theoretical alliances like \"War dogs\" and \"Mercenaries\" we did not design or test any options other than Allies and Central Powers; so allocate the real countries to either coalition and ignore the rest.<br>\n";
 					} else { // must be BoS
-						echo "<p> Our BOSWAR campaign manager has been designed to create a war between two coalitions, e.g Soviets (Russia) and Germany.  This is the nature of the Battle of Stalingrad, so accept the default assignments.<br>\n";
+						echo "<p> Our BOSWAR campaign manager has been designed to create a war between two coalitions, e.g Allies (Russia) and Axis (Germany).  This is the nature of the Battle of Stalingrad, so accept the default assignments.<br>\n";
 					}
 					echo "In the mission editor you should use \"File\", \"Save\", before coming back here.</p>\n";
 					
 					echo "<h3>Import Infrastructure</h3>\n";
 
 					echo "<p>We will now populate our template with infrastructure (including, most importantly, the airfields).</p>\n" ;
-					echo "<p>In the mission editor \"File\" menu select \"Import From File...\" and go to: directory <b>Rise of Flight/data/Template/</b></p>\n";
-					if($map == 'Western Front') {
-						echo "<p>Select the Base-no-trunc.Group file.  This file holds the airfields and some other infrastructure for the Western Front map.  Press \"Open\" and wait for the file to load.</p>\n";
-						echo "<p>Then select the Base-for-trunc.Group file.  This file holds the remaining infrastructure (including bridges) for the Western Front map.</p>\n";
+					if ($sim == 'RoF') {
+						echo "<p>In the mission editor \"File\" menu select \"Import From File...\" and go to directory: <b>Rise of Flight/data/Template/</b></p>\n";
+						if($map == 'Western Front') {
+							echo "<p>Select the Base-no-trunc.Group file.  This file holds the airfields and some other infrastructure for the Western Front map.  Press \"Open\" and wait for the file to load.</p>\n";
+							echo "<p>Then select the Base-for-trunc.Group file.  This file holds the remaining infrastructure (including bridges) for the Western Front map.</p>\n";
 						
 						}
-					elseif($map == 'Channel') {
-						echo "<p>Select the Base-no-trunc-channel.Group file.  This file holds the airfields and some other infrastructure for the Channel map.  Press \"Open\" and wait for the file to load.</p>\n";
-						echo "<p>Then select the Base-for-trunc-channel.Group file.  This file holds the airfields and some other infrastructure for the Channel map.</p>\n";
+						elseif($map == 'Channel') {
+							echo "<p>Select the Base-no-trunc-channel.Group file.  This file holds the airfields and some other infrastructure for the Channel map.  Press \"Open\" and wait for the file to load.</p>\n";
+							echo "<p>Then select the Base-for-trunc-channel.Group file.  This file holds the airfields and some other infrastructure for the Channel map.</p>\n";
 						}
-					elseif($map == 'Verdun') {
-						echo "<p>Select the Base_DF5x5Verdun.Group file.  This file holds the airfields and all other infrastructure for the Verdun dogfight map.  Press \"Open\" and wait for the file to load.</p>\n";
+						elseif($map == 'Verdun') {
+							echo "<p>Select the Base_DF5x5Verdun.Group file.  This file holds the airfields and all other infrastructure for the Verdun dogfight map.  Press \"Open\" and wait for the file to load.</p>\n";
 						}
-					elseif($map == 'Lake') {
-						echo "<p>Select the Base_DF3x3Lake.Group file.  This file holds the airfields and all other infrastructure for the Lake dogfight map.  Press \"Open\" and wait for the file to load.</p>\n";
+						elseif($map == 'Lake') {
+							echo "<p>Select the Base_DF3x3Lake.Group file.  This file holds the airfields and all other infrastructure for the Lake dogfight map.  Press \"Open\" and wait for the file to load.</p>\n";
 						}
-					else {
-						echo "<p>We have not yet created a locations file for the \"$map\" map.</p>\n";
-					}
+						else {
+							echo "<p>We have not yet created a locations file for the \"$map\" map.</p>\n";
+						}
 					
 					echo "<p>Loading these files (especially the large \"for-trunc\" ones) can take a while, be patient. Wait until the 'Please wait until operation is finished' popup disappears. If the load hangs near the end, quit and reload the file which should now be a quick process.</p>\n";
+					} else { // must be BoS
+						echo "<p>In the mission editor \"File\" menu select \"Import From File...\" and go to directory: <b>IL-2 Sturmovik Battle of Stalingrad/data/Template/</b></p>\n";
+						if($map == 'Lapino') {
+							echo "<p>Select the Lapino_ALL.Group file.  This file holds the airfields and all other infrastructure for the Lake dogfight map.  Press \"Open\" and wait for the file to load.</p>\n";
+							echo "<p>If you want your pilots to taxi to the end of the runway (rather than start on the runway), follow the same procedure for the Lapino_ALL_AF_TAXI_PATHS.Group.</p>\n";
+						}
+						elseif($map == 'Stalingrad') {
+							echo "<p>Select the Stalingrad_ALL_AIRFIELDS.Group file.  This file holds the airfields for the Stalingrad map.  Press \"Open\" and wait for the file to load.</p>\n";
+							echo "<p>Then select the Stalingrad_ALL_Towns.Group file which defines the towns and villages.  Press \"Open\" and wait for the file to load.  This is a large file, so it will take awhile.</p>\n";
+							echo "<p>Do the same for the stalingrad_bridges_Group, the Stalingrad_City.Group, the Stalingrad_railway_stations.Group, and the StalinMapLegend.Group.</p>\n";
 					echo "<p>Save your (now much larger) template mission file before continuing.</p>\n";
+						}
+						else {
+							echo "<p>We have not yet created a locations file for the \"$map\" map.</p>\n";
+						}
+					}
 					
 					echo "<h3>Define the Influence Areas</h3>\n";
 
@@ -209,20 +231,26 @@ Hint : if your screen is a bit crowded with ikons go to your object filter and s
 
 			echo "<p>The next step in the creation of the campaign template is to decide which Airfields will be active. Again, for performance reasons we do not want every airfield in our sector to be active. So chose 3-4 for each side.</p>\n";
 			echo "<p>Go back to the object filter (OBJ FILT button) at the top, click on \"Clear All\" then click on \"Airfield\" (a checkmark will appear) and \"OK\".  Now on the map you should see airfields only.</p>\n";
+			if ($sim == "RoF") {
 			echo "<p>Left Mouse Click on or box round a Central Powers airfield to highlight it. You should now have the Airfield Properties displayed. Left mouse click \"Create Linked Entity\" to declare it as an active airfield.<br>(Multiple airields may be selected by using Ctrl + left click to speed this step up)</p>\n"; 
-			echo "<p>Then click the \">\" on the right of \"Name:\" which will give you the Airfield advanced properties.  Here set the Country: (Probably Germany) and click OK.  Next do the same for an Allied airfield setting the Country to one of the Allied Countries.</p>
+
+			}
+			else {
+			echo "<p>Left Mouse Click on or box round an AXIS airfield to highlight it. You should now have the Airfield Properties displayed. Left mouse click \"Create Linked Entity\" to declare it as an active airfield.<br>(Multiple airields may be selected by using Ctrl + left click to speed this step up)</p>\n"; 
+			}
+			echo "<p>Then click the \">\" on the right of \"Name:\" which will give you the Airfield advanced properties.  Here set the Country: (Probably Germany) and click OK.  Next do the same for an Allied airfield setting an appropriate Country.</p>
 				<p>Continue until all active airfields are set.</p>\n";
 # addition of supply and control points
 			echo "<h3>Supply Points</h3>\n";
 			if ($sim == "RoF")
 			{
-			echo "<p>When new vehicles arrive on the map they will arrive at a Supply point. This will normally be near a road on the edge of the map or near a railway line. We will use the \"rwstation\" block as a token for a supply point.
+			echo "<p>When new vehicles arrive on the map they will arrive at a Supply point. This will normally be near a road on the edge of a defined influence area or near a railway line. We will use the \"rwstation\" block as a token for a supply point.
 					First in the Mission Editor go to object filter and \"Select All\". Then select \"Blocks\" on the right of the screen, then \"rwstation\" and position it where you want on the map.
 					\"Create Linked Entity\" and set the \"Country\" in \"Advanced Properties\". Then continue until you have enough supply points on each side. We <b>must</b> have at least one for each coalition.<br></p>\n";
 			}
 			else
 			{
-			echo "<p>When new vehicles arrive on the map they will arrive at a Supply point. This will normally be near a road on the edge of the map or near a railway line. We will use the \"rwstation\" block as a token for a supply point.
+			echo "<p>When new vehicles arrive on the map they will arrive at a Supply point. This will normally be near a road on the edge of a defined influence area or near a railway line. We will use the \"rwstation_s2\" block as a token for a supply point.
 					First in the Mission Editor go to object filter and \"Select All\". Then select \"Blocks\" on the right of the screen, then \"rwstation_s2\" and position it where you want on the map.
 					\"Create Linked Entity\" and set the \"Country\" in \"Advanced Properties\". Then continue until you have enough supply points on each side. We <b>must</b> have at least one for each coalition.<br></p>\n";
 			}			
