@@ -98,20 +98,27 @@
 						echo "<p>Select one of these GUI maps and a matching season for your campaign.</p>\n";
 						echo "<p>Then for Landscape info: (Height Map, Textures, and Forests) you need to select an appropriate matching set.  Make all three the landscape that matches your GUI map choice.</p>\n"; 
 						} 
+					elseif($map == 'Stalingrad') {
+						echo "<p>In the mission editor the \"Stalingrad\" GUI map has no name (so leave it blank), but the files that define it are found in the graphics/stalin_w sub-directory.</p>\n";
+						echo "<p>For Landscape info: (Height Map, Textures, and Forests) you need to select the stalin_w files height.hini, textures.tini and trees\woods.wds respectively.</p>\n"; 
+						} 
 					else {
 						echo "<p>We have not yet created a locations file for the \"$map\" map.</p>\n";
 					}
+					// we should be able to determine the map from the GuiMap line in the Options section of the Mission file... just a SMOP.  :)
 					
 					echo "<p>Click 'Apply' in the Mission Properties screen, giving it the file name  <b>$abbrv-template.Mission</b> and saving it to your <b>$abbrv-groups</b> directory.</p>\n";
-					// we should be able to determine the map from the GuiMap line in the Options section of the Mission file... just a SMOP.  :)
 
 					echo "<h3>The Opposing Sides</h3>\n";
 
 					echo "<p>We now need to define who is fighting whom. So back in the mission editor select \"Mission Properties\" and click on \"Countries\".</p>\n";
-					echo "<p>Our BOSWAR campaign manager has been designed to create a war between two coalitions, e.g. Allies (Entente) and Central Powers.<br>\n";
-					echo "While it is possible to configure other theoretical alliances like \"War dogs\" and \"Mercenaries\" we did not design or test any options other than Allies and Central Powers; so allocate the real countries to either coalition and ignore the rest.<br>\n";
+					if ($sim =="RoF") {
+						echo "<p>Our BOSWAR campaign manager has been designed to create a war between two coalitions, e.g. Allies (Entente) and Central Powers.<br>\n";
+						echo "While it is possible to configure other theoretical alliances like \"War dogs\" and \"Mercenaries\" we did not design or test any options other than Allies and Central Powers; so allocate the real countries to either coalition and ignore the rest.<br>\n";
+					} else { // must be BoS
+						echo "<p> Our BOSWAR campaign manager has been designed to create a war between two coalitions, e.g Soviets (Russia) and Germany.  This is the nature of the Battle of Stalingrad, so accept the default assignments.<br>\n";
+					}
 					echo "In the mission editor you should use \"File\", \"Save\", before coming back here.</p>\n";
-					
 					
 					echo "<h3>Import Infrastructure</h3>\n";
 
