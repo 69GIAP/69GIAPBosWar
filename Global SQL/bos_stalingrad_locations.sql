@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2014 at 09:46 PM
+-- Generation Time: Jun 03, 2014 at 08:21 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `bos_stalingrad_locations` (
   `LName` varchar(40) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `LName` (`LName`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=190 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=226 ;
 
 --
 -- Dumping data for table `bos_stalingrad_locations`
@@ -230,7 +230,43 @@ INSERT INTO `bos_stalingrad_locations` (`id`, `LID`, `LX`, `LZ`, `LName`) VALUES
 (186, 20, '123880', '341310', 'Konstituciya'),
 (187, 51, '126480', '344120', 'Konstituciya'),
 (188, 10, '120920', '346940', 'Stupino'),
-(189, 51, '120000', '344650', 'Stupino');
+(189, 51, '120000', '344650', 'Stupino'),
+(190, 10, '27180', '255620', 'Sadovoye'),
+(191, 51, '28450', '254080', 'Sadovoye'),
+(192, 51, '27580', '253220', 'Sadovoye'),
+(193, 10, '70900', '242450', 'Plodovitoye'),
+(194, 51, '64440', '245100', 'Plodovitoye'),
+(195, 51, '68090', '246170', 'Plodovitoye'),
+(196, 51, '68240', '247620', 'Plodovitoye'),
+(197, 10, '101960', '270690', 'Svetliy Jar'),
+(198, 51, '106000', '273560', 'Svetliy Jar'),
+(199, 51, '105130', '274270', 'Svetliy Jar'),
+(200, 10, '96910', '178120', 'Raygorod'),
+(201, 51, '99830', '282450', 'Raygorod'),
+(202, 51, '100010', '283310', 'Raygorod'),
+(203, 51, '99880', '284060', 'Raygorod'),
+(204, 20, '75410', '277970', 'Trudolubiye'),
+(205, 20, '74820', '278630', 'Trudolubiye'),
+(206, 51, '79760', '278500', 'Trudolubiye'),
+(207, 50, '141670', '259570', 'North Stalingrad'),
+(208, 50, '141710', '269729', 'North Stalingrad'),
+(209, 50, '141120', '258790', 'North Stalingrad'),
+(210, 50, '140720', '259940', 'North Stalingrad'),
+(211, 50, '140140', '258320', 'North Stalingrad'),
+(212, 50, '140170', '259290', 'North Stalingrad'),
+(213, 50, '139300', '258510', 'North Stalingrad'),
+(214, 50, '138090', '256770', 'Central Stalingrad'),
+(215, 50, '138090', '257640', 'Central Stalingrad'),
+(216, 50, '137370', '254590', 'Central Stalingrad'),
+(217, 50, '136630', '156610', 'Central Stalingrad'),
+(218, 50, '135890', '256130', 'Central Stalingrad'),
+(219, 50, '134730', '255810', 'Central Stalingrad'),
+(220, 50, '133870', '255440', 'Central Stalingrad'),
+(221, 50, '133190', '252890', 'South Stalingrad'),
+(222, 50, '132930', '254320', 'South Stalingrad'),
+(223, 50, '131460', '253190', 'South Stalingrad'),
+(224, 50, '129910', '251670', 'South Stalingrad'),
+(225, 50, '128450', '250900', 'South Stalingrad');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
