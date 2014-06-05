@@ -2,12 +2,14 @@
 function import_points($path,$file) {
 // import supply points and control points from a group file
 // =69.GIAP=TUSHKA
-// Nov 8, 2013
-// BOSWAR version 1.2
+//2013-3014
+// BOSWAR version 1.03
+// June 5, 2014
 // Nov 16, 2013 dropped coalition name from control point names,
 // changed table name to key_points and
 // column supplypointName to pointName
 // Stenka 14/5/14 updating rwstation for BoS
+// Tushka June 5, 2014 substituted watertower for BoS supply point token
 
 	global $camp_link; // link to campaign db
 	global $sim;
@@ -30,8 +32,8 @@ function import_points($path,$file) {
 	// get the mission file as an array of lines
 	$line = file("$path/$file");
 	foreach ($line as $i => $value ) {
-		// find an rwstation (supply point)
-		if ($sim == "RoF") {
+		// find a supply point
+		if ($sim == "RoF") { // uses rwstation
 			if (preg_match('/rwstation.txt/',$value)) {
 				// filter out neutral rwstations
 				if (!preg_match('/^  Country = 0/', $line[$i+1])) {
@@ -39,19 +41,16 @@ function import_points($path,$file) {
 				}
 			}
 		}
-		else {
-			if (preg_match('/rwstation_s2.txt/',$value)) {
+		else { // BoS uses watertower
+			if (preg_match('/watertower.txt/',$value)) {
 				// filter out neutral rwstations
 				if (!preg_match('/^  Country = 0/', $line[$i+1])) {
 					$spline[$j++] = $i;  // save its line number
 				}
 			}
-		// find a flag (control point)
-//<<<<<<< HEAD
-#		if (preg_match('/flag.txt/',$value)) {
-//=======
-		elseif (preg_match('/flag.txt/',$value)) {
-//>>>>>>> d8cc0ece36f45f55c953f566fd739f93868e1b97
+		}
+		// find a flag (control point for both RoF and BoS)
+		if (preg_match('/flag.txt/',$value)) {
 			$cpline[$k++] = $i;  // save its line number
 			}
 		}
