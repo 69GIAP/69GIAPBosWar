@@ -1,6 +1,8 @@
 <?php 
 # Stenka 21/11/13 adding hints and text corrections
 # Stenka 14/5/14 change or rwststion for BOS
+// Tushka June 5, 2014 - BoS updates: use watertower for control points
+// and substitute ">" for "Advanced Properties..." 
 # Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
 	$dbc = connectBOSWAR();
@@ -56,8 +58,12 @@
 					echo "<p>First you should create a directory somewhere on your computer where you will save any .Mission template and .Group files which will be exchanged between the mission editor and the BOSWAR campaign manager for this campaign.  Because you may be running multiple campaigns in parallel it must be unique to the campaign.  Otherwise there could be confusion between the campaigns.<br />
 						<br>Name this directory: <b>$abbrv-groups</b>.<br />
 						<br>We will refer to this directory as your \"campaign groups directory\".</p>\n";
-
-					echo "<p>Next we work on setting up the campaign in the mission editor (RoF Editor in this case).</p>\n";
+					if ($sim == 'RoF') {
+						echo "<p>Next we work on setting up the campaign in the mission editor (RoF Editor in this case).</p>\n";
+					}
+					else {
+						echo "<p>Next we work on setting up the campaign in the mission editor (BOSEditor in this case).</p>\n";
+					}
 					echo "<p>We recommend that you open the mission editor in a separate window to carry out this process.  Continue when ready.</p>\n";
 					echo "<p>Start a new mission by clicking \"File\" and \"New\" in the upper left.</p>\n";
 					echo "<p>If the \"Mission Properties\" window is not open, right click with your mouse on the map and select \"Properties\". This will open the \"Mission Properties\" window.</p>\n";
@@ -203,7 +209,14 @@ Hint : if your screen is a bit crowded with ikons go to your object filter and s
 
 <p>To set ownership of the influence area:</p>
 <ul class="commonList">
-    <li>Right click on the influence area and select "Advanced Properties..."</li> 
+            <?php
+				if ($sim == 'RoF') {
+					echo "<li>Right click on the influence area and select \"Advanced Properties...\"</li>\n"; 
+				}
+				else {
+					echo "<li>Right click on the influence area and select \">\" (at the right side of the Name: line)</li>\n"; 
+				}
+			?>
     <li>select the country you want to be the owner of this area (e.g. Germany)</li>
     <li>click "OK".</li>
     <li>Left click outside the influence area icon to unselect it.</li>
@@ -250,14 +263,19 @@ Hint : if your screen is a bit crowded with ikons go to your object filter and s
 			}
 			else
 			{
-			echo "<p>When new vehicles arrive on the map they will arrive at a Supply point. This will normally be near a road on the edge of a defined influence area or near a railway line. We will use the \"rwstation_s2\" block as a token for a supply point.
-					First in the Mission Editor go to object filter and \"Select All\". Then select \"Blocks\" on the right of the screen, then \"rwstation_s2\" and position it where you want on the map.
-					\"Create Linked Entity\" and set the \"Country\" in \"Advanced Properties\". Then continue until you have enough supply points on each side. We <b>must</b> have at least one for each coalition.<br></p>\n";
+			echo "<p>When new vehicles arrive on the map they will arrive at a Supply point. This will normally be near a road on the edge of a defined influence area or near a railway line. We will use the \"watertower\" block as a token for a supply point.
+					First in the Mission Editor go to object filter and \"Select All\". Then select \"Blocks\" on the right of the screen, then \"watertower\" and position it where you want on the map.
+					\"Create Linked Entity\" and set the \"Country\" in the \">\" \"Advanced\" box. Then continue until you have enough supply points on each side. We <b>must</b> have at least one for each coalition.<br></p>\n";
 			}			
 					echo "<h3>Control Points</h3>\n";
 			echo "<p>Campaigns may be purely points based or based on set objectives to be captured or held. Such an optional objective is called a \"Control Point\". We will use the \"flag\" Flag as a token for a Control Point.
-					To set a Control Point, select \"Flags\" on the right of the screen, then \"flag\" and position it where you want on the map.
-					\"Create Linked Entity\" and set the \"Country\" in  \"Advanced Properties\".  Continue as needed.<br></p>\n";
+					To set a Control Point, select \"Flags\" on the right of the screen, then \"flag\" and position it where you want on the map.\n";
+					if ($sim == 'RoF') {
+					echo "\"Create Linked Entity\" and set the \"Country\" in  \"Advanced Properties\".  Continue as needed.<br></p>\n";
+					}
+					else {
+					echo "\"Create Linked Entity\" and set the \"Country\" in  the \">\" \"Advanced\" box.  Continue as needed.<br></p>\n";
+					}
 			
 # end addition supply control					
 			echo "<h3>Save the template Mission file</h3>\n";
