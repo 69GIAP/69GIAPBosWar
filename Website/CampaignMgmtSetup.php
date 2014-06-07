@@ -177,9 +177,9 @@
 					echo "<h3>Define the Influence Areas</h3>\n";
 
 					echo "<p>Next, go into 2D editing mode by hitting F9 or by clicking on the Arrow down icon key at the left hand side of 
-					the tool bar which you normally find at the top of the screen. It is in-between the ruler icon and the F icon.<br>\n";
-					echo "You can zoom in and out using the scroll on your mouse and drag the map around holding the right mouse click.<br>\n";
-					echo "The campaign maps (as opposed to the dogfight maps) are very big. If you populate the complete map with objects 
+					the tool bar which you normally find at the top of the screen. It is in-between the ruler icon and the F icon.\n";
+					echo "You can zoom in and out using the scroll on your mouse and drag the map around holding down the right mouse button.</p>\n";
+					echo "<p>The campaign maps (as opposed to the dogfight maps) are very big. If you populate the complete map with objects 
 					you will probably run into performance problems in a large scale multi user mission.  To avoid such problems we will define a smaller sector 
 					of the map within which to run our campaign. Note when you zoom in and zoom out in the editor down near the bottom right there is a value \"Grid(M)\".
 					This is the size in metres of the white grid squares which will give you an idea of the scale of your map on screen.</p>\n";
@@ -246,13 +246,14 @@ Hint : if your screen is a bit crowded with ikons go to your object filter and s
 			echo "<p>Go back to the object filter (OBJ FILT button) at the top, click on \"Clear All\" then click on \"Airfield\" (a checkmark will appear) and \"OK\".  Now on the map you should see airfields only.</p>\n";
 			if ($sim == "RoF") {
 			echo "<p>Left Mouse Click on or box round a Central Powers airfield to highlight it. You should now have the Airfield Properties displayed. Left mouse click \"Create Linked Entity\" to declare it as an active airfield.<br>(Multiple airields may be selected by using Ctrl + left click to speed this step up)</p>\n"; 
+			echo "<p>Then select \"Advanced Properties...\".  Here set the Country: (Probably Germany) and click OK.  Next do the same for an Allied airfield setting an appropriate Country.</p>\n";
 
 			}
 			else {
-			echo "<p>Left Mouse Click on or box round an AXIS airfield to highlight it. You should now have the Airfield Properties displayed. Left mouse click \"Create Linked Entity\" to declare it as an active airfield.<br>(Multiple airields may be selected by using Ctrl + left click to speed this step up)</p>\n"; 
+				echo "<p>Left Mouse Click on or box round an AXIS airfield to highlight it. You should now have the Airfield Properties displayed. Left mouse click \"Create Linked Entity\" to declare it as an active airfield.<br>(Multiple airields may be selected by using Ctrl + left click to speed this step up)</p>\n"; 
+				echo "<p>Then click the \">\" on the right of \"Name:\" which will give you the Airfield advanced properties.  Here set the Country: (Probably Germany) and click OK.  Next do the same for an Allied airfield setting an appropriate Country.</p>\n";
 			}
-			echo "<p>Then click the \">\" on the right of \"Name:\" which will give you the Airfield advanced properties.  Here set the Country: (Probably Germany) and click OK.  Next do the same for an Allied airfield setting an appropriate Country.</p>
-				<p>Continue until all active airfields are set.</p>\n";
+			echo "<p>Continue until all active airfields are set.</p>\n";
 # addition of supply and control points
 			echo "<h3>Supply Points</h3>\n";
 			if ($sim == "RoF")
