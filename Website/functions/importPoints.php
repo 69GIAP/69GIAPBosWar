@@ -3,11 +3,8 @@ function import_points($path,$file) {
 // import supply points and control points from a group file
 // =69.GIAP=TUSHKA
 //2013-3014
-// BOSWAR version 1.03
-// June 5, 2014
-// Nov 16, 2013 dropped coalition name from control point names,
-// changed table name to key_points and
-// column supplypointName to pointName
+// BOSWAR version 1.04
+// June 7, 2014
 // Stenka 14/5/14 updating rwstation for BoS
 // Tushka June 5, 2014 substituted watertower for BoS supply point token
 
@@ -52,7 +49,6 @@ function import_points($path,$file) {
 		// find a flag (control point for both RoF and BoS)
 		if (preg_match('/flag.txt/',$value)) {
 			$cpline[$k++] = $i;  // save its line number
-			}
 		}
 	}
 	// start with clean table
