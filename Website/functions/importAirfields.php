@@ -1,14 +1,15 @@
 <?php
 // importAirfields
-// V1.2
+// V1.03
 // Stenka 21/10/13
 // Updated by =69.GIAP=TUSHKA
 // Nov 13, 2013
-# 22/11/13 stenka rework in order to hit .mission files and handle groups
 // Php version of loading all airfields into our airfields table
 // $SaveToDir is the path to where the user keeps the group files
 // $file is the name of the imported file
+# 22/11/13 stenka rework in order to hit .mission files and handle groups
 # 17/5/14 Stenka adding airfield points to make it compatible to BoS
+// June 7, 2014 - Tushka made airfield_points apply only to BoS
 
 function import_airfields($SaveToDir,$file) {
 
@@ -22,13 +23,17 @@ function import_airfields($SaveToDir,$file) {
 	} else {
 		echo '<p>'.$camp_link->error.'</p>';
 	}
-	$q2="DELETE FROM airfields_points";
-	$r2= $camp_link->query($q2);
-	if ($r2) {
-		echo '<br>All existing airfield points deleted';
-	} else {
-		echo '<p>'.$camp_link->error.'</p>';
+
+	if ($sim == 'BoS') {
+		$q2="DELETE FROM airfields_points";
+		$r2= $camp_link->query($q2);
+		if ($r2) {
+			echo '<br>All existing airfield points deleted';
+		} else {
+			echo '<p>'.$camp_link->error.'</p>';
+		}
 	}
+
 	$count = 0;
 	$current_object = "Unknown";
 	$current_Name = "Unknown";
