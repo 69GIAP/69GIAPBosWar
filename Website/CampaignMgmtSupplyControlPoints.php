@@ -56,10 +56,15 @@
 					We no longer need the flags on the map so we will delete all flags from the template.</p>\n";					
 					echo "<p>If you have defined Control Points, click on \"Flags\" and \"OK\" in the object filter.  Only flags are displayed, and these flags represent control points.  (Windsocks will be dealt with later under \"Statics\").</p>\n";
 					echo "<p>\"Select All Visible Objects\" (the flags) and press the \"Delete\" key on your keyboard.  All the flags will go away.</p>\n";
-					echo "<h3>Delete Supply Points (rwstation blocks)</h3>\n";
+					if ($sim == 'RoF') {
+						$token = 'rwstation'; 
+					} else {// must be BoS
+						$token = 'watertower';
+					}
+					echo "<h3>Delete Supply Points ($token blocks)</h3>\n";
 					echo "<p>We have now loaded all supply into the campaign manager which now knows where they are. 
-					You may delete the rwstation blocks and economise several objects, or you may leave them there as a visual guide to the mission planners.</p>\n";					
-					echo "<p>If you choose to delete them.  Keep your fingers off the \"Delete\" key this time.  In the object filter, click on \"Blocks\" and \"OK\".  Now you will see many \"blocks\" on the map, but only the Supply Points will be red or blue (because you defined their nationalities).  One by one select each with a left click, check that it is a rwstation (Model says graphics\\blocks\\rwstation.mgm), then right click \"cut\" to remove it.</p><p>In the object filter \"Select All\" to see all that remains.</p>\n";
+					You may delete the $token blocks and economise several objects, or you may leave them there as a visual guide to the mission planners.</p>\n";					
+					echo "<p>If you choose to delete them.  Keep your fingers off the \"Delete\" key this time.  In the object filter, click on \"Blocks\" and \"OK\".  Now you will see many \"blocks\" on the map, but only the Supply Points will be red or blue (because you defined their nationalities).  One by one select each with a left click, check that it is a $token (Model says graphics\\blocks\\$token.mgm), then right click \"cut\" to remove it.</p><p>In the object filter \"Select All\" to see all that remains.</p>\n";
 
 					echo "<h3>Save As Clean Template</h3>\n";
 					echo "<p>Then \"File\", \"Save As\" and save with the name <b>$abbrv-cleantemplate.Mission</b>.  The CLEAN template has your Influence Areas and all pre-defined infrastructure other than airfields and bridges and has no tokens for supply or control points.  From now on the BOSWAR campaign manager will take care of the airfields, bridges, supply and control points.</p><p>Note that you still have the full $abbrv-template.Mission in case you want to change your selection of active airfields, or supply or control points before initializing the campaign's first mission.  These are all now irrelevant to our $abbrv-cleantemplate.Mission.  Please do not confuse the two.\n";
