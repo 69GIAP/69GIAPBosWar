@@ -2,6 +2,9 @@
 <?php 
 #Stenka 23/4/14
 #Stenka 26/4/14 debug z position of column
+#Stenka adding attack area 9/6/14
+#Stenka Bos conversion to countries 9/6/14
+
 // Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
 	$dbc = connectBOSWAR();
@@ -56,7 +59,6 @@ require ('functions/getCoalitionname.php');
 // require getObjectModel.php
 require ( 'functions/getObjectModel.php' );
 # here starts the groupfile sequence
-echo "<br><br>Hello Peter im in the groupfile sequence<br><br>";
 # pre mission generation check
 # initialise variables
 $time_availiable=$mission_minutes+$lineup_minutes;
@@ -695,7 +697,7 @@ if ($num > 0)
 			fwrite($fh,$writestring);
 			$writestring = '  XOri = 0.00;'."\r\n";	
 			fwrite($fh,$writestring);
-			$writestring = '  YOri = '.$static_YOri.';'."\r\n";
+			$writestring = '  YOri = '.number_format($static_YOri, 2, '.', '').';'."\r\n";	
 			fwrite($fh,$writestring);	
 			$writestring = '  ZOri = 0.00;'."\r\n";	
 			fwrite($fh,$writestring);
@@ -773,7 +775,7 @@ if ($num > 0)
 			fwrite($fh,$writestring);
 			$writestring = '  XOri = 0.00;'."\r\n";	
 			fwrite($fh,$writestring);
-			$writestring = '  YOri = '.$static_YOri.';'."\r\n";	
+			$writestring = '  YOri = '.number_format($static_YOri, 2, '.', '').';'."\r\n";	
 			fwrite($fh,$writestring);
 			$writestring = '  ZOri = 0.00;'."\r\n";	
 			fwrite($fh,$writestring);
@@ -979,24 +981,35 @@ if ($num > 0)
 		$writestring = '  EventsFilterFiredRockets = 0;'."\r\n";	
 		if ($static_coalition == '1')
 			{
-			$writestring = '  Country = 501;'."\r\n";	
-			fwrite($fh,$writestring);
-			$writestring = '  Country = 502;'."\r\n";	
-			fwrite($fh,$writestring);
+			if ($sim == "RoF")
+				{
+				$writestring = '  Country = 501;'."\r\n";	
+				fwrite($fh,$writestring);
+				$writestring = '  Country = 502;'."\r\n";	
+				fwrite($fh,$writestring);
+				}
+			else
+				{
+				$writestring = '  Country = 201;'."\r\n";	
+				fwrite($fh,$writestring);			
+				}
 			}
 		else
 			{
 			$writestring = '  Country = 101;'."\r\n";	
 			fwrite($fh,$writestring);
-			$writestring = '  Country = 102;'."\r\n";	
-			fwrite($fh,$writestring);
-			$writestring = '  Country = 103;'."\r\n";	
-			fwrite($fh,$writestring);
-			$writestring = '  Country = 104;'."\r\n";
-			fwrite($fh,$writestring);		
-			$writestring = '  Country = 105;'."\r\n";	
-			fwrite($fh,$writestring);
-			}
+			if ($sim == "RoF")
+				{
+				$writestring = '  Country = 102;'."\r\n";	
+				fwrite($fh,$writestring);
+				$writestring = '  Country = 103;'."\r\n";	
+				fwrite($fh,$writestring);
+				$writestring = '  Country = 104;'."\r\n";
+				fwrite($fh,$writestring);		
+				$writestring = '  Country = 105;'."\r\n";	
+				fwrite($fh,$writestring);
+				}
+			}		
 		$writestring = '  OnEvents'."\r\n";	
 		fwrite($fh,$writestring);
 		$writestring = '  {'."\r\n";	
@@ -1153,9 +1166,58 @@ if ($num > 0)
 		$writestring = '}'."\r\n";	
 		fwrite($fh,$writestring);
 		$index_no=($index_no+1);
-	}
-
 #end of second trigger	
+# here is where I need to add attack area mcu
+		$writestring = 'MCU_CMD_AttackArea'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '{'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  Index = '.$index_no.';'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  Name = "command AttackArea"'.';'."\r\n";		
+		fwrite($fh,$writestring);
+		$writestring = '  Desc = "";'."\r\n";		
+		fwrite($fh,$writestring);
+		$writestring = '  Targets = [];'."\r\n";		
+		fwrite($fh,$writestring);
+		$writestring = '  Objects = [];'."\r\n";		
+		fwrite($fh,$writestring);
+		$static_XPos = ($static_XPos+25);
+		$writestring = '  XPos = '.number_format($static_XPos, 3, '.', '').';'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  YPos = 0.000;'."\r\n";	
+		fwrite($fh,$writestring); 	
+		$static_ZPos = ($static_ZPos+15);	
+		$writestring = '  ZPos = '.number_format($static_ZPos, 3, '.', '').';'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  XOri = 0.00;'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  YOri = 0.00;'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  ZOri = 0.00;'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  AttackGround = 0;'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  AttackAir = 0;'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  AttackGTargets = 1;'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  AttackArea = '.$ground_detect_distance.';'."\r\n";	
+		fwrite($fh,$writestring);
+		$attime = (($mission_minutes + $lineup_minutes) * 60);
+		$writestring = '  Time = '.$attime.';'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  Priority = 1;'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '}'."\r\n";	
+		fwrite($fh,$writestring);
+		$index_no=($index_no+1);
+# end of attack area mcu
+
+
+		}
+
+
 	}
 }
 # this is the end of the do while loop	
@@ -1261,7 +1323,7 @@ if ($num > 0)
 	$q1="INSERT INTO outbox_1 (lin) VALUES ('$writestring')";
 	$writestring = '  XOri = 0.00;'."\r\n";	
 	fwrite($fh,$writestring);
-	$writestring = '  YOri = '.$static_YOri.';'."\r\n";
+	$writestring = '  YOri = '.number_format($static_YOri, 2, '.', '').';'."\r\n";	
 	fwrite($fh,$writestring);	
 	$writestring = '  ZOri = 0.00;'."\r\n";	
 	fwrite($fh,$writestring);
@@ -1378,7 +1440,7 @@ if ($num > 0)
 	fwrite($fh,$writestring);
 	$writestring = '  XOri = 0.00;'."\r\n";	
 	fwrite($fh,$writestring);
-	$writestring = '  YOri = '.$static_YOri.';'."\r\n";	
+	$writestring = '  YOri = '.number_format($static_YOri, 2, '.', '').';'."\r\n";	
 	fwrite($fh,$writestring);
 	$writestring = '  ZOri = 0.00;'."\r\n";	
 	fwrite($fh,$writestring);
@@ -2200,24 +2262,37 @@ $list_of_mcus ="";
 	$writestring = '  EventsFilterFiredRockets = 0;'."\r\n";	
 	if ($col_coalition == '1')
 		{
-		$writestring = '  Country = 501;'."\r\n";	
-		fwrite($fh,$writestring);
-		$writestring = '  Country = 502;'."\r\n";	
-		fwrite($fh,$writestring);
+		if ($sim == "RoF")
+			{
+			$writestring = '  Country = 501;'."\r\n";	
+			fwrite($fh,$writestring);
+			$writestring = '  Country = 502;'."\r\n";	
+			fwrite($fh,$writestring);
+			}
+		else
+			{
+			$writestring = '  Country = 201;'."\r\n";	
+			fwrite($fh,$writestring);
+			}		
+		
+		
 		}
 	else
 	{
 		$writestring = '  Country = 101;'."\r\n";	
 		fwrite($fh,$writestring);
-		$writestring = '  Country = 102;'."\r\n";	
-		fwrite($fh,$writestring);
-		$writestring = '  Country = 103;'."\r\n";	
-		fwrite($fh,$writestring);
-		$writestring = '  Country = 104;'."\r\n";
-		fwrite($fh,$writestring);		
-		$writestring = '  Country = 105;'."\r\n";	
-		fwrite($fh,$writestring);
-	}
+		if ($sim == "RoF")
+			{
+			$writestring = '  Country = 102;'."\r\n";	
+			fwrite($fh,$writestring);
+			$writestring = '  Country = 103;'."\r\n";	
+			fwrite($fh,$writestring);
+			$writestring = '  Country = 104;'."\r\n";
+			fwrite($fh,$writestring);		
+			$writestring = '  Country = 105;'."\r\n";	
+			fwrite($fh,$writestring);
+			}
+		}
 	$writestring = '  OnEvents'."\r\n";	
 	fwrite($fh,$writestring);
 	$writestring = '  {'."\r\n";	
@@ -2374,7 +2449,52 @@ $list_of_mcus ="";
 	$writestring = '}'."\r\n";	
 	fwrite($fh,$writestring);
 	$index_no=($index_no+1);
-
+# here is where I add attack area mcu
+		$writestring = 'MCU_CMD_AttackArea'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '{'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  Index = '.$index_no.';'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  Name = "command AttackArea"'.';'."\r\n";		
+		fwrite($fh,$writestring);
+		$writestring = '  Desc = "";'."\r\n";		
+		fwrite($fh,$writestring);
+		$writestring = '  Targets = [];'."\r\n";		
+		fwrite($fh,$writestring);
+		$writestring = '  Objects = [];'."\r\n";		
+		fwrite($fh,$writestring);
+		$static_XPos = ($static_XPos+25);
+		$writestring = '  XPos = '.number_format($static_XPos, 3, '.', '').';'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  YPos = 0.000;'."\r\n";	
+		fwrite($fh,$writestring); 	
+		$static_ZPos = ($static_ZPos+15);	
+		$writestring = '  ZPos = '.number_format($static_ZPos, 3, '.', '').';'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  XOri = 0.00;'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  YOri = 0.00;'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  ZOri = 0.00;'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  AttackGround = 0;'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  AttackAir = 0;'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  AttackGTargets = 1;'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  AttackArea = '.$ground_detect_distance.';'."\r\n";	
+		fwrite($fh,$writestring);
+		$attime = (($mission_minutes + $lineup_minutes) * 60);
+		$writestring = '  Time = '.$attime.';'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '  Priority = 1;'."\r\n";	
+		fwrite($fh,$writestring);
+		$writestring = '}'."\r\n";	
+		fwrite($fh,$writestring);
+		$index_no=($index_no+1);
+# end of attack area mcu
 
 #end of second trigger	
 	}
@@ -2387,7 +2507,7 @@ $list_of_mcus ="";
 fclose($fh);
 # here ends the groupfile sequence
 // actually do the downloads
-echo "We are now ready to download the <b>" .$abbrv. "_New_Mission.Group</b> file to your PC, then import it into a clean template in the mission editor!<br><br />\n";
+echo "<br><br>We are now ready to download the <b>" .$abbrv. "_New_Mission.Group</b> file to your PC, then import it into a clean template in the mission editor!<br><br />\n";
 echo "<form id=\"campaignMgmtDLFile\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLFile.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 $DownloadDir = 'downloads/';
 print "<select name=\"dlfile\">\n";
