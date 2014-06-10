@@ -203,8 +203,14 @@ Hint : if your screen is a bit crowded with ikons go to your object filter and s
     <li>To add another point to move, use CTRL+left mouse click on a boundary line that is attached to the yellow circle.</li>
     <li>Note that the boundary of an influence area should not cross itself.</li>
     <li>Move the ends to form a boundary around the area you want to define.</li>
-    <li>To stop editing, right click on the influence area and select "Selected Object Menu".</li>
-    <li>Select "Stop Editing Boundary".</li>
+<?php
+    if ($sim == 'RoF') {
+    	echo "<li>To stop editing, right click on the influence area and select \"Selected Object Menu\".</li>
+    	<li>Select \"Stop Editing Boundary\".</li>\n";
+	} else { // must be BoS
+    	echo "<li>To stop editing, press the \"Esc\" key.</li>\n";
+	}
+?>
 </ul>
 
 <p>To set ownership of the influence area:</p>
@@ -235,7 +241,7 @@ Hint : if your screen is a bit crowded with ikons go to your object filter and s
 			echo "<p>Click the bottom left of the influence areas and holding the left mouse button drag from bottom left of our sector to top right of our sector. This will highlight all objects in our sector.  Be sure this includes all the defined influence areas.  Better to be slightly generous than slightly stingy here.</p>\n";
 			echo "<p>Next in the File menu, select \"Save selection to File\", navigate back to your <b>$abbrv-groups</b> directory, give this file the File Name <b>$abbrv-sector.Group</b>, and Save as type \"Group Files\", then click \"Save\".</p>\n";
 			echo "<p>Left click outside the area to unselect it.</p>\n";
-			echo "<p>Now go to the \"Search and Select\" menu, select \"Select All Objects in Mission\" then press the \"Delete\" key on your keyboard. There will be a pause (have patience) and all the airfields etc. will disappear.</p>\n";
+			echo "<p>Now go to the \"Search and Select\" menu and select \"Select All Objects in Mission\".  Wait for the spinner to stop spinning (the larger the map the longer it takes), then press the \"Delete\" key on your keyboard. There will be a (possibly very long) pause (have patience) and all the airfields etc. will disappear.</p>\n";
 			echo "<p>We can now load back in only those objects that were in our sector with File, Import from File, select your <b>$abbrv-groups</b> directory and load the file <b>$abbrv-sector.Group</b>.
 			You should now have just the infrastructure for your sector.</p>\n"; 
 			echo "<p>\"File\", \"Save\" to make sure we do not lose this!</p>\n";
