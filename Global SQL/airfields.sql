@@ -19,7 +19,7 @@
 --
 -- Table structure for table `airfields`
 --
-
+#Stenka 11/6/14 adding country 201 for BoS
 DROP TABLE IF EXISTS `airfields`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -28,7 +28,7 @@ CREATE TABLE `airfields` (
   `airfield_Name` char(31) DEFAULT 'Unknown airfield',
   `airfield_Model` char(20) DEFAULT NULL,
   `airfield_Desc` varchar(80) DEFAULT NULL,
-  `airfield_Country` enum('0','101','102','103','104','105','501','502','600','610','620','630','640') DEFAULT '0',
+  `airfield_Country` enum('0','101','102','103','104','105','201,'501','502','600','610','620','630','640') DEFAULT '0',
   `airfield_Coalition` enum('0','1','2','3','4','5','6','7') DEFAULT '0',
   `airfield_XPos` decimal(12,3) DEFAULT '0.000',
   `airfield_ZPos` decimal(12,3) DEFAULT '0.000',

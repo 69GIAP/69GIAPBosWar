@@ -6,6 +6,7 @@
 -- Generation Time: Dec 05, 2013 at 05:12 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
+# Stenka 11/6/14 add country 201 for BoS
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -33,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `statics` (
   `static_Model` char(20) DEFAULT '',
   `static_Type` enum('Aerostat','Block','Flag','Ship','Train','Vehicle') NOT NULL DEFAULT 'Vehicle',
   `static_Desc` varchar(80) DEFAULT NULL,
-  `static_Country` enum('0','101','102','103','104','105','501','502','600','610','620','630','640') DEFAULT NULL,
+  `static_Country` enum('0','101','102','103','104','105','201','501','502','600','610','620','630','640') DEFAULT NULL,
   `static_coalition` enum('1','2') DEFAULT NULL,
   `static_supplypoint` tinyint(1) unsigned DEFAULT NULL,
   `static_XPos` decimal(12,3) DEFAULT NULL,

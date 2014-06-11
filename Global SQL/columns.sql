@@ -7,6 +7,7 @@
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 # Stenka 14/3/2014 replaced null values for map coordinates with safer 0 value
+# Stenka 11/6/14 correction to add country 201 for BOS
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -36,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `columns` (
   `Model` char(20) DEFAULT NULL,
   `moving_becomes` varchar(39) DEFAULT NULL,
   `Description` varchar(80) DEFAULT NULL,
-  `ckey` enum('0','101','102','103','104','105','501','502','600','610','620','630','640') DEFAULT NULL,
+  `ckey` enum('0','101','102','103','104','105','201','501','502','600','610','620','630','640') DEFAULT NULL,
   `CoalID` enum('1','2') DEFAULT NULL,
   `Supplypoint` tinyint(1) DEFAULT 1,
   `Quantity` int(11) NOT NULL DEFAULT '1',

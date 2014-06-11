@@ -8,6 +8,7 @@
 // getGroundAILevel.php, getCoalitionname.php, getPointXPos.php and
 // getPointZPos.php
 # Stenka conversion from exportStaticGroups
+# Stenka bugfix on BoS RoF separation 11/6/14
 
 function export_staticgroups2planner($CoalID) {
 	global $sim;
@@ -222,7 +223,7 @@ function export_staticgroups2planner($CoalID) {
 				fwrite($fh,$writestring);
 				$writestring = '  DeleteAfterDeath = 1;'."\r\n";
 				fwrite($fh,$writestring);
-				if ($sim = "BoS")
+				if ($sim == "BoS")
 				{
 				$writestring = '  CoopStart = 0;'."\r\n";				
 				fwrite($fh,$writestring);	
@@ -280,7 +281,7 @@ function export_staticgroups2planner($CoalID) {
 				fwrite($fh,$writestring);
 				$writestring = '  DeleteAfterDeath = 1;'."\r\n";
 				fwrite($fh,$writestring);				
-				if ($sim = "BoS")
+				if ($sim == "BoS")
 				{
 				$writestring = '  CoopStart = 0;'."\r\n";				
 				fwrite($fh,$writestring);	

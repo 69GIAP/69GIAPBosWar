@@ -7,6 +7,7 @@
 // Dec 5, 2013
 #stenka 23/4/14 conversion of export_columns code
 #stenka 1/5/14 addition of trains
+#stenka 11/6/14 bugfix separation of BoS RoF
 function export_columns2planner($CoalID) {
 	global $sim;
 	global $camp_link;
@@ -207,7 +208,7 @@ function export_columns2planner($CoalID) {
 			fwrite($fh,$writestring);
 			$writestring = '  DeleteAfterDeath = 1;'."\r\n";
 			fwrite($fh,$writestring);
-			if ($sim = "BoS")
+			if ($sim == "BoS")
 			{
 			$writestring = '  CoopStart = 0;'."\r\n";				
 			fwrite($fh,$writestring);	

@@ -1,4 +1,5 @@
 # Stenka update 7/4/2014 debugging briges
+# Stenka bugfix BoS countries 11/6/14
 use boswar_db;
 DROP TABLE IF EXISTS `bridges`;
 CREATE TABLE IF NOT EXISTS `bridges` (
@@ -6,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `bridges` (
   `Name` char(31) PRIMARY KEY,
   `Model` char(20) DEFAULT NULL,
   `Description` varchar(80) DEFAULT NULL,
-  `Country` enum('0','101','102','103','104','105','501','502','600','610','620','630','640') DEFAULT NULL,
+  `Country` enum('0','101','102','103','104','105','201','501','502','600','610','620','630','640') DEFAULT NULL,
   `CoalID` enum('0','1','2') DEFAULT NULL,
   `XPos` decimal(12,3) DEFAULT NULL,
   `ZPos` decimal(12,3) DEFAULT NULL,
