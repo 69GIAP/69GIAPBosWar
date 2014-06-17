@@ -6,7 +6,7 @@
 -- Generation Time: Apr 02, 2014 at 04:08 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
-
+# stenka putting 201 into german country
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `bos_countries` (
 INSERT INTO `bos_countries` (`id`, `ckey`, `countryname`, `countryadj`, `CoalID`) VALUES
 ('1', '0', 'Neutral', 'neutral', '0'),
 ('2', '101', 'Russia', 'Russian', '1'),
-('3', '', 'Germany', 'German', '2');
+('3', '201', 'Germany', 'German', '2');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

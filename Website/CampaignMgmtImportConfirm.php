@@ -1,5 +1,5 @@
 <?php 
-
+#Stenka stopping country read for BoS 17/6/14
 // Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
 	$dbc = connectBOSWAR();
@@ -42,8 +42,10 @@
 						require ('functions/getMinMaxXZFromMissionFile.php');
 
 						//require getCountriesFromMissonFile.php
+						if ($sim == "RoF")
+						{
 						require ('functions/getCountriesFromMissionFile.php');
-
+						}
 						//require importAirfields.php
 						require ('functions/importAirfields.php');
 
@@ -56,11 +58,12 @@
 						if (get_minmaxxz_from_mission_file($SaveToDir,$file)) {
 							echo "Min and Max X and Z values of Combat Area updated.<br />\n";
 						}
-
-						if (get_countries_from_mission_file($SaveToDir,$file)) {
-							echo "Countries and Coalitions updated.<br />\n";
+						if ($sim == "RoF")
+						{
+							if (get_countries_from_mission_file($SaveToDir,$file)) {
+								echo "Countries and Coalitions updated.<br />\n";
+							}
 						}
-
 						// import airfields
 						import_airfields($SaveToDir,$file);
 

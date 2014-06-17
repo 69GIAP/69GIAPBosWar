@@ -6,7 +6,7 @@
 -- Generation Time: Jun 02, 2014 at 01:07 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
-
+#stenka 17/6/14 adding intro date
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `bos_object_properties`;
 CREATE TABLE IF NOT EXISTS `bos_object_properties` (
   `id` smallint(1) unsigned NOT NULL AUTO_INCREMENT,
+  `family` varchar(20) DEFAULT NULL,
   `object_type` varchar(50) NOT NULL,
   `object_class` varchar(8) NOT NULL,
   `object_value` smallint(1) NOT NULL,
@@ -41,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `bos_object_properties` (
   `cruise_speed_kmh` tinyint(3) unsigned DEFAULT NULL,
   `range_m` smallint(5) unsigned DEFAULT NULL,
   `default_country` smallint(1) DEFAULT '0',
+  `intro_date` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `object_type` (`object_type`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=106 ;
