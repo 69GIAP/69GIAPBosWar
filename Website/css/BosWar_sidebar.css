@@ -313,6 +313,20 @@ ul#sidebar li a.MgmtDlClmsStcsAct {
 	height: 64px;
 	position:relative;
 }
+ul#sidebar li a.MgmtUlClmsStcs {
+	background:url(../img/BosWar-AdminUploadColumnsStatics.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
+ul#sidebar li a.MgmtUlClmsStcsAct {
+	background:url(../img/BosWar-AdminUploadColumnsStaticsAct.png) no-repeat scroll top left;
+	display:block;
+	margin-bottom: 10px;
+	height: 64px;
+	position:relative;
+}
 ul#sidebar li a.crrSts {
 	background:url(../img/BosWar-DummyAct.png) no-repeat scroll top left;
 	display:block;
