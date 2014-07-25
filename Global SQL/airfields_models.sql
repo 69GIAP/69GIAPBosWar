@@ -1,3 +1,4 @@
+# stenka 25/7/14 update to allow BOS to select in air 0 on runway 1 in parking 2
 CREATE DATABASE  IF NOT EXISTS `boswar_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `boswar_db`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
@@ -31,6 +32,7 @@ CREATE TABLE `airfields_models` (
   `model_Quantity` int(3) DEFAULT '0',
   `model_Altitude` int(4) DEFAULT '0',
   `model_Flight` varchar(30) DEFAULT '',
+  `model_startinair` int(1) DEFAULT '1',  
   PRIMARY KEY (`airfield_Name`,`model_Name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
