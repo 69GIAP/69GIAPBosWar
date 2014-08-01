@@ -1,3 +1,4 @@
+#stenka 30/7/14 correct spelling of daimlermarienfeld_s to daimlermarienfelde_s
 -- phpMyAdmin SQL Dump
 -- version 4.0.4.1
 -- http://www.phpmyadmin.net
@@ -54,12 +55,12 @@ CREATE TABLE IF NOT EXISTS `rof_object_properties` (
 INSERT INTO `rof_object_properties` (`id`, `family`, `object_type`, `object_class`, `object_value`, `object_desc`, `Model`, `moving_becomes`, `modelpath2`, `modelpath3`, `max_speed_kmh`, `cruise_speed_kmh`, `range_m`, `default_country`, `intro_date`) VALUES
 (1, 'Vehicle', '13PdrAAA', 'AAA', 80, '13-pounder AAA', '13pdraaa', 'leylands', 'artillery', '13pdraaa', 0, 0, NULL, '101', '1914-07-28'),
 (2, '', '13PrdaaaAttached', 'AAA', 80, '13-pounder AAA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '1914-07-28'),
-(3, 'Vehicle', '77mmAAA', 'AAA', 80, '77mm AAA', '77mmaaa', 'daimlermarienfeld_s', 'artillery', '77mmaaa', 0, 0, NULL, '501', '1914-07-28'),
+(3, 'Vehicle', '77mmAAA', 'AAA', 80, '77mm AAA', '77mmaaa', 'daimlermarienfelde_s', 'artillery', '77mmaaa', 0, 0, NULL, '501', '1914-07-28'),
 (4, '', '77mmAAAAttached', 'AAA', 80, '77mm AAA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '1914-07-28'),
 (5, 'Vehicle', '45QF', 'ART', 100, '4.5 in. Quick Fire artillery', '45qf', 'leylands', 'artillery', '45qf', 0, 0, NULL, '102', '1914-07-28'),
 (6, 'Vehicle', '75FG1897', 'ART', 100, '75mm M1897 artillery', '75fg1897', 'leylands', 'artillery', '75fg1897', 0, 0, NULL, '101', '1914-07-28'),
-(7, 'Vehicle', 'FK96', 'ART', 100, 'Feldkanone 96 77mm artillery', 'fk96', 'daimlermarienfeld_s', 'artillery', 'fk96', 0, 0, NULL, '501', '1914-07-28'),
-(8, 'Vehicle', 'm13', 'ART', 100, '15cm schweres Feldhaubitze M13 Lang', 'm13', 'daimlermarienfeld_s', 'artillery', 'm13', 0, 0, NULL, '501', '1914-07-28'),
+(7, 'Vehicle', 'FK96', 'ART', 100, 'Feldkanone 96 77mm artillery', 'fk96', 'daimlermarienfelde_s', 'artillery', 'fk96', 0, 0, NULL, '501', '1914-07-28'),
+(8, 'Vehicle', 'm13', 'ART', 100, '15cm schweres Feldhaubitze M13 Lang', 'm13', 'daimlermarienfelde_s', 'artillery', 'm13', 0, 0, NULL, '501', '1914-07-28'),
 (9, 'Aerostat', 'AeType', 'BAL', 50, 'Type Ae observation balloon', 'aetype', NULL, 'balloons', 'aetype', 0, 0, NULL, '101', '1914-07-28'),
 (10, 'Aerostat', 'Caquot', 'BAL', 50, 'Caquot Type R observation balloon', 'caquot', NULL, 'balloons', 'caquot', 0, 0, NULL, '101', '1914-07-28'),
 (11, 'Aerostat', 'Drachen', 'BAL', 50, 'Drachen type observation balloon', 'drachen', NULL, 'balloons', 'drachen', 0, 0, NULL, '501', '1914-07-28'),
@@ -107,10 +108,10 @@ INSERT INTO `rof_object_properties` (`id`, `family`, `object_type`, `object_clas
 (53, 'Flag', 'Windsock', 'FLG', 0, 'windsock', 'windsock', NULL, 'flag', '', NULL, NULL, NULL, '0', '1914-07-28'),
 (54, '', 'Common Bot', 'HUM', 0, 'pilot', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '1914-07-28'),
 (55, 'Vehicle', 'HotchkissAAA', 'IMA', 80, 'anti-aircraft Hotchkiss machine gun', 'hotchkissaaa', 'leylands', 'artillery', 'machineguns', 0, 0, NULL, '101', '1914-07-28'),
-(56, 'Vehicle', 'LMG08AAA', 'IMA', 80, 'anti-aircraft Maxim machine gun', 'lmg08aaa', 'daimlermarienfeld_s', 'artillery', 'machineguns', 0, 0, NULL, '501', '1914-07-28'),
-(57, 'Vehicle', 'M-Flak', 'IMA', 80, '37mm automatic flak gun', 'mflak', 'daimlermarienfeld_s', 'artillery', 'mflak', 0, 0, NULL, '501', '1914-07-28'),
+(56, 'Vehicle', 'LMG08AAA', 'IMA', 80, 'anti-aircraft Maxim machine gun', 'lmg08aaa', 'daimlermarienfelde_s', 'artillery', 'machineguns', 0, 0, NULL, '501', '1914-07-28'),
+(57, 'Vehicle', 'M-Flak', 'IMA', 80, '37mm automatic flak gun', 'mflak', 'daimlermarienfelde_s', 'artillery', 'mflak', 0, 0, NULL, '501', '1914-07-28'),
 (58, 'Vehicle', 'Hotchkiss', 'IMG', 50, 'Hotchkiss machine gun', 'hotchkiss', 'leylands', 'artillery', 'machineguns', 0, 0, NULL, '101', '1914-07-28'),
-(59, 'Vehicle', 'LMGO8', 'IMG', 50, 'Maxim machine gun', 'lmg08', 'daimlermarienfeld_s', 'artillery', 'machineguns', 0, 0, NULL, '501', '1914-07-28'),
+(59, 'Vehicle', 'LMGO8', 'IMG', 50, 'Maxim machine gun', 'lmg08', 'daimlermarienfelde_s', 'artillery', 'machineguns', 0, 0, NULL, '501', '1914-07-28'),
 (60, '', 'CappyChateau', 'INF', 0, 'Cappy Chateau', 'cappychateau', NULL, 'buildings', NULL, NULL, NULL, NULL, '0', '1914-07-28'),
 (61, 'Block', 'church_01', 'INF', 0, 'church', 'church_01', NULL, 'blocks', NULL, NULL, NULL, NULL, '0', '1914-07-28'),
 (62, 'Block', 'church_02', 'INF', 0, 'church', 'church_02', NULL, 'blocks', NULL, NULL, NULL, NULL, '0', '1914-07-28'),

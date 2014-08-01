@@ -4,6 +4,7 @@
 #Stenka 26/4/14 debug z position of column
 #Stenka adding attack area 9/6/14
 #Stenka Bos conversion to countries 9/6/14
+#Stenka Bos conversion for parking/runways
 
 // Make a mysqli connection to the central BOSWAR database
 	require ( 'functions/connectBOSWAR.php' );
@@ -88,7 +89,7 @@ if ($num > 0)
 			$Model = $r2_data[6];
 			echo '<br> Found the model is a :'.$Model;
 			$moving_becomes = $r2_data[7];
-			echo '<br> moving becomes is a :'.$Model;
+			echo '<br> moving becomes is a :'.$moving_becomes;
 			$modelpath2 = $r2_data[8];
 			$modelpath3 = $r2_data[9];
 			$max_speed_kmh = $r2_data[10];
@@ -105,6 +106,7 @@ if ($num > 0)
 	{	
 	echo '<br>This is artillery must be loaded into vehicle';
 	$q3="SELECT * from $loadedCampaign.object_properties WHERE Model = ('$moving_becomes')";
+#	echo 'my q3 select is '.$q3;
 	$r3=mysqli_query($dbc,$q3);
 	$r3_data = mysqli_fetch_row($r3);
 	if ($r3_data[0]) 
@@ -472,6 +474,7 @@ if ($num > 0)
 				$Plane_Name = $row2['model_Flight'];
 				$Plane_Qty = $row2['model_Quantity'];
 				$Plane_Altitude = $row2['model_Altitude'];
+				$Plane_startinair = $row2['model_startinair'];
 				echo "got a plane:".$Plane_Model."<br>";
 				$writestring = '    Plane'."\r\n";
 				fwrite($fh,$writestring);
@@ -483,16 +486,21 @@ if ($num > 0)
 				fwrite($fh,$writestring);
 				$writestring = '      AILevel = '.$air_ai_level.';'."\r\n";
 				fwrite($fh,$writestring);
-				if ($Plane_Altitude == 0)
+				if ($Plane_startinair == 0)
 					{
 					$writestring = '      StartInAir = 0;'."\r\n";
 					fwrite($fh,$writestring);
 					}
-				else
+				if ($Plane_startinair == 1)
 					{
 					$writestring = '      StartInAir = 1;'."\r\n";
 					fwrite($fh,$writestring);
 					}
+				if ($Plane_startinair == 2)
+					{
+					$writestring = '      StartInAir = 2;'."\r\n";
+					fwrite($fh,$writestring);
+					}	
 				$writestring = '      Engageable = 1;'."\r\n";
 				fwrite($fh,$writestring);
 				$writestring = '      Vulnerable = 1;'."\r\n";
