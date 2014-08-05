@@ -44,36 +44,60 @@
 								$modelNameLoaded1 		= $_POST["modelNameLoaded1"];
 								$modelNameQuantity1		= $_POST["modelNameQuantity1"];
 								$modelNameQuantityNew1	= $_POST["modelNameQuantityNew1"];
+								$modelNameAltitude1		= $_POST["modelNameAltitude1"];
+								$modelNameAltitudeNew1	= $_POST["modelNameAltitudeNew1"];
+								$modelNameStartInAir1	= $_POST["modelNameStartInAir1"];
+								$modelNameStartInAirNew1= $_POST["modelNameStartInAirNew1"];
 							}
 						if (!empty($_POST["modelNameLoaded2"]))
 							{
 								$modelNameLoaded2 		= $_POST["modelNameLoaded2"];
 								$modelNameQuantity2		= $_POST["modelNameQuantity2"];
 								$modelNameQuantityNew2	= $_POST["modelNameQuantityNew2"];
+								$modelNameAltitude2		= $_POST["modelNameAltitude2"];
+								$modelNameAltitudeNew2	= $_POST["modelNameAltitudeNew2"];
+								$modelNameStartInAir2	= $_POST["modelNameStartInAir2"];
+								$modelNameStartInAirNew2= $_POST["modelNameStartInAirNew2"];								
 							}
 						if (!empty($_POST["modelNameLoaded3"]))
 							{
 								$modelNameLoaded3 		= $_POST["modelNameLoaded3"];
 								$modelNameQuantity3		= $_POST["modelNameQuantity3"];
 								$modelNameQuantityNew3	= $_POST["modelNameQuantityNew3"];
+								$modelNameAltitude3		= $_POST["modelNameAltitude3"];
+								$modelNameAltitudeNew3	= $_POST["modelNameAltitudeNew3"];
+								$modelNameStartInAir3	= $_POST["modelNameStartInAir3"];
+								$modelNameStartInAirNew3= $_POST["modelNameStartInAirNew3"];								
 							}
 						if (!empty($_POST["modelNameLoaded4"]))
 							{				
 								$modelNameLoaded4 		= $_POST["modelNameLoaded4"];
 								$modelNameQuantity4		= $_POST["modelNameQuantity4"];
 								$modelNameQuantityNew4	= $_POST["modelNameQuantityNew4"];
+								$modelNameAltitude4		= $_POST["modelNameAltitude4"];
+								$modelNameAltitudeNew4	= $_POST["modelNameAltitudeNew4"];
+								$modelNameStartInAir4	= $_POST["modelNameStartInAir4"];
+								$modelNameStartInAirNew4= $_POST["modelNameStartInAirNew4"];	
 							}
 						if (!empty($_POST["modelNameLoaded5"]))
 							{				
 								$modelNameLoaded5 		= $_POST["modelNameLoaded5"];
 								$modelNameQuantity5		= $_POST["modelNameQuantity5"];
 								$modelNameQuantityNew5	= $_POST["modelNameQuantityNew5"];
+								$modelNameAltitude5		= $_POST["modelNameAltitude5"];
+								$modelNameAltitudeNew5	= $_POST["modelNameAltitudeNew5"];
+								$modelNameStartInAir5	= $_POST["modelNameStartInAir5"];
+								$modelNameStartInAirNew5= $_POST["modelNameStartInAirNew5"];								
 							}
 						if (!empty($_POST["modelNameLoaded6"]))
 							{				
 								$modelNameLoaded6 		= $_POST["modelNameLoaded6"];
 								$modelNameQuantity6		= $_POST["modelNameQuantity6"];
 								$modelNameQuantityNew6	= $_POST["modelNameQuantityNew6"];
+								$modelNameAltitude6		= $_POST["modelNameAltitude6"];
+								$modelNameAltitudeNew6	= $_POST["modelNameAltitudeNew6"];
+								$modelNameStartInAir6	= $_POST["modelNameStartInAir6"];
+								$modelNameStartInAirNew6= $_POST["modelNameStartInAirNew6"];								
 							}										
 							
 						if (empty($_POST["modelNameAdd"]) ){
@@ -94,6 +118,27 @@
 							$modelNameAddQuantity = $_POST["modelNameAddQuantity"];
 						}
 						
+# check checks! start						
+						if (empty($_POST["modelNameAddAltitude"]) ){
+							$modelNameAddAltitude = '0';
+						}
+						else {
+							$modelNameAddAltitude = $_POST["modelNameAddAltitude"];
+						}
+						
+						if (empty($_POST["modelNameAddStartInAir"]) ){
+							if ($sim == 'RoF') {# default to Groundstart
+								$modelNameAddStartInAir = '0';
+							}
+							if ($sim == 'BoS') {# default to Parking
+								$modelNameAddStartInAir = '2';
+							}
+						}
+						else {
+							$modelNameAddStartInAir = $_POST["modelNameAddStartInAir"];
+						}												
+# check checks! end
+						
 						$airfieldCoalitionId		= $_POST["airfieldCoalitionId"];
 						
 						if (empty($_POST["airfieldCoalitionIdNew"]) ){
@@ -111,8 +156,41 @@
 									$query1="DELETE from airfields_models WHERE model_Name like '$modelNameLoaded1' AND airfield_Name like '$airfieldName' ;";
 								} else {
 									$query1="UPDATE airfields_models SET model_Quantity = '$modelNameQuantityNew1' WHERE model_Name like '$modelNameLoaded1' AND airfield_Name like '$airfieldName' ;";
+
+									if ($modelNameAltitudeNew1 != $modelNameAltitude1) {
+										if ($sim == 'RoF') {
+												if ($modelNameAltitudeNew1 > 0){ # air start Rise Of Flight
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew1', model_StartInAir = 1 WHERE model_Name like '$modelNameLoaded1' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew1', model_StartInAir = 0 WHERE model_Name like '$modelNameLoaded1' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+											if ($sim == 'BoS') {
+												if ($modelNameAltitudeNew1 == 1 or $modelNameAltitudeNew1 == 2){ # ground start Battle of Stalingrad
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew1'', model_Altitude = 0 WHERE model_Name like '$modelNameLoaded1' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew1', model_Altitude = 2 WHERE model_Name like '$modelNameLoaded1' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+										}
+									if ($modelNameStartInAirNew1 != $modelNameStartInAir1) {
+											if ($sim == 'RoF') {
+												if ($modelNameStartInAirNew1 == 0){ # ground start Rise Of Flight
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew1', model_Altitude = 0 WHERE model_Name like '$modelNameLoaded1' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew1', model_Altitude = 1000 WHERE model_Name like '$modelNameLoaded1' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+											if ($sim == 'BoS') {
+												if ($modelNameStartInAirNew1 == 1 or $modelNameStartInAirNew1 == 2){ # ground start Battle of Stalingrad
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew1', model_Altitude = 0 WHERE model_Name like '$modelNameLoaded1' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew1', model_Altitude = 1000 WHERE model_Name like '$modelNameLoaded1' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+										}										
+									}
 								}
-							}
 						if ($_POST["updateAirfield"] == 2) //model 2 - update count or remove if value 0 was submitted
 							{
 								if ($modelNameQuantityNew2 == 0) {
@@ -120,8 +198,41 @@
 									$query1="DELETE from airfields_models WHERE model_Name like '$modelNameLoaded2' AND airfield_Name like '$airfieldName' ;";
 								} else {
 									$query1="UPDATE airfields_models SET model_Quantity = '$modelNameQuantityNew2' WHERE model_Name like '$modelNameLoaded2' AND airfield_Name like '$airfieldName' ;";
+										
+									if ($modelNameAltitudeNew2 != $modelNameAltitude2) {
+										if ($sim == 'RoF') {
+												if ($modelNameAltitudeNew2 > 0){ # air start Rise Of Flight
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew2', model_StartInAir = 1 WHERE model_Name like '$modelNameLoaded2' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew2', model_StartInAir = 0 WHERE model_Name like '$modelNameLoaded2' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+											if ($sim == 'BoS') {
+												if ($modelNameAltitudeNew2 == 1 or $modelNameAltitudeNew2 == 2){ # ground start Battle of Stalingrad
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew2'', model_Altitude = 0 WHERE model_Name like '$modelNameLoaded2' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew2', model_Altitude = 2 WHERE model_Name like '$modelNameLoaded2' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+										}
+									if ($modelNameStartInAirNew2 != $modelNameStartInAir2) {
+											if ($sim == 'RoF') {
+												if ($modelNameStartInAirNew2 == 0){ # ground start Rise Of Flight
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew2', model_Altitude = 0 WHERE model_Name like '$modelNameLoaded2' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew2', model_Altitude = 1000 WHERE model_Name like '$modelNameLoaded2' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+											if ($sim == 'BoS') {
+												if ($modelNameStartInAirNew2 == 1 or $modelNameStartInAirNew2 == 2){ # ground start Battle of Stalingrad
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew2', model_Altitude = 0 WHERE model_Name like '$modelNameLoaded2' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew2', model_Altitude = 1000 WHERE model_Name like '$modelNameLoaded2' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+										}
+									}
 								}
-							}
 						if ($_POST["updateAirfield"] == 3) //model 3 - update count or remove if value 0 was submitted
 						{
 							if ($modelNameQuantityNew3 == 0) {
@@ -129,8 +240,42 @@
 									$query1="DELETE from airfields_models WHERE model_Name like '$modelNameLoaded3' AND airfield_Name like '$airfieldName' ;";
 								} else {
 									$query1="UPDATE airfields_models SET model_Quantity = '$modelNameQuantityNew3' WHERE model_Name like '$modelNameLoaded3' AND airfield_Name like '$airfieldName' ;";
+									
+									if ($modelNameAltitudeNew3 != $modelNameAltitude3) {
+										if ($sim == 'RoF') {
+												if ($modelNameAltitudeNew3 > 0){ # air start Rise Of Flight
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew3', model_StartInAir = 1 WHERE model_Name like '$modelNameLoaded3' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew3', model_StartInAir = 0 WHERE model_Name like '$modelNameLoaded3' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+											if ($sim == 'BoS') {
+												if ($modelNameAltitudeNew3 == 1 or $modelNameAltitudeNew3 == 2){ # ground start Battle of Stalingrad
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew3'', model_Altitude = 0 WHERE model_Name like '$modelNameLoaded3' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew3', model_Altitude = 2 WHERE model_Name like '$modelNameLoaded3' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+										}
+										
+									if ($modelNameStartInAirNew3 != $modelNameStartInAir3) {
+											if ($sim == 'RoF') {
+												if ($modelNameStartInAirNew3 == 0){ # ground start Rise Of Flight
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew3', model_Altitude = 0 WHERE model_Name like '$modelNameLoaded3' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew3', model_Altitude = 1000 WHERE model_Name like '$modelNameLoaded3' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+											if ($sim == 'BoS') {
+												if ($modelNameStartInAirNew3 == 1 or $modelNameStartInAirNew3 == 2){ # ground start Battle of Stalingrad
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew3', model_Altitude = 0 WHERE model_Name like '$modelNameLoaded3' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew3', model_Altitude = 1000 WHERE model_Name like '$modelNameLoaded3' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+										}
+									}
 								}
-						}
 						if ($_POST["updateAirfield"] == 4) //model 4 - update count or remove if value 0 was submitted
 							{
 								if ($modelNameQuantityNew4 == 0) {
@@ -138,17 +283,85 @@
 									$query1="DELETE from airfields_models WHERE model_Name like '$modelNameLoaded4' AND airfield_Name like '$airfieldName' ;";
 								} else {
 									$query1="UPDATE airfields_models SET model_Quantity = '$modelNameQuantityNew4' WHERE model_Name like '$modelNameLoaded4' AND airfield_Name like '$airfieldName' ;";
+									
+									if ($modelNameAltitudeNew4 != $modelNameAltitude4) {
+										if ($sim == 'RoF') {
+												if ($modelNameAltitudeNew4 > 0){ # air start Rise Of Flight
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew4', model_StartInAir = 1 WHERE model_Name like '$modelNameLoaded4' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew4', model_StartInAir = 0 WHERE model_Name like '$modelNameLoaded4' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+											if ($sim == 'BoS') {
+												if ($modelNameAltitudeNew4 == 1 or $modelNameAltitudeNew4 == 2){ # ground start Battle of Stalingrad
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew4'', model_Altitude = 0 WHERE model_Name like '$modelNameLoaded4' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew4', model_Altitude = 2 WHERE model_Name like '$modelNameLoaded4' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+										}
+										
+									if ($modelNameStartInAirNew4 != $modelNameStartInAir4) {
+											if ($sim == 'RoF') {
+												if ($modelNameStartInAirNew4 == 0){ # ground start Rise Of Flight
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew4', model_Altitude = 0 WHERE model_Name like '$modelNameLoaded4' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew4', model_Altitude = 1000 WHERE model_Name like '$modelNameLoaded4' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+											if ($sim == 'BoS') {
+												if ($modelNameStartInAirNew4 == 1 or $modelNameStartInAirNew4 == 2){ # ground start Battle of Stalingrad
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew4', model_Altitude = 0 WHERE model_Name like '$modelNameLoaded4' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew4', model_Altitude = 1000 WHERE model_Name like '$modelNameLoaded4' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+										}
+									}
 								}
-							}
-						if ($_POST["updateAirfield"] == 5) //model 5 - update count or remove if value 0 was submitted
+							if ($_POST["updateAirfield"] == 5) //model 5 - update count or remove if value 0 was submitted
 							{
 								if ($modelNameQuantityNew5 == 0) {
 
 									$query1="DELETE from airfields_models WHERE model_Name like '$modelNameLoaded5' AND airfield_Name like '$airfieldName' ;";
 								} else {
 									$query1="UPDATE airfields_models SET model_Quantity = '$modelNameQuantityNew5' WHERE model_Name like '$modelNameLoaded5' AND airfield_Name like '$airfieldName' ;";
+									
+									if ($modelNameAltitudeNew5 != $modelNameAltitude5) {
+										if ($sim == 'RoF') {
+												if ($modelNameAltitudeNew5 > 0){ # air start Rise Of Flight
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew5', model_StartInAir = 1 WHERE model_Name like '$modelNameLoaded5' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew5', model_StartInAir = 0 WHERE model_Name like '$modelNameLoaded5' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+											if ($sim == 'BoS') {
+												if ($modelNameAltitudeNew5 == 1 or $modelNameAltitudeNew5 == 2){ # ground start Battle of Stalingrad
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew5'', model_Altitude = 0 WHERE model_Name like '$modelNameLoaded5' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew5', model_Altitude = 2 WHERE model_Name like '$modelNameLoaded5' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+										}
+										
+									if ($modelNameStartInAirNew5 != $modelNameStartInAir5) {
+											if ($sim == 'RoF') {
+												if ($modelNameStartInAirNew5 == 0){ # ground start Rise Of Flight
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew5', model_Altitude = 0 WHERE model_Name like '$modelNameLoaded5' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew5', model_Altitude = 1000 WHERE model_Name like '$modelNameLoaded5' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+											if ($sim == 'BoS') {
+												if ($modelNameStartInAirNew5 == 1 or $modelNameStartInAirNew5 == 2){ # ground start Battle of Stalingrad
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew5', model_Altitude = 0 WHERE model_Name like '$modelNameLoaded5' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew5', model_Altitude = 1000 WHERE model_Name like '$modelNameLoaded5' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+										}
+									}
 								}
-							}
 						if ($_POST["updateAirfield"] == 6) //model 6 - update count or remove if value 0 was submitted
 							{
 								if ($modelNameQuantityNew6 == 0) {
@@ -156,11 +369,45 @@
 									$query1="DELETE from airfields_models WHERE model_Name like '$modelNameLoaded6' AND airfield_Name like '$airfieldName' ;";
 								} else {
 									$query1="UPDATE airfields_models SET model_Quantity = '$modelNameQuantityNew6' WHERE model_Name like '$modelNameLoaded6' AND airfield_Name like '$airfieldName' ;";
+									
+									if ($modelNameAltitudeNew6 != $modelNameAltitude6) {
+										if ($sim == 'RoF') {
+												if ($modelNameAltitudeNew6 > 0){ # air start Rise Of Flight
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew6', model_StartInAir = 1 WHERE model_Name like '$modelNameLoaded6' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew6', model_StartInAir = 0 WHERE model_Name like '$modelNameLoaded6' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+											if ($sim == 'BoS') {
+												if ($modelNameAltitudeNew6 == 1 or $modelNameAltitudeNew6 == 2){ # ground start Battle of Stalingrad
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew6'', model_Altitude = 0 WHERE model_Name like '$modelNameLoaded6' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_Altitude = '$modelNameAltitudeNew6', model_Altitude = 2 WHERE model_Name like '$modelNameLoaded6' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+										}
+										
+									if ($modelNameStartInAirNew6 != $modelNameStartInAir6) {
+											if ($sim == 'RoF') {
+												if ($modelNameStartInAirNew6 == 0){ # ground start Rise Of Flight
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew6', model_Altitude = 0 WHERE model_Name like '$modelNameLoaded6' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew6', model_Altitude = 1000 WHERE model_Name like '$modelNameLoaded6' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+											if ($sim == 'BoS') {
+												if ($modelNameStartInAirNew6 == 1 or $modelNameStartInAirNew6 == 2){ # ground start Battle of Stalingrad
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew6', model_Altitude = 0 WHERE model_Name like '$modelNameLoaded6' AND airfield_Name like '$airfieldName' ;";
+												} else {
+													$query1 .= "UPDATE airfields_models SET model_StartInAir = '$modelNameStartInAirNew6', model_Altitude = 1000 WHERE model_Name like '$modelNameLoaded6' AND airfield_Name like '$airfieldName' ;";
+												}
+											}
+										}
+									}
 								}
-							}										
 						if ($_POST["updateAirfield"] == 7) // model add
 							{
-							$query1="INSERT INTO airfields_models (airfield_Name, model_Name, model_Model, model_Quantity) VALUES ('$airfieldName', '$modelNameAdd', '$modelModelAdd', $modelNameAddQuantity) ;";
+							$query1="INSERT INTO airfields_models (airfield_Name, model_Name, model_Model, model_Quantity, model_Altitude, model_StartInAir) VALUES ('$airfieldName', '$modelNameAdd', '$modelModelAdd', $modelNameAddQuantity, '$modelNameAddAltitude', '$modelNameAddStartInAir') ;";
 							}
 						if ($_POST["updateAirfield"] == 8) // model remove
 							{
@@ -342,7 +589,7 @@
 					
 					# check some data before update tables
 					include ('includes/checkAirfieldDataBeforeUpdate.php');
-					
+
 					// execute multi query //
 					if ($camp_link->multi_query($query1)) {
 						do {
@@ -366,13 +613,8 @@
 #					exit;
 					unset($_POST);
 
-#we need the if because this page is used from 2 main menu loactions and the look of the side menu would change
-                    if ($btn == 'campStp') {
-							 header ("Location: airfieldMgmtChange.php?btn=campStp&sde=campAf&airfieldName=$airfieldName");
-						  }
-						  if ($btn == 'preMsn') {
-							  header ("Location: airfieldMgmtChange.php?btn=preMsn&sde=campAf&airfieldName=$airfieldName");
-						  }					
+				  header ("Location: airfieldMgmtChange.php?btn=preMsn&sde=campAf&airfieldName=$airfieldName");
+				
 					}
 	   
                 ?>					

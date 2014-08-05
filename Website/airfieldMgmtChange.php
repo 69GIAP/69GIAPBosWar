@@ -54,7 +54,7 @@
 					if ($airfieldEnabled == 1) {
 						
 						# get data from airfield_models table
-						$sql = "SELECT model_Name, model_Quantity FROM airfields_models WHERE airfield_Name = '$airfieldName'";
+						$sql = "SELECT model_Name, model_Quantity, model_Altitude, model_Flight, model_StartInAir FROM airfields_models WHERE airfield_Name = '$airfieldName'";
 		
 						if(!$result = $camp_link->query($sql)){
 							echo "$query<br />\n";
@@ -64,7 +64,7 @@
 						# get the rowcount
 						#$num = $result->num_rows;
 	
-						# start form/we need the if because this page is used from 2 main menu loactions and the look of the side menu would change
+						# start form / we need the if because this page is used from 2 main menu loactions and the look of the side menu would change
                     if ($btn == 'campStp') {
 							 echo "<form id=\"airfieldForm\" name=\"login\" action=\"airfieldMgmtModify.php?btn=campStp&sde=campAf&form=1\" method=\"post\">\n";
 						  }
@@ -78,7 +78,10 @@
 						$i = 1;
 						while ($obj = $result->fetch_object()) {
 							$modelName			=($obj->model_Name);
-							$modelQuantity	=($obj->model_Quantity);
+							$modelQuantity		=($obj->model_Quantity);
+							$modelAltitude		=($obj->model_Altitude);
+							$modelFlight		=($obj->model_Flight);
+							$modelStartInAir	=($obj->model_StartInAir);
 
 							# MODEL
 							if ($modelName == '') {
@@ -94,31 +97,63 @@
 								# MODEL
 								$modelNameLoaded = "modelNameLoaded".$i;						
 								echo "	<input readonly=\"readonly\" type=\"text\" name='$modelNameLoaded' id=\"aircraft\" value='$modelName' size=\"24\" maxlength=\"50\" />\n";
+								echo "	<div class='old'>OLD</div>\n";
+								echo "	<div class='new'>NEW</div>\n";								
 		
-								# QUANTITY
+							# QUANTITY
 								$modelNameQuantity = "modelNameQuantity".$i;
-								echo "	<input readonly=\"readonly\" type=\"text\" name ='$modelNameQuantity' id=\"number\" value='$modelQuantity' size=\"24\" maxlength=\"50\" />\n";
-								
-								# NEW QUANTITY
+								echo "	<input readonly=\"readonly\" type=\"text\" name ='$modelNameQuantity' id=\"number\" class=\"number\" value='$modelQuantity' size=\"24\" maxlength=\"50\" />\n";
+							# NEW QUANTITY
 								// dynamically create name variable for automatically created fields
 								$modelNameQuantityNew = "modelNameQuantityNew".$i;
-								echo "	<input type=\"text\" name='$modelNameQuantityNew' id=\"number\" placeholder=\"Change Quantitiy for $modelName\" value='' size=\"24\" maxlength=\"50\" />\n";
-								echo "</fieldset>";
-								echo "<fieldset id=\"actions\">";
+								echo "	<input type=\"text\" name='$modelNameQuantityNew' id=\"number\" class=\"number\" placeholder=\"new #\" value='$modelQuantity' size=\"24\" maxlength=\"50\" />\n";
+							# BUTTON UPDATE QUANTITY
+								echo "	<button type=\"submit\" name =\"updateAirfield\" id=\"acModelForm\" class=\"acModelFormHalfsize\" value =\"$i\" >change</button>\n";	
+								echo "</fieldset>\n";
 								
-								# BUTTON
-								echo "	<button type=\"submit\" name =\"updateAirfield\" id=\"acModelForm\" value =\"$i\" >Approve changed quantity for $modelName</button>\n";	
-								echo "</fieldset>\n";				
+								echo "<fieldset id=\"inputs\">\n";
+							# ALTITUDE
+								$modelNameAltitude = "modelNameAltitude".$i;
+								echo "	<input readonly=\"readonly\" type=\"text\" name ='$modelNameAltitude' id=\"altitude\" class=\"altitude\" value='$modelAltitude' size=\"24\" maxlength=\"50\" />\n";
+							# NEW ALTITUDE
+								// dynamically create name variable for automatically created fields
+								$modelNameAltitudeNew = "modelNameAltitudeNew".$i;
+								echo "	<input type=\"text\" name='$modelNameAltitudeNew' id=\"altitude\" class=\"altitude\" placeholder=\"new alt.\" value='$modelAltitude' size=\"24\" maxlength=\"50\" />\n";
+							# BUTTON UPDATE ALTITUDE
+								echo "	<button type=\"submit\" name =\"updateAirfield\" id=\"acModelForm\" class=\"acModelFormHalfsize\" value =\"$i\" >change</button>\n";	
+								echo "</fieldset>\n";
+
+								echo "<fieldset id=\"inputs\">\n";								
+							# STARTINAIR
+								$modelNameStartInAir = "modelNameStartInAir".$i;
+								echo "	<input readonly=\"readonly\" type=\"text\" name ='$modelNameStartInAir' id=\"airstart\" class=\"airstart\" value='$modelStartInAir' size=\"24\" maxlength=\"50\" />\n";
+							# NEW STARTINAIR
+								// dynamically create name variable for automatically created fields
+								$modelNameStartInAirNew = "modelNameStartInAirNew".$i;
+								
+								#echo "	<input type=\"text\" name='$modelNameStartInAirNew' id=\"airstart\" class=\"airstart\" placeholder=\"starttype\" value='$modelStartInAir' size=\"24\" maxlength=\"50\" />\n";
+								echo "	<select name='$modelNameStartInAirNew' id=\"airstart\" class=\"airstart\">\n";
+								echo "<option value=\"$modelStartInAir\" >$modelStartInAir</option>\n";			
+								
+								# include the drop down list
+								include 'includes/getAirstartPool.php'; 
+								echo "	</select>\n";
+														
+							# BUTTON UPDATE STARTINAIR
+								echo "	<button type=\"submit\" name =\"updateAirfield\" id=\"acModelForm\" class=\"acModelFormHalfsize\" value =\"$i\" >change</button>\n";	
+								echo "	<br><br>";
+								echo "</fieldset>\n";
+
 								$i ++;	
 							}
 						}
 						
-						# Navigation helper in case of redirect from erro page
+						# Navigation helper in case of redirect from error page
 						echo '<div id="addRemove"></div>';
 						
 						echo "<fieldset id=\"inputs\">\n";
 						
-						echo "<p>To assign a new model to the aifield select the corresponding entry from the dropdown list below and insert the quantity into the form field.</p>\n";
+						echo "<p>To assign a new model to the airfield select the corresponding entry from the dropdown list below and insert the quantity into the form field.</p>\n";
 												
 						// hidden field to hand airfieldName over through POST
 						echo "	<input readonly=\"readonly\" type=\"hidden\" name='airfieldName' value='$airfieldName' size=\"24\" maxlength=\"50\" />\n";
@@ -130,7 +165,16 @@
 						echo "	</select>\n";
 						
 						# NEW MODEL QUANTITY
-						echo "	<input type=\"text\" name=\"modelNameAddQuantity\" id=\"number\" placeholder=\"Desired Quantitiy of selected model\" value='' size=\"24\" maxlength=\"50\" />\n";
+						echo "	<input type=\"text\" name=\"modelNameAddQuantity\" id=\"number\" placeholder=\"Desired Quantitiy of selected model\" value='' size=\"24\" maxlength=\"2\" />\n";
+						# NEW MODEL ALTITUDE
+						echo "	<input type=\"text\" name=\"modelNameAddAltitude\" id=\"altitude\" placeholder=\"Desired Airstart Altitude\" value='' size=\"24\" maxlength=\"4\" />\n";
+						# NEW MODEL AIRSTART
+						#echo "	<input type=\"text\" name=\"modelNameAddAirstart\" id=\"airstart\" placeholder=\"Desired Position\" value='' size=\"24\" maxlength=\"1\" />\n";
+						echo "	<select name='modelNameAddStartInAir' id=\"airstart\" >\n";
+						echo "<option value=\"$modelStartInAir\" disabled selected>Desired Start Position</option>\n";						
+						# include the drop down list
+						include 'includes/getAirstartPool.php'; 
+						echo "	</select>\n";											
 						
 						// hidden field to hand airfieldCoalitionId over through POST
 						echo "	<input readonly=\"readonly\" type=\"hidden\" name='airfieldCoalitionId' value='$airfieldCoalitionId'/>\n";	

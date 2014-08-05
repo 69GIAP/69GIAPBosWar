@@ -136,7 +136,13 @@ form fieldset p {
 	-webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
 	box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
 }
-
+#inputs input.number,
+#inputs input.altitude,
+#inputs input.flight,
+#inputs input.airstart,
+#inputs input.number {
+	width: 66px; /* 353 + 2 + 45 = 400 */
+}
 #inputs select,
 #none select {
 	background: #f1f1f1 url(../img/formSprite.png) no-repeat;
@@ -150,6 +156,10 @@ form fieldset p {
 	-moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
 	-webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
 	box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+}
+
+#inputs select.airstart {
+	width: 114px; /* 353 + 2 + 45 = 400 */
 }
 
 #inputs.wide select {
@@ -235,6 +245,11 @@ form fieldset p {
 	float: left;
 	height: 40px;
 	padding: 0;	
+}
+
+#acModelForm.acModelFormHalfsize {
+	float: none;	
+	width: 113px;
 }
 
 #registerSubmit {
@@ -502,10 +517,41 @@ input[type=checkbox]:checked + label:before {
 #file {
 	background-position: 5px -483px !important;
 }
+
 #userfile {
 	background-position: 5px -480px !important;
 }
 
 #map {
 	background-position: 5px -532px !important;
+}
+
+#airstart {
+	background-position: 5px -580px !important;
+}
+
+#altitude {
+	background-position: 5px -630px !important;
+}
+
+#flight {
+	background-position: 5px -680px !important;
+}
+/***************** GENERAL ***************/
+div.old {
+	float: left;
+	width: 100px;
+	font-weight: bold;
+	font-size: 12px;
+	position: relativ;
+	margin-left:50px;		
+}
+div.new {
+	float: left;
+	width: 150px;	
+	font-weight: bold;
+	font-size: 12px;	
+	position: relativ;
+	margin-left:150px;
+	margin-top: -15px
 }

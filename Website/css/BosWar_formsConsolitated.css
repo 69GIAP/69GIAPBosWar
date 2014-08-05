@@ -135,7 +135,13 @@ form fieldset p {
     -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
     box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
 }
-
+#inputs input.number,
+#inputs input.altitude,
+#inputs input.flight,
+#inputs input.airstart,
+#inputs input.number {
+	width: 66px; /* 353 + 2 + 45 = 400 */
+}
 #inputs select,
 #none select {
     background: #f1f1f1 url(../img/formSprite.png) no-repeat;
@@ -151,8 +157,16 @@ form fieldset p {
     box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
 }
 
+#inputs select.airstart {
+	width: 114px; /* 353 + 2 + 45 = 400 */
+}
+
 #inputs.wide select {
 	width: 522px;
+}
+
+#inputs.narrow select {
+	width: 102px;
 }
 
 #inputs select:focus,
@@ -175,6 +189,7 @@ form fieldset p {
 	width: 300px;/* 353 + 2 + 45 = 400 */	
     -moz-border-radius: 0px;
     -webkit-border-radius: 0px;
+
 	border-radius: 0px;
 	border-width: 1px;
     -moz-box-shadow: 0 1px 1px #a21f1f inset, 0 1px 0 #a21f1f;
@@ -212,6 +227,7 @@ form fieldset p {
 
 /******** BUTTONS *********/
 #loginSubmit,
+#objectsSubmit,
 #submitHalfsize1,
 #submitHalfsize2,
 #registerSubmit,
@@ -219,7 +235,8 @@ form fieldset p {
 #updateCamp,
 #countrySubmit,
 #back,
-#downloadColumns {
+#downloadColumns,
+#acModelForm {
 	background: none;	
     background-color: #a21f1f;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.4);
@@ -231,12 +248,25 @@ form fieldset p {
     padding: 0;	
 }
 
+#acModelForm.acModelFormHalfsize {
+	float: none;	
+	width: 113px;
+}
+
 #registerSubmit {
     width: 345px;
 }
 
 #loginSubmit {		
-    width: 345px;
+	width: 345px;
+}
+#acModelForm {
+	width: 345px;	
+	font: 16px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+#objectsSubmit {		
+	width: 500px;
 }
 
 #submitHalfsize1,
@@ -252,6 +282,8 @@ form fieldset p {
 
 #registerSubmit:hover, #registerSubmit:focus,	
 #loginSubmit:hover, #loginSubmit:focus,
+#acModelForm:hover, #acModelForm:focus,
+#objectsSubmit:hover, #objectsSubmit:focus,
 #submit:hover, #submit:focus, 
 #submitHalfsize1:hover, #submitHalfsize1:focus, 
 #submitHalfsize2:hover,#submitHalfsize2:focus,
@@ -264,14 +296,17 @@ form fieldset p {
 }
 
 #registerSubmit:active,
-#loginSubmit:active {
+#loginSubmit:active,
+#acModelForm:active,
+#objectsSubmit:active {
 	background-color: #293442;		
     outline: none;
 }
 
 #registerSubmit::-moz-focus-inner,
-#loginSubmit::-moz-focus-inner {
-  	border: none;
+#loginSubmit::-moz-focus-inner, 
+#acModelForm::-moz-focus-inner {
+	border: none;
 }
 
 /******** FEEDBACK **********/
@@ -323,7 +358,8 @@ form fieldset p {
 .airfieldStatusFormCheckboxWrapper,
 .checkboxWrapper {
 	width: auto;
-	max-width: 400px;
+	max-width: 480px;
+	min-width: 420px;	
 }
 
 .createColumnCheckboxWrapper {
@@ -336,6 +372,15 @@ form fieldset p {
 
 .checkbox {
 	margin: 5px 0 2px 0;
+}
+
+div.checkbox img {
+	float: right;
+	width: 90px;
+	height: 90px;
+	position: relative;
+	top: 0px;
+	right: 10px;
 }
 
 .radio {
@@ -479,4 +524,34 @@ input[type=checkbox]:checked + label:before {
 
 #map {
     background-position: 5px -532px !important;
+}
+
+#airstart {
+	background-position: 5px -580px !important;
+}
+
+#altitude {
+	background-position: 5px -630px !important;
+}
+
+#flight {
+	background-position: 5px -680px !important;
+}
+/***************** GENERAL ***************/
+div.old {
+	float: left;
+	width: 100px;
+	font-weight: bold;
+	font-size: 12px;
+	position: relativ;
+	margin-left:50px;		
+}
+div.new {
+	float: left;
+	width: 150px;	
+	font-weight: bold;
+	font-size: 12px;	
+	position: relativ;
+	margin-left:150px;
+	margin-top: -15px
 }

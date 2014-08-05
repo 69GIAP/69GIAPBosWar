@@ -265,6 +265,14 @@ $query = "INSERT INTO `$newCampaignDBName`.object_roles SELECT * FROM object_rol
 include ('includes/doit.php');
 echo "object_roles populated<br />\n";
 
+$query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.start_in_air LIKE start_in_air;";
+include ('includes/doit.php');
+echo "object_roles created<br />\n";
+
+$query = "INSERT INTO `$newCampaignDBName`.start_in_air SELECT * FROM start_in_air;";
+include ('includes/doit.php');
+echo "start_in_air populated<br />\n";
+
 // create the selected map_locations table
 $query = "CREATE TABLE IF NOT EXISTS `$newCampaignDBName`.$campaignMapLocations LIKE $campaignMapLocations;";
 include ('includes/doit.php');
