@@ -200,17 +200,20 @@
 						echo "		<button type=\"submit\" id=\"submitHalfsize1\" value =\"\" name=\"next\">Next</button>\n";
 						echo "	</fieldset>\n";
 						echo "</form>\n";
-					} elseif ($action == 'addunit') {
+					} 
+					elseif ($action == 'addunit') {
 						if (!isset($_POST['objectID'])) {
 							echo "<p><b><font color = \"red\">You did not select a unit to add.</font></b></p>\n";
-						} else {
+							} 
+						else {
 							echo "Add unit.<br />\n";
 							$objectID = $_POST['objectID'];
 							echo "\$objectID: $objectID<br />\n";
 						    $query5 = "SELECT * from statics where id = '$objectID';";
 							if(!$result = $camp_link->query($query5)){
 								die('CampaignMgmtReviewStatics.php query5 error [' . $camp_link->error . ']');
-							} else {
+								}
+							else {
 								while ($obj = $result->fetch_object()) {
 									$static_Name	= $obj->static_Name;
 									$static_Model	= $obj->static_Model;
@@ -226,11 +229,11 @@
 									    VALUES
 									    ('$static_Name', '$static_Model', '$static_Type', '$static_Desc',
 									    '$static_Country', '$static_coalition', '$static_supplypoint');";
+
 									if(!$result6 = $camp_link->query($query6)){
 										die('CampaignMgmtReviewStatics.php query6 error [' . $camp_link->error . ']');
 									} else {
 									    echo "$query6<br />\n";
-										$result6->free();
 									}
 								}
 							}
