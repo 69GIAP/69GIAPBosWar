@@ -474,7 +474,7 @@ if ($num > 0)
 				$Plane_Name = $row2['model_Flight'];
 				$Plane_Qty = $row2['model_Quantity'];
 				$Plane_Altitude = $row2['model_Altitude'];
-				$Plane_startinair = $row2['model_startinair'];
+				$Plane_SpawnPosition = $row2['model_SpawnPosition'];
 				echo "got a plane:".$Plane_Model."<br>";
 				$writestring = '    Plane'."\r\n";
 				fwrite($fh,$writestring);
@@ -486,19 +486,19 @@ if ($num > 0)
 				fwrite($fh,$writestring);
 				$writestring = '      AILevel = '.$air_ai_level.';'."\r\n";
 				fwrite($fh,$writestring);
-				if ($Plane_startinair == 0)
+				if ($Plane_SpawnPosition == 0)
 					{
-					$writestring = '      StartInAir = 0;'."\r\n";
+					$writestring = '      SpawnPosition = 0;'."\r\n";
 					fwrite($fh,$writestring);
 					}
-				if ($Plane_startinair == 1)
+				if ($Plane_SpawnPosition == 1)
 					{
-					$writestring = '      StartInAir = 1;'."\r\n";
+					$writestring = '      SpawnPosition = 1;'."\r\n";
 					fwrite($fh,$writestring);
 					}
-				if ($Plane_startinair == 2)
+				if ($Plane_SpawnPosition == 2)
 					{
-					$writestring = '      StartInAir = 2;'."\r\n";
+					$writestring = '      SpawnPosition = 2;'."\r\n";
 					fwrite($fh,$writestring);
 					}	
 				$writestring = '      Engageable = 1;'."\r\n";

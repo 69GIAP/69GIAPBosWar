@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `start_in_air`
+-- Table structure for table `spawn_position`
 --
 
-DROP TABLE IF EXISTS `start_in_air`;
+DROP TABLE IF EXISTS `spawn_position`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `start_in_air` (
+CREATE TABLE `spawn_position` (
   `sim` varchar(3) NOT NULL,
   `start_type` int(11) NOT NULL,
   `description` varchar(12) DEFAULT NULL,
@@ -31,13 +31,13 @@ CREATE TABLE `start_in_air` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `start_in_air`
+-- Dumping data for table `spawn_position`
 --
 
-LOCK TABLES `start_in_air` WRITE;
-/*!40000 ALTER TABLE `start_in_air` DISABLE KEYS */;
-INSERT INTO `start_in_air` VALUES ('BoS',0,'Airstart'),('BoS',1,'Runway'),('BoS',2,'Parking'),('RoF',0,'Groundstart'),('RoF',1,'Airstart');
-/*!40000 ALTER TABLE `start_in_air` ENABLE KEYS */;
+LOCK TABLES `spawn_position` WRITE;
+/*!40000 ALTER TABLE `spawn_position` DISABLE KEYS */;
+INSERT INTO `spawn_position` VALUES ('BoS',0,'Airstart'),('BoS',1,'Runway'),('BoS',2,'Parking'),('RoF',0,'Groundstart'),('RoF',1,'Airstart');
+/*!40000 ALTER TABLE `spawn_position` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

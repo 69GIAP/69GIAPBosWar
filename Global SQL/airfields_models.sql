@@ -32,7 +32,7 @@ CREATE TABLE `airfields_models` (
   `model_Quantity` int(3) DEFAULT '0',
   `model_Altitude` int(4) DEFAULT '0',
   `model_Flight` varchar(30) DEFAULT '',
-  `model_startinair` int(1) DEFAULT '1',  
+  `model_SpawnPosition` int(1) DEFAULT '1',  
   PRIMARY KEY (`airfield_Name`,`model_Name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;

@@ -337,12 +337,12 @@
 								fwrite($fh,$writestring);
 								if ($Plane_Altitude == 0)
 								{
-									$writestring = '      StartInAir = 0;'."\r\n";
+									$writestring = '      SpawnPosition = 0;'."\r\n";
 									fwrite($fh,$writestring);
 								}
 								else
 								{
-									$writestring = '      StartInAir = 1;'."\r\n";
+									$writestring = '      SpawnPosition = 1;'."\r\n";
 									fwrite($fh,$writestring);
 								}
 								$writestring = '      Engageable = 1;'."\r\n";

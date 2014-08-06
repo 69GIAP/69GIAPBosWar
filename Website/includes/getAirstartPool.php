@@ -5,13 +5,13 @@
 	# load options based on sim
 	if ($sim == 'RoF') {
 	$queryOptions = "SELECT * 
-					FROM start_in_air 
+					FROM spawn_position 
 					WHERE sim like 'RoF'";
 	}
 	
 	if ($sim == 'BoS') {
 	$queryOptions = "SELECT * 
-					FROM start_in_air 
+					FROM spawn_position 
 					WHERE sim like 'BoS'";
 	}
 

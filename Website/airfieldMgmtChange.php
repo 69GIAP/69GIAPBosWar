@@ -54,7 +54,7 @@
 					if ($airfieldEnabled == 1) {
 						
 						# get data from airfield_models table
-						$sql = "SELECT model_Name, model_Quantity, model_Altitude, model_Flight, model_StartInAir FROM airfields_models WHERE airfield_Name = '$airfieldName'";
+						$sql = "SELECT model_Name, model_Quantity, model_Altitude, model_Flight, model_SpawnPosition FROM airfields_models WHERE airfield_Name = '$airfieldName'";
 		
 						if(!$result = $camp_link->query($sql)){
 							echo "$query<br />\n";
@@ -77,11 +77,11 @@
 						# load results into variables and build form
 						$i = 1;
 						while ($obj = $result->fetch_object()) {
-							$modelName			=($obj->model_Name);
-							$modelQuantity		=($obj->model_Quantity);
-							$modelAltitude		=($obj->model_Altitude);
-							$modelFlight		=($obj->model_Flight);
-							$modelStartInAir	=($obj->model_StartInAir);
+							$modelName				=($obj->model_Name);
+							$modelQuantity			=($obj->model_Quantity);
+							$modelAltitude			=($obj->model_Altitude);
+							$modelFlight			=($obj->model_Flight);
+							$modelSpawnPosition	=($obj->model_SpawnPosition);
 
 							# MODEL
 							if ($modelName == '') {
@@ -124,22 +124,22 @@
 								echo "</fieldset>\n";
 
 								echo "<fieldset id=\"inputs\">\n";								
-							# STARTINAIR
-								$modelNameStartInAir = "modelNameStartInAir".$i;
-								echo "	<input readonly=\"readonly\" type=\"text\" name ='$modelNameStartInAir' id=\"airstart\" class=\"airstart\" value='$modelStartInAir' size=\"24\" maxlength=\"50\" />\n";
-							# NEW STARTINAIR
+							# SPAWNPOSITION
+								$modelNameSpawnPosition = "modelNameSpawnPosition".$i;
+								echo "	<input readonly=\"readonly\" type=\"text\" name ='$modelNameSpawnPosition' id=\"airstart\" class=\"airstart\" value='$modelSpawnPosition' size=\"24\" maxlength=\"50\" />\n";
+							# NEW SPAWNPOSITION
 								// dynamically create name variable for automatically created fields
-								$modelNameStartInAirNew = "modelNameStartInAirNew".$i;
+								$modelNameSpawnPositionNew = "modelNameSpawnPositionNew".$i;
 								
-								#echo "	<input type=\"text\" name='$modelNameStartInAirNew' id=\"airstart\" class=\"airstart\" placeholder=\"starttype\" value='$modelStartInAir' size=\"24\" maxlength=\"50\" />\n";
-								echo "	<select name='$modelNameStartInAirNew' id=\"airstart\" class=\"airstart\">\n";
-								echo "<option value=\"$modelStartInAir\" >$modelStartInAir</option>\n";			
+								#echo "	<input type=\"text\" name='$modelNameSpawnPositionNew' id=\"airstart\" class=\"airstart\" placeholder=\"starttype\" value='$modelSpawnPosition' size=\"24\" maxlength=\"50\" />\n";
+								echo "	<select name='$modelNameSpawnPositionNew' id=\"airstart\" class=\"airstart\">\n";
+								echo "<option value=\"$modelSpawnPosition\" >$modelSpawnPosition</option>\n";			
 								
 								# include the drop down list
 								include 'includes/getAirstartPool.php'; 
 								echo "	</select>\n";
 														
-							# BUTTON UPDATE STARTINAIR
+							# BUTTON UPDATE SPAWNPOSITION
 								echo "	<button type=\"submit\" name =\"updateAirfield\" id=\"acModelForm\" class=\"acModelFormHalfsize\" value =\"$i\" >change</button>\n";	
 								echo "	<br><br>";
 								echo "</fieldset>\n";
@@ -170,8 +170,8 @@
 						echo "	<input type=\"text\" name=\"modelNameAddAltitude\" id=\"altitude\" placeholder=\"Desired Airstart Altitude\" value='' size=\"24\" maxlength=\"4\" />\n";
 						# NEW MODEL AIRSTART
 						#echo "	<input type=\"text\" name=\"modelNameAddAirstart\" id=\"airstart\" placeholder=\"Desired Position\" value='' size=\"24\" maxlength=\"1\" />\n";
-						echo "	<select name='modelNameAddStartInAir' id=\"airstart\" >\n";
-						echo "<option value=\"$modelStartInAir\" disabled selected>Desired Start Position</option>\n";						
+						echo "	<select name='modelNameAddSpawnPosition' id=\"airstart\" >\n";
+						echo "<option value=\"$modelSpawnPosition\" disabled selected>Desired Start Position</option>\n";						
 						# include the drop down list
 						include 'includes/getAirstartPool.php'; 
 						echo "	</select>\n";											
