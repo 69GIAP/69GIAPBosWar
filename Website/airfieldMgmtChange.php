@@ -83,6 +83,7 @@
 							$modelFlight			=($obj->model_Flight);
 							$modelSpawnPosition	=($obj->model_SpawnPosition);
 
+#MODIFY ASSIGNED AIRCRAFT
 							# MODEL
 							if ($modelName == '') {
 								echo "<fieldset id=\"none\"> \n";							
@@ -158,6 +159,7 @@
 						// hidden field to hand airfieldName over through POST
 						echo "	<input readonly=\"readonly\" type=\"hidden\" name='airfieldName' value='$airfieldName' size=\"24\" maxlength=\"50\" />\n";
 						
+# ADD ANOTHER AIRCRAFT						
 						# NEW MODEL SELECT
 						echo "	<select name=\"modelNameAdd\" id=\"aircraft\">\n";
 						# include the drop down list
@@ -171,7 +173,15 @@
 						# NEW MODEL AIRSTART
 						#echo "	<input type=\"text\" name=\"modelNameAddAirstart\" id=\"airstart\" placeholder=\"Desired Position\" value='' size=\"24\" maxlength=\"1\" />\n";
 						echo "	<select name='modelNameAddSpawnPosition' id=\"airstart\" >\n";
-						echo "<option value=\"$modelSpawnPosition\" disabled selected>Desired Start Position</option>\n";						
+						
+						# reset spawn position due to sim to populate dropdown with default value
+						if ($sim == 'RoF') {
+								$modelNameAddSpawnPosition = 0;
+							};
+						if ($sim == 'BoS') {
+								$modelNameAddSpawnPosition = 2;
+							}
+						echo "	<option value=\"$modelNameAddSpawnPosition\" >Desired Start Position</option>\n";						
 						# include the drop down list
 						include 'includes/getAirstartPool.php'; 
 						echo "	</select>\n";											
@@ -186,7 +196,7 @@
 						echo "	<button type=\"submit\" name =\"updateAirfield\" id=\"submitHalfsize1\" value =\"7\" >Add</button>\n";
 						
 						# BUTTON REMOVE
-						echo "	<button type=\"submit\" name =\"updateAirfield\" id=\"submitHalfsize2\" value =\"8\" >Remove Model</button>\n";
+						# echo "	<button type=\"submit\" name =\"updateAirfield\" id=\"submitHalfsize2\" value =\"8\" >Remove Model</button>\n";
 						
 						echo "</fieldset>\n";
 						echo "<fieldset id=\"inputs\">\n";										

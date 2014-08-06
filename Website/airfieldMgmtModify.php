@@ -118,27 +118,34 @@
 							$modelNameAddQuantity = $_POST["modelNameAddQuantity"];
 						}
 						
-# check checks! start						
-						if (empty($_POST["modelNameAddAltitude"]) ){
-							$modelNameAddAltitude = '0';
-						}
-						else {
-							$modelNameAddAltitude = $_POST["modelNameAddAltitude"];
-						}
-						
-						if (empty($_POST["modelNameAddSpawnPosition"]) ){
-							if ($sim == 'RoF') {# default to Groundstart
-								$modelNameAddSpawnPosition = '0';
+# check if altitude value was provided and reset pending variables accordingly
+						if ($sim == 'RoF') {
+							if (empty($_POST["modelNameAddAltitude"]) ){ # if there is no altitude spawning point is reset to ground
+								$modelNameAddAltitude = '0';
+								
+								if (empty($_POST["modelNameAddSpawnPosition"])) {
+									$_POST["modelNameAddSpawnPosition"] = 0;
+								}
+								else {
+									$modelNameAddSpawnPosition = $_POST["modelNameAddSpawnPosition"];
+								}
 							}
-							if ($sim == 'BoS') {# default to Parking
-								$modelNameAddSpawnPosition = '2';
+							else {
+								$modelNameAddAltitude = $_POST["modelNameAddAltitude"];
+								$_POST["modelNameAddSpawnPosition"] = 1;
 							}
 						}
-						else {
-							$modelNameAddSpawnPosition = $_POST["modelNameAddSpawnPosition"];
-						}												
-# check checks! end
-						
+						if ($sim == 'BoS') {
+							if (empty($_POST["modelNameAddAltitude"]) ){ # if there is no altitude spawning point is reset to ground
+								$modelNameAddAltitude = '0';
+								$_POST["modelNameAddSpawnPosition"] = 2;							
+							}
+							else {
+								$modelNameAddAltitude = $_POST["modelNameAddAltitude"];
+								$_POST["modelNameAddSpawnPosition"] = 0;
+							}
+						}
+
 						$airfieldCoalitionId		= $_POST["airfieldCoalitionId"];
 						
 						if (empty($_POST["airfieldCoalitionIdNew"]) ){
@@ -147,7 +154,9 @@
 						else {
 							$airfieldCoalitionIdNew	= $_POST["airfieldCoalitionIdNew"];
 						}
-								
+						
+						$modelNameAddSpawnPosition = $_POST["modelNameAddSpawnPosition"];
+							
 						# prepare sql based on selected aircraft
 						if ($_POST["updateAirfield"] == 1) //model 1 - update count or remove if value 0 was submitted
 							{
@@ -407,8 +416,37 @@
 								}
 						if ($_POST["updateAirfield"] == 7) // model add
 							{
-							$query1="INSERT INTO airfields_models (airfield_Name, model_Name, model_Model, model_Quantity, model_Altitude, model_SpawnPosition) VALUES ('$airfieldName', '$modelNameAdd', '$modelModelAdd', $modelNameAddQuantity, '$modelNameAddAltitude', '$modelNameAddSpawnPosition') ;";
+								/*
+								if ($modelNameAddAltitude > 0) {
+									if ($sim == 'RoF') {
+										$modelNameAddSpawnPosition = 1;
+									}
+									if ($sim == 'BoS') {
+										$modelNameAddSpawnPosition = 0;
+									}
+									
+								}
+								if ($modelNameAddAltitude == 0 ) {
+									if ($sim == 'RoF') {
+										$modelNameAddSpawnPosition = 0;
+									}
+									if ($sim == 'BoS') {
+										$modelNameAddSpawnPosition = 2;
+									}
+								}*/
+								if (
+										(
+											($sim == 'RoF' and $modelNameAddSpawnPosition == 1 ) or ($sim == 'BoS' and $modelNameAddSpawnPosition == 0 )
+										) and $modelNameAddAltitude == 0
+									) {
+										$modelNameAddAltitude = 1000; # predefined spawning altitude if no value was provided
+										}
+								$query1="INSERT INTO airfields_models (airfield_Name, model_Name, model_Model, model_Quantity, model_Altitude, model_SpawnPosition) 
+									VALUES ('$airfieldName', '$modelNameAdd', '$modelModelAdd', $modelNameAddQuantity, '$modelNameAddAltitude', '$modelNameAddSpawnPosition') ;";
 							}
+echo $modelNameAddAltitude.'<br>';
+echo $modelNameAddSpawnPosition;					
+#return;							
 						if ($_POST["updateAirfield"] == 8) // model remove
 							{
 							$query1="DELETE from airfields_models WHERE model_Name like '$modelNameAdd' AND airfield_Name like '$airfieldName' ;";
