@@ -77,7 +77,11 @@
 					echo "<p>Download destination on your PC may vary depending on what browser you use. It may be in a default download directory, in the last place you saved files to or prompt for destination.</p>\n";
 					echo "<p>Remember the folder and once downloaded move the <b>*.2planner.Group</b> files to the campaign directory.</p>\n";
 					
-					echo "<p>After you finished this WE NEED INSTRUCTIONS HERE !!!!!</p>\n";
+					echo "<p>After you finished this for each column the planner will have a symbol with a waypoint attached. Pick up the waypoint and drag it to a reasonable
+					destination for the duration of the mission. Be careful about crossing rivers or lakes vehicles are stupid and will drive straight into water and drown. If you 
+					place the waypoint too far away the system will calculate a reasonable distance according to the campaign parameters and adjust the destination before the mission build.
+					Artillery that you allocate a destination to will be loaded into trucks for the journey and can not fire. If the rules of the campaign allow movement of static
+					groups you can adjust the position and angle of the objects here but keep them reasonably close together as they will be linked by triggers.</p>\n";
 					
 					echo "<form id=\"campaignMgmtDLFile\" name=\"campaignDownloadColumns\" action=\"CampaignMgmtDLFile.php?btn=campStp&sde=campCol\" method=\"post\">\n";
 					$DownloadDir = 'downloads/';
