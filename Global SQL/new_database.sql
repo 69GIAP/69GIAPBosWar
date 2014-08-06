@@ -43,6 +43,7 @@ source c:/Abyss web server/htdocs/global sql/rof_lake_locations.sql;
 source c:/Abyss web server/htdocs/global sql/rof_object_properties.sql;
 source c:/Abyss web server/htdocs/global sql/rof_verdun_locations.sql;
 source c:/Abyss web server/htdocs/global sql/rof_westernfront_locations.sql;
+source c:/Abyss web server/htdocs/global sql/spawn_position.sql;
 source c:/Abyss web server/htdocs/global sql/static_groups.sql;
 source c:/Abyss web server/htdocs/global sql/statistics_test.sql;
 #source c:/Abyss web server/htdocs/global sql/tabcreate_col_10.sql;
