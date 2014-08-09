@@ -75,6 +75,7 @@ form fieldset p {
     width: auto;    
     padding: 30px;	  
 }
+
 #campaignMgmtSetupForm {
     background-color: #fff;
     height: auto;
@@ -158,7 +159,10 @@ form fieldset p {
 }
 
 #inputs select.airstart {
-	width: 114px; /* 353 + 2 + 45 = 400 */
+	/*width: 114px;  353 + 2 + 45 = 400 */
+	width: 134px; /* 353 + 2 + 45 = 400 */
+	font-size: 10px;
+
 }
 
 #inputs.wide select {
@@ -173,39 +177,40 @@ form fieldset p {
 #inputs input:focus,
 #none select:focus,
 #none input:focus {
-    background-color: #fff;
-    border-color: #293442;
-    outline: none;
-    -moz-box-shadow: 0 0 0 1px #293442 inset;
-    -webkit-box-shadow: 0 0 0 1px #293442 inset;
-    box-shadow: 0 0 0 1px #293442 inset;
+	background-color: #fff;
+	border-color: #293442;
+	outline: none;
+	-moz-box-shadow: 0 0 0 1px #293442 inset;
+	-webkit-box-shadow: 0 0 0 1px #293442 inset;
+	box-shadow: 0 0 0 1px #293442 inset;
 }
 
 /* on error style */
 #inputs input.error {
 	background: #f8dbdb url(../img/formSprite.png) no-repeat;
 	padding: 10px 15px 10px 30px;
-    margin: 2px 0 2px 0;
+	 margin: 2px 0 2px 0;
 	width: 300px;/* 353 + 2 + 45 = 400 */	
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+
 
 	border-radius: 0px;
 	border-width: 1px;
-    -moz-box-shadow: 0 1px 1px #a21f1f inset, 0 1px 0 #a21f1f;
-    -webkit-box-shadow: 0 1px 1px #a21f1f inset, 0 1px 0 #a21f1f;
-    box-shadow: 0 1px 1px #a21f1f inset, 0 1px 0 #a21f1f;
+    	-moz-box-shadow: 0 1px 1px #a21f1f inset, 0 1px 0 #a21f1f;
+    	-webkit-box-shadow: 0 1px 1px #a21f1f inset, 0 1px 0 #a21f1f;
+    	box-shadow: 0 1px 1px #a21f1f inset, 0 1px 0 #a21f1f;
 	color: #949494;
 	border-color: #a21f1f;
 }
 #inputs input.error:focus {
-    border-color: #a21f1f;
-    outline: none;
-    -moz-box-shadow: 0 0 0 1px #a21f1f inset;
-    -webkit-box-shadow: 0 0 0 1px #a21f1f inset;
+    	border-color: #a21f1f;
+    	outline: none;
+    	-moz-box-shadow: 0 0 0 1px #a21f1f inset;
+    	-webkit-box-shadow: 0 0 0 1px #a21f1f inset;
 	
 	background-color: #fff;
-    box-shadow: 0 0 0 1px #a21f1f inset;
+    	box-shadow: 0 0 0 1px #a21f1f inset;
 }
 
 /********TEXT AREA FORM FIELDS **********/
@@ -248,9 +253,12 @@ form fieldset p {
     padding: 0;	
 }
 
-#acModelForm.acModelFormHalfsize {
+#acModelForm.acModelFormHalfsize,
+#acModelForm.acModelFormNarrow {
 	float: none;	
-	width: 113px;
+/*	width: 113px; */
+	font: 18px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	height: 25px;
 }
 
 #registerSubmit {
@@ -537,7 +545,19 @@ input[type=checkbox]:checked + label:before {
 #flight {
 	background-position: 5px -680px !important;
 }
+
+#callsign {
+	background-position: 5px -730px !important;
+}
 /***************** GENERAL ***************/
+div.descr {
+	float: left;
+	width: 400px;
+	font-weight: bold;
+	font-size: 12px;
+	position: relativ;
+	margin-left:0px;		
+}
 div.old {
 	float: left;
 	width: 100px;
