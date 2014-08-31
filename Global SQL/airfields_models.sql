@@ -31,10 +31,19 @@ CREATE TABLE `airfields_models` (
   `model_Quantity` int(3) DEFAULT '0',
   `model_Altitude` int(4) DEFAULT '0',
   `model_Flight` varchar(30) DEFAULT '',
-  `model_SpawnPosition` int(1) DEFAULT '0',
+  `model_SpawnPosition` int(1) DEFAULT '1',
   PRIMARY KEY (`airfield_Name`,`model_Name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `airfields_models`
+--
+
+LOCK TABLES `airfields_models` WRITE;
+/*!40000 ALTER TABLE `airfields_models` DISABLE KEYS */;
+/*!40000 ALTER TABLE `airfields_models` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -45,4 +54,4 @@ CREATE TABLE `airfields_models` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-08-09 12:38:00
+-- Dump completed on 2014-08-06 10:39:56
