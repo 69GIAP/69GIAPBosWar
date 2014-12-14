@@ -27,7 +27,7 @@
 				{
 					$airstartPosition 	= ($objOptions->start_type);
 					$airstartDescription = ($objOptions->description);
-					echo "<option value=\"". $airstartPosition. "\">".$airstartPosition . " - " . $airstartDescription. "</option>\n";
+					echo "<option value=\"". $airstartPosition. "\">".$airstartPosition."-".$airstartDescription. "</option>\n";
 				}
 		}
 	

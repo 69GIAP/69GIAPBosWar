@@ -141,8 +141,13 @@ form fieldset p {
 #inputs input.flight,
 #inputs input.airstart,
 #inputs input.number {
-	width: 66px; /* 353 + 2 + 45 = 400 */
+	width: 124px;
 }
+
+#inputs input.callsign {
+	width: 160px;
+}
+
 #inputs select,
 #none select {
 	background: #f1f1f1 url(../img/formSprite.png) no-repeat;
@@ -159,7 +164,10 @@ form fieldset p {
 }
 
 #inputs select.airstart {
-	width: 114px; /* 353 + 2 + 45 = 400 */
+	/*width: 114px;  353 + 2 + 45 = 400 */
+	width: 134px; /* 353 + 2 + 45 = 400 */
+	font-size: 10px;
+
 }
 
 #inputs.wide select {
@@ -247,9 +255,12 @@ form fieldset p {
 	padding: 0;	
 }
 
-#acModelForm.acModelFormHalfsize {
+#acModelForm.acModelFormHalfsize,
+#acModelForm.acModelFormNarrow {
 	float: none;	
-	width: 113px;
+/*	width: 113px; */
+	font: 18px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	height: 25px;
 }
 
 #registerSubmit {
@@ -537,7 +548,19 @@ input[type=checkbox]:checked + label:before {
 #flight {
 	background-position: 5px -680px !important;
 }
+
+#callsign {
+	background-position: 5px -730px !important;
+}
 /***************** GENERAL ***************/
+div.descr {
+	float: left;
+	width: 400px;
+	font-weight: bold;
+	font-size: 12px;
+	position: relativ;
+	margin-left:0px;		
+}
 div.old {
 	float: left;
 	width: 100px;
